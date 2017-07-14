@@ -7,7 +7,7 @@ import android.content.res.Resources;
 /**
  * 基类Application
  * @author ymb
- * Create at 2017/7/14 10:38
+ * Create at 2017/7/14 15:33
  */
 public class BaseApplication extends Application {
 

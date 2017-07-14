@@ -2,10 +2,14 @@ package com.coopbuy.mall.ui.test.presenter;
 
 
 import android.content.Context;
+import android.util.Log;
 
 import com.coopbuy.mall.base.BasePresenter;
+import com.coopbuy.mall.okhttp.callback.StringCallback;
 import com.coopbuy.mall.ui.test.model.TestModel;
 import com.coopbuy.mall.ui.test.view.Test_IView;
+
+import okhttp3.Call;
 
 public class TestPresenter extends BasePresenter<Test_IView, TestModel> {
     public TestPresenter(Context context, TestModel model, Test_IView view) {
@@ -13,7 +17,18 @@ public class TestPresenter extends BasePresenter<Test_IView, TestModel> {
     }
 
     public void getData() {
-        String str = mModel.getData();
-        mView.showData(str);
+        mModel.getData(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.e("yangmbin", "error happened");
+                mView.showData("error happened");
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.e("yangmbin", response);
+                mView.showData(response);
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.coopbuy.mall.okhttp.request;
 
-import com.zhy.http.okhttp.utils.Exceptions;
+
+import com.coopbuy.mall.okhttp.utils.Exceptions;
 
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class PostStringRequest extends OkHttpRequest
     private MediaType mediaType;
 
 
-    public PostStringRequest(String url, Object tag, Map<String, String> params, Map<String, String> headers, String content, MediaType mediaType,int id)
+    public PostStringRequest(String url, Object tag, Map<String, String> params, Map<String, String> headers, String content, MediaType mediaType, int id)
     {
         super(url, tag, params, headers,id);
         this.content = content;
@@ -43,7 +44,7 @@ public class PostStringRequest extends OkHttpRequest
     }
 
     @Override
-    protected Request buildRequest( RequestBody requestBody)
+    protected Request buildRequest(RequestBody requestBody)
     {
         return builder.post(requestBody).build();
     }

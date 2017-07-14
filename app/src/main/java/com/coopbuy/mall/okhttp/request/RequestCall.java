@@ -1,7 +1,8 @@
 package com.coopbuy.mall.okhttp.request;
 
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
+
+import com.coopbuy.mall.okhttp.OkHttpUtils;
+import com.coopbuy.mall.okhttp.callback.Callback;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

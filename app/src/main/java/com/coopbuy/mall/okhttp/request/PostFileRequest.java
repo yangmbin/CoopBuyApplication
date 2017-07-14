@@ -1,8 +1,9 @@
 package com.coopbuy.mall.okhttp.request;
 
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.utils.Exceptions;
+
+import com.coopbuy.mall.okhttp.OkHttpUtils;
+import com.coopbuy.mall.okhttp.callback.Callback;
+import com.coopbuy.mall.okhttp.utils.Exceptions;
 
 import java.io.File;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class PostFileRequest extends OkHttpRequest
     private File file;
     private MediaType mediaType;
 
-    public PostFileRequest(String url, Object tag, Map<String, String> params, Map<String, String> headers, File file, MediaType mediaType,int id)
+    public PostFileRequest(String url, Object tag, Map<String, String> params, Map<String, String> headers, File file, MediaType mediaType, int id)
     {
         super(url, tag, params, headers,id);
         this.file = file;
