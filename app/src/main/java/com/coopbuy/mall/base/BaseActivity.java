@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
+import com.coopbuy.mall.widget.LoadingBox;
+
 import butterknife.ButterKnife;
 
 /**
@@ -18,20 +20,22 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public P mPresenter;
     public M mModel;
     public Context mContext;
+    public LoadingBox box;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         doBeforeSetContentView();
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
         mContext = this;
         if (mPresenter != null) {
             mPresenter.mContext = this;
         }
+        box = new LoadingBox(this, getLayoutId());
         this.initModel();
         this.initPresenter();
         this.initView();
+        ButterKnife.bind(this);
     }
 
     /**

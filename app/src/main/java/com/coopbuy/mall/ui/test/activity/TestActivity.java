@@ -34,7 +34,6 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
 
     @Override
     public void initView() {
-
     }
 
     @Override
@@ -42,8 +41,15 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
         tv_data.setText(str);
     }
 
-    @OnClick({R.id.btn_show})
+    @OnClick({R.id.btn_show, R.id.btn_jump})
     public void onViewClicked(View v) {
-        mPresenter.getData();
+        switch (v.getId()) {
+            case R.id.btn_show:
+                mPresenter.getData();
+                break;
+            case R.id.btn_jump:
+
+                break;
+        }
     }
 }

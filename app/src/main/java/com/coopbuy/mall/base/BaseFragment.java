@@ -24,13 +24,13 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, rootView);
         if (mPresenter != null) {
             mPresenter.mContext = this.getActivity();
         }
         initModel();
         initPresenter();
         initView();
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
