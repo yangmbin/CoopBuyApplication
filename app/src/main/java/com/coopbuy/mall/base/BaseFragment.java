@@ -27,10 +27,10 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null) {
             mPresenter.mContext = this.getActivity();
         }
-        initModel();
-        initPresenter();
-        initView();
         ButterKnife.bind(this, rootView);
+        initModel();
+        initView();
+        initPresenter();
         return rootView;
     }
 

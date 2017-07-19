@@ -6,5 +6,6 @@ package com.coopbuy.mall.base;
  * Create at 2017/7/13 14:09
  */
 public interface BaseView {
-
+    void showFillLoading();
+    void stopLoading();
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
 
 import butterknife.ButterKnife;
@@ -31,11 +32,11 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null) {
             mPresenter.mContext = this;
         }
-        box = new LoadingBox(this, getLayoutId());
-        this.initModel();
-        this.initPresenter();
-        this.initView();
+        box = new LoadingBox(this, findViewById(R.id.box));
         ButterKnife.bind(this);
+        this.initModel();
+        this.initView();
+        this.initPresenter();
     }
 
     /**
@@ -68,6 +69,20 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      */
     public abstract void initView();
 
+    /**
+     * 全覆盖加载框
+     */
+    public void showFillLoading() {
+        box.showLoadingLayout();
+    }
+
+    /**
+     * 停止加载框
+     */
+    public void stopLoading() {
+        box.hideAll();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -75,4 +90,5 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             mPresenter.onDestroy();
         ButterKnife.unbind(this);
     }
+
 }

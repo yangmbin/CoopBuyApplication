@@ -8,6 +8,7 @@ import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.test.model.TestModel;
 import com.coopbuy.mall.ui.test.presenter.TestPresenter;
 import com.coopbuy.mall.ui.test.view.Test_IView;
+import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -48,7 +49,7 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
                 mPresenter.getData();
                 break;
             case R.id.btn_jump:
-
+                IntentUtils.gotoActivity(mContext, SecondActivity.class);
                 break;
         }
     }

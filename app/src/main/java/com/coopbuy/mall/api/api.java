@@ -14,7 +14,8 @@ public class api {
     public static void requestTestData(StringCallback callback) {
         OkHttpUtils
                 .get()
-                .url("http://dev.guinong.com:8810/api/SpokesMan/GetSpokesInfo")
+//                .url("http://dev.guinong.com:8810/api/SpokesMan/GetSpokesInfo")
+                .url("http://dev.guinong.com:8810/api/Home/Get?pageNo=1&pageSize=11")
                 .build()
                 .execute(callback);
     }
