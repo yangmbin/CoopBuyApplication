@@ -26,16 +26,19 @@ public class LoadingBox {
     private View.OnClickListener mClickListener;
     private Context mContext;
     private LayoutInflater mInflater;
-    private RelativeLayout mContainer;
+    private RelativeLayout mContainer0, mContainer;
     private ArrayList<View> mCustomViews;
     private ArrayList<View> mDefaultViews;
     private  ViewSwitcher mSwitcher;
 
+    View mLayoutTransLoadingContent;
+
     // Default Tags
-    private final String TAG_INTERNET_OFF 	 =  "INTERNET_OFF";
-    private final String TAG_LOADING_CONTENT =  "LOADING_CONTENT";
-    private final String TAG_OTHER_EXCEPTION =  "OTHER_EXCEPTION";
-    private final String TAG_NO_DATA =  "NO_DATA";
+    private final String TAG_INTERNET_OFF 	       =  "INTERNET_OFF";
+    private final String TAG_LOADING_CONTENT       =  "LOADING_CONTENT";
+    private final String TAG_TRANS_LOADING_CONTENT =  "TRANS_LOADING_CONTENT";
+    private final String TAG_OTHER_EXCEPTION       =  "OTHER_EXCEPTION";
+    private final String TAG_NO_DATA               =  "NO_DATA";
 
     private final String[] mSupportedAbsListViews = new String[]{"listview","gridview","expandablelistview"};
     private final String[] mSupportedViews = new String[]{"linearlayout","relativelayout", "framelayout", "scrollview", "recyclerview", "viewgroup"};
@@ -44,6 +47,7 @@ public class LoadingBox {
         this.mContext 		= context;
         this.mInflater 		= ((Activity)mContext).getLayoutInflater();
         this.mTargetView 	= targetView;
+        this.mContainer0 	= new RelativeLayout(mContext);
         this.mContainer 	= new RelativeLayout(mContext);
         this.mCustomViews 	= new ArrayList<View>();
         this.mDefaultViews	= new ArrayList<View>();
@@ -66,6 +70,7 @@ public class LoadingBox {
         this.mContext 		= context;
         this.mInflater 		= ((Activity)mContext).getLayoutInflater();
         this.mTargetView 	= mInflater.inflate(viewID, null, false);
+        this.mContainer0 	= new RelativeLayout(mContext);
         this.mContainer 	= new RelativeLayout(mContext);
         this.mCustomViews 	= new ArrayList<View>();
         this.mDefaultViews	= new ArrayList<View>();
@@ -98,11 +103,13 @@ public class LoadingBox {
         if(group!=null){
             index = group.indexOfChild(mTargetView);
             group.removeView(mTargetView);
-
         }
 
+        mContainer0.addView(target.getmView());
+        mContainer0.addView(mLayoutTransLoadingContent);
+
         mSwitcher.addView(mContainer,0);
-        mSwitcher.addView(target.getmView(),1);
+        mSwitcher.addView(mContainer0,1);
         mSwitcher.setDisplayedChild(1);
 
         if(group!=null){
@@ -111,10 +118,12 @@ public class LoadingBox {
             ((Activity)mContext).setContentView(mSwitcher);
         }
 
-
     }
 
     private void setDefaultViews(){
+        mLayoutTransLoadingContent = initView(R.layout.loadingbox_trans_loading,TAG_TRANS_LOADING_CONTENT);
+        mLayoutTransLoadingContent.setVisibility(View.GONE);
+
         View mLayoutInternetOff = initView(R.layout.loadingbox_no_internet,TAG_INTERNET_OFF);
         View mLayoutLoadingContent = initView(R.layout.loadingbox_loading,TAG_LOADING_CONTENT);
         View mLayoutOther = initView(R.layout.loadingbox_failure,TAG_OTHER_EXCEPTION);
@@ -137,6 +146,7 @@ public class LoadingBox {
         containerParams.addRule(RelativeLayout.CENTER_VERTICAL);
 
         // init new RelativeLayout Wrapper
+        mContainer0.setLayoutParams(containerParams);
         mContainer.setLayoutParams(containerParams);
 
         // Add default views
@@ -154,6 +164,8 @@ public class LoadingBox {
         abslistview.setVisibility(View.GONE);
         ViewGroup parent = (ViewGroup) abslistview.getParent();
         if(mContainer!=null){
+            parent.addView(mLayoutTransLoadingContent);
+
             parent.addView(mContainer);
             abslistview.setEmptyView(mContainer);
         }else
@@ -177,6 +189,11 @@ public class LoadingBox {
         show(tag);
     }
 
+    public void showTransLoadingLayout() {
+        hideAll();
+        mLayoutTransLoadingContent.setVisibility(View.VISIBLE);
+    }
+
     public void hideAll(){
         ArrayList<View> views =  new ArrayList<View>(mDefaultViews);
         views.addAll(mCustomViews);
@@ -186,6 +203,7 @@ public class LoadingBox {
         if(mSwitcher!=null){
             mSwitcher.setDisplayedChild(1);
         }
+        mLayoutTransLoadingContent.setVisibility(View.GONE);
     }
     private void show(String tag){
         ArrayList<View> views =  new ArrayList<View>(mDefaultViews);

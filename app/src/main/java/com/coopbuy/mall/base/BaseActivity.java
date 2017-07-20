@@ -77,6 +77,34 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     }
 
     /**
+     * 显示透明加载框
+     */
+    public void showTransLoading() {
+        box.showTransLoadingLayout();
+    }
+
+    /**
+     * 显示无数据页面
+     */
+    public void showNoDataLayout() {
+        box.showNoDataLayout();
+    }
+
+    /**
+     * 显示无网络页面
+     */
+    public void showNetOffLayout() {
+        box.showInternetOffLayout();
+    }
+
+    /**
+     * 显示网络错误页面
+     */
+    public void showNetErrorLayout() {
+        box.showExceptionLayout();
+    }
+
+    /**
      * 停止加载框
      */
     public void stopLoading() {

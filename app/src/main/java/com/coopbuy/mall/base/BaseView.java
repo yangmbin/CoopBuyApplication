@@ -7,5 +7,6 @@ package com.coopbuy.mall.base;
  */
 public interface BaseView {
     void showFillLoading();
+    void showTransLoading();
     void stopLoading();
 }
