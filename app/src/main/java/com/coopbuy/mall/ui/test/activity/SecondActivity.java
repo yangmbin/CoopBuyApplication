@@ -56,6 +56,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 mHandler.sendEmptyMessage(0);
             }
         },3000);
