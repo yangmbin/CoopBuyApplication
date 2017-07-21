@@ -19,6 +19,8 @@ import java.util.Locale;
 
 /**
  * 无网络、无数据、加载中、网络错误等页面显示
+ * @author ymb
+ * Create at 2017/7/21 9:54
  */
 public class LoadingBox {
 
@@ -31,7 +33,7 @@ public class LoadingBox {
     private ArrayList<View> mDefaultViews;
     private  ViewSwitcher mSwitcher;
 
-    View mLayoutTransLoadingContent;
+    View mLayoutTransLoadingContent; // 用来处理当前页面加载中上层遮罩
 
     // Default Tags
     private final String TAG_INTERNET_OFF 	       =  "INTERNET_OFF";
