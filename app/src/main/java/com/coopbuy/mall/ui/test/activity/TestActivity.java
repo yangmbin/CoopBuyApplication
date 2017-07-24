@@ -35,6 +35,7 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
 
     @Override
     public void initView() {
+        setTitle("主页");
     }
 
     @Override

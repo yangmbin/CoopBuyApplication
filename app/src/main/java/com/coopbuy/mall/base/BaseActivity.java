@@ -9,6 +9,7 @@ import android.view.Window;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
+import com.coopbuy.mall.widget.TitleBar;
 
 import butterknife.ButterKnife;
 
@@ -17,11 +18,12 @@ import butterknife.ButterKnife;
  * @author ymb
  * Create at 2017/7/13 11:19
  */
-public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener {
     public P mPresenter;
     public M mModel;
     public Context mContext;
     public LoadingBox box;
+    public TitleBar mTitleBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             mPresenter.mContext = this;
         }
         box = new LoadingBox(this, findViewById(R.id.box));
+        mTitleBar = (TitleBar) findViewById(R.id.title_bar);
+        mTitleBar.setTitleBarClickListener(this);
         ButterKnife.bind(this);
         this.initModel();
         this.initView();
@@ -109,6 +113,70 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      */
     public void stopLoading() {
         box.hideAll();
+    }
+
+    /**
+     * TitleBar返回按钮
+     */
+    @Override
+    public void back() {
+        onBackPressed();
+    }
+
+    /**
+     * TitleBar右边文字或按钮
+     */
+    @Override
+    public void right() {
+
+    }
+
+    /**
+     * TitleBar返回按钮和手机back键执行动作一致
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    /**
+     * 设置TitleBar标题
+     * @param title
+     */
+    public void setTitle(String title) {
+        mTitleBar.setTitleText(title);
+    }
+
+    /**
+     * 设置TitleBar标题
+     * @param titleResId
+     */
+    public void setTitle(int titleResId) {
+        mTitleBar.setTitleText(titleResId);
+    }
+
+    /**
+     * 设置TitleBar右边文字
+     * @param text
+     */
+    public void setRightText(String text) {
+        mTitleBar.setRightText(text);
+    }
+
+    /**
+     * 设置TitleBar右边文字
+     * @param textResId
+     */
+    public void setRightText(int textResId) {
+        mTitleBar.setRightText(textResId);
+    }
+
+    /**
+     * 设置TitleBar右边图片
+     * @param imageResId
+     */
+    public void setRightImage(int imageResId) {
+        mTitleBar.setRightImage(imageResId);
     }
 
     @Override

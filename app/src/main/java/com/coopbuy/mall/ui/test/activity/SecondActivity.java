@@ -43,6 +43,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
 
     @Override
     public void initView() {
+        setTitle("页面2");
         setData();
     }
 
