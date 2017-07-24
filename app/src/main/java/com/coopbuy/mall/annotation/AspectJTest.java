@@ -20,7 +20,6 @@ public class AspectJTest {
 
     private static final String TAG = "tag00";
 
-
     /**
      * 切点
      */
