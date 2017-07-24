@@ -75,10 +75,10 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.titlebar_back:
-                mListener.back();
+                mListener.clickTitleBarBack();
                 break;
             case R.id.titlebar_right:
-                mListener.right();
+                mListener.clickTitleBarRight();
                 break;
         }
     }
@@ -88,7 +88,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     }
 
     public interface TitleBarClickListener {
-        void back();
-        void right();
+        void clickTitleBarBack();
+        void clickTitleBarRight();
     }
 }

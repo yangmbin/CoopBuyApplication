@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.test.view;
+package com.coopbuy.mall.ui.module.test.view;
 
 import com.coopbuy.mall.base.BaseView;
 
