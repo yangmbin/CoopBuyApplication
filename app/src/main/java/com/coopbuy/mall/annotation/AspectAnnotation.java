@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @desc
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD,ElementType.FIELD})
+@Target({ElementType.METHOD})
 public @interface AspectAnnotation {
     String value();
 }
