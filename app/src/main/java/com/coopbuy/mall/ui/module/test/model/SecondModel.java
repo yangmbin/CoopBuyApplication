@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.test.model;
+package com.coopbuy.mall.ui.module.test.model;
 
 import com.coopbuy.mall.api.api;
 import com.coopbuy.mall.base.BaseModel;

@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.test.activity;
+package com.coopbuy.mall.ui.module.test.activity;
 
 import android.os.Handler;
 import android.os.Message;
@@ -7,9 +7,9 @@ import android.widget.Toast;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.annotation.AspectAnnotation;
 import com.coopbuy.mall.base.BaseActivity;
-import com.coopbuy.mall.ui.test.model.SecondModel;
-import com.coopbuy.mall.ui.test.presenter.SecondPresenter;
-import com.coopbuy.mall.ui.test.view.Second_IView;
+import com.coopbuy.mall.ui.module.test.model.SecondModel;
+import com.coopbuy.mall.ui.module.test.presenter.SecondPresenter;
+import com.coopbuy.mall.ui.module.test.view.Second_IView;
 import butterknife.Bind;
 
 public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> implements Second_IView {
@@ -44,12 +44,19 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     @Override
     public void initView() {
         setTitle("页面2");
+        setRightImage(R.mipmap.ic_launcher);
         setData();
     }
 
     @Override
     public void showData(String str) {
         tv_data.setText(str);
+    }
+
+    @Override
+    public void clickTitleBarRight() {
+        super.clickTitleBarRight();
+        Toast.makeText(mContext, "点图片干嘛", Toast.LENGTH_SHORT).show();
     }
 
     @AspectAnnotation("")

@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.test.presenter;
+package com.coopbuy.mall.ui.module.test.presenter;
 
 
 import android.content.Context;
@@ -6,19 +6,18 @@ import android.util.Log;
 
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.okhttp.callback.StringCallback;
-import com.coopbuy.mall.ui.test.model.SecondModel;
-import com.coopbuy.mall.ui.test.view.Second_IView;
+import com.coopbuy.mall.ui.module.test.model.TestModel;
+import com.coopbuy.mall.ui.module.test.view.Test_IView;
 
 import okhttp3.Call;
 
-public class SecondPresenter extends BasePresenter<Second_IView, SecondModel> {
-    public SecondPresenter(Context context, SecondModel model, Second_IView view) {
+public class TestPresenter extends BasePresenter<Test_IView, TestModel> {
+    public TestPresenter(Context context, TestModel model, Test_IView view) {
         super(context, model, view);
     }
 
     public void getData() {
-        mView.showFillLoading();
-//        SystemClock.sleep(1000);
+        mView.showTransLoading();
         mModel.getData(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {

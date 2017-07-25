@@ -34,9 +34,12 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null) {
             mPresenter.mContext = this;
         }
-        box = new LoadingBox(this, findViewById(R.id.box));
-        mTitleBar = (TitleBar) findViewById(R.id.title_bar);
-        mTitleBar.setTitleBarClickListener(this);
+        if (findViewById(R.id.box) != null)
+            box = new LoadingBox(this, findViewById(R.id.box));
+        if (findViewById(R.id.title_bar) != null) {
+            mTitleBar = (TitleBar) findViewById(R.id.title_bar);
+            mTitleBar.setTitleBarClickListener(this);
+        }
         ButterKnife.bind(this);
         this.initModel();
         this.initView();
@@ -119,7 +122,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      * TitleBar返回按钮
      */
     @Override
-    public void back() {
+    public void clickTitleBarBack() {
         onBackPressed();
     }
 
@@ -127,7 +130,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      * TitleBar右边文字或按钮
      */
     @Override
-    public void right() {
+    public void clickTitleBarRight() {
 
     }
 
