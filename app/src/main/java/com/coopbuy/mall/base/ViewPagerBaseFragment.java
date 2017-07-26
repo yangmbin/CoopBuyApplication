@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
 
 import butterknife.ButterKnife;
@@ -49,8 +50,8 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
             mPresenter.mContext = this.getActivity();
         }
         mContext = this.getActivity();
-//        if (rootView != null)
-//            box = new LoadingBox(mContext, rootView);
+        if (rootView.findViewById(R.id.box) != null)
+            box = new LoadingBox(mContext, rootView.findViewById(R.id.box));
         ButterKnife.bind(this, rootView);
         initModel();
         initView();
