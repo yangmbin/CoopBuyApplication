@@ -22,8 +22,8 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public P mPresenter;
     public M mModel;
     public Context mContext;
-    public LoadingBox box;
-    public TitleBar mTitleBar;
+    private LoadingBox box;
+    private TitleBar mTitleBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

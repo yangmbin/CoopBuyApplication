@@ -45,7 +45,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     public void initView() {
         setTitle("页面2");
         setRightImage(R.mipmap.ic_launcher);
-        setData();
+//        setData();
     }
 
     @Override
