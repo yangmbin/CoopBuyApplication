@@ -24,7 +24,7 @@ public class SecondPresenter extends BasePresenter<Second_IView, SecondModel> {
             public void onError(Call call, Exception e, int id) {
                 Log.e("yangmbin", "error happened");
                 mView.showData("error happened");
-                mView.stopLoading();
+                mView.showNetErrorLayout();
             }
 
             @Override

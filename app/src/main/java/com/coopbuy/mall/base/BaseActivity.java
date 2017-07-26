@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 
 import com.coopbuy.mall.R;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
  * @author ymb
  * Create at 2017/7/13 11:19
  */
-public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener {
+public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener, View.OnClickListener {
     public P mPresenter;
     public M mModel;
     public Context mContext;
@@ -34,8 +35,10 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null) {
             mPresenter.mContext = this;
         }
-        if (findViewById(R.id.box) != null)
+        if (findViewById(R.id.box) != null) {
             box = new LoadingBox(this, findViewById(R.id.box));
+            box.setClickListener(this);
+        }
         if (findViewById(R.id.title_bar) != null) {
             mTitleBar = (TitleBar) findViewById(R.id.title_bar);
             mTitleBar.setTitleBarClickListener(this);
@@ -117,6 +120,21 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public void stopLoading() {
         box.hideAll();
     }
+
+    /**
+     * 网络重载按钮监听
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        networkRetry();
+    }
+
+    /**
+     * 网络重载按钮
+     */
+    protected void networkRetry() {}
+
 
     /**
      * TitleBar返回按钮

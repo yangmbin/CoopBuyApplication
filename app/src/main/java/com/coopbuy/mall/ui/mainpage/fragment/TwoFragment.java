@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
@@ -46,6 +47,12 @@ public class TwoFragment extends ViewPagerBaseFragment {
         super.onFragmentFirstVisible();
         Log.e("yangmbin", "2第一次可见");
 
-        showFillLoading();
+        showNetErrorLayout();
+    }
+
+    @Override
+    protected void networkRetry() {
+        super.networkRetry();
+        Toast.makeText(mContext, "reload", Toast.LENGTH_SHORT).show();
     }
 }

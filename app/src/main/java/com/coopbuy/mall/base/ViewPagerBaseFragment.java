@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  * @author ymb
  *         Create at 2017/7/13 14:00
  */
-public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment {
+public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment implements View.OnClickListener {
     public P mPresenter;
     public M mModel;
     public Context mContext;
@@ -50,8 +50,10 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
             mPresenter.mContext = this.getActivity();
         }
         mContext = this.getActivity();
-        if (rootView.findViewById(R.id.box) != null)
+        if (rootView.findViewById(R.id.box) != null) {
             box = new LoadingBox(mContext, rootView.findViewById(R.id.box));
+            box.setClickListener(this);
+        }
         ButterKnife.bind(this, rootView);
         initModel();
         initView();
@@ -131,6 +133,20 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     public void stopLoading() {
         box.hideAll();
     }
+
+    /**
+     * 网络重载按钮监听
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        networkRetry();
+    }
+
+    /**
+     * 网络重载按钮
+     */
+    protected void networkRetry() {}
 
     /**
      * 判断Fragment是否可见，先于onCreateView执行

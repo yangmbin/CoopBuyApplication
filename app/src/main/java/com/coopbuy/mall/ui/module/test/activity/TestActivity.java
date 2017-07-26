@@ -62,4 +62,5 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
                 break;
         }
     }
+
 }

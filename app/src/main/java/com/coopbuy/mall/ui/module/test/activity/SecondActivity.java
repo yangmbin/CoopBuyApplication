@@ -69,4 +69,11 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
             }
         },3000);
     }
+
+    @Override
+    protected void networkRetry() {
+        super.networkRetry();
+
+        Toast.makeText(mContext, "reload", Toast.LENGTH_SHORT).show();
+    }
 }
