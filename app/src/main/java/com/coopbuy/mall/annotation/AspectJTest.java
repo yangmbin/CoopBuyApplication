@@ -2,7 +2,9 @@ package com.coopbuy.mall.annotation;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.coopbuy.mall.utils.ToastUtils;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -42,7 +44,7 @@ public class AspectJTest {
         String value = aspectJAnnotation.value();
         Context context = (Context) joinPoint.getThis();
         if(value == null || value.equals("")){
-            Toast.makeText(context,"输入格式不对",Toast.LENGTH_SHORT).show();
+            ToastUtils.textToast(context, "输入格式不对");
             return null;
         }
         return joinPoint.proceed();

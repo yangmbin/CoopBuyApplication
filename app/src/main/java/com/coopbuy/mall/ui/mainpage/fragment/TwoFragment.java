@@ -1,10 +1,10 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.utils.ToastUtils;
 
 /**
  * 分类Fragment
@@ -53,6 +53,6 @@ public class TwoFragment extends ViewPagerBaseFragment {
     @Override
     protected void networkRetry() {
         super.networkRetry();
-        Toast.makeText(mContext, "reload", Toast.LENGTH_SHORT).show();
+        ToastUtils.textToast(mContext, "reload");
     }
 }

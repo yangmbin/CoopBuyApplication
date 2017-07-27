@@ -2,7 +2,6 @@ package com.coopbuy.mall.ui.module.test.activity;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
@@ -10,6 +9,7 @@ import com.coopbuy.mall.ui.module.test.model.TestModel;
 import com.coopbuy.mall.ui.module.test.presenter.TestPresenter;
 import com.coopbuy.mall.ui.module.test.view.Test_IView;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -48,7 +48,7 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
     @Override
     public void clickTitleBarRight() {
         super.clickTitleBarRight();
-        Toast.makeText(mContext, "点文字干嘛", Toast.LENGTH_SHORT).show();
+        ToastUtils.textToast(mContext, "点文字干嘛");
     }
 
     @OnClick({R.id.btn_show, R.id.btn_jump})
