@@ -1,7 +1,6 @@
 package com.coopbuy.mall.utils;
 
 import android.content.Context;
-import android.os.Handler;
 import android.widget.Toast;
 
 /**
@@ -18,12 +17,5 @@ public class ToastUtils {
        }
        toast.setText(text);
        toast.show();
-       Handler handler = new Handler();
-       handler.postDelayed(new Runnable() {
-           @Override
-           public void run() {
-               toast.cancel();
-           }
-       }, 1000);
    }
 }
