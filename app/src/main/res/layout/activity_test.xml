@@ -20,7 +20,13 @@
                 android:id="@+id/btn_jump"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="jump"/>
+                android:text="jump to load data"/>
+
+            <Button
+                android:id="@+id/btn_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="jump to tablayout"/>
 
             <Button
                 android:id="@+id/btn_show"

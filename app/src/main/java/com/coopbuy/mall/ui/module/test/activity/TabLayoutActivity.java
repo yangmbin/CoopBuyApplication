@@ -1,0 +1,60 @@
+package com.coopbuy.mall.ui.module.test.activity;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+
+import com.coopbuy.mall.R;
+import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
+import com.coopbuy.mall.ui.module.test.adapter.MyViewPagerAdapter;
+import com.flyco.tablayout.SlidingTabLayout;
+
+import java.util.ArrayList;
+
+import butterknife.Bind;
+
+public class TabLayoutActivity extends BaseActivity {
+
+    @Bind(R.id.tablayout)
+    SlidingTabLayout mTabLayout;
+    @Bind(R.id.tab_content)
+    ViewPager mViewPager;
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private MyViewPagerAdapter mAdapter;
+    private final String[] mTitles = {"热门", "iOS", "Android" , "前端", "后端", "设计", "工具资源"};
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_tab_layout;
+    }
+
+    @Override
+    public void initModel() {
+
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void initView() {
+        setTitle("TabLayout");
+        initFragment();
+        initAdapter();
+    }
+
+    private void initFragment() {
+        for (int i = 0; i < 7; i++) {
+            Fragment fragment = new OneFragment();
+            mFragments.add(fragment);
+        }
+    }
+
+    private void initAdapter() {
+        mAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), mFragments);
+        mViewPager.setAdapter(mAdapter);
+        mTabLayout.setViewPager(mViewPager, mTitles, this, mFragments);
+    }
+}

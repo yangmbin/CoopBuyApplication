@@ -51,7 +51,7 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
         ToastUtils.textToast(mContext, "点文字干嘛");
     }
 
-    @OnClick({R.id.btn_show, R.id.btn_jump})
+    @OnClick({R.id.btn_show, R.id.btn_jump, R.id.btn_tablayout})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_show:
@@ -59,6 +59,9 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
                 break;
             case R.id.btn_jump:
                 IntentUtils.gotoActivity(mContext, SecondActivity.class);
+                break;
+            case R.id.btn_tablayout:
+                IntentUtils.gotoActivity(mContext, TabLayoutActivity.class);
                 break;
         }
     }
