@@ -21,7 +21,8 @@ public class TabLayoutActivity extends BaseActivity {
     ViewPager mViewPager;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private MyViewPagerAdapter mAdapter;
-    private final String[] mTitles = {"热门", "iOS", "Android" , "前端", "后端", "设计", "工具资源"};
+    private final String[] mTitles = {"全部", "待付款", "待发货", "待收货", "待评价"};
+//    private final String[] mTitles = {"热门", "iOS", "Android", "前端", "后端", "设计", "工具资源"};
 
     @Override
     public int getLayoutId() {
@@ -46,7 +47,7 @@ public class TabLayoutActivity extends BaseActivity {
     }
 
     private void initFragment() {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             Fragment fragment = new OneFragment();
             mFragments.add(fragment);
         }
