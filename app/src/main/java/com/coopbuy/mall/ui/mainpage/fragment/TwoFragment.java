@@ -47,7 +47,9 @@ public class TwoFragment extends ViewPagerBaseFragment {
         super.onFragmentFirstVisible();
         Log.e("yangmbin", "2第一次可见");
 
-        showNetErrorLayout();
+//        showNetErrorLayout();
+        showFillLoading();
+//        showTransLoading();
     }
 
     @Override

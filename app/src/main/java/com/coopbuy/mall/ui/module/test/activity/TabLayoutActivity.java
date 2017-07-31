@@ -5,8 +5,8 @@ import android.support.v4.view.ViewPager;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
-import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
 import com.coopbuy.mall.ui.module.test.adapter.MyViewPagerAdapter;
+import com.coopbuy.mall.ui.module.test.fragment.TestFragment;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class TabLayoutActivity extends BaseActivity {
 
     private void initFragment() {
         for (int i = 0; i < 5; i++) {
-            Fragment fragment = new OneFragment();
+            Fragment fragment = new TestFragment();
             mFragments.add(fragment);
         }
     }
