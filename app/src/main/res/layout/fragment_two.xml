@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.module.test.activity.TestActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="two fragment"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:tr_enable_loadmore="false"
+            app:tr_enable_refresh="false">
+            <ListView
+                android:id="@+id/left_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"/>
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/right_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
 </RelativeLayout>

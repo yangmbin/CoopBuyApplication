@@ -44,6 +44,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             mTitleBar.setTitleBarClickListener(this);
         }
         ButterKnife.bind(this);
+
         this.initModel();
         this.initView();
         this.initPresenter();
@@ -207,5 +208,4 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             mPresenter.onDestroy();
         ButterKnife.unbind(this);
     }
-
 }

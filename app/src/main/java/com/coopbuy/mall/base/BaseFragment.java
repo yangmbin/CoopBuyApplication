@@ -26,6 +26,11 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     private View rootView;
     private LoadingBox box;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -131,5 +136,10 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         ButterKnife.unbind(this);
         if (mPresenter != null)
             mPresenter.onDestroy();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

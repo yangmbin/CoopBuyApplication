@@ -205,4 +205,9 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
         if (mPresenter != null)
             mPresenter.onDestroy();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
-import android.util.Log;
 import android.view.View;
 
 import com.coopbuy.mall.R;
@@ -49,15 +48,15 @@ public class OneFragment extends ViewPagerBaseFragment {
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
-            Log.e("yangmbin", "1可见了");
+//            Log.e("yangmbin", "1可见了");
         } else {
-            Log.e("yangmbin", "1消失了");
+//            Log.e("yangmbin", "1消失了");
         }
     }
 
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
-        Log.e("yangmbin", "1第一次可见");
+//        Log.e("yangmbin", "1第一次可见");
     }
 }
