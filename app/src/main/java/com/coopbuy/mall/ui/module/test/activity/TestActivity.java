@@ -48,7 +48,7 @@ public class TestActivity extends BaseActivity<TestPresenter, TestModel> impleme
     @Override
     public void clickTitleBarRight() {
         super.clickTitleBarRight();
-        ToastUtils.textToast(mContext, "点文字干嘛");
+        ToastUtils.toastShort("点文字干嘛");
     }
 
     @OnClick({R.id.btn_show, R.id.btn_jump, R.id.btn_tablayout})

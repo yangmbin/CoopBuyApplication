@@ -44,7 +44,7 @@ public class AspectJTest {
         String value = aspectJAnnotation.value();
         Context context = (Context) joinPoint.getThis();
         if(value == null || value.equals("")){
-            ToastUtils.textToast(context, "输入格式不对");
+            ToastUtils.toastShort( "输入格式不对");
             return null;
         }
         return joinPoint.proceed();
