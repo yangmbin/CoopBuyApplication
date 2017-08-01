@@ -14,17 +14,31 @@ import com.coopbuy.mall.widget.LoadingBox;
 import butterknife.ButterKnife;
 
 /**
- * Fragment抽象类
+ * Fragment抽象类，配合ViewPager使用，实现懒加载
  *
  * @author ymb
  *         Create at 2017/7/13 14:00
  */
-public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment implements View.OnClickListener {
+public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment implements View.OnClickListener {
     public P mPresenter;
     public M mModel;
     public Context mContext;
     private View rootView;
     private LoadingBox box;
+
+    // 是否创建了视图
+    private boolean hasCreateView;
+    // Fragment是否可见
+    private boolean isFragmentVisible;
+    // Fragment第一次可见
+    private boolean isFragmentFirstVisible = true;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        hasCreateView = false;
+        isFragmentVisible = false;
+    }
 
     @Nullable
     @Override
@@ -46,6 +60,16 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         initPresenter();
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (!hasCreateView && getUserVisibleHint()) {
+            judgeIsFirst();
+            onFragmentVisible(true);
+            isFragmentVisible = true;
+        }
     }
 
     /**
@@ -124,6 +148,55 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
      */
     protected void networkRetry() {}
 
+    /**
+     * 判断Fragment是否可见，先于onCreateView执行
+     *
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (rootView == null)
+            return;
+        hasCreateView = true;
+        if (isVisibleToUser) {
+            judgeIsFirst();
+            onFragmentVisible(true);
+            isFragmentVisible = true;
+            return;
+        }
+        if (isFragmentVisible) {
+            onFragmentVisible(false);
+            isFragmentVisible = false;
+        }
+    }
+
+    /**
+     * 子类重写，监控可见状态
+     *
+     * @param isVisible true  不可见——可见
+     *                  false 可见——不可见
+     */
+    protected void onFragmentVisible(boolean isVisible) {
+
+    }
+
+    /**
+     * 子类重写，第一次可见时调用
+     */
+    protected void onFragmentFirstVisible() {
+
+    }
+
+    /**
+     * 判断是否第一次可见
+     */
+    private void judgeIsFirst() {
+        if (isFragmentFirstVisible) {
+            isFragmentFirstVisible = false;
+            onFragmentFirstVisible();
+        }
+    }
 
     @Override
     public void onDestroyView() {

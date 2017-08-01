@@ -3,13 +3,15 @@ package com.coopbuy.mall.ui.module.test.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.annotation.AspectAnnotation;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.test.model.SecondModel;
 import com.coopbuy.mall.ui.module.test.presenter.SecondPresenter;
 import com.coopbuy.mall.ui.module.test.view.Second_IView;
+import com.coopbuy.mall.utils.ToastUtils;
+
 import butterknife.Bind;
 
 public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> implements Second_IView {
@@ -21,7 +23,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            Toast.makeText(mContext,"检测通过",Toast.LENGTH_SHORT).show();
+            ToastUtils.textToast(mContext, "检测通过");
         }
     };
 
@@ -45,7 +47,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     public void initView() {
         setTitle("页面2");
         setRightImage(R.mipmap.ic_launcher);
-        setData();
+//        setData();
     }
 
     @Override
@@ -56,7 +58,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     @Override
     public void clickTitleBarRight() {
         super.clickTitleBarRight();
-        Toast.makeText(mContext, "点图片干嘛", Toast.LENGTH_SHORT).show();
+        ToastUtils.textToast(mContext, "点图片干嘛");
     }
 
     @AspectAnnotation("")
@@ -68,5 +70,12 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
                 mHandler.sendEmptyMessage(0);
             }
         },3000);
+    }
+
+    @Override
+    protected void networkRetry() {
+        super.networkRetry();
+
+        ToastUtils.textToast(mContext, "reload");
     }
 }
