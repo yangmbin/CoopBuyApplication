@@ -8,6 +8,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
 import com.coopbuy.mall.ui.mainpage.entity.TabEntity;
+import com.coopbuy.mall.ui.mainpage.fragment.FourFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.TwoFragment;

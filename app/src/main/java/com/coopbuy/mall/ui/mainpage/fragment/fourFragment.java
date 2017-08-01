@@ -11,12 +11,12 @@ import com.coopbuy.mall.base.ViewPagerBaseFragment;
 public class FourFragment extends ViewPagerBaseFragment {
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_four;
     }
 
     @Override
     public void initModel() {
-
     }
 
     @Override
