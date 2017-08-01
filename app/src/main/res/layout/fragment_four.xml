@@ -5,15 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.module.test.activity.TestActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="four fragment"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
+            android:layout_centerInParent="true"
+            android:text="four fragment" />
+
+        <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试api" />
+    </LinearLayout>
 
 </RelativeLayout>

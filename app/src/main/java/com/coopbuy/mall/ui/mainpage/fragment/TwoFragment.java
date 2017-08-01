@@ -71,7 +71,7 @@ public class TwoFragment extends ViewPagerBaseFragment {
     @Override
     protected void networkRetry() {
         super.networkRetry();
-        ToastUtils.textToast(mContext, "reload");
+        ToastUtils.toastShort( "reload");
     }
 
     private List<Object> getLeftData() {

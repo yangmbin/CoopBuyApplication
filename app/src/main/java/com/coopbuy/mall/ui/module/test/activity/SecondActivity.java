@@ -23,7 +23,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            ToastUtils.textToast(mContext, "检测通过");
+            ToastUtils.toastShort( "检测通过");
         }
     };
 
@@ -58,7 +58,7 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     @Override
     public void clickTitleBarRight() {
         super.clickTitleBarRight();
-        ToastUtils.textToast(mContext, "点图片干嘛");
+        ToastUtils.toastShort( "点图片干嘛");
     }
 
     @AspectAnnotation("")
@@ -76,6 +76,6 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
     protected void networkRetry() {
         super.networkRetry();
 
-        ToastUtils.textToast(mContext, "reload");
+        ToastUtils.toastShort( "reload");
     }
 }

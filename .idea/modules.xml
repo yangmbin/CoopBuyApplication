@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GN.CoopBuy.App.Android.iml" filepath="$PROJECT_DIR$/GN.CoopBuy.App.Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guinongclientnet/guinongclientnet.iml" filepath="$PROJECT_DIR$/guinongclientnet/guinongclientnet.iml" />
     </modules>
   </component>
 </project>
