@@ -94,6 +94,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
 
     public void initAdapter() {
         mContentAdapter = new MainTabContentAdapter(mFmManager, mFragments);
+        mViewPager.setOffscreenPageLimit(4);
         mViewPager.setAdapter(mContentAdapter);
     }
 
