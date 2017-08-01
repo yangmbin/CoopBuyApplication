@@ -11,8 +11,6 @@ public class ValidateException extends RuntimeException {
    private Field field;
 
     /**
-     *
-     * @param field
      * @param message
      */
     public ValidateException(String message) {
