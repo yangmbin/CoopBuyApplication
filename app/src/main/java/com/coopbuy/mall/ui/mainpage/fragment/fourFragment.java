@@ -19,7 +19,6 @@ import butterknife.OnClick;
 public class FourFragment extends ViewPagerBaseFragment {
     @Override
     protected int getLayoutId() {
-
         return R.layout.fragment_four;
     }
 
