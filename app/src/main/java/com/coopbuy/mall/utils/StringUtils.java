@@ -68,11 +68,11 @@ public class StringUtils {
     //搜索文字替换蓝色
     public static String getColorString(String completeStr, String filterStr) {
         if (completeStr==null||completeStr.isEmpty()){
-            LogUtil.error("getColorString error","completeStr is null");
+            LogUtils.error("getColorString error","completeStr is null");
             return "";
         }
         if (filterStr == null || filterStr.isEmpty()){
-            LogUtil.error("getColorString error","filterStr is null");
+            LogUtils.error("getColorString error","filterStr is null");
             return "";
         };
         String newTerm =getBlueString(filterStr);

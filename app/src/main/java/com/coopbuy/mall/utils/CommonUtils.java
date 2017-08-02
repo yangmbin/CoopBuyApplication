@@ -112,7 +112,7 @@ public class CommonUtils {
     public static String getImieStatus(Context _context) {
         TelephonyManager tm = (TelephonyManager) _context.getSystemService(Context.TELEPHONY_SERVICE);
         String deviceId = tm.getDeviceId();
-        LogUtil.error("commonUtils", "deviceId ->" + deviceId);
+        LogUtils.error("commonUtils", "deviceId ->" + deviceId);
         return deviceId;
     }
 
@@ -165,7 +165,7 @@ public class CommonUtils {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        LogUtil.error("CommonUtils", channelName + "");
+        LogUtils.error("CommonUtils", channelName + "");
         return channelName;
     }
 

@@ -8,7 +8,7 @@ import android.text.TextUtils;
 /**
  * Created by Administrator on 2017/6/5.
  */
-public class DeviceUtil {
+public class DeviceUtils {
 
     /**
      * 获取手机品牌

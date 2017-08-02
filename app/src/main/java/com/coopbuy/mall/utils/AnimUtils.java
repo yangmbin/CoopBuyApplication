@@ -8,7 +8,7 @@ import android.view.View;
  * @author ymb
  * Create at 2017/5/31 14:05
  */
-public class AnimUtil {
+public class AnimUtils {
     /**
      * 旋转动画
      */
