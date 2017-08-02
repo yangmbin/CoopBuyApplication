@@ -32,6 +32,12 @@ public class LoginClient extends BaseApiClient {
         }.getType(), Constant.SERVER_URL + Constant.LOGIN, request, callback, userState);
     }
 
+    public IAsyncRequestState Login(LoginRequest request, IAsyncResultCallback<LoginResponse> callback, Object userState) {
+        return apiGetRequest(new TypeToken<LoginResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.LOGIN, request, callback, userState);
+    }
+
+
     /**
      * 商品分类
      *

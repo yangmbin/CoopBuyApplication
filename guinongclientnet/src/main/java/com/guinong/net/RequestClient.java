@@ -14,8 +14,10 @@ import com.guinong.net.verify.VerifyManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 import okhttp3.Call;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -102,6 +104,22 @@ public abstract class RequestClient {
     }
 
     private Request createPostRequest(Object model, String url, Gson gson) {
+     /*   RequestParams params = new RequestParams();
+        params.put("skuIds","1388");
+        url = "http://dev.guinong.com:8810/api/Cart/PostDeleteCartProduct";
+        FormBody.Builder mFormBodybuilder = new FormBody.Builder();
+        if (params != null) {
+            for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+                // 将请求参数逐一添加到请求体中
+                mFormBodybuilder.add(entry.getKey(), entry.getValue());
+            }
+        }
+        FormBody mFormBody = mFormBodybuilder.build();
+        return new Request.Builder()
+                .url(url)
+                .post(mFormBody)
+                .build();
+       *//**/
         if (model != null) {
             String json = gson.toJson(model);
             RequestBody body = RequestBody.create(APPLICATION_JSON, json);
@@ -121,7 +139,11 @@ public abstract class RequestClient {
      * @return
      */
     private Request createGetRequest(Object model, String url, Gson gson) {
-        if (model != null) {
+      /*  url = "http://dev.guinong.com:8810/api/Login/GetUser";
+        RequestParams params = new RequestParams();
+        params.put("userName", "18089697084");
+        params.put("password", "wy235479");
+       *//**/ if (model != null) {
             StringBuilder urlBuilder = new StringBuilder(url).append("?");
             Class modelclass = model.getClass();
             Field[] fields = modelclass.getDeclaredFields();
@@ -151,7 +173,20 @@ public abstract class RequestClient {
             return new Request.Builder().url(urlBuilder.substring(0, urlBuilder.length())).get().build();
         } else {
             return new Request.Builder().url(url).get().build();
+        }/*
+        StringBuilder urlBuilder = new StringBuilder(url).append("?");
+        if (params != null) {
+            for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+                // 将请求参数逐一添加到请求体中
+                urlBuilder.append(entry.getKey()).append("=")
+                        .append(entry.getValue())
+                        .append("&");
+            }
         }
+        return new Request.Builder()
+                .url(urlBuilder.substring(0, urlBuilder.length() - 1)) //要把最后的&符号去掉
+                .get()
+                .build();*/
     }
 
     /**

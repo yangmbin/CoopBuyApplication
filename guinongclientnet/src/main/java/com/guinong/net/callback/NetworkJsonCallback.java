@@ -13,6 +13,7 @@ import com.guinong.net.NetworkErrorInfo;
 import com.guinong.net.NetworkException;
 import com.guinong.net.NetworkMessage;
 import com.guinong.net.NetworkResultMessage;
+import com.guinong.net.utils.LogUtil;
 
 import java.io.IOException;
 
@@ -75,6 +76,7 @@ public class NetworkJsonCallback implements Callback {
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         String result = response.body().string();
+        LogUtil.error("niu", result);
         if (result == null || result.trim().length() == 0) {
             //返回的数据错误
             postException(new NetworkException(CodeContant.CODE_DATA_EXCEPTION, "format error ", null, null));

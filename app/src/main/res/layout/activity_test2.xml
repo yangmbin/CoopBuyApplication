@@ -3,19 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.coopbuy.mall.ui.mainpage.test.TestActivity">
+    android:orientation="vertical"
+    tools:context=".ui.module.test.activity.NiuTestActivity">
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登录" />
+    <ScrollView
 
-    <Button
-        android:id="@+id/btn_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="商品分类" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/test_line_border">
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_test"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never" />
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

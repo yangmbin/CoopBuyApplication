@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
-import com.coopbuy.mall.ui.mainpage.test.TestActivity;
+import com.coopbuy.mall.ui.module.test.activity.NiuTestActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -61,6 +61,6 @@ public class FourFragment extends ViewPagerBaseFragment {
 
     @OnClick(R.id.test)
     public void onViewClicked() {
-        startActivity(new Intent(getActivity(), TestActivity.class));
+        startActivity(new Intent(getActivity(), NiuTestActivity.class));
     }
 }

@@ -8,22 +8,22 @@ import java.io.Serializable;
  * @content
  */
 public class LoginRequest implements Serializable {
-    private String UserName;
-    private String PassWord;
-
-    public String getUserName() {
-        return UserName;
-    }
-
-    public void setUserName(String userName) {
-        UserName = userName;
-    }
+    private String passWord;
+    private String userName;
 
     public String getPassWord() {
-        return PassWord;
+        return passWord;
     }
 
     public void setPassWord(String passWord) {
-        PassWord = passWord;
+        this.passWord = passWord;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
