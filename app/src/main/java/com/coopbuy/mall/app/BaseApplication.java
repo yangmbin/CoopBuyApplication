@@ -4,10 +4,13 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.coopbuy.mall.api.BaseApiClient;
+
 /**
  * 基类Application
+ *
  * @author ymb
- * Create at 2017/7/14 15:33
+ *         Create at 2017/7/14 15:33
  */
 public class BaseApplication extends Application {
 
@@ -17,6 +20,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
+        BaseApiClient.contextInit(this);
     }
 
     public static Context getAppContext() {

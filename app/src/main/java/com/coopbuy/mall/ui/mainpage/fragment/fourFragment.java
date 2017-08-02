@@ -1,12 +1,20 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.content.Intent;
+import android.util.Log;
+
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.mainpage.test.TestActivity;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 个人中心Fragment
+ *
  * @author ymb
- * Create at 2017/7/25 10:23
+ *         Create at 2017/7/25 10:23
  */
 public class FourFragment extends ViewPagerBaseFragment {
     @Override
@@ -33,9 +41,9 @@ public class FourFragment extends ViewPagerBaseFragment {
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
-//            Log.e("yangmbin", "4可见了");
+            Log.e("yangmbin", "4可见了");
         } else {
-//            Log.e("yangmbin", "4消失了");
+            Log.e("yangmbin", "4消失了");
         }
     }
 
@@ -43,5 +51,17 @@ public class FourFragment extends ViewPagerBaseFragment {
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
 //        Log.e("yangmbin", "4第一次可见");
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    @OnClick(R.id.test)
+    public void onViewClicked() {
+        startActivity(new Intent(getActivity(), TestActivity.class));
     }
 }
