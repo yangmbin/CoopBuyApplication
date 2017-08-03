@@ -11,6 +11,10 @@ public class Constant {
      */
     public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     /**
+     * 图片地址
+     */
+    public static final String IMAGE_SERVER_URL = "http://oss.coopbuy.com";
+    /**
      * 登录
      */
     public static final String LOGIN = "Home/AppLogin";

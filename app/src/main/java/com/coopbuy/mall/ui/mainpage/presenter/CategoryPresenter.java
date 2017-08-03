@@ -24,14 +24,13 @@ public class CategoryPresenter extends BasePresenter<Category_IView, CategoryMod
         mModel.getCategory(new IAsyncResultCallback<List<CategorysResponse>>() {
             @Override
             public void onComplete(List<CategorysResponse> categorysResponses, Object userState) {
-                ToastUtils.toastShort("success");
                 mView.showCategoryData(categorysResponses);
                 mView.stopLoading();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                ToastUtils.toastShort("fail");
+                mView.showNetErrorLayout();
                 mView.stopLoading();
             }
         }, null);

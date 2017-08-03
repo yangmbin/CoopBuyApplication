@@ -1,7 +1,6 @@
 package com.coopbuy.mall.ui.mainpage.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,9 +57,11 @@ public class ClassifyLeftAdapter extends BaseAdapter {
         holder.tv_name.setText((String) datas.get(position));
 
         if (mSelect == position) {
-            holder.tv_name.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+            holder.tv_name.setTextColor(ContextCompat.getColor(mContext, R.color.green));
+            holder.tv_name.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
         } else {
-            holder.tv_name.setTextColor(Color.parseColor("#323437"));
+            holder.tv_name.setTextColor(ContextCompat.getColor(mContext, R.color.black_1));
+            holder.tv_name.setBackgroundColor(ContextCompat.getColor(mContext, R.color.gray_1));
         }
         return convertView;
     }
@@ -69,11 +70,13 @@ public class ClassifyLeftAdapter extends BaseAdapter {
      * 刷新方法
      * @param positon
      */
-    public void changeSelected(int positon) {
+    public boolean changeSelected(int positon) {
         if (positon != mSelect) {
             mSelect = positon;
             notifyDataSetChanged();
+            return true;
         }
+        return false;
     }
 
     static class ViewHolder {

@@ -1,6 +1,7 @@
 package com.coopbuy.mall.app;
 
 import com.coopbuy.mall.okhttp.OkHttpUtils;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +20,8 @@ public class CoopBuyApplication extends BaseApplication {
 
         // 初始化OkHttp
         initOkHttp();
+        // 初始化Fresco
+        Fresco.initialize(this);
     }
 
     /**

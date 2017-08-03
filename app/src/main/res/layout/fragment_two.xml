@@ -14,7 +14,8 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             app:tr_enable_loadmore="false"
-            app:tr_enable_refresh="false">
+            app:tr_enable_refresh="false"
+            android:background="@color/gray_1">
             <ListView
                 android:id="@+id/left_list"
                 android:layout_width="match_parent"
@@ -22,10 +23,17 @@
                 android:divider="@null"
                 android:scrollbars="none"/>
         </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/right_list"
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:tr_enable_loadmore="false"
+            app:tr_enable_refresh="false"
+            android:background="@color/white">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/right_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
     </LinearLayout>
 
 </RelativeLayout>
