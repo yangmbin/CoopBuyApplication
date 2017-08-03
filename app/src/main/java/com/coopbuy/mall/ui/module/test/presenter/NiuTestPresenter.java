@@ -32,7 +32,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
     public void sendRequest(String value) {
         client = new LoginClient();
         gson = new Gson();
-        mView.showTransLoading();
+        mView.showFillLoading();
         switch (value) {
             case "登录":
                 LoginRequest request = new LoginRequest();

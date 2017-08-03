@@ -19,7 +19,8 @@
                 android:id="@+id/left_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:divider="@null"/>
+                android:divider="@null"
+                android:scrollbars="none"/>
         </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/right_list"

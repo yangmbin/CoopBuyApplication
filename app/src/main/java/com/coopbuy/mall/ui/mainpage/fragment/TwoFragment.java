@@ -6,8 +6,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.classify.CategorysResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.ClassifyLeftAdapter;
+import com.coopbuy.mall.ui.mainpage.model.CategoryModel;
+import com.coopbuy.mall.ui.mainpage.presenter.CategoryPresenter;
+import com.coopbuy.mall.ui.mainpage.view.Category_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -20,13 +24,16 @@ import butterknife.Bind;
  * @author ymb
  * Create at 2017/7/25 10:23
  */
-public class TwoFragment extends ViewPagerBaseFragment {
+public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, CategoryModel> implements Category_IView {
 
     @Bind(R.id.left_list)
     ListView leftList;
     ClassifyLeftAdapter mLeftAdapter;
     @Bind(R.id.right_list)
     RecyclerView rightList;
+
+    private List<Object> mLeftData = new ArrayList<>();
+    private List<List<Object>> mRightData = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -35,17 +42,17 @@ public class TwoFragment extends ViewPagerBaseFragment {
 
     @Override
     public void initModel() {
-
+        mModel = new CategoryModel();
     }
 
     @Override
     public void initPresenter() {
-
+        mPresenter = new CategoryPresenter(mContext, mModel, this);
     }
 
     @Override
     protected void initView() {
-        mLeftAdapter = new ClassifyLeftAdapter(mContext, getLeftData());
+        mLeftAdapter = new ClassifyLeftAdapter(mContext, mLeftData);
         leftList.setAdapter(mLeftAdapter);
         leftList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,23 +73,31 @@ public class TwoFragment extends ViewPagerBaseFragment {
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
+        mPresenter.getCategory();
     }
 
     @Override
     protected void networkRetry() {
         super.networkRetry();
-        ToastUtils.toastShort( "reload");
+        ToastUtils.toastShort("reload");
     }
 
-    private List<Object> getLeftData() {
-        List<Object> list = new ArrayList<>();
-        list.add("附加费");
-        list.add("放假");
-        list.add("按时");
-        list.add("很贵");
-        list.add("不发");
-        list.add("可见");
-        list.add("请问");
-        return list;
+    /**
+     * 显示网络返回的分类数据
+     * @param responses
+     */
+    @Override
+    public void showCategoryData(List<CategorysResponse> responses) {
+        mLeftData.clear();
+        for (int i = 0; i < responses.size(); i++) {
+            mLeftData.add(responses.get(i).getCategoryName());
+            List<Object> tmpList = new ArrayList<>();
+            for (int j = 0; j < responses.get(i).getChildren().size(); j++) {
+//                for (int k = )
+            }
+        }
+
+
+        mLeftAdapter.notifyDataSetChanged();
     }
 }
