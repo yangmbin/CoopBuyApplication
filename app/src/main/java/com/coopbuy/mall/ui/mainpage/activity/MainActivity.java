@@ -8,7 +8,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
 import com.coopbuy.mall.ui.mainpage.entity.TabEntity;
-import com.coopbuy.mall.ui.mainpage.fragment.FourFragment1;
+import com.coopbuy.mall.ui.mainpage.fragment.FourFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.TwoFragment;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         mFragments.add(new OneFragment());
         mFragments.add(new TwoFragment());
         mFragments.add(new ThreeFragment());
-        mFragments.add(new FourFragment1());
+        mFragments.add(new FourFragment());
         mFmManager = getSupportFragmentManager();
     }
 

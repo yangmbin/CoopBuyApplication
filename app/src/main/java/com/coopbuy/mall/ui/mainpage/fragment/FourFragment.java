@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class FourFragment1 extends ViewPagerBaseFragment {
+public class FourFragment extends ViewPagerBaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_four;
