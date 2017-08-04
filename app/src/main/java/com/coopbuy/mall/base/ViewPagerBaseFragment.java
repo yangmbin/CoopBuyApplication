@@ -128,9 +128,9 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     }
 
     /**
-     * 停止加载框
+     * 隐藏所有覆盖层,显示正常页面
      */
-    public void stopLoading() {
+    public void stopAll() {
         box.hideAll();
     }
 

@@ -44,7 +44,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         if (loginResponse != null) {
                             mView.showData(gson.toJson(loginResponse));
                             ToastUtils.toastShort("登录成功");
-                            mView.stopLoading();
+                            mView.stopAll();
                         }
                     }
 
@@ -53,7 +53,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         if (error != null) {
                             error.getDetail();
                             mView.showData(error.getDetail());
-                            mView.stopLoading();
+                            mView.stopAll();
                         }
                     }
                 }, "login");
@@ -75,14 +75,14 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("分类测试成功");
-                            mView.stopLoading();
+                            mView.stopAll();
                         }
                     }
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
                         mView.showData(error.getDetail());
-                        mView.stopLoading();
+                        mView.stopAll();
                     }
                 }, "cate");
                 break;

@@ -11,7 +11,7 @@ public interface BaseView {
 
     void showTransLoading();
 
-    void stopLoading();
+    void stopAll();
 
     void showNoDataLayout();
 

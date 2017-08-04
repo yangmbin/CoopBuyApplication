@@ -23,14 +23,14 @@ public class TestPresenter extends BasePresenter<Test_IView, TestModel> {
             public void onError(Call call, Exception e, int id) {
                 Log.e("yangmbin", "error happened");
                 mView.showData("error happened");
-                mView.stopLoading();
+                mView.stopAll();
             }
 
             @Override
             public void onResponse(String response, int id) {
                 Log.e("yangmbin", response);
                 mView.showData(response);
-                mView.stopLoading();
+                mView.stopAll();
             }
         });
     }

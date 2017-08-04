@@ -2,19 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ui.module.test.activity.TestActivity">
 
-    <Button
-        android:id="@+id/jump_test"
+    <TextView
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="jump to test"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="50dp" />
 
 </LinearLayout>

@@ -31,7 +31,7 @@ public class SecondPresenter extends BasePresenter<Second_IView, SecondModel> {
             public void onResponse(String response, int id) {
                 Log.e("yangmbin", response);
                 mView.showData(response);
-                mView.stopLoading();
+                mView.stopAll();
             }
         });
     }
