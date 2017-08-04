@@ -1,10 +1,13 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.coopbuy.mall.R;
@@ -21,11 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * 分类Fragment
+ *
  * @author ymb
- * Create at 2017/7/25 10:23
+ *         Create at 2017/7/25 10:23
  */
 public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, CategoryModel> implements Category_IView {
 
@@ -35,6 +40,8 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
     @Bind(R.id.right_list)
     RecyclerView rightList;
     ClassifyRightAdapter mRightAdapter;
+    @Bind(R.id.et_search)
+    EditText mEtSearch;
 
     private List<Object> mLeftData = new ArrayList<>();
     private List<List<Object>> mRightData = new ArrayList<>();
@@ -81,6 +88,11 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
         super.onFragmentVisible(isVisible);
         if (isVisible) {
         } else {
+            // 点击底部导航，切换到别的页面时，使EditText失去焦点并收起软键盘
+            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null)
+                imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(), 0);
+            mEtSearch.clearFocus();
         }
     }
 
@@ -98,6 +110,7 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
 
     /**
      * 显示网络返回的分类数据
+     *
      * @param responses
      */
     @Override
@@ -145,4 +158,23 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
                 ToastUtils.toastShort("" + v.getTag());
         }
     };
+
+
+    @OnClick(R.id.tv_search)
+    public void onViewClicked(View v) {
+        switch (v.getId()) {
+            case R.id.tv_search:
+                ToastUtils.toastShort("搜索");
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // 点击Home键退出后，使得EditText失去焦点，从而不弹出软键盘
+        mEtSearch.clearFocus();
+    }
 }

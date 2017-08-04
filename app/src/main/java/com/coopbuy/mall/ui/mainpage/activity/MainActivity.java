@@ -28,7 +28,7 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity<MainPresenter, MainModel> implements Main_IView {
 
-    private String[] mTitles = {"首页", "分类", "便民服务", "个人中心"};
+    private String[] mTitles = {"首页", "分类", "便民", "个人中心"};
     private int[] mIconUnselectIds = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     private int[] mIconSelectIds = { R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();

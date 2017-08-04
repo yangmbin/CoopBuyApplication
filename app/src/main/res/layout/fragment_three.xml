@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.module.test.activity.TestActivity">
+    android:orientation="vertical"
+    tools:context=".ui.module.test.activity.TestActivity"
+    android:background="@color/gray_1">
 
-    <RelativeLayout
-        android:id="@+id/box"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
+        android:layout_height="50dp"
+        android:text="便民服务"
+        android:gravity="center"
+        android:textColor="@color/black_1"
+        android:background="@color/white"/>
+    <include layout="@layout/line_div"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="生活服务"
+        android:textColor="@color/gray_2"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_phone_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="three fragment"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
-
-</RelativeLayout>
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="话费充值"
+                android:textColor="@color/black_2"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机、固话快捷充值，一分钟搞定"
+                android:textColor="@color/gray_2"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
