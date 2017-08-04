@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.mainpage.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.view.View;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -20,10 +21,12 @@ import java.util.List;
 public class ClassifyRightAdapter extends BaseRecyclerAdapter<Object> {
 
     private List<Object> list;
+    private View.OnClickListener mListener;
 
-    public ClassifyRightAdapter(Context ctx, List<Object> list) {
+    public ClassifyRightAdapter(Context ctx, List<Object> list, View.OnClickListener listener) {
         super(ctx, list);
         this.list = list;
+        this.mListener = listener;
     }
 
     @Override
@@ -43,36 +46,49 @@ public class ClassifyRightAdapter extends BaseRecyclerAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, Object item) {
+    protected void bindData(final BaseRecyclerHolder holder, int position, Object item) {
         if (item instanceof String) {
             TextView categoryName = holder.getTextView(R.id.tv_category_name);
             categoryName.setText((String) item);
         } else {
             List<ClassifyRightAdapter.GoodsCategoryItem> horizontalList = (List<ClassifyRightAdapter.GoodsCategoryItem>) item;
+            holder.getView(R.id.ll_category_item_1).setTag(-1);
+            holder.getView(R.id.ll_category_item_2).setTag(-1);
+            holder.getView(R.id.ll_category_item_3).setTag(-1);
+            // 避免视图复用导致空数据的位置显示之前的数据
+            holder.getView(R.id.ll_category_item_1).setVisibility(View.INVISIBLE);
+            holder.getView(R.id.ll_category_item_2).setVisibility(View.INVISIBLE);
+            holder.getView(R.id.ll_category_item_3).setVisibility(View.INVISIBLE);
+
             for (int i = 0; i < horizontalList.size(); i++) {
                 if (i == 0) {
-                    TextView categoryName = holder.getTextView(R.id.tv_category_name_1);
-                    categoryName.setText((horizontalList.get(i)).getCategoryName());
-                    SimpleDraweeView categoryImage = (SimpleDraweeView) holder.getView(R.id.sdv_category_img_1);
-                    categoryImage.setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getTextView(R.id.tv_category_name_1).setText((horizontalList.get(i)).getCategoryName());
+                    ((SimpleDraweeView) holder.getView(R.id.sdv_category_img_1)).setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getView(R.id.ll_category_item_1).setTag((horizontalList.get(i)).getId());
+                    holder.getView(R.id.ll_category_item_1).setVisibility(View.VISIBLE);
                 } else if (i == 1) {
-                    TextView categoryName = holder.getTextView(R.id.tv_category_name_2);
-                    categoryName.setText((horizontalList.get(i)).getCategoryName());
-                    SimpleDraweeView categoryImage = (SimpleDraweeView) holder.getView(R.id.sdv_category_img_2);
-                    categoryImage.setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getTextView(R.id.tv_category_name_2).setText((horizontalList.get(i)).getCategoryName());
+                    ((SimpleDraweeView) holder.getView(R.id.sdv_category_img_2)).setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getView(R.id.ll_category_item_2).setTag((horizontalList.get(i)).getId());
+                    holder.getView(R.id.ll_category_item_2).setVisibility(View.VISIBLE);
                 } else {
-                    TextView categoryName = holder.getTextView(R.id.tv_category_name_3);
-                    categoryName.setText((horizontalList.get(i)).getCategoryName());
-                    SimpleDraweeView categoryImage = (SimpleDraweeView) holder.getView(R.id.sdv_category_img_3);
-                    categoryImage.setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getTextView(R.id.tv_category_name_3).setText((horizontalList.get(i)).getCategoryName());
+                    ((SimpleDraweeView) holder.getView(R.id.sdv_category_img_3)).setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + (horizontalList.get(i)).getImageUrl()));
+                    holder.getView(R.id.ll_category_item_3).setTag((horizontalList.get(i)).getId());
+                    holder.getView(R.id.ll_category_item_3).setVisibility(View.VISIBLE);
                 }
             }
+
+            holder.getView(R.id.ll_category_item_1).setOnClickListener(mListener);
+            holder.getView(R.id.ll_category_item_2).setOnClickListener(mListener);
+            holder.getView(R.id.ll_category_item_3).setOnClickListener(mListener);
         }
     }
 
     public static class GoodsCategoryItem {
         private String imageUrl;
         private String categoryName;
+        private int id;
 
         public String getImageUrl() {
             return imageUrl;
@@ -90,11 +106,20 @@ public class ClassifyRightAdapter extends BaseRecyclerAdapter<Object> {
             this.categoryName = categoryName;
         }
 
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
         @Override
         public String toString() {
             return "GoodsCategoryItem{" +
                     "imageUrl='" + imageUrl + '\'' +
                     ", categoryName='" + categoryName + '\'' +
+                    ", id=" + id +
                     '}';
         }
     }

@@ -15,6 +15,7 @@ import com.coopbuy.mall.ui.mainpage.adapter.ClassifyRightAdapter;
 import com.coopbuy.mall.ui.mainpage.model.CategoryModel;
 import com.coopbuy.mall.ui.mainpage.presenter.CategoryPresenter;
 import com.coopbuy.mall.ui.mainpage.view.Category_IView;
+import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,7 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
             }
         });
 
-        mRightAdapter = new ClassifyRightAdapter(mContext, mRightSingleData);
+        mRightAdapter = new ClassifyRightAdapter(mContext, mRightSingleData, categoryItemClickListener);
         rightList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         rightList.setAdapter(mRightAdapter);
     }
@@ -112,6 +113,7 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
                     ClassifyRightAdapter.GoodsCategoryItem item = new ClassifyRightAdapter.GoodsCategoryItem();
                     item.setCategoryName(responses.get(i).getChildren().get(j).getChildren().get(k).getCategoryName());
                     item.setImageUrl(responses.get(i).getChildren().get(j).getChildren().get(k).getImageUrl());
+                    item.setId(responses.get(i).getChildren().get(j).getChildren().get(k).getId());
                     itemList.add(item);
                     if (itemList.size() == 3) {
                         tmpList.add(itemList);
@@ -131,4 +133,16 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
         mLeftAdapter.notifyDataSetChanged();
         mRightAdapter.notifyDataSetChanged();
     }
+
+
+    /**
+     * 分类单项点击监听
+     */
+    private View.OnClickListener categoryItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if ((int) v.getTag() != -1)
+                ToastUtils.toastShort("" + v.getTag());
+        }
+    };
 }
