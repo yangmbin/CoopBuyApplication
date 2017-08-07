@@ -5,14 +5,18 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
-import com.coopbuy.mall.ui.mainpage.adapter.HomeLayout1Adapter;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_1;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;
 import com.coopbuy.mall.ui.module.test.activity.TestActivity;
 import com.coopbuy.mall.utils.IntentUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -49,7 +53,7 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
         VirtualLayoutManager manager = new VirtualLayoutManager(mContext);
         mRvHome.setLayoutManager(manager);
         mDelegateAdapter = new DelegateAdapter(manager, true);
-        mDelegateAdapter.addAdapter(new HomeLayout1Adapter(mContext));
+        mDelegateAdapter.addAdapter(new HomeLayoutAdapter_1(mContext, getData1(), new LinearLayoutHelper()));
         mRvHome.setAdapter(mDelegateAdapter);
     }
 
@@ -73,5 +77,13 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
+    }
+
+    private List getData1() {
+        List list = new ArrayList();
+        for (int i = 0; i < 20; i++) {
+            list.add("haha");
+        }
+        return list;
     }
 }

@@ -26,17 +26,15 @@ public abstract class BaseDelegateAdapter <T> extends DelegateAdapter.Adapter<Ba
     protected OnItemClickListener mClickListener;
     protected OnItemLongClickListener mLongClickListener;
     protected DecimalFormat mFormat;
-    private int mCount;
     protected int mScreeWidth = 0;
     private WindowManager mWindowManager;
 
-    public BaseDelegateAdapter(Context ctx, List<T> list,LayoutHelper mLayoutHelper,int mCount) {
+    public BaseDelegateAdapter(Context ctx, List<T> list,LayoutHelper mLayoutHelper) {
         this.mItems = (list != null) ? list : new ArrayList<T>();
         this.mContext = ctx;
         this.mLayoutHelper = mLayoutHelper;
         this.mInflater = LayoutInflater.from(ctx);
         this.mFormat = new DecimalFormat("0.00");
-        this.mCount = mCount;
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         mScreeWidth = mWindowManager.getDefaultDisplay().getWidth();
     }
@@ -60,7 +58,7 @@ public abstract class BaseDelegateAdapter <T> extends DelegateAdapter.Adapter<Ba
 
     @Override
     public int getItemCount() {
-        return mCount;
+        return this.mItems.size();
     }
 
     public List<T> getmItems(){
