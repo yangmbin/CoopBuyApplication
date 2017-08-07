@@ -6,5 +6,5 @@ package com.coopbuy.mall.ui.module.test.port;
  * @content
  */
 public interface ClickPort {
-    void getPosition(int position);
+    void getPosition(int position,String portName);
 }

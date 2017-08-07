@@ -16,9 +16,11 @@ import com.guinong.net.NetworkResultMessage;
 import com.guinong.net.utils.LogUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.Response;
 
 /**
@@ -31,7 +33,7 @@ public class NetworkJsonCallback implements Callback {
     private final IAsyncMessageCallback callback;
     private final Object userState;
     private final Gson gson;
-
+    protected final String COOKIE_STORE = "Set-Cookie"; // decide the server it
     /**
      * @param isUnitTest
      * @param gson
@@ -73,9 +75,19 @@ public class NetworkJsonCallback implements Callback {
         }
     }
 
+    private ArrayList<String> handleCookie(Headers headers) {
+        ArrayList<String> tempList = new ArrayList<String>();
+        for (int i = 0; i < headers.size(); i++) {
+            if (headers.name(i).equalsIgnoreCase(COOKIE_STORE)) {
+                tempList.add(headers.value(i));
+            }
+        }
+        return tempList;
+    }
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         String result = response.body().string();
+        final ArrayList<String> cookieLists = handleCookie(response.headers());
         LogUtil.error("niu", result);
         if (result == null || result.trim().length() == 0) {
             //返回的数据错误
