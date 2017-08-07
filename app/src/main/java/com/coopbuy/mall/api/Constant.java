@@ -52,5 +52,10 @@ public class Constant {
      */
     public static final String COTEGORYS = "api/services/app/goodsCategoryCustomer/GetAllCategorys";
 
+    /**
+     * 首页数据
+     */
+    public static final String HOMO_PAGE_DATA = "api/services/app/pageBuildUser/GetPageData";
+
 
 }

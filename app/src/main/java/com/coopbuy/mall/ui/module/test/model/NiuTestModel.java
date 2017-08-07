@@ -19,6 +19,8 @@ import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 
+import java.util.List;
+
 /**
  * @author csn
  * @date 2017/8/2 0002 17:09
