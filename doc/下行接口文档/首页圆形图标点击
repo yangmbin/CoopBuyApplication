@@ -1,0 +1,399 @@
+{
+    "result": {
+        "name": "农资农具",
+        "pageKey": "农资农具专题",
+        "floors": [
+            {
+                "name": "商品列表",
+                "floorKey": "商品列表",
+                "templateKey": "goods-list-1",
+                "sort": 4,
+                "titleImage": "",
+                "bottomImage": "",
+                "floorItems": [
+                    {
+                        "name": "广安诚信禾当家 草甘膦 高效灭生性除草剂",
+                        "type": 0,
+                        "objectId": 1460,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 草甘膦 高效灭生性除草剂",
+                            "promotionDesc": "",
+                            "sellingPrice": 238,
+                            "imageUrl": "/shop/images/18300585-8997-462a-8f2c-0477318672fb.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/18300585-8997-462a-8f2c-0477318672fb.jpg",
+                        "extendData": {},
+                        "sort": 0
+                    },
+                    {
+                        "name": "广安诚信禾当家 3%辛硫磷颗粒剂地下害虫克星农药",
+                        "type": 0,
+                        "objectId": 1490,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 3%辛硫磷颗粒剂地下害虫克星农药",
+                            "promotionDesc": "克星农药",
+                            "sellingPrice": 110,
+                            "imageUrl": "/shop/images/0cf3b991-9c7e-4896-921f-9a119a20a7d0.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/0cf3b991-9c7e-4896-921f-9a119a20a7d0.jpg",
+                        "extendData": {},
+                        "sort": 4
+                    },
+                    {
+                        "name": "广安诚信禾当家——3%辛硫磷颗粒剂地下害虫克星",
+                        "type": 0,
+                        "objectId": 1488,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家——3%辛硫磷颗粒剂地下害虫克星",
+                            "promotionDesc": "老品牌、新配方、蛭石为载体、持效期长、杀灭彻底。具有杀虫/杀菌/改良土壤的突出特点。一次施药、一季无虫！一桶15公斤，1吨起拍",
+                            "sellingPrice": 3800,
+                            "imageUrl": "/shop/images/deaf45ef-cf20-4099-8a67-9cf0748fa863.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/deaf45ef-cf20-4099-8a67-9cf0748fa863.jpg",
+                        "extendData": {},
+                        "sort": 5
+                    },
+                    {
+                        "name": "广安诚信禾当家 24%烟嘧•莠去津玉米田专用除草剂",
+                        "type": 0,
+                        "objectId": 1476,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 24%烟嘧•莠去津玉米田专用除草剂",
+                            "promotionDesc": "专用除草剂\n",
+                            "sellingPrice": 280,
+                            "imageUrl": "/shop/images/09d6b441-ea62-4235-ab58-a4d65c091ab3.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/09d6b441-ea62-4235-ab58-a4d65c091ab3.jpg",
+                        "extendData": {},
+                        "sort": 6
+                    },
+                    {
+                        "name": "广安诚信禾当家-20%哒螨灵-可湿性粉剂",
+                        "type": 0,
+                        "objectId": 1470,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家-20%哒螨灵-可湿性粉剂",
+                            "promotionDesc": "买一箱送一箱",
+                            "sellingPrice": 720,
+                            "imageUrl": "/shop/images/beeef1c5-ff1e-4bf7-93fe-800a2eca0a08.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/beeef1c5-ff1e-4bf7-93fe-800a2eca0a08.jpg",
+                        "extendData": {},
+                        "sort": 7
+                    },
+                    {
+                        "name": "广安诚信禾当家 40%稻瘟灵水稻稻瘟病杀菌剂",
+                        "type": 0,
+                        "objectId": 1466,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 40%稻瘟灵水稻稻瘟病杀菌剂",
+                            "promotionDesc": "",
+                            "sellingPrice": 48,
+                            "imageUrl": "/shop/images/72198a68-1d87-4a36-bfb3-410225318ce3.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/72198a68-1d87-4a36-bfb3-410225318ce3.jpg",
+                        "extendData": {},
+                        "sort": 8
+                    },
+                    {
+                        "name": "广安诚信禾当家50%烯啶虫胺可溶粉剂专治蚜虫飞虱",
+                        "type": 0,
+                        "objectId": 1464,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家50%烯啶虫胺可溶粉剂专治蚜虫飞虱",
+                            "promotionDesc": "",
+                            "sellingPrice": 800,
+                            "imageUrl": "/shop/images/e1e24742-4ab9-4223-aaf0-e11425f0d607.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/e1e24742-4ab9-4223-aaf0-e11425f0d607.jpg",
+                        "extendData": {},
+                        "sort": 9
+                    },
+                    {
+                        "name": "广安诚信禾当家 大包装草甘膦，5L装，全国包邮",
+                        "type": 0,
+                        "objectId": 1449,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 大包装草甘膦，5L装，全国包邮",
+                            "promotionDesc": "全国包邮",
+                            "sellingPrice": 360,
+                            "imageUrl": "/shop/images/ae2b4066-b2d6-4a88-8651-d8b5bc58fbb2.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/ae2b4066-b2d6-4a88-8651-d8b5bc58fbb2.jpg",
+                        "extendData": {},
+                        "sort": 11
+                    },
+                    {
+                        "name": "禾当家立本农药毒死蜱高效杀虫剂贵农网一千件全网最低价大促包邮",
+                        "type": 0,
+                        "objectId": 1447,
+                        "objectData": {
+                            "goodsName": "禾当家立本农药毒死蜱高效杀虫剂贵农网一千件全网最低价大促包邮",
+                            "promotionDesc": "",
+                            "sellingPrice": 200,
+                            "imageUrl": "/shop/images/0b212f7b-9134-4c23-b9cf-096e011ac859.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/0b212f7b-9134-4c23-b9cf-096e011ac859.jpg",
+                        "extendData": {},
+                        "sort": 12
+                    },
+                    {
+                        "name": "禾当家 1.8%阿维菌素",
+                        "type": 0,
+                        "objectId": 1444,
+                        "objectData": {
+                            "goodsName": "禾当家 1.8%阿维菌素",
+                            "promotionDesc": "",
+                            "sellingPrice": 238,
+                            "imageUrl": "/shop/images/df14b9cf-5b46-42a4-a09c-add9903deaa5.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/df14b9cf-5b46-42a4-a09c-add9903deaa5.jpg",
+                        "extendData": {},
+                        "sort": 13
+                    },
+                    {
+                        "name": "禾当家水稻杀虫专用助剂",
+                        "type": 0,
+                        "objectId": 1440,
+                        "objectData": {
+                            "goodsName": "禾当家水稻杀虫专用助剂",
+                            "promotionDesc": "水稻稻飞虱、二化螟、三化螟、稻种卷叶螟等\n",
+                            "sellingPrice": 220,
+                            "imageUrl": "/shop/images/d447c554-1acb-4cf2-8b6b-40ffbba0d042.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/d447c554-1acb-4cf2-8b6b-40ffbba0d042.jpg",
+                        "extendData": {},
+                        "sort": 14
+                    },
+                    {
+                        "name": "广安诚信禾当家 3%辛硫磷颗粒剂地下害虫克星农药",
+                        "type": 0,
+                        "objectId": 1490,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 3%辛硫磷颗粒剂地下害虫克星农药",
+                            "promotionDesc": "克星农药",
+                            "sellingPrice": 110,
+                            "imageUrl": "/shop/images/0cf3b991-9c7e-4896-921f-9a119a20a7d0.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/0cf3b991-9c7e-4896-921f-9a119a20a7d0.jpg",
+                        "extendData": {},
+                        "sort": 15
+                    },
+                    {
+                        "name": "广安诚信禾当家 24%烟嘧•莠去津玉米田专用除草剂",
+                        "type": 0,
+                        "objectId": 1476,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 24%烟嘧•莠去津玉米田专用除草剂",
+                            "promotionDesc": "专用除草剂\n",
+                            "sellingPrice": 280,
+                            "imageUrl": "/shop/images/09d6b441-ea62-4235-ab58-a4d65c091ab3.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/09d6b441-ea62-4235-ab58-a4d65c091ab3.jpg",
+                        "extendData": {},
+                        "sort": 17
+                    },
+                    {
+                        "name": "广安诚信禾当家-20%哒螨灵-可湿性粉剂",
+                        "type": 0,
+                        "objectId": 1470,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家-20%哒螨灵-可湿性粉剂",
+                            "promotionDesc": "买一箱送一箱",
+                            "sellingPrice": 720,
+                            "imageUrl": "/shop/images/beeef1c5-ff1e-4bf7-93fe-800a2eca0a08.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/beeef1c5-ff1e-4bf7-93fe-800a2eca0a08.jpg",
+                        "extendData": {},
+                        "sort": 18
+                    },
+                    {
+                        "name": "广安诚信禾当家 40%稻瘟灵水稻稻瘟病杀菌剂",
+                        "type": 0,
+                        "objectId": 1466,
+                        "objectData": {
+                            "goodsName": "广安诚信禾当家 40%稻瘟灵水稻稻瘟病杀菌剂",
+                            "promotionDesc": "",
+                            "sellingPrice": 48,
+                            "imageUrl": "/shop/images/72198a68-1d87-4a36-bfb3-410225318ce3.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/72198a68-1d87-4a36-bfb3-410225318ce3.jpg",
+                        "extendData": {},
+                        "sort": 19
+                    },
+                    {
+                        "name": "【补贴760元】9马力重庆鑫源汽油微耕机（加森系列） 需持身份证、购机发票自行到当地农机中心办理。",
+                        "type": 0,
+                        "objectId": 1868,
+                        "objectData": {
+                            "goodsName": "【补贴760元】9马力重庆鑫源汽油微耕机（加森系列） 需持身份证、购机发票自行到当地农机中心办理。",
+                            "promotionDesc": "采用新结构发动机,降低发动机的噪音,增加空气过滤层,降低发动机的损伤.含国家补贴（直补）补贴价格为：760元",
+                            "sellingPrice": 2500,
+                            "imageUrl": "/shop/images/1ccf1a7a-6858-46a1-b493-0b7bcac8bf60.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/1ccf1a7a-6858-46a1-b493-0b7bcac8bf60.jpg",
+                        "extendData": {},
+                        "sort": 20
+                    },
+                    {
+                        "name": "重庆品牌：嘉木微耕机9马力；配深耕刀、防缠刀{此产品暂停国家补贴}",
+                        "type": 0,
+                        "objectId": 1897,
+                        "objectData": {
+                            "goodsName": "重庆品牌：嘉木微耕机9马力；配深耕刀、防缠刀{此产品暂停国家补贴}",
+                            "promotionDesc": "功能齐全、小巧玲珑，老人妇女都可以轻松操作；本产品为国Ⅱ柴油发动机，无国家补贴",
+                            "sellingPrice": 3500,
+                            "imageUrl": "/shop/images/b560a3a0-d36d-4fc6-a6c5-2745fe66f50c.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/b560a3a0-d36d-4fc6-a6c5-2745fe66f50c.jpg",
+                        "extendData": {},
+                        "sort": 21
+                    },
+                    {
+                        "name": "【暂无补贴】五一牌微耕机（9马力）；采用旋耕方式，主要适用于丘陵山区旱地及水田作业",
+                        "type": 0,
+                        "objectId": 1895,
+                        "objectData": {
+                            "goodsName": "【暂无补贴】五一牌微耕机（9马力）；采用旋耕方式，主要适用于丘陵山区旱地及水田作业",
+                            "promotionDesc": "采用旋耕方式，主要适用于丘陵山区旱地及水田作业；本产品为国Ⅱ柴油发动机，无国家补贴",
+                            "sellingPrice": 3100,
+                            "imageUrl": "/shop/images/bce60d76-cfe3-4254-8e62-e7c7d1cbb77f.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/bce60d76-cfe3-4254-8e62-e7c7d1cbb77f.jpg",
+                        "extendData": {},
+                        "sort": 22
+                    },
+                    {
+                        "name": "【暂无补贴】五一牌微耕机（6马力）主要适用于丘陵山区旱地及水田作业",
+                        "type": 0,
+                        "objectId": 1892,
+                        "objectData": {
+                            "goodsName": "【暂无补贴】五一牌微耕机（6马力）主要适用于丘陵山区旱地及水田作业",
+                            "promotionDesc": "采用旋耕方式，主要适用于丘陵山区旱地及水田作业；本产品为国Ⅱ柴油发动机，无国家补贴",
+                            "sellingPrice": 3000,
+                            "imageUrl": "/shop/images/538a07ff-8826-4a80-b3d9-dfcb50d9d892.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/538a07ff-8826-4a80-b3d9-dfcb50d9d892.jpg",
+                        "extendData": {},
+                        "sort": 23
+                    },
+                    {
+                        "name": "【暂无补贴】五一牌1WG4.05-95FC-Z微耕机，国Ⅱ动力转国Ⅲ",
+                        "type": 0,
+                        "objectId": 1889,
+                        "objectData": {
+                            "goodsName": "【暂无补贴】五一牌1WG4.05-95FC-Z微耕机，国Ⅱ动力转国Ⅲ",
+                            "promotionDesc": "用旋耕方式，主要适用于丘陵山区旱地及水田作业",
+                            "sellingPrice": 2900,
+                            "imageUrl": "/shop/images/3ed59954-dc9e-4db4-8140-66a73b71c82d.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/3ed59954-dc9e-4db4-8140-66a73b71c82d.jpg",
+                        "extendData": {},
+                        "sort": 24
+                    },
+                    {
+                        "name": "重庆合盛微耕机",
+                        "type": 0,
+                        "objectId": 1888,
+                        "objectData": {
+                            "goodsName": "重庆合盛微耕机",
+                            "promotionDesc": "轻便灵活、质量上乘、全齿轮传动、 效率更高 、更省油",
+                            "sellingPrice": 4499,
+                            "imageUrl": "/shop/images/ee436388-91c6-4963-baf7-0fd6113917e5.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/ee436388-91c6-4963-baf7-0fd6113917e5.jpg",
+                        "extendData": {},
+                        "sort": 25
+                    },
+                    {
+                        "name": "【补贴760元】6马力重庆鑫源汽油微耕机（加森系列），采用新结构发动机，降低发动机的噪声",
+                        "type": 0,
+                        "objectId": 1873,
+                        "objectData": {
+                            "goodsName": "【补贴760元】6马力重庆鑫源汽油微耕机（加森系列），采用新结构发动机，降低发动机的噪声",
+                            "promotionDesc": "采用新结构发动机，降低发动机的噪声，手柄放油化油器，用户使用方便，便于维护保养。需持身份证、购机发票自行到当地农机中心办理。",
+                            "sellingPrice": 2450,
+                            "imageUrl": "/shop/images/2a94c108-8da5-4dd6-8e0d-dafcbb18579f.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/2a94c108-8da5-4dd6-8e0d-dafcbb18579f.jpg",
+                        "extendData": {},
+                        "sort": 26
+                    },
+                    {
+                        "name": "【补贴570元】6马力重庆鑫源汽油微耕机（加森系列）易启动、铝合金箱体、轻便耐用",
+                        "type": 0,
+                        "objectId": 1871,
+                        "objectData": {
+                            "goodsName": "【补贴570元】6马力重庆鑫源汽油微耕机（加森系列）易启动、铝合金箱体、轻便耐用",
+                            "promotionDesc": "易启动、铝合金箱体、轻便耐用，国家补贴属于直补，补贴价：570元。需持身份证、购机发票自行到当地农机中心办理。",
+                            "sellingPrice": 2080,
+                            "imageUrl": "/shop/images/df6dd0ce-4179-415a-be3f-4e348ada3ab2.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/df6dd0ce-4179-415a-be3f-4e348ada3ab2.jpg",
+                        "extendData": {},
+                        "sort": 27
+                    },
+                    {
+                        "name": "【补贴760元】有现货，6马力重庆鑫源汽油微耕机（加森系列）360度左右旋转,上下180度旋转的扶手",
+                        "type": 0,
+                        "objectId": 1870,
+                        "objectData": {
+                            "goodsName": "【补贴760元】有现货，6马力重庆鑫源汽油微耕机（加森系列）360度左右旋转,上下180度旋转的扶手",
+                            "promotionDesc": "球墨铸铁提高耐用寿命，360度左右旋转,上下180度旋转的扶手，享受国家补贴（直补贴）补贴价格：760元；需持身份证、购机发票自行到当地农机中心办理。",
+                            "sellingPrice": 2900,
+                            "imageUrl": "/shop/images/157cd292-650f-4d8c-a303-ba09d2e27487.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/157cd292-650f-4d8c-a303-ba09d2e27487.jpg",
+                        "extendData": {},
+                        "sort": 28
+                    },
+                    {
+                        "name": "【补贴760元】9马力重庆鑫源汽油微耕机（加森系列） 五档机，提高熟土和北方工作效率",
+                        "type": 0,
+                        "objectId": 1869,
+                        "objectData": {
+                            "goodsName": "【补贴760元】9马力重庆鑫源汽油微耕机（加森系列） 五档机，提高熟土和北方工作效率",
+                            "promotionDesc": "五档机，提高熟土和北方工作效率，防水拉盘，手柄放油化油器 此产品有国际补贴（直补），补贴价格为：760元 需持身份证、购机发票自行到当地农机中心办理。",
+                            "sellingPrice": 2750,
+                            "imageUrl": "/shop/images/ecfdb1b4-afb6-40b6-8e09-e06e215417a0.jpg",
+                            "sellingNumber": 0
+                        },
+                        "imageUrl": "/shop/images/ecfdb1b4-afb6-40b6-8e09-e06e215417a0.jpg",
+                        "extendData": {},
+                        "sort": 29
+                    }
+                ]
+            }
+        ],
+        "id": 4
+    },
+    "targetUrl": null,
+    "success": true,
+    "error": null,
+    "unAuthorizedRequest": false,
+    "__abp": true
+}
