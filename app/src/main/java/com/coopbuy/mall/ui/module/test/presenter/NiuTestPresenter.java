@@ -286,7 +286,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                     public void onComplete(HomePageDataResponse smsCodeResponse, Object userState) {
                         if (smsCodeResponse != null) {
                             mView.showData(gson.toJson(smsCodeResponse));
-                            ToastUtils.toastShort("退出成功");
+                            ToastUtils.toastShort("获取成功");
                             mView.stopAll();
                         }
                     }

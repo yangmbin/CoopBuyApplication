@@ -113,7 +113,7 @@ public class LoginClient extends BaseApiClient {
      */
     public IAsyncRequestState register(RegisterRequest request, IAsyncResultCallback<RegisterResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<RegisterResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.LOGIN_REGISTER, callback, userState);
+        }.getType(), Constant.SERVER_URL + Constant.LOGIN_REGISTER, request, callback, userState);
     }
 
     /**
@@ -138,7 +138,7 @@ public class LoginClient extends BaseApiClient {
      */
     public IAsyncRequestState homePageData(HomePageDataRequest request, IAsyncResultCallback<HomePageDataResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<HomePageDataResponse>() {
-        }.getType(), Constant.LOGIN_QUIT, request, callback, userState);
+        }.getType(), Constant.SERVER_URL + Constant.HOMO_PAGE_DATA, request, callback, userState);
     }
 
 }
