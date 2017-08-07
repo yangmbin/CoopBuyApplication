@@ -19,4 +19,5 @@
     <color name="black">#000000</color>
     <color name="black_1">#333333</color>
     <color name="black_2">#353535</color>
+    <color name="test_line_white">#ffffff</color>
 </resources>

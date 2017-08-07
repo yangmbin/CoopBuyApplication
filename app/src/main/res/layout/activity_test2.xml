@@ -12,10 +12,37 @@
         android:layout_height="200dp"
         android:background="@color/test_line_border">
 
-        <TextView
-            android:id="@+id/tv_result"
+        <LinearLayout
+            android:id="@+id/ll_list_params"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_code"
+                android:visibility="gone"
+                android:layout_width="50dp"
+                android:layout_height="30dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_parms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/test_line_white"
+                android:overScrollMode="never" />
+            <TextView
+                android:id="@+id/tv_hint"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:textSize="40sp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </ScrollView>
 
 

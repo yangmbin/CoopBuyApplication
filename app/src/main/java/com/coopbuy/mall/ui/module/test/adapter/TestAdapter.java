@@ -47,7 +47,7 @@ public class TestAdapter extends BaseRecyclerAdapter<String> {
 
         @Override
         public void onClick(View view) {
-            port.getPosition(position);
+            port.getPosition(position,mData.get(position));
         }
     }
 }

@@ -11,7 +11,8 @@ public class NetworkErrorInfo implements Serializable {
 
     private int code;
     private String message;
-    private String detail;
+    //这里下行是details 不是idetail 所以拿不到同时错误
+    private String details;
 
     public int getCode() {
         return code;
@@ -30,10 +31,10 @@ public class NetworkErrorInfo implements Serializable {
     }
 
     public String getDetail() {
-        return detail;
+        return details;
     }
 
     public void setDetail(String detail) {
-        this.detail = detail;
+        this.details = detail;
     }
 }

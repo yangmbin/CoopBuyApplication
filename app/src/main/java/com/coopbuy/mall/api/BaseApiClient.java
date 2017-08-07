@@ -2,8 +2,11 @@ package com.coopbuy.mall.api;
 
 import android.content.Context;
 
+import com.coopbuy.mall.app.CoopBuyApplication;
 import com.guinong.net.RequestClient;
+import com.guinong.net.cookie.CookieJarImpl;
 import com.guinong.net.cookie.CookierManager;
+import com.guinong.net.cookie.PersistentCookieStore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,9 +18,10 @@ import okhttp3.OkHttpClient;
 /**
  * @author csn
  * @date 2017/8/1 0001 11:47
- * @content  client 的基类 其他需要继承这个使用
+ * @content client 的基类 其他需要继承这个使用
  */
 public class BaseApiClient extends RequestClient {
+
     protected static OkHttpClient mOkHttpClient = null;
     private static final int TIME_OUT = 35;
 
@@ -45,6 +49,10 @@ public class BaseApiClient extends RequestClient {
         if (mOkHttpClient == null) {
             contextInit(null);
         }
+    }
+
+    public BaseApiClient() {
+
     }
 
     @Override

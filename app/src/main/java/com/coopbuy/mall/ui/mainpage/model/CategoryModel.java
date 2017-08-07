@@ -13,6 +13,6 @@ public class CategoryModel implements BaseModel {
     private LoginClient mClient = new LoginClient();
 
     public void getCategory(IAsyncResultCallback<List<CategorysResponse>> callback, Object userState) {
-        mClient.getCatetorys(callback, null);
+        mClient.getCategorys(callback, null);
     }
 }

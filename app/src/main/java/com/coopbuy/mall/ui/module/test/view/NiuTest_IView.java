@@ -9,4 +9,6 @@ import com.coopbuy.mall.base.BaseView;
  */
 public interface NiuTest_IView extends BaseView {
     void showData(Object object);
+
+    void showImageCode(String code);
 }
