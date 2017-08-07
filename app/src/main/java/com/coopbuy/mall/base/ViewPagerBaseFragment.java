@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  * @author ymb
  *         Create at 2017/7/13 14:00
  */
-public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment implements View.OnClickListener {
+public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment {
     public P mPresenter;
     public M mModel;
     public Context mContext;
@@ -32,6 +32,20 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     private boolean isFragmentVisible;
     // Fragment第一次可见
     private boolean isFragmentFirstVisible = true;
+
+    private View.OnClickListener mReloadListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            networkRetry();
+        }
+    };
+
+    private View.OnClickListener mCustomListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            customClick();
+        }
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +66,8 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
         mContext = this.getActivity();
         if (rootView.findViewById(R.id.box) != null) {
             box = new LoadingBox(mContext, rootView.findViewById(R.id.box));
-            box.setClickListener(this);
+            box.setClickListener(mReloadListener);
+            box.setCustomClickListener(mCustomListener);
         }
         ButterKnife.bind(this, rootView);
         initModel();
@@ -128,6 +143,15 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     }
 
     /**
+     * 显示自定义页面
+     */
+    public void showCustomLayout(int layoutId) {
+        View customView = getActivity().getLayoutInflater().inflate(layoutId, null, false);
+        box.addCustomView(customView, layoutId + "");
+        box.showCustomView(layoutId + "");
+    }
+
+    /**
      * 隐藏所有覆盖层,显示正常页面
      */
     public void stopAll() {
@@ -135,18 +159,14 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     }
 
     /**
-     * 网络重载按钮监听
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        networkRetry();
-    }
-
-    /**
      * 网络重载按钮
      */
     protected void networkRetry() {}
+
+    /**
+     * 自定义页面按钮
+     */
+    protected void customClick() {}
 
     /**
      * 判断Fragment是否可见，先于onCreateView执行

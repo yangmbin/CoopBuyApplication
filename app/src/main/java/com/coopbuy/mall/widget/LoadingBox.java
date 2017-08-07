@@ -25,7 +25,7 @@ import java.util.Locale;
 public class LoadingBox {
 
     private View mTargetView;
-    private View.OnClickListener mClickListener;
+    private View.OnClickListener mClickListener, mCustomClickListener;
     private Context mContext;
     private LayoutInflater mInflater;
     private RelativeLayout mContainer0, mContainer;
@@ -269,16 +269,34 @@ public class LoadingBox {
             if(buttonView!=null)
                 buttonView.setOnClickListener(this.mClickListener);
         }
+    }
 
+    public void setCustomClickListener(View.OnClickListener clickListener) {
 
+        this.mCustomClickListener = clickListener;
+
+        for(View view : mCustomViews){
+            View buttonView = view.findViewById(R.id.custom_exception_button);
+            if (buttonView != null)
+                buttonView.setOnClickListener(this.mCustomClickListener);
+        }
     }
 
     public void addCustomView(View customView,String tag){
 
+        // 判断tag是否存在，R.layout.id为tag，判断是否已经存在
+        for (int i = 0; i < mCustomViews.size(); i++) {
+            if (mCustomViews.get(i).getTag().equals(tag))
+                return;
+        }
         customView.setTag(tag);
         customView.setVisibility(View.GONE);
         mCustomViews.add(customView);
         mContainer.addView(customView);
+
+        View buttonView = customView.findViewById(R.id.custom_exception_button);
+        if (buttonView != null)
+            buttonView.setOnClickListener(this.mCustomClickListener);
     }
     private class Clonner{
         private View mView;

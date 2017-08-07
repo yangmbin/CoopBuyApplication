@@ -18,4 +18,6 @@ public interface BaseView {
     void showNetOffLayout();
 
     void showNetErrorLayout();
+
+    void showCustomLayout(int layoutId);
 }

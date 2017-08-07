@@ -19,12 +19,26 @@ import butterknife.ButterKnife;
  * @author ymb
  * Create at 2017/7/13 11:19
  */
-public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener, View.OnClickListener {
+public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener {
     public P mPresenter;
     public M mModel;
     public Context mContext;
     private LoadingBox box;
     private TitleBar mTitleBar;
+
+    private View.OnClickListener mReloadListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            networkRetry();
+        }
+    };
+
+    private View.OnClickListener mCustomListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            customClick();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +51,8 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         }
         if (findViewById(R.id.box) != null) {
             box = new LoadingBox(this, findViewById(R.id.box));
-            box.setClickListener(this);
+            box.setClickListener(mReloadListener);
+            box.setCustomClickListener(mCustomListener);
         }
         if (findViewById(R.id.title_bar) != null) {
             mTitleBar = (TitleBar) findViewById(R.id.title_bar);
@@ -116,6 +131,15 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     }
 
     /**
+     * 显示自定义页面
+     */
+    public void showCustomLayout(int layoutId) {
+        View customView = getLayoutInflater().inflate(layoutId, null, false);
+        box.addCustomView(customView, layoutId + "");
+        box.showCustomView(layoutId + "");
+    }
+
+    /**
      * 隐藏所有覆盖层,显示正常页面
      */
     public void stopAll() {
@@ -123,18 +147,14 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     }
 
     /**
-     * 网络重载按钮监听
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        networkRetry();
-    }
-
-    /**
      * 网络重载按钮
      */
     protected void networkRetry() {}
+
+    /**
+     * 自定义页面按钮
+     */
+    protected void customClick() {}
 
 
     /**
