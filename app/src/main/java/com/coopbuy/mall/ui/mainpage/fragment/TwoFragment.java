@@ -108,12 +108,6 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
         mPresenter.getCategory();
     }
 
-    @Override
-    protected void customClick() {
-        super.customClick();
-        ToastUtils.toastShort("自定义点击");
-    }
-
     /**
      * 显示网络返回的分类数据
      *

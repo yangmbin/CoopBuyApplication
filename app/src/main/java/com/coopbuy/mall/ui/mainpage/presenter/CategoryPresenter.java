@@ -3,7 +3,6 @@ package com.coopbuy.mall.ui.mainpage.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.classify.CategorysResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.mainpage.model.CategoryModel;
@@ -30,8 +29,7 @@ public class CategoryPresenter extends BasePresenter<Category_IView, CategoryMod
 
             @Override
             public void onError(NetworkException error, Object userState) {
-//                mView.showNetErrorLayout();
-                mView.showCustomLayout(R.layout.loadingbox_custom);
+                mView.showNetErrorLayout();
             }
         }, null);
     }
