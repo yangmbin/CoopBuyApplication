@@ -303,7 +303,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "homePage");
                 break;
             case "分类":
-              /*  client.getCategorys(new IAsyncResultCallback<List<CategorysResponse>>() {
+                mModel.getCategorys(new IAsyncResultCallback<List<CategorysResponse>>() {
                     @Override
                     public void onComplete(List<CategorysResponse> categorysResponses, Object userState) {
                         if (categorysResponses != null) {
@@ -318,15 +318,99 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         mView.showData(error.getDetail());
                         mView.stopAll();
                     }
-                }, "cate");*/
+                }, "cate");
                 break;
-            case "搜索":
 
+
+            case "获取站长推荐商品":
+
+                break;
+            case "首页banner图点击进入":
+                break;
+            case "首页点击（圆形图标）数据":
+                break;
+            case "获取默认收货地址":
+                break;
+            case "获取用户收货地址列表":
+                break;
+            case "获取行政区数":
+                break;
+            case "根据区域id获取名称":
+                break;
+            case "通过行政区域id获取站长列表信息":
+                break;
+            case "新建收货地址":
+                break;
+            case "删除收货地址":
+                break;
+            case "修改收货地址":
+                break;
+            case "设置默认收货地址":
+                break;
+            case "代付款 待处理 付款数量":
+                break;
+            case "商品详情添加商品到购物车":
+                break;
+            case "购物车列表":
+                break;
+            case "购物车商品数量更新":
+                break;
+            case "购物车商品删除":
+                break;
+            case "购物车订单确认 商品运费 同时也是修改数量的接口":
+                break;
+            case "购物车订单提交  创建新订单":
+                break;
+            case "商品详情描述":
+                break;
+            case "用户商品详情获取商品信息":
+                break;
+            case "获取店铺信息":
+                break;
+            case "得到最新评论":
+                break;
+            case "单个商品运费":
+                break;
+            case "App更新":
+                break;
+            case "话费充值":
+                break;
+            case "支付通道申请":
+                break;
+            case "订单确认":
+                break;
+            case "创建话费订单":
+                break;
+            case "获取各订单数量":
+                break;
+            case "订单列表":
+                break;
+            case "代付款订单":
+                break;
+            case "待发货":
+                break;
+            case "待收货":
+                break;
+            case "待评价":
+                break;
+            case "订单详情":
+                break;
+            case "帮助中心":
+                break;
+            case "退货流程":
+                break;
+            case "网站订单":
+                break;
+            case "获取用户信息":
+                break;
+            case "修改用户昵称":
+                break;
+            case "修改性别":
+                break;
+            case "意见反馈":
                 break;
             default:
                 break;
-
-
         }
     }
 }
