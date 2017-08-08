@@ -14,7 +14,8 @@ public class Constant {
     /**
      * 主机地址
      */
-    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
+//    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
+    public static final String SERVER_URL = "https://shop.coopbuy.com/";
     /**
      * 图片地址
      */
