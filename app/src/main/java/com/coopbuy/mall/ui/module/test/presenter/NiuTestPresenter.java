@@ -343,7 +343,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "recommend");
@@ -369,7 +369,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "banner");
@@ -392,7 +392,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "address");
@@ -410,7 +410,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "addressList");
@@ -428,7 +428,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "getRegions");
@@ -454,7 +454,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "getRegionsByParentId");
@@ -481,80 +481,150 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                     @Override
                     public void onError(NetworkException error, Object userState) {
-                        mView.showData(error.getDetail());
+                        mView.showData(error.getDetail() + error.getMessage());
                         mView.stopAll();
                     }
                 }, "getRegionsByParentId");
                 break;
             case "新建收货地址":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "删除收货地址":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "修改收货地址":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "设置默认收货地址":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "代付款 待处理 付款数量":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "商品详情添加商品到购物车":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "购物车列表":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "购物车商品数量更新":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "购物车商品删除":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "购物车订单确认 商品运费 同时也是修改数量的接口":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "购物车订单提交  创建新订单":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "商品详情描述":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "用户商品详情获取商品信息":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "获取店铺信息":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "得到最新评论":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "单个商品运费":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "App更新":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "话费充值":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "支付通道申请":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "订单确认":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "创建话费订单":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "获取各订单数量":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "订单列表":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "代付款订单":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "待发货":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "待收货":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "待评价":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "订单详情":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "帮助中心":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "退货流程":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "网站订单":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "获取用户信息":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "修改用户昵称":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "修改性别":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             case "意见反馈":
+                ToastUtils.toastShort("开发中");
+                mView.stopAll();
                 break;
             default:
                 break;
