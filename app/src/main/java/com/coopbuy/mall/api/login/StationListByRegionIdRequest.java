@@ -8,13 +8,13 @@ import java.io.Serializable;
  * @content
  */
 public class StationListByRegionIdRequest implements Serializable {
-    private String parentId;
+    private String id;
 
     public String getParentId() {
-        return parentId;
+        return id;
     }
 
     public void setParentId(String parentId) {
-        this.parentId = parentId;
+        this.id = parentId;
     }
 }

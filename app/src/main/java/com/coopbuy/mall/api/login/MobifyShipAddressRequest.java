@@ -35,7 +35,7 @@ public class MobifyShipAddressRequest implements Serializable {
     private String regionFullName;
     private String nameUsedBefore;
     private int stationUserId;
-    private int id;
+    private String id;
 
     public String getCustomerName() {
         return customerName;
@@ -125,11 +125,11 @@ public class MobifyShipAddressRequest implements Serializable {
         this.stationUserId = stationUserId;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

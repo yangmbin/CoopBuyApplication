@@ -1,6 +1,7 @@
 package com.coopbuy.mall.api.login;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author csn
@@ -9,127 +10,140 @@ import java.io.Serializable;
  */
 public class StationListByRegionIdResponse implements Serializable {
 
-    /**
-     * siteCode : 8257040307
-     * siteName : 田坎社区电商服务站
-     * regionId : 0
-     * address :
-     * regionIdPath : null
-     * regionPath : null
-     * stationUserName : 杨加琴
-     * stationUserPhone : null
-     * stationUserId : 511
-     * masterName : null
-     * masterPhone : null
-     * id : 137
-     */
 
-    private String siteCode;
-    private String siteName;
-    private int regionId;
-    private String address;
-    private String regionIdPath;
-    private String regionPath;
-    private String stationUserName;
-    private String stationUserPhone;
-    private int stationUserId;
-    private String masterName;
-    private String masterPhone;
-    private int id;
+    private List<ListBean> list;
 
-    public String getSiteCode() {
-        return siteCode;
+    public List<ListBean> getList() {
+        return list;
     }
 
-    public void setSiteCode(String siteCode) {
-        this.siteCode = siteCode;
+    public void setList(List<ListBean> list) {
+        this.list = list;
     }
 
-    public String getSiteName() {
-        return siteName;
-    }
+    public static class ListBean {
+        /**
+         * siteCode : string
+         * siteName : string
+         * regionId : 0
+         * address : string
+         * regionIdPath : string
+         * regionPath : string
+         * stationUserName : string
+         * stationUserPhone : string
+         * stationUserId : 0
+         * masterName : string
+         * masterPhone : string
+         * id : 0
+         */
 
-    public void setSiteName(String siteName) {
-        this.siteName = siteName;
-    }
+        private String siteCode;
+        private String siteName;
+        private int regionId;
+        private String address;
+        private String regionIdPath;
+        private String regionPath;
+        private String stationUserName;
+        private String stationUserPhone;
+        private int stationUserId;
+        private String masterName;
+        private String masterPhone;
+        private int id;
 
-    public int getRegionId() {
-        return regionId;
-    }
+        public String getSiteCode() {
+            return siteCode;
+        }
 
-    public void setRegionId(int regionId) {
-        this.regionId = regionId;
-    }
+        public void setSiteCode(String siteCode) {
+            this.siteCode = siteCode;
+        }
 
-    public String getAddress() {
-        return address;
-    }
+        public String getSiteName() {
+            return siteName;
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+        public void setSiteName(String siteName) {
+            this.siteName = siteName;
+        }
 
-    public String getRegionIdPath() {
-        return regionIdPath;
-    }
+        public int getRegionId() {
+            return regionId;
+        }
 
-    public void setRegionIdPath(String regionIdPath) {
-        this.regionIdPath = regionIdPath;
-    }
+        public void setRegionId(int regionId) {
+            this.regionId = regionId;
+        }
 
-    public String getRegionPath() {
-        return regionPath;
-    }
+        public String getAddress() {
+            return address;
+        }
 
-    public void setRegionPath(String regionPath) {
-        this.regionPath = regionPath;
-    }
+        public void setAddress(String address) {
+            this.address = address;
+        }
 
-    public String getStationUserName() {
-        return stationUserName;
-    }
+        public String getRegionIdPath() {
+            return regionIdPath;
+        }
 
-    public void setStationUserName(String stationUserName) {
-        this.stationUserName = stationUserName;
-    }
+        public void setRegionIdPath(String regionIdPath) {
+            this.regionIdPath = regionIdPath;
+        }
 
-    public String getStationUserPhone() {
-        return stationUserPhone;
-    }
+        public String getRegionPath() {
+            return regionPath;
+        }
 
-    public void setStationUserPhone(String stationUserPhone) {
-        this.stationUserPhone = stationUserPhone;
-    }
+        public void setRegionPath(String regionPath) {
+            this.regionPath = regionPath;
+        }
 
-    public int getStationUserId() {
-        return stationUserId;
-    }
+        public String getStationUserName() {
+            return stationUserName;
+        }
 
-    public void setStationUserId(int stationUserId) {
-        this.stationUserId = stationUserId;
-    }
+        public void setStationUserName(String stationUserName) {
+            this.stationUserName = stationUserName;
+        }
 
-    public String getMasterName() {
-        return masterName;
-    }
+        public String getStationUserPhone() {
+            return stationUserPhone;
+        }
 
-    public void setMasterName(String masterName) {
-        this.masterName = masterName;
-    }
+        public void setStationUserPhone(String stationUserPhone) {
+            this.stationUserPhone = stationUserPhone;
+        }
 
-    public String getMasterPhone() {
-        return masterPhone;
-    }
+        public int getStationUserId() {
+            return stationUserId;
+        }
 
-    public void setMasterPhone(String masterPhone) {
-        this.masterPhone = masterPhone;
-    }
+        public void setStationUserId(int stationUserId) {
+            this.stationUserId = stationUserId;
+        }
 
-    public int getId() {
-        return id;
-    }
+        public String getMasterName() {
+            return masterName;
+        }
 
-    public void setId(int id) {
-        this.id = id;
+        public void setMasterName(String masterName) {
+            this.masterName = masterName;
+        }
+
+        public String getMasterPhone() {
+            return masterPhone;
+        }
+
+        public void setMasterPhone(String masterPhone) {
+            this.masterPhone = masterPhone;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
     }
 }

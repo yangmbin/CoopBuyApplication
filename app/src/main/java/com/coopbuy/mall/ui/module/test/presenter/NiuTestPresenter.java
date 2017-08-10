@@ -3,8 +3,17 @@ package com.coopbuy.mall.ui.module.test.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.login.AddGoodsRequest;
+import com.coopbuy.mall.api.login.CartListResponse;
+import com.coopbuy.mall.api.login.CreateShipAddressRequest;
+import com.coopbuy.mall.api.login.DeleteShipAddressRequest;
 import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
+import com.coopbuy.mall.api.login.GetShopIdRequest;
+import com.coopbuy.mall.api.login.GetShopIdResponse;
 import com.coopbuy.mall.api.login.GetStationRecommendResponse;
+import com.coopbuy.mall.api.login.GoodsDetailDescResponse;
+import com.coopbuy.mall.api.login.GoodsDetailInfoResponse;
+import com.coopbuy.mall.api.login.GoodsDetailRequest;
 import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.login.HomePageDataRequest;
@@ -15,19 +24,31 @@ import com.coopbuy.mall.api.login.LoginClient;
 import com.coopbuy.mall.api.login.LoginQuitRespsonse;
 import com.coopbuy.mall.api.login.LoginRequest;
 import com.coopbuy.mall.api.login.LoginResponse;
+import com.coopbuy.mall.api.login.MobifyShipAddressRequest;
+import com.coopbuy.mall.api.login.NewUserGoodsOrderRequest;
+import com.coopbuy.mall.api.login.NewUserGoodsOrderresponse;
+import com.coopbuy.mall.api.login.OperateSuccessResponse;
+import com.coopbuy.mall.api.login.OrderConfirmRequest;
+import com.coopbuy.mall.api.login.OrderConfirmResponse;
+import com.coopbuy.mall.api.login.OrderFreightRequest;
+import com.coopbuy.mall.api.login.OrderFreightResponse;
+import com.coopbuy.mall.api.login.QuantityResponse;
 import com.coopbuy.mall.api.login.RegionsByParentIdRequest;
 import com.coopbuy.mall.api.login.RegionsByParentIdResponse;
 import com.coopbuy.mall.api.login.RegionsResponse;
 import com.coopbuy.mall.api.login.RegisterRequest;
 import com.coopbuy.mall.api.login.RegisterResponse;
+import com.coopbuy.mall.api.login.RemoveGoodsRequest;
 import com.coopbuy.mall.api.login.SendSmsCodeRequest;
 import com.coopbuy.mall.api.login.SendSmsCodeResponse;
+import com.coopbuy.mall.api.login.SetDefaultAddressRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeResponse;
 import com.coopbuy.mall.api.login.SmsResetPasswordRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
 import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
 import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
+import com.coopbuy.mall.api.login.UpdateGoodsQuantityRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.test.model.NiuTestModel;
 import com.coopbuy.mall.ui.module.test.view.NiuTest_IView;
@@ -463,15 +484,15 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
             case "通过行政区域id获取站长列表信息":
                 StationListByRegionIdRequest parentIdResponse = new StationListByRegionIdRequest();
                 if (params.isEmpty()) {
-                    parentIdResponse.setParentId("520522003001");
+                    parentIdResponse.setParentId("520522003003");
                     params.clear();
                     params.add(parentIdResponse);
                 } else {
                     parentIdResponse = (StationListByRegionIdRequest) params.get(0);
                 }
-                mModel.getRegionsStationByParentId(parentIdResponse, new IAsyncResultCallback<List<StationListByRegionIdResponse>>() {
+                mModel.getRegionsStationByParentId(parentIdResponse, new IAsyncResultCallback<StationListByRegionIdResponse>() {
                     @Override
-                    public void onComplete(List<StationListByRegionIdResponse> categorysResponses, Object userState) {
+                    public void onComplete(StationListByRegionIdResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("根据区域id获取名称");
@@ -487,60 +508,435 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "getRegionsByParentId");
                 break;
             case "新建收货地址":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                CreateShipAddressRequest createShipAddressRequest = new CreateShipAddressRequest();
+                if (params.isEmpty()) {
+                    createShipAddressRequest.setCustomerName("niuniu");
+                    createShipAddressRequest.setPhone("18286882993");
+                    createShipAddressRequest.setAddress("测试地址");
+                    createShipAddressRequest.setTel("注意 少任何一个都会提示该站点没有创建");
+                    createShipAddressRequest.setIsDefault(false);
+                    createShipAddressRequest.setRegionId("520522003003");
+                    createShipAddressRequest.setRegionFullName("贵州省 毕节市 黔西县文峰街道兴黔社区居民委员会");
+                    createShipAddressRequest.setNameUsedBefore("");
+                    createShipAddressRequest.setSiteName("兴黔社区电商服务站");
+                    createShipAddressRequest.setSiteId(60);
+                    createShipAddressRequest.setStationUserId(510);
+                    params.clear();
+                    params.add(createShipAddressRequest);
+                } else {
+                    createShipAddressRequest = (CreateShipAddressRequest) params.get(0);
+                }
+                mModel.createShipAddress(createShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("新建收货地址");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
                 break;
             case "删除收货地址":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                DeleteShipAddressRequest deleteShipAddressRequest = new DeleteShipAddressRequest();
+                if (params.isEmpty()) {
+                    deleteShipAddressRequest.setId(3470);
+                    params.clear();
+                    params.add(deleteShipAddressRequest);
+                } else {
+                    deleteShipAddressRequest = (DeleteShipAddressRequest) params.get(0);
+                }
+                mModel.deleteShipAddress(deleteShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("删除收货地址");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
                 break;
             case "修改收货地址":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                MobifyShipAddressRequest mobifyShipAddressRequest = new MobifyShipAddressRequest();
+                if (params.isEmpty()) {
+                    mobifyShipAddressRequest.setCustomerName("修改了");
+                    mobifyShipAddressRequest.setPhone("18286886332");
+                    mobifyShipAddressRequest.setAddress("xxxxxx");
+                    mobifyShipAddressRequest.setTel("请根据地址的id来修改");
+                    mobifyShipAddressRequest.setIsDefault(false);
+                    mobifyShipAddressRequest.setRegionId("110101001001");
+                    mobifyShipAddressRequest.setRegionFullName("北京市 市辖区 东城区东华门街道办事处多福巷社区居委会");
+                    mobifyShipAddressRequest.setNameUsedBefore("");
+                    mobifyShipAddressRequest.setId("3410");
+                    params.clear();
+                    params.add(mobifyShipAddressRequest);
+                } else {
+                    mobifyShipAddressRequest = (MobifyShipAddressRequest) params.get(0);
+                }
+                mModel.mobifyShipAddress(mobifyShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("删除收货地址");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
                 break;
             case "设置默认收货地址":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                SetDefaultAddressRequest setDefaultAddressRequest = new SetDefaultAddressRequest();
+                if (params.isEmpty()) {
+                    setDefaultAddressRequest.setId(3410);
+                    params.clear();
+                    params.add(setDefaultAddressRequest);
+                } else {
+                    setDefaultAddressRequest = (SetDefaultAddressRequest) params.get(0);
+                }
+                mModel.setDefaultShipAddress(setDefaultAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("设置默认收货地址");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
                 break;
             case "代付款 待处理 付款数量":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                mModel.getQuantityNumber(new IAsyncResultCallback<QuantityResponse>() {
+                    @Override
+                    public void onComplete(QuantityResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("代付款 待处理 付款数量");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
                 break;
             case "商品详情添加商品到购物车":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                AddGoodsRequest addGoodsRequest = new AddGoodsRequest();
+                if (params.isEmpty()) {
+                    AddGoodsRequest.GoodsBean bean = new AddGoodsRequest.GoodsBean();
+                    bean.setQuantity(2);
+                    bean.setSkuId(2776);
+                    List<AddGoodsRequest.GoodsBean> data = new ArrayList<>();
+                    addGoodsRequest.setGoods(data);
+                    params.clear();
+                    params.add(addGoodsRequest);
+                    ToastUtils.toastLong("请根据具体商品添加");
+                } else {
+                    addGoodsRequest = (AddGoodsRequest) params.get(0);
+                }
+                mModel.addGoods(addGoodsRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("商品详情添加商品到购物车");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
                 break;
             case "购物车列表":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                mModel.getCartList(new IAsyncResultCallback<CartListResponse>() {
+                    @Override
+                    public void onComplete(CartListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("购物车列表");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "购物车列表");
                 break;
             case "购物车商品数量更新":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                UpdateGoodsQuantityRequest updateGoods = new UpdateGoodsQuantityRequest();
+                if (params.isEmpty()) {
+                    updateGoods.setSkuId(2776);
+                    updateGoods.setQuantity(2);
+                    params.clear();
+                    params.add(updateGoods);
+                } else {
+                    updateGoods = (UpdateGoodsQuantityRequest) params.get(0);
+                }
+                mModel.updateGoodsQuantity(updateGoods, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("商品详情添加商品到购物车");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
+
                 break;
             case "购物车商品删除":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                RemoveGoodsRequest removeGoodsRequest = new RemoveGoodsRequest();
+                if (params.isEmpty()) {
+                    List<Integer> data = new ArrayList<>();
+                    data.add(2776);
+                    removeGoodsRequest.setSkuId(data);
+                    ToastUtils.toastLong("请根据具体商品删除");
+                    params.clear();
+                    params.add(removeGoodsRequest);
+                } else {
+                    removeGoodsRequest = (RemoveGoodsRequest) params.get(0);
+                }
+                mModel.removeGoods(removeGoodsRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("购物车商品删除");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
+                break;
+            case "购物车提交订单 订单确认":
+                OrderConfirmRequest orderConfirmRequest = new OrderConfirmRequest();
+                if (params.isEmpty()) {
+                    List<OrderConfirmRequest.SkusBean> data = new ArrayList<>();
+                    OrderConfirmRequest.SkusBean bean = new OrderConfirmRequest.SkusBean();
+                    bean.setSkuId(2776);
+                    bean.setQuantity(1);
+                    orderConfirmRequest.setSkus(data);
+                    params.clear();
+                    params.add(orderConfirmRequest);
+                } else {
+                    orderConfirmRequest = (OrderConfirmRequest) params.get(0);
+                }
+                mModel.orderConfirm(orderConfirmRequest, new IAsyncResultCallback<OrderConfirmResponse>() {
+                    @Override
+                    public void onComplete(OrderConfirmResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("购物车提交订单 订单确认");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
+
                 break;
             case "购物车订单确认 商品运费 同时也是修改数量的接口":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                OrderFreightRequest orderFreightRequest = new OrderFreightRequest();
+                if (params.isEmpty()) {
+                    List<OrderFreightRequest.SkuItemsBean> data = new ArrayList<>();
+                    OrderFreightRequest.SkuItemsBean bean = new OrderFreightRequest.SkuItemsBean();
+                    bean.setQuantity(1);
+                    bean.setSkuId(2776);
+                    data.add(bean);
+                    orderFreightRequest.setRegionId("110102010001");
+                    orderFreightRequest.setSkuItems(data);
+                    params.clear();
+                    params.add(orderFreightRequest);
+                } else {
+                    orderFreightRequest = (OrderFreightRequest) params.get(0);
+                }
+                mModel.getOrderFreightAndUpdateOrderCounts(orderFreightRequest, new IAsyncResultCallback<OrderFreightResponse>() {
+                    @Override
+                    public void onComplete(OrderFreightResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("购物车订单确认 商品运费 同时也是修改数量的接口");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
+
                 break;
             case "购物车订单提交  创建新订单":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                NewUserGoodsOrderRequest newUserGoodsOrderRequest = new NewUserGoodsOrderRequest();
+                if (params.isEmpty()) {
+                    List<NewUserGoodsOrderRequest.SkusBean> data = new ArrayList<>();
+                    NewUserGoodsOrderRequest.SkusBean bean = new NewUserGoodsOrderRequest.SkusBean();
+                    bean.setQuantity(1);
+                    bean.setSkuId(2776);
+                    data.add(bean);
+                    newUserGoodsOrderRequest.setSkus(data);
+                    params.clear();
+                    params.add(newUserGoodsOrderRequest);
+                } else {
+                    newUserGoodsOrderRequest = (NewUserGoodsOrderRequest) params.get(0);
+                }
+                mModel.newUserGoodsOrder(newUserGoodsOrderRequest, new IAsyncResultCallback<NewUserGoodsOrderresponse>() {
+                    @Override
+                    public void onComplete(NewUserGoodsOrderresponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("购物车订单提交  创建新订单");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
+
                 break;
             case "商品详情描述":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GoodsDetailRequest goodsDetailRequest = new GoodsDetailRequest();
+                if (params.isEmpty()) {
+                    goodsDetailRequest.setId(393);
+                    params.clear();
+                    params.add(goodsDetailRequest);
+                } else {
+                    goodsDetailRequest = (GoodsDetailRequest) params.get(0);
+                }
+                mModel.goodsDetailImage(goodsDetailRequest, new IAsyncResultCallback<GoodsDetailDescResponse>() {
+                    @Override
+                    public void onComplete(GoodsDetailDescResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("商品详情描述");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
                 break;
             case "用户商品详情获取商品信息":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GoodsDetailRequest goodsDetailRequestinfo = new GoodsDetailRequest();
+                if (params.isEmpty()) {
+                    goodsDetailRequestinfo.setId(393);
+                    params.clear();
+                    params.add(goodsDetailRequestinfo);
+                } else {
+                    goodsDetailRequestinfo = (GoodsDetailRequest) params.get(0);
+                }
+                mModel.goodsDeatailInfo(goodsDetailRequestinfo, new IAsyncResultCallback<GoodsDetailInfoResponse>() {
+                    @Override
+                    public void onComplete(GoodsDetailInfoResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("商品详情描述");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
+
                 break;
             case "获取店铺信息":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetShopIdRequest shopIdRequest = new GetShopIdRequest();
+                if (params.isEmpty()) {
+                    shopIdRequest.setShopId(56);
+                    params.clear();
+                    params.add(shopIdRequest);
+                } else {
+                    shopIdRequest = (GetShopIdRequest) params.get(0);
+                }
+                mModel.getShopInfo(shopIdRequest, new IAsyncResultCallback<GetShopIdResponse>() {
+                    @Override
+                    public void onComplete(GetShopIdResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取店铺信息");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
+
                 break;
             case "得到最新评论":
                 ToastUtils.toastShort("开发中");

@@ -51,6 +51,7 @@ public class NetworkResultMessage extends NetworkMessage {
         if (result == null || result.isJsonNull()) {
             return null;
         }
+        //这里应该有一个解析异常
         return gson.fromJson(result, resultType);
     }
 

@@ -222,8 +222,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<StationListByRegionIdResponse>> callback, Object userState) {
-        return apiPostRequest(new TypeToken<List<RegionsByParentIdResponse>>() {
+    public IAsyncRequestState getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<StationListByRegionIdResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<StationListByRegionIdResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_STATION_LIST_BY_REGIONID, request, callback, userState);
     }
 

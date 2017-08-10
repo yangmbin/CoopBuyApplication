@@ -92,7 +92,7 @@ public class Constant {
     /**
      * 删除收货地址
      */
-    public static final String DELETE_SHIPPING_ADDRESS = "https://shop.coopbuy.com/api/services/app/member/DeleteShippingAddress";
+    public static final String DELETE_SHIPPING_ADDRESS = "api/services/app/member/DeleteShippingAddress";
     /**
      * 修改收货地址
      */

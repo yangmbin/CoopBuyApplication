@@ -16,14 +16,14 @@ public class OrderFreightRequest implements Serializable
      * regionId : 110102010001
      */
 
-    private long regionId;
+    private String regionId;
     private List<SkuItemsBean> skuItems;
 
-    public long getRegionId() {
+    public String getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(long regionId) {
+    public void setRegionId(String regionId) {
         this.regionId = regionId;
     }
 

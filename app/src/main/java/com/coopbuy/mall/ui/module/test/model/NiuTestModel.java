@@ -198,7 +198,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<StationListByRegionIdResponse>> callback, Object userState) {
+    public void getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<StationListByRegionIdResponse> callback, Object userState) {
         client.getRegionsStationByParentId(request, callback, userState);
     }
 
