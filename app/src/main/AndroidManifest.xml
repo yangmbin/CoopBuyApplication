@@ -21,7 +21,8 @@
         <activity android:name=".ui.module.test.activity.TestActivity" />
         <activity android:name=".ui.module.test.activity.SecondActivity" />
         <activity android:name=".ui.module.test.activity.TabLayoutActivity" />
-        <activity android:name=".ui.module.test.activity.NiuTestActivity"></activity>
+        <activity android:name=".ui.module.test.activity.NiuTestActivity"/>
+        <activity android:name=".ui.module.home.activity.BannerDetailActivity"/>
     </application>
 
 </manifest>

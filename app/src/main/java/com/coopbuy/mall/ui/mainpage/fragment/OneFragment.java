@@ -194,7 +194,7 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
      * 悬浮按钮点击返回顶部按钮和监听
      */
     private void goBackTopPosition() {
-        if (mAdapters.size() == 5) {
+        if (mAdapters.size() == 4) {
             ScrollFixLayoutHelper scrollFixLayoutHelper = new ScrollFixLayoutHelper(FixLayoutHelper.BOTTOM_RIGHT, ScreenUtils.dip2px(mContext, 15), ScreenUtils.dip2px(mContext, 15));
             scrollFixLayoutHelper.setShowType(ScrollFixLayoutHelper.SHOW_ON_LEAVE);
             List<Object> tmp = new ArrayList<>();

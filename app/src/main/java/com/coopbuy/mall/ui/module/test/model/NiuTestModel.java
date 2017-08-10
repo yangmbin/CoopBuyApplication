@@ -134,7 +134,7 @@ public class NiuTestModel implements BaseModel {
     }
 
     /**
-     * 获得站长推荐的商品
+     * 获取Banner详情
      *
      * @param callback
      * @param userState

@@ -101,4 +101,9 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     public void setCurrentTabView(int position) {
         mViewPager.setCurrentItem(position);
     }
+
+    public void setTabPosition(int position) {
+        mTabLayout.setCurrentTab(position);
+        setCurrentTabView(position);
+    }
 }

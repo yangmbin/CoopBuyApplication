@@ -132,6 +132,7 @@ public class HomePageDataByIdResponse implements Serializable {
             private String name;
             private int type;
             private int objectId;
+            private ObjectDataBean objectData;
             private String imageUrl;
             private int sort;
 
@@ -174,8 +175,70 @@ public class HomePageDataByIdResponse implements Serializable {
             public void setSort(int sort) {
                 this.sort = sort;
             }
-//
+
+            public ObjectDataBean getObjectData() {
+                return objectData;
+            }
+
+            public void setObjectData(ObjectDataBean objectData) {
+                this.objectData = objectData;
+            }
+
             public static class ObjectDataBean {
+
+                /**
+                 * goodsName : （爆品池）新款夏季韩版时尚印花T恤中长款网纱裙两件套连衣裙
+                 * promotionDesc :
+                 * sellingPrice : 79
+                 * imageUrl : /shop/images/ba58178c-b4ca-4310-8e52-2623a38c8ad7.jpg
+                 * sellingNumber : 0
+                 */
+
+                private String goodsName;
+                private String promotionDesc;
+                private int sellingPrice;
+                private String imageUrl;
+                private int sellingNumber;
+
+                public String getGoodsName() {
+                    return goodsName;
+                }
+
+                public void setGoodsName(String goodsName) {
+                    this.goodsName = goodsName;
+                }
+
+                public String getPromotionDesc() {
+                    return promotionDesc;
+                }
+
+                public void setPromotionDesc(String promotionDesc) {
+                    this.promotionDesc = promotionDesc;
+                }
+
+                public int getSellingPrice() {
+                    return sellingPrice;
+                }
+
+                public void setSellingPrice(int sellingPrice) {
+                    this.sellingPrice = sellingPrice;
+                }
+
+                public String getImageUrl() {
+                    return imageUrl;
+                }
+
+                public void setImageUrl(String imageUrl) {
+                    this.imageUrl = imageUrl;
+                }
+
+                public int getSellingNumber() {
+                    return sellingNumber;
+                }
+
+                public void setSellingNumber(int sellingNumber) {
+                    this.sellingNumber = sellingNumber;
+                }
             }
 
             public static class ExtendDataBean {
