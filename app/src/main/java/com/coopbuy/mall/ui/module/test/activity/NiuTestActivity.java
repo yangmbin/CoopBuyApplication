@@ -53,7 +53,6 @@ public class NiuTestActivity extends BaseActivity<NiuTestPresenter, NiuTestModel
     private String mTempParams = "";
     private List<Object> mParamObject;
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_test2;

@@ -84,7 +84,7 @@ public class PersistentCookieStore implements CookieStore {
         prefsWriter.putString(uri.host(), TextUtils.join(",", cookies.get(uri.host()).keySet()));
         prefsWriter.putString(COOKIE_NAME_PREFIX + name, encodeCookie(new SerializableHttpCookie(cookie)));
         prefsWriter.apply();
-    }
+     }
 
     protected String getCookieToken(Cookie cookie) {
         return cookie.name() + cookie.domain();
@@ -110,7 +110,6 @@ public class PersistentCookieStore implements CookieStore {
                 }
             }
         }
-
         return ret;
     }
 

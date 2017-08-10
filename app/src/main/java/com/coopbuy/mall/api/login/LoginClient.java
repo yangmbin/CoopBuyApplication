@@ -146,8 +146,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getStationRecommend(IAsyncResultCallback<HomePageDataResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<HomePageDataResponse>() {
+    public IAsyncRequestState getStationRecommend(IAsyncResultCallback<List<GetStationRecommendResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<HomePageDataResponse>>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_STATION_RECOMMEND, callback, userState);
     }
 
@@ -223,7 +223,7 @@ public class LoginClient extends BaseApiClient {
      */
     public IAsyncRequestState getRegionsByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<RegionsByParentIdResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<RegionsByParentIdResponse>>() {
-        }.getType(), Constant.SERVER_URL + Constant.GET_REGIONS_BY_PARENTID, request, callback, userState);
+        }.getType(), Constant.SERVER_URL + Constant.GET_STATION_LIST_BY_REGIONID, request, callback, userState);
     }
 
     /**
@@ -363,7 +363,7 @@ public class LoginClient extends BaseApiClient {
      */
     public IAsyncRequestState getOrderFreightAndUpdateOrderCounts(OrderFreightRequest request, IAsyncResultCallback<OrderFreightResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderFreightResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.ORDER_CONFIRM, request, callback, userState);
+        }.getType(), Constant.SERVER_URL + Constant.GET_ORDER_FREIGHT, request, callback, userState);
     }
 
     /**
@@ -379,5 +379,299 @@ public class LoginClient extends BaseApiClient {
         }.getType(), Constant.SERVER_URL + Constant.NEW_GOODS_ORDER, request, callback, userState);
     }
 
+    /**
+     * 商品详情描述  图片描述  请求都是id 用一个
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState goodsDetailImage(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailDescResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GoodsDetailDescResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_GOODS_DESC, request, callback, userState);
+    }
 
+    /**
+     * 商品详情描述 信息描述
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState goodsDeatailInfo(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GoodsDetailInfoResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_GOODS_INFOBYID, request, callback, userState);
+    }
+
+    /**
+     * 获取店铺信息
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+
+    public IAsyncRequestState getShopInfo(GetShopIdRequest request, IAsyncResultCallback<GetShopIdResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetShopIdResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_SHOP_BYID, request, callback, userState);
+    }
+
+    /**
+     * 得到最新评论
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getNetComment(GetNewCommentRequest request, IAsyncResultCallback<GetNewCommentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetNewCommentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_NEW_COMMENT, request, callback, userState);
+    }
+
+    /**
+     * 单个商品运费
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getGoodsFreight(GetGoodsFreightRequest request, IAsyncResultCallback<GetGoodsFreightResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetGoodsFreightResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_GOODS_FREIGHT, request, callback, userState);
+    }
+
+    /**
+     * 获取app更新状态
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getAppNewVersion(IAsyncResultCallback<AppNewVersionResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<AppNewVersionResponse>() {
+        }.getType(), Constant.APP_VERSION, callback, userState);
+    }
+
+    /**
+     * 电话 充值  的列表
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMobileOrderList(IAsyncResultCallback<MobileOrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<MobileOrderListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.MOBILE_CART_LIST, callback, userState);
+    }
+
+    /**
+     * 支付通道申请
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getPayApplyAndChannel(PayApplyAndChannelRequest request, IAsyncResultCallback<PayApplyAndChannelResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayApplyAndChannelResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PAY_APPLY_AND_CHANNEL, request, callback, userState);
+    }
+
+    /**
+     * 电话充值 订单确认 注意和购物车的订单不一样
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState mobifyOrderPayComfirm(MobifyOrderPayConfirmRequest request, IAsyncResultCallback<MobifyOrderPayConfirmResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<MobifyOrderPayConfirmResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PAY_CONFIRM, request, callback, userState);
+    }
+
+    /**
+     * 创建话费的订单
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState createMobileOrder(CreateMobileOrderRequest request, IAsyncResultCallback<CreateMobileOrderResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CreateMobileOrderResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.NEW_MOBILER_ORDER, request, callback, userState);
+    }
+
+    /**
+     * 获取各订单数量
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderQuantityNumber(IAsyncResultCallback<GetOrderQuantityResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ORDER_QUANTITY, callback, userState);
+    }
+
+    /**
+     * 订单列表  所有的请求参数 和响应是一样的  只是请求的参数不一样
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderAllList(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ORDER_ALL_LIST, request, callback, userState);
+    }
+
+    /**
+     * 代付款订单
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderListWaitForPayment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_PAYMENT_LIST, request, callback, userState);
+    }
+
+    /**
+     * 待发货
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderListWaitForDispatch(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_DISPATCH_LIST, request, callback, userState);
+    }
+
+    /**
+     * 待收货
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderListWaitForReceive(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_RECEIVE_LIST, request, callback, userState);
+    }
+
+    /**
+     * 待评价
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderListWaitForComment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_COMMENT_LIST, request, callback, userState);
+    }
+
+    /**
+     * 订单详情
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderDetail(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ORDER_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getHeplCenter(GetHeplCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetHeplCenterContentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_TEXT_CONTENT_LIST, request, callback, userState);
+    }
+
+    /**
+     * 退货流程
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getTextContent(GetTextContentRequest request, IAsyncResultCallback<GetTextCOntentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetTextCOntentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_TEXT_CONTENT, request, callback, userState);
+    }
+
+    /**
+     * 网站订单
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getNetOrder(NetOrderRequest request, IAsyncResultCallback<NetOrderResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<NetOrderResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.NET_ORDER, request, callback, userState);
+    }
+
+
+    /**
+     * 获取用户信息
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMemberInfo(IAsyncResultCallback<GetMemberInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetMemberInfoResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_MEMBER_INFO, callback, userState);
+    }
+
+    /**
+     * 修改用户信息 性别  昵称 等 修改那个字段就传那个字段
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState updateMobifyMember(IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.MOBIFY_MEMBER, callback, userState);
+    }
+
+    /**
+     * 意见反馈
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState postSuggest(PostSuggestRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.POST_SUGGEST, request, callback, userState);
+    }
+    /**
+     * 2017年8月9日11:46:17 告一个段落 这写了 还没有测试 搞这个搞了一天  还不算文档api编写
+     */
 }

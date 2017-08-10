@@ -31,8 +31,9 @@ public class BaseApiClient extends RequestClient {
         okHttpClientBuilder.writeTimeout(TIME_OUT, TimeUnit.SECONDS);
         okHttpClientBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
         if (context != null) {
-            okHttpClientBuilder.cookieJar(new CookierManager(context));
+         //   okHttpClientBuilder.cookieJar(new CookierManager(context));
         }
+
         okHttpClientBuilder.followRedirects(true); //设置重定向 其实默认也是true
         okHttpClientBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
@@ -41,8 +42,6 @@ public class BaseApiClient extends RequestClient {
             }
         });
         mOkHttpClient = okHttpClientBuilder.build();
-
-
     }
 
     static {

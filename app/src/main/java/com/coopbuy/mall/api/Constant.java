@@ -14,8 +14,8 @@ public class Constant {
     /**
      * 主机地址
      */
-//    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
-    public static final String SERVER_URL = "https://shop.coopbuy.com/";
+    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
+    //   public static final String SERVER_URL = "https://shop.coopbuy.com/";
     /**
      * 图片地址
      */
@@ -105,10 +105,7 @@ public class Constant {
      * 代付款 待处理 付款数量
      */
     public static final String QUANTITY = "api/services/app/userShoppingCart/Quantity";
-    /**
-     * 获取各订单数量
-     */
-    public static final String ORDER_QUANTITY = "api/services/app/userOrder/OrderQuantity";
+
     /**
      * 商品详情添加商品到购物车
      */
@@ -178,6 +175,11 @@ public class Constant {
      */
     public static final String NEW_MOBILER_ORDER = "api/services/app/userMobileOrder/New";
     /**
+     * 获取各订单数量
+     */
+    public static final String ORDER_QUANTITY = "api/services/app/userOrder/OrderQuantity";
+
+    /**
      * 订单列表
      */
     public static final String ORDER_ALL_LIST = "api/services/app/userOrder/AllList";
@@ -222,11 +224,12 @@ public class Constant {
      */
     public static final String MOBIFY_MEMBER = "api/services/app/member/MobifyMember";
     /**
-     * 修改密码
-     */
-    public static final String SMS_RESET_UPDATE_PASSWORD = "api/services/app/member/SmsResetUpdatePassword ";
-    /**
      * 意见反馈
      */
     public static final String POST_SUGGEST = "api/services/app/appSuggest/PostSuggest";
+
+    /**
+     * 保存cookie
+     */
+    public static final String COOKIE = "set_cookie";
 }

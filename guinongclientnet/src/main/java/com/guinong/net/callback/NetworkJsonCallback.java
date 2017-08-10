@@ -1,5 +1,7 @@
 package com.guinong.net.callback;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -78,9 +80,11 @@ public class NetworkJsonCallback implements Callback {
     private ArrayList<String> handleCookie(Headers headers) {
         ArrayList<String> tempList = new ArrayList<String>();
         for (int i = 0; i < headers.size(); i++) {
+            String s = headers.name(i);
             if (headers.name(i).equalsIgnoreCase(COOKIE_STORE)) {
                 tempList.add(headers.value(i));
             }
+
         }
         return tempList;
     }

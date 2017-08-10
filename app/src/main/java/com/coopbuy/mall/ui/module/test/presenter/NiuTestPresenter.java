@@ -3,6 +3,9 @@ package com.coopbuy.mall.ui.module.test.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.login.GetStationRecommendResponse;
+import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
+import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.login.HomePageDataRequest;
 import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.api.login.ImageCodeRequest;
@@ -321,13 +324,53 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "cate");
                 break;
 
-
             case "获取站长推荐商品":
+                mModel.getStationRecommend(new IAsyncResultCallback<List<GetStationRecommendResponse>>() {
+                    @Override
+                    public void onComplete(List<GetStationRecommendResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("站长推荐");
+                            mView.stopAll();
+                        }
+                    }
 
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "recommend");
                 break;
             case "首页banner图点击进入":
+                HomePageDataByIdRequest homePageDataByIdRequest = new HomePageDataByIdRequest();
+                if (params.isEmpty()) {
+                    homePageDataByIdRequest.setPageId("1");
+                    params.clear();
+                    params.add(homePageDataByIdRequest);
+                } else {
+                    homePageDataByIdRequest = (HomePageDataByIdRequest) params.get(0);
+                }
+                mModel.getPageDataById(homePageDataByIdRequest, new IAsyncResultCallback<HomePageDataByIdResponse>() {
+                    @Override
+                    public void onComplete(HomePageDataByIdResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort(" 首页banner图点击进入");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "banner");
+
                 break;
             case "首页点击（圆形图标）数据":
+
                 break;
             case "获取默认收货地址":
                 break;

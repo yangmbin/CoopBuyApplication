@@ -124,9 +124,13 @@ public abstract class RequestClient {
             String json = gson.toJson(model);
             RequestBody body = RequestBody.create(APPLICATION_JSON, json);
             return new Request.Builder().url(url).post(body).build();
-        }else {
-            RequestBody body = RequestBody.create(APPLICATION_JSON,"{}");
-            return new Request.Builder().url(url).post(body).build();
+        } else {
+            RequestBody body = RequestBody.create(APPLICATION_JSON, "{}");
+            return new Request.Builder().url(url).post(body)
+                    .addHeader("Cookie","ASP.NET_SessionId=5gkjkpy03xc3qz0hfjvng0xt; path=/; HttpOnly" )
+                    .addHeader("Cookie","oG8uj03OhS-3kifE2iLb39Jzs2gmo8uvoPmWRFXB6h8iI5-n3sfaMnOYSPIHPNJkPrHO7tCSd6hn_mhYUSjRB51IIhX1dWwsKQ9fyQ1E5pAhxmzcAOvFaHw9HHhB8Ywt0JCz-5_TubfeySfTVHDuDVID_n5LdWOKMRFG5Jd8pDpyPuB1de5D-aRZgMaJUioW3rFE1fX3cINun6B7sPEU_3ape2DnGwGuqBlFJpHahflDYl-PV8NKeQvZXyaZUD0Nj_yVYdoB7KBe16Qarz73ckWRzt0GJB3FsQOqRLHBjHBVVvUrYp7PxyYMphvJ-a3ilUD9euXgGJ22oTScNhXSbThfGyAocUKReRlZIa4xJDVDrUFFwN2A5V3eh2aw7ZGQhWEaVk_VljbvELV9Ecgazfbrhpf9JHaHxd62woqZYlQvU76UghkzB1vZ-AtNZ_gjHw1b8ZtolvSK_O_ZE7hHXQ; path=/; HttpOnly")
+                    .addHeader("Cookie",".AspNet.Cookies=hBlnP5aDMjk7hbF5QxQe3z6-stsdfrdeFuAGn5seEq1URUBlaMH8SvFANnFy1Fleji7oe1TsT5JMMytAuUPW7e1z_UeIj8sJA34KH7mPV-KN7rcc8yLpE_UzcLA15uS_y3RGCnARjMVQWjYsKzLs1iC6TVfRgqtdvYmrKE5o2Xf6fC3HMIc1SxaIPeerqWSP7E5veAXJGjWIqskokgdfr2foZYRn2wrt_czANkXGF2gyH-I6RiZ99XY5410HAwV-FB85RWK8K-uDdIV8rb0CBxwMRv_w7DWXSbVErGnvrzpXFgiRWuJOtDUAknPSmorlCDNdFLVMdHzQGb8qr3c3YICSX0M8O6LkirV6yGP9A7YIkANL4I70BuVYz2TFKmyybI1kPQUznmPiKy2T2gsn71nbz14l5wZ4mUZ_yYajEsQhUVKSZVR6z1V29hVT3bJF6en5lBdO11lCLP3tMarJIA; path=/; HttpOnly")
+                    .build();
         }
     }
 
@@ -143,7 +147,8 @@ public abstract class RequestClient {
         RequestParams params = new RequestParams();
         params.put("userName", "18089697084");
         params.put("password", "wy235479");
-       *//**/ if (model != null) {
+       *//**/
+        if (model != null) {
             StringBuilder urlBuilder = new StringBuilder(url).append("?");
             Class modelclass = model.getClass();
             Field[] fields = modelclass.getDeclaredFields();
