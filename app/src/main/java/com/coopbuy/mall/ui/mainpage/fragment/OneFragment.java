@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -21,22 +22,22 @@ import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_5;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_6;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_7;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_8;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_9;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;
-import com.coopbuy.mall.ui.module.test.activity.TestActivity;
-import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * 主页Fragment
@@ -52,6 +53,8 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
     TwinklingRefreshLayout mRefreshLayout;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
+    private int mScrollY = 0;
+    private HomeLayoutAdapter_9 mTopTitleBarAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -82,15 +85,9 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
         mRefreshLayout.setFloatRefresh(true);
         mRefreshLayout.setEnableOverScroll(false);
         mRefreshLayout.setOnRefreshListener(mListener);
-    }
 
-    @OnClick({R.id.jump_test})
-    public void onViewClicked(View v) {
-        switch (v.getId()) {
-            case R.id.jump_test:
-                IntentUtils.gotoActivity(mContext, TestActivity.class);
-                break;
-        }
+        // RecyclerView滑动监听设置颜色渐变
+        mRvHome.addOnScrollListener(mTitleBarColorListener);
     }
 
     @Override
@@ -171,21 +168,12 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
                 default:
                     break;
             }
-
-            // 返回顶部
-            if (mAdapters.size() == 5) {
-                ScrollFixLayoutHelper scrollFixLayoutHelper = new ScrollFixLayoutHelper(FixLayoutHelper.BOTTOM_RIGHT, ScreenUtils.dip2px(mContext, 15), ScreenUtils.dip2px(mContext, 15));
-                scrollFixLayoutHelper.setShowType(ScrollFixLayoutHelper.SHOW_ON_LEAVE);
-                List<Object> tmp = new ArrayList<>();
-                tmp.add(new Object());
-                mAdapters.add(new HomeLayoutAdapter_8(mContext, tmp, scrollFixLayoutHelper, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mRvHome.smoothScrollToPosition(0);
-                    }
-                }));
-            }
+            // 返回顶部按钮
+            goBackTopPosition();
         }
+
+        // 顶部标题栏
+        showTopTitleBar();
 
         mDelegateAdapter.setAdapters(mAdapters);
     }
@@ -201,4 +189,65 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
     public void stopPullToRefreshLoading() {
         mRefreshLayout.finishRefreshing();
     }
+
+    /**
+     * 悬浮按钮点击返回顶部按钮和监听
+     */
+    private void goBackTopPosition() {
+        if (mAdapters.size() == 5) {
+            ScrollFixLayoutHelper scrollFixLayoutHelper = new ScrollFixLayoutHelper(FixLayoutHelper.BOTTOM_RIGHT, ScreenUtils.dip2px(mContext, 15), ScreenUtils.dip2px(mContext, 15));
+            scrollFixLayoutHelper.setShowType(ScrollFixLayoutHelper.SHOW_ON_LEAVE);
+            List<Object> tmp = new ArrayList<>();
+            tmp.add(new Object());
+            mAdapters.add(new HomeLayoutAdapter_8(mContext, tmp, scrollFixLayoutHelper, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int itemCount = 0;
+                    for (int i = 0; i < mAdapters.size(); i++) {
+                        if (i == 5)
+                            break;
+                        itemCount += mAdapters.get(i).getItemCount();
+                    }
+                    mRvHome.scrollToPosition(itemCount);
+                    mRvHome.smoothScrollToPosition(0);
+                }
+            }));
+        }
+    }
+
+    /**
+     * RecyclerView滑动监听改变标题栏颜色
+     */
+    private RecyclerView.OnScrollListener mTitleBarColorListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            mScrollY += dy;
+            if (!recyclerView.canScrollVertically(-1))
+                mScrollY = 0;
+            if (mTopTitleBarAdapter != null && mTopTitleBarAdapter.getTitleBarLayout() != null) {
+                int bounds = mTopTitleBarAdapter.getTitleBarLayout().getHeight() * 3;
+                if (mScrollY <= bounds) {
+                    float scale = (float) mScrollY / bounds;
+                    float alpha = scale * 255;
+                    mTopTitleBarAdapter.getTitleBarLayout().setBackgroundColor(Color.argb((int) alpha, 111, 203, 21));
+                } else {
+                    mTopTitleBarAdapter.getTitleBarLayout().setBackgroundColor(Color.rgb(111, 203, 21));
+                }
+            }
+        }
+    };
+
+    /**
+     * 显示顶部标题栏
+     */
+    private void showTopTitleBar() {
+        FixLayoutHelper fixLayoutHelper = new FixLayoutHelper(FixLayoutHelper.TOP_LEFT, 0, 0);
+        fixLayoutHelper.setSketchMeasure(true);
+        List<Object> tmp = new ArrayList<>();
+        tmp.add(new Object());
+        mTopTitleBarAdapter = new HomeLayoutAdapter_9(mContext, tmp, fixLayoutHelper);
+        mAdapters.add(mTopTitleBarAdapter);
+    }
+
 }

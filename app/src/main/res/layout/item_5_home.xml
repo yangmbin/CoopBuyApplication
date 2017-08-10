@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
+    android:id="@+id/ll_item_5_home"
     tools:context=".ui.module.test.activity.TestActivity">
 
     <com.facebook.drawee.view.SimpleDraweeView
