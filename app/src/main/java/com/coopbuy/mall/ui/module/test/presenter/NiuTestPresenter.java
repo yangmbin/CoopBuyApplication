@@ -3,6 +3,7 @@ package com.coopbuy.mall.ui.module.test.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
 import com.coopbuy.mall.api.login.GetStationRecommendResponse;
 import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
@@ -14,6 +15,9 @@ import com.coopbuy.mall.api.login.LoginClient;
 import com.coopbuy.mall.api.login.LoginQuitRespsonse;
 import com.coopbuy.mall.api.login.LoginRequest;
 import com.coopbuy.mall.api.login.LoginResponse;
+import com.coopbuy.mall.api.login.RegionsByParentIdRequest;
+import com.coopbuy.mall.api.login.RegionsByParentIdResponse;
+import com.coopbuy.mall.api.login.RegionsResponse;
 import com.coopbuy.mall.api.login.RegisterRequest;
 import com.coopbuy.mall.api.login.RegisterResponse;
 import com.coopbuy.mall.api.login.SendSmsCodeRequest;
@@ -22,6 +26,8 @@ import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeResponse;
 import com.coopbuy.mall.api.login.SmsResetPasswordRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
+import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
+import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.test.model.NiuTestModel;
 import com.coopbuy.mall.ui.module.test.view.NiuTest_IView;
@@ -345,7 +351,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
             case "首页banner图点击进入":
                 HomePageDataByIdRequest homePageDataByIdRequest = new HomePageDataByIdRequest();
                 if (params.isEmpty()) {
-                    homePageDataByIdRequest.setPageId("1");
+                    homePageDataByIdRequest.setPageId("2");
                     params.clear();
                     params.add(homePageDataByIdRequest);
                 } else {
@@ -370,17 +376,115 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                 break;
             case "首页点击（圆形图标）数据":
-
+                ToastUtils.toastShort("调用上一个接口");
+                mView.stopAll();
                 break;
             case "获取默认收货地址":
+                mModel.getDefalutAddress(new IAsyncResultCallback<GetDefaultAddressResponse>() {
+                    @Override
+                    public void onComplete(GetDefaultAddressResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取默认收货地址");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "address");
                 break;
             case "获取用户收货地址列表":
+                mModel.getDefalutAddressList(new IAsyncResultCallback<List<GetDefaultAddressResponse>>() {
+                    @Override
+                    public void onComplete(List<GetDefaultAddressResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取默认收货地址列表");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "addressList");
                 break;
             case "获取行政区数":
+                mModel.getRegions(new IAsyncResultCallback<List<RegionsResponse>>() {
+                    @Override
+                    public void onComplete(List<RegionsResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取行政区数");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "getRegions");
                 break;
             case "根据区域id获取名称":
+                RegionsByParentIdRequest regisons = new RegionsByParentIdRequest();
+                if (params.isEmpty()) {
+                    regisons.setParentId("520522003000");
+                    params.clear();
+                    params.add(regisons);
+                } else {
+                    regisons = (RegionsByParentIdRequest) params.get(0);
+                }
+                mModel.getRegionsByParentId(regisons, new IAsyncResultCallback<List<RegionsByParentIdResponse>>() {
+                    @Override
+                    public void onComplete(List<RegionsByParentIdResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("根据区域id获取名称");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
+
                 break;
             case "通过行政区域id获取站长列表信息":
+                StationListByRegionIdRequest parentIdResponse = new StationListByRegionIdRequest();
+                if (params.isEmpty()) {
+                    parentIdResponse.setParentId("520522003001");
+                    params.clear();
+                    params.add(parentIdResponse);
+                } else {
+                    parentIdResponse = (StationListByRegionIdRequest) params.get(0);
+                }
+                mModel.getRegionsStationByParentId(parentIdResponse, new IAsyncResultCallback<List<StationListByRegionIdResponse>>() {
+                    @Override
+                    public void onComplete(List<StationListByRegionIdResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("根据区域id获取名称");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail());
+                        mView.stopAll();
+                    }
+                }, "getRegionsByParentId");
                 break;
             case "新建收货地址":
                 break;

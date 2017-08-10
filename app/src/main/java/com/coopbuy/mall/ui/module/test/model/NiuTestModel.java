@@ -69,6 +69,7 @@ import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeResponse;
 import com.coopbuy.mall.api.login.SmsResetPasswordRequest;
 import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
 import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
+import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
 import com.coopbuy.mall.api.login.UpdateGoodsQuantityRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.google.gson.reflect.TypeToken;
@@ -197,8 +198,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getRegionsByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<RegionsByParentIdResponse>> callback, Object userState) {
-        client.getRegionsByParentId(request, callback, userState);
+    public void getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<StationListByRegionIdResponse>> callback, Object userState) {
+        client.getRegionsStationByParentId(request, callback, userState);
     }
 
     /**

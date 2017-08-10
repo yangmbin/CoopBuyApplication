@@ -15,6 +15,8 @@ import com.guinong.net.NetworkErrorInfo;
 import com.guinong.net.NetworkException;
 import com.guinong.net.NetworkMessage;
 import com.guinong.net.NetworkResultMessage;
+import com.guinong.net.RequestClient;
+import com.guinong.net.cookie.SharedPreferencesUtils;
 import com.guinong.net.utils.LogUtil;
 
 import java.io.IOException;
@@ -36,6 +38,7 @@ public class NetworkJsonCallback implements Callback {
     private final Object userState;
     private final Gson gson;
     protected final String COOKIE_STORE = "Set-Cookie"; // decide the server it
+
     /**
      * @param isUnitTest
      * @param gson
@@ -79,15 +82,19 @@ public class NetworkJsonCallback implements Callback {
 
     private ArrayList<String> handleCookie(Headers headers) {
         ArrayList<String> tempList = new ArrayList<String>();
+        int count = 0;
         for (int i = 0; i < headers.size(); i++) {
             String s = headers.name(i);
             if (headers.name(i).equalsIgnoreCase(COOKIE_STORE)) {
                 tempList.add(headers.value(i));
+                SharedPreferencesUtils.getInstance(RequestClient.baseContext).saveCookier(headers.value(i), count);
+                count++;
             }
 
         }
         return tempList;
     }
+
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         String result = response.body().string();
