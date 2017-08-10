@@ -30,7 +30,7 @@ public class CreateShipAddressRequest implements Serializable {
     private boolean isDefault;
     private int siteId;
     private String siteName;
-    private long regionId;
+    private String regionId;
     private String regionFullName;
     private String nameUsedBefore;
     private int stationUserId;
@@ -91,11 +91,11 @@ public class CreateShipAddressRequest implements Serializable {
         this.siteName = siteName;
     }
 
-    public long getRegionId() {
+    public String getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(long regionId) {
+    public void setRegionId(String regionId) {
         this.regionId = regionId;
     }
 

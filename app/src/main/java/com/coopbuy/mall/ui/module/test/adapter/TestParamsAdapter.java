@@ -91,11 +91,18 @@ public class TestParamsAdapter extends BaseRecyclerAdapter<String> {
         for (int i = 0; i < fields.length; i++) {
             Field f = fields[i];
             f.setAccessible(true);
-
             try {
-                if (f.getName().equals(name)) {
-                    values = (String) f.get(object);
+                String type = f.getType().toString();
+                if (type.endsWith("String")) {
+                    if (f.getName().equals(name)) {
+                        values = (String) f.get(object);
+                    }
+                } else if (type.endsWith("int") || type.endsWith("Integer")) {
+                    if (f.getName().equals(name)) {
+                        values = (int) f.get(object) + "";
+                    }
                 }
+
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }

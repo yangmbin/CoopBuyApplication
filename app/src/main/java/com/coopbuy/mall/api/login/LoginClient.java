@@ -17,6 +17,7 @@ import java.util.List;
 public class LoginClient extends BaseApiClient {
     public LoginClient() {
         this.setUnitTest(false);
+
     }
 
     /**
@@ -221,8 +222,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getRegionsByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<List<RegionsByParentIdResponse>> callback, Object userState) {
-        return apiPostRequest(new TypeToken<List<RegionsByParentIdResponse>>() {
+    public IAsyncRequestState getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<StationListByRegionIdResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<StationListByRegionIdResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_STATION_LIST_BY_REGIONID, request, callback, userState);
     }
 

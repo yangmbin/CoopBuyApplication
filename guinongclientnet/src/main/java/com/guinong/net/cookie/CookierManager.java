@@ -1,6 +1,7 @@
 package com.guinong.net.cookie;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.test.mock.MockContext;
 
 
@@ -18,18 +19,23 @@ import okhttp3.HttpUrl;
  * @content
  */
 public class CookierManager implements CookieJar {
-    private final PersistentCookieStore cookieStore ;
+    private final PersistentCookieStore cookieStore;
+    private Context context;
 
     public CookierManager(Context context) {
+        this.context = context;
         cookieStore = new PersistentCookieStore(context);
     }
 
     @Override
     public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
         if (cookies != null && cookies.size() > 0) {
-            for (Cookie item : cookies) {
+          /*  SharedPreferencesUtils.getInstance(context).saveCookierSize(cookies.size());
+                SharedPreferencesUtils.getInstance(context).saveCookier(cookies) ;*/
+            //我不打算用他的  多个不知道为什么没有保存
+         /*   for (Cookie item : cookies) {
                 cookieStore.add(url, item);
-            }
+            }*/
         }
     }
 
