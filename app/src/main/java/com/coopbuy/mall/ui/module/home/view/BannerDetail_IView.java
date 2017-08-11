@@ -5,4 +5,5 @@ import com.coopbuy.mall.base.BaseView;
 
 public interface BannerDetail_IView extends BaseView {
     void setBannerDetailData(HomePageDataByIdResponse homePageDataByIdResponse);
+    void stopPullToRefreshLoading();
 }

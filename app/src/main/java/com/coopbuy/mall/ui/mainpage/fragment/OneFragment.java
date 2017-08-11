@@ -31,8 +31,6 @@ import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

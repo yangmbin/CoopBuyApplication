@@ -32,8 +32,9 @@ public class BannerDetailPresenter extends BasePresenter<BannerDetail_IView, Ban
     /**
      * 获取banner图详情
      */
-    public void getBannerDetailData(String ObjectId) {
-        mView.showFillLoading();
+    public void getBannerDetailData(String ObjectId, final boolean isPullToRefresh) {
+        if (!isPullToRefresh)
+            mView.showFillLoading();
         HomePageDataByIdRequest homePageDataByIdRequest = new HomePageDataByIdRequest();
         homePageDataByIdRequest.setPageId(ObjectId);
         mModel.getPageDataById(homePageDataByIdRequest, new IAsyncResultCallback<HomePageDataByIdResponse>() {
@@ -41,11 +42,15 @@ public class BannerDetailPresenter extends BasePresenter<BannerDetail_IView, Ban
             public void onComplete(HomePageDataByIdResponse homePageDataByIdResponse, Object userState) {
                 mView.setBannerDetailData(homePageDataByIdResponse);
                 mView.stopAll();
+                if (isPullToRefresh)
+                    mView.stopPullToRefreshLoading();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
                 mView.showNetErrorLayout();
+                if (isPullToRefresh)
+                    mView.stopPullToRefreshLoading();
             }
         }, "banner");
 
