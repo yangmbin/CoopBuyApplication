@@ -2,6 +2,7 @@ package com.coopbuy.mall.app;
 
 import com.coopbuy.mall.okhttp.OkHttpUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,8 @@ public class CoopBuyApplication extends BaseApplication {
         initOkHttp();
         // 初始化Fresco
         Fresco.initialize(this);
+        // 初始化Bugly
+        CrashReport.initCrashReport(getApplicationContext(), "4dced6560c", false);
     }
 
     /**

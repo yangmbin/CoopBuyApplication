@@ -1,11 +1,16 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
 import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
 import com.coopbuy.mall.ui.module.test.activity.NiuTestActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,27 +46,26 @@ public class FourFragment extends ViewPagerBaseFragment {
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
-            Log.e("yangmbin", "4可见了");
         } else {
-            Log.e("yangmbin", "4消失了");
         }
     }
 
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
-//        Log.e("yangmbin", "4第一次可见");
     }
 
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-    @OnClick(R.id.test)
-    public void onViewClicked() {
-        startActivity(new Intent(getActivity(), NiuTestActivity.class));
+    @OnClick({R.id.test, R.id.rl_view_all_order})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.test:
+                startActivity(new Intent(getActivity(), NiuTestActivity.class));
+                break;
+            case R.id.rl_view_all_order:
+                IntentUtils.gotoActivity(mContext, OrderActivity.class);
+                break;
+            default:
+                break;
+        }
     }
 }
