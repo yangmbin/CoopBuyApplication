@@ -4,13 +4,28 @@ import android.content.Context;
 
 import com.coopbuy.mall.api.classify.CategorysResponse;
 import com.coopbuy.mall.api.login.AddGoodsRequest;
+import com.coopbuy.mall.api.login.AppNewVersionResponse;
 import com.coopbuy.mall.api.login.CartListResponse;
+import com.coopbuy.mall.api.login.CreateMobileOrderRequest;
+import com.coopbuy.mall.api.login.CreateMobileOrderResponse;
 import com.coopbuy.mall.api.login.CreateShipAddressRequest;
 import com.coopbuy.mall.api.login.DeleteShipAddressRequest;
 import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
+import com.coopbuy.mall.api.login.GetGoodsFreightRequest;
+import com.coopbuy.mall.api.login.GetGoodsFreightResponse;
+import com.coopbuy.mall.api.login.GetHelpCenterContentRequest;
+import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
+import com.coopbuy.mall.api.login.GetMemberInfoResponse;
+import com.coopbuy.mall.api.login.GetNewCommentRequest;
+import com.coopbuy.mall.api.login.GetNewCommentResponse;
+import com.coopbuy.mall.api.login.GetOrderAllListRequest;
+import com.coopbuy.mall.api.login.GetOrderAllListResponse;
+import com.coopbuy.mall.api.login.GetOrderQuantityResponse;
 import com.coopbuy.mall.api.login.GetShopIdRequest;
 import com.coopbuy.mall.api.login.GetShopIdResponse;
 import com.coopbuy.mall.api.login.GetStationRecommendResponse;
+import com.coopbuy.mall.api.login.GetTextCOntentResponse;
+import com.coopbuy.mall.api.login.GetTextContentRequest;
 import com.coopbuy.mall.api.login.GoodsDetailDescResponse;
 import com.coopbuy.mall.api.login.GoodsDetailInfoResponse;
 import com.coopbuy.mall.api.login.GoodsDetailRequest;
@@ -20,18 +35,28 @@ import com.coopbuy.mall.api.login.HomePageDataRequest;
 import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.api.login.ImageCodeRequest;
 import com.coopbuy.mall.api.login.ImageCodeResponse;
-import com.coopbuy.mall.api.login.LoginClient;
 import com.coopbuy.mall.api.login.LoginQuitRespsonse;
 import com.coopbuy.mall.api.login.LoginRequest;
 import com.coopbuy.mall.api.login.LoginResponse;
+import com.coopbuy.mall.api.login.MobifyMemberRequest;
+import com.coopbuy.mall.api.login.MobifyOrderPayConfirmRequest;
+import com.coopbuy.mall.api.login.MobifyOrderPayConfirmResponse;
 import com.coopbuy.mall.api.login.MobifyShipAddressRequest;
+import com.coopbuy.mall.api.login.MobileOrderListResponse;
+import com.coopbuy.mall.api.login.NetOrderRequest;
+import com.coopbuy.mall.api.login.NetOrderResponse;
 import com.coopbuy.mall.api.login.NewUserGoodsOrderRequest;
 import com.coopbuy.mall.api.login.NewUserGoodsOrderresponse;
 import com.coopbuy.mall.api.login.OperateSuccessResponse;
 import com.coopbuy.mall.api.login.OrderConfirmRequest;
 import com.coopbuy.mall.api.login.OrderConfirmResponse;
+import com.coopbuy.mall.api.login.OrderDetailRequest;
+import com.coopbuy.mall.api.login.OrderDetailResponse;
 import com.coopbuy.mall.api.login.OrderFreightRequest;
 import com.coopbuy.mall.api.login.OrderFreightResponse;
+import com.coopbuy.mall.api.login.PayApplyAndChannelRequest;
+import com.coopbuy.mall.api.login.PayApplyAndChannelResponse;
+import com.coopbuy.mall.api.login.PostSuggestRequest;
 import com.coopbuy.mall.api.login.QuantityResponse;
 import com.coopbuy.mall.api.login.RegionsByParentIdRequest;
 import com.coopbuy.mall.api.login.RegionsByParentIdResponse;
@@ -526,6 +551,8 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     createShipAddressRequest = (CreateShipAddressRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.createShipAddress(createShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
@@ -552,6 +579,8 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     deleteShipAddressRequest = (DeleteShipAddressRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.deleteShipAddress(deleteShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
@@ -586,12 +615,14 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     mobifyShipAddressRequest = (MobifyShipAddressRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志操作反馈");
+                mView.stopAll();
                 mModel.mobifyShipAddress(mobifyShipAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
-                            ToastUtils.toastShort("删除收货地址");
+                            ToastUtils.toastShort("修改收货地址");
                             mView.stopAll();
                         }
                     }
@@ -612,6 +643,8 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     setDefaultAddressRequest = (SetDefaultAddressRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.setDefaultShipAddress(setDefaultAddressRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
@@ -663,6 +696,8 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     addGoodsRequest = (AddGoodsRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.addGoods(addGoodsRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
@@ -709,12 +744,14 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     updateGoods = (UpdateGoodsQuantityRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.updateGoodsQuantity(updateGoods, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
-                            ToastUtils.toastShort("商品详情添加商品到购物车");
+                            ToastUtils.toastShort("购物车商品数量更新");
                             mView.stopAll();
                         }
                     }
@@ -740,6 +777,8 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     removeGoodsRequest = (RemoveGoodsRequest) params.get(0);
                 }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
+                mView.stopAll();
                 mModel.removeGoods(removeGoodsRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
                     @Override
                     public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
@@ -939,88 +978,543 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                 break;
             case "得到最新评论":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetNewCommentRequest getNewCommentRequest = new GetNewCommentRequest();
+                if (params.isEmpty()) {
+                    getNewCommentRequest.setId("2354");
+                    params.clear();
+                    params.add(getNewCommentRequest);
+                } else {
+                    getNewCommentRequest = (GetNewCommentRequest) params.get(0);
+                }
+                mModel.getNetComment(getNewCommentRequest, new IAsyncResultCallback<GetNewCommentResponse>() {
+                    @Override
+                    public void onComplete(GetNewCommentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("得到最新评论");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
+
                 break;
             case "单个商品运费":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetGoodsFreightRequest getGoodsFreightRequest = new GetGoodsFreightRequest();
+                if (params.isEmpty()) {
+                    getGoodsFreightRequest.setGoodsId(2354);
+                    getGoodsFreightRequest.setRegionId("110102010001");
+                    params.clear();
+                    params.add(getGoodsFreightRequest);
+                } else {
+                    getGoodsFreightRequest = (GetGoodsFreightRequest) params.get(0);
+                }
+                mModel.getGoodsFreight(getGoodsFreightRequest, new IAsyncResultCallback<GetGoodsFreightResponse>() {
+                    @Override
+                    public void onComplete(GetGoodsFreightResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("单个商品运费");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
+
                 break;
             case "App更新":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                mModel.getAppNewVersion(new IAsyncResultCallback<AppNewVersionResponse>() {
+                    @Override
+                    public void onComplete(AppNewVersionResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("App更新");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
                 break;
-            case "话费充值":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
-                break;
-            case "支付通道申请":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
-                break;
-            case "订单确认":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+
+            case "电话 充值  的列表":
+                mModel.getMobileOrderList(new IAsyncResultCallback<MobileOrderListResponse>() {
+                    @Override
+                    public void onComplete(MobileOrderListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("电话 充值  的列表");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
+
                 break;
             case "创建话费订单":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                CreateMobileOrderRequest createMobileOrderRequest = new CreateMobileOrderRequest();
+                if (params.isEmpty()) {
+                    createMobileOrderRequest.setCartId("10");
+                    createMobileOrderRequest.setPhone("18286882993");
+                    params.clear();
+                    params.add(createMobileOrderRequest);
+                } else {
+                    createMobileOrderRequest = (CreateMobileOrderRequest) params.get(0);
+                }
+                mModel.createMobileOrder(createMobileOrderRequest, new IAsyncResultCallback<CreateMobileOrderResponse>() {
+                    @Override
+                    public void onComplete(CreateMobileOrderResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("话费充值");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "goodsDeatailInfo");
                 break;
-            case "获取各订单数量":
-                ToastUtils.toastShort("开发中");
+
+            case "支付通道申请":
+                PayApplyAndChannelRequest payApplyAndChannelRequest = new PayApplyAndChannelRequest();
+                if (params.isEmpty()) {
+                    payApplyAndChannelRequest.setChannelId("AliPay.APP");
+                    payApplyAndChannelRequest.setOrderId("根据上面的订单创建的订单号");
+                    params.clear();
+                    params.add(payApplyAndChannelRequest);
+                } else {
+                    payApplyAndChannelRequest = (PayApplyAndChannelRequest) params.get(0);
+                }
+                ToastUtils.toastShort("由于实际问题 查看参数");
                 mView.stopAll();
+                mModel.getPayApplyAndChannel(payApplyAndChannelRequest, new IAsyncResultCallback<PayApplyAndChannelResponse>() {
+                    @Override
+                    public void onComplete(PayApplyAndChannelResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("支付通道申请");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getPayApplyAndChannel");
+                break;
+            case "电话订单确认":
+                MobifyOrderPayConfirmRequest mobifyOrderPayConfirmRequest = new MobifyOrderPayConfirmRequest();
+                if (params.isEmpty()) {
+                    mobifyOrderPayConfirmRequest.setOrderId("根据上面的订单创建的订单号");
+                    params.clear();
+                    params.add(mobifyOrderPayConfirmRequest);
+                } else {
+                    mobifyOrderPayConfirmRequest = (MobifyOrderPayConfirmRequest) params.get(0);
+                }
+                ToastUtils.toastShort("由于实际问题 查看参数");
+                mView.stopAll();
+                mModel.mobifyOrderPayComfirm(mobifyOrderPayConfirmRequest, new IAsyncResultCallback<MobifyOrderPayConfirmResponse>() {
+                    @Override
+                    public void onComplete(MobifyOrderPayConfirmResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("电话订单确认");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
+                break;
+
+            case "获取各订单数量":
+                mModel.getOrderQuantityNumber(new IAsyncResultCallback<GetOrderQuantityResponse>() {
+                    @Override
+                    public void onComplete(GetOrderQuantityResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取各订单数量");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getOrderQuantityNumber");
+
                 break;
             case "订单列表":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetOrderAllListRequest getOrderAllListRequest = new GetOrderAllListRequest();
+                if (params.isEmpty()) {
+                    getOrderAllListRequest.setCurrentPage(2);
+                    params.clear();
+                    params.add(getOrderAllListRequest);
+                } else {
+                    getOrderAllListRequest = (GetOrderAllListRequest) params.get(0);
+                }
+                mModel.getOrderAllList(getOrderAllListRequest, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                    @Override
+                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("订单列表");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "代付款订单":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetOrderAllListRequest waitOrderList = new GetOrderAllListRequest();
+                if (params.isEmpty()) {
+                    waitOrderList.setCurrentPage(1);
+                    params.clear();
+                    params.add(waitOrderList);
+                } else {
+                    waitOrderList = (GetOrderAllListRequest) params.get(0);
+                }
+                mModel.getOrderListWaitForPayment(waitOrderList, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                    @Override
+                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("订单列表");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "待发货":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetOrderAllListRequest waitDispatch = new GetOrderAllListRequest();
+                if (params.isEmpty()) {
+                    waitDispatch.setCurrentPage(1);
+                    params.clear();
+                    params.add(waitDispatch);
+                } else {
+                    waitDispatch = (GetOrderAllListRequest) params.get(0);
+                }
+                mModel.getOrderListWaitForDispatch(waitDispatch, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                    @Override
+                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待发货");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "待收货":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetOrderAllListRequest waitReceive = new GetOrderAllListRequest();
+                if (params.isEmpty()) {
+                    waitReceive.setCurrentPage(1);
+                    params.clear();
+                    params.add(waitReceive);
+                } else {
+                    waitReceive = (GetOrderAllListRequest) params.get(0);
+                }
+                mModel.getOrderListWaitForReceive(waitReceive, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                    @Override
+                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待收货");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "待评价":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetOrderAllListRequest waitComment = new GetOrderAllListRequest();
+                if (params.isEmpty()) {
+                    waitComment.setCurrentPage(1);
+                    params.clear();
+                    params.add(waitComment);
+                } else {
+                    waitComment = (GetOrderAllListRequest) params.get(0);
+                }
+
+                mModel.getOrderListWaitForComment(waitComment, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                    @Override
+                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待评价");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "订单详情":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                OrderDetailRequest orderDetail = new OrderDetailRequest();
+                if (params.isEmpty()) {
+                    orderDetail.setOrderId("1708107148180227");
+                    params.clear();
+                    params.add(orderDetail);
+                } else {
+                    orderDetail = (OrderDetailRequest) params.get(0);
+                }
+                mModel.getOrderDetail(orderDetail, new IAsyncResultCallback<OrderDetailResponse>() {
+                    @Override
+                    public void onComplete(OrderDetailResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待评价");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "帮助中心":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetHelpCenterContentRequest helpCenterContentRequest = new GetHelpCenterContentRequest();
+                if (params.isEmpty()) {
+                    helpCenterContentRequest.setCurrentPage(1);
+                    helpCenterContentRequest.setCategoryKey("HelpCenter");
+                    params.clear();
+                    params.add(helpCenterContentRequest);
+                } else {
+                    helpCenterContentRequest = (GetHelpCenterContentRequest) params.get(0);
+                }
+                mModel.getHeplCenter(helpCenterContentRequest, new IAsyncResultCallback<GetHeplCenterContentResponse>() {
+                    @Override
+                    public void onComplete(GetHeplCenterContentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待评价");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "退货流程":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                GetTextContentRequest getTextContentRequest = new GetTextContentRequest();
+                if (params.isEmpty()) {
+                    getTextContentRequest.setId(2);
+                    params.clear();
+                    params.add(getTextContentRequest);
+                } else {
+                    getTextContentRequest = (GetTextContentRequest) params.get(0);
+                }
+                mModel.getTextContent(getTextContentRequest, new IAsyncResultCallback<GetTextCOntentResponse>() {
+                    @Override
+                    public void onComplete(GetTextCOntentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("退货流程");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "网站订单":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+                NetOrderRequest netOrderRequest = new NetOrderRequest();
+                if (params.isEmpty()) {
+                    netOrderRequest.setCurrentPage(1);
+                    params.clear();
+                    params.add(netOrderRequest);
+                } else {
+                    netOrderRequest = (NetOrderRequest) params.get(0);
+                }
+                mModel.getNetOrder(netOrderRequest, new IAsyncResultCallback<NetOrderResponse>() {
+                    @Override
+                    public void onComplete(NetOrderResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("网站订单");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
+
             case "获取用户信息":
-                ToastUtils.toastShort("开发中");
-                mView.stopAll();
+
+                mModel.getMemberInfo(new IAsyncResultCallback<GetMemberInfoResponse>() {
+                    @Override
+                    public void onComplete(GetMemberInfoResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取用户信息");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
+
                 break;
             case "修改用户昵称":
-                ToastUtils.toastShort("开发中");
+                MobifyMemberRequest mobifyMemberRequest = new MobifyMemberRequest();
+                if (params.isEmpty()) {
+                    mobifyMemberRequest.setNick("修改昵称");
+                    params.clear();
+                    params.add(mobifyMemberRequest);
+                } else {
+                    mobifyMemberRequest = (MobifyMemberRequest) params.get(0);
+                }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
                 mView.stopAll();
+                mModel.updateMobifyMember(mobifyMemberRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("修改用户昵称");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "修改性别":
-                ToastUtils.toastShort("开发中");
+                MobifyMemberRequest updateSex = new MobifyMemberRequest();
+                if (params.isEmpty()) {
+                    updateSex.setSex(2);
+                    params.clear();
+                    params.add(updateSex);
+                } else {
+                    updateSex = (MobifyMemberRequest) params.get(0);
+                }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
                 mView.stopAll();
+                mModel.updateMobifyMember(updateSex, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("修改性别");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             case "意见反馈":
-                ToastUtils.toastShort("开发中");
+                PostSuggestRequest suggestRequest = new PostSuggestRequest();
+                if (params.isEmpty()) {
+                    suggestRequest.setSuggestContent("开发测试");
+                    params.clear();
+                    params.add(suggestRequest);
+                } else {
+                    suggestRequest = (PostSuggestRequest) params.get(0);
+                }
+                ToastUtils.toastShort("由于服务器问题 请查看log日志");
                 mView.stopAll();
+                mModel.postSuggest(suggestRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("意见反馈");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
                 break;
             default:
                 break;

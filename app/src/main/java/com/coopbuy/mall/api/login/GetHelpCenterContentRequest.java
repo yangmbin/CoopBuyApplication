@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @date 2017/8/9 0009 10:57
  * @content
  */
-public class GetHeplCenterContentRequest implements Serializable {
+public class GetHelpCenterContentRequest implements Serializable {
 
     /**
      * categoryKey : HelpCenter

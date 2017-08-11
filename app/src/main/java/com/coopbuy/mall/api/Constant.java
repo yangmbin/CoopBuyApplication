@@ -227,7 +227,6 @@ public class Constant {
      * 意见反馈
      */
     public static final String POST_SUGGEST = "api/services/app/appSuggest/PostSuggest";
-
     /**
      * 保存cookie
      */

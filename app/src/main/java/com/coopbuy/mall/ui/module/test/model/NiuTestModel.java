@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.test.model;
 
-import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.classify.CategorysResponse;
 import com.coopbuy.mall.api.login.AddGoodsRequest;
 import com.coopbuy.mall.api.login.AppNewVersionResponse;
@@ -12,7 +11,7 @@ import com.coopbuy.mall.api.login.DeleteShipAddressRequest;
 import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
 import com.coopbuy.mall.api.login.GetGoodsFreightRequest;
 import com.coopbuy.mall.api.login.GetGoodsFreightResponse;
-import com.coopbuy.mall.api.login.GetHeplCenterContentRequest;
+import com.coopbuy.mall.api.login.GetHelpCenterContentRequest;
 import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
 import com.coopbuy.mall.api.login.GetMemberInfoResponse;
 import com.coopbuy.mall.api.login.GetNewCommentRequest;
@@ -38,6 +37,7 @@ import com.coopbuy.mall.api.login.LoginClient;
 import com.coopbuy.mall.api.login.LoginQuitRespsonse;
 import com.coopbuy.mall.api.login.LoginRequest;
 import com.coopbuy.mall.api.login.LoginResponse;
+import com.coopbuy.mall.api.login.MobifyMemberRequest;
 import com.coopbuy.mall.api.login.MobifyOrderPayConfirmRequest;
 import com.coopbuy.mall.api.login.MobifyOrderPayConfirmResponse;
 import com.coopbuy.mall.api.login.MobifyShipAddressRequest;
@@ -49,6 +49,8 @@ import com.coopbuy.mall.api.login.NewUserGoodsOrderresponse;
 import com.coopbuy.mall.api.login.OperateSuccessResponse;
 import com.coopbuy.mall.api.login.OrderConfirmRequest;
 import com.coopbuy.mall.api.login.OrderConfirmResponse;
+import com.coopbuy.mall.api.login.OrderDetailRequest;
+import com.coopbuy.mall.api.login.OrderDetailResponse;
 import com.coopbuy.mall.api.login.OrderFreightRequest;
 import com.coopbuy.mall.api.login.OrderFreightResponse;
 import com.coopbuy.mall.api.login.PayApplyAndChannelRequest;
@@ -72,9 +74,7 @@ import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
 import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
 import com.coopbuy.mall.api.login.UpdateGoodsQuantityRequest;
 import com.coopbuy.mall.base.BaseModel;
-import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncResultCallback;
-import com.guinong.net.request.IAsyncRequestState;
 
 import java.util.List;
 
@@ -540,7 +540,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderDetail(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         client.getOrderDetail(request, callback, userState);
     }
 
@@ -550,7 +550,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getHeplCenter(GetHeplCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
+    public void getHeplCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
         client.getHeplCenter(request, callback, userState);
     }
 
@@ -597,8 +597,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void updateMobifyMember(IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.updateMobifyMember(callback, userState);
+    public void updateMobifyMember(MobifyMemberRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.updateMobifyMember(request, callback, userState);
     }
 
     /**
