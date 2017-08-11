@@ -15,7 +15,7 @@ public class Constant {
      * 主机地址
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
-   public static final String SERVER_URL = "https://shop.coopbuy.com/";
+    public static final String SERVER_URL = "https://shop.coopbuy.com/";
     /**
      * 图片地址
      */
@@ -227,8 +227,48 @@ public class Constant {
      * 意见反馈
      */
     public static final String POST_SUGGEST = "api/services/app/appSuggest/PostSuggest";
+
+    /**
+     *  以下为后续接口添加  没有通过抓包的api
+     */
+    /**
+     * 商品搜索接口
+     */
+    public static final String SearchGoods = "api/services/app/goods/SearchGoods";
+/**
+ * 获取sku库
+ */
+  /*  public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";*//**
+     *
+     *//*
+    public static final String="";
+*/
+
     /**
      * 保存cookie
      */
     public static final String COOKIE = "set_cookie";
+
+
 }

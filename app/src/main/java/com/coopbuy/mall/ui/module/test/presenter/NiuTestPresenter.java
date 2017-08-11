@@ -397,7 +397,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
             case "首页banner图点击进入":
                 HomePageDataByIdRequest homePageDataByIdRequest = new HomePageDataByIdRequest();
                 if (params.isEmpty()) {
-                    homePageDataByIdRequest.setPageId("2");
+                    homePageDataByIdRequest.setPageId("4");
                     params.clear();
                     params.add(homePageDataByIdRequest);
                 } else {
@@ -684,17 +684,20 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 break;
             case "商品详情添加商品到购物车":
                 AddGoodsRequest addGoodsRequest = new AddGoodsRequest();
+                List<AddGoodsRequest.GoodsBean> data = new ArrayList<>();
                 if (params.isEmpty()) {
                     AddGoodsRequest.GoodsBean bean = new AddGoodsRequest.GoodsBean();
                     bean.setQuantity(2);
                     bean.setSkuId(2776);
-                    List<AddGoodsRequest.GoodsBean> data = new ArrayList<>();
+                    data.add(bean);
                     addGoodsRequest.setGoods(data);
                     params.clear();
-                    params.add(addGoodsRequest);
+                    params.add(bean);
                     ToastUtils.toastLong("请根据具体商品添加");
                 } else {
-                    addGoodsRequest = (AddGoodsRequest) params.get(0);
+                    AddGoodsRequest.GoodsBean bean = (AddGoodsRequest.GoodsBean) params.get(0);
+                    data.add(bean);
+                    addGoodsRequest.setGoods(data);
                 }
                 ToastUtils.toastShort("由于服务器问题 请查看log日志");
                 mView.stopAll();
@@ -768,9 +771,10 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
             case "购物车商品删除":
                 RemoveGoodsRequest removeGoodsRequest = new RemoveGoodsRequest();
                 if (params.isEmpty()) {
-                    List<Integer> data = new ArrayList<>();
-                    data.add(2776);
-                    removeGoodsRequest.setSkuId(data);
+
+                    List<Integer> da = new ArrayList<>();
+                    da.add(2776);
+                    removeGoodsRequest.setSkuId(da);
                     ToastUtils.toastLong("请根据具体商品删除");
                     params.clear();
                     params.add(removeGoodsRequest);
@@ -798,17 +802,21 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                 break;
             case "购物车提交订单 订单确认":
+                List<OrderConfirmRequest.SkusBean> d1 = new ArrayList<>();
                 OrderConfirmRequest orderConfirmRequest = new OrderConfirmRequest();
                 if (params.isEmpty()) {
-                    List<OrderConfirmRequest.SkusBean> data = new ArrayList<>();
+
                     OrderConfirmRequest.SkusBean bean = new OrderConfirmRequest.SkusBean();
                     bean.setSkuId(2776);
                     bean.setQuantity(1);
-                    orderConfirmRequest.setSkus(data);
+                    d1.add(bean);
+                    orderConfirmRequest.setSkus(d1);
                     params.clear();
-                    params.add(orderConfirmRequest);
+                    params.add(bean);
                 } else {
-                    orderConfirmRequest = (OrderConfirmRequest) params.get(0);
+                    OrderConfirmRequest.SkusBean bean = (OrderConfirmRequest.SkusBean) params.get(0);
+                    d1.add(bean);
+                    orderConfirmRequest.setSkus(d1);
                 }
                 mModel.orderConfirm(orderConfirmRequest, new IAsyncResultCallback<OrderConfirmResponse>() {
                     @Override
@@ -831,18 +839,22 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 break;
             case "购物车订单确认 商品运费 同时也是修改数量的接口":
                 OrderFreightRequest orderFreightRequest = new OrderFreightRequest();
+                List<OrderFreightRequest.SkuItemsBean> d2 = new ArrayList<>();
                 if (params.isEmpty()) {
-                    List<OrderFreightRequest.SkuItemsBean> data = new ArrayList<>();
+
                     OrderFreightRequest.SkuItemsBean bean = new OrderFreightRequest.SkuItemsBean();
                     bean.setQuantity(1);
                     bean.setSkuId(2776);
-                    data.add(bean);
+                    d2.add(bean);
                     orderFreightRequest.setRegionId("110102010001");
-                    orderFreightRequest.setSkuItems(data);
+                    orderFreightRequest.setSkuItems(d2);
                     params.clear();
-                    params.add(orderFreightRequest);
+                    params.add(bean);
                 } else {
-                    orderFreightRequest = (OrderFreightRequest) params.get(0);
+                    OrderFreightRequest.SkuItemsBean bean = (OrderFreightRequest.SkuItemsBean) params.get(0);
+                    d2.add(bean);
+                    orderFreightRequest.setSkuItems(d2);
+                    orderFreightRequest.setRegionId("110102010001");
                 }
                 mModel.getOrderFreightAndUpdateOrderCounts(orderFreightRequest, new IAsyncResultCallback<OrderFreightResponse>() {
                     @Override
@@ -865,17 +877,20 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 break;
             case "购物车订单提交  创建新订单":
                 NewUserGoodsOrderRequest newUserGoodsOrderRequest = new NewUserGoodsOrderRequest();
+                List<NewUserGoodsOrderRequest.SkusBean> d3 = new ArrayList<>();
                 if (params.isEmpty()) {
-                    List<NewUserGoodsOrderRequest.SkusBean> data = new ArrayList<>();
+
                     NewUserGoodsOrderRequest.SkusBean bean = new NewUserGoodsOrderRequest.SkusBean();
                     bean.setQuantity(1);
                     bean.setSkuId(2776);
-                    data.add(bean);
-                    newUserGoodsOrderRequest.setSkus(data);
+                    d3.add(bean);
+                    newUserGoodsOrderRequest.setSkus(d3);
                     params.clear();
-                    params.add(newUserGoodsOrderRequest);
+                    params.add(bean);
                 } else {
-                    newUserGoodsOrderRequest = (NewUserGoodsOrderRequest) params.get(0);
+                    NewUserGoodsOrderRequest.SkusBean bean = (NewUserGoodsOrderRequest.SkusBean) params.get(0);
+                    d3.add(bean);
+                    newUserGoodsOrderRequest.setSkus(d3);
                 }
                 mModel.newUserGoodsOrder(newUserGoodsOrderRequest, new IAsyncResultCallback<NewUserGoodsOrderresponse>() {
                     @Override
