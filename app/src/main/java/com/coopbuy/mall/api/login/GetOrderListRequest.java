@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @date 2017/8/9 0009 10:26
  * @content
  */
-public class GetOrderAllListRequest implements Serializable {
+public class GetOrderListRequest implements Serializable {
     private int currentPage;
 
     public int getCurrentPage() {

@@ -528,8 +528,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderAllList(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
+    public IAsyncRequestState getOrderAllList(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_ALL_LIST, request, callback, userState);
     }
 
@@ -541,8 +541,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderListWaitForPayment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
+    public IAsyncRequestState getOrderListWaitForPayment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_PAYMENT_LIST, request, callback, userState);
     }
 
@@ -554,7 +554,7 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderListWaitForDispatch(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public IAsyncRequestState getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_DISPATCH_LIST, request, callback, userState);
     }
@@ -567,8 +567,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderListWaitForReceive(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
+    public IAsyncRequestState getOrderListWaitForReceive(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_RECEIVE_LIST, request, callback, userState);
     }
 
@@ -580,8 +580,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderListWaitForComment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
+    public IAsyncRequestState getOrderListWaitForComment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_COMMENT_LIST, request, callback, userState);
     }
 

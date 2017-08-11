@@ -8,7 +8,7 @@ import java.util.List;
  * @date 2017/8/9 0009 10:27
  * @content
  */
-public class GetOrderAllListResponse implements Serializable {
+public class GetOrderListResponse implements Serializable {
 
     /**
      * rowCount : 0

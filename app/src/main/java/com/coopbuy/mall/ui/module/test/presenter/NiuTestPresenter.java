@@ -18,8 +18,8 @@ import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
 import com.coopbuy.mall.api.login.GetMemberInfoResponse;
 import com.coopbuy.mall.api.login.GetNewCommentRequest;
 import com.coopbuy.mall.api.login.GetNewCommentResponse;
-import com.coopbuy.mall.api.login.GetOrderAllListRequest;
-import com.coopbuy.mall.api.login.GetOrderAllListResponse;
+import com.coopbuy.mall.api.login.GetOrderListRequest;
+import com.coopbuy.mall.api.login.GetOrderListResponse;
 import com.coopbuy.mall.api.login.GetOrderQuantityResponse;
 import com.coopbuy.mall.api.login.GetShopIdRequest;
 import com.coopbuy.mall.api.login.GetShopIdResponse;
@@ -1176,17 +1176,17 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
 
                 break;
             case "订单列表":
-                GetOrderAllListRequest getOrderAllListRequest = new GetOrderAllListRequest();
+                GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
                 if (params.isEmpty()) {
-                    getOrderAllListRequest.setCurrentPage(2);
+                    getOrderListRequest.setCurrentPage(2);
                     params.clear();
-                    params.add(getOrderAllListRequest);
+                    params.add(getOrderListRequest);
                 } else {
-                    getOrderAllListRequest = (GetOrderAllListRequest) params.get(0);
+                    getOrderListRequest = (GetOrderListRequest) params.get(0);
                 }
-                mModel.getOrderAllList(getOrderAllListRequest, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                mModel.getOrderAllList(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
                     @Override
-                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                    public void onComplete(GetOrderListResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("订单列表");
@@ -1202,17 +1202,17 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "代付款订单":
-                GetOrderAllListRequest waitOrderList = new GetOrderAllListRequest();
+                GetOrderListRequest waitOrderList = new GetOrderListRequest();
                 if (params.isEmpty()) {
                     waitOrderList.setCurrentPage(1);
                     params.clear();
                     params.add(waitOrderList);
                 } else {
-                    waitOrderList = (GetOrderAllListRequest) params.get(0);
+                    waitOrderList = (GetOrderListRequest) params.get(0);
                 }
-                mModel.getOrderListWaitForPayment(waitOrderList, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                mModel.getOrderListWaitForPayment(waitOrderList, new IAsyncResultCallback<GetOrderListResponse>() {
                     @Override
-                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                    public void onComplete(GetOrderListResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("订单列表");
@@ -1228,17 +1228,17 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "待发货":
-                GetOrderAllListRequest waitDispatch = new GetOrderAllListRequest();
+                GetOrderListRequest waitDispatch = new GetOrderListRequest();
                 if (params.isEmpty()) {
                     waitDispatch.setCurrentPage(1);
                     params.clear();
                     params.add(waitDispatch);
                 } else {
-                    waitDispatch = (GetOrderAllListRequest) params.get(0);
+                    waitDispatch = (GetOrderListRequest) params.get(0);
                 }
-                mModel.getOrderListWaitForDispatch(waitDispatch, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                mModel.getOrderListWaitForDispatch(waitDispatch, new IAsyncResultCallback<GetOrderListResponse>() {
                     @Override
-                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                    public void onComplete(GetOrderListResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("待发货");
@@ -1254,17 +1254,17 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "待收货":
-                GetOrderAllListRequest waitReceive = new GetOrderAllListRequest();
+                GetOrderListRequest waitReceive = new GetOrderListRequest();
                 if (params.isEmpty()) {
                     waitReceive.setCurrentPage(1);
                     params.clear();
                     params.add(waitReceive);
                 } else {
-                    waitReceive = (GetOrderAllListRequest) params.get(0);
+                    waitReceive = (GetOrderListRequest) params.get(0);
                 }
-                mModel.getOrderListWaitForReceive(waitReceive, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                mModel.getOrderListWaitForReceive(waitReceive, new IAsyncResultCallback<GetOrderListResponse>() {
                     @Override
-                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                    public void onComplete(GetOrderListResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("待收货");
@@ -1280,18 +1280,18 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "待评价":
-                GetOrderAllListRequest waitComment = new GetOrderAllListRequest();
+                GetOrderListRequest waitComment = new GetOrderListRequest();
                 if (params.isEmpty()) {
                     waitComment.setCurrentPage(1);
                     params.clear();
                     params.add(waitComment);
                 } else {
-                    waitComment = (GetOrderAllListRequest) params.get(0);
+                    waitComment = (GetOrderListRequest) params.get(0);
                 }
 
-                mModel.getOrderListWaitForComment(waitComment, new IAsyncResultCallback<GetOrderAllListResponse>() {
+                mModel.getOrderListWaitForComment(waitComment, new IAsyncResultCallback<GetOrderListResponse>() {
                     @Override
-                    public void onComplete(GetOrderAllListResponse categorysResponses, Object userState) {
+                    public void onComplete(GetOrderListResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
                             mView.showData(gson.toJson(categorysResponses));
                             ToastUtils.toastShort("待评价");

@@ -16,8 +16,8 @@ import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
 import com.coopbuy.mall.api.login.GetMemberInfoResponse;
 import com.coopbuy.mall.api.login.GetNewCommentRequest;
 import com.coopbuy.mall.api.login.GetNewCommentResponse;
-import com.coopbuy.mall.api.login.GetOrderAllListRequest;
-import com.coopbuy.mall.api.login.GetOrderAllListResponse;
+import com.coopbuy.mall.api.login.GetOrderListRequest;
+import com.coopbuy.mall.api.login.GetOrderListResponse;
 import com.coopbuy.mall.api.login.GetOrderQuantityResponse;
 import com.coopbuy.mall.api.login.GetShopIdRequest;
 import com.coopbuy.mall.api.login.GetShopIdResponse;
@@ -480,7 +480,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderAllList(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderAllList(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         client.getOrderAllList(request, callback, userState);
     }
 
@@ -492,7 +492,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForPayment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderListWaitForPayment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         client.getOrderListWaitForPayment(request, callback, userState);
     }
 
@@ -504,7 +504,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForReceive(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderListWaitForReceive(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         client.getOrderListWaitForReceive(request, callback, userState);
     }
 
@@ -516,7 +516,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForDispatch(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         client.getOrderListWaitForReceive(request, callback, userState);
     }
 
@@ -528,7 +528,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForComment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
+    public void getOrderListWaitForComment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
         client.getOrderListWaitForComment(request, callback, userState);
     }
 
