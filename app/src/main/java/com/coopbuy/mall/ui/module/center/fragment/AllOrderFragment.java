@@ -52,6 +52,7 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
     @Override
     protected void initView() {
         VirtualLayoutManager manager = new VirtualLayoutManager(mContext);
+        manager.setAutoMeasureEnabled(true);
         mRvAllOrder.setLayoutManager(manager);
         mDelegateAdapter = new DelegateAdapter(manager, false);
         mRvAllOrder.setAdapter(mDelegateAdapter);
