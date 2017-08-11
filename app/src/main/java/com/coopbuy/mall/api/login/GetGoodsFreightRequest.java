@@ -15,7 +15,7 @@ public class GetGoodsFreightRequest implements Serializable {
      */
 
     private int goodsId;
-    private long regionId;
+    private String regionId;
 
     public int getGoodsId() {
         return goodsId;
@@ -25,11 +25,11 @@ public class GetGoodsFreightRequest implements Serializable {
         this.goodsId = goodsId;
     }
 
-    public long getRegionId() {
+    public String getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(long regionId) {
+    public void setRegionId(String regionId) {
         this.regionId = regionId;
     }
 }

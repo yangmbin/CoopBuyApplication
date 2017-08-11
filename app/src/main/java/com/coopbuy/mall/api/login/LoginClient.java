@@ -529,7 +529,7 @@ public class LoginClient extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState getOrderAllList(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_ALL_LIST, request, callback, userState);
     }
 
@@ -542,7 +542,7 @@ public class LoginClient extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState getOrderListWaitForPayment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_PAYMENT_LIST, request, callback, userState);
     }
 
@@ -568,7 +568,7 @@ public class LoginClient extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState getOrderListWaitForReceive(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_RECEIVE_LIST, request, callback, userState);
     }
 
@@ -581,7 +581,7 @@ public class LoginClient extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState getOrderListWaitForComment(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        return apiPostRequest(new TypeToken<GetOrderAllListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_COMMENT_LIST, request, callback, userState);
     }
 
@@ -593,8 +593,8 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderDetail(GetOrderAllListRequest request, IAsyncResultCallback<GetOrderAllListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderDetailResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_DETAIL, request, callback, userState);
     }
 
@@ -604,7 +604,7 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getHeplCenter(GetHeplCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
+    public IAsyncRequestState getHeplCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GetHeplCenterContentResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_TEXT_CONTENT_LIST, request, callback, userState);
     }
@@ -655,9 +655,9 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState updateMobifyMember(IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState updateMobifyMember(MobifyMemberRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.MOBIFY_MEMBER, callback, userState);
+        }.getType(), Constant.SERVER_URL + Constant.MOBIFY_MEMBER, request, callback, userState);
     }
 
     /**
