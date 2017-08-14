@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.CoopBuyApplication"
@@ -27,7 +31,10 @@
         <activity android:name=".ui.module.test.activity.TabLayoutActivity" />
         <activity android:name=".ui.module.test.activity.NiuTestActivity" />
         <activity android:name=".ui.module.home.activity.BannerDetailActivity" />
-        <activity android:name=".ui.module.center.activity.OrderActivity"></activity>
+        <activity android:name=".ui.module.center.activity.OrderActivity" />
+        <activity android:name=".ui.module.center.activity.OrderDetailActivity" />
+        <activity android:name=".ui.module.home.activity.ScanQrCodeActivity" />
+        <activity android:name=".ui.module.home.activity.QrqWbActivity"></activity>
     </application>
 
 </manifest>

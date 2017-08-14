@@ -9,6 +9,8 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.List;
@@ -39,7 +41,7 @@ public class HomeLayoutAdapter_9 extends BaseDelegateAdapter<Object> {
         holder.getView(R.id.fl_left).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toastShort("左");
+                IntentUtils.gotoActivity(mContext, ScanQrCodeActivity.class);
             }
         });
         holder.getView(R.id.fl_right).setOnClickListener(new View.OnClickListener() {

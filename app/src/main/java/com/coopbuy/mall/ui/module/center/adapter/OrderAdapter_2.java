@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.module.center.adapter;
 
 
 import android.content.Context;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
@@ -14,15 +15,18 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-public class OrderGoodsAdapter extends BaseDelegateAdapter<GetOrderListResponse.ItemsBean.OrderItemBean> {
+public class OrderAdapter_2 extends BaseDelegateAdapter<GetOrderListResponse.ItemsBean.OrderItemBean> {
 
-    public OrderGoodsAdapter(Context ctx, List<GetOrderListResponse.ItemsBean.OrderItemBean> list, LayoutHelper mLayoutHelper) {
+    private View.OnClickListener mListener;
+
+    public OrderAdapter_2(Context ctx, List<GetOrderListResponse.ItemsBean.OrderItemBean> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
         super(ctx, list, mLayoutHelper);
+        this.mListener = mListener;
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.item_order_list_goods;
+        return R.layout.item_order_list_type_2;
     }
 
     @Override
@@ -31,5 +35,6 @@ public class OrderGoodsAdapter extends BaseDelegateAdapter<GetOrderListResponse.
         holder.getTextView(R.id.tv_goods_name).setText(item.getGoodsName());
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
         holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.itemView.setOnClickListener(mListener);
     }
 }
