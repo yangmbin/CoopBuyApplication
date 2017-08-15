@@ -14,10 +14,9 @@ import java.util.List;
  * @date 2017/8/1 0001 14:09
  * @content 这里是登录相关api
  */
-public class LoginClient extends BaseApiClient {
-    public LoginClient() {
+public class NetClientManager extends BaseApiClient {
+    public NetClientManager() {
         this.setUnitTest(false);
-
     }
 
     /**
@@ -593,7 +592,7 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderDetail(OrderOperateRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderDetailResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_DETAIL, request, callback, userState);
     }
@@ -702,7 +701,6 @@ public class LoginClient extends BaseApiClient {
         return apiPostRequest(new TypeToken<GetSkuStockResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_SKU_STOCK, request, callback, userState);
     }
-
 
 
     /**
@@ -835,7 +833,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState orderDelete(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState orderDelete(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_DELETE, request, callback, userState);
     }
@@ -847,7 +845,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState orderCancel(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState orderCancel(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_CANCEL, request, callback, userState);
     }
@@ -859,7 +857,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState receiveOreder(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState receiveOreder(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.RECEIVE_OREDER, request, callback, userState);
     }
@@ -871,7 +869,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState delayedReceive(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState delayedReceive(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.DELAYED_RECEIVE, request, callback, userState);
     }
@@ -883,7 +881,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState logisticsInfo(OrderOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
+    public IAsyncRequestState logisticsInfo(OrderIdOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<LogisticsInfoResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.LOGISTICS_INFO, request, callback, userState);
     }
@@ -979,7 +977,7 @@ public class LoginClient extends BaseApiClient {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState userApply(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public IAsyncRequestState userApply(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.USER_APPLY, request, callback, userState);
     }

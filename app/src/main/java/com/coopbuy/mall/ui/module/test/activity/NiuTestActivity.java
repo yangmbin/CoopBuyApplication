@@ -18,7 +18,6 @@ import com.coopbuy.mall.ui.module.test.port.ClickPort;
 import com.coopbuy.mall.ui.module.test.presenter.NiuTestPresenter;
 import com.coopbuy.mall.ui.module.test.view.NiuTest_IView;
 import com.coopbuy.mall.utils.PicCodeUtil;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
 import java.lang.reflect.Field;
@@ -175,4 +174,5 @@ public class NiuTestActivity extends BaseActivity<NiuTestPresenter, NiuTestModel
         mTvHint.setVisibility(View.GONE);
         mIvCode.setBackground(PicCodeUtil.byteToDrawable(code));
     }
+
 }

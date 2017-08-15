@@ -1,5 +1,7 @@
 package com.coopbuy.mall.base;
 
+import com.guinong.net.request.IAsyncRequestState;
+
 /**
  * View接口
  *
@@ -20,4 +22,6 @@ public interface BaseView {
     void showNetErrorLayout();
 
     void showCustomLayout(int layoutId);
+
+    void appendNetCall(IAsyncRequestState state);
 }

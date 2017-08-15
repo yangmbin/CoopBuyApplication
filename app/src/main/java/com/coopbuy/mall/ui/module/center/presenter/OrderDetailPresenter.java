@@ -19,6 +19,7 @@ public class OrderDetailPresenter extends BasePresenter<OrderDetail_IView, Order
 
     /**
      * 获取订单详情
+     *
      * @param orderId
      */
     public void getOrderDetail(String orderId) {

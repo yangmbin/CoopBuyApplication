@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @date 2017/8/9 0009 10:49
  * @content
  */
-public class OrderOperateRequest implements Serializable {
+public class OrderIdOperateRequest implements Serializable {
 
     /**
      * orderId : 1708074920513052

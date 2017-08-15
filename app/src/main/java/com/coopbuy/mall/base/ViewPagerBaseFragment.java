@@ -4,12 +4,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
+import com.guinong.net.request.IAsyncRequestState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -25,6 +30,7 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     public Context mContext;
     private View rootView;
     private LoadingBox box;
+    public List<IAsyncRequestState> mNetCalls = new ArrayList<>();
 
     // 是否创建了视图
     private boolean hasCreateView;
@@ -161,12 +167,14 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     /**
      * 网络重载按钮
      */
-    protected void networkRetry() {}
+    protected void networkRetry() {
+    }
 
     /**
      * 自定义页面按钮
      */
-    protected void customClick() {}
+    protected void customClick() {
+    }
 
     /**
      * 判断Fragment是否可见，先于onCreateView执行
@@ -218,12 +226,28 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
         }
     }
 
+    /**
+     * 添加网络请求到请求列表
+     *
+     * @param state
+     */
+    public void appendNetCall(IAsyncRequestState state) {
+        mNetCalls.add(state);
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
         if (mPresenter != null)
             mPresenter.onDestroy();
+
+        if (!mNetCalls.isEmpty()) {
+            for (IAsyncRequestState state : mNetCalls) {
+                state.cancel();
+                Log.e("niu", "cancel net");
+            }
+        }
     }
 
     @Override

@@ -37,7 +37,7 @@ public class BannerDetailPresenter extends BasePresenter<BannerDetail_IView, Ban
             mView.showFillLoading();
         HomePageDataByIdRequest homePageDataByIdRequest = new HomePageDataByIdRequest();
         homePageDataByIdRequest.setPageId(ObjectId);
-        mModel.getPageDataById(homePageDataByIdRequest, new IAsyncResultCallback<HomePageDataByIdResponse>() {
+        mView.appendNetCall(mModel.getPageDataById(homePageDataByIdRequest, new IAsyncResultCallback<HomePageDataByIdResponse>() {
             @Override
             public void onComplete(HomePageDataByIdResponse homePageDataByIdResponse, Object userState) {
                 mView.setBannerDetailData(homePageDataByIdResponse);
@@ -52,7 +52,7 @@ public class BannerDetailPresenter extends BasePresenter<BannerDetail_IView, Ban
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
             }
-        }, "banner");
+        }, "banner"));
 
     }
 }

@@ -11,6 +11,7 @@ import com.coopbuy.mall.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
+import com.guinong.net.request.IAsyncRequestState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,14 @@ import java.util.List;
 public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel> {
     private Gson gson;
     private String sendkey = "";
+    private IAsyncRequestState state;
 
     public NiuTestPresenter(Context mContext, NiuTestModel mModel, NiuTest_IView mView) {
         super(mContext, mModel, mView);
+    }
+
+    public void cancel() {
+        state.cancel();
     }
 
     public void sendRequest(String value, List<Object> params) {
@@ -77,7 +83,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     imageCodeRequest = (ImageCodeRequest) params.get(0);
                 }
-                mModel.getImageCode(imageCodeRequest, new IAsyncResultCallback<ImageCodeResponse>() {
+                 mModel.getImageCode(imageCodeRequest, new IAsyncResultCallback<ImageCodeResponse>() {
                     @Override
                     public void onComplete(ImageCodeResponse imageCodeResponse, Object userState) {
                         if (imageCodeResponse != null) {
@@ -1251,13 +1257,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "订单详情":
-                OrderOperateRequest orderDetail = new OrderOperateRequest();
+                OrderDetailRequest orderDetail = new OrderDetailRequest();
                 if (params.isEmpty()) {
                     orderDetail.setOrderId("1708107148180227");
                     params.clear();
                     params.add(orderDetail);
                 } else {
-                    orderDetail = (OrderOperateRequest) params.get(0);
+                    orderDetail = (OrderDetailRequest) params.get(0);
                 }
                 mModel.getOrderDetail(orderDetail, new IAsyncResultCallback<OrderDetailResponse>() {
                     @Override
@@ -1286,7 +1292,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     helpCenterContentRequest = (GetHelpCenterContentRequest) params.get(0);
                 }
-                mModel.getHeplCenter(helpCenterContentRequest, new IAsyncResultCallback<GetHeplCenterContentResponse>() {
+                mModel.getHelpCenter(helpCenterContentRequest, new IAsyncResultCallback<GetHeplCenterContentResponse>() {
                     @Override
                     public void onComplete(GetHeplCenterContentResponse categorysResponses, Object userState) {
                         if (categorysResponses != null) {
@@ -1742,13 +1748,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "addGoodsComment");
                 break;
             case "订单删除N":
-                OrderOperateRequest orderDelete = new OrderOperateRequest();
+                OrderIdOperateRequest orderDelete = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     orderDelete.setOrderId("1708074920513052");
                     params.clear();
                     params.add(orderDelete);
                 } else {
-                    orderDelete = (OrderOperateRequest) params.get(0);
+                    orderDelete = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.orderDelete(orderDelete, new IAsyncResultCallback<OperateSuccessResponse>() {
@@ -1769,13 +1775,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "addGoodsComment");
                 break;
             case "订单取消N":
-                OrderOperateRequest orderCancel = new OrderOperateRequest();
+                OrderIdOperateRequest orderCancel = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     orderCancel.setOrderId("1708155869174725");
                     params.clear();
                     params.add(orderCancel);
                 } else {
-                    orderDelete = (OrderOperateRequest) params.get(0);
+                    orderDelete = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.orderCancel(orderCancel, new IAsyncResultCallback<OperateSuccessResponse>() {
@@ -1796,13 +1802,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "addGoodsComment");
                 break;
             case "签收订单N":
-                OrderOperateRequest orderReceive = new OrderOperateRequest();
+                OrderIdOperateRequest orderReceive = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     orderReceive.setOrderId("自己添加订单号");
                     params.clear();
                     params.add(orderReceive);
                 } else {
-                    orderReceive = (OrderOperateRequest) params.get(0);
+                    orderReceive = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.receiveOreder(orderReceive, new IAsyncResultCallback<OperateSuccessResponse>() {
@@ -1823,13 +1829,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "addGoodsComment");
                 break;
             case "延迟收货N":
-                OrderOperateRequest orderDelayed = new OrderOperateRequest();
+                OrderIdOperateRequest orderDelayed = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     orderDelayed.setOrderId("自己添加订单号");
                     params.clear();
                     params.add(orderDelayed);
                 } else {
-                    orderDelayed = (OrderOperateRequest) params.get(0);
+                    orderDelayed = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.delayedReceive(orderDelayed, new IAsyncResultCallback<OperateSuccessResponse>() {
@@ -1850,13 +1856,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "addGoodsComment");
                 break;
             case "获取订单物流信息N":
-                OrderOperateRequest loginstcs = new OrderOperateRequest();
+                OrderIdOperateRequest loginstcs = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     loginstcs.setOrderId("自己添加订单号");
                     params.clear();
                     params.add(loginstcs);
                 } else {
-                    loginstcs = (OrderOperateRequest) params.get(0);
+                    loginstcs = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.logisticsInfo(loginstcs, new IAsyncResultCallback<LogisticsInfoResponse>() {
@@ -2060,12 +2066,12 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "getFirstTextContent");
                 break;
             case "站长代付申请N":
-                OrderOperateRequest orderUserApply = new OrderOperateRequest();
+                OrderIdOperateRequest orderUserApply = new OrderIdOperateRequest();
                 if (params.isEmpty()) {
                     params.clear();
                     params.add(orderUserApply);
                 } else {
-                    orderUserApply = (OrderOperateRequest) params.get(0);
+                    orderUserApply = (OrderIdOperateRequest) params.get(0);
                 }
                 ToastUtils.toastShort(" 参数不明 自行添加测试");
                 mModel.userApply(orderUserApply, new IAsyncResultCallback<OperateSuccessResponse>() {

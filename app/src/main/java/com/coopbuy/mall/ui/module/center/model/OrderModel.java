@@ -2,14 +2,14 @@ package com.coopbuy.mall.ui.module.center.model;
 
 import com.coopbuy.mall.api.login.GetOrderListRequest;
 import com.coopbuy.mall.api.login.GetOrderListResponse;
-import com.coopbuy.mall.api.login.LoginClient;
+import com.coopbuy.mall.api.login.NetClientManager;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 
 
 public class OrderModel implements BaseModel {
 
-    LoginClient client = new LoginClient();
+
 
     /**
      * 获取所有订单列表
