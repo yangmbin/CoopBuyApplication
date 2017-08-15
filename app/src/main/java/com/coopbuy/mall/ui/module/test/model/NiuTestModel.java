@@ -1,10 +1,8 @@
 package com.coopbuy.mall.ui.module.test.model;
 
-import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.classify.CategorysResponse;
 import com.coopbuy.mall.api.login.*;
 import com.coopbuy.mall.base.BaseModel;
-import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;
 
@@ -16,14 +14,12 @@ import java.util.List;
  * @content
  */
 public class NiuTestModel implements BaseModel {
-    LoginClient client = new LoginClient();
-
     public void login(LoginRequest request, IAsyncResultCallback<LoginResponse> callback, Object userState) {
         client.LoginRequest(request, callback, userState);
     }
 
-    public void getImageCode(ImageCodeRequest request, IAsyncResultCallback<ImageCodeResponse> callback, Object userState) {
-        client.getImageCode(request, callback, userState);
+    public IAsyncRequestState getImageCode(ImageCodeRequest request, IAsyncResultCallback<ImageCodeResponse> callback, Object userState) {
+      return client.getImageCode(request, callback, userState);
     }
 
     public void sendSmsCode(SendSmsCodeRequest request, IAsyncResultCallback<SendSmsCodeResponse> callback, Object userState) {
@@ -472,7 +468,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderDetail(OrderOperateRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+    public void getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         client.getOrderDetail(request, callback, userState);
     }
 
@@ -482,7 +478,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getHeplCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
+    public void getHelpCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
         client.getHeplCenter(request, callback, userState);
     }
 
@@ -567,7 +563,6 @@ public class NiuTestModel implements BaseModel {
     public void getSkuStock(GetSkuStockRequest request, IAsyncResultCallback<GetSkuStockResponse> callback, Object userState) {
         client.getSkuStock(request, callback, userState);
     }
-
 
 
     /**
@@ -690,7 +685,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void orderDelete(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public void orderDelete(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.orderDelete(request, callback, userState);
     }
 
@@ -701,7 +696,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void orderCancel(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public void orderCancel(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.orderCancel(request, callback, userState);
     }
 
@@ -712,7 +707,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void receiveOreder(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public void receiveOreder(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.receiveOreder(request, callback, userState);
     }
 
@@ -723,7 +718,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void delayedReceive(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public void delayedReceive(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.delayedReceive(request, callback, userState);
     }
 
@@ -734,7 +729,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void logisticsInfo(OrderOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
+    public void logisticsInfo(OrderIdOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
         client.logisticsInfo(request, callback, userState);
     }
 
@@ -822,7 +817,7 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void userApply(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+    public void userApply(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.userApply(request, callback, userState);
     }
 
@@ -866,7 +861,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      */
     public void payApplyQuantity(IAsyncResultCallback<PayApplyQuantityResponse> callback, Object userState) {
-        client.payApplyQuantity( callback, userState);
+        client.payApplyQuantity(callback, userState);
     }
 
     /**
@@ -900,6 +895,7 @@ public class NiuTestModel implements BaseModel {
     public void getStationCustomerList(GetStationCustomerListRequest request, IAsyncResultCallback<GetStationCustomerListResponse> callback, Object userState) {
         client.getStationCustomerList(request, callback, userState);
     }
+
     /**
      * 站点用户添加站点客户N
      *

@@ -5,19 +5,25 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
 import com.coopbuy.mall.widget.TitleBar;
+import com.guinong.net.request.IAsyncRequestState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
 /**
  * Activity抽象类
+ *
  * @author ymb
- * Create at 2017/7/13 11:19
+ *         Create at 2017/7/13 11:19
  */
 public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends AppCompatActivity implements TitleBar.TitleBarClickListener {
     public P mPresenter;
@@ -25,7 +31,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public Context mContext;
     private LoadingBox box;
     private TitleBar mTitleBar;
-
+    public List<IAsyncRequestState> mNetCalls = new ArrayList<>();
     private View.OnClickListener mReloadListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -149,12 +155,14 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     /**
      * 网络重载按钮
      */
-    protected void networkRetry() {}
+    protected void networkRetry() {
+    }
 
     /**
      * 自定义页面按钮
      */
-    protected void customClick() {}
+    protected void customClick() {
+    }
 
 
     /**
@@ -183,6 +191,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     /**
      * 设置TitleBar标题
+     *
      * @param title
      */
     public void setTitle(String title) {
@@ -191,6 +200,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     /**
      * 设置TitleBar标题
+     *
      * @param titleResId
      */
     public void setTitle(int titleResId) {
@@ -199,6 +209,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     /**
      * 设置TitleBar右边文字
+     *
      * @param text
      */
     public void setRightText(String text) {
@@ -207,6 +218,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     /**
      * 设置TitleBar右边文字
+     *
      * @param textResId
      */
     public void setRightText(int textResId) {
@@ -215,10 +227,20 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     /**
      * 设置TitleBar右边图片
+     *
      * @param imageResId
      */
     public void setRightImage(int imageResId) {
         mTitleBar.setRightImage(imageResId);
+    }
+
+    /**
+     * 添加网络请求到请求列表
+     *
+     * @param state
+     */
+    public void appendNetCall(IAsyncRequestState state) {
+        mNetCalls.add(state);
     }
 
     @Override
@@ -227,5 +249,12 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null)
             mPresenter.onDestroy();
         ButterKnife.unbind(this);
+
+        if (!mNetCalls.isEmpty()) {
+            for (IAsyncRequestState state : mNetCalls) {
+                state.cancel();
+                Log.e("niu", "activity net cancel");
+            }
+        }
     }
 }

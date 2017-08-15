@@ -13,5 +13,5 @@ public class CodeContant {
     public static final int CODE_DATA_EXCEPTION = 102;  //数据异常
     public static final int CODE_SERVER_EXCEPTION = 103;  //服务器异常
     public static final int CODE_USER_CANCEL = 104;   //用户自动取消异常
-
+    public static final int CODE_NET_UNAVAILABLE = 105;//  无网络连接
 }

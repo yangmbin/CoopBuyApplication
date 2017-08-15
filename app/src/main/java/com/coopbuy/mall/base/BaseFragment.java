@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.LoadingBox;
+import com.guinong.net.request.IAsyncRequestState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -25,6 +29,7 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     public Context mContext;
     private View rootView;
     private LoadingBox box;
+    public List<IAsyncRequestState> mNetCalls = new ArrayList<>();
 
     private View.OnClickListener mReloadListener = new View.OnClickListener() {
         @Override
@@ -149,6 +154,13 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
      */
     protected void customClick() {}
 
+    /**
+     * 添加网络请求到请求列表
+     * @param state
+     */
+    public void appendNetCall(IAsyncRequestState state) {
+        mNetCalls.add(state);
+    }
 
     @Override
     public void onDestroyView() {
@@ -156,6 +168,12 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         ButterKnife.unbind(this);
         if (mPresenter != null)
             mPresenter.onDestroy();
+
+        if (!mNetCalls.isEmpty()) {
+            for (IAsyncRequestState state : mNetCalls) {
+                state.cancel();
+            }
+        }
     }
 
     @Override

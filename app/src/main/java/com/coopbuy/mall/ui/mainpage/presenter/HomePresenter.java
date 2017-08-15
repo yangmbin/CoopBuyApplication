@@ -12,6 +12,7 @@ import com.coopbuy.mall.ui.mainpage.view.Home_IView;
 import com.google.gson.Gson;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
+import com.guinong.net.request.IAsyncRequestState;
 
 public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
 
@@ -30,7 +31,7 @@ public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
             mView.showFillLoading();
         HomePageDataRequest homePageDataRequest = new HomePageDataRequest();
         homePageDataRequest.setPagekey("AppHome");
-        mModel.homePageData(homePageDataRequest, new IAsyncResultCallback<HomePageDataResponse>() {
+        mView.appendNetCall(mModel.homePageData(homePageDataRequest, new IAsyncResultCallback<HomePageDataResponse>() {
             @Override
             public void onComplete(HomePageDataResponse homePageDataResponse, Object userState) {
                 Log.e("yangmbin", homePageDataResponse + "");
@@ -46,6 +47,6 @@ public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
             }
-        }, "homePage");
+        }, "homePage"));
     }
 }

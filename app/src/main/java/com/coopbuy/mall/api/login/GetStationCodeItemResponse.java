@@ -42,4 +42,5 @@ public class GetStationCodeItemResponse implements Serializable{
     public void setStationConnectPhone(String stationConnectPhone) {
         this.stationConnectPhone = stationConnectPhone;
     }
+
 }

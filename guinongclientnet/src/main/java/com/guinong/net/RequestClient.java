@@ -1,6 +1,7 @@
 package com.guinong.net;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.guinong.net.callback.AsyncEmptyCallbackHandle;
@@ -13,14 +14,13 @@ import com.guinong.net.callback.NetworkJsonCallback;
 import com.guinong.net.cookie.SharedPreferencesUtils;
 import com.guinong.net.request.AsyncRequestState;
 import com.guinong.net.request.IAsyncRequestState;
+import com.guinong.net.utils.NetWorkUtil;
 import com.guinong.net.verify.VerifyManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.util.Map;
 
 import okhttp3.Call;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -79,6 +79,11 @@ public abstract class RequestClient {
      * @return
      */
     public IAsyncRequestState apiRequest(Request request, IAsyncMessageCallback callback, Object userState) {
+        if (!NetWorkUtil.isNetworkConnected(baseContext)) {
+            NetworkException exception = new NetworkException(CodeContant.CODE_NET_UNAVAILABLE, "无网络", null);
+            callback.onError(exception, userState);
+            return null;
+        }
         ExceptionUtils.checkNotNull(request, "request");
         ExceptionUtils.checkNotNull(callback, "callback");
         OkHttpClient client = getHttpClient();

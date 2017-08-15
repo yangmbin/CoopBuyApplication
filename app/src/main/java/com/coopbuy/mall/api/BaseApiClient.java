@@ -2,6 +2,7 @@ package com.coopbuy.mall.api;
 
 import android.content.Context;
 
+import com.coopbuy.mall.app.CoopBuyApplication;
 import com.guinong.net.RequestClient;
 import com.guinong.net.cookie.CookierManager;
 
@@ -32,7 +33,7 @@ public class BaseApiClient extends RequestClient {
             // okHttpClientBuilder.cookieJar(new CookierManager(context));
             baseContext = context;
         }
-
+        okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));
         okHttpClientBuilder.followRedirects(true); //设置重定向 其实默认也是true
         okHttpClientBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
@@ -46,7 +47,6 @@ public class BaseApiClient extends RequestClient {
     static {
         if (mOkHttpClient == null) {
             contextInit(null);
-
         }
     }
 
