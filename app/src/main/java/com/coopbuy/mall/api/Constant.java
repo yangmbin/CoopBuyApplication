@@ -27,7 +27,7 @@ public class Constant {
     /**
      * 图形验证码
      */
-    public static final String LOGIN_IMAGECODE = "api/services/app/member/GetCheckCode";
+    public static final String LOGIN_IMAGECODE = "api/services/app/member/GetCheckCodeByObject";
     /**
      * 获取短信验证码
      */
@@ -231,44 +231,168 @@ public class Constant {
     /**
      *  以下为后续接口添加  没有通过抓包的api
      */
+
+
     /**
      * 商品搜索接口
      */
-    public static final String SearchGoods = "api/services/app/goods/SearchGoods";
-/**
- * 获取sku库
- */
-  /*  public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";*//**
-     *
-     *//*
-    public static final String="";
-*/
+    public static final String SEARCH_GOODS = "api/services/app/goods/SearchGoods";
+    /**
+     * 获取活动页面N
+     */
+    public static final String GET_ACTIVE_PAGEDATA_BYID = "api/services/app/pageBuildUser/GetActivePageDataById";
+    /**
+     * 获取sku库N
+     */
+    public static final String GET_SKU_STOCK = "api/services/app/goods/GetSkuStock";
+    /**
+     * 设置用户头像N
+     */
+    public static final String SET_HEAD_PORTRAIT = "api/services/app/member/SetHeadPortrait";
+    /**
+     * 添加商品评论N
+     */
+    public static final String ADD_GOODS_COMMENT = "api/services/app/goodsComment/AddGoodsComment";
+    /**
+     * 通过商品id得到评论列表
+     */
+    public static final String GET_GOODS_COMMENT_LIST = "api/services/app/goodsComment/GetGoodsCommentList";
+    /**
+     * 追加评论N
+     */
+    public static final String APPEND_COMMENT = "api/services/app/goodsComment/AppendComment";
+    /**
+     * 银行卡列表N
+     */
+    public static final String BANK_CARD_LIST = "api/services/app/userMercharnt/BankCardList";
+    /**
+     * 银行卡绑定申请N
+     */
+    public static final String BANK_CARD_BIND_APPLY = "api/services/app/userMercharnt/BankCardBindApply";
+    /**
+     * 银行卡绑定N
+     */
+    public static final String BANK_CARD_BIND = "api/services/app/userMercharnt/BankCardBind";
+    /**
+     * 充值查询N
+     */
+    public static final String QUERY_CART = "api/services/app/userMobileOrder/QueryCart";
+    /**
+     * 支付应用申请N
+     */
+    public static final String PAY_APPLY = "api/services/app/userPay/PayApply";
 
+    /**
+     * 协议支付N
+     */
+    public static final String PROTOCOL_PAY = "api/services/app/userPay/Pay";
+    /**
+     * 订单删除N
+     */
+    public static final String ORDER_DELETE = "api/services/app/userOrder/Delete";
+    /**
+     * 订单取消N
+     */
+    public static final String ORDER_CANCEL = "api/services/app/userOrder/Cancel";
+    /**
+     * 签收订单N
+     */
+    public static final String RECEIVE_OREDER = "api/services/app/userGoodsOrder/Receive";
+    /**
+     * 延迟收货N
+     */
+    public static final String DELAYED_RECEIVE = "api/services/app/userGoodsOrder/DelayedReceive";
+    /**
+     * 获取订单物流信息N
+     */
+    public static final String LOGISTICS_INFO = "api/services/app/userGoodsOrder/LogisticsInfo";
+    /**
+     * 新售后申请N
+     */
+    public static final String NEW_APPLY = "api/services/app/userRefund/NewApply";
+    /**
+     * 更改售后申请N
+     */
+    public static final String UPDATE_APPLY = "api/services/app/userRefund/UpdateApply";
+    /**
+     * 添加退货信息N
+     */
+    public static final String NEW_RETURN_GOODS = "api/services/app/userRefund/NewReturnGoods";
+    /**
+     * 退款售后列表N
+     */
+    public static final String REFUND_LIST = "api/services/app/userRefund/RefundList";
+    /**
+     * 退款售后明细N
+     */
+    public static final String REFUND_DETAIL = "api/services/app/userRefund/RefundDetail";
+    /**
+     * 退款申请确定N
+     */
+    public static final String APPLY_REFUND_CONFIRM = "api/services/app/userRefund/ApplyConfirm";
+    /**
+     * 获取分类中首条文本内容信息
+     */
+    public static final String GET_FIRST_TEXT_CONTENT = "api/services/app/textContent/GetFirstTextContent";
+    /**
+     * 站长代付申请N
+     */
+    public static final String USER_APPLY = "api/services/app/orderPayApply/UserApply";
+    /**
+     * 拒绝代付N
+     */
+    public static final String REFUSE_APPLY = "api/services/app/orderPayApply/RefuseApply";
+    /**
+     * 代付款得到申请列表N
+     */
+    public static final String WAIT_PAY_ORDER_APPLY_LIST = "api/services/app/orderPayApply/WaitPayOrderApplyList";
+    /**
+     * 获取申请详细信息N
+     */
+    public static final String PAY_APPLY_DETAIL = "api/services/app/orderPayApply/PayApplyDetail";
+    /**
+     * 待处理代付数量获取N
+     */
+    public static final String PAY_APPLY_QUANTITY = "api/services/app/orderPayApply/PayApplyQuantity";
+    /**
+     * 用户收货相关信息，若存在记录则进行收货信息更新N
+     */
+    public static final String BIND_TO_STATION = "api/services/app/station/BindToStation";
+    /**
+     * 站点用户获取我的站点信息N
+     */
+    public static final String GET_MYSTATION_INFO = "api/services/app/station/GetMyStationInfo";
+    /**
+     * 获取当前站长用户所在站点的客户列表N
+     */
+    public static final String GET_STATION_CUSTOMER_LIST = "api/services/app/station/GetStationCustomerList";
+    /**
+     * 站点用户添加站点客户N
+     */
+    public static final String ADD_NEW_STATION_CUSTOMER = "api/services/app/station/AddNewStationCustomer";
+    /**
+     * 获取站点客户信息N
+     */
+    public static final String GET_STATION_CUSTOMER = "api/services/app/station/GetStationCustomer";
+    /**
+     * 更新站点客户信息N
+     */
+    public static final String UPDATE_STATION_CUSTOMER = "api/services/app/station/UpdateStationCustomer";
+    /**
+     * 添加商品至站长推荐N
+     */
+    public static final String ADD_RECOMMEND = "api/services/app/station/AddRecommend";
+    /**
+     * 得到站点信息和站点联系人信息N
+     */
+    public static final String GET_STATION_CODE_ITEM = "api/services/app/station/GetStationCodeItem";
+    /**
+     * 站长客户订单列表N
+     */
+    public static final String STATION_LIST = "api/services/app/userOrder/StationList";
     /**
      * 保存cookie
      */
     public static final String COOKIE = "set_cookie";
-
 
 }

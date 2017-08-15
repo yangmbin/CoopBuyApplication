@@ -593,12 +593,14 @@ public class LoginClient extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+    public IAsyncRequestState getOrderDetail(OrderOperateRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderDetailResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.ORDER_DETAIL, request, callback, userState);
     }
 
     /**
+     * 帮助中心
+     *
      * @param request
      * @param callback
      * @param userState
@@ -672,7 +674,471 @@ public class LoginClient extends BaseApiClient {
         return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.POST_SUGGEST, request, callback, userState);
     }
+
     /**
      * 2017年8月9日11:46:17 告一个段落 这写了 还没有测试 搞这个搞了一天  还不算文档api编写
      */
+    /**
+     * 获取活动页面N
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getActivePageDataById(IAsyncResultCallback<List<GetActivePageDataResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<GetActivePageDataResponse>>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_ACTIVE_PAGEDATA_BYID, callback, userState);
+    }
+
+    /**
+     * 获取sku库N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getSkuStock(GetSkuStockRequest request, IAsyncResultCallback<GetSkuStockResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetSkuStockResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_SKU_STOCK, request, callback, userState);
+    }
+
+
+
+    /**
+     * 设置用户头像N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState setHeadPortraitResuest(SetHeadPortraitResuest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.SET_HEAD_PORTRAIT, request, callback, userState);
+    }
+
+    /**
+     * 添加商品评论N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addGoodsComment(AddGoodsCommentRequest request, IAsyncResultCallback<AddGoodsCommentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<AddGoodsCommentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ADD_GOODS_COMMENT, request, callback, userState);
+    }
+
+    /**
+     * 通过商品id得到评论列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getGoodsCommentList(GetGoodsCommentListRequest request, IAsyncResultCallback<GetGoodsCommentListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetGoodsCommentListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_GOODS_COMMENT_LIST, request, callback, userState);
+    }
+
+    /**
+     * 追加评论N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState appendComment(AppendCommentRequest request, IAsyncResultCallback<AppendCommentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<AppendCommentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.APPEND_COMMENT, request, callback, userState);
+    }
+
+    /**
+     * 银行卡列表N
+     *
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState bankCardList(IAsyncResultCallback<List<BankCardListResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<BankCardListResponse>>() {
+        }.getType(), Constant.SERVER_URL + Constant.BANK_CARD_LIST, callback, userState);
+    }
+
+    /**
+     * 银行卡绑定申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState bankCardBindApply(BankCardBindApplyRequest request, IAsyncResultCallback<BankCardBindApplyResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<BankCardBindApplyResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.BANK_CARD_BIND_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 银行卡绑定N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState bankCardBind(BankCardBindRequest request, IAsyncResultCallback<BankCardBindResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<BankCardBindResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.BANK_CARD_BIND, request, callback, userState);
+    }
+
+    /**
+     * 支付应用申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState payApply(PayApplyRequest request, IAsyncResultCallback<PayApplyResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayApplyResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PAY_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 协议支付N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState protocolPay(ProtocolRequest request, IAsyncResultCallback<ProtocolResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ProtocolResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PROTOCOL_PAY, request, callback, userState);
+    }
+
+    /**
+     * 充值查询N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState queryCart(QueryCartRequest request, IAsyncResultCallback<QueryCartResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<QueryCartResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.QUERY_CART, request, callback, userState);
+    }
+
+    /**
+     * 订单删除N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState orderDelete(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ORDER_DELETE, request, callback, userState);
+    }
+
+    /**
+     * 订单取消N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState orderCancel(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ORDER_CANCEL, request, callback, userState);
+    }
+
+    /**
+     * 签收订单N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState receiveOreder(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.RECEIVE_OREDER, request, callback, userState);
+    }
+
+    /**
+     * 延迟收货N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState delayedReceive(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.DELAYED_RECEIVE, request, callback, userState);
+    }
+
+    /**
+     * 获取订单物流信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState logisticsInfo(OrderOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<LogisticsInfoResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.LOGISTICS_INFO, request, callback, userState);
+    }
+
+    /**
+     * 新售后申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState newApply(NewApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.NEW_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 更改售后申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState updateApply(UpdateApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.UPDATE_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 添加退货信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState newReturnGoods(NewReturnGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.NEW_RETURN_GOODS, request, callback, userState);
+    }
+
+    /**
+     * 退款售后列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState refundList(RefundListRequest request, IAsyncResultCallback<RefundListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<RefundListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.REFUND_LIST, request, callback, userState);
+    }
+
+    /**
+     * 退款售后明细N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState refundDetail(RefundDetailRequest request, IAsyncResultCallback<RefundDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<RefundDetailResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.REFUND_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * 退款申请确定N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState applyRefundConfirm(ApplyRefundConfirmRequest request, IAsyncResultCallback<ApplyRefundConfirmResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ApplyRefundConfirmResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.APPLY_REFUND_CONFIRM, request, callback, userState);
+    }
+
+    /**
+     * 获取分类中首条文本内容信息
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState getFirstTextContent(GetFirstTextContentRequest request, IAsyncResultCallback<GetFirstTextContentResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetFirstTextContentResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_FIRST_TEXT_CONTENT, request, callback, userState);
+    }
+
+    /**
+     * 站长代付申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState userApply(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.USER_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 拒绝代付N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState rRefuseApply(RefuseApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.REFUSE_APPLY, request, callback, userState);
+    }
+
+    /**
+     * 代付款得到申请列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState waitPayOrderApplyList(WaitPayOrderApplyListRequest request, IAsyncResultCallback<WaitPayOrderApplyListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<WaitPayOrderApplyListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.WAIT_PAY_ORDER_APPLY_LIST, request, callback, userState);
+    }
+
+    /**
+     * 获取申请详细信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState payApplyDetail(OperateIdRequest request, IAsyncResultCallback<PayApplyDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayApplyDetailResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PAY_APPLY_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * 待处理代付数量获取N
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState payApplyQuantity(IAsyncResultCallback<PayApplyQuantityResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayApplyQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.PAY_APPLY_QUANTITY, callback, userState);
+    }
+
+
+    /**
+     * 用户收货相关信息，若存在记录则进行收货信息更新N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState bindToStation(BindToStationRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.BIND_TO_STATION, request, callback, userState);
+    }
+
+    /**
+     * 站点用户获取我的站点信息N
+     *
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState getMyStationInfo(IAsyncResultCallback<GetMyStationInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetMyStationInfoResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_MYSTATION_INFO, callback, userState);
+    }
+
+    /**
+     * 获取当前站长用户所在站点的客户列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState getStationCustomerList(GetStationCustomerListRequest request, IAsyncResultCallback<GetStationCustomerListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetStationCustomerListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_STATION_CUSTOMER_LIST, request, callback, userState);
+    }
+
+    /**
+     * 站点用户添加站点客户N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addNewStationCustomer(AddNewStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ADD_NEW_STATION_CUSTOMER, request, callback, userState);
+    }
+
+    /**
+     * 获取站点客户信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState getStationCustomer(OperateIdRequest request, IAsyncResultCallback<GetStationCustomerResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetStationCustomerResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_STATION_CUSTOMER, request, callback, userState);
+    }
+
+    /**
+     * 更新站点客户信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState updateStationCustomer(UpdateStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.UPDATE_STATION_CUSTOMER, request, callback, userState);
+    }
+
+    /**
+     * 添加商品至站长推荐N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState addRecommend(AddRecommendRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OperateSuccessResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.ADD_RECOMMEND, request, callback, userState);
+    }
+
+    /**
+     * 得到站点信息和站点联系人信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState getStationCodeItem(GetStationCodeItemRequest request, IAsyncResultCallback<GetStationCodeItemResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetStationCodeItemResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.GET_STATION_CODE_ITEM, request, callback, userState);
+    }
+
+    /**
+     * 站长客户订单列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public IAsyncRequestState stationList(StationListRequest request, IAsyncResultCallback<StationListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<StationListResponse>() {
+        }.getType(), Constant.SERVER_URL + Constant.STATION_LIST, request, callback, userState);
+    }
+
 }

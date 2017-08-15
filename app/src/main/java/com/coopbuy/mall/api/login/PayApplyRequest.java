@@ -4,14 +4,15 @@ import java.io.Serializable;
 
 /**
  * @author csn
- * @date 2017/8/9 0009 10:49
+ * @date 2017/8/14 0014 11:11
  * @content
  */
-public class OrderDetailRequest implements Serializable {
+public class PayApplyRequest implements Serializable{
 
     /**
-     * orderId : 1708074920513052
+     * orderId : string
      */
+
     private String orderId;
 
     public String getOrderId() {

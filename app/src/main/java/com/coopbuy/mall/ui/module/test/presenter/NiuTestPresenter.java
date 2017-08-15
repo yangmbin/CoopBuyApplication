@@ -3,77 +3,7 @@ package com.coopbuy.mall.ui.module.test.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.api.classify.CategorysResponse;
-import com.coopbuy.mall.api.login.AddGoodsRequest;
-import com.coopbuy.mall.api.login.AppNewVersionResponse;
-import com.coopbuy.mall.api.login.CartListResponse;
-import com.coopbuy.mall.api.login.CreateMobileOrderRequest;
-import com.coopbuy.mall.api.login.CreateMobileOrderResponse;
-import com.coopbuy.mall.api.login.CreateShipAddressRequest;
-import com.coopbuy.mall.api.login.DeleteShipAddressRequest;
-import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
-import com.coopbuy.mall.api.login.GetGoodsFreightRequest;
-import com.coopbuy.mall.api.login.GetGoodsFreightResponse;
-import com.coopbuy.mall.api.login.GetHelpCenterContentRequest;
-import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
-import com.coopbuy.mall.api.login.GetMemberInfoResponse;
-import com.coopbuy.mall.api.login.GetNewCommentRequest;
-import com.coopbuy.mall.api.login.GetNewCommentResponse;
-import com.coopbuy.mall.api.login.GetOrderListRequest;
-import com.coopbuy.mall.api.login.GetOrderListResponse;
-import com.coopbuy.mall.api.login.GetOrderQuantityResponse;
-import com.coopbuy.mall.api.login.GetShopIdRequest;
-import com.coopbuy.mall.api.login.GetShopIdResponse;
-import com.coopbuy.mall.api.login.GetStationRecommendResponse;
-import com.coopbuy.mall.api.login.GetTextCOntentResponse;
-import com.coopbuy.mall.api.login.GetTextContentRequest;
-import com.coopbuy.mall.api.login.GoodsDetailDescResponse;
-import com.coopbuy.mall.api.login.GoodsDetailInfoResponse;
-import com.coopbuy.mall.api.login.GoodsDetailRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
-import com.coopbuy.mall.api.login.HomePageDataRequest;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
-import com.coopbuy.mall.api.login.ImageCodeRequest;
-import com.coopbuy.mall.api.login.ImageCodeResponse;
-import com.coopbuy.mall.api.login.LoginQuitRespsonse;
-import com.coopbuy.mall.api.login.LoginRequest;
-import com.coopbuy.mall.api.login.LoginResponse;
-import com.coopbuy.mall.api.login.MobifyMemberRequest;
-import com.coopbuy.mall.api.login.MobifyOrderPayConfirmRequest;
-import com.coopbuy.mall.api.login.MobifyOrderPayConfirmResponse;
-import com.coopbuy.mall.api.login.MobifyShipAddressRequest;
-import com.coopbuy.mall.api.login.MobileOrderListResponse;
-import com.coopbuy.mall.api.login.NetOrderRequest;
-import com.coopbuy.mall.api.login.NetOrderResponse;
-import com.coopbuy.mall.api.login.NewUserGoodsOrderRequest;
-import com.coopbuy.mall.api.login.NewUserGoodsOrderresponse;
-import com.coopbuy.mall.api.login.OperateSuccessResponse;
-import com.coopbuy.mall.api.login.OrderConfirmRequest;
-import com.coopbuy.mall.api.login.OrderConfirmResponse;
-import com.coopbuy.mall.api.login.OrderDetailRequest;
-import com.coopbuy.mall.api.login.OrderDetailResponse;
-import com.coopbuy.mall.api.login.OrderFreightRequest;
-import com.coopbuy.mall.api.login.OrderFreightResponse;
-import com.coopbuy.mall.api.login.PayApplyAndChannelRequest;
-import com.coopbuy.mall.api.login.PayApplyAndChannelResponse;
-import com.coopbuy.mall.api.login.PostSuggestRequest;
-import com.coopbuy.mall.api.login.QuantityResponse;
-import com.coopbuy.mall.api.login.RegionsByParentIdRequest;
-import com.coopbuy.mall.api.login.RegionsByParentIdResponse;
-import com.coopbuy.mall.api.login.RegionsResponse;
-import com.coopbuy.mall.api.login.RegisterRequest;
-import com.coopbuy.mall.api.login.RegisterResponse;
-import com.coopbuy.mall.api.login.RemoveGoodsRequest;
-import com.coopbuy.mall.api.login.SendSmsCodeRequest;
-import com.coopbuy.mall.api.login.SendSmsCodeResponse;
-import com.coopbuy.mall.api.login.SetDefaultAddressRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeResponse;
-import com.coopbuy.mall.api.login.SmsResetPasswordRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
-import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
-import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
-import com.coopbuy.mall.api.login.UpdateGoodsQuantityRequest;
+import com.coopbuy.mall.api.login.*;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.test.model.NiuTestModel;
 import com.coopbuy.mall.ui.module.test.view.NiuTest_IView;
@@ -841,7 +771,6 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 OrderFreightRequest orderFreightRequest = new OrderFreightRequest();
                 List<OrderFreightRequest.SkuItemsBean> d2 = new ArrayList<>();
                 if (params.isEmpty()) {
-
                     OrderFreightRequest.SkuItemsBean bean = new OrderFreightRequest.SkuItemsBean();
                     bean.setQuantity(1);
                     bean.setSkuId(2776);
@@ -1322,13 +1251,13 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "mobifyOrderPayComfirm");
                 break;
             case "订单详情":
-                OrderDetailRequest orderDetail = new OrderDetailRequest();
+                OrderOperateRequest orderDetail = new OrderOperateRequest();
                 if (params.isEmpty()) {
                     orderDetail.setOrderId("1708107148180227");
                     params.clear();
                     params.add(orderDetail);
                 } else {
-                    orderDetail = (OrderDetailRequest) params.get(0);
+                    orderDetail = (OrderOperateRequest) params.get(0);
                 }
                 mModel.getOrderDetail(orderDetail, new IAsyncResultCallback<OrderDetailResponse>() {
                     @Override
@@ -1530,6 +1459,968 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         mView.stopAll();
                     }
                 }, "mobifyOrderPayComfirm");
+                break;
+            case "获取活动页面N":
+
+                mModel.getActivePageDataById(new IAsyncResultCallback<List<GetActivePageDataResponse>>() {
+                    @Override
+                    public void onComplete(List<GetActivePageDataResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取活动页面N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "mobifyOrderPayComfirm");
+                break;
+            case "获取sku库N":
+                GetSkuStockRequest getSkuStockRequest = new GetSkuStockRequest();
+                if (params.isEmpty()) {
+                    getSkuStockRequest.setId("20299");
+                    params.clear();
+                    params.add(getSkuStockRequest);
+                } else {
+                    getSkuStockRequest = (GetSkuStockRequest) params.get(0);
+                }
+                mModel.getSkuStock(getSkuStockRequest, new IAsyncResultCallback<GetSkuStockResponse>() {
+                    @Override
+                    public void onComplete(GetSkuStockResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取sku库N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getSkuStock");
+                break;
+
+            case "设置用户头像N":
+                //这是是上次头像 等回来再说
+                ToastUtils.toastShort("开发中 这个需要图片上传的");
+                break;
+            case "添加商品评论N":
+                AddGoodsCommentRequest addGoodsCommentRequest = new AddGoodsCommentRequest();
+                if (params.isEmpty()) {
+
+                    params.clear();
+                    params.add(addGoodsCommentRequest);
+                } else {
+                    addGoodsCommentRequest = (AddGoodsCommentRequest) params.get(0);
+                }
+                ToastUtils.toastShort("后续开发 参数不明");
+                mView.stopAll();
+                mModel.addGoodsComment(addGoodsCommentRequest, new IAsyncResultCallback<AddGoodsCommentResponse>() {
+                    @Override
+                    public void onComplete(AddGoodsCommentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("添加商品评论N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "通过商品id得到评论列表N":
+                GetGoodsCommentListRequest getGoodsCommentListRequest = new GetGoodsCommentListRequest();
+                if (params.isEmpty()) {
+                    getGoodsCommentListRequest.setCurrentPage(1);
+                    getGoodsCommentListRequest.setProductId(1989);
+                    params.clear();
+                    params.add(getGoodsCommentListRequest);
+                } else {
+                    getGoodsCommentListRequest = (GetGoodsCommentListRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行测试");
+                mModel.getGoodsCommentList(getGoodsCommentListRequest, new IAsyncResultCallback<GetGoodsCommentListResponse>() {
+                    @Override
+                    public void onComplete(GetGoodsCommentListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("通过商品id得到评论列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "追加评论N":
+                AppendCommentRequest appendCommentRequest = new AppendCommentRequest();
+                if (params.isEmpty()) {
+
+                    params.clear();
+                    params.add(appendCommentRequest);
+                } else {
+                    appendCommentRequest = (AppendCommentRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行测试");
+                mModel.appendComment(appendCommentRequest, new IAsyncResultCallback<AppendCommentResponse>() {
+                    @Override
+                    public void onComplete(AppendCommentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("追加评论N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "银行卡列表N":
+                mModel.bankCardList(new IAsyncResultCallback<List<BankCardListResponse>>() {
+                    @Override
+                    public void onComplete(List<BankCardListResponse> categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("银行卡列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "bankCardList");
+                break;
+            case "银行卡绑定申请N":
+                BankCardBindApplyRequest bankCardBindApplyRequest = new BankCardBindApplyRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(bankCardBindApplyRequest);
+                } else {
+                    bankCardBindApplyRequest = (BankCardBindApplyRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行测试");
+                mModel.bankCardBindApply(bankCardBindApplyRequest, new IAsyncResultCallback<BankCardBindApplyResponse>() {
+                    @Override
+                    public void onComplete(BankCardBindApplyResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("银行卡绑定申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "银行卡绑定N":
+                BankCardBindRequest bankCardBindRequest = new BankCardBindRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(bankCardBindRequest);
+                } else {
+                    bankCardBindRequest = (BankCardBindRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行测试");
+                mModel.bankCardBind(bankCardBindRequest, new IAsyncResultCallback<BankCardBindResponse>() {
+                    @Override
+                    public void onComplete(BankCardBindResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("银行卡绑定申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "支付应用申请N":
+                PayApplyRequest payApplyRequest = new PayApplyRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(payApplyRequest);
+                } else {
+                    payApplyRequest = (PayApplyRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.payApply(payApplyRequest, new IAsyncResultCallback<PayApplyResponse>() {
+                    @Override
+                    public void onComplete(PayApplyResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("支付应用申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "协议支付N":
+                ProtocolRequest protocolRequest = new ProtocolRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(protocolRequest);
+                } else {
+                    protocolRequest = (ProtocolRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.protocolPay(protocolRequest, new IAsyncResultCallback<ProtocolResponse>() {
+                    @Override
+                    public void onComplete(ProtocolResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("协议支付N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "充值查询N":
+                QueryCartRequest queryCartRequest = new QueryCartRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(queryCartRequest);
+                } else {
+                    queryCartRequest = (QueryCartRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.queryCart(queryCartRequest, new IAsyncResultCallback<QueryCartResponse>() {
+                    @Override
+                    public void onComplete(QueryCartResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("充值查询N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "订单删除N":
+                OrderOperateRequest orderDelete = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    orderDelete.setOrderId("1708074920513052");
+                    params.clear();
+                    params.add(orderDelete);
+                } else {
+                    orderDelete = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.orderDelete(orderDelete, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("订单删除N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "订单取消N":
+                OrderOperateRequest orderCancel = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    orderCancel.setOrderId("1708155869174725");
+                    params.clear();
+                    params.add(orderCancel);
+                } else {
+                    orderDelete = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.orderCancel(orderCancel, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("订单取消N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "签收订单N":
+                OrderOperateRequest orderReceive = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    orderReceive.setOrderId("自己添加订单号");
+                    params.clear();
+                    params.add(orderReceive);
+                } else {
+                    orderReceive = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.receiveOreder(orderReceive, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("签收订单N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "延迟收货N":
+                OrderOperateRequest orderDelayed = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    orderDelayed.setOrderId("自己添加订单号");
+                    params.clear();
+                    params.add(orderDelayed);
+                } else {
+                    orderDelayed = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.delayedReceive(orderDelayed, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("延迟收货N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "获取订单物流信息N":
+                OrderOperateRequest loginstcs = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    loginstcs.setOrderId("自己添加订单号");
+                    params.clear();
+                    params.add(loginstcs);
+                } else {
+                    loginstcs = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.logisticsInfo(loginstcs, new IAsyncResultCallback<LogisticsInfoResponse>() {
+                    @Override
+                    public void onComplete(LogisticsInfoResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取订单物流信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "新售后申请N":
+                NewApplyRequest newApplyRequest = new NewApplyRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(newApplyRequest);
+                } else {
+                    newApplyRequest = (NewApplyRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.newApply(newApplyRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("新售后申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "addGoodsComment");
+                break;
+            case "更改售后申请N":
+                UpdateApplyRequest updateApplyRequest = new UpdateApplyRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(updateApplyRequest);
+                } else {
+                    updateApplyRequest = (UpdateApplyRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.updateApply(updateApplyRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("更改售后申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "updateApply");
+                break;
+            case "添加退货信息N":
+                NewReturnGoodsRequest newReturnGoodsRequest = new NewReturnGoodsRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(newReturnGoodsRequest);
+                } else {
+                    newReturnGoodsRequest = (NewReturnGoodsRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.newReturnGoods(newReturnGoodsRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("添加退货信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "newReturnGoods");
+                break;
+            case "退款售后列表N":
+                RefundListRequest refundListRequest = new RefundListRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(refundListRequest);
+                } else {
+                    refundListRequest = (RefundListRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.refundList(refundListRequest, new IAsyncResultCallback<RefundListResponse>() {
+                    @Override
+                    public void onComplete(RefundListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("退款售后列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "newReturnGoods");
+                break;
+            case "退款售后明细N":
+                RefundDetailRequest refundDetailRequest = new RefundDetailRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(refundDetailRequest);
+                } else {
+                    refundDetailRequest = (RefundDetailRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.refundDetail(refundDetailRequest, new IAsyncResultCallback<RefundDetailResponse>() {
+                    @Override
+                    public void onComplete(RefundDetailResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("退款售后明细N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "newReturnGoods");
+                break;
+            case "退款申请确定N":
+                ApplyRefundConfirmRequest applyRefundConfirmRequest = new ApplyRefundConfirmRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(applyRefundConfirmRequest);
+                } else {
+                    applyRefundConfirmRequest = (ApplyRefundConfirmRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.applyRefundConfirm(applyRefundConfirmRequest, new IAsyncResultCallback<ApplyRefundConfirmResponse>() {
+                    @Override
+                    public void onComplete(ApplyRefundConfirmResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("退款申请确定N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "newReturnGoods");
+                break;
+            case "获取分类中首条文本内容信息":
+                GetFirstTextContentRequest getFirstTextContentRequest = new GetFirstTextContentRequest();
+                if (params.isEmpty()) {
+                    getFirstTextContentRequest.setCategoryKey("1");
+                    params.clear();
+                    params.add(getFirstTextContentRequest);
+                } else {
+                    getFirstTextContentRequest = (GetFirstTextContentRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.getFirstTextContent(getFirstTextContentRequest, new IAsyncResultCallback<GetFirstTextContentResponse>() {
+                    @Override
+                    public void onComplete(GetFirstTextContentResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取分类中首条文本内容信息");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "站长代付申请N":
+                OrderOperateRequest orderUserApply = new OrderOperateRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(orderUserApply);
+                } else {
+                    orderUserApply = (OrderOperateRequest) params.get(0);
+                }
+                ToastUtils.toastShort(" 参数不明 自行添加测试");
+                mModel.userApply(orderUserApply, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("站长代付申请N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "拒绝代付N":
+                RefuseApplyRequest refuseApplyRequest = new RefuseApplyRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(refuseApplyRequest);
+                } else {
+                    refuseApplyRequest = (RefuseApplyRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.refuseApply(refuseApplyRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("拒绝代付N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "代付款得到申请列表N":
+                WaitPayOrderApplyListRequest waitPayOrderApplyListRequest = new WaitPayOrderApplyListRequest();
+                if (params.isEmpty()) {
+                    waitPayOrderApplyListRequest.setCurrentPage(1);
+                    params.clear();
+                    params.add(waitPayOrderApplyListRequest);
+                } else {
+                    waitPayOrderApplyListRequest = (WaitPayOrderApplyListRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.waitPayOrderApplyList(waitPayOrderApplyListRequest, new IAsyncResultCallback<WaitPayOrderApplyListResponse>() {
+                    @Override
+                    public void onComplete(WaitPayOrderApplyListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("代付款得到申请列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "获取申请详细信息N":
+                OperateIdRequest operateIdRequest = new OperateIdRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(operateIdRequest);
+                } else {
+                    operateIdRequest = (OperateIdRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.payApplyDetail(operateIdRequest, new IAsyncResultCallback<PayApplyDetailResponse>() {
+                    @Override
+                    public void onComplete(PayApplyDetailResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("代付款得到申请列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "待处理代付数量获取N":
+                mModel.payApplyQuantity(new IAsyncResultCallback<PayApplyQuantityResponse>() {
+                    @Override
+                    public void onComplete(PayApplyQuantityResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("待处理代付数量获取N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "用户收货相关信息，若存在记录则进行收货信息更新N":
+                BindToStationRequest bindToStationRequest = new BindToStationRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(bindToStationRequest);
+                } else {
+                    bindToStationRequest = (BindToStationRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.bindToStation(bindToStationRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("用户收货相关信息，若存在记录则进行收货信息更新N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "站点用户获取我的站点信息N":
+                mModel.getMyStationInfo(new IAsyncResultCallback<GetMyStationInfoResponse>() {
+                    @Override
+                    public void onComplete(GetMyStationInfoResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("站点用户获取我的站点信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "获取当前站长用户所在站点的客户列表N":
+                GetStationCustomerListRequest getStationCustomerListRequest = new GetStationCustomerListRequest();
+                if (params.isEmpty()) {
+                    getStationCustomerListRequest.setCurrentPage(1);
+                    getStationCustomerListRequest.setKeyword("");
+                    params.clear();
+                    params.add(getStationCustomerListRequest);
+                } else {
+                    getStationCustomerListRequest = (GetStationCustomerListRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.getStationCustomerList(getStationCustomerListRequest, new IAsyncResultCallback<GetStationCustomerListResponse>() {
+                    @Override
+                    public void onComplete(GetStationCustomerListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("用户收货相关信息，若存在记录则进行收货信息更新N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+
+            case "站点用户添加站点客户N":
+                OperateIdRequest idCustomer = new OperateIdRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(idCustomer);
+                } else {
+                    idCustomer = (OperateIdRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.getStationCustomer(idCustomer, new IAsyncResultCallback<GetStationCustomerResponse>() {
+                    @Override
+                    public void onComplete(GetStationCustomerResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取站点客户信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "获取站点客户信息N":
+                AddNewStationCustomerRequest addNewStationCustomerRequest = new AddNewStationCustomerRequest();
+                if (params.isEmpty()) {
+                    addNewStationCustomerRequest.setAddress("niuniuniu");
+                    addNewStationCustomerRequest.setCustomerName("牛牛");
+                    addNewStationCustomerRequest.setMobilePhone("13567867654");
+                    params.clear();
+                    params.add(addNewStationCustomerRequest);
+                } else {
+                    addNewStationCustomerRequest = (AddNewStationCustomerRequest) params.get(0);
+                }
+                mModel.addNewStationCustomer(addNewStationCustomerRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("获取站点客户信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "更新站点客户信息N":
+                UpdateStationCustomerRequest updateStationCustomerRequest = new UpdateStationCustomerRequest();
+                if (params.isEmpty()) {
+                    updateStationCustomerRequest.setSiteId(2695);
+                    updateStationCustomerRequest.setCustomerName("NIU NIU");
+                    updateStationCustomerRequest.setMobilePhone("1354454567654");
+                    updateStationCustomerRequest.setAddress("更新");
+                    updateStationCustomerRequest.setRegionId(1);
+                    updateStationCustomerRequest.setRegionPath("贵州省,贵阳市,观山湖区,测试区,测试站点");
+                    updateStationCustomerRequest.setSiteName("测试站点01");
+                    updateStationCustomerRequest.setId(2888);
+                    params.clear();
+                    params.add(updateStationCustomerRequest);
+                } else {
+                    updateStationCustomerRequest = (UpdateStationCustomerRequest) params.get(0);
+                }
+
+                mModel.updateStationCustomer(updateStationCustomerRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("更新站点客户信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "添加商品至站长推荐N":
+                AddRecommendRequest addRecommendRequest = new AddRecommendRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(addRecommendRequest);
+                } else {
+                    addRecommendRequest = (AddRecommendRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.addRecommend(addRecommendRequest, new IAsyncResultCallback<OperateSuccessResponse>() {
+                    @Override
+                    public void onComplete(OperateSuccessResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("添加商品至站长推荐N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "得到站点信息和站点联系人信息N":
+                GetStationCodeItemRequest getStationCodeItemRequest = new GetStationCodeItemRequest();
+                if (params.isEmpty()) {
+                    params.clear();
+                    params.add(getStationCodeItemRequest);
+                } else {
+                    getStationCodeItemRequest = (GetStationCodeItemRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.getStationCodeItem(getStationCodeItemRequest, new IAsyncResultCallback<GetStationCodeItemResponse>() {
+                    @Override
+                    public void onComplete(GetStationCodeItemResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("得到站点信息和站点联系人信息N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
+                break;
+            case "站长客户订单列表N":
+                StationListRequest stationListRequest = new StationListRequest();
+                if (params.isEmpty()) {
+                    stationListRequest.setCurrentPage(1);
+                    params.clear();
+                    params.add(stationListRequest);
+                } else {
+                    stationListRequest = (StationListRequest) params.get(0);
+                }
+                ToastUtils.toastShort("参数不明 自行添加测试");
+                mModel.stationList(stationListRequest, new IAsyncResultCallback<StationListResponse>() {
+                    @Override
+                    public void onComplete(StationListResponse categorysResponses, Object userState) {
+                        if (categorysResponses != null) {
+                            mView.showData(gson.toJson(categorysResponses));
+                            ToastUtils.toastShort("站长客户订单列表N");
+                            mView.stopAll();
+                        }
+                    }
+
+                    @Override
+                    public void onError(NetworkException error, Object userState) {
+                        mView.showData(error.getDetail() + error.getMessage());
+                        mView.stopAll();
+                    }
+                }, "getFirstTextContent");
                 break;
             default:
                 break;

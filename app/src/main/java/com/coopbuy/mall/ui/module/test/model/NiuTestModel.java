@@ -1,80 +1,12 @@
 package com.coopbuy.mall.ui.module.test.model;
 
+import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.classify.CategorysResponse;
-import com.coopbuy.mall.api.login.AddGoodsRequest;
-import com.coopbuy.mall.api.login.AppNewVersionResponse;
-import com.coopbuy.mall.api.login.CartListResponse;
-import com.coopbuy.mall.api.login.CreateMobileOrderRequest;
-import com.coopbuy.mall.api.login.CreateMobileOrderResponse;
-import com.coopbuy.mall.api.login.CreateShipAddressRequest;
-import com.coopbuy.mall.api.login.DeleteShipAddressRequest;
-import com.coopbuy.mall.api.login.GetDefaultAddressResponse;
-import com.coopbuy.mall.api.login.GetGoodsFreightRequest;
-import com.coopbuy.mall.api.login.GetGoodsFreightResponse;
-import com.coopbuy.mall.api.login.GetHelpCenterContentRequest;
-import com.coopbuy.mall.api.login.GetHeplCenterContentResponse;
-import com.coopbuy.mall.api.login.GetMemberInfoResponse;
-import com.coopbuy.mall.api.login.GetNewCommentRequest;
-import com.coopbuy.mall.api.login.GetNewCommentResponse;
-import com.coopbuy.mall.api.login.GetOrderListRequest;
-import com.coopbuy.mall.api.login.GetOrderListResponse;
-import com.coopbuy.mall.api.login.GetOrderQuantityResponse;
-import com.coopbuy.mall.api.login.GetShopIdRequest;
-import com.coopbuy.mall.api.login.GetShopIdResponse;
-import com.coopbuy.mall.api.login.GetStationRecommendResponse;
-import com.coopbuy.mall.api.login.GetTextCOntentResponse;
-import com.coopbuy.mall.api.login.GetTextContentRequest;
-import com.coopbuy.mall.api.login.GoodsDetailDescResponse;
-import com.coopbuy.mall.api.login.GoodsDetailInfoResponse;
-import com.coopbuy.mall.api.login.GoodsDetailRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
-import com.coopbuy.mall.api.login.HomePageDataRequest;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
-import com.coopbuy.mall.api.login.ImageCodeRequest;
-import com.coopbuy.mall.api.login.ImageCodeResponse;
-import com.coopbuy.mall.api.login.LoginClient;
-import com.coopbuy.mall.api.login.LoginQuitRespsonse;
-import com.coopbuy.mall.api.login.LoginRequest;
-import com.coopbuy.mall.api.login.LoginResponse;
-import com.coopbuy.mall.api.login.MobifyMemberRequest;
-import com.coopbuy.mall.api.login.MobifyOrderPayConfirmRequest;
-import com.coopbuy.mall.api.login.MobifyOrderPayConfirmResponse;
-import com.coopbuy.mall.api.login.MobifyShipAddressRequest;
-import com.coopbuy.mall.api.login.MobileOrderListResponse;
-import com.coopbuy.mall.api.login.NetOrderRequest;
-import com.coopbuy.mall.api.login.NetOrderResponse;
-import com.coopbuy.mall.api.login.NewUserGoodsOrderRequest;
-import com.coopbuy.mall.api.login.NewUserGoodsOrderresponse;
-import com.coopbuy.mall.api.login.OperateSuccessResponse;
-import com.coopbuy.mall.api.login.OrderConfirmRequest;
-import com.coopbuy.mall.api.login.OrderConfirmResponse;
-import com.coopbuy.mall.api.login.OrderDetailRequest;
-import com.coopbuy.mall.api.login.OrderDetailResponse;
-import com.coopbuy.mall.api.login.OrderFreightRequest;
-import com.coopbuy.mall.api.login.OrderFreightResponse;
-import com.coopbuy.mall.api.login.PayApplyAndChannelRequest;
-import com.coopbuy.mall.api.login.PayApplyAndChannelResponse;
-import com.coopbuy.mall.api.login.PostSuggestRequest;
-import com.coopbuy.mall.api.login.QuantityResponse;
-import com.coopbuy.mall.api.login.RegionsByParentIdRequest;
-import com.coopbuy.mall.api.login.RegionsByParentIdResponse;
-import com.coopbuy.mall.api.login.RegionsResponse;
-import com.coopbuy.mall.api.login.RegisterRequest;
-import com.coopbuy.mall.api.login.RegisterResponse;
-import com.coopbuy.mall.api.login.RemoveGoodsRequest;
-import com.coopbuy.mall.api.login.SendSmsCodeRequest;
-import com.coopbuy.mall.api.login.SendSmsCodeResponse;
-import com.coopbuy.mall.api.login.SetDefaultAddressRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordGetCodeResponse;
-import com.coopbuy.mall.api.login.SmsResetPasswordRequest;
-import com.coopbuy.mall.api.login.SmsResetPasswordResponse;
-import com.coopbuy.mall.api.login.StationListByRegionIdRequest;
-import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
-import com.coopbuy.mall.api.login.UpdateGoodsQuantityRequest;
+import com.coopbuy.mall.api.login.*;
 import com.coopbuy.mall.base.BaseModel;
+import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncResultCallback;
+import com.guinong.net.request.IAsyncRequestState;
 
 import java.util.List;
 
@@ -517,7 +449,7 @@ public class NiuTestModel implements BaseModel {
      * @return
      */
     public void getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderListWaitForReceive(request, callback, userState);
+        client.getOrderListWaitForDispatch(request, callback, userState);
     }
 
     /**
@@ -540,7 +472,7 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+    public void getOrderDetail(OrderOperateRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         client.getOrderDetail(request, callback, userState);
     }
 
@@ -612,4 +544,428 @@ public class NiuTestModel implements BaseModel {
     public void postSuggest(PostSuggestRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
         client.postSuggest(request, callback, userState);
     }
+
+    /**
+     * 获取活动页面N
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void getActivePageDataById(IAsyncResultCallback<List<GetActivePageDataResponse>> callback, Object userState) {
+        client.getActivePageDataById(callback, userState);
+    }
+
+    /**
+     * 获取sku库N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void getSkuStock(GetSkuStockRequest request, IAsyncResultCallback<GetSkuStockResponse> callback, Object userState) {
+        client.getSkuStock(request, callback, userState);
+    }
+
+
+
+    /**
+     * 设置用户头像N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void setHeadPortraitResuest(SetHeadPortraitResuest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.setHeadPortraitResuest(request, callback, userState);
+    }
+
+    /**
+     * 添加商品评论N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void addGoodsComment(AddGoodsCommentRequest request, IAsyncResultCallback<AddGoodsCommentResponse> callback, Object userState) {
+        client.addGoodsComment(request, callback, userState);
+    }
+
+    /**
+     * 通过商品id得到评论列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void getGoodsCommentList(GetGoodsCommentListRequest request, IAsyncResultCallback<GetGoodsCommentListResponse> callback, Object userState) {
+        client.getGoodsCommentList(request, callback, userState);
+    }
+
+    /**
+     * 追加评论N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void appendComment(AppendCommentRequest request, IAsyncResultCallback<AppendCommentResponse> callback, Object userState) {
+        client.appendComment(request, callback, userState);
+    }
+
+    /**
+     * 银行卡列表N
+     *
+     * @param callback
+     * @param userState
+     */
+    public void bankCardList(IAsyncResultCallback<List<BankCardListResponse>> callback, Object userState) {
+        client.bankCardList(callback, userState);
+    }
+
+    /**
+     * 银行卡绑定申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void bankCardBindApply(BankCardBindApplyRequest request, IAsyncResultCallback<BankCardBindApplyResponse> callback, Object userState) {
+        client.bankCardBindApply(request, callback, userState);
+    }
+
+    /**
+     * 银行卡绑定N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void bankCardBind(BankCardBindRequest request, IAsyncResultCallback<BankCardBindResponse> callback, Object userState) {
+        client.bankCardBind(request, callback, userState);
+    }
+
+    /**
+     * 支付应用申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void payApply(PayApplyRequest request, IAsyncResultCallback<PayApplyResponse> callback, Object userState) {
+        client.payApply(request, callback, userState);
+    }
+
+    /**
+     * 协议支付N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void protocolPay(ProtocolRequest request, IAsyncResultCallback<ProtocolResponse> callback, Object userState) {
+        client.protocolPay(request, callback, userState);
+    }
+
+    /**
+     * 充值查询N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void queryCart(QueryCartRequest request, IAsyncResultCallback<QueryCartResponse> callback, Object userState) {
+        client.queryCart(request, callback, userState);
+    }
+
+    /**
+     * 订单删除N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void orderDelete(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.orderDelete(request, callback, userState);
+    }
+
+    /**
+     * 订单取消N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void orderCancel(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.orderCancel(request, callback, userState);
+    }
+
+    /**
+     * 签收订单N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void receiveOreder(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.receiveOreder(request, callback, userState);
+    }
+
+    /**
+     * 延迟收货N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void delayedReceive(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.delayedReceive(request, callback, userState);
+    }
+
+    /**
+     * 获取订单物流信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void logisticsInfo(OrderOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
+        client.logisticsInfo(request, callback, userState);
+    }
+
+    /**
+     * 新售后申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void newApply(NewApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.newApply(request, callback, userState);
+    }
+
+    /**
+     * 更改售后申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void updateApply(UpdateApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.updateApply(request, callback, userState);
+    }
+
+    /**
+     * 添加退货信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void newReturnGoods(NewReturnGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.newReturnGoods(request, callback, userState);
+    }
+
+    /**
+     * 退款售后列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void refundList(RefundListRequest request, IAsyncResultCallback<RefundListResponse> callback, Object userState) {
+        client.refundList(request, callback, userState);
+    }
+
+    /**
+     * 退款售后明细N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void refundDetail(RefundDetailRequest request, IAsyncResultCallback<RefundDetailResponse> callback, Object userState) {
+        client.refundDetail(request, callback, userState);
+    }
+
+    /**
+     * 退款申请确定N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void applyRefundConfirm(ApplyRefundConfirmRequest request, IAsyncResultCallback<ApplyRefundConfirmResponse> callback, Object userState) {
+        client.applyRefundConfirm(request, callback, userState);
+    }
+
+    /**
+     * 获取分类中首条文本内容信息
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void getFirstTextContent(GetFirstTextContentRequest request, IAsyncResultCallback<GetFirstTextContentResponse> callback, Object userState) {
+        client.getFirstTextContent(request, callback, userState);
+    }
+
+    /**
+     * 站长代付申请N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void userApply(OrderOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.userApply(request, callback, userState);
+    }
+
+    /**
+     * 拒绝代付N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void refuseApply(RefuseApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.rRefuseApply(request, callback, userState);
+    }
+
+    /**
+     * 代付款得到申请列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void waitPayOrderApplyList(WaitPayOrderApplyListRequest request, IAsyncResultCallback<WaitPayOrderApplyListResponse> callback, Object userState) {
+        client.waitPayOrderApplyList(request, callback, userState);
+    }
+
+    /**
+     * 获取申请详细信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void payApplyDetail(OperateIdRequest request, IAsyncResultCallback<PayApplyDetailResponse> callback, Object userState) {
+        client.payApplyDetail(request, callback, userState);
+    }
+
+    /**
+     * 待处理代付数量获取N
+     *
+     * @param callback
+     * @param userState
+     */
+    public void payApplyQuantity(IAsyncResultCallback<PayApplyQuantityResponse> callback, Object userState) {
+        client.payApplyQuantity( callback, userState);
+    }
+
+    /**
+     * 用户收货相关信息，若存在记录则进行收货信息更新N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void bindToStation(BindToStationRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.bindToStation(request, callback, userState);
+    }
+
+    /**
+     * 站点用户获取我的站点信息N
+     *
+     * @param callback
+     * @param userState
+     */
+    public void getMyStationInfo(IAsyncResultCallback<GetMyStationInfoResponse> callback, Object userState) {
+        client.getMyStationInfo(callback, userState);
+    }
+
+    /**
+     * 获取当前站长用户所在站点的客户列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void getStationCustomerList(GetStationCustomerListRequest request, IAsyncResultCallback<GetStationCustomerListResponse> callback, Object userState) {
+        client.getStationCustomerList(request, callback, userState);
+    }
+    /**
+     * 站点用户添加站点客户N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public void addNewStationCustomer(AddNewStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.addNewStationCustomer(request, callback, userState);
+    }
+
+    /**
+     * 获取站点客户信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void getStationCustomer(OperateIdRequest request, IAsyncResultCallback<GetStationCustomerResponse> callback, Object userState) {
+        client.getStationCustomer(request, callback, userState);
+    }
+
+    /**
+     * 更新站点客户信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void updateStationCustomer(UpdateStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.updateStationCustomer(request, callback, userState);
+    }
+
+    /**
+     * 添加商品至站长推荐N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void addRecommend(AddRecommendRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        client.addRecommend(request, callback, userState);
+    }
+
+    /**
+     * 得到站点信息和站点联系人信息N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void getStationCodeItem(GetStationCodeItemRequest request, IAsyncResultCallback<GetStationCodeItemResponse> callback, Object userState) {
+        client.getStationCodeItem(request, callback, userState);
+    }
+
+    /**
+     * 站长客户订单列表N
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     */
+    public void stationList(StationListRequest request, IAsyncResultCallback<StationListResponse> callback, Object userState) {
+        client.stationList(request, callback, userState);
+    }
+
+
 }
