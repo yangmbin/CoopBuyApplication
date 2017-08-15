@@ -1,6 +1,13 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -26,7 +33,10 @@ import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_9;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;
+import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
@@ -36,6 +46,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * 主页Fragment
@@ -43,6 +59,7 @@ import butterknife.Bind;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
+@RuntimePermissions
 public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel> implements Home_IView {
 
     @Bind(R.id.rv_home)
@@ -244,8 +261,82 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
         fixLayoutHelper.setSketchMeasure(true);
         List<Object> tmp = new ArrayList<>();
         tmp.add(new Object());
-        mTopTitleBarAdapter = new HomeLayoutAdapter_9(mContext, tmp, fixLayoutHelper);
+        mTopTitleBarAdapter = new HomeLayoutAdapter_9(mContext, tmp, fixLayoutHelper, this);
         mAdapters.add(mTopTitleBarAdapter);
     }
 
+
+    /**
+     * 二维码扫描相关动态权限处理
+     */
+    @OnShowRationale({android.Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    public void showRationaleForPermission(final PermissionRequest request) {
+        new AlertDialog.Builder(mContext)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.proceed();
+                    }
+                })
+                .setNegativeButton("拒绝", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.cancel();
+                    }
+                })
+                .setCancelable(false)
+                .setMessage("扫描二维码需要相机和SD卡权限")
+                .show();
+    }
+
+    @NeedsPermission({android.Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    public void gotoScanQRCodeActivity() {
+        IntentUtils.gotoActivity(mContext, ScanQrCodeActivity.class);
+    }
+
+    @OnPermissionDenied({android.Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    public void showPermissionDenied() {
+        ToastUtils.toastShort("您已拒绝打开权限");
+    }
+
+    @OnNeverAskAgain({android.Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    public void onRecordNeverAskAgain() {
+        new AlertDialog.Builder(mContext)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent();
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        if(Build.VERSION.SDK_INT >= 9){
+                            intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                            intent.setData(Uri.fromParts("package", mContext.getPackageName(), null));
+                        } else if(Build.VERSION.SDK_INT <= 8){
+                            intent.setAction(Intent.ACTION_VIEW);
+                            intent.setClassName("com.android.settings","com.android.settings.InstalledAppDetails");
+                            intent.putExtra("com.android.settings.ApplicationPkgName", mContext.getPackageName());
+                        }
+                        startActivity(intent);
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setCancelable(false)
+                .setMessage("您已经禁止了相关权限，是否现在去开启")
+                .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        OneFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    public void requestPermission() {
+        OneFragmentPermissionsDispatcher.gotoScanQRCodeActivityWithCheck(this);
+    }
 }

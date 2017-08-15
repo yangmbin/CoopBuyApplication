@@ -9,8 +9,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
-import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.List;
@@ -18,9 +17,11 @@ import java.util.List;
 public class HomeLayoutAdapter_9 extends BaseDelegateAdapter<Object> {
 
     private LinearLayout mLLTitleBar;
+    private OneFragment mFragment;
 
-    public HomeLayoutAdapter_9(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public HomeLayoutAdapter_9(Context ctx, List<Object> list, LayoutHelper mLayoutHelper, OneFragment mFragment) {
         super(ctx, list, mLayoutHelper);
+        this.mFragment = mFragment;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class HomeLayoutAdapter_9 extends BaseDelegateAdapter<Object> {
         holder.getView(R.id.fl_left).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentUtils.gotoActivity(mContext, ScanQrCodeActivity.class);
+                mFragment.requestPermission();
             }
         });
         holder.getView(R.id.fl_right).setOnClickListener(new View.OnClickListener() {
