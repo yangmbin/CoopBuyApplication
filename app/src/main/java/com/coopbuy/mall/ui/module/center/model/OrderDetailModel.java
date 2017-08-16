@@ -1,10 +1,10 @@
 package com.coopbuy.mall.ui.module.center.model;
 
-import com.coopbuy.mall.api.login.NetClientManager;
 import com.coopbuy.mall.api.login.OrderDetailRequest;
 import com.coopbuy.mall.api.login.OrderDetailResponse;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
+import com.guinong.net.request.IAsyncRequestState;
 
 
 public class OrderDetailModel implements BaseModel {
@@ -17,7 +17,7 @@ public class OrderDetailModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
-        client.getOrderDetail(request, callback, userState);
+    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+        return client.getOrderDetail(request, callback, userState);
     }
 }

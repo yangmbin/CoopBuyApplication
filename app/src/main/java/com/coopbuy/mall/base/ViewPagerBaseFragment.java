@@ -244,9 +244,10 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
 
         if (!mNetCalls.isEmpty()) {
             for (IAsyncRequestState state : mNetCalls) {
-                state.cancel();
-                Log.e("niu", "cancel net");
+                if (state != null)
+                    state.cancel();
             }
+            Log.e("network", "cancel network");
         }
     }
 

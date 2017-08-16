@@ -18,9 +18,9 @@ import com.coopbuy.mall.ui.module.home.presenter.BannerDetailPresenter;
 import com.coopbuy.mall.ui.module.home.view.BannerDetail_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
-import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,13 +33,13 @@ import butterknife.Bind;
  * @author ymb
  *         Create at 2017/8/10 13:59
  */
-public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter, BannerDetailModel> implements BannerDetail_IView {
+public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter, BannerDetailModel> implements BannerDetail_IView, OnRefreshListener {
 
 
     @Bind(R.id.rv_banner_detail)
     RecyclerView mRvBannerDetail;
     @Bind(R.id.mRefreshLayout)
-    TwinklingRefreshLayout mRefreshLayout;
+    SmartRefreshLayout mRefreshLayout;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
 
@@ -67,12 +67,7 @@ public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter, Ba
         mRvBannerDetail.setAdapter(mDelegateAdapter);
 
         // 初始化下拉刷新
-        ProgressLayout headerView = new ProgressLayout(mContext);
-        headerView.setColorSchemeResources(R.color.colorPrimary);
-        mRefreshLayout.setHeaderView(headerView);
-        mRefreshLayout.setFloatRefresh(true);
-        mRefreshLayout.setEnableOverScroll(false);
-        mRefreshLayout.setOnRefreshListener(mListener);
+        mRefreshLayout.setOnRefreshListener(this);
     }
 
     @Override
@@ -88,16 +83,14 @@ public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter, Ba
             finish();
     }
 
-    private RefreshListenerAdapter mListener = new RefreshListenerAdapter() {
-        @Override
-        public void onRefresh(TwinklingRefreshLayout refreshLayout) {
-            getBannerDetailData(true);
-        }
-    };
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        getBannerDetailData(true);
+    }
 
     @Override
     public void stopPullToRefreshLoading() {
-        mRefreshLayout.finishRefreshing();
+        mRefreshLayout.finishRefresh();
     }
 
     @Override

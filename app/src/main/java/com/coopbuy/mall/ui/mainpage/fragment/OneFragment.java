@@ -127,6 +127,8 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
 
     @Override
     public void setHomeData(HomePageDataResponse homePageDataResponse) {
+        if (homePageDataResponse == null)
+            return;
         mAdapters.clear();
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         mRvHome.setRecycledViewPool(viewPool);

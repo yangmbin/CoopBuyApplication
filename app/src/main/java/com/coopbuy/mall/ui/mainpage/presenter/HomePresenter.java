@@ -4,15 +4,17 @@ package com.coopbuy.mall.ui.mainpage.presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.login.HomePageDataRequest;
 import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.google.gson.Gson;
+import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
-import com.guinong.net.request.IAsyncRequestState;
 
 public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
 
@@ -36,16 +38,31 @@ public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
             public void onComplete(HomePageDataResponse homePageDataResponse, Object userState) {
                 Log.e("yangmbin", homePageDataResponse + "");
                 mView.setHomeData(homePageDataResponse);
-                mView.stopAll();
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
+                else
+                    mView.stopAll();
+
+                if (homePageDataResponse.getFloors().size() == 0)
+                    mView.showNoDataLayout();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (!isPullToRefresh)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (!isPullToRefresh)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "homePage"));
     }

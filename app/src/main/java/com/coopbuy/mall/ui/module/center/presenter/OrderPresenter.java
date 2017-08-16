@@ -30,7 +30,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             mView.showFillLoading();
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setCurrentPage(pageNo);
-        mModel.getOrderAllList(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
+        mView.appendNetCall(mModel.getOrderAllList(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
             @Override
             public void onComplete(GetOrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
@@ -51,7 +51,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
             }
-        }, "allOrderList");
+        }, "allOrderList"));
     }
 
 
@@ -64,7 +64,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             mView.showFillLoading();
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setCurrentPage(pageNo);
-        mModel.getOrderListWaitForPayment(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
+        mView.appendNetCall(mModel.getOrderListWaitForPayment(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
             @Override
             public void onComplete(GetOrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
@@ -84,7 +84,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
             }
-        }, "waitPayOrderList");
+        }, "waitPayOrderList"));
     }
 
 
@@ -97,7 +97,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             mView.showFillLoading();
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setCurrentPage(pageNo);
-        mModel.getOrderListWaitForDispatch(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
+        mView.appendNetCall(mModel.getOrderListWaitForDispatch(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
             @Override
             public void onComplete(GetOrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
@@ -117,7 +117,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
             }
-        }, "waitSendOrderList");
+        }, "waitSendOrderList"));
     }
 
 
@@ -130,7 +130,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             mView.showFillLoading();
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setCurrentPage(pageNo);
-        mModel.getOrderListWaitForReceive(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
+        mView.appendNetCall(mModel.getOrderListWaitForReceive(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
             @Override
             public void onComplete(GetOrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
@@ -150,7 +150,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
             }
-        }, "waitReceiveOrderList");
+        }, "waitReceiveOrderList"));
     }
 
 
@@ -163,7 +163,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             mView.showFillLoading();
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setCurrentPage(pageNo);
-        mModel.getOrderListWaitForComment(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
+        mView.appendNetCall(mModel.getOrderListWaitForComment(getOrderListRequest, new IAsyncResultCallback<GetOrderListResponse>() {
             @Override
             public void onComplete(GetOrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
@@ -183,6 +183,6 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
             }
-        }, "waitCommentOrderList");
+        }, "waitCommentOrderList"));
     }
 }

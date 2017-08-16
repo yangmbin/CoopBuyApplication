@@ -252,9 +252,10 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
         if (!mNetCalls.isEmpty()) {
             for (IAsyncRequestState state : mNetCalls) {
-                state.cancel();
-                Log.e("niu", "activity net cancel");
+                if (state != null)
+                    state.cancel();
             }
+            Log.e("network", "cancel network");
         }
     }
 }

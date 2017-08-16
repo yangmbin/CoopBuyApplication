@@ -20,11 +20,21 @@ public class ToastUtils {
         toast.show();
     }
 
+    public static void toastShort(int textResId) {
+        String text = CoopBuyApplication.getAppContext().getString(textResId);
+        toastShort(text);
+    }
+
     public static void toastLong(String text) {
         if (toast == null) {
             toast = Toast.makeText(CoopBuyApplication.getAppContext(), text, Toast.LENGTH_LONG);
         }
         toast.setText(text);
         toast.show();
+    }
+
+    public static void longShort(int textResId) {
+        String text = CoopBuyApplication.getAppContext().getString(textResId);
+        toastLong(text);
     }
 }

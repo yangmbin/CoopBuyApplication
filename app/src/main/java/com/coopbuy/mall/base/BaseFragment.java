@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,8 +172,10 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
 
         if (!mNetCalls.isEmpty()) {
             for (IAsyncRequestState state : mNetCalls) {
-                state.cancel();
+                if (state != null)
+                    state.cancel();
             }
+            Log.e("network", "cancel network");
         }
     }
 

@@ -26,7 +26,7 @@ public class OrderDetailPresenter extends BasePresenter<OrderDetail_IView, Order
         mView.showFillLoading();
         OrderDetailRequest orderDetail = new OrderDetailRequest();
         orderDetail.setOrderId(orderId);
-        mModel.getOrderDetail(orderDetail, new IAsyncResultCallback<OrderDetailResponse>() {
+        mView.appendNetCall(mModel.getOrderDetail(orderDetail, new IAsyncResultCallback<OrderDetailResponse>() {
             @Override
             public void onComplete(OrderDetailResponse orderDetailResponse, Object userState) {
                 mView.setOrderDetailData(orderDetailResponse);
@@ -37,6 +37,6 @@ public class OrderDetailPresenter extends BasePresenter<OrderDetail_IView, Order
             public void onError(NetworkException error, Object userState) {
                 mView.showNetErrorLayout();
             }
-        }, "getOrderDetail");
+        }, "getOrderDetail"));
     }
 }

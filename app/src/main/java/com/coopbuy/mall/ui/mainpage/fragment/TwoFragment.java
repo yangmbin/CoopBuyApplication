@@ -115,6 +115,8 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
      */
     @Override
     public void showCategoryData(List<CategorysResponse> responses) {
+        if (responses == null)
+            return;
         mLeftData.clear();
         for (int i = 0; i < responses.size(); i++) {
             mLeftData.add(responses.get(i).getCategoryName());
