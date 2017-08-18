@@ -37,9 +37,9 @@ import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.utils.ToastUtils;
-import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -60,12 +60,12 @@ import permissions.dispatcher.RuntimePermissions;
  *         Create at 2017/7/25 10:23
  */
 @RuntimePermissions
-public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel> implements Home_IView {
+public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel> implements Home_IView, OnRefreshListener {
 
     @Bind(R.id.rv_home)
     RecyclerView mRvHome;
     @Bind(R.id.refresh_layout)
-    TwinklingRefreshLayout mRefreshLayout;
+    SmartRefreshLayout mRefreshLayout;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
     private int mScrollY = 0;
@@ -93,13 +93,8 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
         mDelegateAdapter = new DelegateAdapter(manager, false);
         mRvHome.setAdapter(mDelegateAdapter);
 
-        // 初始化下拉刷新
-        ProgressLayout headerView = new ProgressLayout(mContext);
-        headerView.setColorSchemeResources(R.color.colorPrimary);
-        mRefreshLayout.setHeaderView(headerView);
-        mRefreshLayout.setFloatRefresh(true);
-        mRefreshLayout.setEnableOverScroll(false);
-        mRefreshLayout.setOnRefreshListener(mListener);
+        // 刷新监听
+        mRefreshLayout.setOnRefreshListener(this);
 
         // RecyclerView滑动监听设置颜色渐变
         mRvHome.addOnScrollListener(mTitleBarColorListener);
@@ -195,16 +190,14 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
         mDelegateAdapter.setAdapters(mAdapters);
     }
 
-    private RefreshListenerAdapter mListener = new RefreshListenerAdapter() {
-        @Override
-        public void onRefresh(TwinklingRefreshLayout refreshLayout) {
-            mPresenter.getHomeData(true);
-        }
-    };
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        mPresenter.getHomeData(true);
+    }
 
     @Override
     public void stopPullToRefreshLoading() {
-        mRefreshLayout.finishRefreshing();
+        mRefreshLayout.finishRefresh();
     }
 
     /**

@@ -66,7 +66,7 @@ public class BannerDetailActivity extends BaseActivity<BannerDetailPresenter, Ba
         mDelegateAdapter = new DelegateAdapter(manager, false);
         mRvBannerDetail.setAdapter(mDelegateAdapter);
 
-        // 初始化下拉刷新
+        // 刷新监听
         mRefreshLayout.setOnRefreshListener(this);
     }
 

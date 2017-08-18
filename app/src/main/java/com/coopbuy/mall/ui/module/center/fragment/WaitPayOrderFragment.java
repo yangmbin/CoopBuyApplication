@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.fragment;
 
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -20,10 +19,9 @@ import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
-import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.footer.BallPulseView;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,11 +33,11 @@ import butterknife.Bind;
  * @author ymb
  * Create at 2017/8/11 15:34
  */
-public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, OrderModel> implements Order_IView {
+public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, OrderModel> implements Order_IView, OnRefreshLoadmoreListener {
     @Bind(R.id.rv_order)
     RecyclerView mRvOrder;
     @Bind(R.id.refresh_layout)
-    TwinklingRefreshLayout mRefreshLayout;
+    SmartRefreshLayout mRefreshLayout;
 
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
@@ -69,16 +67,8 @@ public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, 
         mDelegateAdapter = new DelegateAdapter(manager, false);
         mRvOrder.setAdapter(mDelegateAdapter);
 
-        // 初始化刷新控件
-        ProgressLayout headerView = new ProgressLayout(mContext);
-        headerView.setColorSchemeResources(R.color.colorPrimary);
-        BallPulseView bottomView = new BallPulseView(mContext);
-        bottomView.setAnimatingColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
-        mRefreshLayout.setHeaderView(headerView);
-        mRefreshLayout.setBottomView(bottomView);
-        mRefreshLayout.setFloatRefresh(true);
-        mRefreshLayout.setEnableOverScroll(false);
-        mRefreshLayout.setOnRefreshListener(mRefreshListener);
+        // 刷新监听
+        mRefreshLayout.setOnRefreshListener(this);
     }
 
     @Override
@@ -87,19 +77,15 @@ public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, 
         mPresenter.getWaitPayOrder(firstPage, OrderPresenter.LOAD_TYPE_1);
     }
 
-    private RefreshListenerAdapter mRefreshListener = new RefreshListenerAdapter() {
-        @Override
-        public void onRefresh(TwinklingRefreshLayout refreshLayout) {
-            super.onRefresh(refreshLayout);
-            mPresenter.getWaitPayOrder(firstPage, OrderPresenter.LOAD_TYPE_2);
-        }
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        mPresenter.getWaitPayOrder(currentPage + 1, OrderPresenter.LOAD_TYPE_3);
+    }
 
-        @Override
-        public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
-            super.onLoadMore(refreshLayout);
-            mPresenter.getWaitPayOrder(currentPage + 1, OrderPresenter.LOAD_TYPE_3);
-        }
-    };
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        mPresenter.getWaitPayOrder(firstPage, OrderPresenter.LOAD_TYPE_2);
+    }
 
     @Override
     protected void networkRetry() {
@@ -110,7 +96,7 @@ public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, 
     @Override
     public void stopRefreshLayoutLoading() {
         if (mRefreshLayout != null) {
-            mRefreshLayout.finishRefreshing();
+            mRefreshLayout.finishRefresh();
             mRefreshLayout.finishLoadmore();
         }
     }

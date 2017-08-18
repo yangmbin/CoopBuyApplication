@@ -35,10 +35,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     @Override
     public void initPresenter() {
         mPresenter = new OrderDetailPresenter(mContext, mModel, this);
-        if (getIntent().getStringExtra(IntentUtils.PARAM1) == null)
-            return;
-        String orderId = getIntent().getStringExtra(IntentUtils.PARAM1);
-        mPresenter.getOrderDetail(orderId);
+        getOrderDetail();
     }
 
     @Override
@@ -52,8 +49,23 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         mRvGoodsList.setAdapter(mDelegateAdapter);
     }
 
+    private void getOrderDetail() {
+        if (getIntent().getStringExtra(IntentUtils.PARAM1) == null)
+            return;
+        String orderId = getIntent().getStringExtra(IntentUtils.PARAM1);
+        mPresenter.getOrderDetail(orderId);
+    }
+
+    @Override
+    protected void networkRetry() {
+        super.networkRetry();
+        getOrderDetail();
+    }
+
     @Override
     public void setOrderDetailData(OrderDetailResponse orderDetailResponse) {
+        if (orderDetailResponse == null)
+            return;
         LinearLayoutHelper helper = new LinearLayoutHelper();
         helper.setDividerHeight(ScreenUtils.dp2px(mContext, 2));
         mDelegateAdapter.addAdapter(new OrderDetailAdapter(mContext, orderDetailResponse.getOrderItem(), helper));

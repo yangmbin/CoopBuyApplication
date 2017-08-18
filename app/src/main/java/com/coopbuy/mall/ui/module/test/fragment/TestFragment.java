@@ -2,7 +2,6 @@ package com.coopbuy.mall.ui.module.test.fragment;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -11,20 +10,19 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
-import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.footer.BallPulseView;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 
-public class TestFragment extends ViewPagerBaseFragment {
+public class TestFragment extends ViewPagerBaseFragment implements OnRefreshLoadmoreListener {
 
     @Bind(R.id.refresh_layout)
-    TwinklingRefreshLayout mRefreshLayout;
+    SmartRefreshLayout mRefreshLayout;
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
     TestListAdapter mAdapter;
@@ -47,15 +45,7 @@ public class TestFragment extends ViewPagerBaseFragment {
 
     @Override
     protected void initView() {
-        ProgressLayout headerView = new ProgressLayout(mContext);
-        headerView.setColorSchemeResources(R.color.colorPrimary);
-        BallPulseView bottomView = new BallPulseView(mContext);
-        bottomView.setAnimatingColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
-        mRefreshLayout.setHeaderView(headerView);
-        mRefreshLayout.setBottomView(bottomView);
-        mRefreshLayout.setFloatRefresh(true);
-        mRefreshLayout.setEnableOverScroll(false);
-        mRefreshLayout.setOnRefreshListener(mListener);
+        mRefreshLayout.setOnRefreshListener(this);
         list = new ArrayList();
         for (int i = 0; i < 20; i++)
             list.add(new Object());
@@ -77,36 +67,32 @@ public class TestFragment extends ViewPagerBaseFragment {
         super.onFragmentFirstVisible();
     }
 
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++)
+                    list.add(new Object());
+                mAdapter.notifyDataSetChanged();
+                mRefreshLayout.finishLoadmore();
+            }
+        }, 2000);
+    }
 
-    private RefreshListenerAdapter mListener = new RefreshListenerAdapter() {
-        @Override
-        public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 5; i++)
-                        list.add(new Object());
-                    mAdapter.notifyDataSetChanged();
-                    mRefreshLayout.finishLoadmore();
-                }
-            }, 2000);
-        }
-
-        @Override
-        public void onRefresh(TwinklingRefreshLayout refreshLayout) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    list.clear();
-                    for (int i = 0; i < 20; i++)
-                        list.add(new Object());
-                    mAdapter.notifyDataSetChanged();
-                    mRefreshLayout.finishRefreshing();
-                }
-            }, 2000);
-
-        }
-    };
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                list.clear();
+                for (int i = 0; i < 20; i++)
+                    list.add(new Object());
+                mAdapter.notifyDataSetChanged();
+                mRefreshLayout.finishRefresh();
+            }
+        }, 2000);
+    }
 
     private class TestListAdapter extends BaseRecyclerAdapter<Object> {
         public TestListAdapter(Context ctx, List<Object> list) {

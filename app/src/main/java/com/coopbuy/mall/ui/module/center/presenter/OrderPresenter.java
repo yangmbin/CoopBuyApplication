@@ -3,11 +3,14 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.login.GetOrderListRequest;
 import com.coopbuy.mall.api.login.GetOrderListResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.OrderModel;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;
+import com.coopbuy.mall.utils.ToastUtils;
+import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
 
@@ -47,9 +50,20 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "allOrderList"));
     }
@@ -80,9 +94,20 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "waitPayOrderList"));
     }
@@ -113,9 +138,20 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "waitSendOrderList"));
     }
@@ -146,9 +182,20 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "waitReceiveOrderList"));
     }
@@ -179,9 +226,20 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (loadType != LOAD_TYPE_1)
                     mView.stopRefreshLayoutLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (loadType == LOAD_TYPE_1)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "waitCommentOrderList"));
     }

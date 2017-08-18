@@ -2,21 +2,16 @@ package com.coopbuy.mall.ui.module.home.presenter;
 
 
 import android.content.Context;
-import android.util.Log;
 
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
-import com.coopbuy.mall.api.login.HomePageDataRequest;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.mainpage.model.HomeModel;
-import com.coopbuy.mall.ui.mainpage.model.MainModel;
-import com.coopbuy.mall.ui.mainpage.view.Home_IView;
-import com.coopbuy.mall.ui.mainpage.view.Main_IView;
 import com.coopbuy.mall.ui.module.home.model.BannerDetailModel;
 import com.coopbuy.mall.ui.module.home.view.BannerDetail_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.google.gson.Gson;
+import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
 
@@ -41,16 +36,31 @@ public class BannerDetailPresenter extends BasePresenter<BannerDetail_IView, Ban
             @Override
             public void onComplete(HomePageDataByIdResponse homePageDataByIdResponse, Object userState) {
                 mView.setBannerDetailData(homePageDataByIdResponse);
-                mView.stopAll();
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
+                else
+                    mView.stopAll();
+
+                if (homePageDataByIdResponse == null || homePageDataByIdResponse.getFloors().size() == 0)
+                    mView.showNoDataLayout();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.showNetErrorLayout();
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
+                else
+                    mView.stopAll();
+
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    if (!isPullToRefresh)
+                        mView.showNetOffLayout();
+                    ToastUtils.toastShort(R.string.no_network);
+                } else {
+                    if (!isPullToRefresh)
+                        mView.showNetErrorLayout();
+                    ToastUtils.toastShort(R.string.connect_server_error);
+                }
             }
         }, "banner"));
 

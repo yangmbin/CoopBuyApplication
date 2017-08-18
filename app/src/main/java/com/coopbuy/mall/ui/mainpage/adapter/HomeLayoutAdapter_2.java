@@ -14,7 +14,6 @@ import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.home.activity.BannerDetailActivity;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -42,7 +41,7 @@ public class HomeLayoutAdapter_2 extends BaseDelegateAdapter<HomePageDataRespons
                 if (item.getObjectId() != 1)
                     IntentUtils.gotoActivity(mContext, BannerDetailActivity.class, item.getObjectId() + "");
                 else
-                    ((MainActivity) mContext).setTabPosition(1);
+                    ((MainActivity) mContext).setCurrentView(1);
             }
         });
     }

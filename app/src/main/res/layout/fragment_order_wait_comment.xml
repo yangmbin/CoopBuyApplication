@@ -12,17 +12,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.coopbuy.mall.widget.MaterialHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/gray_1"
                 android:overScrollMode="never" />
-        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+            <com.coopbuy.mall.widget.BallPulseFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
 </LinearLayout>

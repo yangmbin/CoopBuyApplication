@@ -16,8 +16,8 @@
             android:id="@+id/mRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlEnableLoadmore="true">
-            <com.scwang.smartrefresh.header.MaterialHeader
+            app:srlEnableLoadmore="false">
+            <com.coopbuy.mall.widget.MaterialHeader
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <android.support.v7.widget.RecyclerView
@@ -25,9 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"/>
-            <com.scwang.smartrefresh.layout.footer.FalsifyFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 

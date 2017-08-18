@@ -18,7 +18,7 @@ import com.coopbuy.mall.ui.module.test.port.ClickPort;
 import com.coopbuy.mall.ui.module.test.presenter.NiuTestPresenter;
 import com.coopbuy.mall.ui.module.test.view.NiuTest_IView;
 import com.coopbuy.mall.utils.PicCodeUtil;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class NiuTestActivity extends BaseActivity<NiuTestPresenter, NiuTestModel
     public static Boolean isAddParams = false;
 
     @Bind(R.id.refresh_layout)
-    TwinklingRefreshLayout mRefreshLayout;
+    SmartRefreshLayout mRefreshLayout;
     @Bind(R.id.rv_test)
     RecyclerView mRvTest;
     @Bind(R.id.tv_result)
