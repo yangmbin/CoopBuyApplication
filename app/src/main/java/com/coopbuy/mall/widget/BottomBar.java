@@ -66,13 +66,12 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     public void setCurrentTab(int position) {
-        if (position == 0) {
+        if (position == 0)
             setTab1();
-        } else if (position == 1) {
+        else if (position == 1)
             setTab2();
-        } else if (position == 2) {
+        else if (position == 2)
             setTab3();
-        }
     }
 
     private void setTab1() {
