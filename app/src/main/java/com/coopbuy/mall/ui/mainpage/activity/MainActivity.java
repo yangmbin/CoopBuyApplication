@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.mainpage.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
@@ -12,6 +13,8 @@ import com.coopbuy.mall.ui.mainpage.fragment.TwoFragment;
 import com.coopbuy.mall.ui.mainpage.model.MainModel;
 import com.coopbuy.mall.ui.mainpage.presenter.MainPresenter;
 import com.coopbuy.mall.ui.mainpage.view.Main_IView;
+import com.coopbuy.mall.utils.APPUpdateUtils;
+import com.coopbuy.mall.widget.APPUpdateDialog;
 import com.coopbuy.mall.widget.BottomBar;
 import com.coopbuy.mall.widget.NoScrollViewPager;
 
@@ -30,6 +33,12 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     private List<Fragment> mFragments = new ArrayList<>();
     private FragmentManager mFmManager;
     private MainTabContentAdapter mContentAdapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        showUpdateDialog("http://tvnow-pic.tvesou.com/apk/FungoLive_qudao12.apk");
+    }
 
     @Override
     public int getLayoutId() {
@@ -74,5 +83,23 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     public void setCurrentView(int position) {
         mViewPager.setCurrentItem(position);
         mBottomBar.setCurrentTab(position);
+    }
+
+    private void showUpdateDialog(String url) {
+        final APPUpdateUtils appUpdateUtils = new APPUpdateUtils(mContext, url);
+        final APPUpdateDialog dialog = new APPUpdateDialog(mContext);
+        APPUpdateDialog.ClickCallBack clickCallBack = new APPUpdateDialog.ClickCallBack() {
+            @Override
+            public void onUpdate() {
+                appUpdateUtils.downloadAPK(dialog);
+            }
+
+            @Override
+            public void onClose() {
+                appUpdateUtils.cancel();
+            }
+        };
+        dialog.setCallBack(clickCallBack);
+        dialog.show();
     }
 }
