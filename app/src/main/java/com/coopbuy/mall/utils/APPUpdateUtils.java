@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.PowerManager;
+import android.util.Log;
 
 import com.coopbuy.mall.widget.APPUpdateDialog;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -31,7 +33,8 @@ public class APPUpdateUtils {
     public APPUpdateUtils(Context mContext, String url) {
         this.mContext = mContext;
         this.url = url;
-        apk_location = this.mContext.getCacheDir() + "coopbuy.apk";
+        apk_location = this.mContext.getCacheDir() + "/coopbuy.apk";
+//        apk_location = Environment.getExternalStorageDirectory().getAbsolutePath() + "coopbuy.apk";
     }
 
     public void downloadAPK(APPUpdateDialog dialog) {
@@ -97,7 +100,7 @@ public class APPUpdateUtils {
                 file = new File(apk_location);
                 input = connection.getInputStream();
                 output = new FileOutputStream(file);
-                byte data[] = new byte[4096];
+                byte data[] = new byte[2048];
                 long total = 0;
                 int count;
                 while ((count = input.read(data)) != -1) {
@@ -126,8 +129,18 @@ public class APPUpdateUtils {
     }
 
     private void installAPK() {
+        Log.e("yangmbin", apk_location);
+        File file = new File(apk_location);
+        // 授权
+        try {
+            String[] command = {"chmod", "777", file.toString()};
+            ProcessBuilder builder = new ProcessBuilder(command);
+            builder.start();
+        } catch (IOException ignored) {
+        }
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(new File(apk_location)), "application/vnd.android.package-archive");
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 }
