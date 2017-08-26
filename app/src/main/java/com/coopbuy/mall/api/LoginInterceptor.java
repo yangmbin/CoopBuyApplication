@@ -44,10 +44,10 @@ public class LoginInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         long t1 = System.nanoTime();
-        Log.e("网络请求发起时间", "请求地址" + request.url() + chain.connection() + request.headers());
+//        Log.e("网络请求发起时间", "请求地址" + request.url() + chain.connection() + request.headers());
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
-        Log.e("网络请求耗时", response.request().url() + "....." + (t2 - t1) / 1e6d + "....." + response.headers());
+//        Log.e("网络请求耗时", response.request().url() + "....." + (t2 - t1) / 1e6d + "....." + response.headers());
         ResponseBody responseBody = response.body();
         BufferedSource source = responseBody.source();
         source.request(Long.MAX_VALUE); // Buffer the entire body.

@@ -1,7 +1,7 @@
 package com.guinong.net;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.os.Handler;
 
 import com.google.gson.Gson;
 import com.guinong.net.callback.AsyncEmptyCallbackHandle;
@@ -69,6 +69,8 @@ public abstract class RequestClient {
         this.isUnitTest = false;
     }
 
+    private Handler mHandler = new Handler();
+
 
     /**
      * api 调用请求
@@ -78,10 +80,16 @@ public abstract class RequestClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState apiRequest(Request request, IAsyncMessageCallback callback, Object userState) {
+    public IAsyncRequestState apiRequest(Request request, final IAsyncMessageCallback callback, final Object userState) {
         if (!NetWorkUtil.isNetworkConnected(baseContext)) {
-            NetworkException exception = new NetworkException(CodeContant.CODE_NET_UNAVAILABLE, "无网络", null);
-            callback.onError(exception, userState);
+
+            mHandler.postDelayed(new Runnable() { // 解决无网络情况下用户点击重试无反应的不良体验
+                @Override
+                public void run() {
+                    NetworkException exception = new NetworkException(CodeContant.CODE_NET_UNAVAILABLE, "无网络", null);
+                    callback.onError(exception, userState);
+                }
+            }, 800);
             return null;
         }
         ExceptionUtils.checkNotNull(request, "request");

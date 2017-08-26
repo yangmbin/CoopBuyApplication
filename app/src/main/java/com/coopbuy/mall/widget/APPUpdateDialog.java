@@ -44,7 +44,7 @@ public class APPUpdateDialog extends Dialog {
         Window dialogWindow = getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         DisplayMetrics dm = mContext.getResources().getDisplayMetrics();
-        lp.width = (int) (dm.widthPixels * 0.9); // 把对话框宽度设置为屏幕宽度的0.9
+        lp.width = (int) (dm.widthPixels * 0.85); // 把对话框宽度设置为屏幕宽度的0.85
         dialogWindow.setAttributes(lp);
         setCancelable(false);
 

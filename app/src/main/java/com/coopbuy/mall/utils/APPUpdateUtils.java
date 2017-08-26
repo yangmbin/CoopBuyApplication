@@ -34,7 +34,6 @@ public class APPUpdateUtils {
         this.mContext = mContext;
         this.url = url;
         apk_location = this.mContext.getCacheDir() + "/coopbuy.apk";
-//        apk_location = Environment.getExternalStorageDirectory().getAbsolutePath() + "coopbuy.apk";
     }
 
     public void downloadAPK(APPUpdateDialog dialog) {
@@ -89,7 +88,7 @@ public class APPUpdateUtils {
             InputStream input = null;
             OutputStream output = null;
             HttpURLConnection connection = null;
-            File file = null;
+            File file;
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
