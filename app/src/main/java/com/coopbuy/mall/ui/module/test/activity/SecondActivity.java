@@ -77,5 +77,6 @@ public class SecondActivity extends BaseActivity<SecondPresenter, SecondModel> i
         super.networkRetry();
 
         ToastUtils.toastShort( "reload");
+        mNetCalls.get(0).cancel();
     }
 }

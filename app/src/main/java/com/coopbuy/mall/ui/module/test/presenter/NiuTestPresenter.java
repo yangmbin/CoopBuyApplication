@@ -30,9 +30,6 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
         super(mContext, mModel, mView);
     }
 
-    public void cancel() {
-        state.cancel();
-    }
 
     public void sendRequest(String value, List<Object> params) {
 
@@ -49,7 +46,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     request = (LoginRequest) params.get(0);
                 }
-                mModel.login(request, new IAsyncResultCallback<LoginResponse>() {
+                mView.appendNetCall(mModel.login(request, new IAsyncResultCallback<LoginResponse>() {
                     @Override
                     public void onComplete(LoginResponse loginResponse, Object userState) {
                         if (loginResponse != null) {
@@ -72,7 +69,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                             mView.stopAll();
                         }
                     }
-                }, "login");
+                }, "login"));
                 break;
             case "获取图形验证码":
                 ImageCodeRequest imageCodeRequest = new ImageCodeRequest();
@@ -83,7 +80,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 } else {
                     imageCodeRequest = (ImageCodeRequest) params.get(0);
                 }
-                 mModel.getImageCode(imageCodeRequest, new IAsyncResultCallback<ImageCodeResponse>() {
+                mModel.getImageCode(imageCodeRequest, new IAsyncResultCallback<ImageCodeResponse>() {
                     @Override
                     public void onComplete(ImageCodeResponse imageCodeResponse, Object userState) {
                         if (imageCodeResponse != null) {

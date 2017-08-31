@@ -18,4 +18,6 @@ public interface IAsyncRequestState {
      * @return 用户传递状态值
      */
     Object getUserState();
+
+
 }

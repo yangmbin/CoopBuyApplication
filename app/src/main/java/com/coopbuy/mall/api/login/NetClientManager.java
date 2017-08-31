@@ -554,7 +554,7 @@ public class NetClientManager extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderQuantityResponse>() {
+        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_DISPATCH_LIST, request, callback, userState);
     }
 
@@ -1138,5 +1138,4 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(new TypeToken<StationListResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.STATION_LIST, request, callback, userState);
     }
-
 }
