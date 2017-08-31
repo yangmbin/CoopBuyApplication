@@ -14,41 +14,41 @@ import java.util.List;
  * @content
  */
 public class NiuTestModel implements BaseModel {
-    public void login(LoginRequest request, IAsyncResultCallback<LoginResponse> callback, Object userState) {
-        client.LoginRequest(request, callback, userState);
+    public IAsyncRequestState login(LoginRequest request, IAsyncResultCallback<LoginResponse> callback, Object userState) {
+        return client.LoginRequest(request, callback, userState);
     }
 
     public IAsyncRequestState getImageCode(ImageCodeRequest request, IAsyncResultCallback<ImageCodeResponse> callback, Object userState) {
-      return client.getImageCode(request, callback, userState);
+        return client.getImageCode(request, callback, userState);
     }
 
-    public void sendSmsCode(SendSmsCodeRequest request, IAsyncResultCallback<SendSmsCodeResponse> callback, Object userState) {
-        client.senSmsCode(request, callback, userState);
+    public IAsyncRequestState sendSmsCode(SendSmsCodeRequest request, IAsyncResultCallback<SendSmsCodeResponse> callback, Object userState) {
+        return client.senSmsCode(request, callback, userState);
 
     }
 
-    public void smsResetPasswordGetCode(SmsResetPasswordGetCodeRequest request, IAsyncResultCallback<SmsResetPasswordGetCodeResponse> callback, Object userState) {
-        client.smsResetPasswordGetCode(request, callback, userState);
+    public IAsyncRequestState smsResetPasswordGetCode(SmsResetPasswordGetCodeRequest request, IAsyncResultCallback<SmsResetPasswordGetCodeResponse> callback, Object userState) {
+        return client.smsResetPasswordGetCode(request, callback, userState);
     }
 
-    public void smsResetPassword(SmsResetPasswordRequest request, IAsyncResultCallback<SmsResetPasswordResponse> callback, Object userState) {
-        client.smsResetPassword(request, callback, userState);
+    public IAsyncRequestState smsResetPassword(SmsResetPasswordRequest request, IAsyncResultCallback<SmsResetPasswordResponse> callback, Object userState) {
+        return client.smsResetPassword(request, callback, userState);
     }
 
-    public void registerUser(RegisterRequest request, IAsyncResultCallback<RegisterResponse> callback, Object userState) {
-        client.register(request, callback, userState);
+    public IAsyncRequestState registerUser(RegisterRequest request, IAsyncResultCallback<RegisterResponse> callback, Object userState) {
+        return client.register(request, callback, userState);
     }
 
-    public void loginQuit(IAsyncResultCallback<LoginQuitRespsonse> callback, Object userState) {
-        client.quitUser(callback, userState);
+    public IAsyncRequestState loginQuit(IAsyncResultCallback<LoginQuitRespsonse> callback, Object userState) {
+        return client.quitUser(callback, userState);
     }
 
-    public void homePageData(HomePageDataRequest request, IAsyncResultCallback<HomePageDataResponse> callback, Object userState) {
-        client.homePageData(request, callback, userState);
+    public IAsyncRequestState homePageData(HomePageDataRequest request, IAsyncResultCallback<HomePageDataResponse> callback, Object userState) {
+        return client.homePageData(request, callback, userState);
     }
 
-    public void getCategorys(IAsyncResultCallback<List<CategorysResponse>> callback, Object userState) {
-        client.getCategorys(callback, userState);
+    public IAsyncRequestState getCategorys(IAsyncResultCallback<List<CategorysResponse>> callback, Object userState) {
+        return client.getCategorys(callback, userState);
     }
 
     /**
@@ -58,8 +58,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getStationRecommend(IAsyncResultCallback<List<GetStationRecommendResponse>> callback, Object userState) {
-        client.getStationRecommend(callback, userState);
+    public IAsyncRequestState getStationRecommend(IAsyncResultCallback<List<GetStationRecommendResponse>> callback, Object userState) {
+        return client.getStationRecommend(callback, userState);
     }
 
     /**
@@ -69,8 +69,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getPageDataById(HomePageDataByIdRequest request, IAsyncResultCallback<HomePageDataByIdResponse> callback, Object userState) {
-        client.getPageDataById(request, callback, userState);
+    public IAsyncRequestState getPageDataById(HomePageDataByIdRequest request, IAsyncResultCallback<HomePageDataByIdResponse> callback, Object userState) {
+        return client.getPageDataById(request, callback, userState);
     }
 
     /**
@@ -80,8 +80,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getDefalutAddress(IAsyncResultCallback<GetDefaultAddressResponse> callback, Object userState) {
-        client.getDefalutAddress(callback, userState);
+    public IAsyncRequestState getDefalutAddress(IAsyncResultCallback<GetDefaultAddressResponse> callback, Object userState) {
+        return client.getDefalutAddress(callback, userState);
     }
 
     /**
@@ -91,8 +91,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getDefalutAddressList(IAsyncResultCallback<List<GetDefaultAddressResponse>> callback, Object userState) {
-        client.getDefalutAddressList(callback, userState);
+    public IAsyncRequestState getDefalutAddressList(IAsyncResultCallback<List<GetDefaultAddressResponse>> callback, Object userState) {
+        return client.getDefalutAddressList(callback, userState);
     }
 
     /**
@@ -102,8 +102,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getRegions(IAsyncResultCallback<List<RegionsResponse>> callback, Object userState) {
-        client.getRegions(callback, userState);
+    public IAsyncRequestState getRegions(IAsyncResultCallback<List<RegionsResponse>> callback, Object userState) {
+        return client.getRegions(callback, userState);
     }
 
     /**
@@ -114,8 +114,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getRegionsByParentId(RegionsByParentIdRequest request, IAsyncResultCallback<List<RegionsByParentIdResponse>> callback, Object userState) {
-        client.getRegionsByParentId(request, callback, userState);
+    public IAsyncRequestState getRegionsByParentId(RegionsByParentIdRequest request, IAsyncResultCallback<List<RegionsByParentIdResponse>> callback, Object userState) {
+        return client.getRegionsByParentId(request, callback, userState);
     }
 
     /**
@@ -126,8 +126,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<StationListByRegionIdResponse> callback, Object userState) {
-        client.getRegionsStationByParentId(request, callback, userState);
+    public IAsyncRequestState getRegionsStationByParentId(StationListByRegionIdRequest request, IAsyncResultCallback<StationListByRegionIdResponse> callback, Object userState) {
+        return client.getRegionsStationByParentId(request, callback, userState);
     }
 
     /**
@@ -138,8 +138,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void createShipAddress(CreateShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.createShipAddress(request, callback, userState);
+    public IAsyncRequestState createShipAddress(CreateShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.createShipAddress(request, callback, userState);
     }
 
     /**
@@ -150,8 +150,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void deleteShipAddress(DeleteShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.deleteShipAddress(request, callback, userState);
+    public IAsyncRequestState deleteShipAddress(DeleteShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.deleteShipAddress(request, callback, userState);
     }
 
     /**
@@ -162,8 +162,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void mobifyShipAddress(MobifyShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.mobifyShipAddress(request, callback, userState);
+    public IAsyncRequestState mobifyShipAddress(MobifyShipAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.mobifyShipAddress(request, callback, userState);
     }
 
     /**
@@ -174,8 +174,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void setDefaultShipAddress(SetDefaultAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.setDefaultShipAddress(request, callback, userState);
+    public IAsyncRequestState setDefaultShipAddress(SetDefaultAddressRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.setDefaultShipAddress(request, callback, userState);
     }
 
     /**
@@ -185,8 +185,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getQuantityNumber(IAsyncResultCallback<QuantityResponse> callback, Object userState) {
-        client.getQuantityNumber(callback, userState);
+    public IAsyncRequestState getQuantityNumber(IAsyncResultCallback<QuantityResponse> callback, Object userState) {
+        return client.getQuantityNumber(callback, userState);
     }
 
     /**
@@ -196,8 +196,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void addGoods(AddGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.addGoods(request, callback, userState);
+    public IAsyncRequestState addGoods(AddGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.addGoods(request, callback, userState);
     }
 
     /**
@@ -207,8 +207,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getCartList(IAsyncResultCallback<CartListResponse> callback, Object userState) {
-        client.getCartList(callback, userState);
+    public IAsyncRequestState getCartList(IAsyncResultCallback<CartListResponse> callback, Object userState) {
+        return client.getCartList(callback, userState);
     }
 
     /**
@@ -219,8 +219,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void updateGoodsQuantity(UpdateGoodsQuantityRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.updateGoodsQuantity(request, callback, userState);
+    public IAsyncRequestState updateGoodsQuantity(UpdateGoodsQuantityRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.updateGoodsQuantity(request, callback, userState);
     }
 
     /**
@@ -231,8 +231,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void removeGoods(RemoveGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.removeGoods(request, callback, userState);
+    public IAsyncRequestState removeGoods(RemoveGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.removeGoods(request, callback, userState);
     }
 
     /**
@@ -243,8 +243,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void orderConfirm(OrderConfirmRequest request, IAsyncResultCallback<OrderConfirmResponse> callback, Object userState) {
-        client.orderConfirm(request, callback, userState);
+    public IAsyncRequestState orderConfirm(OrderConfirmRequest request, IAsyncResultCallback<OrderConfirmResponse> callback, Object userState) {
+        return client.orderConfirm(request, callback, userState);
     }
 
     /**
@@ -255,8 +255,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderFreightAndUpdateOrderCounts(OrderFreightRequest request, IAsyncResultCallback<OrderFreightResponse> callback, Object userState) {
-        client.getOrderFreightAndUpdateOrderCounts(request, callback, userState);
+    public IAsyncRequestState getOrderFreightAndUpdateOrderCounts(OrderFreightRequest request, IAsyncResultCallback<OrderFreightResponse> callback, Object userState) {
+        return client.getOrderFreightAndUpdateOrderCounts(request, callback, userState);
     }
 
     /**
@@ -267,8 +267,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void newUserGoodsOrder(NewUserGoodsOrderRequest request, IAsyncResultCallback<NewUserGoodsOrderresponse> callback, Object userState) {
-        client.newUserGoodsOrder(request, callback, userState);
+    public IAsyncRequestState newUserGoodsOrder(NewUserGoodsOrderRequest request, IAsyncResultCallback<NewUserGoodsOrderresponse> callback, Object userState) {
+        return client.newUserGoodsOrder(request, callback, userState);
     }
 
     /**
@@ -279,8 +279,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void goodsDetailImage(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailDescResponse> callback, Object userState) {
-        client.goodsDetailImage(request, callback, userState);
+    public IAsyncRequestState goodsDetailImage(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailDescResponse> callback, Object userState) {
+        return client.goodsDetailImage(request, callback, userState);
     }
 
     /**
@@ -291,8 +291,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void goodsDeatailInfo(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailInfoResponse> callback, Object userState) {
-        client.goodsDeatailInfo(request, callback, userState);
+    public IAsyncRequestState goodsDeatailInfo(GoodsDetailRequest request, IAsyncResultCallback<GoodsDetailInfoResponse> callback, Object userState) {
+        return client.goodsDeatailInfo(request, callback, userState);
     }
 
     /**
@@ -304,8 +304,8 @@ public class NiuTestModel implements BaseModel {
      * @return
      */
 
-    public void getShopInfo(GetShopIdRequest request, IAsyncResultCallback<GetShopIdResponse> callback, Object userState) {
-        client.getShopInfo(request, callback, userState);
+    public IAsyncRequestState getShopInfo(GetShopIdRequest request, IAsyncResultCallback<GetShopIdResponse> callback, Object userState) {
+        return client.getShopInfo(request, callback, userState);
     }
 
     /**
@@ -316,8 +316,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getNetComment(GetNewCommentRequest request, IAsyncResultCallback<GetNewCommentResponse> callback, Object userState) {
-        client.getNetComment(request, callback, userState);
+    public IAsyncRequestState getNetComment(GetNewCommentRequest request, IAsyncResultCallback<GetNewCommentResponse> callback, Object userState) {
+        return client.getNetComment(request, callback, userState);
     }
 
     /**
@@ -328,8 +328,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getGoodsFreight(GetGoodsFreightRequest request, IAsyncResultCallback<GetGoodsFreightResponse> callback, Object userState) {
-        client.getGoodsFreight(request, callback, userState);
+    public IAsyncRequestState getGoodsFreight(GetGoodsFreightRequest request, IAsyncResultCallback<GetGoodsFreightResponse> callback, Object userState) {
+        return client.getGoodsFreight(request, callback, userState);
     }
 
     /**
@@ -339,8 +339,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getAppNewVersion(IAsyncResultCallback<AppNewVersionResponse> callback, Object userState) {
-        client.getAppNewVersion(callback, userState);
+    public IAsyncRequestState getAppNewVersion(IAsyncResultCallback<AppNewVersionResponse> callback, Object userState) {
+        return client.getAppNewVersion(callback, userState);
     }
 
     /**
@@ -350,8 +350,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getMobileOrderList(IAsyncResultCallback<MobileOrderListResponse> callback, Object userState) {
-        client.getMobileOrderList(callback, userState);
+    public IAsyncRequestState getMobileOrderList(IAsyncResultCallback<MobileOrderListResponse> callback, Object userState) {
+        return client.getMobileOrderList(callback, userState);
     }
 
     /**
@@ -361,8 +361,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getPayApplyAndChannel(PayApplyAndChannelRequest request, IAsyncResultCallback<PayApplyAndChannelResponse> callback, Object userState) {
-        client.getPayApplyAndChannel(request, callback, userState);
+    public IAsyncRequestState getPayApplyAndChannel(PayApplyAndChannelRequest request, IAsyncResultCallback<PayApplyAndChannelResponse> callback, Object userState) {
+        return client.getPayApplyAndChannel(request, callback, userState);
     }
 
     /**
@@ -373,8 +373,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void mobifyOrderPayComfirm(MobifyOrderPayConfirmRequest request, IAsyncResultCallback<MobifyOrderPayConfirmResponse> callback, Object userState) {
-        client.mobifyOrderPayComfirm(request, callback, userState);
+    public IAsyncRequestState mobifyOrderPayComfirm(MobifyOrderPayConfirmRequest request, IAsyncResultCallback<MobifyOrderPayConfirmResponse> callback, Object userState) {
+        return client.mobifyOrderPayComfirm(request, callback, userState);
     }
 
     /**
@@ -385,8 +385,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void createMobileOrder(CreateMobileOrderRequest request, IAsyncResultCallback<CreateMobileOrderResponse> callback, Object userState) {
-        client.createMobileOrder(request, callback, userState);
+    public IAsyncRequestState createMobileOrder(CreateMobileOrderRequest request, IAsyncResultCallback<CreateMobileOrderResponse> callback, Object userState) {
+        return client.createMobileOrder(request, callback, userState);
     }
 
     /**
@@ -396,8 +396,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderQuantityNumber(IAsyncResultCallback<GetOrderQuantityResponse> callback, Object userState) {
-        client.getOrderQuantityNumber(callback, userState);
+    public IAsyncRequestState getOrderQuantityNumber(IAsyncResultCallback<GetOrderQuantityResponse> callback, Object userState) {
+        return client.getOrderQuantityNumber(callback, userState);
     }
 
     /**
@@ -408,8 +408,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderAllList(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderAllList(request, callback, userState);
+    public IAsyncRequestState getOrderAllList(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return client.getOrderAllList(request, callback, userState);
     }
 
     /**
@@ -420,8 +420,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForPayment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderListWaitForPayment(request, callback, userState);
+    public IAsyncRequestState getOrderListWaitForPayment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return client.getOrderListWaitForPayment(request, callback, userState);
     }
 
     /**
@@ -432,8 +432,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForReceive(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderListWaitForReceive(request, callback, userState);
+    public IAsyncRequestState getOrderListWaitForReceive(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return client.getOrderListWaitForReceive(request, callback, userState);
     }
 
     /**
@@ -444,8 +444,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderListWaitForDispatch(request, callback, userState);
+    public IAsyncRequestState getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return client.getOrderListWaitForDispatch(request, callback, userState);
     }
 
     /**
@@ -456,8 +456,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderListWaitForComment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        client.getOrderListWaitForComment(request, callback, userState);
+    public IAsyncRequestState getOrderListWaitForComment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
+        return client.getOrderListWaitForComment(request, callback, userState);
     }
 
     /**
@@ -468,8 +468,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
-        client.getOrderDetail(request, callback, userState);
+    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+        return client.getOrderDetail(request, callback, userState);
     }
 
     /**
@@ -478,8 +478,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getHelpCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
-        client.getHeplCenter(request, callback, userState);
+    public IAsyncRequestState getHelpCenter(GetHelpCenterContentRequest request, IAsyncResultCallback<GetHeplCenterContentResponse> callback, Object userState) {
+        return client.getHeplCenter(request, callback, userState);
     }
 
     /**
@@ -490,8 +490,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getTextContent(GetTextContentRequest request, IAsyncResultCallback<GetTextCOntentResponse> callback, Object userState) {
-        client.getTextContent(request, callback, userState);
+    public IAsyncRequestState getTextContent(GetTextContentRequest request, IAsyncResultCallback<GetTextCOntentResponse> callback, Object userState) {
+        return client.getTextContent(request, callback, userState);
     }
 
     /**
@@ -502,8 +502,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getNetOrder(NetOrderRequest request, IAsyncResultCallback<NetOrderResponse> callback, Object userState) {
-        client.getNetOrder(request, callback, userState);
+    public IAsyncRequestState getNetOrder(NetOrderRequest request, IAsyncResultCallback<NetOrderResponse> callback, Object userState) {
+        return client.getNetOrder(request, callback, userState);
     }
 
 
@@ -514,8 +514,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getMemberInfo(IAsyncResultCallback<GetMemberInfoResponse> callback, Object userState) {
-        client.getMemberInfo(callback, userState);
+    public IAsyncRequestState getMemberInfo(IAsyncResultCallback<GetMemberInfoResponse> callback, Object userState) {
+        return client.getMemberInfo(callback, userState);
     }
 
     /**
@@ -525,8 +525,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void updateMobifyMember(MobifyMemberRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.updateMobifyMember(request, callback, userState);
+    public IAsyncRequestState updateMobifyMember(MobifyMemberRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.updateMobifyMember(request, callback, userState);
     }
 
     /**
@@ -537,8 +537,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void postSuggest(PostSuggestRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.postSuggest(request, callback, userState);
+    public IAsyncRequestState postSuggest(PostSuggestRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.postSuggest(request, callback, userState);
     }
 
     /**
@@ -548,8 +548,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getActivePageDataById(IAsyncResultCallback<List<GetActivePageDataResponse>> callback, Object userState) {
-        client.getActivePageDataById(callback, userState);
+    public IAsyncRequestState getActivePageDataById(IAsyncResultCallback<List<GetActivePageDataResponse>> callback, Object userState) {
+        return client.getActivePageDataById(callback, userState);
     }
 
     /**
@@ -560,8 +560,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getSkuStock(GetSkuStockRequest request, IAsyncResultCallback<GetSkuStockResponse> callback, Object userState) {
-        client.getSkuStock(request, callback, userState);
+    public IAsyncRequestState getSkuStock(GetSkuStockRequest request, IAsyncResultCallback<GetSkuStockResponse> callback, Object userState) {
+        return client.getSkuStock(request, callback, userState);
     }
 
 
@@ -573,8 +573,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void setHeadPortraitResuest(SetHeadPortraitResuest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.setHeadPortraitResuest(request, callback, userState);
+    public IAsyncRequestState setHeadPortraitResuest(SetHeadPortraitResuest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.setHeadPortraitResuest(request, callback, userState);
     }
 
     /**
@@ -585,8 +585,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void addGoodsComment(AddGoodsCommentRequest request, IAsyncResultCallback<AddGoodsCommentResponse> callback, Object userState) {
-        client.addGoodsComment(request, callback, userState);
+    public IAsyncRequestState addGoodsComment(AddGoodsCommentRequest request, IAsyncResultCallback<AddGoodsCommentResponse> callback, Object userState) {
+        return client.addGoodsComment(request, callback, userState);
     }
 
     /**
@@ -597,8 +597,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void getGoodsCommentList(GetGoodsCommentListRequest request, IAsyncResultCallback<GetGoodsCommentListResponse> callback, Object userState) {
-        client.getGoodsCommentList(request, callback, userState);
+    public IAsyncRequestState getGoodsCommentList(GetGoodsCommentListRequest request, IAsyncResultCallback<GetGoodsCommentListResponse> callback, Object userState) {
+        return client.getGoodsCommentList(request, callback, userState);
     }
 
     /**
@@ -609,8 +609,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void appendComment(AppendCommentRequest request, IAsyncResultCallback<AppendCommentResponse> callback, Object userState) {
-        client.appendComment(request, callback, userState);
+    public IAsyncRequestState appendComment(AppendCommentRequest request, IAsyncResultCallback<AppendCommentResponse> callback, Object userState) {
+        return client.appendComment(request, callback, userState);
     }
 
     /**
@@ -619,8 +619,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void bankCardList(IAsyncResultCallback<List<BankCardListResponse>> callback, Object userState) {
-        client.bankCardList(callback, userState);
+    public IAsyncRequestState bankCardList(IAsyncResultCallback<List<BankCardListResponse>> callback, Object userState) {
+        return client.bankCardList(callback, userState);
     }
 
     /**
@@ -630,8 +630,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void bankCardBindApply(BankCardBindApplyRequest request, IAsyncResultCallback<BankCardBindApplyResponse> callback, Object userState) {
-        client.bankCardBindApply(request, callback, userState);
+    public IAsyncRequestState bankCardBindApply(BankCardBindApplyRequest request, IAsyncResultCallback<BankCardBindApplyResponse> callback, Object userState) {
+        return client.bankCardBindApply(request, callback, userState);
     }
 
     /**
@@ -641,8 +641,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void bankCardBind(BankCardBindRequest request, IAsyncResultCallback<BankCardBindResponse> callback, Object userState) {
-        client.bankCardBind(request, callback, userState);
+    public IAsyncRequestState bankCardBind(BankCardBindRequest request, IAsyncResultCallback<BankCardBindResponse> callback, Object userState) {
+        return client.bankCardBind(request, callback, userState);
     }
 
     /**
@@ -652,8 +652,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void payApply(PayApplyRequest request, IAsyncResultCallback<PayApplyResponse> callback, Object userState) {
-        client.payApply(request, callback, userState);
+    public IAsyncRequestState payApply(PayApplyRequest request, IAsyncResultCallback<PayApplyResponse> callback, Object userState) {
+        return client.payApply(request, callback, userState);
     }
 
     /**
@@ -663,8 +663,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void protocolPay(ProtocolRequest request, IAsyncResultCallback<ProtocolResponse> callback, Object userState) {
-        client.protocolPay(request, callback, userState);
+    public IAsyncRequestState protocolPay(ProtocolRequest request, IAsyncResultCallback<ProtocolResponse> callback, Object userState) {
+        return client.protocolPay(request, callback, userState);
     }
 
     /**
@@ -674,8 +674,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void queryCart(QueryCartRequest request, IAsyncResultCallback<QueryCartResponse> callback, Object userState) {
-        client.queryCart(request, callback, userState);
+    public IAsyncRequestState queryCart(QueryCartRequest request, IAsyncResultCallback<QueryCartResponse> callback, Object userState) {
+        return client.queryCart(request, callback, userState);
     }
 
     /**
@@ -685,8 +685,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void orderDelete(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.orderDelete(request, callback, userState);
+    public IAsyncRequestState orderDelete(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.orderDelete(request, callback, userState);
     }
 
     /**
@@ -696,8 +696,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void orderCancel(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.orderCancel(request, callback, userState);
+    public IAsyncRequestState orderCancel(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.orderCancel(request, callback, userState);
     }
 
     /**
@@ -707,8 +707,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void receiveOreder(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.receiveOreder(request, callback, userState);
+    public IAsyncRequestState receiveOreder(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.receiveOreder(request, callback, userState);
     }
 
     /**
@@ -718,8 +718,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void delayedReceive(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.delayedReceive(request, callback, userState);
+    public IAsyncRequestState delayedReceive(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.delayedReceive(request, callback, userState);
     }
 
     /**
@@ -729,8 +729,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void logisticsInfo(OrderIdOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
-        client.logisticsInfo(request, callback, userState);
+    public IAsyncRequestState logisticsInfo(OrderIdOperateRequest request, IAsyncResultCallback<LogisticsInfoResponse> callback, Object userState) {
+        return client.logisticsInfo(request, callback, userState);
     }
 
     /**
@@ -740,8 +740,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void newApply(NewApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.newApply(request, callback, userState);
+    public IAsyncRequestState newApply(NewApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.newApply(request, callback, userState);
     }
 
     /**
@@ -751,8 +751,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void updateApply(UpdateApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.updateApply(request, callback, userState);
+    public IAsyncRequestState updateApply(UpdateApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.updateApply(request, callback, userState);
     }
 
     /**
@@ -762,8 +762,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void newReturnGoods(NewReturnGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.newReturnGoods(request, callback, userState);
+    public IAsyncRequestState newReturnGoods(NewReturnGoodsRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.newReturnGoods(request, callback, userState);
     }
 
     /**
@@ -773,8 +773,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void refundList(RefundListRequest request, IAsyncResultCallback<RefundListResponse> callback, Object userState) {
-        client.refundList(request, callback, userState);
+    public IAsyncRequestState refundList(RefundListRequest request, IAsyncResultCallback<RefundListResponse> callback, Object userState) {
+        return client.refundList(request, callback, userState);
     }
 
     /**
@@ -784,8 +784,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void refundDetail(RefundDetailRequest request, IAsyncResultCallback<RefundDetailResponse> callback, Object userState) {
-        client.refundDetail(request, callback, userState);
+    public IAsyncRequestState refundDetail(RefundDetailRequest request, IAsyncResultCallback<RefundDetailResponse> callback, Object userState) {
+        return client.refundDetail(request, callback, userState);
     }
 
     /**
@@ -795,8 +795,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void applyRefundConfirm(ApplyRefundConfirmRequest request, IAsyncResultCallback<ApplyRefundConfirmResponse> callback, Object userState) {
-        client.applyRefundConfirm(request, callback, userState);
+    public IAsyncRequestState applyRefundConfirm(ApplyRefundConfirmRequest request, IAsyncResultCallback<ApplyRefundConfirmResponse> callback, Object userState) {
+        return client.applyRefundConfirm(request, callback, userState);
     }
 
     /**
@@ -806,8 +806,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getFirstTextContent(GetFirstTextContentRequest request, IAsyncResultCallback<GetFirstTextContentResponse> callback, Object userState) {
-        client.getFirstTextContent(request, callback, userState);
+    public IAsyncRequestState getFirstTextContent(GetFirstTextContentRequest request, IAsyncResultCallback<GetFirstTextContentResponse> callback, Object userState) {
+        return client.getFirstTextContent(request, callback, userState);
     }
 
     /**
@@ -817,8 +817,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void userApply(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.userApply(request, callback, userState);
+    public IAsyncRequestState userApply(OrderIdOperateRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.userApply(request, callback, userState);
     }
 
     /**
@@ -828,8 +828,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void refuseApply(RefuseApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.rRefuseApply(request, callback, userState);
+    public IAsyncRequestState refuseApply(RefuseApplyRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.rRefuseApply(request, callback, userState);
     }
 
     /**
@@ -839,8 +839,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void waitPayOrderApplyList(WaitPayOrderApplyListRequest request, IAsyncResultCallback<WaitPayOrderApplyListResponse> callback, Object userState) {
-        client.waitPayOrderApplyList(request, callback, userState);
+    public IAsyncRequestState waitPayOrderApplyList(WaitPayOrderApplyListRequest request, IAsyncResultCallback<WaitPayOrderApplyListResponse> callback, Object userState) {
+        return client.waitPayOrderApplyList(request, callback, userState);
     }
 
     /**
@@ -850,8 +850,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void payApplyDetail(OperateIdRequest request, IAsyncResultCallback<PayApplyDetailResponse> callback, Object userState) {
-        client.payApplyDetail(request, callback, userState);
+    public IAsyncRequestState payApplyDetail(OperateIdRequest request, IAsyncResultCallback<PayApplyDetailResponse> callback, Object userState) {
+        return client.payApplyDetail(request, callback, userState);
     }
 
     /**
@@ -860,8 +860,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void payApplyQuantity(IAsyncResultCallback<PayApplyQuantityResponse> callback, Object userState) {
-        client.payApplyQuantity(callback, userState);
+    public IAsyncRequestState payApplyQuantity(IAsyncResultCallback<PayApplyQuantityResponse> callback, Object userState) {
+        return client.payApplyQuantity(callback, userState);
     }
 
     /**
@@ -871,8 +871,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void bindToStation(BindToStationRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.bindToStation(request, callback, userState);
+    public IAsyncRequestState bindToStation(BindToStationRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.bindToStation(request, callback, userState);
     }
 
     /**
@@ -881,8 +881,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getMyStationInfo(IAsyncResultCallback<GetMyStationInfoResponse> callback, Object userState) {
-        client.getMyStationInfo(callback, userState);
+    public IAsyncRequestState getMyStationInfo(IAsyncResultCallback<GetMyStationInfoResponse> callback, Object userState) {
+        return client.getMyStationInfo(callback, userState);
     }
 
     /**
@@ -892,8 +892,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getStationCustomerList(GetStationCustomerListRequest request, IAsyncResultCallback<GetStationCustomerListResponse> callback, Object userState) {
-        client.getStationCustomerList(request, callback, userState);
+    public IAsyncRequestState getStationCustomerList(GetStationCustomerListRequest request, IAsyncResultCallback<GetStationCustomerListResponse> callback, Object userState) {
+        return client.getStationCustomerList(request, callback, userState);
     }
 
     /**
@@ -904,8 +904,8 @@ public class NiuTestModel implements BaseModel {
      * @param userState
      * @return
      */
-    public void addNewStationCustomer(AddNewStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.addNewStationCustomer(request, callback, userState);
+    public IAsyncRequestState addNewStationCustomer(AddNewStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.addNewStationCustomer(request, callback, userState);
     }
 
     /**
@@ -915,8 +915,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getStationCustomer(OperateIdRequest request, IAsyncResultCallback<GetStationCustomerResponse> callback, Object userState) {
-        client.getStationCustomer(request, callback, userState);
+    public IAsyncRequestState getStationCustomer(OperateIdRequest request, IAsyncResultCallback<GetStationCustomerResponse> callback, Object userState) {
+        return client.getStationCustomer(request, callback, userState);
     }
 
     /**
@@ -926,8 +926,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void updateStationCustomer(UpdateStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.updateStationCustomer(request, callback, userState);
+    public IAsyncRequestState updateStationCustomer(UpdateStationCustomerRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.updateStationCustomer(request, callback, userState);
     }
 
     /**
@@ -937,8 +937,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void addRecommend(AddRecommendRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
-        client.addRecommend(request, callback, userState);
+    public IAsyncRequestState addRecommend(AddRecommendRequest request, IAsyncResultCallback<OperateSuccessResponse> callback, Object userState) {
+        return client.addRecommend(request, callback, userState);
     }
 
     /**
@@ -948,8 +948,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void getStationCodeItem(GetStationCodeItemRequest request, IAsyncResultCallback<GetStationCodeItemResponse> callback, Object userState) {
-        client.getStationCodeItem(request, callback, userState);
+    public IAsyncRequestState getStationCodeItem(GetStationCodeItemRequest request, IAsyncResultCallback<GetStationCodeItemResponse> callback, Object userState) {
+        return client.getStationCodeItem(request, callback, userState);
     }
 
     /**
@@ -959,8 +959,8 @@ public class NiuTestModel implements BaseModel {
      * @param callback
      * @param userState
      */
-    public void stationList(StationListRequest request, IAsyncResultCallback<StationListResponse> callback, Object userState) {
-        client.stationList(request, callback, userState);
+    public IAsyncRequestState stationList(StationListRequest request, IAsyncResultCallback<StationListResponse> callback, Object userState) {
+        return client.stationList(request, callback, userState);
     }
 
 

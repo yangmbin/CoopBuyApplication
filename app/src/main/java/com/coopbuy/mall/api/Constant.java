@@ -154,7 +154,7 @@ public class Constant {
      * 单个商品运费
      */
     public static final String GET_GOODS_FREIGHT = "api/services/app/goods/GetGoodsFreight";
-    /**
+    /*
      * App更新 注意单独的接口
      */
     public static final String APP_VERSION = "https://shop.coopbuy.com/AppUpdate/Version";

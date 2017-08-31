@@ -17,6 +17,7 @@ import com.guinong.net.request.IAsyncRequestState;
 import com.guinong.net.utils.NetWorkUtil;
 import com.guinong.net.verify.VerifyManager;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
@@ -98,6 +99,7 @@ public abstract class RequestClient {
         Call call = client.newCall(request);
         AsyncRequestState state = new AsyncRequestState(call, userState);
         call.enqueue(new NetworkJsonCallback(isUnitTest(), createGson(), callback, userState));
+
         return state;
     }
 
