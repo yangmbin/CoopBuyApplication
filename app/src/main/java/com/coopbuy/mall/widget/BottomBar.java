@@ -1,8 +1,9 @@
 package com.coopbuy.mall.widget;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
+import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
+import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
+import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
+import com.coopbuy.mall.ui.mainpage.fragment.TwoFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * BottomBar
+ *
  * @author ymb
- * Create at 2017/8/18 15:05
+ *         Create at 2017/8/18 15:05
  */
 public class BottomBar extends RelativeLayout implements View.OnClickListener {
 
@@ -24,7 +34,10 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     private View mView;
     private LinearLayout mTab1, mTab2, mTab3;
     private TextView mTvTab1, mTvTab2, mTvTab3;
-    private ViewPager mViewPager;
+    private NoScrollViewPager mViewPager;
+    private List<Fragment> mFragments = new ArrayList<>();
+    private FragmentManager mFmManager;
+    private MainTabContentAdapter mContentAdapter;
 
     public BottomBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,6 +54,39 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
         mTvTab1 = (TextView) mView.findViewById(R.id.tab_1_text);
         mTvTab2 = (TextView) mView.findViewById(R.id.tab_2_text);
         mTvTab3 = (TextView) mView.findViewById(R.id.tab_3_text);
+
+        mViewPager = (NoScrollViewPager) mView.findViewById(R.id.tab_content);
+
+        init();
+    }
+
+    private void init() {
+        initFragment();
+        initAdapter();
+        initBottomTab();
+        setCurrentView(0);
+    }
+
+    public void initFragment() {
+        mFragments.add(new OneFragment());
+        mFragments.add(new TwoFragment());
+        mFragments.add(new ThreeFragment());
+        mFmManager = ((MainActivity) mContext).getSupportFragmentManager();
+    }
+
+    public void initAdapter() {
+        mContentAdapter = new MainTabContentAdapter(mFmManager, mFragments);
+        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setAdapter(mContentAdapter);
+    }
+
+    public void initBottomTab() {
+        setViewPager(mViewPager);
+    }
+
+    public void setCurrentView(int position) {
+        mViewPager.setCurrentItem(position);
+        setCurrentTab(position);
     }
 
     @Override
@@ -58,7 +104,7 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
         }
     }
 
-    public void setViewPager(ViewPager viewPager) {
+    public void setViewPager(NoScrollViewPager viewPager) {
         this.mViewPager = viewPager;
         mTab1.setOnClickListener(this);
         mTab2.setOnClickListener(this);
