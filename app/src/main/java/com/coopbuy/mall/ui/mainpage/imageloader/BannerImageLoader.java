@@ -11,8 +11,9 @@ import com.youth.banner.loader.ImageLoader;
 
 /**
  * Banner图片加载器
+ *
  * @author ymb
- * Create at 2017/8/8 9:48
+ *         Create at 2017/8/8 9:48
  */
 public class BannerImageLoader extends ImageLoader {
     @Override

@@ -175,7 +175,7 @@ public class OneFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel>
                     GridLayoutHelper gridListThreeHelper = new GridLayoutHelper(3);
                     gridListThreeHelper.setAutoExpand(false);
                     gridListThreeHelper.setMarginTop(ScreenUtils.dp2px(mContext, 5));
-                    mAdapters.add(new HomeLayoutAdapter_7(mContext, floors.get(i).getFloorItems(), gridListThreeHelper));
+                  //  mAdapters.add(new HomeLayoutAdapter_7(mContext, floors.get(i).getFloorItems(), gridListThreeHelper));
                     break;
                 default:
                     break;
