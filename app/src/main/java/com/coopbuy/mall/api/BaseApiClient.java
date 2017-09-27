@@ -33,7 +33,7 @@ public class BaseApiClient extends RequestClient {
             // okHttpClientBuilder.cookieJar(new CookierManager(context));
             baseContext = context;
         }
-        okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));
+        // okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));
         okHttpClientBuilder.followRedirects(true); //设置重定向 其实默认也是true
         okHttpClientBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
