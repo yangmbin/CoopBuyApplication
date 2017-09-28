@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
-import com.coopbuy.mall.ui.module.test.activity.NiuTestActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.OnClick;
@@ -55,7 +55,8 @@ public class ThreeFragment extends ViewPagerBaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.test:
-                startActivity(new Intent(getActivity(), NiuTestActivity.class));
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+              //  startActivity(new Intent(getActivity(), NiuTestActivity.class));
                 break;
             case R.id.rl_view_all_order:
                 IntentUtils.gotoActivity(mContext, OrderActivity.class);
