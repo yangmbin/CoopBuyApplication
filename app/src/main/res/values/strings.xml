@@ -9,4 +9,5 @@
     <string name="lab_login_forget">忘记密码</string>
     <string name="title_login">登录</string>
     <string name="lab_login_password_error">密码错误超过5次，请完成图形验证</string>
+    <string name="lab_login_imagecode">请输入图形验证码</string>
 </resources>

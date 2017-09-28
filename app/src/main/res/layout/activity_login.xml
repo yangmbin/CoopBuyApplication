@@ -66,7 +66,7 @@
                 android:id="@+id/edit_imagecode"
                 style="@style/login_edit"
                 android:layout_marginLeft="@dimen/dimen_px30"
-                android:hint="请输入图形验证码" />
+                android:hint="@string/lab_login_imagecode" />
 
             <ImageView
                 android:id="@+id/iv_imagecode_clear"
