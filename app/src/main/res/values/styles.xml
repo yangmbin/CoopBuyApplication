@@ -19,5 +19,34 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-
+    <!--  登录页LinearLayout包含edit的样式-->
+    <style name="LinearLayout_contain_edit">
+        <item name="android:layout_height">@dimen/dimen_px100</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_px30</item>
+        <item name="android:layout_marginRight">@dimen/dimen_px30</item>
+        <item name="android:background">@color/edit_text_back_white</item>
+        <item name="android:padding">@dimen/dimen_px30</item>
+    </style>
+<!--    登录输入框-->
+    <style name="login_edit">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/dimen_px100</item>
+        <item name="android:maxWidth">@dimen/dimen_px400</item>
+        <item name="android:textColorHint">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textColor">@color/theme_text_lab_black</item>
+        <item name="android:textSize">@dimen/dimen_px30</item>
+        <item name="android:background">@null</item>
+    </style>
+  <!--登录 button-->
+    <style name="login_btn">
+        <item name="android:layout_height">@dimen/dimen_px88</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_px135</item>
+        <item name="android:layout_marginRight">@dimen/dimen_px135</item>
+        <item name="android:textColor">@color/edit_text_back_white</item>
+        <item name="android:textSize">@dimen/dimen_px30</item>
+        <item name="android:background">@drawable/black_rectangle_btn_press_gray</item>
+    </style>
 </resources>

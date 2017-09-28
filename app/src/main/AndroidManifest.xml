@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.coopbuy.mall"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.coopbuy.mall">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".app.CoopBuyApplication"
@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.module.test.activity.TestActivity" />
+        <activity android:name=".ui.module.center.activity.LoginActivity" />
         <activity android:name=".ui.module.test.activity.SecondActivity" />
         <activity android:name=".ui.module.test.activity.TabLayoutActivity" />
         <activity android:name=".ui.module.test.activity.NiuTestActivity" />
@@ -38,7 +39,6 @@
         <activity android:name=".ui.module.center.activity.OrderDetailActivity" />
         <activity android:name=".ui.module.home.activity.ScanQrCodeActivity" />
         <activity android:name=".ui.module.home.activity.QrqWbActivity" />
-        <activity android:name=".ui.mainpage.activity.LoginActivity"></activity>
     </application>
 
 </manifest>

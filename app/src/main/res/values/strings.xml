@@ -2,4 +2,10 @@
     <string name="app_name">供销好买</string>
     <string name="no_network">无网络连接</string>
     <string name="connect_server_error">连接服务器失败</string>
+    <string name="lab_login_enter_phone">请输入手机号码</string>
+    <string name="lab_login_enter_password">请输入登录密码</string>
+    <string name="lab_login">登录</string>
+    <string name="lab_login_regist">免费注册</string>
+    <string name="lab_login_forget">忘记密码</string>
+    <string name="title_login">登录</string>
 </resources>

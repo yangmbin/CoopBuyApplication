@@ -45,5 +45,9 @@
     <color name="auxiliary_text_orange_gray">#d7d2cb</color>
     <!--占位图底色-->
     <color name="bitmap_base_color">#ededed</color>
+ <!--   输入框背景白色-->
+    <color name="edit_text_back_white">#FFFFFF</color>
+    <!--按钮没有按的颜色 灰色-->
+    <color name="btn_back_gray_unpress">#cccccc</color>
 
 </resources>

@@ -3,25 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.module.test.activity.TestActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="@dimen/dimen_px87">
+
         <RelativeLayout
             android:id="@+id/titlebar_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingLeft="@dimen/dimen_px20"
+            android:paddingRight="@dimen/dimen_px20">
+
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@mipmap/ic_titlebar_back"
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"/>
+                android:src="@mipmap/ic_titlebar_back" />
         </RelativeLayout>
 
         <TextView
@@ -29,7 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="title"/>
+            android:text="title"
+            android:textSize="@dimen/dimen_px36"
+            android:textColor="@color/theme_text_title_orange" />
 
         <FrameLayout
             android:id="@+id/titlebar_right"
@@ -37,21 +41,23 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="@dimen/dimen_px20"
+            android:paddingRight="@dimen/dimen_px20"
             android:visibility="gone">
+
             <TextView
                 android:id="@+id/txt_titlebar_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sub"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="sub" />
+
             <ImageView
                 android:id="@+id/iv_titlebar_right"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@mipmap/ic_launcher"
-                android:layout_gravity="center"/>
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher" />
         </FrameLayout>
     </RelativeLayout>
 

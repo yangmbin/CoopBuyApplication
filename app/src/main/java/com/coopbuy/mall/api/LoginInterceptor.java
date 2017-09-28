@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
-import com.coopbuy.mall.ui.mainpage.activity.LoginActivity;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
