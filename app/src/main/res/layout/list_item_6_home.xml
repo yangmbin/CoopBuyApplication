@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingTop="@dimen/dimen_px30"
+    android:paddingBottom="@dimen/dimen_px35"
+    android:paddingLeft="@dimen/dimen_px15"
+    android:paddingRight="@dimen/dimen_px15"
+    tools:context=".ui.module.test.activity.TestActivity">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="@dimen/dimen_px250"
+        android:layout_height="@dimen/dimen_px250"
+        app:placeholderImage="@mipmap/default_img"
+        android:scaleType="centerCrop"
+        android:background="@drawable/bg_round_corner_imageholder"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_px20"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dimen_px15"
+        android:layout_marginBottom="@dimen/dimen_px26"
+        android:background="@drawable/bg_round_corner_red"
+        android:paddingTop="@dimen/dimen_px6"
+        android:paddingBottom="@dimen/dimen_px6"
+        android:paddingLeft="@dimen/dimen_px13"
+        android:paddingRight="@dimen/dimen_px13"
+        android:text="满288元减10元"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_px28"
+        android:textColor="@color/black_3"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_marginBottom="@dimen/dimen_px20"
+        android:text="产品名称产品名"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_px28"
+        android:text="¥23.00"/>
+
+</LinearLayout>
