@@ -8,8 +8,6 @@
     <dimen name="states_bar_height">50dp</dimen>
     <dimen name="tabs_height">96dp</dimen>
 
-
-    <dimen name="text_size_48">48sp</dimen>
     <!--间距1280*720-->
     <dimen name="dimen_px900">450dp</dimen>
     <dimen name="dimen_px858">429dp</dimen>
@@ -144,6 +142,7 @@
     <dimen name="dimen_px116">58dp</dimen>
     <dimen name="dimen_px112">56dp</dimen>
     <dimen name="dimen_px110">55dp</dimen>
+    <dimen name="dimen_px109">54.5dp</dimen>
     <dimen name="dimen_px108">54dp</dimen>
     <dimen name="dimen_px106">53dp</dimen>
     <dimen name="dimen_px105">52.5dp</dimen>
@@ -192,18 +191,19 @@
     <dimen name="dimen_px44">22dp</dimen>
     <dimen name="dimen_px42">21dp</dimen>
     <dimen name="dimen_px40">20dp</dimen>
+    <dimen name="dimen_px39">19.5dp</dimen>
     <dimen name="dimen_px38">19dp</dimen>
     <dimen name="dimen_px36">18dp</dimen>
     <dimen name="dimen_px34">17dp</dimen>
     <dimen name="dimen_px33">16.5dp</dimen>
     <dimen name="dimen_px32">16dp</dimen>
     <dimen name="dimen_px31">15.5dp</dimen>
-    <dimen name="dimen_px30">3</dimen>
-    <dimen name="dimen_px29">14.5</dimen>
-    <dimen name="dimen_px28">14</dimen>
-    <dimen name="dimen_px27">13.5</dimen>
+    <dimen name="dimen_px30">15dp</dimen>
+    <dimen name="dimen_px29">14.5dp</dimen>
+    <dimen name="dimen_px28">14dp</dimen>
+    <dimen name="dimen_px27">13.5dp</dimen>
     <dimen name="dimen_px26">13dp</dimen>
-    <dimen name="dimen_px24">12do</dimen>
+    <dimen name="dimen_px24">12dp</dimen>
     <dimen name="dimen_px25">12.5dp</dimen>
     <dimen name="dimen_px23">11.5dp</dimen>
     <dimen name="dimen_px22">11dp</dimen>
@@ -232,13 +232,32 @@
     <dimen name="dimen_minus_px20">-10dp</dimen>
     <dimen name="dimen_minus_px40">-20dp</dimen>
 
-    <!--   字体大小-->
-    <dimen name="text_size_22">22dp</dimen>
-    <dimen name="text_size_24">24dp</dimen>
-    <dimen name="text_size_26">26dp</dimen>
-    <dimen name="text_size_28">28dp</dimen>
-    <dimen name="text_size_30">30dp</dimen>
-    <dimen name="text_size_32">32dp</dimen>
-    <dimen name="text_size_36">36dp</dimen>
+    <!-- 字体大小 -->
+    <dimen name="text_size_px10">5sp</dimen>
+    <dimen name="text_size_px12">6sp</dimen>
+    <dimen name="text_size_px14">7sp</dimen>
+    <dimen name="text_size_px16">8sp</dimen>
+    <dimen name="text_size_px18">9sp</dimen>
+    <dimen name="text_size_px20">10sp</dimen>
+    <dimen name="text_size_px22">11sp</dimen>
+    <dimen name="text_size_px24">12sp</dimen>
+    <dimen name="text_size_px26">13sp</dimen>
+    <dimen name="text_size_px28">14sp</dimen>
+    <dimen name="text_size_px30">15sp</dimen>
+    <dimen name="text_size_px32">16sp</dimen>
+    <dimen name="text_size_px34">17sp</dimen>
+    <dimen name="text_size_px36">18sp</dimen>
+    <dimen name="text_size_px38">19sp</dimen>
+    <dimen name="text_size_px40">20sp</dimen>
+    <dimen name="text_size_px42">21sp</dimen>
+    <dimen name="text_size_px44">22sp</dimen>
+    <dimen name="text_size_px46">23sp</dimen>
+    <dimen name="text_size_px48">24sp</dimen>
+    <dimen name="text_size_px50">25sp</dimen>
+    <dimen name="text_size_px52">26sp</dimen>
+    <dimen name="text_size_px54">27sp</dimen>
+    <dimen name="text_size_px56">28sp</dimen>
+    <dimen name="text_size_px58">29sp</dimen>
+    <dimen name="text_size_px60">30sp</dimen>
 
 </resources>

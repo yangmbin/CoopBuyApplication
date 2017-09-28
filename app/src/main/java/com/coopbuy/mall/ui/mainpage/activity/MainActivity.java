@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     //   showUpdateDialog("http://filelx.liqucn.com/upload/2017/279/k/bookfree-liqu-release.apk");
+        showUpdateDialog("http://filelx.liqucn.com/upload/2017/279/k/bookfree-liqu-release.apk");
     }
 
     @Override

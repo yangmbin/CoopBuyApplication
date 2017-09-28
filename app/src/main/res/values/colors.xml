@@ -33,9 +33,13 @@
     <color name="auxiliary_text_orange">#ffa200</color>
     <!--辅色 绿-->
     <color name="auxiliary_text_green">#6fcb15</color>
+    <!--辅助字体 灰色-->
+    <color name="auxiliary_text_gray">#717171</color>
     <!--辅助字体 蓝灰色-->
     <color name="auxiliary_text_blue_gray">#878f94</color>
     <!--辅助字体 蓝灰色-->
     <color name="auxiliary_text_orange_gray">#d7d2cb</color>
+    <!--占位图底色-->
+    <color name="bitmap_base_color">#ededed</color>
 
 </resources>

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
-import com.coopbuy.mall.ui.mainpage.fragment.OneFragment;
+import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.TwoFragment;
 
@@ -74,7 +74,7 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     public void initFragment() {
-        mFragments.add(new OneFragment());
+        mFragments.add(new HomeFragment());
         mFragments.add(new TwoFragment());
         mFragments.add(new ThreeFragment());
         mFmManager = ((MainActivity) mContext).getSupportFragmentManager();
@@ -127,9 +127,9 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     private void setTab1() {
-        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.green));
-        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
-        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
+        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
         mIvTab1.setImageResource(R.mipmap.icon_home_selected);
         mIvTab2.setImageResource(R.mipmap.icon_market_unselected);
         mIvTab3.setImageResource(R.mipmap.icon_center_unselected);
@@ -137,9 +137,9 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     private void setTab2() {
-        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
-        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.green));
-        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
+        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
         mIvTab1.setImageResource(R.mipmap.icon_home_unselected);
         mIvTab2.setImageResource(R.mipmap.icon_market_selected);
         mIvTab3.setImageResource(R.mipmap.icon_center_unselected);
@@ -147,9 +147,9 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     private void setTab3() {
-        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
-        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.gray_2));
-        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.green));
+        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
         mIvTab1.setImageResource(R.mipmap.icon_home_unselected);
         mIvTab2.setImageResource(R.mipmap.icon_market_unselected);
         mIvTab3.setImageResource(R.mipmap.icon_center_selected);

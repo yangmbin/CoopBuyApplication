@@ -9,12 +9,10 @@ import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
-import com.coopbuy.mall.ui.module.home.activity.BannerDetailActivity;
-import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeLayoutAdapter_1 extends BaseDelegateAdapter<HomePageDataResponse.FloorsBean> {
@@ -34,12 +32,14 @@ public class HomeLayoutAdapter_1 extends BaseDelegateAdapter<HomePageDataRespons
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final HomePageDataResponse.FloorsBean item) {
         Banner banner = (Banner) holder.getView(R.id.banner);
-        banner.setImages(item.getFloorItems()).setImageLoader(new BannerImageLoader()).start();
+        List list = new ArrayList();
+        list.add("https://cdn.pixabay.com/photo/2017/09/16/16/09/sea-2755908__340.jpg");
+        list.add("https://cdn.pixabay.com/photo/2017/09/09/21/55/noodles-2733636__340.jpg");
+        banner.setImages(list).setImageLoader(new BannerImageLoader()).start();
 
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                IntentUtils.gotoActivity(mContext, BannerDetailActivity.class, item.getFloorItems().get(position).getObjectId() + "");
             }
         });
     }

@@ -15,10 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
+        <include layout="@layout/menu_div_line"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray_1">
+            android:background="@color/white"
+            android:paddingTop="@dimen/dimen_px10"
+            android:paddingBottom="@dimen/dimen_px12">
             <LinearLayout
                 android:id="@+id/tab_1"
                 android:layout_width="0dp"
@@ -28,13 +31,16 @@
                 android:gravity="center">
                 <ImageView
                     android:id="@+id/tab_1_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/dimen_px48"
+                    android:layout_height="@dimen/dimen_px48"
                     android:src="@mipmap/icon_home_selected"/>
                 <TextView
                     android:id="@+id/tab_1_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_px6"
+                    android:textSize="@dimen/text_size_px20"
+                    android:textColor="@color/auxiliary_text_blue_gray"
                     android:text="首页"/>
             </LinearLayout>
 
@@ -47,13 +53,16 @@
                 android:gravity="center">
                 <ImageView
                     android:id="@+id/tab_2_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/dimen_px48"
+                    android:layout_height="@dimen/dimen_px48"
                     android:src="@mipmap/icon_market_selected"/>
                 <TextView
                     android:id="@+id/tab_2_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_px6"
+                    android:textSize="@dimen/text_size_px20"
+                    android:textColor="@color/auxiliary_text_blue_gray"
                     android:text="赶场"/>
             </LinearLayout>
 
@@ -66,13 +75,16 @@
                 android:gravity="center">
                 <ImageView
                     android:id="@+id/tab_3_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/dimen_px48"
+                    android:layout_height="@dimen/dimen_px48"
                     android:src="@mipmap/icon_center_selected"/>
                 <TextView
                     android:id="@+id/tab_3_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_px6"
+                    android:textSize="@dimen/text_size_px20"
+                    android:textColor="@color/auxiliary_text_blue_gray"
                     android:text="个人中心"/>
             </LinearLayout>
         </LinearLayout>

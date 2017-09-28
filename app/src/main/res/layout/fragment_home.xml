@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.module.test.activity.TestActivity">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/nav_home_top"/>
 
     <LinearLayout
         android:id="@+id/box"
@@ -27,4 +28,4 @@
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
