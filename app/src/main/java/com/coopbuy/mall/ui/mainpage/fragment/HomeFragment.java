@@ -18,6 +18,7 @@ import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_2;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_3;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_4;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_5;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_6;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_8;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
@@ -47,6 +48,7 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
     public static final String LAYOUT_TYPE_3 = "3"; // 新人专享
     public static final String LAYOUT_TYPE_4 = "4"; // 模块类型1
     public static final String LAYOUT_TYPE_5 = "5"; // 模块类型2
+    public static final String LAYOUT_TYPE_6 = "6"; // 模块类型3
 
     @Bind(R.id.rv_home)
     RecyclerView mRvHome;
@@ -126,10 +128,13 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
         decoration.add(new HomePageDataResponse.FloorsBean());
         mAdapters.add(new HomeLayoutAdapter_5(mContext, decoration, helper_5));
 
-//        LinearLayoutHelper linearListHelper = new LinearLayoutHelper();
-//        linearListHelper.setDividerHeight(ScreenUtils.dp2px(mContext, 1));
-//        mAdapters.add(new HomeLayoutAdapter_6(mContext, floors.get(i).getFloorItems(), linearListHelper));
-//
+        //6
+        SingleLayoutHelper helper_6 = new SingleLayoutHelper();
+        helper_5.setMarginTop(ScreenUtils.dip2px(mContext, 8));
+        decoration = new ArrayList<>();
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        mAdapters.add(new HomeLayoutAdapter_6(mContext, decoration, helper_6));
+
 //        GridLayoutHelper gridListThreeHelper = new GridLayoutHelper(3);
 //        gridListThreeHelper.setAutoExpand(false);
 //        gridListThreeHelper.setMarginTop(ScreenUtils.dp2px(mContext, 5));

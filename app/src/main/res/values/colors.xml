@@ -17,7 +17,9 @@
     <color name="black">#000000</color>
     <color name="black_1">#333333</color>
     <color name="black_2">#353535</color>
+    <color name="black_3">#38322e</color>
     <color name="red">#FF0000</color>
+    <color name="red_1">#e5e4393c</color>
     <color name="test_line_white">#ffffff</color>
 
 
