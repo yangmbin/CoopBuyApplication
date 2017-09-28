@@ -28,6 +28,13 @@
         <item name="android:background">@color/edit_text_back_white</item>
         <item name="android:padding">@dimen/dimen_px30</item>
     </style>
+    <style name="LinearLayout_contain_edit_no_padding">
+        <item name="android:layout_height">@dimen/dimen_px100</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_px30</item>
+        <item name="android:layout_marginRight">@dimen/dimen_px30</item>
+        <item name="android:background">@color/edit_text_back_white</item>
+    </style>
 <!--    登录输入框-->
     <style name="login_edit">
         <item name="android:layout_height">match_parent</item>
@@ -47,6 +54,19 @@
         <item name="android:layout_marginRight">@dimen/dimen_px135</item>
         <item name="android:textColor">@color/edit_text_back_white</item>
         <item name="android:textSize">@dimen/dimen_px30</item>
-        <item name="android:background">@drawable/black_rectangle_btn_press_gray</item>
+        <item name="android:background">@drawable/black_rectangle_btn_unpress_gray</item>
+    </style>
+ <!--  黑色文字28px-->
+    <style name="text_black_size_28">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/dimen_px28</item>
+    </style>
+    <!--数据清理-->
+    <style name="image_clear">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:src">@mipmap/icon_delete_login_delete</item>
     </style>
 </resources>

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
-    android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.mainpage.activity.LoginActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/title_bar_layout" />
-
 
     <RelativeLayout
         style="@style/LinearLayout_contain_edit"
@@ -21,10 +18,8 @@
 
         <ImageView
             android:id="@+id/iv_phone_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/icon_delete_login_delete" />
+            style="@style/image_clear"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -38,11 +33,9 @@
 
         <ImageView
             android:id="@+id/iv_password_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            style="@style/image_clear"
             android:layout_marginRight="@dimen/dimen_px34"
-            android:layout_toLeftOf="@+id/iv_password_show"
-            android:src="@mipmap/icon_delete_login_delete" />
+            android:layout_toLeftOf="@+id/iv_password_show" />
 
         <ImageView
             android:id="@+id/iv_password_show"
@@ -52,10 +45,48 @@
             android:src="@mipmap/icon_eye_login_open" />
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_password_error_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_px56"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_black_size_28"
+            android:layout_marginLeft="@dimen/dimen_px57"
+            android:text="@string/lab_login_password_error" />
+
+        <RelativeLayout
+            style="@style/LinearLayout_contain_edit_no_padding"
+            android:layout_marginTop="@dimen/dimen_px16"
+            android:layout_toLeftOf="@+id/iv_imagecode_show">
+
+            <EditText
+                android:id="@+id/edit_imagecode"
+                style="@style/login_edit"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:hint="@string/lab_login_imagecode" />
+
+            <ImageView
+                android:id="@+id/iv_imagecode_clear"
+                style="@style/image_clear"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_toLeftOf="@+id/iv_imagecode" />
+
+            <ImageView
+                android:id="@+id/iv_imagecode"
+                android:layout_width="@dimen/dimen_px192"
+                android:layout_height="@dimen/dimen_px100"
+                android:layout_alignParentRight="true"
+                android:background="@color/text_black" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <Button
         android:id="@+id/btn_login"
         style="@style/login_btn"
-        android:layout_marginTop="@dimen/dimen_px300"
+        android:layout_marginTop="@dimen/dimen_px100"
         android:text="@string/lab_login" />
 
     <LinearLayout
