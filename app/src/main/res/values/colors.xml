@@ -49,5 +49,6 @@
     <color name="edit_text_back_white">#FFFFFF</color>
     <!--按钮没有按的颜色 灰色-->
     <color name="btn_back_gray_unpress">#cccccc</color>
+    <color name="text_black">#000000</color>
 
 </resources>
