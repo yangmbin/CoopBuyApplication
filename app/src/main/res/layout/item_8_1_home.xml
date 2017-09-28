@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/gray_5"
+    android:paddingTop="@dimen/dimen_px8"
+    android:paddingBottom="@dimen/dimen_px12"
+    android:paddingLeft="@dimen/dimen_px39"
+    android:paddingRight="@dimen/dimen_px39"
+    tools:context=".ui.module.test.activity.TestActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_px28"
+        android:text="紫云专享"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_px24"
+        android:layout_marginTop="@dimen/dimen_px8"
+        android:text="根据定位更换名称。装饰title（不可点击，分割用）"/>
+</LinearLayout>

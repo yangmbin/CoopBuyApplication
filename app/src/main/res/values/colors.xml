@@ -13,13 +13,21 @@
     <color name="gray_1">#F7F7F7</color>
     <color name="gray_2">#939397</color>
     <color name="gray_3">#E2E2E2</color>
+    <color name="gray_4">#eeeeee</color>
+    <color name="gray_5">#b0b0b0</color>
+    <color name="gray_6">#8e8e8e</color>
+    <color name="gray_7">#7e7e7e</color>
     <color name="green">#6FCB15</color>
     <color name="black">#000000</color>
     <color name="black_1">#333333</color>
     <color name="black_2">#353535</color>
     <color name="black_3">#38322e</color>
+    <color name="black_4">#1d1d1d</color>
     <color name="red">#FF0000</color>
     <color name="red_1">#e5e4393c</color>
+    <color name="red_2">#cb2222</color>
+    <color name="red_3">#d30000</color>
+    <color name="red_4">#c50d0d</color>
     <color name="test_line_white">#ffffff</color>
 
 

@@ -12,23 +12,23 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-public class HomeLayoutAdapter_8 extends BaseDelegateAdapter<Object> {
+public class HomeLayoutAdapter_10 extends BaseDelegateAdapter<Object> {
 
     private View.OnClickListener mListener;
 
-    public HomeLayoutAdapter_8(Context ctx, List<Object> list, LayoutHelper mLayoutHelper, View.OnClickListener listener) {
+    public HomeLayoutAdapter_10(Context ctx, List<Object> list, LayoutHelper mLayoutHelper, View.OnClickListener listener) {
         super(ctx, list, mLayoutHelper);
         this.mListener = listener;
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.item_8_home;
+        return R.layout.item_10_home;
     }
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, Object item) {
-        ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageResource(R.mipmap.ic_launcher);
+        ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageResource(R.mipmap.icon_home_go_top);
         holder.getView(R.id.sdv_image).setOnClickListener(this.mListener);
     }
 }
