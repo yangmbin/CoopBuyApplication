@@ -5,17 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.module.test.activity.TestActivity">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdv_title"
+        android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"/>
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        app:image_scale_type="center_crop"/>
+        android:layout_height="@dimen/dimen_px420"
+        android:scaleType="centerCrop"
+        android:layout_margin="@dimen/dimen_px30"
+        app:placeholderImage="@mipmap/default_img"/>
 
 </LinearLayout>

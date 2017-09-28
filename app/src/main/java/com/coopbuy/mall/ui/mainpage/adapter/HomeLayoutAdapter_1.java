@@ -33,8 +33,8 @@ public class HomeLayoutAdapter_1 extends BaseDelegateAdapter<HomePageDataRespons
     protected void bindData(BaseRecyclerHolder holder, int position, final HomePageDataResponse.FloorsBean item) {
         Banner banner = (Banner) holder.getView(R.id.banner);
         List list = new ArrayList();
-        list.add("https://cdn.pixabay.com/photo/2017/09/16/16/09/sea-2755908__340.jpg");
-        list.add("https://cdn.pixabay.com/photo/2017/09/09/21/55/noodles-2733636__340.jpg");
+        list.add("https://cd5n.pixabay.com/photo/2017/09/16/16/09/sea-2755908__340.jpg");
+        list.add("https://cd5n.pixabay.com/photo/2017/09/09/21/55/noodles-2733636__340.jpg");
         banner.setImages(list).setImageLoader(new BannerImageLoader()).start();
 
         banner.setOnBannerListener(new OnBannerListener() {

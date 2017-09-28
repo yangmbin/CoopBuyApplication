@@ -6,30 +6,80 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    android:id="@+id/ll_item_5_home"
     tools:context=".ui.module.test.activity.TestActivity">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdv_image"
+        android:id="@+id/banner_image"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_px150"
+        app:placeholderImage="@mipmap/default_img"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test"
-        android:textColor="@color/black_1"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginLeft="10dp"/>
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textColor="@color/red"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:paddingTop="@dimen/dimen_px30"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:paddingBottom="@dimen/dimen_px43"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/goods_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px400"
+            android:scaleType="centerCrop"
+            app:placeholderImage="@mipmap/default_img"
+            android:background="@drawable/bg_round_corner_imageholder"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dimen_px21">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_px32"
+                android:textColor="@color/black"
+                android:text="商品名称商品名称商品名称商品名称商品名称商
+品名称商品名称商品名称商品名称商"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px19">
+                <TextView
+                    android:id="@+id/new_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px36"
+                    android:textColor="@color/auxiliary_text_red_dark"
+                    android:text="¥121.22"
+                    android:layout_centerVertical="true"/>
+                <com.coopbuy.mall.widget.DeleteLineTextView
+                    android:id="@+id/old_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_gray_dark"
+                    android:text="¥1221.22"
+                    android:layout_toRightOf="@id/new_price"
+                    android:layout_marginLeft="@dimen/dimen_px23"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_gray_dark"
+                    android:text="已售：555"
+                    android:layout_marginLeft="@dimen/dimen_px23"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>

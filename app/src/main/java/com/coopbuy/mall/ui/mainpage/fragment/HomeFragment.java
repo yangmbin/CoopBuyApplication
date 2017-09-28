@@ -1,17 +1,23 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.FixLayoutHelper;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_1;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_2;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_3;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_4;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_5;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_8;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
@@ -37,6 +43,10 @@ import butterknife.Bind;
 public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel> implements Home_IView, OnRefreshListener {
 
     public static final String LAYOUT_TYPE_1 = "1"; // 首页顶部banner
+    public static final String LAYOUT_TYPE_2 = "2"; // 特殊入口
+    public static final String LAYOUT_TYPE_3 = "3"; // 新人专享
+    public static final String LAYOUT_TYPE_4 = "4"; // 模块类型1
+    public static final String LAYOUT_TYPE_5 = "5"; // 模块类型2
 
     @Bind(R.id.rv_home)
     RecyclerView mRvHome;
@@ -75,34 +85,47 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
 //        viewPool.setMaxRecycledViews(i, 10);
         List<HomePageDataResponse.FloorsBean> decoration;
 
+        //1
         decoration = new ArrayList<>();
         decoration.add(new HomePageDataResponse.FloorsBean());
         mAdapters.add(new HomeLayoutAdapter_1(mContext, decoration, new SingleLayoutHelper()));
 
-//        GridLayoutHelper gridIconHelper = new GridLayoutHelper(4);
-//        gridIconHelper.setAutoExpand(false);
-//        mAdapters.add(new HomeLayoutAdapter_2(mContext, floors.get(i).getFloorItems(), gridIconHelper));
-//
-//        decoration = new ArrayList<>();
-//        decoration.add(floors.get(i));
-//        SingleLayoutHelper bannerImage1Helper = new SingleLayoutHelper();
-//        bannerImage1Helper.setMarginTop(ScreenUtils.dp2px(mContext, 5));
-//        mAdapters.add(new HomeLayoutAdapter_3(mContext, decoration, bannerImage1Helper));
-//
-//        decoration = new ArrayList<>();
-//        decoration.add(floors.get(i));
-//        SingleLayoutHelper bannerSlider1Helper = new SingleLayoutHelper();
-//        bannerSlider1Helper.setMarginTop(ScreenUtils.dp2px(mContext, 5));
-//        mAdapters.add(new HomeLayoutAdapter_4(mContext, decoration, bannerSlider1Helper));
-//
-//        GridLayoutHelper gridListTwoHelper = new GridLayoutHelper(2);
-//        gridListTwoHelper.setAutoExpand(false);
-//        int gridListTwoMargin = ScreenUtils.dp2px(mContext, 5);
-//        gridListTwoHelper.setMargin(gridListTwoMargin, gridListTwoMargin, gridListTwoMargin, 0);
-//        gridListTwoHelper.setGap(gridListTwoMargin);
-//        gridListTwoHelper.setHGap(gridListTwoMargin);
-//        mAdapters.add(new HomeLayoutAdapter_5(mContext, floors.get(i).getFloorItems(), gridListTwoHelper));
-//
+        //2
+        GridLayoutHelper helper_2 = new GridLayoutHelper(5);
+        helper_2.setPaddingTop(ScreenUtils.dip2px(mContext, 20));
+        helper_2.setPaddingBottom(ScreenUtils.dip2px(mContext, 22));
+        helper_2.setVGap(ScreenUtils.dip2px(mContext, 20));
+        helper_2.setBgColor(ContextCompat.getColor(mContext, R.color.white));
+        helper_2.setAutoExpand(false);
+        List<HomePageDataResponse.FloorsBean.FloorItemsBean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+            list.add(new HomePageDataResponse.FloorsBean.FloorItemsBean());
+        mAdapters.add(new HomeLayoutAdapter_2(mContext, list, helper_2));
+
+        //3
+        decoration = new ArrayList<>();
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        mAdapters.add(new HomeLayoutAdapter_3(mContext, decoration, new SingleLayoutHelper()));
+
+        //4
+        GridLayoutHelper helper_4 = new GridLayoutHelper(2);
+        helper_4.setAutoExpand(false);
+        helper_4.setMarginTop(ScreenUtils.dip2px(mContext, 8));
+        helper_4.setGap(ScreenUtils.dip2px(mContext, 1));
+        decoration = new ArrayList<>();
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        mAdapters.add(new HomeLayoutAdapter_4(mContext, decoration, helper_4));
+
+        //5
+        SingleLayoutHelper helper_5 = new SingleLayoutHelper();
+        helper_5.setMarginTop(ScreenUtils.dip2px(mContext, 6));
+        decoration = new ArrayList<>();
+        decoration.add(new HomePageDataResponse.FloorsBean());
+        mAdapters.add(new HomeLayoutAdapter_5(mContext, decoration, helper_5));
+
 //        LinearLayoutHelper linearListHelper = new LinearLayoutHelper();
 //        linearListHelper.setDividerHeight(ScreenUtils.dp2px(mContext, 1));
 //        mAdapters.add(new HomeLayoutAdapter_6(mContext, floors.get(i).getFloorItems(), linearListHelper));

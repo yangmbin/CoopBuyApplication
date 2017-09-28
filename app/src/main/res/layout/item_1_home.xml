@@ -10,7 +10,8 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:image_scale_type="center_crop"/>
+        android:layout_height="@dimen/dimen_px310"
+        app:image_scale_type="center_crop"
+        android:background="@color/bitmap_base_color"/>
 
 </LinearLayout>
