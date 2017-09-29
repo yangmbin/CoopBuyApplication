@@ -7,105 +7,113 @@
 
     <include layout="@layout/title_bar_layout" />
 
-    <RelativeLayout
-        style="@style/LinearLayout_contain_edit"
-        android:layout_marginTop="@dimen/dimen_px61">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edit_phone"
-            style="@style/login_edit"
-            android:hint="@string/lab_login_enter_phone" />
-
-        <ImageView
-            android:id="@+id/iv_phone_clear"
-            style="@style/image_clear"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        style="@style/LinearLayout_contain_edit"
-        android:layout_marginTop="@dimen/dimen_px16">
-
-        <EditText
-            android:id="@+id/edit_password"
-            style="@style/login_edit"
-            android:hint="@string/lab_login_enter_password" />
-
-        <ImageView
-            android:id="@+id/iv_password_clear"
-            style="@style/image_clear"
-            android:layout_marginRight="@dimen/dimen_px34"
-            android:layout_toLeftOf="@+id/iv_password_show" />
-
-        <ImageView
-            android:id="@+id/iv_password_show"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/icon_eye_login_open" />
-    </RelativeLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_password_error_show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_px56"
-        android:orientation="vertical">
+            <RelativeLayout
+                style="@style/LinearLayout_contain_edit"
+                android:layout_marginTop="@dimen/dimen_px61">
 
-        <TextView
-            style="@style/text_black_size_28"
-            android:layout_marginLeft="@dimen/dimen_px57"
-            android:text="@string/lab_login_password_error" />
+                <EditText
+                    android:id="@+id/edit_phone"
+                    style="@style/login_edit"
+                    android:inputType="phone"
+                    android:hint="@string/lab_login_enter_phone" />
 
-        <RelativeLayout
-            style="@style/LinearLayout_contain_edit_no_padding"
-            android:layout_marginTop="@dimen/dimen_px16"
-            android:layout_toLeftOf="@+id/iv_imagecode_show">
+                <ImageView
+                    android:id="@+id/iv_phone_clear"
+                    style="@style/image_clear"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/edit_imagecode"
-                style="@style/login_edit"
-                android:layout_marginLeft="@dimen/dimen_px30"
-                android:hint="@string/lab_login_imagecode" />
+            <RelativeLayout
+                style="@style/LinearLayout_contain_edit"
+                android:layout_marginTop="@dimen/dimen_px16">
 
-            <ImageView
-                android:id="@+id/iv_imagecode_clear"
-                style="@style/image_clear"
-                android:layout_marginRight="@dimen/dimen_px30"
-                android:layout_toLeftOf="@+id/iv_imagecode" />
+                <EditText
+                    android:id="@+id/edit_password"
+                    style="@style/login_edit"
+                    android:hint="@string/lab_login_enter_password" />
 
-            <ImageView
-                android:id="@+id/iv_imagecode"
-                android:layout_width="@dimen/dimen_px192"
-                android:layout_height="@dimen/dimen_px100"
-                android:layout_alignParentRight="true"
-                android:background="@color/text_black" />
-        </RelativeLayout>
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_password_clear"
+                    style="@style/image_clear"
+                    android:layout_marginRight="@dimen/dimen_px34"
+                    android:layout_toLeftOf="@+id/iv_password_show" />
 
-    <Button
-        android:id="@+id/btn_login"
-        style="@style/login_btn"
-        android:layout_marginTop="@dimen/dimen_px100"
-        android:text="@string/lab_login" />
+                <ImageView
+                    android:id="@+id/iv_password_visible"
+                    style="@style/image_visible"
+                />
+            </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_px30"
-        android:gravity="center_horizontal">
+            <LinearLayout
+                android:id="@+id/ll_password_error_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px56"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lab_login_regist" />
+                <TextView
+                    style="@style/text_black_size_28"
+                    android:layout_marginLeft="@dimen/dimen_px57"
+                    android:text="@string/lab_login_password_error" />
 
-        <TextView
-            android:id="@+id/tv_forget_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_px196"
-            android:text="@string/lab_login_forget" />
-    </LinearLayout>
+                <RelativeLayout
+                    style="@style/LinearLayout_contain_edit_no_padding"
+                    android:layout_marginTop="@dimen/dimen_px16"
+                    android:layout_toLeftOf="@+id/iv_imagecode_show">
+
+                    <EditText
+                        android:id="@+id/edit_imagecode"
+                        style="@style/login_edit"
+                        android:layout_marginLeft="@dimen/dimen_px30"
+                        android:hint="@string/lab_login_imagecode" />
+
+                    <ImageView
+                        android:id="@+id/iv_imagecode_clear"
+                        style="@style/image_clear"
+                        android:layout_marginRight="@dimen/dimen_px30"
+                        android:layout_toLeftOf="@+id/iv_imagecode" />
+
+                    <ImageView
+                        android:id="@+id/iv_imagecode"
+                        android:layout_width="@dimen/dimen_px192"
+                        android:layout_height="@dimen/dimen_px100"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/text_black" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/login_btn"
+                android:layout_marginTop="@dimen/dimen_px100"
+                android:text="@string/lab_login" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px30"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_register"
+                    style="@style/text_black_gary_size_26"
+                    android:text="@string/lab_login_regist" />
+
+                <TextView
+                    android:id="@+id/tv_forget_password"
+                    style="@style/text_black_gary_size_26"
+                    android:layout_marginLeft="@dimen/dimen_px196"
+                    android:text="@string/lab_login_forget" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

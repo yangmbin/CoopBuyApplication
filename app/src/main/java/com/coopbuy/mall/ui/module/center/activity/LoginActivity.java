@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -91,10 +92,10 @@ public class LoginActivity extends BaseActivity {
 
                 break;
             case R.id.tv_register:
-
+                IntentUtils.gotoActivity(this, RegisterActivity.class);
                 break;
             case R.id.tv_forget_password:
-
+                IntentUtils.gotoActivity(this, SetPassWordActivity.class);
                 break;
         }
     }

@@ -10,4 +10,13 @@
     <string name="title_login">登录</string>
     <string name="lab_login_password_error">密码错误超过5次，请完成图形验证</string>
     <string name="lab_login_imagecode">请输入图形验证码</string>
+    <string name="lab_register_code">获取验证码</string>
+    <string name="lab_register_msg_code">请输入收到的短信验证码</string>
+    <string name="lab_register_agree">同意</string>
+    <string name="lab_register_protocol">供销好卖网用户协议 用户隐私政策</string>
+    <string name="lab_register_next">下一步</string>
+    <string name="lab_set_password">请输入密码</string>
+    <string name="lab_set_again_password">请再次输入新密码</string>
+    <string name="lab_setpassword_complete">完成</string>
+    <string name="lab_setpassword_hint">请使用6-12位，数字、字母、符号两种以上组合设置密码</string>
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.RegisterActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <RelativeLayout
+        style="@style/LinearLayout_contain_edit"
+        android:layout_marginTop="@dimen/dimen_px61">
+
+        <EditText
+            android:id="@+id/edt_phone"
+            style="@style/login_edit"
+            android:hint="@string/lab_login_enter_phone"
+            android:inputType="phone" />
+
+        <ImageView
+            android:id="@+id/iv_phone_clear"
+            style="@style/image_clear"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/LinearLayout_contain_edit_no_padding"
+        android:layout_marginTop="@dimen/dimen_px61">
+
+        <EditText
+            android:id="@+id/edt_code"
+            style="@style/login_edit"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:hint="@string/lab_register_msg_code"
+            android:inputType="phone"
+            android:maxLength="6" />
+
+        <View
+            android:id="@+id/v_divid"
+            android:layout_width="@dimen/dimen_px2"
+            android:layout_height="@dimen/dimen_px80"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_get_code"
+            android:background="@color/theme_text_lab_black" />
+
+        <ImageView
+            android:id="@+id/iv_code_clear"
+            style="@style/image_clear"
+            android:layout_marginRight="@dimen/dimen_px30"
+            android:layout_toLeftOf="@+id/v_divid" />
+
+        <TextView
+            android:id="@+id/tv_get_code"
+            style="@style/text_theme_black_size_30_h_match"
+            android:layout_width="@dimen/dimen_px210"
+            android:layout_alignParentRight="true"
+            android:text="@string/lab_register_code" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px24"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_agree"
+            android:layout_width="@dimen/dimen_px30"
+            android:layout_height="@dimen/dimen_px30"
+            android:background="@drawable/check_agree_selector"
+            android:button="@null" />
+
+        <TextView
+            style="@style/text_black_gary_size_26_6"
+            android:layout_marginLeft="@dimen/dimen_px9"
+            android:text="@string/lab_register_agree" />
+
+
+        <TextView
+            android:id="@+id/tv_protocol"
+            style="@style/text_orange_size_26_f"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:text="@string/lab_register_protocol" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/login_btn"
+        android:layout_marginTop="@dimen/dimen_px151"
+        android:text="@string/lab_register_next" />
+</LinearLayout>
