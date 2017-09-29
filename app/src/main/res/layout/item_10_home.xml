@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/white"
     tools:context=".ui.module.test.activity.TestActivity">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdv_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dimen_px80"
+        android:layout_height="@dimen/dimen_px80"
         android:clickable="true"/>
 </LinearLayout>
