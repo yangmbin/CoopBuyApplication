@@ -17,6 +17,7 @@
         android:background="@drawable/bg_round_corner_imageholder"/>
 
     <TextView
+        android:id="@+id/goods_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="2"
