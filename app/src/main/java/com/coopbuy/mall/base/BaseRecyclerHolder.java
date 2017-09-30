@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhy.autolayout.utils.AutoUtils;
+
 
 /**
  * @author wangyu
@@ -23,8 +23,8 @@ public class BaseRecyclerHolder extends RecyclerView.ViewHolder{
     public BaseRecyclerHolder(View itemView) {
         super(itemView);
         mViews = new SparseArray<>();
-        // AutoLayout
-        AutoUtils.autoSize(itemView);
+        // AutoLayout 不用了
+     //  AutoUtils.autoSize(itemView);
     }
 
     public View getItemView() {

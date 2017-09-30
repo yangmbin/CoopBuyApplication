@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.PersonalActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <include layout="@layout/include_divider_1px_w_m_line_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/edit_text_back_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30">
+
+        <LinearLayout
+            android:id="@+id/ll_head_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px200"
+
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/text_theme_black_size_32"
+                android:layout_weight="1"
+                android:text="头像" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/circleImageView"
+                android:layout_width="@dimen/dimen_px110"
+                android:layout_height="@dimen/dimen_px110"
+                fresco:actualImageScaleType="centerCrop"
+                fresco:placeholderImage="@mipmap/icon_default_head"
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:roundAsCircle="true" />
+
+            <ImageView
+                style="@style/image_more"
+                android:layout_marginLeft="@dimen/dimen_px30" />
+        </LinearLayout>
+
+        <include layout="@layout/include_divider_1px_w_m_line_white" />
+
+        <LinearLayout
+            android:id="@+id/ll_id"
+            style="@style/center_LinearLayout_help">
+
+            <TextView
+                style="@style/text_theme_black_size_32"
+                android:layout_weight="1"
+                android:text="@string/lab_presonal_id" />
+
+            <TextView
+                android:id="@+id/tv_user_id"
+                style="@style/text_theme_black_size_32_8"
+                android:text="12232" />
+        </LinearLayout>
+
+        <include layout="@layout/include_divider_1px_w_m_line_white" />
+
+        <LinearLayout
+            android:id="@+id/ll_nick"
+            style="@style/center_LinearLayout_help">
+
+            <TextView
+                style="@style/text_theme_black_size_32"
+                android:layout_weight="1"
+                android:text="@string/lab_personal_nick" />
+
+            <TextView
+                android:id="@+id/tv_user_nick"
+                style="@style/text_theme_black_size_32_8"
+                android:text="贵农网" />
+
+            <ImageView style="@style/image_more" />
+        </LinearLayout>
+
+        <include layout="@layout/include_divider_1px_w_m_line_white" />
+
+        <LinearLayout
+            android:id="@+id/ll_sex"
+            style="@style/center_LinearLayout_help">
+
+            <TextView
+                style="@style/text_theme_black_size_32"
+                android:layout_weight="1"
+                android:text="@string/lab_personal_sex" />
+
+            <TextView
+                android:id="@+id/tv_user_sex"
+                style="@style/text_theme_black_size_32_8"
+                android:text="女" />
+
+            <ImageView style="@style/image_more" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

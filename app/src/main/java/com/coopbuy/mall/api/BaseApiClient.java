@@ -30,7 +30,7 @@ public class BaseApiClient extends RequestClient {
         okHttpClientBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
         if (context != null) {
             //这里有个限制 我使用的添加请求头来添加cookie 目前还没有找到为什么cookie不保存
-            // okHttpClientBuilder.cookieJar(new CookierManager(context));
+             okHttpClientBuilder.cookieJar(new CookierManager(context));
             baseContext = context;
         }
         // okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));

@@ -65,5 +65,8 @@
     <color name="text_gray_8">#888888</color>
    <!-- 同意-->
     <color name="text_gray_6">#666666</color>
+    <color name="center_back">#0A1C3a</color>
+   <!-- 个人中心-->
+    <color name="center_text_black">#515869</color>
 
 </resources>

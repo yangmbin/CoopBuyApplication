@@ -49,4 +49,13 @@ public class SharedPreferencesUtils {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_APPEND);
         return sp.getString(Constant.COOKIE, "");
     }
+    /**
+     * 是否登录过
+     *
+     * @return
+     */
+    public Boolean getLoginStatus() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        return sp.getBoolean(FinalConstant.is_login, false);
+    }
 }

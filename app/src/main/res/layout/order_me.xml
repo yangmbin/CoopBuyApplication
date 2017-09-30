@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:diy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/edit_text_back_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/look_allOrder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px96"
+        android:layout_marginLeft="@dimen/dimen_px32"
+        android:layout_marginRight="@dimen/dimen_px20"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="我的订单"
+            android:textColor="@color/center_text_black"
+            android:textSize="@dimen/dimen_px32" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/look_me_order"
+                android:textColor="@color/auxiliary_text_blue_gray"
+                android:textSize="@dimen/dimen_px28" />
+
+            <ImageView style="@style/image_more" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px2"
+        android:background="@color/theme_back_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px140"
+        android:orientation="horizontal">
+
+        <com.coopbuy.mall.widget.tab.MainTabView
+            android:id="@+id/wait_pay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:clickable="true"
+            diy:dotText=""
+            diy:dotVisible="true"
+            diy:iconDrawable="@mipmap/icon_tab_waitpay"
+            diy:text="@string/wait_pay"
+            diy:textColor="@color/theme_text_lab_black" />
+
+        <com.coopbuy.mall.widget.tab.MainTabView
+            android:id="@+id/wait_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:clickable="true"
+            diy:dotText=""
+            diy:dotVisible="true"
+            diy:iconDrawable="@mipmap/icon_tab_waitsend"
+            diy:text="@string/wait_send"
+            diy:textColor="@color/theme_text_lab_black" />
+
+        <com.coopbuy.mall.widget.tab.MainTabView
+            android:id="@+id/wait_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:clickable="true"
+            diy:dotText=""
+            diy:dotVisible="true"
+            diy:iconDrawable="@mipmap/icon_tab_delivery"
+            diy:text="@string/wait_charge"
+            diy:textColor="@color/theme_text_lab_black" />
+
+        <com.coopbuy.mall.widget.tab.MainTabView
+            android:id="@+id/after_sales"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:clickable="true"
+            diy:dotText=""
+            diy:dotVisible="true"
+            diy:iconDrawable="@mipmap/icon_tab_saleson"
+            diy:text="@string/after_sales"
+            diy:textColor="@color/theme_text_lab_black" />
+
+    </LinearLayout>
+
+</LinearLayout>

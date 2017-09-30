@@ -1,5 +1,7 @@
 package com.coopbuy.mall.app;
 
+import android.content.Context;
+
 import com.coopbuy.mall.okhttp.OkHttpUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -15,10 +17,11 @@ import okhttp3.OkHttpClient;
  *         Create at 2017/7/14 10:29
  */
 public class CoopBuyApplication extends BaseApplication {
+    public static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        this.context = getApplicationContext();
         // 初始化OkHttp
         initOkHttp();
         // 初始化Fresco

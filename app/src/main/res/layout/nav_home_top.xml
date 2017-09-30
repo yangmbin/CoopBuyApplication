@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/ll_title_bar"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,68 +12,79 @@
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dimen_px30"
         android:paddingRight="@dimen/dimen_px30">
+
         <LinearLayout
+            android:id="@+id/ll_loaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center">
+
             <TextView
                 android:layout_width="@dimen/dimen_px109"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_px28"
-                android:textColor="@color/theme_text_lab_black"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="贵阳观山湖"/>
+                android:text="贵阳观山湖"
+                android:textColor="@color/theme_text_lab_black"
+                android:textSize="@dimen/text_size_px28" />
+
             <ImageView
                 android:layout_width="@dimen/dimen_px40"
                 android:layout_height="@dimen/dimen_px40"
-                android:src="@mipmap/icon_nav_home_top_cbb"/>
+                android:src="@mipmap/icon_nav_home_top_cbb" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_search"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_px60"
-            android:layout_weight="1"
             android:layout_marginLeft="@dimen/dimen_px39"
             android:layout_marginRight="@dimen/dimen_px65"
-            android:paddingLeft="@dimen/dimen_px12"
-            android:paddingRight="@dimen/dimen_px12"
+            android:layout_weight="1"
+            android:background="@drawable/bg_nav_home_top_search"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_nav_home_top_search">
+            android:paddingLeft="@dimen/dimen_px12"
+            android:paddingRight="@dimen/dimen_px12">
+
             <ImageView
                 android:layout_width="@dimen/dimen_px44"
                 android:layout_height="@dimen/dimen_px44"
-                android:src="@mipmap/icon_nav_home_top_search"/>
+                android:src="@mipmap/icon_nav_home_top_search" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_px15"
-                android:textSize="@dimen/text_size_px28"
+                android:text="卷纸"
                 android:textColor="@color/auxiliary_text_gray"
-                android:text="卷纸"/>
+                android:textSize="@dimen/text_size_px28" />
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/iv_setting"
             android:layout_width="@dimen/dimen_px44"
             android:layout_height="@dimen/dimen_px44"
-            android:src="@mipmap/icon_nav_home_top_cart"/>
+            android:src="@mipmap/icon_nav_home_top_cart" />
 
         <FrameLayout
             android:layout_width="@dimen/dimen_px44"
             android:layout_height="@dimen/dimen_px44"
-            android:layout_marginLeft="@dimen/dimen_px42">
+            android:layout_marginLeft="@dimen/dimen_px34">
+
             <ImageView
+                android:id="@+id/iv_msg"
                 android:layout_width="@dimen/dimen_px44"
                 android:layout_height="@dimen/dimen_px44"
-                android:src="@mipmap/icon_nav_home_top_add"/>
+                android:src="@mipmap/icon_nav_home_top_add" />
+
             <View
                 android:layout_width="@dimen/dimen_px12"
                 android:layout_height="@dimen/dimen_px12"
-                android:background="@drawable/dot_red"
-                android:layout_gravity="right"/>
+                android:layout_gravity="right"
+                android:background="@drawable/dot_red" />
         </FrameLayout>
     </LinearLayout>
 
-    <include layout="@layout/menu_div_line"/>
+    <include layout="@layout/menu_div_line" />
 
 </LinearLayout>

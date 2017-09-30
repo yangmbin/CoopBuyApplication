@@ -19,4 +19,24 @@
     <string name="lab_set_again_password">请再次输入新密码</string>
     <string name="lab_setpassword_complete">完成</string>
     <string name="lab_setpassword_hint">请使用6-12位，数字、字母、符号两种以上组合设置密码</string>
+    <string name="lab_center_shopcart">购物车</string>
+    <string name="lab_center_collect">店铺收藏</string>
+    <string name="lab_center_footmark">足迹</string>
+    <string name="look_me_order">查看全部订单</string>
+    <string name="wait_pay">待付款</string>
+    <string name="wait_send">待发货</string>
+    <string name="wait_charge">待收货</string>
+    <string name="wait_evaluation">待评价</string>
+    <string name="after_sales">售后</string>
+    <string name="lab_center_phone_fare">话费充值</string>
+    <string name="lab_center_broadband">宽带续费</string>
+    <string name="lab_center_data">数据军师</string>
+    <string name="lab_center_client">我的客户</string>
+    <string name="lab_center_order">客户订单</string>
+    <string name="lab_center_work">站长业务</string>
+    <string name="lab_center_recommend">我的推荐</string>
+    <string name="lab_personal_nick">昵称</string>
+    <string name="lab_presonal_id">用户ID</string>
+    <string name="lab_personal_sex">性别</string>
+    <string name="title_personal">个人信息</string>
 </resources>

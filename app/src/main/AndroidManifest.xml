@@ -39,7 +39,8 @@
         <activity android:name=".ui.module.home.activity.ScanQrCodeActivity" />
         <activity android:name=".ui.module.home.activity.QrqWbActivity" />
         <activity android:name=".ui.module.center.activity.RegisterActivity" />
-        <activity android:name=".ui.module.center.activity.SetPassWordActivity"></activity>
+        <activity android:name=".ui.module.center.activity.SetPassWordActivity" />
+        <activity android:name=".ui.module.center.activity.PersonalActivity"></activity>
     </application>
 
 </manifest>
