@@ -204,7 +204,7 @@
                         style="@style/center_text_black_size_32"
                         android:layout_marginLeft="@dimen/dimen_px12"
                         android:layout_weight="1"
-                        android:text="站长推荐" />
+                        android:text="@string/lab_center_station_recommend" />
 
                     <ImageView
                         style="@style/image_more"
@@ -224,7 +224,7 @@
                         style="@style/center_text_black_size_32"
                         android:layout_marginLeft="@dimen/dimen_px12"
                         android:layout_weight="1"
-                        android:text="帮助中心" />
+                        android:text="@string/lab_center_help" />
 
                     <ImageView
                         style="@style/image_more"
@@ -245,7 +245,7 @@
                         style="@style/center_text_black_size_32"
                         android:layout_marginLeft="@dimen/dimen_px12"
                         android:layout_weight="1"
-                        android:text="地址管理" />
+                        android:text="@string/lab_cneter_address" />
 
                     <ImageView
                         style="@style/image_more"

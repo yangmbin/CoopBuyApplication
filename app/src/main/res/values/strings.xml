@@ -39,4 +39,7 @@
     <string name="lab_presonal_id">用户ID</string>
     <string name="lab_personal_sex">性别</string>
     <string name="title_personal">个人信息</string>
+    <string name="lab_cneter_address">地址管理</string>
+    <string name="lab_center_help">帮助中心</string>
+    <string name="lab_center_station_recommend">站长推荐</string>
 </resources>
