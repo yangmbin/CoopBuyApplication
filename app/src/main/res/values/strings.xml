@@ -42,4 +42,44 @@
     <string name="lab_cneter_address">地址管理</string>
     <string name="lab_center_help">帮助中心</string>
     <string name="lab_center_station_recommend">站长推荐</string>
+
+
+    <string name="title_set">设置</string>
+    <string name="lab_set_change_password">修改密码</string>
+    <string name="lab_set_suggest">意见及建议</string>
+    <string name="lab_set_movement">推送开关</string>
+    <string name="lab_set_clear_images">清除图片缓存</string>
+    <string name="lab_set_about">关于供销好卖</string>
+
+    <string name="title_about">关于供销好卖</string>
+    <string name="lab_about_user_protocol">用户协议</string>
+    <string name="lab_about_xx_protocol">xx协议</string>
+    <string name="lab_about_version_msg">版权信息</string>
+    <string name="lab_about_soft_protocol">软件许可使用协议</string>
+
+    <string name="title_suggestion">意见及建议</string>
+    <string name="lab_suggestion_meg">给我们的意见及建议</string>
+    <string name="lab_suggestion_meg_hint">意见及建议</string>
+    <string name="lab_suggestion_name">姓名</string>
+    <string name="lab_suggestion_phone">电话</string>
+    <string name="lab_suggestion_phone_hint">请输入您的手机号码</string>
+    <string name="lab_suggestion_name_hint">请输入您姓名</string>
+    <string name="lab_suggestion_start">*</string>
+
+    <string name="title_help_center">帮助中心</string>
+    <string name="lab_help_auto_service">自动服务</string>
+    <string name="lab_help_change_password">修改密码</string>
+    <string name="lab_help_to_change">换绑服务人员</string>
+    <string name="lab_help_call_station">联系我的站长</string>
+    <string name="lab_help_replace_customer_server">退换/售后</string>
+    <string name="lab_help_faq">常见问题</string>
+    <string name="lab_help_phone_service">电话客服</string>
+    <string name="lab_help_online_service">在线客服</string>
+
+    <string name="title_charge">话费充值</string>
+    <string name="lab_charge_cancel">取消</string>
+    <string name="lab_charge_phone">充话费</string>
+    <string name="lab_charge_once">立即充值</string>
+
+
 </resources>

@@ -50,7 +50,7 @@
 
         <LinearLayout
             android:id="@+id/ll_id"
-            style="@style/center_LinearLayout_help">
+            style="@style/center_LinearLayout_help_96">
 
             <TextView
                 style="@style/text_theme_black_size_32"
@@ -67,7 +67,7 @@
 
         <LinearLayout
             android:id="@+id/ll_nick"
-            style="@style/center_LinearLayout_help">
+            style="@style/center_LinearLayout_help_96">
 
             <TextView
                 style="@style/text_theme_black_size_32"
@@ -86,7 +86,7 @@
 
         <LinearLayout
             android:id="@+id/ll_sex"
-            style="@style/center_LinearLayout_help">
+            style="@style/center_LinearLayout_help_96">
 
             <TextView
                 style="@style/text_theme_black_size_32"

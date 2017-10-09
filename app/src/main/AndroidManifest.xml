@@ -40,7 +40,13 @@
         <activity android:name=".ui.module.home.activity.QrqWbActivity" />
         <activity android:name=".ui.module.center.activity.RegisterActivity" />
         <activity android:name=".ui.module.center.activity.SetPassWordActivity" />
-        <activity android:name=".ui.module.center.activity.PersonalActivity"></activity>
+        <activity android:name=".ui.module.center.activity.PersonalActivity" />
+        <activity android:name=".ui.module.center.activity.SettingActivity" />
+        <activity android:name=".ui.module.center.activity.AboutActivity" />
+        <activity android:name=".ui.module.center.activity.SuggestionActivity" />
+        <activity android:name=".ui.module.center.activity.HeplCenterActivity" />
+        <activity android:name=".ui.module.center.activity.PhoneChargeActivity" />
+        <activity android:name=".ui.module.center.activity.DataAnalyseActivity"></activity>
     </application>
 
 </manifest>
