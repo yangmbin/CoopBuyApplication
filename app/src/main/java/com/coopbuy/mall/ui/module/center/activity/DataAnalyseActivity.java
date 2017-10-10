@@ -1,8 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 

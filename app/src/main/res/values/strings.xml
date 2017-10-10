@@ -80,6 +80,7 @@
     <string name="lab_charge_cancel">取消</string>
     <string name="lab_charge_phone">充话费</string>
     <string name="lab_charge_once">立即充值</string>
+    <string name="lab_data_remaining_sum">个人账户余额（元）</string>
 
 
 </resources>

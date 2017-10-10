@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@color/theme_back_white"
     tools:context="com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity">
 
-</RelativeLayout>
+    <include layout="@layout/title_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px300"
+        android:background="@color/theme_text_lab_black">
+
+        <TextView
+            android:id="@+id/tv_remain_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_px78"
+            android:text="8.8"
+            android:textColor="@color/edit_text_back_white"
+            android:textSize="@dimen/dimen_px78" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_remain_sum"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_px20"
+            android:text="@string/lab_data_remaining_sum"
+            android:textColor="@color/edit_text_back_white"
+            android:textSize="@dimen/dimen_px36" />
+    </RelativeLayout>
+</LinearLayout>
