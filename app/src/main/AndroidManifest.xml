@@ -46,7 +46,10 @@
         <activity android:name=".ui.module.center.activity.SuggestionActivity" />
         <activity android:name=".ui.module.center.activity.HeplCenterActivity" />
         <activity android:name=".ui.module.center.activity.PhoneChargeActivity" />
-        <activity android:name=".ui.module.center.activity.DataAnalyseActivity"></activity>
+        <activity android:name=".ui.module.center.activity.DataAnalyseActivity" />
+        <activity android:name=".ui.module.center.activity.MyBillActivity" />
+        <activity android:name=".ui.module.center.activity.BillDetailActivity" />
+        <activity android:name=".ui.module.center.activity.CustomOrderActivity"></activity>
     </application>
 
 </manifest>

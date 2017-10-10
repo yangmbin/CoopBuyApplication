@@ -43,7 +43,6 @@
     <string name="lab_center_help">帮助中心</string>
     <string name="lab_center_station_recommend">站长推荐</string>
 
-
     <string name="title_set">设置</string>
     <string name="lab_set_change_password">修改密码</string>
     <string name="lab_set_suggest">意见及建议</string>
@@ -81,6 +80,40 @@
     <string name="lab_charge_phone">充话费</string>
     <string name="lab_charge_once">立即充值</string>
     <string name="lab_data_remaining_sum">个人账户余额（元）</string>
+    <string name="lab_data_sum_income">累计收益(元)</string>
+    <string name="lab_data_my_bill">我的对账单</string>
+    <string name="lab_data_all_income">所有收益一目了然</string>
+    <string name="lab_data_detail">详情</string>
+    <string name="_209909">最新对账单(209909期)</string>
+    <string name="lab_data_confirm">待确定</string>
+    <string name="lab_data_cash">提现</string>
+    <string name="lab_data_income_detail">收益明细</string>
 
+    <string name="title_bill">我的对账单</string>
+    <string name="lab_bill_filter">筛选</string>
+    <string name="lab_bill_all">全部</string>
+    <string name="lab_bill_confrim">待确定</string>
+    <string name="lab_bill_pend_settle">待结算</string>
+    <string name="lab_bill_recall">被撤回</string>
+    <string name="lab_bill_dissidence">有异议</string>
+    <string name="lab_bill_settled">已结算</string>
+
+    <string name="tittle_billdetail">账单详情</string>
+    <string name="lab_billdetail_number">对账单号</string>
+    <string name="lab_billdetail_copy">复制单号</string>
+    <string name="lab_billdetail_deduct">需扣除费用项目明细</string>
+    <string name="lab_billdetail_income">订单收益(元)</string>
+    <string name="lab_billdetail_withhold">平台代扣税费(元)</string>
+    <string name="lab_billdetail_onther">其他费用(元)</string>
+    <string name="lab_billdetail_settle">结算金额</string>
+    <string name="lab_billdetail_allcount">订单总数</string>
+    <string name="lab_billdetail_detial">查看详情</string>
+    <string name="lab_billdetail_foot">账单操作记录</string>
+    <string name="lab_billdetail_create">账单被创建</string>
+    <string name="lab_billdetail_dissidence">站长提出异议</string>
+    <string name="lab_billdetail_dissidence_mesg">异议内容</string>
+    <string name="lab_billdetail_dissidence_put">提出异议</string>
+    <string name="lab_billdetail_dissidence_confirm">确定账单信息</string>
+    <string name="lab_custom_call">联系客户</string>
 
 </resources>

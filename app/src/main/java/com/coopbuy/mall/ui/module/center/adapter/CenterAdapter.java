@@ -12,6 +12,8 @@ import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
+import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.List;
@@ -43,6 +45,23 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
         cneter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                switch (item.getName()) {
+                    case "数据军师":
+                        IntentUtils.gotoActivity(mContext, DataAnalyseActivity.class);
+                        break;
+                    case "我的客户":
+
+                        break;
+                    case "客户订单":
+
+                        break;
+                    case "站长业务":
+
+                        break;
+                    case "我的推荐":
+
+                        break;
+                }
                 ToastUtils.toastShort(item.getName());
             }
         });
