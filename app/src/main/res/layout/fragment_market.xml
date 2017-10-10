@@ -7,7 +7,10 @@
 
     <include layout="@layout/nav_home_top"/>
 
-    <include layout="@layout/market_week_bar"/>
+    <com.coopbuy.mall.widget.MarketWeekBar
+        android:id="@+id/week_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/tab_content"

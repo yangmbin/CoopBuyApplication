@@ -18,20 +18,25 @@
     <color name="gray_6">#8e8e8e</color>
     <color name="gray_7">#7e7e7e</color>
     <color name="gray_8">#d3d3d3</color>
+    <color name="gray_9">#a9a9a9</color>
+    <color name="gray_10">#b3b3b3</color>
     <color name="green">#6FCB15</color>
     <color name="black">#000000</color>
     <color name="black_1">#333333</color>
     <color name="black_2">#353535</color>
     <color name="black_3">#38322e</color>
     <color name="black_4">#1d1d1d</color>
+    <color name="black_5">#33000000</color><!--20%不透明-->
     <color name="red">#FF0000</color>
     <color name="red_1">#e5e4393c</color>
     <color name="red_2">#cb2222</color>
     <color name="red_3">#d30000</color>
     <color name="red_4">#c50d0d</color>
     <color name="red_5">#E00000</color>
+    <color name="red_6">#E50909</color>
     <color name="blue">#5B99FF</color>
     <color name="orange">#ff8831</color>
+    <color name="orange_1">#ffe8cb</color>
     <color name="test_line_white">#ffffff</color>
 
 

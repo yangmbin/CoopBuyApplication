@@ -56,4 +56,5 @@ dependencies {
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
     compile 'com.github.yangmbin:RatingBar:1.0.0'
     compile 'com.github.iwgang:simplifyspan:2.0'
+    compile 'me.zhouzhuo.zzhorizontalprogressbar:zz-horizontal-progressbar:1.0.0'
 }

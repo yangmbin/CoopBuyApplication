@@ -9,6 +9,7 @@
         android:layout_height="@dimen/dimen_px80"
         android:background="@color/white">
         <LinearLayout
+            android:id="@+id/ll_day_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -23,6 +24,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -37,6 +39,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -51,6 +54,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -65,6 +69,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -79,6 +84,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -93,6 +99,7 @@
                 android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_day_7"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -106,6 +113,97 @@
                 android:background="@drawable/bg_circle_week_7"
                 android:gravity="center"/>
         </LinearLayout>
+    </LinearLayout>
+
+    <!--指示器-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px10"
+        android:background="@color/auxiliary_text_orange">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_1"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_2"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_3"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_4"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_5"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_6"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <View
+                android:id="@+id/indicator_7"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="match_parent"
+                android:background="@mipmap/week_indicator"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

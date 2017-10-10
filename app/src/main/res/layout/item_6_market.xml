@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_px30">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px200"
+            app:placeholderImage="@mipmap/default_img"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_round_corner_imageholder"
+            android:layout_marginRight="@dimen/dimen_px30"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px32"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="产品名称产品名称产品名"/>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="规格/卖点"
+                    android:textColor="@color/auxiliary_text_blue_gray"
+                    android:textSize="@dimen/text_size_px28"
+                    android:layout_marginTop="@dimen/dimen_px10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px20"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_round_corner_red"
+                    android:paddingTop="@dimen/dimen_px4"
+                    android:paddingBottom="@dimen/dimen_px4"
+                    android:paddingLeft="@dimen/dimen_px12"
+                    android:paddingRight="@dimen/dimen_px12"
+                    android:text="满288元减10元"
+                    android:layout_marginTop="@dimen/dimen_px10"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px30"
+                    android:textColor="@color/theme_text_title_orange"
+                    android:text="¥23.00"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_gray_dark"
+                    android:text="已售：1"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

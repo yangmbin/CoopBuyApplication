@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_px30">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="@dimen/dimen_px340"
+            android:layout_height="@dimen/dimen_px340"
+            app:placeholderImage="@mipmap/default_img"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_round_corner_imageholder"
+            android:layout_marginRight="@dimen/dimen_px19"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px32"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="产品名称产品名称产品名称产品名称产品名"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_blue_gray"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="规格/卖点"
+                    android:layout_marginTop="@dimen/dimen_px19"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px24"
+                    android:textColor="@color/white"
+                    android:text="买2件赠XX*1"
+                    android:layout_marginTop="@dimen/dimen_px23"
+                    android:background="@drawable/bg_round_corner_gray_1"
+                    android:paddingTop="@dimen/dimen_px3"
+                    android:paddingBottom="@dimen/dimen_px3"
+                    android:paddingLeft="@dimen/dimen_px32"
+                    android:paddingRight="@dimen/dimen_px32"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px36"
+                    android:textColor="@color/red_6"
+                    android:text="¥110.00"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_gray_dark"
+                    android:text="已售 6666"
+                    android:layout_marginTop="@dimen/dimen_px19"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
