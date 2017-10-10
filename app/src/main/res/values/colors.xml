@@ -79,5 +79,9 @@
     <color name="center_back">#0A1C3a</color>
    <!-- 个人中心-->
     <color name="center_text_black">#515869</color>
+    <!--话费充值填充色-->
+    <color name="phone_charge_grey">#D7D7D7</color>
+    <color name="phone_charge_orange">#ffefe5</color>
+    <color name="phone_charge_divider">#F2F2F2 </color>
 
 </resources>

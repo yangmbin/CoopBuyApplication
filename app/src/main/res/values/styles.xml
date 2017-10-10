@@ -47,6 +47,27 @@
         <item name="android:textSize">@dimen/dimen_px30</item>
         <item name="android:background">@null</item>
     </style>
+
+    <style name="suggestion_edit">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textColor">@color/theme_text_lab_black</item>
+        <item name="android:textSize">@dimen/dimen_px32</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:padding">@dimen/dimen_px30</item>
+        <item name="android:background">@color/edit_text_back_white</item>
+    </style>
+
+    <style name="phone_edit">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColorHint">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textColor">@color/theme_text_lab_black</item>
+        <item name="android:textSize">@dimen/dimen_px32</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:background">@color/edit_text_back_white</item>
+    </style>
     <!--登录 button-->
     <style name="login_btn">
         <item name="android:layout_height">@dimen/dimen_px88</item>
@@ -62,6 +83,33 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/dimen_px28</item>
+    </style>
+
+    <style name="text_black_size_28_878f94">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textSize">@dimen/dimen_px28</item>
+    </style>
+
+    <style name="text_black_size_24_878f94">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textSize">@dimen/dimen_px24</item>
+    </style>
+
+    <style name="text_black_size_30_878f94">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/auxiliary_text_blue_gray</item>
+        <item name="android:textSize">@dimen/dimen_px28</item>
+    </style>  <!--  黑色文字28px-->
+    <style name="text_theme_black_size_28_41">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/theme_text_lab_black</item>
         <item name="android:textSize">@dimen/dimen_px28</item>
     </style> <!--  黑色文字28px-->
     <style name="center_text_black_size_32">
@@ -89,7 +137,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/theme_text_lab_black</item>
         <item name="android:textSize">@dimen/dimen_px32</item>
-    </style> <style name="text_theme_black_size_32_8">
+    </style>
+
+    <style name="text_theme_black_size_32_8">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/auxiliary_text_blue_gray</item>
@@ -102,7 +152,7 @@
         <item name="android:textSize">@dimen/dimen_px26</item>
     </style>
     <!--  灰黑黑色文字26px  666666-->
-    <style name="text_black_gary_size_26_6">
+    <style name="text_black_gary_size_26_666666">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_gray_6</item>
@@ -123,11 +173,25 @@
         <item name="android:textSize">@dimen/dimen_px30</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="text_start">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/auxiliary_text_red</item>
+        <item name="android:textSize">@dimen/dimen_px30</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_px39</item>
+        <item name="android:text">@string/lab_suggestion_start</item>
+    </style>
     <!--数据清理-->
     <style name="image_clear">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:src">@mipmap/icon_delete_login_delete</item>
+    </style>    <!--数据清理-->
+    <style name="image_help">
+        <item name="android:layout_height">@dimen/dimen_px44</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_width">@dimen/dimen_px44</item>
     </style>
     <!--    密码是否可见-->
     <style name="image_visible">
@@ -161,8 +225,16 @@
         <item name="android:orientation">vertical</item>
     </style>
     <!-- 个人中心-->
-    <style name="center_LinearLayout_help">
+    <style name="center_LinearLayout_help_96">
         <item name="android:layout_height">@dimen/dimen_px96</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@color/edit_text_back_white</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!-- 设置-->
+    <style name="center_LinearLayout_help_90">
+        <item name="android:layout_height">@dimen/dimen_px90</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@color/edit_text_back_white</item>

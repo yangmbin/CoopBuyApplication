@@ -192,7 +192,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_station"
-                    style="@style/center_LinearLayout_help"
+                    style="@style/center_LinearLayout_help_96"
                     android:layout_marginTop="@dimen/dimen_px16">
 
                     <ImageView
@@ -213,7 +213,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_help"
-                    style="@style/center_LinearLayout_help">
+                    style="@style/center_LinearLayout_help_96">
 
                     <ImageView
                         style="@style/image_center_40"
@@ -233,7 +233,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_address"
-                    style="@style/center_LinearLayout_help"
+                    style="@style/center_LinearLayout_help_96"
                     android:layout_marginBottom="@dimen/dimen_px18">
 
                     <ImageView

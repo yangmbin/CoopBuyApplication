@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context=".ui.module.center.activity.SettingActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_change_password"
+        style="@style/center_LinearLayout_help_90"
+        android:layout_marginTop="@dimen/dimen_px30">
+
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px31"
+            android:layout_weight="1"
+            android:text="@string/lab_set_change_password" />
+
+        <ImageView
+            style="@style/image_more"
+            android:layout_marginRight="@dimen/dimen_px20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_suggest"
+        style="@style/center_LinearLayout_help_90"
+        android:layout_marginTop="@dimen/dimen_px16">
+
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px31"
+            android:layout_weight="1"
+            android:text="@string/lab_set_suggest" />
+
+        <ImageView
+            style="@style/image_more"
+            android:layout_marginRight="@dimen/dimen_px20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_movement"
+        style="@style/center_LinearLayout_help_90"
+        android:layout_marginTop="@dimen/dimen_px16">
+
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px31"
+            android:layout_weight="1"
+            android:text="@string/lab_set_movement" />
+
+        <CheckBox
+            android:id="@+id/iv_check_movement"
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px60"
+            android:button="@null"
+            android:background="@drawable/check_movement_selector"
+            android:layout_marginRight="@dimen/dimen_px20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_clear_images"
+        style="@style/center_LinearLayout_help_90"
+        android:layout_marginTop="@dimen/dimen_px16">
+
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px31"
+            android:layout_weight="1"
+            android:text="@string/lab_set_clear_images" />
+
+        <ImageView
+            style="@style/image_more"
+            android:layout_marginRight="@dimen/dimen_px20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_about"
+        style="@style/center_LinearLayout_help_90"
+        android:layout_marginTop="@dimen/dimen_px16">
+
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px31"
+            android:layout_weight="1"
+            android:text="@string/lab_set_about" />
+
+        <ImageView
+            style="@style/image_more"
+            android:layout_marginRight="@dimen/dimen_px20" />
+    </LinearLayout>
+
+</LinearLayout>

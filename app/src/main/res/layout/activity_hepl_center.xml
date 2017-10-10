@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_px124"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/text_black_size_30_878f94"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px32"
+                android:text="@string/lab_help_auto_service" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px187"
+                android:layout_marginTop="@dimen/dimen_px31"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_change_password"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_help"
+                        android:src="@mipmap/icon_change_password" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26"
+                        android:layout_marginTop="@dimen/dimen_px20"
+                        android:text="@string/lab_help_change_password" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_bind"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_help"
+                        android:src="@mipmap/icon_help_bind" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26"
+                        android:layout_marginTop="@dimen/dimen_px20"
+                        android:text="@string/lab_help_to_change" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_call_station"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_help"
+                        android:src="@mipmap/icon_help_station" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26"
+                        android:layout_marginTop="@dimen/dimen_px20"
+                        android:text="@string/lab_help_call_station" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_customer"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_help"
+                        android:src="@mipmap/icon_tab_saleson" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26"
+                        android:layout_marginTop="@dimen/dimen_px20"
+                        android:text="@string/lab_help_replace_customer_server" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/text_black_size_30_878f94"
+                android:layout_marginBottom="@dimen/dimen_px31"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px32"
+                android:text="@string/lab_help_faq" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/swipe_target"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_service"
+                android:background="@color/edit_text_back_white"
+                android:overScrollMode="never" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_service"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px122"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dimen_px10"
+            android:background="@color/edit_text_back_white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_phone_service"
+                style="@style/center_LinearLayout">
+
+                <ImageView
+                    style="@style/image_help"
+                    android:src="@mipmap/icon_help_phone_service" />
+
+                <TextView
+                    style="@style/text_theme_black_size_26"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="@string/lab_help_phone_service" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_call_online_service"
+                style="@style/center_LinearLayout">
+
+                <ImageView
+                    style="@style/image_help"
+                    android:src="@mipmap/icon_help_online_service" />
+
+                <TextView
+                    style="@style/text_theme_black_size_26"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="@string/lab_help_online_service" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_feedback"
+                style="@style/center_LinearLayout">
+
+                <ImageView
+                    style="@style/image_help"
+                    android:src="@mipmap/icon_help_feedback" />
+
+                <TextView
+                    style="@style/text_theme_black_size_26"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="@string/lab_suggestion_meg_hint" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

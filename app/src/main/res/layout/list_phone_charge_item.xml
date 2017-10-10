@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_phone_charge"
+    android:layout_width="210px"
+    android:layout_height="120px"
+    android:background="@drawable/bg_round_corner_gray_phone_charge"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_mark_price"
+        style="@style/text_black_size_30_878f94"
+        android:text="10元" />
+
+    <TextView
+        android:id="@+id/tv_sale_price"
+        style="@style/text_black_size_24_878f94"
+        android:text="售价：9.9" />
+</LinearLayout>

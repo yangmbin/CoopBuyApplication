@@ -76,7 +76,7 @@
             android:button="@null" />
 
         <TextView
-            style="@style/text_black_gary_size_26_6"
+            style="@style/text_black_gary_size_26_666666"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dimen_px9"
             android:text="@string/lab_register_agree" />

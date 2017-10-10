@@ -13,7 +13,10 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
+import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
+import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
+import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
@@ -151,7 +154,7 @@ public class ThreeFragment extends ViewPagerBaseFragment {
 
                 break;
             case R.id.ll_phone_fare:
-
+                IntentUtils.gotoActivity(getActivity(), PhoneChargeActivity.class);
                 break;
             case R.id.ll_broadband:
 
@@ -160,12 +163,13 @@ public class ThreeFragment extends ViewPagerBaseFragment {
 
                 break;
             case R.id.ll_help:
-
+                IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
                 break;
             case R.id.ll_address:
 
                 break;
             case R.id.iv_setting:
+                IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
                 break;
             case R.id.iv_msg:
                 break;
