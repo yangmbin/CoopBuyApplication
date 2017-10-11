@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.MyCustomActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px60"
+            android:background="@drawable/bg_round_corner_gray_search"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_px32"
+                android:layout_height="@dimen/dimen_px32"
+                android:src="@mipmap/icon_nav_home_top_search" />
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:text="用户名称/手机号" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_banner_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/edit_text_back_white"
+        android:overScrollMode="never" />
+</LinearLayout>

@@ -88,11 +88,11 @@
 
                         <TextView
                             android:id="@+id/tv_shopcart_number"
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="0" />
 
                         <TextView
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="@string/lab_center_shopcart" />
                     </LinearLayout>
 
@@ -104,11 +104,11 @@
 
                         <TextView
                             android:id="@+id/tv_collect_number"
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="0" />
 
                         <TextView
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="@string/lab_center_collect" />
                     </LinearLayout>
 
@@ -120,11 +120,11 @@
 
                         <TextView
                             android:id="@+id/tv_footmark_number"
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="0" />
 
                         <TextView
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:text="@string/lab_center_footmark" />
                     </LinearLayout>
                 </LinearLayout>
@@ -151,7 +151,7 @@
                             android:src="@mipmap/icon_phone_fare" />
 
                         <TextView
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:layout_marginTop="@dimen/dimen_px24"
                             android:text="@string/lab_center_phone_fare" />
                     </LinearLayout>
@@ -165,7 +165,7 @@
                             android:src="@mipmap/icon_broadband" />
 
                         <TextView
-                            style="@style/text_theme_black_size_26"
+                            style="@style/text_theme_black_size_26_41495c"
                             android:layout_marginTop="@dimen/dimen_px24"
                             android:text="@string/lab_center_broadband"
                             android:textColor="@color/auxiliary_text_blue_gray" />

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.CustomOrderDetailActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px369">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px320"
+                    android:background="@color/theme_text_lab_black" />
+            </FrameLayout>
+
+            <LinearLayout
+                style="@style/center_LinearLayout_60_white"
+                android:layout_height="@dimen/dimen_px120">
+
+                <ImageView
+                    style="@style/image_center_40"
+                    android:src="@mipmap/icon_custom_logistics" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_px19"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:text="贵阳市南明区博爱路97号  已发出"
+                        android:textSize="@dimen/dimen_px32"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_marginTop="@dimen/dimen_px4"
+                        android:text="2015-5-9" />
+                </LinearLayout>
+
+                <ImageView style="@style/image_more" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/center_LinearLayout_60_white"
+                android:layout_height="@dimen/dimen_px180"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px40"
+                    android:gravity="center|left">
+
+                    <ImageView
+                        style="@style/image_center_40"
+                        android:src="@mipmap/icon_custom_location" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_marginLeft="@dimen/dimen_px19"
+                        android:text="李青青"
+                        android:textSize="@dimen/dimen_px32"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_marginLeft="@dimen/dimen_px30"
+                        android:text="18184217539"
+                        android:textSize="@dimen/dimen_px32" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_marginLeft="@dimen/dimen_px59"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:text="贵州省银河系"
+                    android:textSize="@dimen/dimen_px30" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/center_LinearLayout_60_white"
+                android:layout_marginTop="@dimen/dimen_px16">
+
+                <TextView
+
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_weight="1"
+                    android:text="@string/lab_detail_discount"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_discount"
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="-$10.00" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/center_LinearLayout_60_white">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_weight="1"
+                    android:text="@string/lab_detial_feight"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_feight"
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="-$10.00" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/center_LinearLayout_60_white">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="@string/lab_detail_msg"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_msg"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_marginLeft="@dimen/dimen_px5"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="无" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/center_LinearLayout_60_white">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_weight="1"
+                    android:text="@string/lab_detail_allprice"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_allprice"
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="-$10.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/center_LinearLayout_60_white"
+                android:layout_height="@dimen/dimen_px90">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_weight="1"
+                    android:text="@string/lab_detail_actualpayment"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_actualpayment"
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="-$10.00"
+                    android:textColor="@color/theme_text_title_orange" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                style="@style/center_LinearLayout_60_white"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:padding="@dimen/dimen_px30">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:text="创建编号：1234575584"
+                        android:textSize="@dimen/dimen_px26" />
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_marginTop="@dimen/dimen_px35"
+                        android:text="创建时间：1234575584"
+                        android:textSize="@dimen/dimen_px26" />
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_marginTop="@dimen/dimen_px5"
+                        android:text="付款时间：1234575584"
+                        android:textSize="@dimen/dimen_px26" />
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_marginTop="@dimen/dimen_px5"
+                        android:text="发货时间：1234575584"
+                        android:textSize="@dimen/dimen_px26" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dimen_px150"
+                    android:layout_height="@dimen/dimen_px60"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/black_rectangle_white"
+                    android:gravity="center"
+                    android:text="复制"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:textSize="@dimen/dimen_px28" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

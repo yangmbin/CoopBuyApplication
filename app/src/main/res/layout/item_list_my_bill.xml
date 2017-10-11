@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:layout_gravity="center_vertical"
+        android:background="@color/edit_text_back_white">
+
+        <TextView
+            android:id="@+id/tv_month"
+            style="@style/text_theme_black_size_30_h_match_41495c"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_toRightOf="@+id/iv_bill"
+            android:text="8月收益"
+            android:textSize="@dimen/dimen_px32"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_data_confirm"
+            style="@style/text_theme_black_size_30_h_match_41495c"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dimen_px11"
+            android:layout_marginRight="@dimen/dimen_px30"
+            android:gravity="right|center"
+            android:text="待确定"
+            android:textColor="@color/theme_text_title_orange" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_marginRight="@dimen/dimen_px30"
+            android:background="@color/theme_back_white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px200"
+        android:background="@color/edit_text_back_white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_px70">
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:layout_marginTop="@dimen/dimen_px28"
+                android:text="结算金额"
+                android:textSize="@dimen/dimen_px26" />
+
+            <TextView
+                android:id="@+id/tv_settl_accounts"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_centerVertical="true"
+                android:text="88888.3$"
+                android:textSize="@dimen/dimen_px46" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_px70">
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:layout_marginTop="@dimen/dimen_px28"
+                android:text="供销好卖成功下单"
+                android:textSize="@dimen/dimen_px26" />
+
+            <TextView
+                android:id="@+id/tv_bill_count"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_centerVertical="true"
+                android:text="88"
+                android:textSize="@dimen/dimen_px46" />
+
+            <TextView
+                style="@style/text_theme_black_size_28_41"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimen_px10"
+                android:layout_toRightOf="@id/tv_bill_count"
+                android:text="笔" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px110"
+        android:background="@color/edit_text_back_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_px30">
+
+        <TextView
+            android:id="@+id/tv_bill_number"
+            style="@style/text_black_size_28_878f94"
+            android:text="对账单号：18928739383"
+            android:textSize="@dimen/dimen_px26" />
+
+        <TextView
+            android:id="@+id/tv_bill_time"
+            style="@style/text_black_size_28_878f94"
+            android:layout_marginTop="@dimen/dimen_px15"
+            android:text="出账日期：2019-9-9"
+            android:textSize="@dimen/dimen_px26" />
+    </LinearLayout>
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
+import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
@@ -166,7 +167,7 @@ public class ThreeFragment extends ViewPagerBaseFragment {
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
                 break;
             case R.id.ll_address:
-
+                IntentUtils.gotoActivity(getActivity(), AddressManageActivity.class);
                 break;
             case R.id.iv_setting:
                 IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
@@ -174,14 +175,6 @@ public class ThreeFragment extends ViewPagerBaseFragment {
             case R.id.iv_msg:
                 break;
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
     }
 
 

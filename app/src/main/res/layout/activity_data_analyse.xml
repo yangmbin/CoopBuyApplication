@@ -1,37 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/theme_back_white"
+    android:orientation="vertical"
     tools:context="com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity">
 
-    <include layout="@layout/title_bar_layout" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar_layout" />
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px300"
-        android:background="@color/theme_text_lab_black">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title">
 
-        <TextView
-            android:id="@+id/tv_remain_sum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_px78"
-            android:text="8.8"
-            android:textColor="@color/edit_text_back_white"
-            android:textSize="@dimen/dimen_px78" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_remain_sum"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_px20"
-            android:text="@string/lab_data_remaining_sum"
-            android:textColor="@color/edit_text_back_white"
-            android:textSize="@dimen/dimen_px36" />
-    </RelativeLayout>
-</LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px300"
+                android:background="@color/theme_text_lab_black">
+
+                <TextView
+                    android:id="@+id/tv_remain_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_px78"
+                    android:text="8.8"
+                    android:textColor="@color/edit_text_back_white"
+                    android:textSize="@dimen/dimen_px78" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_remain_sum"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_px20"
+                    android:text="@string/lab_data_remaining_sum"
+                    android:textColor="@color/edit_text_back_white"
+                    android:textSize="@dimen/dimen_px36" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px120"
+                android:layout_gravity="center_vertical"
+                android:background="@color/edit_text_back_white"
+                android:padding="@dimen/dimen_px30">
+
+                <ImageView
+                    android:id="@+id/iv_money"
+                    android:layout_width="@dimen/dimen_px40"
+                    android:layout_height="@dimen/dimen_px40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_data_money" />
+
+                <TextView
+                    style="@style/text_theme_black_size_30_h_match_41495c"
+                    android:layout_marginLeft="@dimen/dimen_px11"
+                    android:layout_toRightOf="@+id/iv_money"
+                    android:text="@string/lab_data_sum_income" />
+
+                <TextView
+                    android:id="@+id/tv_data_income"
+                    style="@style/text_theme_black_size_30_h_match_41495c"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dimen_px11"
+                    android:layout_toRightOf="@+id/iv_money"
+                    android:gravity="right"
+                    android:text="888"
+                    android:textSize="@dimen/dimen_px36" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px240"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/edit_text_back_white"
+                    android:padding="@dimen/dimen_px30">
+
+                    <LinearLayout
+                        android:id="@+id/ll_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <View
+                            android:id="@+id/v_line"
+                            android:layout_width="@dimen/dimen_px10"
+                            android:layout_height="@dimen/dimen_px28"
+                            android:background="@drawable/oval_bg_green" />
+
+                        <TextView
+                            android:id="@+id/tv_income"
+                            style="@style/text_theme_black_size_30_h_match_41495c"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_px16"
+                            android:layout_toRightOf="@+id/v_line"
+                            android:text="@string/lab_data_sum_income" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_data_forecast_income"
+                        style="@style/text_theme_black_size_30_h_match_41495c"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll_data"
+                        android:layout_marginLeft="@dimen/dimen_px26"
+                        android:layout_marginTop="@dimen/dimen_px19"
+                        android:text="5666.00"
+                        android:textSize="@dimen/dimen_px36" />
+
+                    <TextView
+                        android:id="@+id/tv_detail_income"
+                        style="@style/data_btn"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/dimen_px26"
+                        android:gravity="center"
+                        android:text="@string/lab_data_detail" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_px1"
+                    android:layout_weight="1"
+                    android:background="@color/edit_text_back_white"
+                    android:padding="@dimen/dimen_px30">
+
+                    <LinearLayout
+                        android:id="@+id/ll_data_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <View
+                            android:id="@+id/v_line_onrange"
+                            android:layout_width="@dimen/dimen_px10"
+                            android:layout_height="@dimen/dimen_px28"
+                            android:background="@drawable/oval_bg_orange" />
+
+                        <TextView
+                            style="@style/text_theme_black_size_30_h_match_41495c"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_px16"
+                            android:layout_toRightOf="@+id/v_line_onrange"
+                            android:text="@string/lab_data_my_bill" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll_data_detail"
+                        android:layout_marginLeft="@dimen/dimen_px26"
+                        android:layout_marginTop="@dimen/dimen_px19"
+                        android:text="@string/lab_data_all_income" />
+
+
+                    <TextView
+                        android:id="@+id/tv_detail_bill"
+                        style="@style/data_btn"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/dimen_px26"
+                        android:gravity="center"
+                        android:text="@string/lab_data_detail" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_bill"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px90"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white">
+
+                <ImageView
+                    android:id="@+id/iv_bill"
+                    android:layout_width="@dimen/dimen_px40"
+                    android:layout_height="@dimen/dimen_px40"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:src="@mipmap/icon_data_bill" />
+
+                <TextView
+                    style="@style/text_theme_black_size_30_h_match_41495c"
+                    android:layout_marginLeft="@dimen/dimen_px11"
+                    android:layout_toRightOf="@+id/iv_bill"
+                    android:text="@string/_209909" />
+
+                <TextView
+                    android:id="@+id/tv_data_confirm"
+                    style="@style/text_theme_black_size_30_h_match_41495c"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dimen_px11"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:gravity="right|center"
+                    android:text="@string/lab_data_confirm"
+                    android:textColor="@color/theme_text_title_orange" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px120"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_text_lab_black"
+        android:gravity="center"
+        android:text="@string/lab_data_cash"
+        android:textColor="@color/edit_text_back_white" />
+</RelativeLayout>

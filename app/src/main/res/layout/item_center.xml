@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/tv_name"
-            style="@style/text_theme_black_size_26"
+            style="@style/text_theme_black_size_26_41495c"
             android:text="@string/lab_center_data" />
     </LinearLayout>
 </LinearLayout>

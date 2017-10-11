@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context=".ui.module.center.activity.AddresssAddUserActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <LinearLayout
+        style="@style/center_LinearLayout_help_90"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginTop="@dimen/dimen_px1">
+
+        <TextView
+            style="@style/text_black_size_28"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1.填写收货人详细" />
+
+        <TextView
+            style="@style/text_black_size_28"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2.填写收货人详细" />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="收货人姓名"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="手机号码"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px16"
+        android:background="@color/edit_text_back_white"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:text="省、市、区(县)"
+            android:textSize="@dimen/dimen_px32" />
+
+        <TextView
+            style="@style/text_black_size_28_878f94"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_px91"
+            android:gravity="center|right"
+            android:text="请选择"
+            android:textSize="@dimen/dimen_px32" />
+
+        <ImageView
+            style="@style/image_more"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_px30" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/login_btn"
+        android:layout_marginTop="@dimen/dimen_px100"
+        android:text="下一步" />
+</LinearLayout>

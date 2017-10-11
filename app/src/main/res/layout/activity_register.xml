@@ -53,7 +53,7 @@
 
         <TextView
             android:id="@+id/tv_get_code"
-            style="@style/text_theme_black_size_30_h_match"
+            style="@style/text_theme_black_size_30_h_match_41495c"
             android:layout_width="@dimen/dimen_px210"
             android:layout_alignParentRight="true"
             android:text="@string/lab_register_code" />

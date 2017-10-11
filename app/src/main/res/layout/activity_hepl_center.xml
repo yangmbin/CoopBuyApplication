@@ -43,7 +43,7 @@
                         android:src="@mipmap/icon_change_password" />
 
                     <TextView
-                        style="@style/text_theme_black_size_26"
+                        style="@style/text_theme_black_size_26_41495c"
                         android:layout_marginTop="@dimen/dimen_px20"
                         android:text="@string/lab_help_change_password" />
                 </LinearLayout>
@@ -58,7 +58,7 @@
                         android:src="@mipmap/icon_help_bind" />
 
                     <TextView
-                        style="@style/text_theme_black_size_26"
+                        style="@style/text_theme_black_size_26_41495c"
                         android:layout_marginTop="@dimen/dimen_px20"
                         android:text="@string/lab_help_to_change" />
                 </LinearLayout>
@@ -73,7 +73,7 @@
                         android:src="@mipmap/icon_help_station" />
 
                     <TextView
-                        style="@style/text_theme_black_size_26"
+                        style="@style/text_theme_black_size_26_41495c"
                         android:layout_marginTop="@dimen/dimen_px20"
                         android:text="@string/lab_help_call_station" />
                 </LinearLayout>
@@ -87,7 +87,7 @@
                         android:src="@mipmap/icon_tab_saleson" />
 
                     <TextView
-                        style="@style/text_theme_black_size_26"
+                        style="@style/text_theme_black_size_26_41495c"
                         android:layout_marginTop="@dimen/dimen_px20"
                         android:text="@string/lab_help_replace_customer_server" />
                 </LinearLayout>
@@ -128,7 +128,7 @@
                     android:src="@mipmap/icon_help_phone_service" />
 
                 <TextView
-                    style="@style/text_theme_black_size_26"
+                    style="@style/text_theme_black_size_26_41495c"
                     android:layout_marginTop="@dimen/dimen_px10"
                     android:text="@string/lab_help_phone_service" />
             </LinearLayout>
@@ -142,7 +142,7 @@
                     android:src="@mipmap/icon_help_online_service" />
 
                 <TextView
-                    style="@style/text_theme_black_size_26"
+                    style="@style/text_theme_black_size_26_41495c"
                     android:layout_marginTop="@dimen/dimen_px10"
                     android:text="@string/lab_help_online_service" />
             </LinearLayout>
@@ -156,7 +156,7 @@
                     android:src="@mipmap/icon_help_feedback" />
 
                 <TextView
-                    style="@style/text_theme_black_size_26"
+                    style="@style/text_theme_black_size_26_41495c"
                     android:layout_marginTop="@dimen/dimen_px10"
                     android:text="@string/lab_suggestion_meg_hint" />
             </LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.AddressManageActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar_layout" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/dimen_px1"
+        android:id="@+id/rv_banner_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tv_add_address"
+        android:layout_below="@+id/title"
+        android:background="@color/edit_text_back_white"
+        android:overScrollMode="never" />
+
+    <TextView
+        android:id="@+id/tv_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px120"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_text_lab_black"
+        android:gravity="center"
+        android:text="添加新地址"
+        android:textColor="@color/edit_text_back_white" />
+</RelativeLayout>

@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -43,10 +44,13 @@ public class HeplCenterActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_change_password:
+                IntentUtils.gotoActivity(this, SetPassWordActivity.class);
                 break;
             case R.id.ll_bind:
+                IntentUtils.gotoActivity(this, BindStationAddressActivity.class);
                 break;
             case R.id.ll_call_station:
+
                 break;
             case R.id.ll_customer:
                 break;
@@ -55,6 +59,7 @@ public class HeplCenterActivity extends BaseActivity {
             case R.id.ll_call_online_service:
                 break;
             case R.id.ll_feedback:
+                IntentUtils.gotoActivity(this, SuggestionActivity.class);
                 break;
         }
     }

@@ -85,5 +85,6 @@
     <color name="phone_charge_grey">#D7D7D7</color>
     <color name="phone_charge_orange">#ffefe5</color>
     <color name="phone_charge_divider">#F2F2F2 </color>
+    <color name="grey_search">#ededed </color>
 
 </resources>
