@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.BindStationAddressActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30">
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:text="@string/lab_bind_station_name"
+            android:textSize="@dimen/dimen_px32" />
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px10"
+            android:text="服务站"
+            android:textSize="@dimen/dimen_px32" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px19">
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:text="@string/lab_bind_station_msg"
+            android:textSize="@dimen/dimen_px32" />
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px10"
+            android:text="李信息"
+            android:textSize="@dimen/dimen_px32" />
+
+        <TextView
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:text="19998255284"
+            android:textSize="@dimen/dimen_px32" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="@string/lab_bind_recive_name"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="@string/lab_bind_phone"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px180"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:gravity="top"
+        android:hint="@string/lab_bind_address"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <Button
+        style="@style/login_btn"
+        android:layout_marginTop="@dimen/dimen_px100"
+        android:text="@string/lab_setpassword_complete" />
+</LinearLayout>

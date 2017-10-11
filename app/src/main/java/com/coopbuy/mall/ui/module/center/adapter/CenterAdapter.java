@@ -13,6 +13,7 @@ import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
+import com.coopbuy.mall.ui.module.center.activity.MyCustomActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
@@ -50,7 +51,7 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
                         IntentUtils.gotoActivity(mContext, DataAnalyseActivity.class);
                         break;
                     case "我的客户":
-
+                        IntentUtils.gotoActivity(mContext, MyCustomActivity.class);
                         break;
                     case "客户订单":
 

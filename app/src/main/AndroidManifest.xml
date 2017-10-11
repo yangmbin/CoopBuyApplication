@@ -49,7 +49,14 @@
         <activity android:name=".ui.module.center.activity.DataAnalyseActivity" />
         <activity android:name=".ui.module.center.activity.MyBillActivity" />
         <activity android:name=".ui.module.center.activity.BillDetailActivity" />
-        <activity android:name=".ui.module.center.activity.CustomOrderActivity"></activity>
+        <activity android:name=".ui.module.center.activity.CustomOrderActivity" />
+        <activity android:name=".ui.module.center.activity.CustomOrderDetailActivity" />
+        <activity android:name=".ui.module.center.activity.BindStationAddressActivity" />
+        <activity android:name=".ui.module.center.activity.MyCustomActivity" />
+        <activity android:name=".ui.module.center.activity.AddCustomActivity" />
+        <activity android:name=".ui.module.center.activity.AddressManageActivity" />
+        <activity android:name=".ui.module.center.activity.AddresssAddUserActivity" />
+        <activity android:name=".ui.module.center.activity.AddresssAddDetailActivity"></activity>
     </application>
 
 </manifest>

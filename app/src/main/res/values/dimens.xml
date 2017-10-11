@@ -65,6 +65,8 @@
     <dimen name="dimen_px378">189dp</dimen>
     <dimen name="dimen_px374">187dp</dimen>
     <dimen name="dimen_px370">185dp</dimen>
+    <dimen name="dimen_px360">180dp</dimen>
+    <dimen name="dimen_px369">184.5dp</dimen>
     <dimen name="dimen_px366">183dp</dimen>
     <dimen name="dimen_px356">178dp</dimen>
     <dimen name="dimen_px350">175dp</dimen>

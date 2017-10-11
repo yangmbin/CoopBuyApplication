@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/edit_text_back_white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/theme_back_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px200"
+        android:padding="@dimen/dimen_px30">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/dimen_px100"
+            android:layout_height="@dimen/dimen_px100"
+            android:layout_gravity="center"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@mipmap/icon_default_head"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundAsCircle="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_px18">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/text_theme_black_size_28_41"
+                android:text="李珊珊"
+                android:textSize="@dimen/dimen_px32" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginTop="@dimen/dimen_px10"
+                android:text="15784578548"
+                android:textSize="@dimen/dimen_px32" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/text_black_size_28_878f94"
+                android:layout_below="@+id/tv_phone"
+                android:layout_marginTop="@dimen/dimen_px10"
+                android:maxLines="2"
+                android:text="贵州省银河系外太空脉冲星"
+                android:textSize="@dimen/dimen_px32" />
+
+            <ImageView
+                android:id="@+id/tv_edit"
+                style="@style/image_center_40"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_custom_edit" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

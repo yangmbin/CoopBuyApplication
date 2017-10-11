@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.AddCustomActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="@string/lab_add_custom_name"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:hint="@string/lab_add_custom_phone"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px180"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:background="@color/edit_text_back_white"
+        android:gravity="top"
+        android:hint="@string/lab_custom_address"
+        android:padding="@dimen/dimen_px20"
+        android:textSize="@dimen/dimen_px32" />
+
+    <Button
+        style="@style/login_btn"
+        android:layout_marginTop="@dimen/dimen_px100"
+        android:text="@string/lab_setpassword_complete" />
+</LinearLayout>

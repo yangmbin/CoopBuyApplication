@@ -115,5 +115,21 @@
     <string name="lab_billdetail_dissidence_put">提出异议</string>
     <string name="lab_billdetail_dissidence_confirm">确定账单信息</string>
     <string name="lab_custom_call">联系客户</string>
+    <string name="lab_detail_discount">店铺优惠</string>
+    <string name="lab_detial_feight">运费(快递)</string>
+    <string name="lab_detail_msg">卖家留言</string>
+    <string name="lab_detail_allprice">订单总价</string>
+    <string name="lab_detail_actualpayment">实付款</string>
+    <string name="lab_add_custom_name">客户姓名</string>
+    <string name="lab_add_custom_phone">客户电话</string>
+    <string name="lab_custom_address">详细地址(不用写省、市、县)</string>
+    <string name="lab_bind_recive_name">请填写收货人姓名</string>
+    <string name="lab_bind_station_name">站点名称:</string>
+    <string name="lab_bind_station_msg">站长信息:</string>
+    <string name="lab_bind_phone">请填写收货人手机号码</string>
+    <string name="lab_bind_address">请填写服务站下详细收货地址</string>
+    <string name="title_custom">我的客户</string>
+    <string name="lab_custom_add">新增客户</string>
+    <string name="title_add_mycustom">我的客户</string>
 
 </resources>

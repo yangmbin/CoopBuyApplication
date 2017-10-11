@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/center_LinearLayout_60_white"
+        android:layout_height="@dimen/dimen_px90">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text_theme_black_size_26_41495c"
+            android:text="李珊珊"
+            android:textSize="@dimen/dimen_px36" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/text_theme_black_size_26_41495c"
+            android:layout_marginLeft="@dimen/dimen_px33"
+            android:text="15784251585"
+            android:textSize="@dimen/dimen_px36" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/center_LinearLayout_60_white"
+        android:layout_height="@dimen/dimen_px120"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/text_theme_black_size_26_41495c"
+
+            android:layout_centerVertical="true"
+            android:maxLines="2"
+            android:text="贵州省太空"
+            android:textSize="@dimen/dimen_px30" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/edit_text_back_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:paddingTop="@dimen/dimen_px30">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_address_adorn" />
+
+        <LinearLayout
+            style="@style/center_LinearLayout_help_90"
+            android:layout_height="@dimen/dimen_px90">
+
+            <ImageView
+                style="@style/image_center_40"
+                android:src="@mipmap/icon_address_station" />
+
+            <TextView
+                style="@style/text_theme_black_size_26_41495c"
+                android:layout_marginLeft="@dimen/dimen_px18"
+                android:text="服务站"
+                android:textSize="@dimen/dimen_px30" />
+
+            <TextView
+                android:layout_weight="1"
+                style="@style/text_black_size_28_878f94"
+                android:layout_marginLeft="@dimen/dimen_px33"
+                android:text="太空戏的服务站" />
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:layout_marginLeft="@dimen/dimen_px33"
+                android:text="李青青" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/center_LinearLayout_help_90"
+            android:layout_height="@dimen/dimen_px90">
+
+            <CheckBox
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:background="@drawable/check_address_selector"
+                android:button="@null" />
+
+            <TextView
+                style="@style/text_theme_black_size_26_41495c"
+                android:layout_marginLeft="@dimen/dimen_px18"
+                android:layout_weight="1"
+                android:text="设置默认地址"
+                android:textSize="@dimen/dimen_px30" />
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:layout_width="@dimen/dimen_px180"
+                android:layout_height="@dimen/dimen_px60"
+                android:background="@drawable/black_rectangle_btn_unpress_white"
+                android:gravity="center"
+                android:text="编辑" />
+
+            <TextView
+                style="@style/text_black_size_28_878f94"
+                android:layout_width="@dimen/dimen_px180"
+                android:layout_height="@dimen/dimen_px60"
+                android:layout_marginLeft="@dimen/dimen_px24"
+                android:background="@drawable/black_rectangle_btn_unpress_white"
+                android:gravity="center"
+                android:text="删除" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
