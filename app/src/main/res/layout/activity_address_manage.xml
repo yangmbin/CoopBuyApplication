@@ -27,6 +27,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_text_lab_black"
         android:gravity="center"
-        android:text="@string/lab_data_cash"
+        android:text="添加新地址"
         android:textColor="@color/edit_text_back_white" />
 </RelativeLayout>

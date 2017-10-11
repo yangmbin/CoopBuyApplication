@@ -1,10 +1,13 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @author csn
@@ -32,5 +35,11 @@ public class AddressManageActivity extends BaseActivity {
     @Override
     public void initView() {
 
+    }
+
+
+    @OnClick(R.id.tv_add_address)
+    public void onViewClicked() {
+        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class);
     }
 }
