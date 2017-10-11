@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px120"
+        android:background="@color/black_6"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_px60">
+        <View
+            android:layout_width="@dimen/dimen_px5"
+            android:layout_height="@dimen/dimen_px5"
+            android:background="@drawable/dot_white"/>
+        <View
+            android:layout_width="@dimen/dimen_px100"
+            android:layout_height="@dimen/dimen_px1"
+            android:background="@color/white"
+            android:layout_marginLeft="@dimen/dimen_px4"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px36"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/dimen_px11"
+            android:layout_marginRight="@dimen/dimen_px11"
+            android:text="厨具"/>
+        <View
+            android:layout_width="@dimen/dimen_px100"
+            android:layout_height="@dimen/dimen_px1"
+            android:background="@color/white"
+            android:layout_marginRight="@dimen/dimen_px4"/>
+
+        <View
+            android:layout_width="@dimen/dimen_px5"
+            android:layout_height="@dimen/dimen_px5"
+            android:background="@drawable/dot_white"/>
+    </LinearLayout>
+
+</LinearLayout>

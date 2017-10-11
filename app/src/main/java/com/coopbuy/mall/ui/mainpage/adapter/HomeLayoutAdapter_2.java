@@ -10,6 +10,8 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.ui.module.home.activity.CategoryActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -31,9 +33,10 @@ public class HomeLayoutAdapter_2 extends BaseDelegateAdapter<HomePageDataRespons
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final HomePageDataResponse.FloorsBean.FloorItemsBean item) {
         ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Uri.parse(""));
-        holder.getView(R.id.sdv_image).setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                IntentUtils.gotoActivity(mContext, CategoryActivity.class);
             }
         });
     }
