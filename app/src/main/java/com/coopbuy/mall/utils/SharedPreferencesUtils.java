@@ -49,6 +49,7 @@ public class SharedPreferencesUtils {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_APPEND);
         return sp.getString(Constant.COOKIE, "");
     }
+
     /**
      * 是否登录过
      *
@@ -57,5 +58,20 @@ public class SharedPreferencesUtils {
     public Boolean getLoginStatus() {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
         return sp.getBoolean(FinalConstant.is_login, false);
+    }
+
+    /**
+     * 保存是否打开过引导页
+     */
+    public void saveFristGuide() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(FinalConstant.FRISTGUIDE, true);
+        editor.apply();
+    }
+
+    public boolean getFristGuide() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        return sp.getBoolean(FinalConstant.FRISTGUIDE, false);
     }
 }

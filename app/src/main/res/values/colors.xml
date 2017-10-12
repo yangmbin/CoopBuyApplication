@@ -72,6 +72,7 @@
     <color name="btn_back_gray_unpress">#cccccc</color>
  <!--   黑色-->
     <color name="text_black">#000000</color>
+    <color name="text_black_30">#4c000000</color>
     <!--登录灰色字体-->
     <color name="text_gray_8">#888888</color>
    <!-- 同意-->
