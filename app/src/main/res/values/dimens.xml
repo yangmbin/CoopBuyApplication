@@ -282,5 +282,6 @@
     <dimen name="text_size_px56">28sp</dimen>
     <dimen name="text_size_px58">29sp</dimen>
     <dimen name="text_size_px60">30sp</dimen>
+    <dimen name="text_size_px72">36sp</dimen>
 
 </resources>

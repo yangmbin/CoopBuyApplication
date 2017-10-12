@@ -57,4 +57,5 @@ dependencies {
     compile 'com.github.yangmbin:RatingBar:1.0.0'
     compile 'com.github.iwgang:simplifyspan:2.0'
     compile 'me.zhouzhuo.zzhorizontalprogressbar:zz-horizontal-progressbar:1.0.0'
+    compile 'com.lzy.widget:view-core:0.2.3'
 }

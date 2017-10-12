@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px88">
+        <FrameLayout
+            android:id="@+id/go_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30">
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/ic_titlebar_back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tl:tl_indicator_color="@color/theme_text_title_orange"
+            tl:tl_indicator_height="@dimen/dimen_px4"
+            tl:tl_indicator_width_equal_title="true"
+            tl:tl_tab_padding="@dimen/dimen_px30"
+            tl:tl_tab_space_equal="true"
+            tl:tl_textSelectColor="@color/theme_text_title_orange"
+            tl:tl_textUnselectColor="@color/theme_text_lab_black"
+            tl:tl_underline_color="#00000000"
+            tl:tl_underline_height="@dimen/dimen_px4"
+            tl:tl_textAllCaps="false"
+            tl:tl_textsize="@dimen/text_size_px30"
+            android:layout_centerInParent="true"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/icon_recommend_unselect"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
