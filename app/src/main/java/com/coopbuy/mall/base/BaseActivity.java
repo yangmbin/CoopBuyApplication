@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.LoadingBox;
 import com.coopbuy.mall.widget.TitleBar;
 import com.guinong.net.request.IAsyncRequestState;
@@ -38,7 +39,6 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             networkRetry();
         }
     };
-
     private View.OnClickListener mCustomListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

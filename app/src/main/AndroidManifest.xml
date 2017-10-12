@@ -21,7 +21,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.mainpage.activity.MainActivity">
+        <activity android:name=".ui.module.guide.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,6 +59,11 @@
         <activity android:name=".ui.module.center.activity.AddresssAddDetailActivity"></activity>
         <activity android:name=".ui.module.home.activity.CategoryActivity"></activity>
         <activity android:name=".ui.module.home.activity.GoodsDetailActivity"></activity>
+        <activity android:name=".ui.module.center.activity.AddresssAddDetailActivity" />
+        <activity android:name=".ui.mainpage.activity.MainActivity" />
+        <activity android:name=".ui.module.guide.activity.AdActivity" />
+        <activity android:name=".ui.module.guide.activity.GuideActivity" />
+
     </application>
 
 </manifest>

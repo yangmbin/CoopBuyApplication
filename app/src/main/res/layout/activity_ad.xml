@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/iv_logo">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/adFaceImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_splash_welcome"
+            fresco:actualImageScaleType="fitXY" />
+
+        <LinearLayout
+            android:id="@+id/ll_enter"
+            android:layout_width="@dimen/dimen_px160"
+            android:layout_height="@dimen/dimen_px50"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/dimen_px40"
+            android:layout_marginTop="@dimen/dimen_px80"
+            android:background="@drawable/black_rectangle_btn_unpress_gray_00"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_countdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="@color/edit_text_back_white" />
+
+            <View
+                android:layout_width="@dimen/dimen_px2"
+                android:layout_height="@dimen/dimen_px35"
+                android:layout_marginLeft="@dimen/dimen_px20"
+                android:background="@color/edit_text_back_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_px20"
+                android:text="跳过"
+                android:textColor="@color/edit_text_back_white" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px180"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/icon_splash_logo" />
+</RelativeLayout>

@@ -172,7 +172,7 @@
 
         <TextView
             android:id="@+id/tv_complete"
-            android:layout_width="@dimen/dimen_px360"
+            android:layout_width="@dimen/dimen_px300"
             android:layout_height="@dimen/dimen_px88"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/dimen_px30"
@@ -183,5 +183,4 @@
             android:textSize="@dimen/dimen_px30" />
 
     </RelativeLayout>
-
 </LinearLayout>

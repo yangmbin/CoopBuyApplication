@@ -19,7 +19,8 @@ public class FinalConstant {
     public static final int login_type_to_meCenter = 10005;//跳转至个人中心
 
 
-
+        //引导页是否打开过
+    public static final String FRISTGUIDE = "fristguide";
 
 //用户信息
     public static final String id = "id";
