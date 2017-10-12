@@ -1,16 +1,16 @@
 package com.coopbuy.mall.ui.module.home.fragment;
 
 import android.graphics.Color;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
 import com.coopbuy.mall.utils.ScreenUtils;
+import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
+import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
 import com.lzy.widget.VerticalSlide;
 import com.lzy.widget.vertical.VerticalWebView;
 import com.youth.banner.Banner;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.iwgang.simplifyspan.SimplifySpanBuild;
 import cn.iwgang.simplifyspan.other.SpecialGravity;
 import cn.iwgang.simplifyspan.unit.SpecialLabelUnit;
@@ -64,18 +64,22 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment {
         SimplifySpanBuild simplifySpanBuild = new SimplifySpanBuild();
         simplifySpanBuild
                 .append(new SpecialLabelUnit("自营", Color.WHITE, ScreenUtils.dip2px(mContext, 10), 0xFF51A400)
-                        .setLabelBgRadius(10)
+                        .setLabelBgRadius(50)
                         .setPadding(ScreenUtils.dip2px(mContext, 5))
                         .setGravity(SpecialGravity.CENTER))
                 .append("  " + "商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称");
         goodsName.setText(simplifySpanBuild.build());
     }
 
-    // 上拉查看详情页监听，显示时再加载
+    /**
+     * 上拉查看详情页监听，显示时再加载   注意：到时候需要设置显示一次即可
+     */
     private void setShowNextPageListener() {
         verticalSlide.setOnShowNextPageListener(new VerticalSlide.OnShowNextPageListener() {
             @Override
             public void onShowNextPage() {
+                Log.e("yangmbin", "showNextPage");
+
                 StringBuilder sb = new StringBuilder();
                 // 拼接一段HTML代码
                 sb.append("<html>");
@@ -101,17 +105,23 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment {
         banner.setImages(list).setImageLoader(new BannerImageLoader()).start();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
+    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs})
+    public void onViewClicked(View v) {
+        switch (v.getId()) {
+            case R.id.btn_goods_params:
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 7; i++)
+                    list.add("");
+                GoodsParamsDialog goodsParamsDialog = new GoodsParamsDialog(mContext, list);
+                goodsParamsDialog.showAtBottom();
+                break;
+            case R.id.btn_goods_attrs:
+                list = new ArrayList<>();
+                for (int i = 0; i < 2; i++)
+                    list.add("");
+                GoodsAttrsDialog goodsAttrsDialog = new GoodsAttrsDialog(mContext, list);
+                goodsAttrsDialog.showAtBottom();
+                break;
+        }
     }
 }

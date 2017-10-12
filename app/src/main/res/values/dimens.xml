@@ -8,6 +8,7 @@
     <dimen name="tabs_height">96dp</dimen>
 
     <!--间距1280*720-->
+    <dimen name="dimen_px1000">500dp</dimen>
     <dimen name="dimen_px900">450dp</dimen>
     <dimen name="dimen_px858">429dp</dimen>
     <dimen name="dimen_px550">270dp</dimen>

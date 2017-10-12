@@ -58,4 +58,5 @@ dependencies {
     compile 'com.github.iwgang:simplifyspan:2.0'
     compile 'me.zhouzhuo.zzhorizontalprogressbar:zz-horizontal-progressbar:1.0.0'
     compile 'com.lzy.widget:view-core:0.2.3'
+    compile 'me.gujun.android.taggroup:library:1.4@aar'
 }

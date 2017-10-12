@@ -57,7 +57,6 @@
         <activity android:name=".ui.module.center.activity.AddressManageActivity" />
         <activity android:name=".ui.module.center.activity.AddresssAddUserActivity" />
         <activity android:name=".ui.module.center.activity.AddresssAddDetailActivity"></activity>
-        <activity android:name=".ui.module.center.activity.DataAnalyseActivity"></activity>
         <activity android:name=".ui.module.home.activity.CategoryActivity"></activity>
         <activity android:name=".ui.module.home.activity.GoodsDetailActivity"></activity>
     </application>

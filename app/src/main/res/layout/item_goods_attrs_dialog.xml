@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px90"
+            android:textSize="@dimen/text_size_px28"
+            android:textColor="@color/theme_text_lab_black"
+            android:gravity="center_vertical"
+            android:text="颜色分类（或者其他选项，可配）"/>
+        <com.coopbuy.mall.widget.tag.TagGroup
+            android:id="@+id/tag_group"
+            style="@style/TagGroup"
+            app:atg_horizontalSpacing="@dimen/dimen_px24"
+            app:atg_verticalSpacing="@dimen/dimen_px30"
+            app:atg_horizontalPadding="@dimen/dimen_px39"
+            app:atg_verticalPadding="@dimen/dimen_px17"
+            android:layout_marginTop="@dimen/dimen_px15"
+            app:atg_borderColor="@color/black_7"
+            app:atg_checkedBorderColor="@color/theme_text_title_orange"
+            app:atg_textColor="@color/theme_text_lab_black"
+            app:atg_checkedTextColor="@color/theme_text_title_orange"
+            app:atg_textSize="@dimen/text_size_px28"
+            app:atg_pressedBackgroundColor="@color/white"
+            app:atg_isAppendMode="true"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/gray_4"
+        android:layout_marginTop="@dimen/dimen_px40"/>
+
+</LinearLayout>
