@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.LoadingBox;
 import com.guinong.net.request.IAsyncRequestState;
 
@@ -31,7 +32,7 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     private View rootView;
     private LoadingBox box;
     public List<IAsyncRequestState> mNetCalls = new ArrayList<>();
-
+    public SharedPreferencesUtils sharedPreferencesUtils;
     // 是否创建了视图
     private boolean hasCreateView;
     // Fragment是否可见
@@ -58,6 +59,7 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
         super.onCreate(savedInstanceState);
         hasCreateView = false;
         isFragmentVisible = false;
+        sharedPreferencesUtils = SharedPreferencesUtils.getInstance(getActivity());
     }
 
     @Nullable

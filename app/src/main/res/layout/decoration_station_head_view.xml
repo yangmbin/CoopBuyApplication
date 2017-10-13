@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_px90"
+    android:background="@color/gray_4"
+    android:gravity="center|left"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/text_theme_black_size_28_41"
+        android:layout_height="@dimen/dimen_px90"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:gravity="center"
+        android:text="今天"
+        android:textSize="@dimen/dimen_px32" />
+</LinearLayout>

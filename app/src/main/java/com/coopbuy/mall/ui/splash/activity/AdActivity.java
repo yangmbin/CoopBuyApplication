@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.module.guide.activity;
+package com.coopbuy.mall.ui.splash.activity;
 
 import android.view.View;
 import android.widget.TextView;

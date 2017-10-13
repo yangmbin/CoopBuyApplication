@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.module.guide.activity.adapter;
+package com.coopbuy.mall.ui.splash.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;

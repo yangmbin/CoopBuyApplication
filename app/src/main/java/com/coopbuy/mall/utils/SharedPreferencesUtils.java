@@ -61,6 +61,16 @@ public class SharedPreferencesUtils {
     }
 
     /**
+     * 保存登录信息
+     */
+    public void saveLoginStatus() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(FinalConstant.is_login, true);
+        editor.apply();
+    }
+
+    /**
      * 保存是否打开过引导页
      */
     public void saveFristGuide() {

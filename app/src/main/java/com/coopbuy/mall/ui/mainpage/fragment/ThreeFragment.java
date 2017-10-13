@@ -15,11 +15,14 @@ import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
+import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -161,7 +164,7 @@ public class ThreeFragment extends ViewPagerBaseFragment {
 
                 break;
             case R.id.ll_station:
-
+                IntentUtils.gotoActivity(getActivity(), StationRecommendActivity.class);
                 break;
             case R.id.ll_help:
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
@@ -170,7 +173,11 @@ public class ThreeFragment extends ViewPagerBaseFragment {
                 IntentUtils.gotoActivity(getActivity(), AddressManageActivity.class);
                 break;
             case R.id.iv_setting:
-                IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
+                if (sharedPreferencesUtils.getLoginStatus()) {
+                    IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
+                } else {
+                    IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
+                }
                 break;
             case R.id.iv_msg:
                 break;

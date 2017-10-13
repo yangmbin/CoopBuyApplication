@@ -14,9 +14,7 @@ import java.util.List;
  * @content
  */
 public class NiuTestModel implements BaseModel {
-    public IAsyncRequestState login(LoginRequest request, IAsyncResultCallback<LoginResponse> callback, Object userState) {
-        return client.LoginRequest(request, callback, userState);
-    }
+
 
     public IAsyncRequestState getImageCode(ImageCodeRequest request, IAsyncResultCallback<ImageCodeResponse> callback, Object userState) {
         return client.getImageCode(request, callback, userState);

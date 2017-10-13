@@ -92,6 +92,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_black</item>
         <item name="android:textSize">@dimen/dimen_px28</item>
+    </style> <style name="text_black_size_28_888888">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/text_gray_8</item>
+        <item name="android:textSize">@dimen/dimen_px28</item>
     </style>
 
     <style name="text_black_size_28_878f94">
@@ -119,6 +124,15 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/theme_text_lab_black</item>
         <item name="android:textSize">@dimen/dimen_px28</item>
+    </style>
+    <!--只可以有两行-->
+    <style name="black_size_32_41495_line_2">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/theme_text_lab_black</item>
+        <item name="android:textSize">@dimen/dimen_px32</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
     </style> <!--  黑色文字28px-->
     <style name="center_text_black_size_32">
         <item name="android:layout_height">wrap_content</item>
@@ -213,7 +227,6 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:src">@mipmap/icon_eye_login_open</item>
     </style>   <!--    个人中心图标-->
     <style name="image_center_64">
         <item name="android:layout_height">@dimen/dimen_px64</item>

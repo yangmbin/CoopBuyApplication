@@ -37,7 +37,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
         mView.showFillLoading();
         switch (value) {
             case "登录":
-                LoginRequest request = new LoginRequest();
+              /*  LoginRequest request = new LoginRequest();
                 if (params.isEmpty()) {
                     request.setUserName("18786712371");
                     request.setPassWord("xh123456");
@@ -70,7 +70,7 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                         }
                     }
                 }, "login"));
-                break;
+                break;*/
             case "获取图形验证码":
                 ImageCodeRequest imageCodeRequest = new ImageCodeRequest();
                 if (params.isEmpty()) {

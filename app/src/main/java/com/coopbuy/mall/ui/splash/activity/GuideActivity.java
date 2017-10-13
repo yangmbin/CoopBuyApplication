@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.module.guide.activity;
+package com.coopbuy.mall.ui.splash.activity;
 
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
-import com.coopbuy.mall.ui.module.guide.activity.adapter.GuideViewPagerAdapter;
+import com.coopbuy.mall.ui.splash.adapter.GuideViewPagerAdapter;
 import com.coopbuy.mall.utils.IntentUtils;
 
 import java.util.ArrayList;

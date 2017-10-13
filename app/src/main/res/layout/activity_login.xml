@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -23,8 +24,8 @@
                 <EditText
                     android:id="@+id/edit_phone"
                     style="@style/login_edit"
-                    android:inputType="phone"
-                    android:hint="@string/lab_login_enter_phone" />
+                    android:hint="@string/lab_login_enter_phone"
+                    android:inputType="phone" />
 
                 <ImageView
                     android:id="@+id/iv_phone_clear"
@@ -39,18 +40,20 @@
                 <EditText
                     android:id="@+id/edit_password"
                     style="@style/login_edit"
-                    android:hint="@string/lab_login_enter_password" />
+                    android:hint="@string/lab_login_enter_password"
+                    android:inputType="textPassword" />
 
                 <ImageView
                     android:id="@+id/iv_password_clear"
                     style="@style/image_clear"
                     android:layout_marginRight="@dimen/dimen_px34"
-                    android:layout_toLeftOf="@+id/iv_password_visible" />
+                    android:layout_toLeftOf="@+id/iv_visible" />
 
-                <ImageView
-                    android:id="@+id/iv_password_visible"
+                <CheckBox
+                    android:id="@+id/iv_visible"
                     style="@style/image_visible"
-                />
+                    android:background="@drawable/check_password_selector"
+                    android:button="@null" />
             </RelativeLayout>
 
             <LinearLayout
@@ -58,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_px56"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/text_black_size_28"

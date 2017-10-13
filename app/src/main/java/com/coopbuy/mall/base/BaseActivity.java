@@ -45,6 +45,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             customClick();
         }
     };
+    public SharedPreferencesUtils sharedPreferencesUtils;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         doBeforeSetContentView();
         setContentView(getLayoutId());
         mContext = this;
+        sharedPreferencesUtils = SharedPreferencesUtils.getInstance(this);
         if (mPresenter != null) {
             mPresenter.mContext = this;
         }

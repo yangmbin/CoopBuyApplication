@@ -16,6 +16,7 @@ public class Constant {
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
+    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
     /**
      * 图片地址
      */
@@ -23,7 +24,36 @@ public class Constant {
     /**
      * 登录
      */
-    public static final String LOGIN = "Home/AppLogin";
+    public static final String LOGIN = "api/services/app/authorization/Login";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * 图形验证码
      */
