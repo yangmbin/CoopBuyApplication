@@ -69,6 +69,7 @@
                             </LinearLayout>
                         </RelativeLayout>
                         <ImageView
+                            android:id="@+id/close"
                             android:layout_width="@dimen/dimen_px40"
                             android:layout_height="@dimen/dimen_px40"
                             android:src="@mipmap/icon_close_dialog"
@@ -79,11 +80,16 @@
                         android:layout_height="@dimen/dimen_px1"
                         android:background="@color/gray_4"
                         android:layout_marginTop="@dimen/dimen_px40"/>
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/attrs_list"
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                    </android.support.v7.widget.RecyclerView>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/attrs_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </android.support.v7.widget.RecyclerView>
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"

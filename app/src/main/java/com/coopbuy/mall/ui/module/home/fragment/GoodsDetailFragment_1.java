@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
+import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
 import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
@@ -105,7 +107,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment {
         banner.setImages(list).setImageLoader(new BannerImageLoader()).start();
     }
 
-    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs})
+    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs, R.id.btn_go_shop})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_goods_params:
@@ -122,6 +124,11 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment {
                 GoodsAttrsDialog goodsAttrsDialog = new GoodsAttrsDialog(mContext, list);
                 goodsAttrsDialog.showAtBottom();
                 break;
+            // 进店逛逛
+            case R.id.btn_go_shop:
+                IntentUtils.gotoActivity(mContext, ShopDetailActivity.class);
+                break;
         }
     }
+
 }

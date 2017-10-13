@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GoodsAttrsDialog {
+public class GoodsAttrsDialog implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
     private ListAdapter mAdapter;
-    private View mView;
+    private View mView, mClose;
     private Dialog dialog;
 
     public GoodsAttrsDialog(final Context context, final List<String> list) {
@@ -41,6 +41,9 @@ public class GoodsAttrsDialog {
         });
         mAdapter = new ListAdapter(context, list);
         mRecyclerView.setAdapter(mAdapter);
+
+        mClose = mView.findViewById(R.id.close);
+        mClose.setOnClickListener(this);
 
         // 设置风格
         setPopWindowStyle();
@@ -117,6 +120,15 @@ public class GoodsAttrsDialog {
                     ToastUtils.toastShort("haha");
                 }
             });
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.close:
+                dialog.dismiss();
+                break;
         }
     }
 }

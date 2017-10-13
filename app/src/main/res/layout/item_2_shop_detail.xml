@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/dimen_px30"
+    android:paddingLeft="@dimen/dimen_px30"
+    android:paddingRight="@dimen/dimen_px30">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_px480"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        app:placeholderImage="@mipmap/default_img"
+        android:background="@drawable/bg_round_corner_imageholder"
+        android:layout_marginRight="@dimen/dimen_px15"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_px480"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        app:placeholderImage="@mipmap/default_img"
+        android:background="@drawable/bg_round_corner_imageholder"
+        android:layout_marginLeft="@dimen/dimen_px15"/>
+
+</LinearLayout>

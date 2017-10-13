@@ -69,6 +69,7 @@
     <dimen name="dimen_px360">180dp</dimen>
     <dimen name="dimen_px369">184.5dp</dimen>
     <dimen name="dimen_px366">183dp</dimen>
+    <dimen name="dimen_px358">179dp</dimen>
     <dimen name="dimen_px356">178dp</dimen>
     <dimen name="dimen_px350">175dp</dimen>
     <dimen name="dimen_px348">174dp</dimen>
@@ -87,6 +88,7 @@
     <dimen name="dimen_px298">149dp</dimen>
     <dimen name="dimen_px294">147dp</dimen>
     <dimen name="dimen_px290">145dp</dimen>
+    <dimen name="dimen_px286">143dp</dimen>
     <dimen name="dimen_px280">140dp</dimen>
     <dimen name="dimen_px276">138dp</dimen>
     <dimen name="dimen_px275">137.5dp</dimen>

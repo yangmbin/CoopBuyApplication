@@ -19,6 +19,7 @@ import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
 import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.MarketFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
+import com.coopbuy.mall.widget.viewpager.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
