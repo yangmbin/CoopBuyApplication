@@ -41,8 +41,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dimen_px20"
-            android:paddingRight="@dimen/dimen_px20"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30"
             android:visibility="gone">
 
             <TextView
@@ -54,8 +54,8 @@
 
             <ImageView
                 android:id="@+id/iv_titlebar_right"
-                android:layout_width="@dimen/dimen_px40"
-                android:layout_height="@dimen/dimen_px40"
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
                 android:layout_gravity="center"
                 android:src="@mipmap/ic_launcher" />
         </FrameLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/dimen_px30"
+    android:paddingRight="@dimen/dimen_px30">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px28"
+            android:textColor="@color/auxiliary_text_blue_gray"
+            android:text="参数标题"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px28"
+            android:textColor="@color/theme_text_lab_black"
+            android:layout_marginLeft="@dimen/dimen_px39"
+            android:text="参数内容"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/gray_4"/>
+
+</LinearLayout>
