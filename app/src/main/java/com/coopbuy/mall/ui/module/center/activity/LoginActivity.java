@@ -40,21 +40,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
      */
     @Bind(R.id.edit_phone)
     EditText mEditPhone;
-    /**
-     * 账号清除
-     */
-    @Bind(R.id.iv_phone_clear)
-    ImageView mIvPhoneClear;
+
     /**
      * 密码输入
      */
     @Bind(R.id.edit_password)
     EditText mEditPassword;
-    /**
-     * 密码清理
-     */
-    @Bind(R.id.iv_password_clear)
-    ImageView mIvPasswordClear;
     /**
      * 注册
      */
