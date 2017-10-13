@@ -141,7 +141,8 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/dimen_px30"
                         android:paddingLeft="@dimen/dimen_px30"
-                        android:paddingRight="@dimen/dimen_px30">
+                        android:paddingRight="@dimen/dimen_px30"
+                        android:paddingBottom="@dimen/dimen_px20">
                         <TextView
                             android:id="@+id/goods_name"
                             android:layout_width="0dp"
@@ -173,11 +174,63 @@
                                 android:text="分享"/>
                         </LinearLayout>
                     </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_px60"
+                            android:gravity="center_vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimen_px30"
+                                android:textSize="@dimen/text_size_px22"
+                                android:textColor="@color/white"
+                                android:background="@drawable/bg_round_corner_red"
+                                android:paddingLeft="@dimen/dimen_px16"
+                                android:paddingRight="@dimen/dimen_px16"
+                                android:paddingTop="@dimen/dimen_px4"
+                                android:paddingBottom="@dimen/dimen_px4"
+                                android:text="限时8折优惠"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_px60"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/dimen_px30"
+                            android:paddingRight="@dimen/dimen_px30">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_px36"
+                                android:textColor="@color/theme_text_title_orange"
+                                android:textStyle="bold"
+                                android:layout_marginRight="@dimen/dimen_px39"
+                                android:text="¥284.8"/>
+                            <com.coopbuy.mall.widget.DeleteLineTextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="@dimen/text_size_px28"
+                                android:textColor="@color/auxiliary_text_blue_gray"
+                                android:text="284.8"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_px26"
+                                android:textColor="@color/auxiliary_text_blue_gray"
+                                android:text="库存：300"/>
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_px38"
+                        android:layout_marginTop="@dimen/dimen_px18"
                         android:layout_marginBottom="@dimen/dimen_px17"
                         android:paddingLeft="@dimen/dimen_px30"
                         android:paddingRight="@dimen/dimen_px30">
