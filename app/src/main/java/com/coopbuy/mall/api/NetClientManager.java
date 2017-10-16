@@ -1,6 +1,6 @@
 package com.coopbuy.mall.api;
 
-import com.coopbuy.mall.api.reponse.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
@@ -8,6 +8,7 @@ import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
@@ -15,6 +16,7 @@ import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
+import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -31,10 +33,7 @@ public class NetClientManager extends BaseApiClient {
     public NetClientManager() {
         this.setUnitTest(false);
     }
-    public IAsyncRequestState getCategorys(IAsyncResultCallback<List<CategorysResponse>> callback, Object usetState) {
-        return apiPostRequest(new TypeToken<List<CategorysResponse>>() {
-        }.getType(), Constant.SERVER_URL + Constant.COTEGORYS, callback, usetState);
-    }
+
     /**
      * 订单列表  所有的请求参数 和响应是一样的  只是请求的参数不一样
      *
@@ -160,5 +159,26 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.REGISTER, request, callback, userState);
     }
 
+    /**
+     * 获取分类数据
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getCategoryData(IAsyncResultCallback<List<CategoryResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<CategoryResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_CATEGORY_DATA, callback, userState);
+    }
 
+    /**
+     * 获取SKU详情
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getSkuDetailData(SkuDetailRequest request, IAsyncResultCallback<SkuDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<SkuDetailResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SKU_DETAIL, request, callback, userState);
+    }
 }

@@ -11,7 +11,6 @@ import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_2;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
 import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
 import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
-import com.coopbuy.mall.ui.module.test.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.widget.NavGoodsDetailBar;
 
 import java.util.ArrayList;

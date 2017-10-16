@@ -18,7 +18,6 @@ import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
-import com.coopbuy.mall.ui.module.test.activity.NiuTestActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -36,7 +35,7 @@ import butterknife.OnClick;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class ThreeFragment extends ViewPagerBaseFragment {
+public class CenterFragment extends ViewPagerBaseFragment {
     @Bind(R.id.swipe_target)
     RecyclerView mRvTest;
     @Bind(R.id.circleImageView)
@@ -151,7 +150,6 @@ public class ThreeFragment extends ViewPagerBaseFragment {
 
                 break;
             case R.id.ll_shopcart:
-                IntentUtils.gotoActivity(getActivity(), NiuTestActivity.class);
                 break;
             case R.id.ll_collect:
 
