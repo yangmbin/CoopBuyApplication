@@ -2,16 +2,12 @@ package com.coopbuy.mall.ui.module.center.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.center.StationRecommendResponse;
-import com.coopbuy.mall.api.login.StationListByRegionIdResponse;
+import com.coopbuy.mall.api.reponse.StationRecommendResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.StationRecAdapter;
 import com.coopbuy.mall.widget.NormalDecoration;

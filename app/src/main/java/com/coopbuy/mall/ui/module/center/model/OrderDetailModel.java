@@ -1,7 +1,7 @@
 package com.coopbuy.mall.ui.module.center.model;
 
-import com.coopbuy.mall.api.login.OrderDetailRequest;
-import com.coopbuy.mall.api.login.OrderDetailResponse;
+import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;

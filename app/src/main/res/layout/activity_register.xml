@@ -73,7 +73,8 @@
             android:layout_height="@dimen/dimen_px30"
             android:layout_gravity="center"
             android:background="@drawable/check_agree_selector"
-            android:button="@null" />
+            android:button="@null"
+            android:checked="true" />
 
         <TextView
             style="@style/text_black_gary_size_26_666666"

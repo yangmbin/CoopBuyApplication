@@ -10,7 +10,11 @@ import com.coopbuy.mall.base.BaseView;
 public interface Login_IView extends BaseView {
     void loginSuccess();
 
-    void loginFail(String msg);
+    /**
+     * @param msg
+     * @param isNeedCode 是否需要验证码
+     */
+    void loginFail(String msg, boolean isNeedCode);
 
-
+    void getImageCode(String code);
 }

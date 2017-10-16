@@ -7,7 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
+
+import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;

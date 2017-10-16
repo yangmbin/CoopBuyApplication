@@ -1,6 +1,6 @@
 package com.coopbuy.mall.base;
 
-import com.coopbuy.mall.api.login.NetClientManager;
+import com.coopbuy.mall.api.NetClientManager;
 
 /**
  * Model接口

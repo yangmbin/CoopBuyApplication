@@ -11,7 +11,7 @@ import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_1;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_10;

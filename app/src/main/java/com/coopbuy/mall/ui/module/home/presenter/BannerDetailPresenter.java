@@ -4,8 +4,8 @@ package com.coopbuy.mall.ui.module.home.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
+import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.home.model.BannerDetailModel;
 import com.coopbuy.mall.ui.module.home.view.BannerDetail_IView;

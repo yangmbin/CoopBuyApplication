@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategorysResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.ClassifyLeftAdapter;
 import com.coopbuy.mall.ui.mainpage.adapter.ClassifyRightAdapter;

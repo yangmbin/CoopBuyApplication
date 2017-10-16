@@ -4,7 +4,7 @@ package com.coopbuy.mall.ui.mainpage.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategorysResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.mainpage.model.CategoryModel;
 import com.coopbuy.mall.ui.mainpage.view.Category_IView;

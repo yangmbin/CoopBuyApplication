@@ -4,8 +4,8 @@ package com.coopbuy.mall.ui.module.center.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.GetOrderListRequest;
-import com.coopbuy.mall.api.login.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.OrderModel;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;

@@ -1,14 +1,16 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.os.Bundle;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.login.LoginRequest;
+import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.model.LoginModel;
 import com.coopbuy.mall.ui.module.center.presenter.LoginPresenter;
@@ -24,10 +26,10 @@ import com.coopbuy.mall.ui.module.center.view.Login_IView;
 import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.PicCodeUtil;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> implements Login_IView {
@@ -66,18 +68,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     ImageView ivPhoneClear;
     @Bind(R.id.iv_password_clear)
     ImageView ivPasswordClear;
+    @Bind(R.id.btn_login)
+    Button btnLogin;
     @Bind(R.id.iv_imagecode_clear)
     ImageView ivImagecodeClear;
+    @Bind(R.id.iv_imagecode)
+    ImageView ivImagecode;
+    @Bind(R.id.edit_imagecode)
+    EditText mEditImagecode;
 
     private LoginRequest request;
 
     private String mPhone;
     private String mPwd;
     private String mImageCode;
-    /**
-     * 次数记录
-     */
-    private int times;
+
+    private boolean isPhoneEmpty = false;
+    private boolean isPasswordEmpty = false;
+    private boolean isImageEmpty = false;
+    private boolean isNeedCode = false;
 
     @Override
     public int getLayoutId() {
@@ -96,7 +105,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void initView() {
-        times = 0;
         llPasswordErrorShow.setVisibility(View.GONE);
         ivPhoneClear.setVisibility(View.GONE);
         ivPasswordClear.setVisibility(View.GONE);
@@ -107,9 +115,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         mTvForgetPassword.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         mTvForgetPassword.getPaint().setAntiAlias(true);
         setTitle(getString(R.string.title_login));
-
+        setInputListener();
     }
-    private void setInputListener(){
+
+    private void setInputListener() {
         mEditPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -118,16 +127,21 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()>0){
+                if (charSequence.length() > 0) {
                     ivPasswordClear.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     ivPasswordClear.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                if (editable.length() > 0) {
+                    isPasswordEmpty = true;
+                } else {
+                    isPasswordEmpty = false;
+                }
+                setBtnClickState();
             }
         });
         mEditPhone.addTextChangedListener(new TextWatcher() {
@@ -138,28 +152,85 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()>0){
+                if (charSequence.length() > 0) {
                     ivPhoneClear.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     ivPhoneClear.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    isPhoneEmpty = true;
+                } else {
+                    isPhoneEmpty = false;
+                }
+                setBtnClickState();
+            }
+        });
+        mEditImagecode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    ivImagecodeClear.setVisibility(View.VISIBLE);
+                } else {
+                    ivImagecodeClear.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    isImageEmpty = true;
+                } else {
+                    isImageEmpty = false;
+                }
+                setBtnClickState();
             }
         });
     }
 
-    @OnClick({R.id.iv_phone_clear, R.id.iv_password_clear, R.id.iv_visible, R.id.btn_login, R.id.tv_register, R.id.tv_forget_password})
+    /**
+     * 设置btn的点击状态
+     */
+    private void setBtnClickState() {
+        if (isPasswordEmpty && isPhoneEmpty) {
+            if (isNeedCode) {
+                if (isImageEmpty) {
+                    btnLogin.setClickable(true);
+                    btnLogin.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+                } else {
+                    btnLogin.setClickable(false);
+                    btnLogin.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
+                }
+            } else {
+                btnLogin.setClickable(true);
+                btnLogin.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+            }
+
+        } else {
+            btnLogin.setClickable(false);
+            btnLogin.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
+        }
+    }
+
+    @OnClick({R.id.iv_phone_clear, R.id.iv_password_clear, R.id.iv_visible, R.id.btn_login, R.id.tv_register, R.id.tv_forget_password, R.id.iv_imagecode_clear})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_phone_clear:
                 mEditPhone.setText("");
                 break;
             case R.id.iv_password_clear:
-                mEditPhone.setText("");
+                mEditPassword.setText("");
+                break;
+            case R.id.iv_imagecode_clear:
+                mEditImagecode.setText("");
                 break;
             case R.id.iv_visible:
                 if (mPassVisible.isChecked()) {
@@ -173,9 +244,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                     request = new LoginRequest();
                     request.setPassword(mPwd);
                     request.setUserName(mPhone);
-                    request.setVerificationCode(mImageCode);
+                    if (isNeedCode) {
+                        request.setVerificationCode(mImageCode);
+                    }
                     mPresenter.login(request);
-                    times++;
                 }
                 break;
             case R.id.tv_register:
@@ -193,6 +265,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     private boolean checkPhoneAndPwd() {
         mPhone = mEditPhone.getText().toString().trim();
         mPwd = mEditPassword.getText().toString().trim();
+
         if (CommonUtils.isEmpty(mPhone)) {
             ToastUtils.toastShort(getString(R.string.lab_login_enter_phone));
             return false;
@@ -204,6 +277,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         if (CommonUtils.isEmpty(mPwd)) {
             ToastUtils.toastShort("密码不能为空");
             return false;
+        }
+        if (isNeedCode) {
+            mImageCode = mEditImagecode.getText().toString().trim();
+            if (CommonUtils.isEmpty(mImageCode)) {
+                ToastUtils.toastShort("图形验证码不能为空");
+                return false;
+            }
         }
         return true;
     }
@@ -225,17 +305,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Override
     public void loginSuccess() {
         sharedPreferencesUtils.saveLoginStatus();
+
     }
 
     @Override
-    public void loginFail(String msg) {
-        if (times > 5) {
+    public void loginFail(String msg, boolean isNeedCode) {
+        this.isNeedCode = isNeedCode;
+        if (isNeedCode) {
             llPasswordErrorShow.setVisibility(View.VISIBLE);
+            mPresenter.getImageCode(mPhone);
         } else {
             llPasswordErrorShow.setVisibility(View.GONE);
         }
+        ToastUtils.toastShort(msg);
     }
 
-
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void getImageCode(String code) {
+        ivImagecode.setBackground(PicCodeUtil.byteToDrawable(code));
+    }
 }
 

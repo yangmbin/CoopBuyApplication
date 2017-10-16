@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.ui.module.home.fragment.ShopDetailFragment_1;
 import com.coopbuy.mall.ui.module.home.fragment.ShopDetailFragment_2;
-import com.coopbuy.mall.ui.module.test.adapter.MyViewPagerAdapter;
 
 import java.util.ArrayList;
 

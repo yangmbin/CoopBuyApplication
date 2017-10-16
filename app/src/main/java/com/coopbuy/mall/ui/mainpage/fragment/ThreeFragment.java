@@ -146,7 +146,12 @@ public class ThreeFragment extends ViewPagerBaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.circleImageView:
-                IntentUtils.gotoActivity(getActivity(), PersonalActivity.class);
+                if (sharedPreferencesUtils.getLoginStatus()) {
+                    IntentUtils.gotoActivity(getActivity(), PersonalActivity.class);
+                } else {
+                    IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
+                }
+
                 break;
             case R.id.ll_shopcart:
 
@@ -173,11 +178,7 @@ public class ThreeFragment extends ViewPagerBaseFragment {
                 IntentUtils.gotoActivity(getActivity(), AddressManageActivity.class);
                 break;
             case R.id.iv_setting:
-                if (sharedPreferencesUtils.getLoginStatus()) {
-                    IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
-                } else {
-                    IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
-                }
+                IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
                 break;
             case R.id.iv_msg:
                 break;

@@ -9,7 +9,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.home.adapter.BannerDetailLayoutAdapter_1;
 import com.coopbuy.mall.ui.module.home.adapter.BannerDetailLayoutAdapter_2;
