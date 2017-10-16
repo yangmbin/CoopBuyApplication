@@ -32,7 +32,7 @@ public class GoodsDetailFragment_2 extends ViewPagerBaseFragment<GoodsDetailPres
 
     @Override
     public void initPresenter() {
-
+        mPresenter = new GoodsDetailPresenter(mContext, mModel, this);
     }
 
     @Override

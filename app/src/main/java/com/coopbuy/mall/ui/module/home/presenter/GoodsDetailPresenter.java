@@ -6,6 +6,8 @@ import android.content.Context;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.base.BasePresenter;
+import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_1;
+import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_2;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
 import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 import com.guinong.net.CodeContant;
@@ -14,8 +16,21 @@ import com.guinong.net.callback.IAsyncResultCallback;
 
 public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, GoodsDetailModel> {
 
+    private GoodsDetailFragment_1 fragment_1;
+    private GoodsDetailFragment_2 fragment_2;
+
     public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetail_IView view) {
         super(context, model, view);
+    }
+
+    public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetailFragment_1 view) {
+        super(context, model, view);
+        fragment_1 = view;
+    }
+
+    public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetailFragment_2 view) {
+        super(context, model, view);
+        fragment_2 = view;
     }
 
     /**
@@ -32,7 +47,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                 if (skuDetailResponse == null)
                     mView.showNoDataLayout();
                 else {
-                    // mView.setSkuDetailData(skuDetailResponse);
+                    fragment_1.setSkuDetailData(skuDetailResponse);
                     mView.stopAll();
                 }
             }
