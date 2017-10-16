@@ -134,4 +134,6 @@
     <string name="lab_custom_add">新增客户</string>
     <string name="title_add_mycustom">我的客户</string>
 
+    <!-- 分类做列表点击跳转位置key -->
+    <item type="id" name="jumpPos"></item>
 </resources>

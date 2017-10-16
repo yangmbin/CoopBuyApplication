@@ -3,7 +3,6 @@ package com.coopbuy.mall.ui.mainpage.fragment;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.ClassifyLeftAdapter;
 import com.coopbuy.mall.ui.mainpage.adapter.ClassifyRightAdapter;
@@ -114,39 +113,39 @@ public class TwoFragment extends ViewPagerBaseFragment<CategoryPresenter, Catego
      * @param responses
      */
     @Override
-    public void showCategoryData(List<CategorysResponse> responses) {
-        if (responses == null)
-            return;
-        mLeftData.clear();
-        for (int i = 0; i < responses.size(); i++) {
-            mLeftData.add(responses.get(i).getCategoryName());
-            List<Object> tmpList = new ArrayList<>();
-            for (int j = 0; j < responses.get(i).getChildren().size(); j++) {
-                tmpList.add(responses.get(i).getChildren().get(j).getCategoryName());
-                List<ClassifyRightAdapter.GoodsCategoryItem> itemList = new ArrayList<>();
-                for (int k = 0; k < responses.get(i).getChildren().get(j).getChildren().size(); k++) {
-                    ClassifyRightAdapter.GoodsCategoryItem item = new ClassifyRightAdapter.GoodsCategoryItem();
-                    item.setCategoryName(responses.get(i).getChildren().get(j).getChildren().get(k).getCategoryName());
-                    item.setImageUrl(responses.get(i).getChildren().get(j).getChildren().get(k).getImageUrl());
-                    item.setId(responses.get(i).getChildren().get(j).getChildren().get(k).getId());
-                    itemList.add(item);
-                    if (itemList.size() == 3) {
-                        tmpList.add(itemList);
-                        itemList = new ArrayList<>();
-                    }
-                }
-                if (itemList.size() != 0)
-                    tmpList.add(itemList);
-            }
-            mRightData.add(tmpList);
-        }
-        if (mRightData.size() > 0) {
-            mRightSingleData.clear();
-            mRightSingleData.addAll(mRightData.get(0));
-        }
-        Log.e("yangmbin", mRightSingleData.size() + "," + mRightSingleData.toString());
-        mLeftAdapter.notifyDataSetChanged();
-        mRightAdapter.notifyDataSetChanged();
+    public void showCategoryData(List<CategoryResponse> responses) {
+//        if (responses == null)
+//            return;
+//        mLeftData.clear();
+//        for (int i = 0; i < responses.size(); i++) {
+//            mLeftData.add(responses.get(i).getCategoryName());
+//            List<Object> tmpList = new ArrayList<>();
+//            for (int j = 0; j < responses.get(i).getChildren().size(); j++) {
+//                tmpList.add(responses.get(i).getChildren().get(j).getCategoryName());
+//                List<ClassifyRightAdapter.GoodsCategoryItem> itemList = new ArrayList<>();
+//                for (int k = 0; k < responses.get(i).getChildren().get(j).getChildren().size(); k++) {
+//                    ClassifyRightAdapter.GoodsCategoryItem item = new ClassifyRightAdapter.GoodsCategoryItem();
+//                    item.setCategoryName(responses.get(i).getChildren().get(j).getChildren().get(k).getCategoryName());
+//                    item.setImageUrl(responses.get(i).getChildren().get(j).getChildren().get(k).getImageUrl());
+//                    item.setId(responses.get(i).getChildren().get(j).getChildren().get(k).getId());
+//                    itemList.add(item);
+//                    if (itemList.size() == 3) {
+//                        tmpList.add(itemList);
+//                        itemList = new ArrayList<>();
+//                    }
+//                }
+//                if (itemList.size() != 0)
+//                    tmpList.add(itemList);
+//            }
+//            mRightData.add(tmpList);
+//        }
+//        if (mRightData.size() > 0) {
+//            mRightSingleData.clear();
+//            mRightSingleData.addAll(mRightData.get(0));
+//        }
+//        Log.e("yangmbin", mRightSingleData.size() + "," + mRightSingleData.toString());
+//        mLeftAdapter.notifyDataSetChanged();
+//        mRightAdapter.notifyDataSetChanged();
     }
 
 

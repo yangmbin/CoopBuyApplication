@@ -3,7 +3,6 @@ package com.coopbuy.mall.ui.module.center.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
@@ -16,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.login.LoginRequest;
+import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.model.LoginModel;
 import com.coopbuy.mall.ui.module.center.presenter.LoginPresenter;
@@ -27,7 +26,6 @@ import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> implements Login_IView {

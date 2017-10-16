@@ -425,4 +425,11 @@ public class Constant {
      */
     public static final String COOKIE = "set_cookie";
 
+
+
+    // ----------------------------------------新下行----------------------------------------
+
+    public static final String GET_CATEGORY_DATA = "api/services/app/category/List";
+    public static final String GET_SKU_DETAIL = "api/services/app/product/SkuDetail";
+
 }

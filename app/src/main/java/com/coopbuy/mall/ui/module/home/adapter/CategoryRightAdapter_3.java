@@ -5,14 +5,15 @@ import android.content.Context;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class CategoryRightAdapter_3 extends BaseDelegateAdapter<Object> {
+public class CategoryRightAdapter_3 extends BaseDelegateAdapter<CategoryResponse.ChildrenBeanX> {
 
-    public CategoryRightAdapter_3(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public CategoryRightAdapter_3(Context ctx, List<CategoryResponse.ChildrenBeanX> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
     }
 
@@ -22,7 +23,7 @@ public class CategoryRightAdapter_3 extends BaseDelegateAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
-
+    protected void bindData(BaseRecyclerHolder holder, int position, final CategoryResponse.ChildrenBeanX item) {
+        holder.getTextView(R.id.category_name).setText(item.getName());
     }
 }

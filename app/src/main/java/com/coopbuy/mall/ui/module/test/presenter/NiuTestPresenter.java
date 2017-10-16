@@ -2,7 +2,7 @@ package com.coopbuy.mall.ui.module.test.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.login.*;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.test.model.NiuTestModel;
@@ -291,11 +291,11 @@ public class NiuTestPresenter extends BasePresenter<NiuTest_IView, NiuTestModel>
                 }, "homePage");
                 break;
             case "分类":
-                mModel.getCategorys(new IAsyncResultCallback<List<CategorysResponse>>() {
+                mModel.getCategorys(new IAsyncResultCallback<List<CategoryResponse>>() {
                     @Override
-                    public void onComplete(List<CategorysResponse> categorysResponses, Object userState) {
-                        if (categorysResponses != null) {
-                            mView.showData(gson.toJson(categorysResponses));
+                    public void onComplete(List<CategoryResponse> categoryResponses, Object userState) {
+                        if (categoryResponses != null) {
+                            mView.showData(gson.toJson(categoryResponses));
                             ToastUtils.toastShort("分类测试成功");
                             mView.stopAll();
                         }

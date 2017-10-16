@@ -4,6 +4,9 @@ import android.webkit.WebView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
+import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
+import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 
 import butterknife.Bind;
 
@@ -13,7 +16,7 @@ import butterknife.Bind;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class GoodsDetailFragment_2 extends ViewPagerBaseFragment {
+public class GoodsDetailFragment_2 extends ViewPagerBaseFragment<GoodsDetailPresenter, GoodsDetailModel> implements GoodsDetail_IView {
     @Bind(R.id.webView)
     WebView webView;
 
@@ -24,7 +27,7 @@ public class GoodsDetailFragment_2 extends ViewPagerBaseFragment {
 
     @Override
     public void initModel() {
-
+        mModel = new GoodsDetailModel();
     }
 
     @Override

@@ -2,8 +2,8 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.api.login.login.LoginRequest;
-import com.coopbuy.mall.api.login.login.LoginResponse;
+import com.coopbuy.mall.api.reponse.LoginResponse;
+import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.LoginModel;
 import com.coopbuy.mall.ui.module.center.view.Login_IView;

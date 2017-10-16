@@ -1,11 +1,8 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,8 +18,8 @@ import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
+import com.coopbuy.mall.ui.module.test.activity.NiuTestActivity;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -149,7 +146,7 @@ public class ThreeFragment extends ViewPagerBaseFragment {
                 IntentUtils.gotoActivity(getActivity(), PersonalActivity.class);
                 break;
             case R.id.ll_shopcart:
-
+                IntentUtils.gotoActivity(getActivity(), NiuTestActivity.class);
                 break;
             case R.id.ll_collect:
 

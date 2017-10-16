@@ -9,6 +9,9 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
+import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
+import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
+import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
@@ -32,7 +35,7 @@ import cn.iwgang.simplifyspan.unit.SpecialLabelUnit;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class GoodsDetailFragment_1 extends ViewPagerBaseFragment {
+public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPresenter, GoodsDetailModel> implements GoodsDetail_IView {
     @Bind(R.id.webView)
     VerticalWebView webView;
     @Bind(R.id.verticalSlide)

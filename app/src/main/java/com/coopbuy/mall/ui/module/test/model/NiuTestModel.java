@@ -1,6 +1,6 @@
 package com.coopbuy.mall.ui.module.test.model;
 
-import com.coopbuy.mall.api.classify.CategorysResponse;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.login.*;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -45,7 +45,7 @@ public class NiuTestModel implements BaseModel {
         return client.homePageData(request, callback, userState);
     }
 
-    public IAsyncRequestState getCategorys(IAsyncResultCallback<List<CategorysResponse>> callback, Object userState) {
+    public IAsyncRequestState getCategorys(IAsyncResultCallback<List<CategoryResponse>> callback, Object userState) {
         return client.getCategorys(callback, userState);
     }
 
