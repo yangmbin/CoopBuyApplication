@@ -51,7 +51,12 @@ public class ShopDetailFragment_2 extends ViewPagerBaseFragment {
 
     @Override
     protected void initView() {
-        VirtualLayoutManager manager = new VirtualLayoutManager(mContext);
+        VirtualLayoutManager manager = new VirtualLayoutManager(mContext) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         mRecycleView.setLayoutManager(manager);
         mDelegateAdapter = new DelegateAdapter(manager, false);
         mRecycleView.setAdapter(mDelegateAdapter);
@@ -78,7 +83,7 @@ public class ShopDetailFragment_2 extends ViewPagerBaseFragment {
             int measureWidth = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
             int measureHeight = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
             topLayout.measure(measureWidth, measureHeight);
-            int height = topLayout.getMeasuredHeight();
+            int height = topLayout.getMeasuredHeight() + ScreenUtils.dip2px(mContext, 120);
 
             ((ShopDetailActivity) mContext).setViewPagerHeight(height);
         }

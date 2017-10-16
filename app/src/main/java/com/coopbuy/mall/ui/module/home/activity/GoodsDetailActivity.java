@@ -32,6 +32,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private MyViewPagerAdapter mAdapter;
     private final String[] mTitles = {"商品", "详情"};
+    // 保存商品id
+    private int productId = -1;
 
     @Override
     public int getLayoutId() {
@@ -65,4 +67,11 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
         topBar.setViewPager(mViewPager, mTitles, this, mFragments);
     }
 
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 }
