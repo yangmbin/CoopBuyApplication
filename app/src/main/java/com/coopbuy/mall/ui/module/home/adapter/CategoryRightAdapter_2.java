@@ -5,15 +5,19 @@ import android.content.Context;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class CategoryRightAdapter_2 extends BaseDelegateAdapter<Object> {
+public class CategoryRightAdapter_2 extends BaseDelegateAdapter<CategoryResponse> {
 
-    public CategoryRightAdapter_2(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    private int pos;
+
+    public CategoryRightAdapter_2(Context ctx, List<CategoryResponse> list, LayoutHelper mLayoutHelper, int pos) {
         super(ctx, list, mLayoutHelper);
+        this.pos = pos;
     }
 
     @Override
@@ -22,7 +26,8 @@ public class CategoryRightAdapter_2 extends BaseDelegateAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
-
+    protected void bindData(BaseRecyclerHolder holder, int position, final CategoryResponse item) {
+        holder.getTextView(R.id.category_name).setText(item.getName());
+        holder.itemView.setTag(pos);
     }
 }

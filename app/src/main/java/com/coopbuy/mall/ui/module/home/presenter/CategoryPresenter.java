@@ -1,14 +1,12 @@
-package com.coopbuy.mall.ui.mainpage.presenter;
+package com.coopbuy.mall.ui.module.home.presenter;
 
 
 import android.content.Context;
 
-import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.mainpage.model.CategoryModel;
-import com.coopbuy.mall.ui.mainpage.view.Category_IView;
-import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.ui.module.home.model.CategoryModel;
+import com.coopbuy.mall.ui.module.home.view.Category_IView;
 import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -21,29 +19,30 @@ public class CategoryPresenter extends BasePresenter<Category_IView, CategoryMod
         super(context, model, view);
     }
 
-    public void getCategory() {
+    /**
+     * 获取分类数据
+     */
+    public void getCategoryData() {
         mView.showFillLoading();
-        mView.appendNetCall(mModel.getCategory(new IAsyncResultCallback<List<CategoryResponse>>() {
+        mView.appendNetCall(mModel.getCategoryData(new IAsyncResultCallback<List<CategoryResponse>>() {
             @Override
             public void onComplete(List<CategoryResponse> categoryResponses, Object userState) {
-                mView.showCategoryData(categoryResponses);
-                mView.stopAll();
-
                 if (categoryResponses == null || categoryResponses.size() == 0)
                     mView.showNoDataLayout();
+                else {
+                    mView.setCategoryData(categoryResponses);
+                    mView.stopAll();
+                }
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                mView.stopAll();
-                if (error != null && error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE)
                     mView.showNetOffLayout();
-                    ToastUtils.toastShort(R.string.no_network);
-                } else {
+                else
                     mView.showNetErrorLayout();
-                    ToastUtils.toastShort(R.string.connect_server_error);
-                }
             }
-        }, null));
+        }, "分类"));
+
     }
 }
