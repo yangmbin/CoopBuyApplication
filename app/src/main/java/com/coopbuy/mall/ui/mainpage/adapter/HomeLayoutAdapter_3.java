@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.facebook.drawee.view.SimpleDraweeView;

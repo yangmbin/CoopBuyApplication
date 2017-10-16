@@ -61,6 +61,17 @@ public class SharedPreferencesUtils {
     }
 
     /**
+     * 清除用户登录数据  其他的以后再添加
+     */
+    public void clearUserData() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(FinalConstant.is_login, false);
+        editor.apply();
+
+    }
+
+    /**
      * 保存登录信息
      */
     public void saveLoginStatus() {

@@ -5,12 +5,12 @@ import android.support.v4.view.ViewPager;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.ui.module.center.fragment.AllOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitCommentOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitPayOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitReceiveOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitSendOrderFragment;
-import com.coopbuy.mall.ui.module.test.adapter.MyViewPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;

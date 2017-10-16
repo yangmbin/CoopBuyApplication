@@ -24,6 +24,7 @@
                 <EditText
                     android:id="@+id/edit_phone"
                     style="@style/login_edit"
+                    android:layout_toLeftOf="@+id/iv_phone_clear"
                     android:hint="@string/lab_login_enter_phone"
                     android:inputType="phone" />
 
@@ -40,6 +41,7 @@
                 <EditText
                     android:id="@+id/edit_password"
                     style="@style/login_edit"
+                    android:layout_toLeftOf="@+id/iv_password_clear"
                     android:hint="@string/lab_login_enter_password"
                     android:inputType="textPassword" />
 
@@ -78,6 +80,7 @@
                         android:id="@+id/edit_imagecode"
                         style="@style/login_edit"
                         android:layout_marginLeft="@dimen/dimen_px30"
+                        android:layout_toLeftOf="@+id/iv_imagecode_clear"
                         android:hint="@string/lab_login_imagecode" />
 
                     <ImageView
@@ -99,6 +102,7 @@
                 android:id="@+id/btn_login"
                 style="@style/login_btn"
                 android:layout_marginTop="@dimen/dimen_px100"
+                android:clickable="false"
                 android:text="@string/lab_login" />
 
             <LinearLayout

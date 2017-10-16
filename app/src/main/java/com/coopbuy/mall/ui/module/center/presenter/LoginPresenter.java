@@ -1,9 +1,11 @@
 package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
+import android.text.TextUtils;
 
-import com.coopbuy.mall.api.reponse.LoginResponse;
+import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
+import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.LoginModel;
 import com.coopbuy.mall.ui.module.center.view.Login_IView;
@@ -31,8 +33,7 @@ public class LoginPresenter extends BasePresenter<Login_IView, LoginModel> {
                         mView.loginSuccess();
                         ToastUtils.toastShort("登录成功");
                     } else {
-                        mView.loginFail(loginResponse.getMessage());
-                        ToastUtils.toastShort(loginResponse.getMessage());
+                        mView.loginFail(loginResponse.getMessage(), loginResponse.isNeedVerificationCode());
                     }
                     mView.stopAll();
                 }
@@ -42,10 +43,37 @@ public class LoginPresenter extends BasePresenter<Login_IView, LoginModel> {
             public void onError(NetworkException error, Object userState) {
                 if (error != null) {
                     error.getDetail();
-                    mView.loginFail(error.getDetail());
+                    mView.loginFail(error.getDetail(), false);
                     mView.stopAll();
                 }
             }
         }, "login"));
+    }
+
+    /**
+     * 获取图形验证码
+     *
+     * @param phone
+     */
+    public void getImageCode(String phone) {
+        mView.showTransLoading();
+        ImageCodeRequest request = new ImageCodeRequest();
+        request.setPhone(phone);
+        mView.appendNetCall(mModel.imageCode(request, new IAsyncResultCallback<String>() {
+            @Override
+            public void onComplete(String s, Object userState) {
+                if (!TextUtils.isEmpty(s)) {
+                    mView.getImageCode(s);
+                }
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                if (error != null) {
+                    error.getDetail();
+                    mView.stopAll();
+                }
+            }
+        }, "imagecode"));
     }
 }

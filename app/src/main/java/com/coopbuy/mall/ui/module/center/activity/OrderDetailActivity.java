@@ -6,7 +6,7 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.OrderDetailResponse;
+import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderDetailAdapter;
 import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.HomePageDataRequest;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataResponse;
+import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;

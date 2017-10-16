@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 

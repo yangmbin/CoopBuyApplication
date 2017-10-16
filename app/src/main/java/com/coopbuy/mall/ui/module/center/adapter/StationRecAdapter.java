@@ -1,24 +1,17 @@
 package com.coopbuy.mall.ui.module.center.adapter;
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.center.StationRecommendResponse;
+import com.coopbuy.mall.api.reponse.StationRecommendResponse;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * @author csn

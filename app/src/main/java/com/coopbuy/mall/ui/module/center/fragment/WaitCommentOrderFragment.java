@@ -8,7 +8,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.login.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.module.center.activity.OrderDetailActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_1;

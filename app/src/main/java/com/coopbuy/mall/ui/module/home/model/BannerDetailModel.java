@@ -1,8 +1,8 @@
 package com.coopbuy.mall.ui.module.home.model;
 
-import com.coopbuy.mall.api.login.HomePageDataByIdRequest;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
-import com.coopbuy.mall.api.login.NetClientManager;
+
+import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
+import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;

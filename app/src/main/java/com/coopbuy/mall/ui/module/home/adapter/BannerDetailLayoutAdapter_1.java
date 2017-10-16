@@ -7,7 +7,6 @@ import android.net.Uri;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.Constant;
-import com.coopbuy.mall.api.login.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;

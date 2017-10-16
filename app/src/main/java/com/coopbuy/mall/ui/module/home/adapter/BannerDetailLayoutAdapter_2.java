@@ -8,7 +8,7 @@ import android.view.View;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.Constant;
-import com.coopbuy.mall.api.login.HomePageDataByIdResponse;
+import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.utils.StringUtils;

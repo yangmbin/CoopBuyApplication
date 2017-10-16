@@ -456,7 +456,7 @@ public class TagGroup extends ViewGroup {
     }
 
     /**
-     * Register a callback to be invoked when this tag group is changed.
+     * RegisterModel a callback to be invoked when this tag group is changed.
      *
      * @param l the callback that will run
      */
@@ -514,7 +514,7 @@ public class TagGroup extends ViewGroup {
     }
 
     /**
-     * Register a callback to be invoked when a tag is clicked.
+     * RegisterModel a callback to be invoked when a tag is clicked.
      *
      * @param l the callback that will run.
      */
