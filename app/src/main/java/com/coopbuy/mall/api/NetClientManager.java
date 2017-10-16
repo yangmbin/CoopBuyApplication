@@ -157,7 +157,7 @@ public class NetClientManager extends BaseApiClient {
     }
 
     public IAsyncRequestState register(RegisterRequest request, IAsyncResultCallback<RegisterResponse> callback, Object userState) {
-        return apiGetRequest(new TypeToken<RegisterResponse>() {
+        return apiPostRequest(new TypeToken<RegisterResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.REGISTER, request, callback, userState);
     }
 

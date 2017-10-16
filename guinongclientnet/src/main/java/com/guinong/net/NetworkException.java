@@ -9,7 +9,6 @@ public class NetworkException extends RuntimeException {
 
     private final int code;
     private final String detail;
-
     public int getCode() {
         return code;
     }

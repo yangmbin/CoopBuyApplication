@@ -1,7 +1,9 @@
 package com.coopbuy.mall.ui.module.center.model;
 
+import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
+import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;
