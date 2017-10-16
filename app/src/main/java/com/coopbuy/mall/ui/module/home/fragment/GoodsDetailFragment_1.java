@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
@@ -52,12 +53,22 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
     @Override
     public void initModel() {
-
+        mModel = new GoodsDetailModel();
     }
 
     @Override
     public void initPresenter() {
+        mPresenter = new GoodsDetailPresenter(mContext, mModel, this);
+    }
 
+    @Override
+    protected void networkRetry() {
+        mPresenter.getSkuDetailData(375);
+    }
+
+    @Override
+    protected void onFragmentFirstVisible() {
+        mPresenter.getSkuDetailData(375);
     }
 
     @Override
@@ -134,4 +145,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         }
     }
 
+    public void setSkuDetailData(SkuDetailResponse skuDetailResponse) {
+
+    }
 }
