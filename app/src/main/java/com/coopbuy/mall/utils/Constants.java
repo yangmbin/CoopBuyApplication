@@ -25,7 +25,7 @@ public class Constants {
 
     public static final String VERSION = "version";
 
-    public static final String SALT ="f337c7eae1a7497892e90a17d52e4f6b";//接口访问服务端定义的加盐参数
+    public static final String SALT = "f337c7eae1a7497892e90a17d52e4f6b";//接口访问服务端定义的加盐参数
 
     /**
      * 登录账户
@@ -109,4 +109,8 @@ public class Constants {
     public static final String REFUND_STATE_STR_5 = "商家通过审核"; // 5 商家通过审核
     public static final String REFUND_STATE_STR_6 = "待平台确认"; // 6 待平台确认
     public static final String REFUND_STATE_STR_7 = "退款成功"; // 7 退款成功
+
+
+    public static final String REGISTER_TYPE = "register_type";
+    public static final String FORGET_TYPE = "forget_type";
 }

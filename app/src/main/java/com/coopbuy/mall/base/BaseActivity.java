@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.Window;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.LoadingBox;
 import com.coopbuy.mall.widget.TitleBar;
 import com.guinong.net.request.IAsyncRequestState;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         super.onCreate(savedInstanceState);
         doBeforeSetContentView();
         setContentView(getLayoutId());
+
         mContext = this;
         sharedPreferencesUtils = SharedPreferencesUtils.getInstance(this);
         if (mPresenter != null) {
@@ -71,6 +75,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         this.initModel();
         this.initView();
         this.initPresenter();
+
     }
 
     /**
@@ -251,7 +256,6 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null)
             mPresenter.onDestroy();
         ButterKnife.unbind(this);
-
         if (!mNetCalls.isEmpty()) {
             for (IAsyncRequestState state : mNetCalls) {
                 if (state != null)

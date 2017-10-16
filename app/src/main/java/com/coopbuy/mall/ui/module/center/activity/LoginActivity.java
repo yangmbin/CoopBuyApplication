@@ -20,14 +20,20 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.model.LoginModel;
 import com.coopbuy.mall.ui.module.center.presenter.LoginPresenter;
 import com.coopbuy.mall.ui.module.center.view.Login_IView;
 import com.coopbuy.mall.utils.CommonUtils;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.PicCodeUtil;
 import com.coopbuy.mall.utils.ToastUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -105,6 +111,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
         llPasswordErrorShow.setVisibility(View.GONE);
         ivPhoneClear.setVisibility(View.GONE);
         ivPasswordClear.setVisibility(View.GONE);
@@ -254,7 +261,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 IntentUtils.gotoActivity(this, RegisterActivity.class);
                 break;
             case R.id.tv_forget_password:
-                IntentUtils.gotoActivity(this, SetPassWordActivity.class);
+                IntentUtils.gotoActivity(this, SetPassWordActivity.class, Constants.FORGET_TYPE);
                 break;
         }
     }
@@ -324,6 +331,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Override
     public void getImageCode(String code) {
         ivImagecode.setBackground(PicCodeUtil.byteToDrawable(code));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThreadrep(RegisterEvent event) {
+        if (event != null) {
+            this.finish();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
     }
 }
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
     android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.module.center.activity.RegisterActivity">
+    tools:context="com.coopbuy.mall.ui.module.center.activity.ForgetPwdActivity">
 
     <include layout="@layout/title_bar_layout" />
 
@@ -14,16 +14,20 @@
         style="@style/LinearLayout_contain_edit"
         android:layout_marginTop="@dimen/dimen_px61">
 
-        <EditText
-            android:id="@+id/edt_phone"
-            style="@style/login_edit"
-            android:hint="@string/lab_login_enter_phone"
-            android:inputType="phone" />
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/text_theme_black_size_28_41"
+            android:text="账号"
+            android:textSize="@dimen/dimen_px30" />
 
-        <ImageView
-            android:id="@+id/iv_phone_clear"
-            style="@style/image_clear"
-            android:layout_alignParentRight="true" />
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_toRightOf="@id/tv_count"
+            android:text="15825485425"
+            android:textSize="@dimen/dimen_px30" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -60,37 +64,6 @@
             android:text="@string/lab_register_code" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px35"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/dimen_px30"
-        android:layout_marginTop="@dimen/dimen_px24"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/cb_agree"
-            android:layout_width="@dimen/dimen_px30"
-            android:layout_height="@dimen/dimen_px30"
-            android:layout_gravity="center"
-            android:background="@drawable/check_agree_selector"
-            android:button="@null"
-            android:checked="true" />
-
-        <TextView
-            style="@style/text_black_gary_size_26_666666"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/dimen_px9"
-            android:text="@string/lab_register_agree" />
-
-
-        <TextView
-            android:id="@+id/tv_protocol"
-            style="@style/text_orange_size_26_f"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/dimen_px30"
-            android:text="@string/lab_register_protocol" />
-    </LinearLayout>
 
     <Button
         android:id="@+id/btn_next"

@@ -8,7 +8,7 @@ import com.coopbuy.mall.base.BaseView;
  * @content
  */
 public interface Register_IView extends BaseView {
-    void registerSuccess();
+
 
     /**
      * 倒计时显示
@@ -19,4 +19,6 @@ public interface Register_IView extends BaseView {
      * 倒计时完毕
      **/
     void onTimeFinish();
+
+    void smsCode(String code);
 }

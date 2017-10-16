@@ -6,10 +6,13 @@ import android.os.Bundle;
 
 import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
 
+import java.io.Serializable;
+
 /**
  * 页面跳转
+ *
  * @author ymb
- * Create at 2017/7/18 17:25
+ *         Create at 2017/7/18 17:25
  */
 public class IntentUtils {
 
@@ -23,8 +26,10 @@ public class IntentUtils {
     public static String BOO = "boo";
     public static final int REQUEST_SEARCH = 1;
     public static String TYPE = "type";//区别进入某个界面的类型
+
     /**
      * 无参无需返回结果
+     *
      * @param context
      * @param activity
      */
@@ -34,6 +39,7 @@ public class IntentUtils {
 
     /**
      * 带一个参数无返回结果
+     *
      * @param context
      * @param activity
      * @param param1
@@ -43,6 +49,7 @@ public class IntentUtils {
         intent.putExtra(PARAM1, param1);
         context.startActivity(intent);
     }
+
     /**
      * 我的订单
      *
@@ -53,6 +60,17 @@ public class IntentUtils {
        /* if (type == Constants.ORDER_TYPE_AFTERSALES)
             context.startActivity((new Intent(context, ApplyForCustomerServiceListActivity.class)));
         else*/
-            context.startActivity((new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type)));
+        context.startActivity((new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type)));
+    }
+
+    /**
+     * 带参无需返回结果
+     *
+     * @param context
+     * @param activity
+     * @param data
+     */
+    public static void gotoActivity(Context context, Class<?> activity, Serializable data, String type) {
+        context.startActivity((new Intent(context, activity).putExtra(DATA, data).putExtra(PARAM1, type)));
     }
 }

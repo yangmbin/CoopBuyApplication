@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
@@ -14,38 +15,50 @@
         android:layout_marginTop="@dimen/dimen_px61">
 
         <EditText
+            android:id="@+id/edt_pwd"
             style="@style/login_edit"
-            android:hint="@string/lab_set_password" />
+            android:layout_toLeftOf="@+id/iv_password_clear"
+            android:hint="@string/lab_set_password"
+            android:inputType="textPassword"
+            android:maxLength="12" />
 
         <ImageView
             android:id="@+id/iv_password_clear"
             style="@style/image_clear"
             android:layout_marginRight="@dimen/dimen_px30"
-            android:layout_toLeftOf="@+id/iv_password_visible" />
+            android:layout_toLeftOf="@+id/cb_visible" />
 
-        <ImageView
-            android:id="@+id/iv_password_visible"
-            style="@style/image_visible" />
+        <CheckBox
+            android:id="@+id/cb_visible"
+            style="@style/image_visible"
+            android:background="@drawable/check_password_selector"
+            android:button="@null" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_agian_password"
         style="@style/LinearLayout_contain_edit"
         android:layout_marginTop="@dimen/dimen_px16">
 
         <EditText
+            android:id="@+id/edt_again_pwd"
             style="@style/login_edit"
-            android:hint="@string/lab_set_again_password" />
+            android:hint="@string/lab_set_again_password"
+            android:inputType="textPassword"
+            android:maxLength="12" />
 
         <ImageView
             android:id="@+id/iv_password_again_clear"
             style="@style/image_clear"
             android:layout_marginRight="@dimen/dimen_px30"
-            android:layout_toLeftOf="@+id/iv_password_again_visible" />
+            android:layout_toLeftOf="@+id/cb_again_visible" />
 
-        <ImageView
-            android:id="@+id/iv_password_again_visible"
-            style="@style/image_visible" />
+        <CheckBox
+            android:id="@+id/cb_again_visible"
+            style="@style/image_visible"
+            android:background="@drawable/check_password_selector"
+            android:button="@null" />
 
     </RelativeLayout>
 
