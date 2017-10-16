@@ -1,7 +1,6 @@
 package com.coopbuy.mall.api;
 
 import com.coopbuy.mall.api.reponse.CategoryResponse;
-import com.coopbuy.mall.api.reponse.CategorysResponse;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
@@ -34,10 +33,7 @@ public class NetClientManager extends BaseApiClient {
     public NetClientManager() {
         this.setUnitTest(false);
     }
-    public IAsyncRequestState getCategorys(IAsyncResultCallback<List<CategorysResponse>> callback, Object usetState) {
-        return apiPostRequest(new TypeToken<List<CategorysResponse>>() {
-        }.getType(), Constant.SERVER_URL + Constant.COTEGORYS, callback, usetState);
-    }
+
     /**
      * 订单列表  所有的请求参数 和响应是一样的  只是请求的参数不一样
      *

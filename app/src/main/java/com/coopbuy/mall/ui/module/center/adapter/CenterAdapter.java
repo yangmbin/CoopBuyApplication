@@ -5,20 +5,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.CenterData;
-import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
 import com.coopbuy.mall.ui.module.center.activity.MyCustomActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author csn

@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class ThreeFragment extends ViewPagerBaseFragment {
+public class CenterFragment extends ViewPagerBaseFragment {
     @Bind(R.id.swipe_target)
     RecyclerView mRvTest;
     @Bind(R.id.circleImageView)

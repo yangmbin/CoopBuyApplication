@@ -16,9 +16,9 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
+import com.coopbuy.mall.ui.mainpage.fragment.CenterFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.MarketFragment;
-import com.coopbuy.mall.ui.mainpage.fragment.ThreeFragment;
 import com.coopbuy.mall.widget.viewpager.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     public void initFragment() {
         mFragments.add(new HomeFragment());
         mFragments.add(new MarketFragment());
-        mFragments.add(new ThreeFragment());
+        mFragments.add(new CenterFragment());
         mFmManager = ((MainActivity) mContext).getSupportFragmentManager();
     }
 
