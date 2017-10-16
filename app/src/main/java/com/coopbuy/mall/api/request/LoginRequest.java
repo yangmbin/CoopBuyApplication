@@ -1,4 +1,4 @@
-package com.coopbuy.mall.api.login.login;
+package com.coopbuy.mall.api.request;
 
 import java.io.Serializable;
 
