@@ -99,5 +99,6 @@ public class Constant {
 
     public static final String GET_CATEGORY_DATA = "api/services/app/category/List";
     public static final String GET_SKU_DETAIL = "api/services/app/product/SkuDetail";
+    public static final String GET_DESCRIPTION = "api/services/app/product/Description";
 
 }

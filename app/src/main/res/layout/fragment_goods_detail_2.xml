@@ -5,8 +5,13 @@
     android:orientation="vertical"
     android:background="@color/theme_back_white">
     
-    <WebView
-        android:id="@+id/webView"
+    <LinearLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <com.coopbuy.mall.widget.goodsdetail.ItemWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>

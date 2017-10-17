@@ -1,6 +1,7 @@
 package com.coopbuy.mall.api;
 
 import com.coopbuy.mall.api.reponse.CategoryResponse;
+import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
@@ -10,6 +11,7 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
+import com.coopbuy.mall.api.request.DescriptionRequest;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.GetOrderListRequest;
@@ -267,5 +269,15 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SKU_DETAIL, request, callback, userState);
     }
 
-
+    /**
+     * 获取商品描述
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getDescriptionData(DescriptionRequest request, IAsyncResultCallback<DescriptionResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<DescriptionResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_DESCRIPTION, request, callback, userState);
+    }
 }
