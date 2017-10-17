@@ -28,8 +28,8 @@ public class OrderAdapter_1 extends BaseDelegateAdapter<GetOrderListResponse.Ite
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean item) {
-        holder.getTextView(R.id.tv_shop_name).setText(item.getShopName());
+        /*holder.getTextView(R.id.tv_shop_name).setText(item.getShopName());
         holder.getTextView(R.id.tv_status).setText(item.getStatusName());
-        holder.itemView.setOnClickListener(mListener);
+        holder.itemView.setOnClickListener(mListener);*/
     }
 }

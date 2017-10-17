@@ -83,7 +83,7 @@ public class ShopDetailFragment_2 extends ViewPagerBaseFragment {
             int measureWidth = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
             int measureHeight = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
             topLayout.measure(measureWidth, measureHeight);
-            int height = topLayout.getMeasuredHeight() + ScreenUtils.dip2px(mContext, 120);
+            int height = topLayout.getMeasuredHeight() + ScreenUtils.dip2px(mContext, 110);
 
             ((ShopDetailActivity) mContext).setViewPagerHeight(height);
         }

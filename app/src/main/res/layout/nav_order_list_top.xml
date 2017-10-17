@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px88">
+        <FrameLayout
+            android:id="@+id/go_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30">
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/ic_titlebar_back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/text_size_px36"
+            android:textColor="@color/theme_text_title_orange"
+            android:text="我的订单"/>
+
+        <FrameLayout
+            android:id="@+id/more_btn"
+            android:layout_width="@dimen/dimen_px44"
+            android:layout_height="@dimen/dimen_px44"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_px40">
+
+            <ImageView
+                android:id="@+id/iv_msg"
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/icon_nav_home_top_add" />
+
+            <View
+                android:layout_width="@dimen/dimen_px12"
+                android:layout_height="@dimen/dimen_px12"
+                android:layout_gravity="right"
+                android:background="@drawable/dot_red" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/auxiliary_text_orange_gray"/>
+
+</LinearLayout>

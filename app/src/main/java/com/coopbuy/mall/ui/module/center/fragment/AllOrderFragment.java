@@ -23,6 +23,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,12 +72,34 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
 
         // 刷新监听
         mRefreshLayout.setOnRefreshListener(this);
+
+        // test
+        // 订单项类型1
+        List<GetOrderListResponse.ItemsBean> tmp_1 = new LinkedList<>();
+        tmp_1.add(new GetOrderListResponse.ItemsBean());
+        SingleLayoutHelper helper_1 = new SingleLayoutHelper();
+        mAdapters.add(new OrderAdapter_1(mContext, tmp_1, helper_1, null));
+
+        // 订单项类型2
+        LinearLayoutHelper helper_2 = new LinearLayoutHelper();
+        List<GetOrderListResponse.ItemsBean.OrderItemBean> tmp_2 = new ArrayList();
+        tmp_2.add(new GetOrderListResponse.ItemsBean.OrderItemBean());
+        mAdapters.add(new OrderAdapter_2(mContext, tmp_2, helper_2, null));
+
+        // 订单项类型3
+        List<GetOrderListResponse.ItemsBean> tmp_3 = new LinkedList<>();
+        tmp_3.add(new GetOrderListResponse.ItemsBean());
+        SingleLayoutHelper helper_3 = new SingleLayoutHelper();
+        mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, null));
+
+        mDelegateAdapter.setAdapters(mAdapters);
+        mDelegateAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onFragmentFirstVisible() {
         super.onFragmentFirstVisible();
-        mPresenter.getAllOrder(firstPage, OrderPresenter.LOAD_TYPE_1);
+//        mPresenter.getAllOrder(firstPage, OrderPresenter.LOAD_TYPE_1);
     }
 
     @Override
@@ -143,5 +166,6 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
             mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
         }
         mDelegateAdapter.setAdapters(mAdapters);
+        mDelegateAdapter.notifyDataSetChanged();
     }
 }

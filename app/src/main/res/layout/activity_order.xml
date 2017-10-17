@@ -4,26 +4,29 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.module.test.activity.TabLayoutActivity">
+    android:background="@color/theme_back_white"
+    android:orientation="vertical">
 
-    <include layout="@layout/title_bar_layout"/>
+    <com.coopbuy.mall.widget.NavOrderListBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#EEEEEE"
-        tl:tl_indicator_color="@color/green"
-        tl:tl_indicator_height="1.5dp"
+        android:layout_height="@dimen/dimen_px80"
+        android:background="@color/white"
+        tl:tl_indicator_color="@color/theme_text_title_orange"
+        tl:tl_indicator_height="@dimen/dimen_px4"
         tl:tl_indicator_width_equal_title="true"
         tl:tl_tab_padding="11dp"
         tl:tl_tab_space_equal="true"
-        tl:tl_textSelectColor="@color/green"
-        tl:tl_textUnselectColor="#66000000"
-        tl:tl_underline_color="#1A000000"
-        tl:tl_underline_height="1dp"
-        tl:tl_textAllCaps="false"/>
+        tl:tl_textSelectColor="@color/theme_text_title_orange"
+        tl:tl_textUnselectColor="@color/black_9"
+        tl:tl_underline_color="@color/gray_4"
+        tl:tl_underline_height="@dimen/dimen_px1"
+        tl:tl_textAllCaps="false"
+        tl:tl_textsize="@dimen/text_size_px28"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/tab_content"

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author ymb
  * Create at 2017/10/16 15:39
  */
-public class DescriptionRequest implements Serializable {
+public class ProductIdRequest implements Serializable {
 
     /**
      * productId : 97
