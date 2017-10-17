@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
+import android.app.Activity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +12,9 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.MainEvent;
+import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
@@ -26,6 +30,10 @@ import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +52,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     RecyclerView mRvTest;
     @Bind(R.id.circleImageView)
     SimpleDraweeView head;
+    @Bind(R.id.backImage)
+    SimpleDraweeView backImage;
     @Bind(R.id.orderBarView)
     OrderBarView orderBarView;
     @Bind(R.id.iv_lab)
@@ -60,6 +70,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     LinearLayout llLoaction;
     @Bind(R.id.ll_search)
     LinearLayout llSearch;
+    //站长类型
+    @Bind(R.id.ll_station_status)
+    LinearLayout llStationStatus;
     @Bind(R.id.ll_title_bar)
     LinearLayout llTitleBar;
     @Bind(R.id.iv_setting)
@@ -68,7 +81,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     ImageView ivMsg;
     @Bind(R.id.ll_line)
     LinearLayout llLine;
-
+    private UserCenterInfoResponse.UserInfoBean userInfo;
     private CenterAdapter adapter;
     private List<CenterData> mData;
 
@@ -89,6 +102,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
     @Override
     protected void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
         setInitTitle();
         setData();
         adapter = new CenterAdapter(getActivity(), mData);
@@ -99,11 +113,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             }
         });
         mRvTest.setAdapter(adapter);
-        head.setImageURI("http://upload.cankaoxiaoxi.com/2017/0601/1496319083789.jpg");
-        orderBarView.setAftersalesDox((int) 1);//售后
-        orderBarView.setWaitchargeDox((int) 2);//待收货
-        orderBarView.setWaitpayDox((int) 3);//代付款
-        orderBarView.setWaitsendDox((int) 5);//待发货
+
     }
 
     private void setInitTitle() {
@@ -146,14 +156,10 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.circleImageView:
-                if (sharedPreferencesUtils.getLoginStatus()) {
-                    IntentUtils.gotoActivity(getActivity(), PersonalActivity.class);
-                } else {
-                    IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
-                }
-
+                enter(PersonalActivity.class, userInfo);
                 break;
             case R.id.ll_shopcart:
+
                 break;
             case R.id.ll_collect:
 
@@ -162,40 +168,96 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
                 break;
             case R.id.ll_phone_fare:
-                IntentUtils.gotoActivity(getActivity(), PhoneChargeActivity.class);
+                enter(PhoneChargeActivity.class, null);
                 break;
             case R.id.ll_broadband:
 
                 break;
             case R.id.ll_station:
-                IntentUtils.gotoActivity(getActivity(), StationRecommendActivity.class);
+                enter(StationRecommendActivity.class, null);
                 break;
             case R.id.ll_help:
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
                 break;
             case R.id.ll_address:
-                IntentUtils.gotoActivity(getActivity(), AddressManageActivity.class);
+                enter(AddressManageActivity.class, null);
                 break;
             case R.id.iv_setting:
                 IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
                 break;
             case R.id.iv_msg:
+
                 break;
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    private void enter(Class activity, Serializable data) {
         if (sharedPreferencesUtils.getLoginStatus()) {
-            mPresenter.getUserInfoData();
+            IntentUtils.gotoActivity(getActivity(), activity, data);
         } else {
             IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
         }
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void getUserData(UserCenterInfoResponse data) {
         sharedPreferencesUtils.saveUserData(data);
+        userInfo = data.getUserInfo();
+        setUserInfo();
+        tvShopcartNumber.setText(data.getCartProductCount() + "");
+        tvCollectNumber.setText(data.getFavoriteShopCount() + "");
+        tvFootmarkNumber.setText(data.getBrowseProductCount() + "");
+        if (null == data.getFestivalImageUrl()) {
+            backImage.setImageURI("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=34770936,2075106657&fm=173&s=249016D94C42534510A4F46B03007057&w=639&h=387&img.JPG");
+        } else {
+            backImage.setImageURI(data.getFestivalImageUrl());
+        }
+        if (null == data.getUserInfo().getHeadPortraitPath()) {
+            head.setImageURI("http://upload.cankaoxiaoxi.com/2017/0601/1496319083789.jpg");
+        } else {
+            head.setImageURI(data.getUserInfo().getHeadPortraitPath());
+        }
+        orderBarView.setAftersalesDox((int) data.getAfterSalesCount());//售后
+        orderBarView.setWaitchargeDox((int) data.getWaitReceiptOrderCount());//待收货
+        orderBarView.setWaitpayDox((int) data.getWaitPayOrderCount());//代付款
+        orderBarView.setWaitsendDox((int) data.getWaitShipmentOrderCount());//待发货
+    }
+
+    private void setUserInfo() {
+        if (userInfo.isIsStationUser()) {
+            llStationStatus.setVisibility(View.VISIBLE);
+            if (userInfo.getStationUserRoleName().equals("站长")) {
+                ivLab.setImageResource(R.mipmap.icon_station);
+            } else {
+                ivLab.setImageResource(R.mipmap.icon_common);
+            }
+        } else {
+            ivLab.setImageResource(R.mipmap.icon_vip);
+            llStationStatus.setVisibility(View.GONE);
+        }
+        tvName.setText(userInfo.getUserName());
+    }
+
+    //需要更新中心 需要使用event来通知
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThreadrep(MainEvent event) {
+        if (event != null) {
+            if (sharedPreferencesUtils.getLoginStatus()) {
+                mPresenter.getUserInfoData();
+            } else {
+                IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
     }
 }

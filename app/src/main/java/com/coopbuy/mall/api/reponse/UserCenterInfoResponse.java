@@ -103,7 +103,7 @@ public class UserCenterInfoResponse implements Serializable {
         this.afterSalesCount = afterSalesCount;
     }
 
-    public static class UserInfoBean {
+    public static class UserInfoBean implements Serializable {
         /**
          * isStationUser : true
          * stationUserRoleId : 0

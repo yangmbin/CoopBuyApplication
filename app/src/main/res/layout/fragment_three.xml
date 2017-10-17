@@ -10,31 +10,42 @@
 
     <include layout="@layout/nav_home_top" />
     <!--布局形式不出来 为什么-->
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        fresco:srlEnablePureScrollMode="true">
-
-        <ScrollView
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            fresco:srlEnablePureScrollMode="true">
 
-            <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="@dimen/dimen_px220">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/backImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    fresco:placeholderImage="@mipmap/icon_default_head"
+                    fresco:placeholderImageScaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_px220"
-                    android:background="@color/center_back"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="@dimen/dimen_px400"
                         android:layout_height="@dimen/dimen_px150"
+                        android:background="@drawable/black_rectangle_center_gray"
                         android:orientation="horizontal">
 
                         <FrameLayout
@@ -69,187 +80,189 @@
                             android:layout_marginLeft="@dimen/dimen_px31"
                             android:text="贵农网"
                             android:textColor="@color/theme_back_white"
-                            android:textSize="@dimen/dimen_px36" />
+                            android:textSize="@dimen/dimen_px32" />
                     </LinearLayout>
                 </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px120"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_px120"
-                    android:background="@color/edit_text_back_white"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/ll_shopcart"
-                        style="@style/center_LinearLayout">
-
-                        <TextView
-                            android:id="@+id/tv_shopcart_number"
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="0" />
-
-                        <TextView
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="@string/lab_center_shopcart" />
-                    </LinearLayout>
-
-                    <include layout="@layout/include_line_h_80" />
-
-                    <LinearLayout
-                        android:id="@+id/ll_collect"
-                        style="@style/center_LinearLayout">
-
-                        <TextView
-                            android:id="@+id/tv_collect_number"
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="0" />
-
-                        <TextView
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="@string/lab_center_collect" />
-                    </LinearLayout>
-
-                    <include layout="@layout/include_line_h_80" />
-
-                    <LinearLayout
-                        android:id="@+id/ll_footmark"
-                        style="@style/center_LinearLayout">
-
-                        <TextView
-                            android:id="@+id/tv_footmark_number"
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="0" />
-
-                        <TextView
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:text="@string/lab_center_footmark" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <com.coopbuy.mall.widget.OrderBarView
-                    android:id="@+id/orderBarView"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_px235"
-                    android:layout_marginTop="@dimen/dimen_px16"
-                    android:tag="content" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_px220"
-                    android:layout_marginTop="@dimen/dimen_px16"
-                    android:background="@color/edit_text_back_white">
-
-                    <LinearLayout
-                        android:id="@+id/ll_phone_fare"
-                        style="@style/center_LinearLayout">
-
-                        <ImageView
-                            style="@style/image_center_64"
-                            android:src="@mipmap/icon_phone_fare" />
-
-                        <TextView
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:layout_marginTop="@dimen/dimen_px24"
-                            android:text="@string/lab_center_phone_fare" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_broadband"
-                        style="@style/center_LinearLayout">
-
-                        <ImageView
-                            style="@style/image_center_64"
-                            android:src="@mipmap/icon_broadband" />
-
-                        <TextView
-                            style="@style/text_theme_black_size_26_41495c"
-                            android:layout_marginTop="@dimen/dimen_px24"
-                            android:text="@string/lab_center_broadband"
-                            android:textColor="@color/auxiliary_text_blue_gray" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_px374"
-                    android:layout_marginTop="@dimen/dimen_px16"
-                    android:background="@color/edit_text_back_white">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/swipe_target"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:overScrollMode="never" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_station"
-                    style="@style/center_LinearLayout_help_96"
-                    android:layout_marginTop="@dimen/dimen_px16">
-
-                    <ImageView
-                        style="@style/image_center_40"
-                        android:layout_marginLeft="@dimen/dimen_px30"
-                        android:src="@mipmap/icon_station_recommend" />
+                    android:id="@+id/ll_shopcart"
+                    style="@style/center_LinearLayout">
 
                     <TextView
-                        style="@style/center_text_black_size_32"
-                        android:layout_marginLeft="@dimen/dimen_px12"
-                        android:layout_weight="1"
-                        android:text="@string/lab_center_station_recommend" />
-
-                    <ImageView
-                        style="@style/image_more"
-                        android:layout_marginRight="@dimen/dimen_px20" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_help"
-                    style="@style/center_LinearLayout_help_96">
-
-                    <ImageView
-                        style="@style/image_center_40"
-                        android:layout_marginLeft="@dimen/dimen_px30"
-                        android:src="@mipmap/icon_center_help" />
+                        android:id="@+id/tv_shopcart_number"
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="0" />
 
                     <TextView
-                        style="@style/center_text_black_size_32"
-                        android:layout_marginLeft="@dimen/dimen_px12"
-                        android:layout_weight="1"
-                        android:text="@string/lab_center_help" />
-
-                    <ImageView
-                        style="@style/image_more"
-                        android:layout_marginRight="@dimen/dimen_px20" />
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="@string/lab_center_shopcart" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_address"
-                    style="@style/center_LinearLayout_help_96"
-                    android:layout_marginBottom="@dimen/dimen_px18">
+                <include layout="@layout/include_line_h_80" />
 
-                    <ImageView
-                        style="@style/image_center_40"
-                        android:layout_marginLeft="@dimen/dimen_px30"
-                        android:src="@mipmap/icon_center_address" />
+                <LinearLayout
+                    android:id="@+id/ll_collect"
+                    style="@style/center_LinearLayout">
 
                     <TextView
-                        style="@style/center_text_black_size_32"
-                        android:layout_marginLeft="@dimen/dimen_px12"
-                        android:layout_weight="1"
-                        android:text="@string/lab_cneter_address" />
+                        android:id="@+id/tv_collect_number"
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="0" />
 
-                    <ImageView
-                        style="@style/image_more"
-                        android:layout_marginRight="@dimen/dimen_px20" />
+                    <TextView
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="@string/lab_center_collect" />
+                </LinearLayout>
+
+                <include layout="@layout/include_line_h_80" />
+
+                <LinearLayout
+                    android:id="@+id/ll_footmark"
+                    style="@style/center_LinearLayout">
+
+                    <TextView
+                        android:id="@+id/tv_footmark_number"
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="0" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:text="@string/lab_center_footmark" />
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            <com.coopbuy.mall.widget.OrderBarView
+                android:id="@+id/orderBarView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px235"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:tag="content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px220"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white">
+
+                <LinearLayout
+                    android:id="@+id/ll_phone_fare"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_center_64"
+                        android:src="@mipmap/icon_phone_fare" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:layout_marginTop="@dimen/dimen_px24"
+                        android:text="@string/lab_center_phone_fare" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_broadband"
+                    style="@style/center_LinearLayout">
+
+                    <ImageView
+                        style="@style/image_center_64"
+                        android:src="@mipmap/icon_broadband" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_26_41495c"
+                        android:layout_marginTop="@dimen/dimen_px24"
+                        android:text="@string/lab_center_broadband"
+                        android:textColor="@color/auxiliary_text_blue_gray" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_station_status"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px374"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/swipe_target"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_station"
+                style="@style/center_LinearLayout_help_96"
+                android:layout_marginTop="@dimen/dimen_px16">
+
+                <ImageView
+                    style="@style/image_center_40"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:src="@mipmap/icon_station_recommend" />
+
+                <TextView
+                    style="@style/center_text_black_size_32"
+                    android:layout_marginLeft="@dimen/dimen_px12"
+                    android:layout_weight="1"
+                    android:text="@string/lab_center_station_recommend" />
+
+                <ImageView
+                    style="@style/image_more"
+                    android:layout_marginRight="@dimen/dimen_px20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_help"
+                style="@style/center_LinearLayout_help_96">
+
+                <ImageView
+                    style="@style/image_center_40"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:src="@mipmap/icon_center_help" />
+
+                <TextView
+                    style="@style/center_text_black_size_32"
+                    android:layout_marginLeft="@dimen/dimen_px12"
+                    android:layout_weight="1"
+                    android:text="@string/lab_center_help" />
+
+                <ImageView
+                    style="@style/image_more"
+                    android:layout_marginRight="@dimen/dimen_px20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_address"
+                style="@style/center_LinearLayout_help_96"
+                android:layout_marginBottom="@dimen/dimen_px18">
+
+                <ImageView
+                    style="@style/image_center_40"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:src="@mipmap/icon_center_address" />
+
+                <TextView
+                    style="@style/center_text_black_size_32"
+                    android:layout_marginLeft="@dimen/dimen_px12"
+                    android:layout_weight="1"
+                    android:text="@string/lab_cneter_address" />
+
+                <ImageView
+                    style="@style/image_more"
+                    android:layout_marginRight="@dimen/dimen_px20" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>
