@@ -4,7 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.Bind;
@@ -21,6 +23,7 @@ public class PersonalActivity extends BaseActivity {
     TextView tvUserNick;
     @Bind(R.id.tv_user_sex)
     TextView tvUserSex;
+    UserCenterInfoResponse.UserInfoBean userInfoBean;
 
     @Override
     public int getLayoutId() {
@@ -39,18 +42,38 @@ public class PersonalActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        if (null != getIntent()) {
+            userInfoBean = (UserCenterInfoResponse.UserInfoBean) getIntent().getSerializableExtra(IntentUtils.DATA);
+            if (null == userInfoBean.getHeadPortraitPath()) {
+                circleImageView.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1508241681&di=515b29d6539ab215958b593931ba68c7&src=http://www.aluminiumstock.com/images/article2/5588609-1.jpg");
+            } else {
+                circleImageView.setImageURI(userInfoBean.getHeadPortraitPath());
+            }
+            tvUserId.setText(userInfoBean.getUserId() + "");
+            tvUserNick.setText(userInfoBean.getNick());
+            int sex = userInfoBean.getSex();
+            if (sex == 0) {
+                tvUserSex.setText("待设置");
+            } else if (sex == 1) {
+                tvUserSex.setText("女");
+            } else {
+                tvUserSex.setText("男");
+            }
+        }
         setTitle(R.string.title_personal);
-        circleImageView.setImageURI("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3878763046,310714624&fm=173&s=66518266BCC79005F682A06903006019&w=550&h=550&img.JPEG");
     }
 
     @OnClick({R.id.ll_head_image, R.id.ll_nick, R.id.ll_sex})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_head_image:
+
                 break;
             case R.id.ll_nick:
+
                 break;
             case R.id.ll_sex:
+
                 break;
         }
     }

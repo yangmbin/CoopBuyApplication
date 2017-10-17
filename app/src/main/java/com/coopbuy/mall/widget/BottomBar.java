@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.MainEvent;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
 import com.coopbuy.mall.ui.mainpage.fragment.CenterFragment;
@@ -155,5 +157,6 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
         mIvTab2.setImageResource(R.mipmap.icon_market_unselected);
         mIvTab3.setImageResource(R.mipmap.icon_center_selected);
         mViewPager.setCurrentItem(2);
+        EventBusInstance.getInstance().post(new MainEvent());
     }
 }

@@ -50,6 +50,12 @@ public class IntentUtils {
         context.startActivity(intent);
     }
 
+    public static void gotoActivity(Context context, Class<?> activity, Serializable param1) {
+        Intent intent = new Intent(context, activity);
+        intent.putExtra(DATA, param1);
+        context.startActivity(intent);
+    }
+
     /**
      * 我的订单
      *
