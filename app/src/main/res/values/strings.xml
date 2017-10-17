@@ -10,7 +10,7 @@
     <string name="lab_login_regist">免费注册</string>
     <string name="title_regist">注册</string>
     <string name="lab_login_forget">忘记密码</string>
-    <string name="label_again_get">重新发送\n</string>
+    <string name="label_again_get">重新发送\n(</string>
     <string name="seconds_later_can_get_vcode">%s</string>
     <string name="register_code_agin">获取验证码</string>
     <string name="title_login">登录</string>

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.eventbus.EventBusInstance;
@@ -23,6 +24,9 @@ import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -48,9 +52,11 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
     CheckBox cbVisible;
     @Bind(R.id.cb_again_visible)
     CheckBox cbAgainVisible;
-    private RegisterRequest request;
+    private RegisterRequest regrequest;//注册密码
+    private ChangeAndForgetPwdRequest cfpRequest;//修改密码 和忘记密码
     private String type;
     private String mPwd = "";
+    private String mAgainPwd = "";
     private boolean isPwdEmpty = false;
     private boolean isAgainPwdEmpty = false;
 
@@ -73,15 +79,16 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
     public void initView() {
         ivPasswordClear.setVisibility(View.GONE);
         ivPasswordAgainClear.setVisibility(View.GONE);
+        setTitle("设置密码");
         if (null != getIntent()) {
             type = getIntent().getStringExtra(IntentUtils.PARAM1);
-            if (type.equals(Constants.REGISTER_TYPE)) {
-                request = (RegisterRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
-                setTitle("设置密码");
+            if (type.equals(Constants.REGISTER_TYPE)) {//只有一次设置密码
+                regrequest = (RegisterRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
                 rlAgianPassword.setVisibility(View.GONE);
-            } else {
-                setTitle("修改密码");
+            } else {//有两次填写密码 包括了找回密码 和修改密码
                 rlAgianPassword.setVisibility(View.VISIBLE);
+                edtPwd.setHint("请输入新密码");
+                cfpRequest = (ChangeAndForgetPwdRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
             }
         }
         setInputListener();
@@ -164,7 +171,6 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
         }
     }
 
-
     @OnClick({R.id.iv_password_clear, R.id.iv_password_again_clear, R.id.btn_next, R.id.cb_again_visible, R.id.cb_visible})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -191,11 +197,14 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
             case R.id.btn_next:
                 if (type.equals(Constants.REGISTER_TYPE)) {//注册使用
                     if (checkPhoneAndPwd()) {
-                        request.setPassword(mPwd);
-                        mPresenter.register(request);
+                        regrequest.setPassword(mPwd);
+                        mPresenter.register(regrequest);
                     }
                 } else {//修改密码使用
-
+                    if (checkPhoneAndPwd()) {
+                        cfpRequest.setNewPassword(mAgainPwd);
+                        mPresenter.updatePwd(cfpRequest);
+                    }
                 }
                 break;
         }
@@ -203,12 +212,23 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
 
     @Override
     public void registerSuccess() {
+        RegisterEvent event = new RegisterEvent();
+        if (type.equals(Constants.REGISTER_TYPE)) {
+            event.setPhone(regrequest.getPhone());
+        } else if (type.equals(Constants.FORGET_TYPE)) {
+            event.setPhone(cfpRequest.getPhone());
+        } else {
+            //修改密码 需要重新登录 清除对应的数据
+            sharedPreferencesUtils.clearUserData();
+            IntentUtils.gotoActivity(this, LoginActivity.class);
+        }
+        EventBusInstance.getInstance().post(event);
         this.finish();
-        EventBusInstance.getInstance().post(new RegisterEvent());
     }
 
     private boolean checkPhoneAndPwd() {
         mPwd = edtPwd.getText().toString().trim();
+        mAgainPwd = edtAgainPwd.getText().toString().trim();
         if (CommonUtils.isEmpty(mPwd)) {
             ToastUtils.toastShort("密码不能为空");
             return false;
@@ -217,6 +237,26 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
             ToastUtils.toastShort("密码长度不满足要求");
             return false;
         }
+        if (type.equals(Constants.FORGET_TYPE)) {
+            if (CommonUtils.isEmpty(mAgainPwd)) {
+                ToastUtils.toastShort("密码不能为空");
+                return false;
+            }
+            if (mAgainPwd.length() < 6) {
+                ToastUtils.toastShort("密码长度不满足要求");
+                return false;
+            }
+            if (!mPwd.equals(mAgainPwd)) {
+                ToastUtils.toastShort("两次密码不一样");
+                return false;
+            }
+        }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
     }
 }

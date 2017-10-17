@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.eventbus.EventBusInstance;
@@ -28,11 +26,9 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterModel> implements Register_IView {
-
 
     @Bind(R.id.edt_phone)
     EditText edtPhone;
@@ -78,8 +74,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterMo
     public void initView() {
         EventBusInstance.getInstance().registerEvent(this);
         setTitle(R.string.title_regist);
-        ivCodeClear.setVisibility(View.VISIBLE);
-        ivPhoneClear.setVisibility(View.VISIBLE);
+        ivCodeClear.setVisibility(View.GONE);
+        ivPhoneClear.setVisibility(View.GONE);
         setInputListener();
 
     }
@@ -152,20 +148,24 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterMo
 
     @Override
     public void onTimeTick(long time) {
-        tvGetCode.setFocusable(false);
-        tvGetCode.setClickable(false);
-        long i = 1000;
-        String timeShowStr = String.format(getResources().getString(R.string.seconds_later_can_get_vcode), time / i);
-        tvGetCode.setText(getString(R.string.label_again_get) + timeShowStr);
-        tvGetCode.setTextColor(getResources().getColor(R.color.auxiliary_text_blue_gray));
+        if (null != tvGetCode) {
+            tvGetCode.setFocusable(false);
+            tvGetCode.setClickable(false);
+            long i = 1000;
+            String timeShowStr = String.format(getResources().getString(R.string.seconds_later_can_get_vcode), time / i);
+            tvGetCode.setText(getString(R.string.label_again_get) + timeShowStr + "s)");
+            tvGetCode.setTextColor(getResources().getColor(R.color.auxiliary_text_blue_gray));
+        }
     }
 
     @Override
     public void onTimeFinish() {
-        tvGetCode.setText(getResources().getString(R.string.register_code_agin));
-        tvGetCode.setFocusable(true);
-        tvGetCode.setClickable(true);
-        tvGetCode.setTextColor(getResources().getColor(R.color.theme_text_lab_black));
+        if (null != tvGetCode) {
+            tvGetCode.setText(getResources().getString(R.string.register_code_agin));
+            tvGetCode.setFocusable(true);
+            tvGetCode.setClickable(true);
+            tvGetCode.setTextColor(getResources().getColor(R.color.theme_text_lab_black));
+        }
     }
 
     @Override
@@ -222,6 +222,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterMo
         }
         if (CommonUtils.isEmpty(smscode)) {
             ToastUtils.toastShort("验证码不能为空");
+            return false;
+        }
+        if (CommonUtils.isEmpty(mCode)) {
+            ToastUtils.toastShort("你还没有获取验证码");
             return false;
         }
         if (!isAgree) {

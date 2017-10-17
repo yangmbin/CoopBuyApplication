@@ -9,6 +9,7 @@ import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.model.SettingModel;
 import com.coopbuy.mall.ui.module.center.presenter.SettingPresenter;
 import com.coopbuy.mall.ui.module.center.view.Setting_IView;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
@@ -52,7 +53,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter, SettingModel
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_change_password:
-                IntentUtils.gotoActivity(this, SetPassWordActivity.class);
+                IntentUtils.gotoActivity(this, ForgetPwdActivity.class, Constants.CHANGE_TYPE);
                 break;
             case R.id.ll_suggest:
                 IntentUtils.gotoActivity(this, SuggestionActivity.class);

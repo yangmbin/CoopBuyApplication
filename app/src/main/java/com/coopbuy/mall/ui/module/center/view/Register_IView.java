@@ -21,4 +21,5 @@ public interface Register_IView extends BaseView {
     void onTimeFinish();
 
     void smsCode(String code);
+
 }

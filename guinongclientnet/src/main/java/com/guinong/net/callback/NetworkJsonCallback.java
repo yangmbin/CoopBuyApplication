@@ -81,8 +81,7 @@ public class NetworkJsonCallback implements Callback {
     }
 
     private ArrayList<String> handleCookie(Headers headers) {
-        ArrayList<String> tempList = new ArrayList<String>();
-        int count = 0;
+    /*    int count = 0; 手动添加的cookie
         for (int i = 0; i < headers.size(); i++) {
             String s = headers.name(i);
             if (headers.name(i).equalsIgnoreCase(COOKIE_STORE)) {
@@ -90,7 +89,12 @@ public class NetworkJsonCallback implements Callback {
                 SharedPreferencesUtils.getInstance(RequestClient.baseContext).saveCookier(headers.value(i), count);
                 count++;
             }
-
+        }*/
+        ArrayList<String> tempList = new ArrayList<String>();
+        for (int i = 0; i < headers.size(); i++) {
+            if (headers.name(i).equalsIgnoreCase(COOKIE_STORE)) {
+                tempList.add(headers.value(i));
+            }
         }
         return tempList;
     }

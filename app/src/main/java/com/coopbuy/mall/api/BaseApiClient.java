@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.coopbuy.mall.app.CoopBuyApplication;
 import com.guinong.net.RequestClient;
+import com.guinong.net.cookie.CookieJarImpl;
 import com.guinong.net.cookie.CookierManager;
+import com.guinong.net.cookie.PersistentCookieStore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,11 +31,11 @@ public class BaseApiClient extends RequestClient {
         okHttpClientBuilder.writeTimeout(TIME_OUT, TimeUnit.SECONDS);
         okHttpClientBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
         if (context != null) {
-            //这里有个限制 我使用的添加请求头来添加cookie 目前还没有找到为什么cookie不保存
-             okHttpClientBuilder.cookieJar(new CookierManager(context));
+            okHttpClientBuilder.cookieJar(new CookierManager(context));
             baseContext = context;
         }
-        // okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));
+        //  okHttpClientBuilder.networkInterceptors().add(new LoginInterceptor(CoopBuyApplication.getAppContext()));
+        // okHttpClientBuilder.addInterceptor(new RetryIntercepter(3));
         okHttpClientBuilder.followRedirects(true); //设置重定向 其实默认也是true
         okHttpClientBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
@@ -44,11 +46,6 @@ public class BaseApiClient extends RequestClient {
         mOkHttpClient = okHttpClientBuilder.build();
     }
 
-    static {
-        if (mOkHttpClient == null) {
-            contextInit(null);
-        }
-    }
 
     public BaseApiClient() {
 

@@ -4,13 +4,16 @@ import android.content.Context;
 import android.os.CountDownTimer;
 
 
+import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.RegisterModel;
 import com.coopbuy.mall.ui.module.center.view.Register_IView;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -41,7 +44,30 @@ public class RegisterPresenter extends BasePresenter<Register_IView, RegisterMod
             @Override
             public void onError(NetworkException error, Object userState) {
                 if (error != null) {
-                    ToastUtils.toastShort(error.getDetail());
+                    ToastUtils.toastShort(error.getMessage());
+                    mView.stopAll();
+                }
+            }
+        }, "sms"));
+    }
+
+    public void getSMSCodeUpdate(String phone) {
+        mView.showTransLoading();
+        ImageCodeRequest request = new ImageCodeRequest();
+        request.setPhone(phone);
+        time = new TimeCounts(TIMECOUNT, 1000);
+        mView.appendNetCall(mModel.getSMSUpdatae(request, new IAsyncResultCallback<SMSCodeReponse>() {
+            @Override
+            public void onComplete(SMSCodeReponse smsCodeReponse, Object userState) {
+                mView.smsCode(smsCodeReponse.getCode());
+                mView.stopAll();
+                time.start();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                if (error != null) {
+                    ToastUtils.toastShort(error.getMessage());
                     mView.stopAll();
                 }
             }
@@ -70,4 +96,8 @@ public class RegisterPresenter extends BasePresenter<Register_IView, RegisterMod
             mView.onTimeFinish();
         }
     }
+
+
+
+
 }

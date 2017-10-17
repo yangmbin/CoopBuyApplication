@@ -4,23 +4,25 @@ import java.io.Serializable;
 
 /**
  * @author csn
- * @date 2017/10/16 0016 15:38
+ * @date 2017/10/17 0017 9:45
  * @content
  */
-public class RegisterResponse implements Serializable {
+public class ChangeAndForgetPwdResponse implements Serializable {
+
     /**
-     * isRegistered : true
+     * succeeded : true
      * message : string
      */
-    private boolean isRegistered;
+
+    private boolean succeeded;
     private String message;
 
-    public boolean isIsRegistered() {
-        return isRegistered;
+    public boolean isSucceeded() {
+        return succeeded;
     }
 
-    public void setIsRegistered(boolean isRegistered) {
-        this.isRegistered = isRegistered;
+    public void setSucceeded(boolean succeeded) {
+        this.succeeded = succeeded;
     }
 
     public String getMessage() {

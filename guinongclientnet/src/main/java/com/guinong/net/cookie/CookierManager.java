@@ -30,12 +30,9 @@ public class CookierManager implements CookieJar {
     @Override
     public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
         if (cookies != null && cookies.size() > 0) {
-          /*  SharedPreferencesUtils.getInstance(context).saveCookierSize(cookies.size());
-                SharedPreferencesUtils.getInstance(context).saveCookier(cookies) ;*/
-            //我不打算用他的  多个不知道为什么没有保存
-         /*   for (Cookie item : cookies) {
+            for (Cookie item : cookies) {
                 cookieStore.add(url, item);
-            }*/
+            }
         }
     }
 
@@ -44,4 +41,5 @@ public class CookierManager implements CookieJar {
         List<Cookie> cookies = cookieStore.get(url);
         return cookies;
     }
+
 }

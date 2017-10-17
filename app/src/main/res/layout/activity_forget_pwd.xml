@@ -11,6 +11,7 @@
     <include layout="@layout/title_bar_layout" />
 
     <RelativeLayout
+        android:id="@+id/rl_change_pwd"
         style="@style/LinearLayout_contain_edit"
         android:layout_marginTop="@dimen/dimen_px61">
 
@@ -31,6 +32,26 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_forget_pwd"
+        style="@style/LinearLayout_contain_edit"
+        android:layout_marginTop="@dimen/dimen_px61">
+
+        <EditText
+            android:id="@+id/edt_forget_phone"
+            style="@style/login_edit"
+            android:layout_toLeftOf="@+id/iv_forgetcode_clear"
+            android:hint="@string/lab_login_enter_phone"
+            android:inputType="phone"
+          />
+
+        <ImageView
+            android:id="@+id/iv_forgetcode_clear"
+            style="@style/image_clear"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         style="@style/LinearLayout_contain_edit_no_padding"
         android:layout_marginTop="@dimen/dimen_px61">
 
@@ -40,7 +61,7 @@
             android:layout_marginLeft="@dimen/dimen_px30"
             android:hint="@string/lab_register_msg_code"
             android:inputType="phone"
-            android:maxLength="6" />
+             />
 
         <View
             android:id="@+id/v_divid"
@@ -68,6 +89,7 @@
     <Button
         android:id="@+id/btn_next"
         style="@style/login_btn"
+        android:clickable="false"
         android:layout_marginTop="@dimen/dimen_px151"
         android:text="@string/lab_register_next" />
 </LinearLayout>
