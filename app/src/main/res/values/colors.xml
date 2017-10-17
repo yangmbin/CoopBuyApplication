@@ -32,6 +32,7 @@
     <color name="black_6">#7f000000</color><!--50%不透明-->
     <color name="black_7">#4c000000</color><!--30%不透明-->
     <color name="black_8">#000104</color><!--30%不透明-->
+    <color name="black_9">#535a6b</color>
     <color name="red">#FF0000</color>
     <color name="red_1">#e5e4393c</color>
     <color name="red_2">#cb2222</color>

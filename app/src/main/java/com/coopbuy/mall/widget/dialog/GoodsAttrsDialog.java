@@ -2,22 +2,30 @@ package com.coopbuy.mall.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
+import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_1;
+import com.coopbuy.mall.utils.StringUtils;
 import com.coopbuy.mall.widget.tag.TagGroup;
+import com.facebook.drawee.view.SimpleDraweeView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,8 +35,24 @@ public class GoodsAttrsDialog implements View.OnClickListener {
     private ListAdapter mAdapter;
     private View mView, mClose;
     private Dialog dialog;
+    private SimpleDraweeView mGoodsImage;
+    private TextView mSellingPrice, mStock, mHaveSelected;
+    private ImageView mDeleteCountBtn, mAddCountBtn;
+    private TextView mCountTxt;
+    // 默认的购买数量
+    private int mCount = 1;
+    // 保存Sku信息
+    private SkuDetailResponse.SkuInfoBean mSkuInfoBean;
+    // 依附的Fragment
+    private GoodsDetailFragment_1 mFragment;
+    // 商品Id
+    private int mProductId;
 
-    public GoodsAttrsDialog(final Context context, final List<String> list) {
+    public GoodsAttrsDialog(final Context context, GoodsDetailFragment_1 fragment, final List<SkuInfoResponse> list, SkuDetailResponse.SkuInfoBean skuInfoBean, int productId) {
+        mFragment = fragment;
+        mSkuInfoBean = skuInfoBean;
+        mProductId = productId;
+
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.dialog_goods_attrs, null);
@@ -43,10 +67,25 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         mRecyclerView.setAdapter(mAdapter);
 
         mClose = mView.findViewById(R.id.close);
+        mGoodsImage = (SimpleDraweeView) mView.findViewById(R.id.goods_image);
+        mSellingPrice = (TextView) mView.findViewById(R.id.sellingPrice);
+        mStock = (TextView) mView.findViewById(R.id.stock);
+        mHaveSelected = (TextView) mView.findViewById(R.id.have_selected);
+        mDeleteCountBtn = (ImageView) mView.findViewById(R.id.delete_count);
+        mAddCountBtn = (ImageView) mView.findViewById(R.id.add_count);
+        mCountTxt = (TextView) mView.findViewById(R.id.count);
+
         mClose.setOnClickListener(this);
+        mDeleteCountBtn.setOnClickListener(this);
+        mAddCountBtn.setOnClickListener(this);
 
         // 设置风格
         setPopWindowStyle();
+
+        // 设置Sku信息显示
+        setSkuInfoData(mSkuInfoBean);
+        // 设置购买数量
+        setCount();
     }
 
     public void showAtBottom() {
@@ -78,11 +117,11 @@ public class GoodsAttrsDialog implements View.OnClickListener {
     /**
      * 适配器
      */
-    class ListAdapter extends BaseRecyclerAdapter<String> {
+    class ListAdapter extends BaseRecyclerAdapter<SkuInfoResponse> {
 
         Context context;
 
-        public ListAdapter(Context ctx, List<String> list) {
+        public ListAdapter(Context ctx, List<SkuInfoResponse> list) {
             super(ctx, list);
             context = ctx;
         }
@@ -93,33 +132,35 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         }
 
         @Override
-        protected void bindData(final BaseRecyclerHolder holder, final int position, String item) {
-            List<String> tags = new ArrayList<>();
-            tags.add("飞机快圣诞节疯狂的");
-            tags.add("飞节疯狂的");
-            tags.add("疯狂的");
-            tags.add("飞狂的");
-            tags.add("飞机节疯狂的");
-            tags.add("飞机快圣诞节疯狂的");
-            tags.add("飞机快疯狂的");
-            tags.add("飞机狂的");
-            tags.add("飞机快节疯狂的");
-            tags.add("飞机快圣诞疯狂的");
-            tags.add("飞机快疯狂的");
-            tags.add("飞机快圣诞节疯狂的");
-            tags.add("飞机的");
-            tags.add("飞机快圣的");
-            tags.add("飞机快圣诞节疯狂的");
-
+        protected void bindData(final BaseRecyclerHolder holder, final int position, SkuInfoResponse item) {
+            holder.getTextView(R.id.name).setText(item.getName());
             TagGroup tagGroup = (TagGroup) holder.getView(R.id.tag_group);
-            tagGroup.setTags(tags);
+            tagGroup.setTags(item.getValues());
 
             tagGroup.setOnTagClickListener(new TagGroup.OnTagClickListener() {
                 @Override
                 public void onTagClick(String tag) {
-                    ToastUtils.toastShort("haha");
+                    Log.e("yangmbin", "tag:" + tag);
+                    FindSkuInfoRequest request = new FindSkuInfoRequest();
+                    request.setProductId(mProductId);
+                    if (position == 0) {
+                        request.setPropertyValue(tag);
+                        request.setSpecificationValue(mSkuInfoBean.getPriceSpecificationsValue());
+                        mSkuInfoBean.setPricePropertyValue(tag);
+                    } else {
+                        request.setPropertyValue(mSkuInfoBean.getPricePropertyValue());
+                        request.setSpecificationValue(tag);
+                        mSkuInfoBean.setPriceSpecificationsValue(tag);
+                    }
+                    mFragment.findSkuInfoData(request);
                 }
             });
+
+            // 设置默认的选中状态
+            if (position == 0)
+                tagGroup.setSelected(mSkuInfoBean.getPricePropertyValue());
+            else if (position == 1)
+                tagGroup.setSelected(mSkuInfoBean.getPriceSpecificationsValue());
         }
     }
 
@@ -129,6 +170,38 @@ public class GoodsAttrsDialog implements View.OnClickListener {
             case R.id.close:
                 dialog.dismiss();
                 break;
+            case R.id.delete_count:
+                if (mCount > 1) {
+                    --mCount;
+                    setCount();
+                }
+                break;
+            case R.id.add_count:
+                ++mCount;
+                setCount();
+                break;
         }
+    }
+
+    /**
+     * 设置Sku信息
+     * @param skuInfoBean
+     */
+    public void setSkuInfoData(SkuDetailResponse.SkuInfoBean skuInfoBean) {
+        mGoodsImage.setImageURI(Uri.parse(skuInfoBean.getImageUrl()));
+        mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
+        mStock.setText("库存" + skuInfoBean.getStock() + "件");
+        mHaveSelected.setText("已选：");
+        mHaveSelected.append("“" + skuInfoBean.getPricePropertyValue() + "” ");
+        mHaveSelected.append("“" + skuInfoBean.getPriceSpecificationsValue() + "” ");
+
+        mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 设置购买数量
+     */
+    private void setCount() {
+        mCountTxt.setText("" + mCount);
     }
 }

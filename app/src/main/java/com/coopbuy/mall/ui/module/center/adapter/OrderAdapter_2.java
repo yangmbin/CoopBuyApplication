@@ -6,12 +6,9 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.coopbuy.mall.utils.StringUtils;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -31,10 +28,10 @@ public class OrderAdapter_2 extends BaseDelegateAdapter<GetOrderListResponse.Ite
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean.OrderItemBean item) {
-        ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Constant.IMAGE_SERVER_URL + item.getImageUrl());
+        /*((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Constant.IMAGE_SERVER_URL + item.getImageUrl());
         holder.getTextView(R.id.tv_goods_name).setText(item.getGoodsName());
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
         holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
-        holder.itemView.setOnClickListener(mListener);
+        holder.itemView.setOnClickListener(mListener);*/
     }
 }

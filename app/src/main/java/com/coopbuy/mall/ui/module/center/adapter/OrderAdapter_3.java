@@ -9,7 +9,6 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.coopbuy.mall.utils.StringUtils;
 
 import java.util.List;
 
@@ -29,11 +28,11 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<GetOrderListResponse.Ite
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean item) {
-        int totalQuantity = 0;
+        /*int totalQuantity = 0;
         for (int i = 0; i < item.getOrderItem().size(); i++)
             totalQuantity += item.getOrderItem().get(i).getQuantity();
         holder.getTextView(R.id.tv_desc).setText("共" + totalQuantity + "件商品 " + "合计：¥" + StringUtils.keepTwoDecimalPoint(item.getTotalAmount()) +
                 "(含运费：" + StringUtils.keepTwoDecimalPoint(item.getFreightAmount()) + ")");
-        holder.itemView.setOnClickListener(mListener);
+        holder.itemView.setOnClickListener(mListener);*/
     }
 }

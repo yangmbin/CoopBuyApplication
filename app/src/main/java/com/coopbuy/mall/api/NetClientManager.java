@@ -16,6 +16,9 @@ import com.coopbuy.mall.api.request.DescriptionRequest;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.DescriptionRequest;
+import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
@@ -278,8 +281,32 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getDescriptionData(DescriptionRequest request, IAsyncResultCallback<DescriptionResponse> callback, Object userState) {
+    public IAsyncRequestState getDescriptionData(ProductIdRequest request, IAsyncResultCallback<DescriptionResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<DescriptionResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_DESCRIPTION, request, callback, userState);
+    }
+
+    /**
+     * 获取商品Sku列表
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getSkuInfoListData(ProductIdRequest request, IAsyncResultCallback<List<SkuInfoResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<SkuInfoResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SKU_INFO_LIST, request, callback, userState);
+    }
+
+    /**
+     * 获取指定规格值或属性值的sku信息
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState findSkuInfoData(FindSkuInfoRequest request, IAsyncResultCallback<SkuDetailResponse.SkuInfoBean> callback, Object userState) {
+        return apiPostRequest(new TypeToken<SkuDetailResponse.SkuInfoBean>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_SKU_INFO, request, callback, userState);
     }
 }

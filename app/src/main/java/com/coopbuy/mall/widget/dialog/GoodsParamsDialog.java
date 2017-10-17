@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
@@ -26,7 +27,7 @@ public class GoodsParamsDialog {
     private Dialog dialog;
     private int mSelect = 0;
 
-    public GoodsParamsDialog(final Context context, final List<String> list) {
+    public GoodsParamsDialog(final Context context, final List<SkuDetailResponse.PropertieBean> list) {
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.dialog_goods_params, null);
@@ -76,11 +77,11 @@ public class GoodsParamsDialog {
     /**
      * 适配器
      */
-    class ListAdapter extends BaseRecyclerAdapter<String> {
+    class ListAdapter extends BaseRecyclerAdapter<SkuDetailResponse.PropertieBean> {
 
         Context context;
 
-        public ListAdapter(Context ctx, List<String> list) {
+        public ListAdapter(Context ctx, List<SkuDetailResponse.PropertieBean> list) {
             super(ctx, list);
             context = ctx;
         }
@@ -91,7 +92,11 @@ public class GoodsParamsDialog {
         }
 
         @Override
-        protected void bindData(final BaseRecyclerHolder holder, final int position, String item) {
+        protected void bindData(final BaseRecyclerHolder holder, final int position, SkuDetailResponse.PropertieBean item) {
+            // 设置数据
+            holder.getTextView(R.id.propertyName).setText(item.getPropertyName());
+            holder.getTextView(R.id.propertyValue).setText(item.getPropertyValue());
+
             if (mSelect == position) {
                 holder.getView(R.id.itemLayout).setBackgroundColor(ContextCompat.getColor(mContext, R.color.theme_back_white));
             } else {

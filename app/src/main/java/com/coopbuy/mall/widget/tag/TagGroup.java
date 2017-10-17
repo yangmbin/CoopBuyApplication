@@ -666,9 +666,11 @@ public class TagGroup extends ViewGroup {
 
         /** The offset to the text. */
         private static final int CHECKED_MARKER_OFFSET = 3;
+//        private static final int CHECKED_MARKER_OFFSET = 0;
 
         /** The stroke width of the checked marker */
         private static final int CHECKED_MARKER_STROKE_WIDTH = 4;
+//        private static final int CHECKED_MARKER_STROKE_WIDTH = 0;
 
         /** The current state. */
         private int mState;
@@ -976,9 +978,13 @@ public class TagGroup extends ViewGroup {
 
             // Ensure the checked mark drawing region is correct across screen orientation changes.
             if (isChecked) {
-                setPadding(horizontalPadding,
+                /*setPadding(horizontalPadding,
                         verticalPadding,
                         (int) (horizontalPadding + h / 2.5f + CHECKED_MARKER_OFFSET),
+                        verticalPadding);*/
+                setPadding(horizontalPadding,
+                        verticalPadding,
+                        (int) (horizontalPadding),
                         verticalPadding);
             }
         }
@@ -1039,6 +1045,21 @@ public class TagGroup extends ViewGroup {
                             && sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
                 }
                 return super.deleteSurroundingText(beforeLength, afterLength);
+            }
+        }
+    }
+
+    /**
+     * 设置某一项为选中状态
+     * @param str
+     */
+    public void setSelected(String str) {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            TagView tagView = (TagView) getChildAt(i);
+            if (str.equals(tagView.getText().toString())) {
+                tagView.setChecked(true);
+                break;
             }
         }
     }

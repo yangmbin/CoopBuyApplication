@@ -141,5 +141,6 @@ public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, 
             mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
         }
         mDelegateAdapter.setAdapters(mAdapters);
+        mDelegateAdapter.notifyDataSetChanged();
     }
 }

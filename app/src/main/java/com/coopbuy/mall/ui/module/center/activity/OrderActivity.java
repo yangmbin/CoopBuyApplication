@@ -7,7 +7,6 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.ui.module.center.fragment.AllOrderFragment;
-import com.coopbuy.mall.ui.module.center.fragment.WaitCommentOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitPayOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitReceiveOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitSendOrderFragment;
@@ -25,7 +24,7 @@ public class OrderActivity extends BaseActivity {
     ViewPager mViewPager;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private MyViewPagerAdapter mAdapter;
-    private final String[] mTitles = {"全部", "待付款", "待发货", "待收货", "待评价"};
+    private final String[] mTitles = {"全部", "待付款", "待发货", "待收货"};
 
     @Override
     public int getLayoutId() {
@@ -44,7 +43,6 @@ public class OrderActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setTitle("订单列表");
         initFragment();
         initAdapter();
     }
@@ -54,7 +52,6 @@ public class OrderActivity extends BaseActivity {
         mFragments.add(new WaitPayOrderFragment());
         mFragments.add(new WaitSendOrderFragment());
         mFragments.add(new WaitReceiveOrderFragment());
-        mFragments.add(new WaitCommentOrderFragment());
     }
 
     private void initAdapter() {
