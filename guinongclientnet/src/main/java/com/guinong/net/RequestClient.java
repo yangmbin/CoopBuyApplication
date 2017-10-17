@@ -136,10 +136,7 @@ public abstract class RequestClient {
                 return new Request.Builder().url(url).post(body).build();
             }
             return new Request.Builder().url(url).post(body)
-                    .addHeader("Cookie", utils.getCookier("0"))
-                    .addHeader("Cookie", utils.getCookier("1"))
-                    .addHeader("Cookie", utils.getCookier("2"))
-                    .build();
+                   .build();
         } else {
             RequestBody body = RequestBody.create(APPLICATION_JSON, "{}");
             if (baseContext == null) {
@@ -147,9 +144,7 @@ public abstract class RequestClient {
                         .build();
             }
             return new Request.Builder().url(url).post(body)
-                    .addHeader("Cookie", utils.getCookier("0"))
-                    .addHeader("Cookie", utils.getCookier("1"))
-                    .addHeader("Cookie", utils.getCookier("2"))
+                  //  .addHeader("Cookie", utils.getCookier(".AspNet.Cookies=50OPld1mcMGmCTKC8OCSrd5_JiyYY9s5arriYzP7wGzu-f9MvweTzZ2USSENukp_Yz7td9ly_SzDSCN1JTKL7vfdWxGw-JDOsFXuKxXXASqPrNAUmgTahZx9EMbVo6iJxjZYTrnLwcmd-MQMgt8IFE4OOJsZvu6CB6Mfg-j-DYxEFCUCy28z6tbWE7M_wFZI3IKYpv9VKLiP1Q6ZyeWfdh_5mBl91Qj10FOiwf9D-PFbtAe1BLKFNmNU_Gi33f1frSSj7osyGq4i0VefS3IZyIq1RiZKZIcKWB1mFtGMIUs9Ge_rK3StadRWhUZtAKaxqmGr_4BHw_BjOEELcWaSbw; path=/; httponly"))
                     .build();
         }
     }

@@ -113,4 +113,5 @@ public class Constants {
 
     public static final String REGISTER_TYPE = "register_type";
     public static final String FORGET_TYPE = "forget_type";
+    public static final String CHANGE_TYPE = "change_type";
 }

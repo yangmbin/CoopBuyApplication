@@ -43,7 +43,7 @@ public class LoginPresenter extends BasePresenter<Login_IView, LoginModel> {
             public void onError(NetworkException error, Object userState) {
                 if (error != null) {
                     error.getDetail();
-                    mView.loginFail(error.getDetail(), false);
+                    mView.loginFail(error.getMessage(), false);
                     mView.stopAll();
                 }
             }

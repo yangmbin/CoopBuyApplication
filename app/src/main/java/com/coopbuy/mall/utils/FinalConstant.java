@@ -8,8 +8,7 @@ package com.coopbuy.mall.utils;
 public class FinalConstant {
 
 
-
-    public static final  String  isFristOpen= "isFristOpen";//是否第一次打开app
+    public static final String isFristOpen = "isFristOpen";//是否第一次打开app
 
     //登录类型
     public static final int login_type_normal = 10001;//正常跳转
@@ -19,10 +18,20 @@ public class FinalConstant {
     public static final int login_type_to_meCenter = 10005;//跳转至个人中心
 
 
-        //引导页是否打开过
+    //引导页是否打开过
     public static final String FRISTGUIDE = "fristguide";
+    public static final String user_phone = "phone";
+    //普通用户 还是站长
+    public static final String user_status = "status";
+    //站长类型 站长 还是助理
+    public static final String user_status_type = "status_type";
+    public static final String user_id = "id";
+    public static final String user_sex = "sex";
+    public static final String user_head = "head";
+    public static final String user_nick = "nick";
 
-//用户信息
+
+    //用户信息
     public static final String id = "id";
     public static final String userName = "userName";
     public static final String email = "email";
@@ -38,7 +47,6 @@ public class FinalConstant {
     public static final String thirdPartyName = "thirdPartyName";
     public static final String is_login = "is_login";
     public static final String isThirdPartyLogin = "isThirdPartyLogin";
-
 
 
     //订单数量

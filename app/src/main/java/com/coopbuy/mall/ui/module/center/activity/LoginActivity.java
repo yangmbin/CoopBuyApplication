@@ -261,7 +261,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 IntentUtils.gotoActivity(this, RegisterActivity.class);
                 break;
             case R.id.tv_forget_password:
-                IntentUtils.gotoActivity(this, SetPassWordActivity.class, Constants.FORGET_TYPE);
+                IntentUtils.gotoActivity(this, ForgetPwdActivity.class, Constants.FORGET_TYPE);
                 break;
         }
     }
@@ -312,7 +312,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Override
     public void loginSuccess() {
         sharedPreferencesUtils.saveLoginStatus();
-
+        //这里需要处理跳转问题
+        this.finish();
     }
 
     @Override
@@ -336,7 +337,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThreadrep(RegisterEvent event) {
         if (event != null) {
-            this.finish();
+            if (event.getPhone() != null && mEditPhone != null)
+                mEditPhone.setText(event.getPhone());
         }
     }
 

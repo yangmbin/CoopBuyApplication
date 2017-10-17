@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.coopbuy.mall.api.Constant;
+import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 
 
 /**
@@ -67,6 +68,8 @@ public class SharedPreferencesUtils {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean(FinalConstant.is_login, false);
+        editor.putBoolean(FinalConstant.user_status_type, false);
+        editor.putString(FinalConstant.user_phone, "");
         editor.apply();
 
     }
@@ -94,5 +97,37 @@ public class SharedPreferencesUtils {
     public boolean getFristGuide() {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
         return sp.getBoolean(FinalConstant.FRISTGUIDE, false);
+    }
+
+    /**
+     *
+     */
+    public void saveUserData(UserCenterInfoResponse response) {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(FinalConstant.photo, response.getUserInfo().getPhone());
+        editor.putBoolean(FinalConstant.user_status, response.getUserInfo().isIsStationUser());
+        editor.putString(FinalConstant.user_status_type, response.getUserInfo().getStationUserRoleName());
+        editor.apply();
+    }
+
+    /**
+     * 得到用户电话号码
+     *
+     * @return
+     */
+    public String getUserPhone() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        return sp.getString(FinalConstant.photo, "");
+    }
+
+    /**
+     * 得到用户身份状态 是否是站长
+     *
+     * @return
+     */
+    public Boolean getUserState() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        return sp.getBoolean(FinalConstant.user_status, false);
     }
 }

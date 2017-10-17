@@ -20,7 +20,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
-        BaseApiClient.contextInit(this);
+        BaseApiClient.contextInit(getApplicationContext());
     }
 
     public static Context getAppContext() {

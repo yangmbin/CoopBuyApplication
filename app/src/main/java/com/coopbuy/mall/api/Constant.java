@@ -55,8 +55,6 @@ public class Constant {
     public static final String IMAGE_SERVER_URL = "http://oss.coopbuy.com";
 
 
-
-
     /**
      * 登录
      */
@@ -74,20 +72,27 @@ public class Constant {
      */
     public static final String SMSCODE = "api/services/app/verifyCode/SendRegisterCode";
     /**
+     * 重置密码短信接口
+     */
+    public static final String SMSCODE_UPDATE = "api/services/app/verifyCode/SendUpdatePasswordCode";
+    /**
+     * 更新密码   忘记密码  和修改密码一样的接口
+     */
+    public static final String UPDATEPASSWORD = "api/services/app/member/UpdatePassword";
+    /**
      * 注册
      */
     public static final String REGISTER = "api/services/app/member/Register";
-
-
-
-
+    /**
+     * 个人中心数据
+     */
+    public static final String USERCENTERINFO = "api/services/app/member/UserCenterInfo";
 
 
     /**
      * 保存cookie
      */
     public static final String COOKIE = "set_cookie";
-
 
 
     // ----------------------------------------新下行----------------------------------------

@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
@@ -18,6 +19,9 @@ import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
+import com.coopbuy.mall.ui.module.center.model.CenterModel;
+import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
+import com.coopbuy.mall.ui.module.center.view.Center_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -35,7 +39,7 @@ import butterknife.OnClick;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class CenterFragment extends ViewPagerBaseFragment {
+public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, CenterModel> implements Center_IView {
     @Bind(R.id.swipe_target)
     RecyclerView mRvTest;
     @Bind(R.id.circleImageView)
@@ -75,12 +79,12 @@ public class CenterFragment extends ViewPagerBaseFragment {
 
     @Override
     public void initModel() {
-
+        mModel = new CenterModel();
     }
 
     @Override
     public void initPresenter() {
-
+        mPresenter = new CenterPresenter(getActivity(), mModel, this);
     }
 
     @Override
@@ -180,5 +184,18 @@ public class CenterFragment extends ViewPagerBaseFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (sharedPreferencesUtils.getLoginStatus()) {
+            mPresenter.getUserInfoData();
+        } else {
+            IntentUtils.gotoActivity(getActivity(), LoginActivity.class);
+        }
+    }
 
+    @Override
+    public void getUserData(UserCenterInfoResponse data) {
+        sharedPreferencesUtils.saveUserData(data);
+    }
 }

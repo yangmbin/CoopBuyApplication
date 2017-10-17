@@ -8,4 +8,13 @@ import com.coopbuy.mall.eventbus.base.BaseEvent;
  * @content
  */
 public class RegisterEvent extends BaseEvent {
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
