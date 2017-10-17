@@ -6,17 +6,17 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class OrderAdapter_1 extends BaseDelegateAdapter<GetOrderListResponse.ItemsBean> {
+public class OrderAdapter_1 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> {
 
     private View.OnClickListener mListener;
 
-    public OrderAdapter_1(Context ctx, List<GetOrderListResponse.ItemsBean> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
+    public OrderAdapter_1(Context ctx, List<OrderListResponse.ItemsBeanX> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
         super(ctx, list, mLayoutHelper);
         this.mListener = mListener;
     }
@@ -27,9 +27,9 @@ public class OrderAdapter_1 extends BaseDelegateAdapter<GetOrderListResponse.Ite
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean item) {
-        /*holder.getTextView(R.id.tv_shop_name).setText(item.getShopName());
+    protected void bindData(BaseRecyclerHolder holder, int position, final OrderListResponse.ItemsBeanX item) {
+        holder.getTextView(R.id.tv_shop_name).setText(item.getShopName());
         holder.getTextView(R.id.tv_status).setText(item.getStatusName());
-        holder.itemView.setOnClickListener(mListener);*/
+        holder.itemView.setOnClickListener(mListener);
     }
 }

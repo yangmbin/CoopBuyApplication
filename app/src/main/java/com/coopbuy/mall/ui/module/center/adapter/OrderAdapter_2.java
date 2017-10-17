@@ -6,17 +6,19 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.utils.StringUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-public class OrderAdapter_2 extends BaseDelegateAdapter<GetOrderListResponse.ItemsBean.OrderItemBean> {
+public class OrderAdapter_2 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX.ItemsBean> {
 
     private View.OnClickListener mListener;
 
-    public OrderAdapter_2(Context ctx, List<GetOrderListResponse.ItemsBean.OrderItemBean> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
+    public OrderAdapter_2(Context ctx, List<OrderListResponse.ItemsBeanX.ItemsBean> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
         super(ctx, list, mLayoutHelper);
         this.mListener = mListener;
     }
@@ -27,11 +29,12 @@ public class OrderAdapter_2 extends BaseDelegateAdapter<GetOrderListResponse.Ite
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean.OrderItemBean item) {
-        /*((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Constant.IMAGE_SERVER_URL + item.getImageUrl());
-        holder.getTextView(R.id.tv_goods_name).setText(item.getGoodsName());
-        holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
+    protected void bindData(BaseRecyclerHolder holder, int position, final OrderListResponse.ItemsBeanX.ItemsBean item) {
+        ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(item.getProductImageUrl());
+        holder.getTextView(R.id.tv_goods_name).setText(item.getProductName());
         holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
-        holder.itemView.setOnClickListener(mListener);*/
+        holder.getTextView(R.id.propertyDesc).setText(item.getProperties() + " " + item.getSpecifications());
+        holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
+        holder.itemView.setOnClickListener(mListener);
     }
 }

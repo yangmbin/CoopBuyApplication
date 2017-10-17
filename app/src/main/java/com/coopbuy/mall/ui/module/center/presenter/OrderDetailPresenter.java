@@ -3,13 +3,11 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;
 import com.coopbuy.mall.ui.module.center.view.OrderDetail_IView;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -40,12 +38,10 @@ public class OrderDetailPresenter extends BasePresenter<OrderDetail_IView, Order
             public void onError(NetworkException error, Object userState) {
                 if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
                     mView.showNetOffLayout();
-                    ToastUtils.toastShort(R.string.no_network);
                 } else {
                     mView.showNetErrorLayout();
-                    ToastUtils.toastShort(R.string.connect_server_error);
                 }
             }
-        }, "getOrderDetail"));
+        }, "订单详情"));
     }
 }

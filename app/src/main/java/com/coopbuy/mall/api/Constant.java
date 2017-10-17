@@ -14,30 +14,9 @@ public class Constant {
      */
     public static final String GET_PAGE_DATA_BYID = "api/services/app/pageBuildUser/GetPageDataById";
     /**
-     * 订单详情
-     */
-    public static final String ORDER_DETAIL = "api/services/app/userOrder/Detail";
-    /**
      * 首页数据
      */
     public static final String HOMO_PAGE_DATA = "api/services/app/pageBuildUser/GetPageData";
-    public static final String WAIT_FOR_PAYMENT_LIST = "api/services/app/userOrder/WaitForPaymentList";
-    /**
-     * 待发货
-     */
-    public static final String WAIT_FOR_DISPATCH_LIST = "api/services/app/userOrder/WaitForDispatchList";
-    /**
-     * 待收货
-     */
-    public static final String WAIT_FOR_RECEIVE_LIST = "api/services/app/userOrder/WaitForReceiveList";
-    /**
-     * 待评价
-     */
-    public static final String WAIT_FOR_COMMENT_LIST = "api/services/app/userOrder/WaitForCommentList";
-    /**
-     * 订单列表
-     */
-    public static final String ORDER_ALL_LIST = "api/services/app/userOrder/AllList";
     /**
      * 商品分类
      */
@@ -102,5 +81,7 @@ public class Constant {
     public static final String GET_DESCRIPTION = "api/services/app/product/Description";
     public static final String GET_SKU_INFO_LIST = "api/services/app/product/SkuInfoList";
     public static final String FIND_SKU_INFO = "api/services/app/product/FindSkuInfo";
+    public static final String ORDER_LIST = "api/services/app/order/List";
+    public static final String ORDER_DETAIL = "api/services/app/userOrder/Detail";
 
 }

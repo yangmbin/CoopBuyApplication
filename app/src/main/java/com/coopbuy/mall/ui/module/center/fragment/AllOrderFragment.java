@@ -8,7 +8,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.module.center.activity.OrderDetailActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_1;
@@ -18,12 +18,10 @@ import com.coopbuy.mall.ui.module.center.model.OrderModel;
 import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ScreenUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -72,50 +70,26 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
 
         // 刷新监听
         mRefreshLayout.setOnRefreshListener(this);
-
-        // test
-        // 订单项类型1
-        List<GetOrderListResponse.ItemsBean> tmp_1 = new LinkedList<>();
-        tmp_1.add(new GetOrderListResponse.ItemsBean());
-        SingleLayoutHelper helper_1 = new SingleLayoutHelper();
-        mAdapters.add(new OrderAdapter_1(mContext, tmp_1, helper_1, null));
-
-        // 订单项类型2
-        LinearLayoutHelper helper_2 = new LinearLayoutHelper();
-        List<GetOrderListResponse.ItemsBean.OrderItemBean> tmp_2 = new ArrayList();
-        tmp_2.add(new GetOrderListResponse.ItemsBean.OrderItemBean());
-        mAdapters.add(new OrderAdapter_2(mContext, tmp_2, helper_2, null));
-
-        // 订单项类型3
-        List<GetOrderListResponse.ItemsBean> tmp_3 = new LinkedList<>();
-        tmp_3.add(new GetOrderListResponse.ItemsBean());
-        SingleLayoutHelper helper_3 = new SingleLayoutHelper();
-        mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, null));
-
-        mDelegateAdapter.setAdapters(mAdapters);
-        mDelegateAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onFragmentFirstVisible() {
-        super.onFragmentFirstVisible();
-//        mPresenter.getAllOrder(firstPage, OrderPresenter.LOAD_TYPE_1);
+        mPresenter.getOrderList(OrderPresenter.ORDER_STATUS_ALL, firstPage, OrderPresenter.LOAD_TYPE_1);
     }
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        mPresenter.getAllOrder(currentPage + 1, OrderPresenter.LOAD_TYPE_3);
+        mPresenter.getOrderList(OrderPresenter.ORDER_STATUS_ALL, currentPage + 1, OrderPresenter.LOAD_TYPE_3);
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        mPresenter.getAllOrder(firstPage, OrderPresenter.LOAD_TYPE_2);
+        mPresenter.getOrderList(OrderPresenter.ORDER_STATUS_ALL, firstPage, OrderPresenter.LOAD_TYPE_2);
     }
 
     @Override
     protected void networkRetry() {
-        super.networkRetry();
-        mPresenter.getAllOrder(firstPage, OrderPresenter.LOAD_TYPE_1);
+        mPresenter.getOrderList(OrderPresenter.ORDER_STATUS_ALL, firstPage, OrderPresenter.LOAD_TYPE_1);
     }
 
     @Override
@@ -136,33 +110,31 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
     }
 
     @Override
-    public void setOrderData(GetOrderListResponse orderListResponse, int loadType) {
+    public void setOrderListData(OrderListResponse orderListResponse, int loadType) {
         if (orderListResponse == null)
             return;
         if (loadType == OrderPresenter.LOAD_TYPE_1 || loadType == OrderPresenter.LOAD_TYPE_2) {
             mAdapters.clear();
             currentPage = 1;
         } else {
-            if (currentPage < orderListResponse.getPageCount())
+            if (orderListResponse.getItems().size() > 0)
                 currentPage++;
         }
         for (int i = 0; i < orderListResponse.getItems().size(); i++) {
             // 订单项类型1
-            List<GetOrderListResponse.ItemsBean> tmp_1 = new LinkedList<>();
+            List<OrderListResponse.ItemsBeanX> tmp_1 = new LinkedList<>();
             tmp_1.add(orderListResponse.getItems().get(i));
             SingleLayoutHelper helper_1 = new SingleLayoutHelper();
             mAdapters.add(new OrderAdapter_1(mContext, tmp_1, helper_1, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
 
             // 订单项类型2
             LinearLayoutHelper helper_2 = new LinearLayoutHelper();
-            helper_2.setDividerHeight(ScreenUtils.dp2px(mContext, 2));
-            mAdapters.add(new OrderAdapter_2(mContext, orderListResponse.getItems().get(i).getOrderItem(), helper_2, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
+            mAdapters.add(new OrderAdapter_2(mContext, orderListResponse.getItems().get(i).getItems(), helper_2, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
 
             // 订单项类型3
-            List<GetOrderListResponse.ItemsBean> tmp_3 = new LinkedList<>();
+            List<OrderListResponse.ItemsBeanX> tmp_3 = new LinkedList<>();
             tmp_3.add(orderListResponse.getItems().get(i));
             SingleLayoutHelper helper_3 = new SingleLayoutHelper();
-            helper_3.setMarginBottom(ScreenUtils.dip2px(mContext, 10));
             mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
         }
         mDelegateAdapter.setAdapters(mAdapters);

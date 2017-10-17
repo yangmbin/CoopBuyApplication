@@ -1,30 +1,27 @@
 package com.coopbuy.mall.api;
 
 import com.coopbuy.mall.api.reponse.CategoryResponse;
-import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
-import com.coopbuy.mall.api.request.DescriptionRequest;
+import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
-import com.coopbuy.mall.api.request.DescriptionRequest;
-import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
-import com.coopbuy.mall.api.request.ProductIdRequest;
-import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
+import com.coopbuy.mall.api.request.OrderListRequest;
+import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.google.gson.reflect.TypeToken;
@@ -45,71 +42,6 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
-     * 订单列表  所有的请求参数 和响应是一样的  只是请求的参数不一样
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderAllList(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.ORDER_ALL_LIST, request, callback, userState);
-    }
-
-    /**
-     * 代付款订单
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderListWaitForPayment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_PAYMENT_LIST, request, callback, userState);
-    }
-
-    /**
-     * 待发货
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderListWaitForDispatch(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_DISPATCH_LIST, request, callback, userState);
-    }
-
-    /**
-     * 待收货
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderListWaitForReceive(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_RECEIVE_LIST, request, callback, userState);
-    }
-
-    /**
-     * 待评价
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderListWaitForComment(GetOrderListRequest request, IAsyncResultCallback<GetOrderListResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<GetOrderListResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.WAIT_FOR_COMMENT_LIST, request, callback, userState);
-    }
-
-    /**
      * 首页banner图点击进入
      *
      * @param request
@@ -120,19 +52,6 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getPageDataById(HomePageDataByIdRequest request, IAsyncResultCallback<HomePageDataByIdResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<HomePageDataByIdResponse>() {
         }.getType(), Constant.SERVER_URL + Constant.GET_PAGE_DATA_BYID, request, callback, userState);
-    }
-
-    /**
-     * 订单详情
-     *
-     * @param request
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<OrderDetailResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.ORDER_DETAIL, request, callback, userState);
     }
 
     /**
@@ -308,5 +227,29 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState findSkuInfoData(FindSkuInfoRequest request, IAsyncResultCallback<SkuDetailResponse.SkuInfoBean> callback, Object userState) {
         return apiPostRequest(new TypeToken<SkuDetailResponse.SkuInfoBean>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_SKU_INFO, request, callback, userState);
+    }
+
+    /**
+     * 订单列表
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderList(OrderListRequest request, IAsyncResultCallback<OrderListResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderListResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ORDER_LIST, request, callback, userState);
+    }
+
+    /**
+     * 订单详情
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderDetailResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ORDER_DETAIL, request, callback, userState);
     }
 }

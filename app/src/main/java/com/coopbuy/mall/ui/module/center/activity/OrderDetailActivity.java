@@ -58,7 +58,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
 
     @Override
     protected void networkRetry() {
-        super.networkRetry();
         getOrderDetail();
     }
 
