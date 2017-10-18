@@ -202,6 +202,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     @Override
     public void onResume() {
         super.onResume();
+        if (sharedPreferencesUtils.getLoginStatus()) {
+            mPresenter.getUserInfoData();
+        }
     }
 
     @Override
@@ -227,7 +230,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         orderBarView.setWaitpayDox((int) data.getWaitPayOrderCount());//代付款
         orderBarView.setWaitsendDox((int) data.getWaitShipmentOrderCount());//待发货
     }
-
     private void setUserInfo() {
         if (userInfo.isIsStationUser()) {
             llStationStatus.setVisibility(View.VISIBLE);

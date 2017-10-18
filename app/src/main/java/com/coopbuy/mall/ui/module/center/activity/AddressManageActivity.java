@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.module.center.adapter.AddressMangeAdapter;
 import com.coopbuy.mall.ui.module.center.model.AddressManageModel;
 import com.coopbuy.mall.ui.module.center.presenter.AddressManagePresenter;
 import com.coopbuy.mall.ui.module.center.view.AddressManage_IView;
@@ -34,6 +36,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
     private DelegateAdapter delegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters;
     private List<AddressInfoResponse> mData;
+    private LinearLayoutHelper bannerSlider1Helper;
 
     @Override
     public int getLayoutId() {
@@ -48,6 +51,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
     @Override
     public void initPresenter() {
         mPresenter = new AddressManagePresenter(this, mModel, this);
+        mPresenter.getAddressData();
     }
 
     @Override
@@ -73,4 +77,12 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
         IntentUtils.gotoActivity(this, AddresssAddUserActivity.class);
     }
 
+    @Override
+    public void getAddressMangeData(List<AddressInfoResponse> data) {
+        delegateAdapter.clear();
+        mAdapters.clear();
+        bannerSlider1Helper = new LinearLayoutHelper();
+        mAdapters.add(new AddressMangeAdapter(this, data, bannerSlider1Helper));
+        delegateAdapter.setAdapters(mAdapters);
+    }
 }

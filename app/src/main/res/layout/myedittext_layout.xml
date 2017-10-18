@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/LinearLayout_contain_edit"
+       >
+
+        <EditText
+            android:id="@+id/edit_name"
+            style="@style/login_edit"
+            android:layout_toLeftOf="@+id/iv_name_clear"
+            android:hint="@string/lab_login_enter_password"
+            android:inputType="textPassword" />
+
+        <ImageView
+            android:id="@+id/iv_name_clear"
+            style="@style/image_clear"
+            android:layout_marginRight="@dimen/dimen_px34"
+            android:layout_toLeftOf="@+id/iv_visible" />
+
+        <CheckBox
+            android:id="@+id/iv_visible"
+            style="@style/image_visible"
+            android:background="@drawable/check_password_selector"
+            android:button="@null" />
+    </RelativeLayout>
+</LinearLayout>

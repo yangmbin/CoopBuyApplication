@@ -1,10 +1,14 @@
 package com.coopbuy.mall.api;
 
+import com.coopbuy.mall.api.reponse.AddressInfoResponse;
+import com.coopbuy.mall.api.reponse.AddressTownResponse;
+import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.GetProviencesReponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
@@ -12,12 +16,12 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
-import com.coopbuy.mall.api.request.DescriptionRequest;
+import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
-import com.coopbuy.mall.api.request.DescriptionRequest;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.GetChildProvincesRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
@@ -250,6 +254,55 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
+     * 得到地址信息
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getAddressData(IAsyncResultCallback<List<AddressInfoResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<AddressInfoResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ADDRESSLIST, callback, userState);
+    }
+
+    /**
+     * 添加地址
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADDADDRESSS, request, callback, userState);
+    }
+
+    /**
+     * 得到省市区地址数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getProvinces(IAsyncResultCallback<List<AreaDataResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<AreaDataResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.PROVINCES, callback, userState);
+    }
+
+    /**
+     * 获取村  社区数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getChildProvinces(GetChildProvincesRequest request, IAsyncResultCallback<List<AddressTownResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<AddressTownResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CHILD_PROVINCES, request, callback, userState);
+    }
+
+
+    /**
      * 获取分类数据
      *
      * @param callback
@@ -276,6 +329,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取商品描述
+     *
      * @param request
      * @param callback
      * @param userState
@@ -286,8 +340,10 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_DESCRIPTION, request, callback, userState);
     }
 
+
     /**
      * 获取商品Sku列表
+     *
      * @param request
      * @param callback
      * @param userState
@@ -300,6 +356,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取指定规格值或属性值的sku信息
+     *
      * @param request
      * @param callback
      * @param userState

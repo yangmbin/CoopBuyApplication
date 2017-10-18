@@ -160,6 +160,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() > 0) {
+
                     ivPhoneClear.setVisibility(View.VISIBLE);
                 } else {
                     ivPhoneClear.setVisibility(View.GONE);

@@ -12,19 +12,22 @@
     <LinearLayout
         style="@style/center_LinearLayout_help_90"
         android:layout_height="@dimen/dimen_px100"
-        android:layout_marginTop="@dimen/dimen_px1">
+        android:layout_marginTop="@dimen/dimen_px1"
+        android:background="@mipmap/icon_address_back2">
 
         <TextView
             style="@style/text_black_size_28"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="1.填写收货人详细" />
+            android:text="1.填写收货人详细"
+            android:textColor="@color/edit_text_back_white" />
 
         <TextView
             style="@style/text_black_size_28"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="2.填写收货人详细" />
+            android:text="2.填写收货人详细"
+            android:textColor="@color/edit_text_back_white" />
 
     </LinearLayout>
 
@@ -59,26 +62,14 @@
         android:text="贵州省 贵阳市 南明区"
         android:textSize="@dimen/dimen_px32" />
 
+
     <LinearLayout
-        style="@style/center_LinearLayout_help_90"
-        android:layout_height="@dimen/dimen_px100"
-        android:layout_marginTop="@dimen/dimen_px16">
-
-        <TextView
-            style="@style/text_black_size_28"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="1.填写收货人详细" />
-
-        <TextView
-            style="@style/text_black_size_28"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="2.填写收货人详细" />
-
-    </LinearLayout>
-
+        android:id="@+id/ll_street_community"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
+        android:id="@+id/rl_street_select"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px90"
         android:layout_marginLeft="@dimen/dimen_px30"
@@ -88,6 +79,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_street"
             style="@style/text_theme_black_size_28_41"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/dimen_px30"
@@ -95,6 +87,7 @@
             android:textSize="@dimen/dimen_px32" />
 
         <TextView
+            android:id="@+id/tv_street_select"
             style="@style/text_black_size_28_878f94"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -111,6 +104,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_community"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px90"
         android:layout_marginLeft="@dimen/dimen_px30"
@@ -120,6 +114,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_community"
             style="@style/text_theme_black_size_28_41"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/dimen_px30"
@@ -127,6 +122,7 @@
             android:textSize="@dimen/dimen_px32" />
 
         <TextView
+            android:id="@+id/tv_community_select"
             style="@style/text_black_size_28_878f94"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -141,8 +137,9 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dimen_px30" />
     </RelativeLayout>
-
+    </LinearLayout>
     <EditText
+        android:id="@+id/edt_address_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px180"
         android:layout_marginLeft="@dimen/dimen_px30"
