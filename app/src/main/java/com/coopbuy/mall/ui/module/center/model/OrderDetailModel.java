@@ -9,8 +9,6 @@ import com.guinong.net.request.IAsyncRequestState;
 
 public class OrderDetailModel implements BaseModel {
 
-
-
     /**
      * 获取订单详情
      * @param request

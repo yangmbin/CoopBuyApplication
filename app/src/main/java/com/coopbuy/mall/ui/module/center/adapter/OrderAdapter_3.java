@@ -6,17 +6,18 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
+import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.utils.StringUtils;
 
 import java.util.List;
 
-public class OrderAdapter_3 extends BaseDelegateAdapter<GetOrderListResponse.ItemsBean> {
+public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> {
 
     private View.OnClickListener mListener;
 
-    public OrderAdapter_3(Context ctx, List<GetOrderListResponse.ItemsBean> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
+    public OrderAdapter_3(Context ctx, List<OrderListResponse.ItemsBeanX> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
         super(ctx, list, mLayoutHelper);
         this.mListener = mListener;
     }
@@ -27,12 +28,38 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<GetOrderListResponse.Ite
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final GetOrderListResponse.ItemsBean item) {
-        /*int totalQuantity = 0;
-        for (int i = 0; i < item.getOrderItem().size(); i++)
-            totalQuantity += item.getOrderItem().get(i).getQuantity();
-        holder.getTextView(R.id.tv_desc).setText("共" + totalQuantity + "件商品 " + "合计：¥" + StringUtils.keepTwoDecimalPoint(item.getTotalAmount()) +
-                "(含运费：" + StringUtils.keepTwoDecimalPoint(item.getFreightAmount()) + ")");
-        holder.itemView.setOnClickListener(mListener);*/
+    protected void bindData(BaseRecyclerHolder holder, int position, final OrderListResponse.ItemsBeanX item) {
+        int totalQuantity = 0;
+        for (int i = 0; i < item.getItems().size(); i++)
+            totalQuantity += item.getItems().get(i).getQuantity();
+        holder.getTextView(R.id.desc_left).setText("共" + totalQuantity + "件商品 合计：");
+        holder.getTextView(R.id.desc_mid).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getTotalAmount()));
+        holder.getTextView(R.id.desc_right).setText(" (含运费¥" + StringUtils.keepTwoDecimalPoint(item.getFreightAmount()) + ")");
+        setBtnDisplay(holder, item);
+        holder.itemView.setOnClickListener(mListener);
+    }
+
+    private void setBtnDisplay(BaseRecyclerHolder holder, OrderListResponse.ItemsBeanX item) {
+        // 站长代付
+        if (item.isCanApplyLieuPay())
+            holder.getTextView(R.id.lieuPayBtn).setVisibility(View.VISIBLE);
+        // 取消订单
+        if (item.isCanCancel())
+            holder.getTextView(R.id.cancelOrderBtn).setVisibility(View.VISIBLE);
+        // 付款
+        if (item.isCanPayment())
+            holder.getTextView(R.id.payBtn).setVisibility(View.VISIBLE);
+        // 延长收货
+        if (item.isCanDelayedReceipt())
+            holder.getTextView(R.id.delayedReceiptBtn).setVisibility(View.VISIBLE);
+        // 查看物流
+        if (item.isCanFindExpressInfo())
+            holder.getTextView(R.id.findExpressInfoBtn).setVisibility(View.VISIBLE);
+        // 确认收货
+        if (item.isCanReceipt())
+            holder.getTextView(R.id.receiptBtn).setVisibility(View.VISIBLE);
+        // 删除订单
+        if (item.isCanDelete())
+            holder.getTextView(R.id.deleteBtn).setVisibility(View.VISIBLE);
     }
 }
