@@ -92,4 +92,5 @@
     <color name="phone_charge_divider">#F2F2F2 </color>
     <color name="grey_search">#ededed </color>
 
+    <color name="text_sub">#666666</color>
 </resources>

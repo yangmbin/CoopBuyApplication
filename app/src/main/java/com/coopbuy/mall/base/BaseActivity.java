@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.eventbus.EventBusInstance;
@@ -262,6 +263,19 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
                     state.cancel();
             }
             Log.e("network", "cancel network");
+        }
+    }
+
+    /**
+     * @param length
+     * @param view
+     * @param isFocus 是否有焦点
+     */
+    public void setFocus(int length, ImageView view, Boolean isFocus) {
+        if (length > 0 && isFocus) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
         }
     }
 }
