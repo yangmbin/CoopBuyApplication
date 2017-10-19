@@ -84,20 +84,35 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/dimen_px30"
-                android:background="@drawable/shape_gray_2_no_solid_bg"
-                android:paddingBottom="@dimen/dimen_px16"
-                android:paddingLeft="@dimen/dimen_px26"
-                android:paddingRight="@dimen/dimen_px26"
-                android:paddingTop="@dimen/dimen_px16"
-                android:text="申请售后"
-                android:textColor="@color/theme_text_lab_black"
-                android:textSize="@dimen/text_size_px28" />
+                android:layout_alignParentRight="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_px30"
+                    android:background="@drawable/shape_gray_2_no_solid_bg"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px26"
+                    android:paddingRight="@dimen/dimen_px26"
+                    android:paddingTop="@dimen/dimen_px16"
+                    android:text="申请售后"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:textSize="@dimen/text_size_px28" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_px30"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px26"
+                    android:paddingRight="@dimen/dimen_px26"
+                    android:paddingTop="@dimen/dimen_px16"
+                    android:text="退款成功"
+                    android:textColor="@color/theme_text_title_orange"
+                    android:textSize="@dimen/text_size_px28" />
+            </FrameLayout>
         </RelativeLayout>
     </LinearLayout>
 

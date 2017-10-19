@@ -2,8 +2,8 @@ package com.coopbuy.mall.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 
+import com.coopbuy.mall.ui.module.center.activity.AfterSalesActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
 
 import java.io.Serializable;
@@ -62,11 +62,11 @@ public class IntentUtils {
      * @param context
      * @param type
      */
-    public static void gotoMeOrderActivity(Context context, int type) {
-       /* if (type == Constants.ORDER_TYPE_AFTERSALES)
-            context.startActivity((new Intent(context, ApplyForCustomerServiceListActivity.class)));
-        else*/
-        context.startActivity((new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type)));
+    public static void gotoOrderActivity(Context context, int type) {
+        if (type == Constants.ORDER_TYPE_AFTERSALES)
+            context.startActivity((new Intent(context, AfterSalesActivity.class)));
+        else
+            context.startActivity((new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type)));
     }
 
     /**

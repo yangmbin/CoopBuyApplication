@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/theme_back_white">
+
+    <include layout="@layout/title_bar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:paddingTop="@dimen/dimen_px30">
+        <LinearLayout
+            android:id="@+id/selectExpressBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px100"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_px32"
+                android:textColor="@color/theme_text_lab_black"
+                android:text="物流公司名称"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/auxiliary_text_blue_gray"
+                    android:text="请选择"/>
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_px40"
+                    android:layout_height="@dimen/dimen_px40"
+                    android:src="@mipmap/icon_category_more_arrow"
+                    android:layout_marginLeft="@dimen/dimen_px18"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px100"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dimen_px16"
+            android:hint="物流单号"
+            android:textColorHint="@color/auxiliary_text_blue_gray"
+            android:textSize="@dimen/text_size_px32"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px180"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dimen_px16"
+            android:hint="备注(选填)"
+            android:textColorHint="@color/auxiliary_text_blue_gray"
+            android:textSize="@dimen/text_size_px32"
+            android:gravity="start"
+            android:padding="@dimen/dimen_px30"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_px100"
+            android:textSize="@dimen/text_size_px30"
+            android:textColor="@color/white"
+            android:paddingLeft="@dimen/dimen_px210"
+            android:paddingRight="@dimen/dimen_px210"
+            android:paddingTop="@dimen/dimen_px30"
+            android:paddingBottom="@dimen/dimen_px30"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/black_rectangle_btn_unpress_gray"
+            android:text="提交"/>
+    </LinearLayout>
+
+</LinearLayout>

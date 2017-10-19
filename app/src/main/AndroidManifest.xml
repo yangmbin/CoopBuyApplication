@@ -30,11 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.module.test.activity.TestActivity" />
         <activity android:name=".ui.module.center.activity.LoginActivity" />
-        <activity android:name=".ui.module.test.activity.SecondActivity" />
-        <activity android:name=".ui.module.test.activity.TabLayoutActivity" />
-        <activity android:name=".ui.module.test.activity.NiuTestActivity" />
         <activity android:name=".ui.module.home.activity.BannerDetailActivity" />
         <activity android:name=".ui.module.center.activity.OrderActivity" />
         <activity android:name=".ui.module.center.activity.OrderDetailActivity" />
@@ -66,7 +62,12 @@
         <activity android:name=".ui.splash.activity.GuideActivity" />
         <activity android:name=".ui.module.center.activity.StationRecommendActivity" />
         <activity android:name=".ui.module.home.activity.ShopDetailActivity" />
-        <activity android:name=".ui.module.center.activity.ForgetPwdActivity"></activity>
+        <activity android:name=".ui.module.center.activity.ForgetPwdActivity" />
+        <activity android:name=".ui.module.center.activity.AfterSalesActivity" />
+        <activity android:name=".ui.module.center.activity.ApplyRefundActivity" />
+        <activity android:name=".ui.module.center.activity.AfterSalesDetailActivity" />
+        <activity android:name=".ui.module.center.activity.BuyerSendGoodsActivity" />
+        <activity android:name=".ui.module.center.activity.ExpressInfoActivity"></activity>
     </application>
 
 </manifest>

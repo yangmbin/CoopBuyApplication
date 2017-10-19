@@ -8,12 +8,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.app.CoopBuyApplication;
-import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.utils.Constants;
-import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.tab.MainTabView;
 import com.guinong.net.utils.LogUtil;
 
@@ -169,7 +165,7 @@ public class OrderBarView extends RelativeLayout implements View.OnTouchListener
             // 判断是否登录
         /*    Boolean isLogin = SharedPreferencesUtils.getInstance(CoopBuyApplication.context).getLoginStatus();
             if (isLogin) {*/
-            IntentUtils.gotoMeOrderActivity(mContext, OnClickType);
+            IntentUtils.gotoOrderActivity(mContext, OnClickType);
             /*} else {
                 LoginActivity.newIntentMeActivity(mContext, FinalConstant.login_type_to_activity, OnClickType);
             }*/

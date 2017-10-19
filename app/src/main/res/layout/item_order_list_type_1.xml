@@ -30,12 +30,13 @@
                 android:layout_marginLeft="@dimen/dimen_px29"
                 android:textColor="@color/theme_text_lab_black"
                 android:text="放到"/>
-            
+
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="@dimen/dimen_px45"
                 android:layout_height="@dimen/dimen_px45"
-                android:src="@mipmap/icon_category_more_arrow"
-                android:layout_marginLeft="@dimen/dimen_px10"/>
+                android:layout_marginLeft="@dimen/dimen_px10"
+                android:src="@mipmap/icon_category_more_arrow" />
         </LinearLayout>
         <TextView
             android:id="@+id/tv_status"

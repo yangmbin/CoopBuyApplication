@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_px200"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="@dimen/dimen_px18"
+            android:layout_height="@dimen/dimen_px16"
+            android:src="@mipmap/icon_triangle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/bg_round_corner_lab_black">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_px28"
+                android:textColor="@color/white"
+                android:text="删除订单"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px1"
+                android:layout_marginLeft="@dimen/dimen_px5"
+                android:layout_marginRight="@dimen/dimen_px5"
+                android:background="@color/white"
+                android:alpha="0.3"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_px28"
+                android:textColor="@color/white"
+                android:text="申请售后"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

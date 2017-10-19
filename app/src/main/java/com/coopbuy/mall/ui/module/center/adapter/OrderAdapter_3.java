@@ -10,10 +10,11 @@ import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.widget.popwindow.OrderMoreBtnPopwindow;
 
 import java.util.List;
 
-public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> {
+public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> implements View.OnClickListener {
 
     private View.OnClickListener mListener;
 
@@ -61,5 +62,20 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         // 删除订单
         if (item.isCanDelete())
             holder.getTextView(R.id.deleteBtn).setVisibility(View.VISIBLE);
+
+
+        // 更多
+        holder.getTextView(R.id.moreBtn).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            // 更多
+            case R.id.moreBtn:
+                OrderMoreBtnPopwindow window = new OrderMoreBtnPopwindow(mContext, null);
+                window.showWindow(v);
+                break;
+        }
     }
 }

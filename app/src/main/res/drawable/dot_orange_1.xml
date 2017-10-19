@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android= "http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false" >
+    <solid android:color="@color/theme_text_title_orange"/>
+    <size android:width="@dimen/dimen_px30" android:height="@dimen/dimen_px30"/>
+    <stroke android:width="@dimen/dimen_px5" android:color="@color/orange_2"/>
+</shape>

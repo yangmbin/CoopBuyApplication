@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".ui.module.test.activity.TestActivity">
+    android:background="@color/white">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/banner_image"
@@ -28,9 +26,9 @@
             android:id="@+id/goods_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px400"
+            android:background="@drawable/bg_round_corner_imageholder"
             android:scaleType="centerCrop"
-            app:placeholderImage="@mipmap/default_img"
-            android:background="@drawable/bg_round_corner_imageholder"/>
+            app:placeholderImage="@mipmap/default_img" />
 
         <LinearLayout
             android:layout_width="match_parent"

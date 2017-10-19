@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <!--第一部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px96"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_shop_order_list"/>
+            <TextView
+                android:id="@+id/tv_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_px30"
+                android:layout_marginLeft="@dimen/dimen_px29"
+                android:textColor="@color/theme_text_lab_black"
+                android:text="放到"/>
+            
+            <ImageView
+                android:layout_width="@dimen/dimen_px45"
+                android:layout_height="@dimen/dimen_px45"
+                android:src="@mipmap/icon_category_more_arrow"
+                android:layout_marginLeft="@dimen/dimen_px10"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/gray_4"/>
+
+    <!--第二部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_px30">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_image"
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px200"
+            android:background="@drawable/bg_round_corner_imageholder"
+            android:scaleType="centerCrop"
+            app:placeholderImage="@mipmap/default_img" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_goods_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_px80"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                        android:textColor="@color/theme_text_lab_black"
+                        android:textSize="@dimen/text_size_px32" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥xxxx"
+                        android:textColor="@color/black_9"
+                        android:textSize="@dimen/text_size_px32"
+                        android:visibility="invisible"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_px20">
+
+                    <TextView
+                        android:id="@+id/propertyDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_px80"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="xxxx"
+                        android:textColor="@color/text_gray_8"
+                        android:textSize="@dimen/text_size_px28" />
+
+                    <TextView
+                        android:id="@+id/tv_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:text="x x"
+                        android:textColor="@color/text_gray_8"
+                        android:textSize="@dimen/text_size_px28" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退款金额：¥23.5"
+                android:textColor="@color/theme_text_title_orange"
+                android:textSize="@dimen/text_size_px24"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--第三部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px60"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="@dimen/dimen_px28"
+            android:layout_height="@dimen/dimen_px28"
+            android:src="@mipmap/icon_refund_huo"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px24"
+            android:textColor="@color/theme_text_lab_black"
+            android:layout_marginLeft="@dimen/dimen_px11"
+            android:text="退货退款 待买家发货 还剩6天16时24分"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:gravity="center_vertical|right">
+
+        <TextView
+            android:id="@+id/detailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/theme_text_title_orange"
+            android:textSize="@dimen/text_size_px28"
+            android:paddingTop="@dimen/dimen_px16"
+            android:paddingBottom="@dimen/dimen_px16"
+            android:paddingLeft="@dimen/dimen_px34"
+            android:paddingRight="@dimen/dimen_px34"
+            android:layout_marginRight="@dimen/dimen_px24"
+            android:background="@drawable/shape_orange_no_solid_bg"
+            android:text="查看详情"/>
+    </LinearLayout>
+
+
+</LinearLayout>
