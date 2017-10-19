@@ -67,12 +67,14 @@
                 android:textSize="@dimen/dimen_px30" />
 
             <TextView
+                android:id="@+id/tv_station_name"
                 android:layout_weight="1"
                 style="@style/text_black_size_28_878f94"
                 android:layout_marginLeft="@dimen/dimen_px33"
                 android:text="太空戏的服务站" />
 
             <TextView
+                android:id="@+id/tv_stationer_name"
                 style="@style/text_black_size_28_878f94"
                 android:layout_marginLeft="@dimen/dimen_px33"
                 android:text="李青青" />

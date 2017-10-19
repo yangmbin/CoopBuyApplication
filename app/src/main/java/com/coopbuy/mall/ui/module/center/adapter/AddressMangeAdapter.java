@@ -1,8 +1,10 @@
 package com.coopbuy.mall.ui.module.center.adapter;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import com.alibaba.android.vlayout.LayoutHelper;
+import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
@@ -21,11 +23,16 @@ public class AddressMangeAdapter extends BaseDelegateAdapter<AddressInfoResponse
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return 0;
+        return R.layout.item_address_manage;
     }
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, AddressInfoResponse item) {
-
+        holder.getTextView(R.id.tv_name).setText(item.getUserName());
+        holder.getTextView(R.id.tv_phone).setText(item.getTel());
+        holder.getTextView(R.id.tv_address).setText(item.getRegionName() + " " + item.getAddress());
+        holder.getTextView(R.id.tv_station_name).setText(item.getStationName());
+        holder.getTextView(R.id.tv_stationer_name).setText(item.getStationUserName());
     }
+
 }

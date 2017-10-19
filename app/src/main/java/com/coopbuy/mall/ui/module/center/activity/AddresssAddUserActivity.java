@@ -16,8 +16,12 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.AddressTownResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
+import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.eventbus.AddSuccessEvent;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.model.AddUserAddressModel;
 import com.coopbuy.mall.ui.module.center.presenter.AddUserAddressPresenter;
 import com.coopbuy.mall.ui.module.center.view.AddUserAddress_IView;
@@ -29,6 +33,9 @@ import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.cityview.AddressDialog;
 import com.coopbuy.mall.widget.cityview.AddressSelectorDialog;
 import com.coopbuy.mall.widget.cityview.AddressStreetSelectorDialog;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -114,6 +121,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
 
     @Override
     public void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
         setTitle("收货地址填写");
         tvSelect.setVisibility(View.VISIBLE);
         ivNameClear.setVisibility(View.GONE);
@@ -215,21 +223,21 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                     AddAddressRequest request = new AddAddressRequest();
                     request.setUserName(mUserName);
                     request.setTel(mUserPhone);
-                    request.setAddress(mUserCity);
+                    request.setAddressDetail(mUserCity);
                     request.setCityCode(mCode);
                     IntentUtils.gotoActivity(this, AddresssAddDetailActivity.class, request);
                 }
                 break;
             case R.id.rl_select_address:
+                if (!isNameEmpty) {//数据有点多 待用户填写完在打开弹窗
+                    ToastUtils.toastShort("请先填写收货人姓名");
+                    return;
+                }
+                if (!isPhoneEmpty) {
+                    ToastUtils.toastShort("请先填写手机号");
+                    return;
+                }
                 if (mprovinceCityDistrictBean != null) {
-                    if (!isNameEmpty) {//数据有点多 待用户填写完在打开弹窗
-                        ToastUtils.toastShort("请先填写收货人姓名");
-                        return;
-                    }
-                    if (!isPhoneEmpty) {
-                        ToastUtils.toastShort("请先填写手机号");
-                        return;
-                    }
                     setCitySelectorDialog();
                 } else {
                     mPresenter.getProvincesData();
@@ -251,7 +259,27 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
     }
 
     @Override
-    public void getChileProiencesData(List<AddressTownResponse> data) {
+    public void getChileProiencesData(List<AddressTownResponse> data,String type) {
+
+    }
+
+    @Override
+    public void getBindStationData(List<GetBindStationReponse> data) {
+
+    }
+
+    @Override
+    public void getStreetFail() {
+
+    }
+
+    @Override
+    public void getConmmunityFail() {
+
+    }
+
+    @Override
+    public void addSuccess() {
 
     }
 
@@ -306,5 +334,16 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                 }
                 break;
         }
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThreadrep(AddSuccessEvent event) {
+        if (event != null) {
+            this.finish();
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
     }
 }

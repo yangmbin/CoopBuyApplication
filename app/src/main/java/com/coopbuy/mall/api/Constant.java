@@ -82,6 +82,10 @@ public class Constant {
      * 得到省市区数据
      */
     public static final String CHILD_PROVINCES = "api/services/app/region/List";
+  /**
+     * 获取站点 站长 助理数据
+     */
+    public static final String FIND_LIST_BY_REGION = "api/services/app/station/FindListByRegion";
 
 
     /**

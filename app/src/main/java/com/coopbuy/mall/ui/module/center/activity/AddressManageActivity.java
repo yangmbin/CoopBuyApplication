@@ -9,11 +9,16 @@ import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.eventbus.AddSuccessEvent;
+import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.ui.module.center.adapter.AddressMangeAdapter;
 import com.coopbuy.mall.ui.module.center.model.AddressManageModel;
 import com.coopbuy.mall.ui.module.center.presenter.AddressManagePresenter;
 import com.coopbuy.mall.ui.module.center.view.AddressManage_IView;
 import com.coopbuy.mall.utils.IntentUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -56,6 +61,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @Override
     public void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
         setTitle("地址管理");
         initRecycleView();
     }
@@ -84,5 +90,18 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
         bannerSlider1Helper = new LinearLayoutHelper();
         mAdapters.add(new AddressMangeAdapter(this, data, bannerSlider1Helper));
         delegateAdapter.setAdapters(mAdapters);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThreadrep(AddSuccessEvent event) {
+        if (event != null) {
+            mPresenter.getAddressData();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
     }
 }

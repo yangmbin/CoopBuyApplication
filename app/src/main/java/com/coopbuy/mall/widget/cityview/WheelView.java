@@ -263,8 +263,9 @@ public class WheelView extends View {
         }
         for (ItemObject item : itemList) {
             if (item.isSelected()) {
-                if (onSelectListener != null)
+                if (onSelectListener != null) {
                     onSelectListener.endSelect(item.id, item.itemText);
+                }
                 break;
             }
         }

@@ -34,6 +34,8 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
      */
     protected String mCurrentZipCode = "";
     public OnAddressChangedListener listener;
+    //是否有站点绑定ž
+    private boolean mHasBindSite = false;
 
     public AddressStreetSelectorDialog(Context context, int themeResId) {
         super(context, themeResId);
@@ -45,10 +47,11 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
         super(context);
         this.mContext = context;
     }
+
     public AddressStreetSelectorDialog(Context context, List<AddressTownResponse> bean) {
         super(context);
         this.mContext = context;
-        streetList=bean;
+        streetList = bean;
     }
 
     @Override
@@ -82,7 +85,7 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
                 break;
             case R.id.btn_confirm:
                 if (null != listener) {
-                    listener.onConfirmed(mCurrentStreetName, mCurrentZipCode);
+                    listener.onConfirmed(mCurrentStreetName, mCurrentZipCode, mHasBindSite);
                 }
                 break;
             default:
@@ -96,8 +99,10 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
             @Override
             public void endSelect(int id, String text) {
                 String districtText = streetList.get(id).getName();
+                boolean ishasBind = streetList.get(id).isHasBindSite();
                 if (!mCurrentStreetName.equals(districtText)) {
                     mCurrentStreetName = districtText;
+                    mHasBindSite = ishasBind;
                 }
                 mCurrentZipCode = String.valueOf(streetList.get(id).getId());
             }
@@ -112,16 +117,12 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
     }
 
 
-
-
-
-
     private void setDefaultData() {
-        ArrayList<String> mDistrictData=new ArrayList<>();
-        for (int i = 0; i <streetList.size() ; i++) {
+        ArrayList<String> mDistrictData = new ArrayList<>();
+        for (int i = 0; i < streetList.size(); i++) {
             mDistrictData.add(streetList.get(i).getName());
         }
-
+        mHasBindSite = streetList.get(0).isHasBindSite();
         id_street.setData(mDistrictData);
         id_street.setDefault(0);
         mCurrentStreetName = mDistrictData.get(0);
@@ -132,7 +133,8 @@ public class AddressStreetSelectorDialog extends BaseDialog implements View.OnCl
     public interface OnAddressChangedListener {
         void onCanceled();
 
-        void onConfirmed(String currentStreetName, String currentZipCode);
+        void onConfirmed(String currentStreetName, String currentZipCode, boolean ishasBindSite);
+
     }
 
     public void setOnAddressChangedListener(OnAddressChangedListener listener) {

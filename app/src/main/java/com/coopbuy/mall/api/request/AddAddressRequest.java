@@ -21,10 +21,19 @@ public class AddAddressRequest implements Serializable {
     private String userName;
     private String address;
     private String tel;
-    private int regionId;
+    private long regionId;
     private int stationId;
     private int stationUserId;
     private long cityCode;
+    private String addressDetail;
+
+    public String getAddressDetail() {
+        return addressDetail;
+    }
+
+    public void setAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail;
+    }
 
     public long getCityCode() {
         return cityCode;
@@ -58,11 +67,11 @@ public class AddAddressRequest implements Serializable {
         this.tel = tel;
     }
 
-    public int getRegionId() {
+    public long getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(int regionId) {
+    public void setRegionId(long regionId) {
         this.regionId = regionId;
     }
 

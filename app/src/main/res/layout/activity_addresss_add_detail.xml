@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
@@ -31,153 +32,196 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_px29">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_name"
-            style="@style/text_theme_black_size_28_41"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dimen_px30"
-            android:text="李青青"
-            android:textSize="@dimen/dimen_px32" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_phone"
-            style="@style/text_theme_black_size_28_41"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dimen_px30"
-            android:text="18182417953"
-            android:textSize="@dimen/dimen_px32" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px29">
 
-    <TextView
-        android:id="@+id/tv_province"
-        style="@style/text_theme_black_size_28_41"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/dimen_px16"
-        android:paddingLeft="@dimen/dimen_px30"
-        android:text="贵州省 贵阳市 南明区"
-        android:textSize="@dimen/dimen_px32" />
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/dimen_px30"
+                    android:text="李青青"
+                    android:textSize="@dimen/dimen_px32" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/dimen_px30"
+                    android:text="18182417953"
+                    android:textSize="@dimen/dimen_px32" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_province"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:text="贵州省 贵阳市 南明区"
+                android:textSize="@dimen/dimen_px32" />
 
 
-    <LinearLayout
-        android:id="@+id/ll_street_community"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <RelativeLayout
-        android:id="@+id/rl_street_select"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px90"
-        android:layout_marginLeft="@dimen/dimen_px30"
-        android:layout_marginRight="@dimen/dimen_px30"
-        android:layout_marginTop="@dimen/dimen_px16"
-        android:background="@color/edit_text_back_white"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/ll_street_community"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_street"
-            style="@style/text_theme_black_size_28_41"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dimen_px30"
-            android:text="镇(街道)"
-            android:textSize="@dimen/dimen_px32" />
+                <RelativeLayout
+                    android:id="@+id/rl_street_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px90"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px16"
+                    android:background="@color/edit_text_back_white"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_street_select"
-            style="@style/text_black_size_28_878f94"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_px91"
-            android:gravity="center|right"
-            android:text="请选择"
-            android:textSize="@dimen/dimen_px32" />
+                    <TextView
+                        android:id="@+id/tv_street"
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="@dimen/dimen_px30"
+                        android:text="镇(街道)"
+                        android:textSize="@dimen/dimen_px32" />
 
-        <ImageView
-            style="@style/image_more"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_px30" />
-    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_street_select"
+                        style="@style/text_black_size_28_878f94"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dimen_px91"
+                        android:gravity="center|right"
+                        android:text="请选择"
+                        android:textSize="@dimen/dimen_px32" />
 
-    <RelativeLayout
-        android:id="@+id/rl_community"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px90"
-        android:layout_marginLeft="@dimen/dimen_px30"
-        android:layout_marginRight="@dimen/dimen_px30"
-        android:layout_marginTop="@dimen/dimen_px16"
-        android:background="@color/edit_text_back_white"
-        android:orientation="horizontal">
+                    <ImageView
+                        style="@style/image_more"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dimen_px30" />
+                </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_community"
-            style="@style/text_theme_black_size_28_41"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dimen_px30"
-            android:text="村(社区)"
-            android:textSize="@dimen/dimen_px32" />
+                <RelativeLayout
+                    android:id="@+id/rl_community"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px90"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px16"
+                    android:background="@color/edit_text_back_white"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_community_select"
-            style="@style/text_black_size_28_878f94"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_px91"
-            android:gravity="center|right"
-            android:text="请选择"
-            android:textSize="@dimen/dimen_px32" />
+                    <TextView
+                        android:id="@+id/tv_community"
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="@dimen/dimen_px30"
+                        android:text="村(社区)"
+                        android:textSize="@dimen/dimen_px32" />
 
-        <ImageView
-            style="@style/image_more"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_px30" />
-    </RelativeLayout>
-    </LinearLayout>
-    <EditText
-        android:id="@+id/edt_address_detail"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px180"
-        android:layout_marginLeft="@dimen/dimen_px30"
-        android:layout_marginRight="@dimen/dimen_px30"
-        android:layout_marginTop="@dimen/dimen_px30"
-        android:background="@color/edit_text_back_white"
-        android:gravity="top"
-        android:hint="请输入详细收货地址"
-        android:padding="@dimen/dimen_px20"
-        android:textSize="@dimen/dimen_px32" />
+                    <TextView
+                        android:id="@+id/tv_community_select"
+                        style="@style/text_black_size_28_878f94"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dimen_px91"
+                        android:gravity="center|right"
+                        android:text="请选择"
+                        android:textSize="@dimen/dimen_px32" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_px100">
+                    <ImageView
+                        style="@style/image_more"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dimen_px30" />
+                </RelativeLayout>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_last"
-            android:layout_width="@dimen/dimen_px300"
-            android:layout_height="@dimen/dimen_px88"
-            android:layout_marginLeft="@dimen/dimen_px26"
-            android:background="@drawable/black_rectangle_btn_unpress_white"
-            android:gravity="center"
-            android:text="上一步"
-            android:textColor="@color/theme_text_lab_black"
-            android:textSize="@dimen/dimen_px30" />
+            <EditText
+                android:id="@+id/edt_address_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px180"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px30"
+                android:background="@color/edit_text_back_white"
+                android:gravity="top"
+                android:hint="请输入详细收货地址"
+                android:padding="@dimen/dimen_px20"
+                android:textSize="@dimen/dimen_px32" />
 
-        <TextView
-            android:id="@+id/tv_complete"
-            android:layout_width="@dimen/dimen_px300"
-            android:layout_height="@dimen/dimen_px88"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/dimen_px30"
-            android:background="@drawable/black_rectangle_btn_unpress_gray"
-            android:gravity="center"
-            android:text="完成"
-            android:textColor="@color/edit_text_back_white"
-            android:textSize="@dimen/dimen_px30" />
 
-    </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/ll_ishasbind"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_add_address"
+                android:layout_below="@+id/title"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px22">
+
+                <!-- <android.support.v7.widget.RecyclerView
+                     android:id="@+id/rv_hasbind_detail"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/dimen_px1"
+                     android:background="@color/edit_text_back_white"
+                     android:overScrollMode="never"
+                     tools:listitem="@layout/item_rec_station_bind" />-->
+                <com.coopbuy.mall.widget.CustomerExpandableListView
+                    android:id="@+id/expandlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cacheColorHint="#00000000"
+                    android:childDivider="@color/edit_text_back_white"
+                    android:divider="@color/theme_back_white"
+                    android:dividerHeight="@dimen/dimen_px30" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_px50"
+                android:layout_marginTop="@dimen/dimen_px100">
+
+                <TextView
+                    android:id="@+id/tv_last"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_marginLeft="@dimen/dimen_px26"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:gravity="center"
+                    android:text="上一步"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:textSize="@dimen/dimen_px30" />
+
+                <TextView
+                    android:id="@+id/tv_complete"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:background="@drawable/black_rectangle_btn_unpress_gray"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="完成"
+                    android:textColor="@color/edit_text_back_white"
+                    android:textSize="@dimen/dimen_px30" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

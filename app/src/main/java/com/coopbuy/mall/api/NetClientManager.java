@@ -6,8 +6,7 @@ import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
-import com.coopbuy.mall.api.reponse.GetOrderListResponse;
-import com.coopbuy.mall.api.reponse.GetProviencesReponse;
+import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
@@ -16,15 +15,13 @@ import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
-import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
+import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
-import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.GetBindStationRequest;
 import com.coopbuy.mall.api.request.GetChildProvincesRequest;
-import com.coopbuy.mall.api.request.ProductIdRequest;
-import com.coopbuy.mall.api.request.GetOrderListRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
@@ -224,6 +221,16 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getChildProvinces(GetChildProvincesRequest request, IAsyncResultCallback<List<AddressTownResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<AddressTownResponse>>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.CHILD_PROVINCES, request, callback, userState);
+    } /**
+     * 获取站点数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getStationData(GetBindStationRequest request, IAsyncResultCallback<List<GetBindStationReponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<GetBindStationReponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_LIST_BY_REGION, request, callback, userState);
     }
 
 

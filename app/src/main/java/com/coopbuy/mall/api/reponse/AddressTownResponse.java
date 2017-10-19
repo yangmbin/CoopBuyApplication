@@ -14,7 +14,7 @@ public class AddressTownResponse implements Serializable {
      * shortName : null
      */
 
-    private int value;
+    private long value;
     private String text;
     private Object shortName;
     private boolean hasBindSite;
@@ -27,11 +27,11 @@ public class AddressTownResponse implements Serializable {
         this.hasBindSite = hasBindSite;
     }
 
-    public int getId() {
+    public long getId() {
         return value;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.value = id;
     }
 
