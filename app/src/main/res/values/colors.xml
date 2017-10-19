@@ -43,7 +43,9 @@
     <color name="blue">#5B99FF</color>
     <color name="orange">#ff8831</color>
     <color name="orange_1">#ffe8cb</color>
+    <color name="orange_2">#ffcbab</color>
     <color name="test_line_white">#ffffff</color>
+    <color name="transparent">#00000000</color>
 
 
     <!--    底层底色-->

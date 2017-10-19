@@ -35,7 +35,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     @Override
     public void initPresenter() {
         mPresenter = new OrderDetailPresenter(mContext, mModel, this);
-        getOrderDetail();
+//        getOrderDetail();
     }
 
     @Override

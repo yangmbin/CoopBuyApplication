@@ -163,7 +163,7 @@
         android:gravity="center_vertical|right">
 
         <TextView
-            android:id="@+id/receiptBtn"
+            android:id="@+id/detailBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/theme_text_title_orange"

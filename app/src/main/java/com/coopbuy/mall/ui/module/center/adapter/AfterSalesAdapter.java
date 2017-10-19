@@ -9,6 +9,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.module.center.activity.ApplyRefundActivity;
+import com.coopbuy.mall.ui.module.center.activity.ExpressInfoActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 
 import java.util.List;
@@ -30,6 +31,14 @@ public class AfterSalesAdapter extends BaseDelegateAdapter<Object> {
             @Override
             public void onClick(View v) {
                 IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class);
+            }
+        });
+
+        holder.getTextView(R.id.detailBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                IntentUtils.gotoActivity(mContext, AfterSalesDetailActivity.class);
+                IntentUtils.gotoActivity(mContext, ExpressInfoActivity.class);
             }
         });
     }

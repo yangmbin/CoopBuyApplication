@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="@dimen/dimen_px120"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <View
+                android:id="@+id/lineTop"
+                android:layout_width="@dimen/dimen_px2"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/auxiliary_text_blue_gray"/>
+            <View
+                android:id="@+id/dotGray"
+                android:layout_width="@dimen/dimen_px10"
+                android:layout_height="@dimen/dimen_px10"
+                android:background="@drawable/dot_gray"
+                android:visibility="visible"/>
+            <View
+                android:id="@+id/dotOrange"
+                android:layout_width="@dimen/dimen_px30"
+                android:layout_height="@dimen/dimen_px30"
+                android:background="@drawable/dot_orange_1"
+                android:visibility="gone"/>
+            <View
+                android:id="@+id/lineBottom"
+                android:layout_width="@dimen/dimen_px2"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/auxiliary_text_blue_gray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dimen_px30"
+                android:paddingBottom="@dimen/dimen_px30">
+                <TextView
+                    android:id="@+id/detailInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px30"
+                    android:textColor="@color/auxiliary_text_blue_gray"
+                    android:text="[嘉兴市]嘉兴南湖集散中心 已发出"/>
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px24"
+                    android:textColor="@color/auxiliary_text_blue_gray"
+                    android:layout_marginTop="@dimen/dimen_px15"
+                    android:text="2017-06-18 23:31:00"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/lineDivider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px1"
+                android:background="@color/gray_3"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

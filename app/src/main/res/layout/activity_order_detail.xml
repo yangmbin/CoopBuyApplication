@@ -154,10 +154,14 @@
                         android:layout_marginLeft="@dimen/dimen_px10"/>
                 </LinearLayout>
                 <!--商品列表-->
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_goods_list"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_goods_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
                 <!--支付信息-->
                 <LinearLayout

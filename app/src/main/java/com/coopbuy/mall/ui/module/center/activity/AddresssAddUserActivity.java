@@ -1,7 +1,6 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
@@ -28,12 +27,10 @@ import com.coopbuy.mall.utils.PermissionUtil;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.cityview.AddressDialog;
 import com.coopbuy.mall.widget.cityview.AddressSelectorDialog;
-import com.coopbuy.mall.widget.cityview.AddressStreetSelectorDialog;
 
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, View.OnFocusChangeListener {
@@ -306,5 +303,15 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                 }
                 break;
         }
+    }
+
+    @Override
+    public void getStreetFail() {
+
+    }
+
+    @Override
+    public void getConmmunityFail() {
+
     }
 }

@@ -101,7 +101,7 @@
         <item name="android:layout_width">@dimen/dimen_px140</item>
         <item name="android:textColor">@color/theme_text_lab_black</item>
         <item name="android:textSize">@dimen/dimen_px28</item>
-        <item name="android:background">@drawable/bg_round_corner_gray_20</item>
+        <item name="android:background">@drawable/bg_round_corner_gray_3</item>
     </style>
     <!--  黑色文字28px-->
     <style name="text_black_size_28">
