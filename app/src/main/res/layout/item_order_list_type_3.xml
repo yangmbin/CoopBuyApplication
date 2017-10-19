@@ -47,13 +47,15 @@
         android:gravity="center_vertical|right">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/moreBtn"
+            android:layout_width="@dimen/dimen_px80"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/dimen_px60"
             android:textSize="@dimen/text_size_px28"
             android:textColor="@color/auxiliary_text_blue_gray"
+            android:gravity="center"
             android:text="更多"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <TextView
             android:id="@+id/lieuPayBtn"

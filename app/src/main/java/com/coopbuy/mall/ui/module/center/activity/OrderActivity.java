@@ -10,6 +10,8 @@ import com.coopbuy.mall.ui.module.center.fragment.AllOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitPayOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitReceiveOrderFragment;
 import com.coopbuy.mall.ui.module.center.fragment.WaitSendOrderFragment;
+import com.coopbuy.mall.utils.Constants;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class OrderActivity extends BaseActivity {
     public void initView() {
         initFragment();
         initAdapter();
+        initFirstTab();
     }
 
     private void initFragment() {
@@ -58,5 +61,10 @@ public class OrderActivity extends BaseActivity {
         mAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), mFragments);
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setViewPager(mViewPager, mTitles, this, mFragments);
+    }
+
+    private void initFirstTab() {
+        int orderType = getIntent().getIntExtra(IntentUtils.ORDER_TYPE, Constants.ORDER_TYPE_ALL);
+        mTabLayout.setCurrentTab(orderType);
     }
 }
