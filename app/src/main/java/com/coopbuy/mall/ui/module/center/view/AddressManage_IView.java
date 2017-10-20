@@ -15,4 +15,5 @@ public interface AddressManage_IView extends BaseView{
     void getAddressMangeData(List<AddressInfoResponse> data,String type);
 
     void setDefaultSuccess();
+
 }

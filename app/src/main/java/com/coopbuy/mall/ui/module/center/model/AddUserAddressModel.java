@@ -37,4 +37,7 @@ public class AddUserAddressModel implements BaseModel {
     public IAsyncRequestState addAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
         return client.addAddress(request, callback, userState);
     }
+    public IAsyncRequestState updateAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.updateAddress(request, callback, userState);
+    }
 }

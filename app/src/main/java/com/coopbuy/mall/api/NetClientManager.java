@@ -198,6 +198,16 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState addAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADDADDRESSS, request, callback, userState);
+    }    /**
+     * 修改地址
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState updateAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.UPDATE, request, callback, userState);
     }
 
     /**
@@ -210,6 +220,18 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState setDefault(SetDefaultOrDeleteOrFindAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.SETDEFAULT, request, callback, userState);
+    }
+
+    /**
+     * 删除地址
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState deleteAddress(SetDefaultOrDeleteOrFindAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVE, request, callback, userState);
     }
 
     /**

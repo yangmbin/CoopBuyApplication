@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_address"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/ll_address"
     android:background="@color/theme_back_white"
     android:orientation="vertical">
 
@@ -14,16 +14,14 @@
             android:id="@+id/tv_name"
             style="@style/text_theme_black_size_26_41495c"
             android:text="李珊珊"
-            android:textSize="@dimen/dimen_px36"
-            android:textStyle="bold" />
+            android:textSize="@dimen/dimen_px36" />
 
         <TextView
             android:id="@+id/tv_phone"
             style="@style/text_theme_black_size_26_41495c"
             android:layout_marginLeft="@dimen/dimen_px33"
             android:text="15784251585"
-            android:textSize="@dimen/dimen_px36"
-            android:textStyle="bold" />
+            android:textSize="@dimen/dimen_px36" />
     </LinearLayout>
 
     <RelativeLayout
@@ -66,8 +64,7 @@
                 style="@style/text_theme_black_size_26_41495c"
                 android:layout_marginLeft="@dimen/dimen_px18"
                 android:text="服务站"
-                android:textSize="@dimen/dimen_px30"
-                android:textStyle="bold" />
+                android:textSize="@dimen/dimen_px30" />
 
             <TextView
                 android:id="@+id/tv_station_name"

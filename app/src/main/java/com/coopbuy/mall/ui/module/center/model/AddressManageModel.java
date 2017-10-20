@@ -19,7 +19,12 @@ public class AddressManageModel implements BaseModel {
     public IAsyncRequestState getAddressData(IAsyncResultCallback<List<AddressInfoResponse>> callback, Object userState) {
         return client.getAddressData(callback, userState);
     }
+
     public IAsyncRequestState setDefault(SetDefaultOrDeleteOrFindAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
-        return client.setDefault(request,callback, userState);
+        return client.setDefault(request, callback, userState);
+    }
+
+    public IAsyncRequestState deleteAddress(SetDefaultOrDeleteOrFindAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.deleteAddress(request, callback, userState);
     }
 }

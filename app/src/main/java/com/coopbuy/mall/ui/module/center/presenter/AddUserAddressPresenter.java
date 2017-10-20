@@ -123,4 +123,26 @@ public class AddUserAddressPresenter extends BasePresenter<AddUserAddress_IView,
             }
         }, "add"));
     }
+
+    /**
+     * 修改地址
+     *
+     * @param request
+     */
+    public void updateAddress(AddAddressRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.updateAddress(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                mView.addSuccess();
+                ToastUtils.toastShort("修改成功");
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "add"));
+    }
 }

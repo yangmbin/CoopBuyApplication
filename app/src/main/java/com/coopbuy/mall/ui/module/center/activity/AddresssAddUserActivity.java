@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.api.reponse.AddressTownResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
@@ -35,11 +36,17 @@ import com.coopbuy.mall.widget.cityview.AddressSelectorDialog;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
+/**
+ * @author csn
+ * @time 2017/10/20 0020 13:59
+ * @content 修改 添加是一个
+ */
 public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, View.OnFocusChangeListener {
 
     @Bind(R.id.edt_name)
@@ -69,7 +76,14 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
      */
     private AddressSelectorDialog addressSelectorDialog;
     private List<AreaDataResponse> mprovinceCityDistrictBean;
+    //修改地址相关数据
+    private String type;
+    private AddressInfoResponse bean;
+    private String oldAddress;
+    //修改地址时 地址是否更改过 如果更改过 在下一级修改地址是村需要重新填写  如果没有需要设置对应的数据  这里感觉有点难度  需要知道对应的地址编码 下一级才可以改变
+    //也就是需要根据现在的地址查找对应的数据城市编码
 
+    private boolean isRevise = false;
 
     @Override
     public int getLayoutId() {
@@ -119,8 +133,27 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
     @Override
     public void initView() {
         EventBusInstance.getInstance().registerEvent(this);
-        setTitle("收货地址填写");
         tvSelect.setVisibility(View.VISIBLE);
+        if (null != getIntent()) {
+            type = getIntent().getStringExtra(IntentUtils.PARAM1);
+            if (type.equals("edit")) {
+                bean = (AddressInfoResponse) getIntent().getSerializableExtra(IntentUtils.DATA);
+                if (null != bean) {
+                    edtName.setText(bean.getUserName());
+                    edtPhone.setText(bean.getTel());
+                    String[] city = bean.getRegionName().split(",");
+                    oldAddress = city[0] + city[1] + city[2];
+                    mCity.setText(oldAddress);
+                    tvSelect.setVisibility(View.GONE);
+                    btn_next.setClickable(true);
+                    btn_next.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+                    isNameEmpty = true;
+                    isPhoneEmpty = true;
+                    mUserCity = oldAddress;
+                }
+            }
+        }
+        setTitle("收货地址填写");
         ivNameClear.setVisibility(View.GONE);
         ivPhoneClear.setVisibility(View.GONE);
         edtName.setOnFocusChangeListener(this);
@@ -222,7 +255,23 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                     request.setTel(mUserPhone);
                     request.setAddressDetail(mUserCity);
                     request.setCityCode(mCode);
-                    IntentUtils.gotoActivity(this, AddresssAddDetailActivity.class, request);
+                    if (type.equals("edit")) {//处于编辑地址是  下面的参数只有添加修改地址的id  只有修改地址用到
+                        mUserCity.trim();
+                        if (oldAddress.equals(mUserCity)) {//修改时省市区是否修改过 如果没有修改过 下一级数据保持不变
+                            isRevise = false;
+                            request.setCityCode(Long.valueOf(bean.getRegionIdPath().split(",")[2]));//没有修改使用服务器提供的 直接拿到区 县的代码code
+                        } else {
+                            isRevise = true;
+                            request.setRevise(isRevise);
+                            request.setCityCode(mCode);//修改了 使用最新的
+                        }
+                        request.setRegionName(bean.getRegionName());
+                        request.setRegionIdPath(bean.getRegionIdPath());
+                        request.setAddressId(bean.getAddressId());
+                        request.setHasBindStation(bean.isHasBindStation());
+                        request.setAddressDetailOld(bean.getAddress());//设置服务器的地址详情
+                    }
+                    IntentUtils.gotoActivity(this, AddresssAddDetailActivity.class, request, type);
                 }
                 break;
             case R.id.rl_select_address:
@@ -249,6 +298,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
         }
     }
 
+
     @Override
     public void getProviencesReponse(List<AreaDataResponse> data) {
         mprovinceCityDistrictBean = data;
@@ -256,7 +306,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
     }
 
     @Override
-    public void getChileProiencesData(List<AddressTownResponse> data,String type) {
+    public void getChileProiencesData(List<AddressTownResponse> data, String type) {
 
     }
 
@@ -332,12 +382,14 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                 break;
         }
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThreadrep(AddSuccessEvent event) {
         if (event != null) {
             this.finish();
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

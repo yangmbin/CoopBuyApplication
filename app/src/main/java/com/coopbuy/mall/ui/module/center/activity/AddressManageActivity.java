@@ -17,8 +17,10 @@ import com.coopbuy.mall.ui.module.center.model.AddressManageModel;
 import com.coopbuy.mall.ui.module.center.port.AddressPort;
 import com.coopbuy.mall.ui.module.center.presenter.AddressManagePresenter;
 import com.coopbuy.mall.ui.module.center.view.AddressManage_IView;
+import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.widget.dialog.CommonDialog;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -84,7 +86,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @OnClick(R.id.tv_add_address)
     public void onViewClicked() {
-        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class);
+        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class,"add");
     }
 
     @Override
@@ -128,12 +130,19 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @Override
     public void editAddress(AddressInfoResponse bean) {
-
+            IntentUtils.gotoActivity(this,AddresssAddUserActivity.class,bean,"edit");
     }
 
     @Override
-    public void delete(AddressInfoResponse bean) {
-
+    public void delete(final AddressInfoResponse bean) {
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                SetDefaultOrDeleteOrFindAddressRequest request = new SetDefaultOrDeleteOrFindAddressRequest();
+                request.setAddressId(bean.getAddressId());
+                mPresenter.deleteAddress(request);
+            }
+        }, "确认删除改地址！", "取消", "确定");
     }
 
     /**

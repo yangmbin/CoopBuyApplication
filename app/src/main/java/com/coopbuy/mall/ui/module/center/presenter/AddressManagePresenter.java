@@ -52,7 +52,7 @@ public class AddressManagePresenter extends BasePresenter<AddressManage_IView, A
     }
 
     /**
-     * 得到地址信息
+     * 地址默认地址信息
      */
     public void setDefault(SetDefaultOrDeleteOrFindAddressRequest request) {
         mView.appendNetCall(mModel.setDefault(request, new IAsyncEmptyCallback() {
@@ -69,25 +69,23 @@ public class AddressManagePresenter extends BasePresenter<AddressManage_IView, A
     }
 
     /**
-     * 得到地址信息
+     * 删除地址
+     *
+     * @param request
      */
-    public void deleteAddress() {
-        mView.showFillLoading();
-        mView.appendNetCall(mModel.getAddressData(new IAsyncResultCallback<List<AddressInfoResponse>>() {
+    public void deleteAddress(SetDefaultOrDeleteOrFindAddressRequest request) {
+        mView.appendNetCall(mModel.deleteAddress(request, new IAsyncEmptyCallback() {
             @Override
-            public void onComplete(List<AddressInfoResponse> addressInfoResponses, Object userState) {
-                if (null != addressInfoResponses && !addressInfoResponses.isEmpty()) {
-                    mView.stopAll();
-                } else {
-                    mView.showNoDataLayout();
-                }
+            public void onComplete(Object userState) {
+                mView.setDefaultSuccess();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
-
-                mView.stopAll();
+                ToastUtils.toastShort("删除失败。请稍后重试");
             }
-        }, "addressinfo"));
+        }, "setDefault"));
     }
+
+
 }

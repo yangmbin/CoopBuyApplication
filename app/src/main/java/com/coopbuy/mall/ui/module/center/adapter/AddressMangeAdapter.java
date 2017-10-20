@@ -88,10 +88,10 @@ public class AddressMangeAdapter extends BaseDelegateAdapter<AddressInfoResponse
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.tv_edit:
-
+                    port.editAddress(bean);
                     break;
                 case R.id.tv_delete:
-
+                    port.delete(bean);
                     break;
                 case R.id.ll_address:
                     port.setReceivedAddress(bean);

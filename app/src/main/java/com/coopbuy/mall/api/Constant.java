@@ -27,7 +27,8 @@ public class Constant {
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
-    public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
+   // public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
+    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
     /**
      * 图片地址
      */
@@ -73,11 +74,18 @@ public class Constant {
     /**
      * 添加地址
      */
-    public static final String ADDADDRESSS = "api/services/app/shippingAddress/Add";
+    public static final String ADDADDRESSS = "api/services/app/shippingAddress/Add"; /**
+     * 修改地址
+     */
+    public static final String UPDATE = "api/services/app/shippingAddress/Update";
     /**
      * 设置默认地址
      */
     public static final String SETDEFAULT = "api/services/app/shippingAddress/SetDefault";
+    /**
+     * 删除地址
+     */
+    public static final String REMOVE = "api/services/app/shippingAddress/Remove";
     /**
      * 得到省市区数据
      */
@@ -86,7 +94,7 @@ public class Constant {
      * 得到省市区数据
      */
     public static final String CHILD_PROVINCES = "api/services/app/region/List";
-  /**
+    /**
      * 获取站点 站长 助理数据
      */
     public static final String FIND_LIST_BY_REGION = "api/services/app/station/FindListByRegion";

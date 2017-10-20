@@ -82,6 +82,10 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
     private String mStreetStr;
     private String mAddressDetail;
     private boolean isAddressEmpty = false;
+    //是否修改过省市区
+    private boolean isRevise;
+    private String type; //add  edit  添加和修改
+    private String[] streetCommUnityCodes;
 
     @Override
     public int getLayoutId() {
@@ -96,26 +100,63 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
     @Override
     public void initPresenter() {
         mPresenter = new AddUserAddressPresenter(this, mModel, this);
-        gcprequest = new GetChildProvincesRequest();
-        gcprequest.setParentId(request.getCityCode());
-        mPresenter.getChildProvincesData(gcprequest, "street");
+        getProiencesData(request.getCityCode(), "street");
+        setReviceAddress();
+    }
+
+    private void setReviceAddress() {
+        if (type.equals("edit")) { //这是修改地址 进入的
+            edtAddressDetail.setText(request.getAddressDetailOld());//街道 和村可能已经改变 但是详情可以不变
+            if (isRevise) {//地址修改过  详情地址可以不变 但是对应地址需要修改  这里需要更一般添加处理 拿上一级code来进行处理
+                isAddressEmpty = false;
+                return;
+            } else {//地址没有修改过
+                isAddressEmpty = true;
+                tvComplete.setClickable(true);
+                tvComplete.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+                streetCommUnityCodes = request.getRegionIdPath().split(",");
+                String[] streetCommUnity = request.getRegionName().split(",");
+                if (streetCommUnityCodes.length == 5) {//这里需要根据服务器的地址去拉起 对应街道  村庄的数据
+                    tvStreet.setText(streetCommUnity[3]);
+                    tvCommunity.setText(streetCommUnity[4]);
+                    setViewViesible(tvStreetSelect, false);
+                    setViewViesible(tvCommunitySelect, false);
+                    mStreetStr = streetCommUnity[3];
+                    //请求街道地址
+                    getProiencesData(Long.valueOf(streetCommUnityCodes[2]), "street");
+                }
+                if (streetCommUnityCodes.length == 4) {
+                    mStreetStr = streetCommUnity[3];
+                    tvStreet.setText(streetCommUnity[3]);
+                    setViewViesible(tvStreetSelect, false);
+                    getProiencesData(Long.valueOf(streetCommUnityCodes[2]), "street");
+                    rlCommunity.setVisibility(View.GONE);//只有4级 村庄不显示了
+                }
+                if (streetCommUnityCodes.length == 3) {
+                    llStreetCommunity.setVisibility(View.GONE);//只有3级
+                }
+            }
+        }
+        setInputListener();
     }
 
     @Override
     public void initView() {
         mSreetDataBean = new ArrayList<>();
         mCommUnityBean = new ArrayList<>();
-        llIsHasbind.setVisibility(View.GONE);
-        tvStreetSelect.setVisibility(View.VISIBLE);
-        tvCommunitySelect.setVisibility(View.VISIBLE);
+        setViewViesible(llIsHasbind, false);
+        setViewViesible(tvStreetSelect, true);
+        setViewViesible(tvCommunitySelect, true);
         if (null != getIntent()) {
+            type = getIntent().getStringExtra(IntentUtils.PARAM1);
             request = (AddAddressRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
             tvName.setText(request.getUserName());
             tvPhone.setText(request.getTel());
             tvProvince.setText(request.getAddressDetail());
+            isRevise = request.isRevise();
         }
         setTitle("收货地址填写");
-        setInputListener();
+
     }
 
     private void setInputListener() {
@@ -144,7 +185,7 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
      * 设置btn的点击状态
      */
     private void setBtnClickState() {
-        if (isAddressEmpty) {
+        if (isAddressEmpty && !tvStreet.getText().toString().trim().equals("镇(街道)") && !tvCommunity.getText().toString().trim().equals("村(社区)")) {
             tvComplete.setClickable(true);
             tvComplete.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
         } else {
@@ -192,7 +233,11 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
             case R.id.tv_complete:
                 if (checkAddress()) {
                     request.setAddress(mAddressDetail);
-                    mPresenter.addReciverAddress(request);
+                    if (type.equals("edit")) {
+                        mPresenter.updateAddress(request);
+                    } else {
+                        mPresenter.addReciverAddress(request);
+                    }
                 }
                 break;
             case R.id.rl_street_select:
@@ -218,6 +263,14 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
 
     private boolean checkAddress() {
         mAddressDetail = edtAddressDetail.getText().toString().trim();
+        if (tvStreet.getText().toString().trim().equals("镇(街道)")) {
+            ToastUtils.toastShort("镇(街道) 还没有填写");
+            return false;
+        }
+        if (tvCommunity.getText().toString().trim().equals("村(社区)")) {
+            ToastUtils.toastShort("村(社区) 还没有填写");
+            return false;
+        }
         if (TextUtils.isEmpty(mAddressDetail)) {
             ToastUtils.toastShort("详情收货地址还没有填写");
             return false;
@@ -247,28 +300,21 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
                     mStreetStr = currentStreetName;
                     tvStreet.setText(currentStreetName);
                     mStreetCode = Long.valueOf(currentZipCode);
-                    tvStreetSelect.setVisibility(View.GONE);
-                    gcprequest = new GetChildProvincesRequest();
-                    gcprequest.setParentId(mStreetCode);
-                    mPresenter.getChildProvincesData(gcprequest, "commUnity");//重新请求 村 居委会 需要重新设置
+                    setViewViesible(tvStreetSelect, false);
+                    //重新请求 村 居委会 需要重新设置
+                    getProiencesData(mStreetCode, "commUnity");
                     tvCommunity.setText("村(社区)");
-                    tvCommunitySelect.setVisibility(View.VISIBLE);
-                    llIsHasbind.setVisibility(View.GONE);
+                    setViewViesible(llIsHasbind, false);
+                    setViewViesible(tvCommunitySelect, true);
                     mCommUnityCode = 0;
                     //设置添加地址
                     request.setRegionId(mStreetCode);
                 } else {
                     mCommUnityCode = Long.valueOf(currentZipCode);
                     tvCommunity.setText(currentStreetName);
-                    tvCommunitySelect.setVisibility(View.GONE);
-                    if (ishasBindSite) { //  需要请求绑定的站点
-                        GetBindStationRequest request = new GetBindStationRequest();
-                        request.setRegionId(mCommUnityCode);
-                        mPresenter.getBindStationData(request);
-                        llIsHasbind.setVisibility(View.VISIBLE);
-                    } else {
-                        llIsHasbind.setVisibility(View.GONE);
-                    }
+                    setViewViesible(tvCommunitySelect, false);
+                    //  需要请求绑定的站点
+                    getBindData(mCommUnityCode, ishasBindSite);
                     //设置添加地址 如果到街道选择
                     request.setRegionId(mCommUnityCode);
                 }
@@ -282,12 +328,43 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
 
     }
 
+    private void getProiencesData(long code, String type) {
+        gcprequest = new GetChildProvincesRequest();
+        gcprequest.setParentId(code);
+        mPresenter.getChildProvincesData(gcprequest, type);
+    }
+
+    private void getBindData(long code, boolean ishasBindSite) {
+        if (ishasBindSite) { //  需要请求绑定的站点
+            GetBindStationRequest request = new GetBindStationRequest();
+            request.setRegionId(code);
+            mPresenter.getBindStationData(request);
+            setViewViesible(llIsHasbind, true);
+        } else {
+            setViewViesible(llIsHasbind, false);
+        }
+    }
+
     @Override
     public void getChileProiencesData(List<AddressTownResponse> data, String type) {
         if (type.equals("street")) {
             mSreetDataBean.addAll(data);
+            if (type.equals("edit")) {//编辑修改地址状态
+                if (!isRevise) {//没有修改过地址
+                    if (streetCommUnityCodes.length == 5) {//有村庄 才请求数据
+                        getProiencesData(Long.valueOf(streetCommUnityCodes[3]), "commUnity");
+                    }
+                }
+            }
         } else {
             mCommUnityBean.addAll(data);
+            if (type.equals("edit")) {//编辑修改地址状态 请求站点数据
+                if (!isRevise) {//没有修改过地址
+                    if (streetCommUnityCodes.length == 5) {//有村庄 才请求数据
+                        getBindData(mCommUnityCode, request.isHasBindStation());
+                    }
+                }
+            }
         }
     }
 
@@ -299,12 +376,12 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
     @Override
     public void getStreetFail() {
         //获取街道失败 那么久不会有村 居委会了
-        llStreetCommunity.setVisibility(View.GONE);
+        setViewViesible(llStreetCommunity, false);
     }
 
     @Override
     public void getConmmunityFail() {
-        rlCommunity.setVisibility(View.GONE);
+        setViewViesible(rlCommunity, false);
     }
 
     @Override
