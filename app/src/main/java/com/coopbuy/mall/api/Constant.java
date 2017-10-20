@@ -75,6 +75,10 @@ public class Constant {
      */
     public static final String ADDADDRESSS = "api/services/app/shippingAddress/Add";
     /**
+     * 设置默认地址
+     */
+    public static final String SETDEFAULT = "api/services/app/shippingAddress/SetDefault";
+    /**
      * 得到省市区数据
      */
     public static final String PROVINCES = "api/services/app/region/Provinces";

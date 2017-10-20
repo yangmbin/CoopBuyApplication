@@ -30,6 +30,7 @@ import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
+import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncEmptyCallback;
@@ -200,6 +201,18 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
+     * 设置默认地址
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState setDefault(SetDefaultOrDeleteOrFindAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.SETDEFAULT, request, callback, userState);
+    }
+
+    /**
      * 得到省市区地址数据
      *
      * @param callback
@@ -221,7 +234,9 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getChildProvinces(GetChildProvincesRequest request, IAsyncResultCallback<List<AddressTownResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<AddressTownResponse>>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.CHILD_PROVINCES, request, callback, userState);
-    } /**
+    }
+
+    /**
      * 获取站点数据
      *
      * @param callback
@@ -301,6 +316,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 订单列表
+     *
      * @param request
      * @param callback
      * @param userState
@@ -313,6 +329,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 订单详情
+     *
      * @param request
      * @param callback
      * @param userState

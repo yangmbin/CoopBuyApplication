@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_address"
     android:background="@color/theme_back_white"
     android:orientation="vertical">
 
@@ -13,14 +14,16 @@
             android:id="@+id/tv_name"
             style="@style/text_theme_black_size_26_41495c"
             android:text="李珊珊"
-            android:textSize="@dimen/dimen_px36" />
+            android:textSize="@dimen/dimen_px36"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_phone"
             style="@style/text_theme_black_size_26_41495c"
             android:layout_marginLeft="@dimen/dimen_px33"
             android:text="15784251585"
-            android:textSize="@dimen/dimen_px36" />
+            android:textSize="@dimen/dimen_px36"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <RelativeLayout
@@ -31,7 +34,6 @@
         <TextView
             android:id="@+id/tv_address"
             style="@style/text_theme_black_size_26_41495c"
-
             android:layout_centerVertical="true"
             android:maxLines="2"
             android:text="贵州省太空"
@@ -44,8 +46,7 @@
         android:background="@color/edit_text_back_white"
         android:orientation="vertical"
         android:paddingLeft="@dimen/dimen_px30"
-        android:paddingRight="@dimen/dimen_px30"
-        android:paddingTop="@dimen/dimen_px30">
+        android:paddingRight="@dimen/dimen_px30">
 
         <ImageView
             android:layout_width="match_parent"
@@ -53,6 +54,7 @@
             android:src="@mipmap/icon_address_adorn" />
 
         <LinearLayout
+            android:id="@+id/ll_ishasbind"
             style="@style/center_LinearLayout_help_90"
             android:layout_height="@dimen/dimen_px90">
 
@@ -64,14 +66,15 @@
                 style="@style/text_theme_black_size_26_41495c"
                 android:layout_marginLeft="@dimen/dimen_px18"
                 android:text="服务站"
-                android:textSize="@dimen/dimen_px30" />
+                android:textSize="@dimen/dimen_px30"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_station_name"
-                android:layout_weight="1"
                 style="@style/text_black_size_28_878f94"
                 android:layout_marginLeft="@dimen/dimen_px33"
-                android:text="太空戏的服务站" />
+                android:layout_weight="1"
+                android:text="太空戏的服务站太空戏的服务站太空戏的服务站" />
 
             <TextView
                 android:id="@+id/tv_stationer_name"
@@ -85,7 +88,8 @@
             style="@style/center_LinearLayout_help_90"
             android:layout_height="@dimen/dimen_px90">
 
-            <CheckBox
+            <TextView
+                android:id="@+id/tv_setdefault"
                 android:layout_width="@dimen/dimen_px40"
                 android:layout_height="@dimen/dimen_px40"
                 android:background="@drawable/check_address_selector"
@@ -99,6 +103,7 @@
                 android:textSize="@dimen/dimen_px30" />
 
             <TextView
+                android:id="@+id/tv_edit"
                 style="@style/text_black_size_28_878f94"
                 android:layout_width="@dimen/dimen_px180"
                 android:layout_height="@dimen/dimen_px60"
@@ -107,6 +112,7 @@
                 android:text="编辑" />
 
             <TextView
+                android:id="@+id/tv_delete"
                 style="@style/text_black_size_28_878f94"
                 android:layout_width="@dimen/dimen_px180"
                 android:layout_height="@dimen/dimen_px60"
@@ -118,4 +124,8 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px30"
+        android:background="@color/theme_back_white" />
 </LinearLayout>

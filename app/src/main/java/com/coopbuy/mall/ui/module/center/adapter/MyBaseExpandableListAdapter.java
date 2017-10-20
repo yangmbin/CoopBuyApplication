@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
+import com.coopbuy.mall.ui.module.center.port.ExpandableListPort;
 
 import java.util.List;
 import java.util.Map;

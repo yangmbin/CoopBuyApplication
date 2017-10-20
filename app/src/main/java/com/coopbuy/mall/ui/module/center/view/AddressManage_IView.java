@@ -12,5 +12,7 @@ import java.util.List;
  */
 public interface AddressManage_IView extends BaseView{
 
-    void getAddressMangeData(List<AddressInfoResponse> data);
+    void getAddressMangeData(List<AddressInfoResponse> data,String type);
+
+    void setDefaultSuccess();
 }
