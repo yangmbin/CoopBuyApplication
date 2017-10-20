@@ -14,11 +14,11 @@
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px80"
+        android:layout_height="@dimen/dimen_px70"
         android:background="@color/white"
         tl:tl_indicator_color="@color/theme_text_title_orange"
         tl:tl_indicator_height="@dimen/dimen_px4"
-        tl:tl_indicator_width_equal_title="true"
+        tl:tl_indicator_width_equal_title="false"
         tl:tl_tab_padding="11dp"
         tl:tl_tab_space_equal="true"
         tl:tl_textSelectColor="@color/theme_text_title_orange"

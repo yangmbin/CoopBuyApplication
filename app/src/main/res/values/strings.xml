@@ -141,4 +141,7 @@
 
     <!-- 分类做列表点击跳转位置key -->
     <item name="jumpPos" type="id"></item>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
