@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.coopbuy.mall.widget.MarketPanicBuyingBar
+    <com.coopbuy.mall.widget.navigation.MarketPanicBuyingBar
         android:id="@+id/buying_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

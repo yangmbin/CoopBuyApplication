@@ -11,13 +11,10 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.LoadingBox;
-import com.coopbuy.mall.widget.TitleBar;
+import com.coopbuy.mall.widget.navigation.TitleBar;
 import com.guinong.net.request.IAsyncRequestState;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;

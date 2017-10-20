@@ -8,7 +8,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.fragment.MarketDayFragment;
-import com.coopbuy.mall.widget.MarketPanicBuyingBar;
+import com.coopbuy.mall.widget.navigation.MarketPanicBuyingBar;
 
 import java.util.List;
 

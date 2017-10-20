@@ -6,7 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/theme_back_white">
 
-    <include layout="@layout/nav_home_top"/>
+    <com.coopbuy.mall.widget.navigation.NavHomeBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:id="@+id/box"

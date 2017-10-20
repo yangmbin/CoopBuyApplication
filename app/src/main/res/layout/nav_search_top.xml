@@ -41,6 +41,7 @@
                 android:src="@mipmap/icon_nav_home_top_search" />
 
             <TextView
+                android:id="@+id/searchHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_px15"
