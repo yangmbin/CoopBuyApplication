@@ -208,12 +208,7 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
                     request.setStationId(bean.getStationId());
                     request.setStationUserId(bean.getStationUserId());
                 }
-                GetBindStationReponse.StationUsersBean bean1 = new GetBindStationReponse.StationUsersBean();
-                bean1.setIsStationMaster(false);
-                bean1.setStationUserId(2);
-                bean1.setStationUserName("测试1");
                 sd.add(bean);
-                sd.add(bean1);
             }
             childData.put(i, sd);
         }
