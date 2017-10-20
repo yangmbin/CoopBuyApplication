@@ -1,4 +1,4 @@
-package com.coopbuy.mall.widget;
+package com.coopbuy.mall.widget.navigation;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,35 +7,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
 
 /**
- * 顶部搜索栏
+ * 客户订单列表顶部
  * @author ymb
  * Create at 2017/7/21 15:53
  */
-public class NavSearchBar extends RelativeLayout implements View.OnClickListener {
+public class NavOrderListBar extends RelativeLayout implements View.OnClickListener {
 
     private View mView;
-    private FrameLayout fl_goback;
-    private LinearLayout ll_search;
     private Context mContext;
+    private FrameLayout fl_goback, fl_more;
 
-    public NavSearchBar(Context context, AttributeSet attrs) {
+    public NavOrderListBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        mView = LayoutInflater.from(context).inflate(R.layout.nav_search_top, null);
+        mView = LayoutInflater.from(context).inflate(R.layout.nav_order_list_top, null);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mView.setLayoutParams(params);
         addView(mView);
 
         fl_goback = (FrameLayout) mView.findViewById(R.id.go_back);
-        ll_search = (LinearLayout) mView.findViewById(R.id.ll_search);
+        fl_more = (FrameLayout) mView.findViewById(R.id.more_btn);
+
         fl_goback.setOnClickListener(this);
-        ll_search.setOnClickListener(this);
+        fl_more.setOnClickListener(this);
     }
 
     @Override
@@ -44,7 +43,8 @@ public class NavSearchBar extends RelativeLayout implements View.OnClickListener
             case R.id.go_back:
                 ((Activity) mContext).finish();
                 break;
-            case R.id.ll_search:
+            case R.id.more_btn:
+
                 break;
         }
     }

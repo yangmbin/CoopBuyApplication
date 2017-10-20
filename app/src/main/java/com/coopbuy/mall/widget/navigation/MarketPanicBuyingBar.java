@@ -1,4 +1,4 @@
-package com.coopbuy.mall.widget;
+package com.coopbuy.mall.widget.navigation;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;

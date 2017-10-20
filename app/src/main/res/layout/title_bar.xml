@@ -59,4 +59,10 @@
         </FrameLayout>
     </RelativeLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/auxiliary_text_orange_gray"/>
+
 </LinearLayout>

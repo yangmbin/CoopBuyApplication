@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/theme_back_white">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/locationList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <com.coopbuy.mall.widget.WaveSideBar
+            android:id="@+id/side_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_px10"
+            android:paddingRight="@dimen/dimen_px8"
+            android:paddingLeft="@dimen/dimen_px8"
+            android:paddingTop="@dimen/dimen_px30"
+            android:paddingBottom="@dimen/dimen_px30"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:sidebar_position="right"
+            app:sidebar_max_offset="@dimen/dimen_px160"
+            app:sidebar_lazy_respond="false"
+            app:sidebar_text_color="@color/theme_text_title_orange"
+            app:sidebar_text_size="@dimen/text_size_px24"
+            app:sidebar_text_alignment="center" />
+
+        <TextView
+            android:id="@+id/indexBgView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_corner_orange_2"
+            android:alpha="0.3"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="我"
+            android:textSize="@dimen/dimen_px24"
+            android:textColor="@color/transparent"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dimen_px10"
+            android:paddingRight="@dimen/dimen_px8"
+            android:paddingLeft="@dimen/dimen_px8"
+            android:paddingTop="@dimen/dimen_px30"
+            android:paddingBottom="@dimen/dimen_px30"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

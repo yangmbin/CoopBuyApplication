@@ -67,7 +67,8 @@
         <activity android:name=".ui.module.center.activity.ApplyRefundActivity" />
         <activity android:name=".ui.module.center.activity.AfterSalesDetailActivity" />
         <activity android:name=".ui.module.center.activity.BuyerSendGoodsActivity" />
-        <activity android:name=".ui.module.center.activity.ExpressInfoActivity"></activity>
+        <activity android:name=".ui.module.center.activity.ExpressInfoActivity" />
+        <activity android:name=".ui.module.home.activity.LocationActivity"></activity>
     </application>
 
 </manifest>

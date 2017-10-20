@@ -8,7 +8,7 @@ import android.util.Log;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.MarketViewPagerAdapter;
-import com.coopbuy.mall.widget.MarketWeekBar;
+import com.coopbuy.mall.widget.navigation.MarketWeekBar;
 
 import java.util.ArrayList;
 import java.util.List;

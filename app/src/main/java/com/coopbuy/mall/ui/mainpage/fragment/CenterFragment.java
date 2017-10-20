@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.mainpage.fragment;
 
-import android.app.Activity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,7 +13,6 @@ import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.MainEvent;
-import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
@@ -66,8 +64,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     TextView tvCollectNumber;
     @Bind(R.id.tv_footmark_number)
     TextView tvFootmarkNumber;
-    @Bind(R.id.ll_loaction)
-    LinearLayout llLoaction;
+    @Bind(R.id.ll_location)
+    LinearLayout llLocation;
     @Bind(R.id.ll_search)
     LinearLayout llSearch;
     //站长类型
@@ -117,7 +115,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     }
 
     private void setInitTitle() {
-        llLoaction.setVisibility(View.INVISIBLE);
+        llLocation.setVisibility(View.INVISIBLE);
         llSearch.setVisibility(View.INVISIBLE);
         llLine.setVisibility(View.GONE);
         ivMsg.setImageResource(R.mipmap.icon_center_msg);
