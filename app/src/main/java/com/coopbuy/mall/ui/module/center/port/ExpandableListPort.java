@@ -1,4 +1,4 @@
-package com.coopbuy.mall.ui.module.center.adapter;
+package com.coopbuy.mall.ui.module.center.port;
 
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 

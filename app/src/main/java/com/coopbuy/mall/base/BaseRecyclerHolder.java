@@ -27,7 +27,7 @@ public class BaseRecyclerHolder extends RecyclerView.ViewHolder{
      //  AutoUtils.autoSize(itemView);
     }
 
-    public View getItemView() {
+    public View getItemView(int cb_setdefault) {
         return itemView;
     }
 
