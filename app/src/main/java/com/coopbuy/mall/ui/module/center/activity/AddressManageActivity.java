@@ -111,7 +111,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThreadrep(AddSuccessEvent event) {
         if (event != null) {
-            mPresenter.getAddressData("init");
+            mPresenter.getAddressData("revise");
         }
     }
 

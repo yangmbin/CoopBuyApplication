@@ -28,14 +28,17 @@ public class AddUserAddressPresenter extends BasePresenter<AddUserAddress_IView,
         super(mContext, mModel, mView);
     }
 
-    public void getProvincesData() {
+    public void getProvincesData(final String type) {
         // mView.showTransLoading();
+        if (type.equals("again")){
+            mView.showTransLoading();
+        }
         mView.appendNetCall(mModel.getProvincesData(new IAsyncResultCallback<List<AreaDataResponse>>() {
             @Override
             public void onComplete(List<AreaDataResponse> addressInfoResponses, Object userState) {
                 if (null != addressInfoResponses && !addressInfoResponses.isEmpty()) {
-                    mView.getProviencesReponse(addressInfoResponses);
-                    //mView.stopAll();
+                    mView.getProviencesReponse(addressInfoResponses,type);
+                    mView.stopAll();
                 } else {
                     ToastUtils.toastShort("暂时没有数据");
                 }
@@ -44,7 +47,7 @@ public class AddUserAddressPresenter extends BasePresenter<AddUserAddress_IView,
             @Override
             public void onError(NetworkException error, Object userState) {
                 ToastUtils.toastShort(error.getMessage());
-                //  mView.stopAll();
+                  mView.stopAll();
             }
         }, "addressinfo"));
     }
@@ -52,14 +55,14 @@ public class AddUserAddressPresenter extends BasePresenter<AddUserAddress_IView,
     /**
      * 获取村 社区数据
      */
-    public void getChildProvincesData(GetChildProvincesRequest request, final String type) {
+    public void getChildProvincesData(GetChildProvincesRequest request, final String type, final String again) {
         if (!type.equals("street"))
             mView.showTransLoading();
         mView.appendNetCall(mModel.getChildProvincesData(request, new IAsyncResultCallback<List<AddressTownResponse>>() {
             @Override
             public void onComplete(List<AddressTownResponse> addressInfoResponses, Object userState) {
                 if (null != addressInfoResponses && !addressInfoResponses.isEmpty()) {
-                    mView.getChileProiencesData(addressInfoResponses, type);
+                    mView.getChileProiencesData(addressInfoResponses, type,again);
                     mView.stopAll();
                 } else {
                     if (type.equals("street")) {

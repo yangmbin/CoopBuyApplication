@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
     android:orientation="vertical"
+    android:focusable="false"
     tools:context="com.coopbuy.mall.ui.module.center.activity.AddresssAddDetailActivity">
 
     <include layout="@layout/title_bar_layout" />

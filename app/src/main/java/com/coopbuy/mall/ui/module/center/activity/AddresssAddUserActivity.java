@@ -125,7 +125,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
             super.handleMessage(msg);
             mprovinceCityDistrictBean = (List<AreaDataResponse>) msg.obj;
             if (mprovinceCityDistrictBean == null) {
-                mPresenter.getProvincesData();
+                mPresenter.getProvincesData("init");
             }
         }
     };
@@ -265,11 +265,11 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                             request.setRevise(isRevise);
                             request.setCityCode(mCode);//修改了 使用最新的
                         }
-                        request.setRegionName(bean.getRegionName());
-                        request.setRegionIdPath(bean.getRegionIdPath());
+                     /*   request.setRegionName(bean.getRegionName());
+                        request.setRegionIdPath(bean.getRegionIdPath());*/
                         request.setAddressId(bean.getAddressId());
-                        request.setHasBindStation(bean.isHasBindStation());
-                        request.setAddressDetailOld(bean.getAddress());//设置服务器的地址详情
+                      /*  request.setHasBindStation(bean.isHasBindStation());
+                        request.setAddressDetailOld(bean.getAddress());//设置服务器的地址详情*/
                     }
                     IntentUtils.gotoActivity(this, AddresssAddDetailActivity.class, request, type);
                 }
@@ -286,7 +286,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                 if (mprovinceCityDistrictBean != null) {
                     setCitySelectorDialog();
                 } else {
-                    mPresenter.getProvincesData();
+                    mPresenter.getProvincesData("again");
                 }
                 break;
             case R.id.iv_name_clear:
@@ -300,13 +300,16 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
 
 
     @Override
-    public void getProviencesReponse(List<AreaDataResponse> data) {
+    public void getProviencesReponse(List<AreaDataResponse> data, String type) {
         mprovinceCityDistrictBean = data;
         AddressDataUtil.writeObject(mprovinceCityDistrictBean);
+        if (type.equals("again")) {
+            setCitySelectorDialog();
+        }
     }
 
     @Override
-    public void getChileProiencesData(List<AddressTownResponse> data, String type) {
+    public void getChileProiencesData(List<AddressTownResponse> data, String type,String atin) {
 
     }
 
