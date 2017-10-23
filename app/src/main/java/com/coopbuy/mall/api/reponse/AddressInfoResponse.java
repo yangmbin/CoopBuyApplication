@@ -32,6 +32,8 @@ public class AddressInfoResponse implements Serializable {
     private String stationRegionName;
     private String stationName;
     private String stationUserName;
+    private long regionId;
+
     //五级的省市区街道 村    "regionName": "勤光社区居民委员会,炉山镇,威宁彝族回族苗族自治县,毕节市,贵州省",
     // "regionIdPath": "520526103002,520526103000,520526000000,520500000000,520000000000",
     //对应的是             村             街道         区           市           省      编码是倒的  注意哟
@@ -123,5 +125,23 @@ public class AddressInfoResponse implements Serializable {
 
     public void setStationUserName(String stationUserName) {
         this.stationUserName = stationUserName;
+    }
+
+
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
+    }
+
+    public long getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(long regionId) {
+        this.regionId = regionId;
     }
 }

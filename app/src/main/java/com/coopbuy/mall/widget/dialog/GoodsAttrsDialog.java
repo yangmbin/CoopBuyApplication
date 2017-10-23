@@ -52,6 +52,7 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         mFragment = fragment;
         mSkuInfoBean = skuInfoBean;
         mProductId = productId;
+        mCount = fragment.getCurrentQuantity();
 
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -203,5 +204,9 @@ public class GoodsAttrsDialog implements View.OnClickListener {
      */
     private void setCount() {
         mCountTxt.setText("" + mCount);
+        mFragment.setCurrentQuantity(mCount);
+        // 数量改变后，重新计算运费
+        if (mFragment.getCurrentRegionId() != -1 && mFragment.getCurrentSkuId() != -1)
+            mFragment.mPresenter.calculateFreight(mFragment.getCurrentRegionId(), mFragment.getCurrentSkuId(), mFragment.getCurrentQuantity());
     }
 }

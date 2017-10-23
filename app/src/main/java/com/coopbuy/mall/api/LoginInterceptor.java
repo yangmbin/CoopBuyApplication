@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -86,6 +85,9 @@ public class LoginInterceptor implements Interceptor {
                             mHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    if (request.url().url().toString().contains("FindDefault")) {
+                                        return;
+                                    }
                                     //七鱼聊天  后面再添加
                                     /*if (Unicorn.isServiceAvailable()) {
                                         Unicorn.logout();

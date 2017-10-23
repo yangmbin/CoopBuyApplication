@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/theme_back_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/title_bar_layout"/>
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px80"
+            android:background="@color/white"
+            tl:tl_indicator_color="@color/theme_text_title_orange"
+            tl:tl_indicator_height="@dimen/dimen_px4"
+            tl:tl_indicator_width_equal_title="true"
+            tl:tl_tab_padding="@dimen/dimen_px40"
+            tl:tl_tab_space_equal="false"
+            tl:tl_textSelectColor="@color/theme_text_title_orange"
+            tl:tl_textUnselectColor="@color/theme_text_lab_black"
+            tl:tl_underline_color="@color/gray_4"
+            tl:tl_underline_height="0dp"
+            tl:tl_textAllCaps="false"
+            tl:tl_textsize="@dimen/text_size_px28"
+            android:paddingLeft="@dimen/dimen_px40"
+            android:paddingRight="@dimen/dimen_px40"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px1"
+            android:background="@color/gray_4"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tab_content"
+            android:background="@color/theme_back_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+    <!-- 侧滑菜单 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginLeft="@dimen/dimen_px90"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px80">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/text_size_px30"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:text="取消"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/text_size_px36"
+                    android:textColor="@color/theme_text_title_orange"
+                    android:text="筛选"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px1"
+                android:background="@color/auxiliary_text_orange_gray"
+                android:layout_marginLeft="@dimen/dimen_px30"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px90"
+                android:textSize="@dimen/text_size_px30"
+                android:textColor="@color/theme_text_lab_black"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:text="价格区间（元）"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px80"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px90">
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_px28"
+                    android:gravity="center"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:textColorHint="@color/auxiliary_text_blue_gray"
+                    android:background="@drawable/shape_gray_2_no_solid_bg"
+                    android:hint="最低价"/>
+
+                <View
+                    android:layout_width="@dimen/dimen_px20"
+                    android:layout_height="@dimen/dimen_px2"
+                    android:background="@color/theme_text_lab_black"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dimen_px20"
+                    android:layout_marginRight="@dimen/dimen_px20"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_px28"
+                    android:gravity="center"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:textColorHint="@color/auxiliary_text_blue_gray"
+                    android:background="@drawable/shape_gray_2_no_solid_bg"
+                    android:hint="最高价"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px1"
+                android:background="@color/gray_4"
+                android:layout_marginTop="@dimen/dimen_px50"
+                android:layout_marginLeft="@dimen/dimen_px30"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/filterList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dimen_px32"
+                android:layout_marginBottom="@dimen/dimen_px30">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:text="有"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/theme_text_title_orange"
+                    android:text="1024"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_px28"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:text="件商品"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px88"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30"
+                android:layout_marginBottom="@dimen/dimen_px30">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:textSize="@dimen/text_size_px30"
+                    android:textColor="@color/theme_text_lab_black"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/dimen_px20"
+                    android:background="@drawable/shape_gray_1_no_solid_bg"
+                    android:text="重置"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/text_size_px30"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/dimen_px20"
+                    android:background="@drawable/black_rectangle_btn_press_black"
+                    android:text="确认"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.v4.widget.DrawerLayout>

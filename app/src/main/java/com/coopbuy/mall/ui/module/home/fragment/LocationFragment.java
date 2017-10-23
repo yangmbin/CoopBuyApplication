@@ -9,11 +9,15 @@ import android.widget.TextView;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.module.home.adapter.LocationAdapter_1;
 import com.coopbuy.mall.ui.module.home.adapter.LocationAdapter_2;
+import com.coopbuy.mall.ui.module.home.adapter.LocationAdapter_3;
+import com.coopbuy.mall.ui.module.home.adapter.LocationAdapter_4;
+import com.coopbuy.mall.ui.module.home.adapter.LocationAdapter_5;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.widget.WaveSideBar;
 
@@ -60,15 +64,17 @@ public class LocationFragment extends ViewPagerBaseFragment {
 
         //test
         //1
+        SingleLayoutHelper helper_1 = new SingleLayoutHelper();
+        helper_1.setBgColor(ContextCompat.getColor(mContext, R.color.white));
         List list_1 = new ArrayList();
         list_1.add(new Object());
-        mAdapters.add(new LocationAdapter_1(mContext, list_1, new SingleLayoutHelper()));
+        mAdapters.add(new LocationAdapter_1(mContext, list_1, helper_1));
 
         //2
         GridLayoutHelper helper_2 = new GridLayoutHelper(3);
         helper_2.setAutoExpand(false);
-        helper_2.setHGap(ScreenUtils.dip2px(mContext, 20));
-        helper_2.setVGap(ScreenUtils.dip2px(mContext, 12));
+        helper_2.setHGap(ScreenUtils.dip2px(mContext, 12));
+        helper_2.setVGap(ScreenUtils.dip2px(mContext, 20));
         helper_2.setPadding(ScreenUtils.dip2px(mContext, 15), ScreenUtils.dip2px(mContext, 10), ScreenUtils.dip2px(mContext, 36), ScreenUtils.dip2px(mContext, 10));
         helper_2.setBgColor(ContextCompat.getColor(mContext, R.color.white));
         List list_2 = new ArrayList();
@@ -76,6 +82,58 @@ public class LocationFragment extends ViewPagerBaseFragment {
             list_2.add(new Object());
         mAdapters.add(new LocationAdapter_2(mContext, list_2, helper_2));
 
+        //1
+        SingleLayoutHelper helper_3 = new SingleLayoutHelper();
+        List list_3 = new ArrayList();
+        list_3.add(new Object());
+        mAdapters.add(new LocationAdapter_1(mContext, list_3, helper_3));
+
+        //2
+        GridLayoutHelper helper_4 = new GridLayoutHelper(3);
+        helper_4.setAutoExpand(false);
+        helper_4.setHGap(ScreenUtils.dip2px(mContext, 12));
+        helper_4.setVGap(ScreenUtils.dip2px(mContext, 20));
+        helper_4.setPadding(ScreenUtils.dip2px(mContext, 15), 0, ScreenUtils.dip2px(mContext, 36), ScreenUtils.dip2px(mContext, 10));
+        List list_4 = new ArrayList();
+        for (int i = 0; i < 2; i++)
+            list_4.add(new Object());
+        mAdapters.add(new LocationAdapter_2(mContext, list_4, helper_4));
+
+        //1
+        SingleLayoutHelper helper_5 = new SingleLayoutHelper();
+        List list_5 = new ArrayList();
+        list_5.add(new Object());
+        mAdapters.add(new LocationAdapter_1(mContext, list_5, helper_5));
+
+        //2
+        GridLayoutHelper helper_6 = new GridLayoutHelper(3);
+        helper_6.setAutoExpand(false);
+        helper_6.setHGap(ScreenUtils.dip2px(mContext, 12));
+        helper_6.setVGap(ScreenUtils.dip2px(mContext, 20));
+        helper_6.setPadding(ScreenUtils.dip2px(mContext, 15), 0, ScreenUtils.dip2px(mContext, 36), ScreenUtils.dip2px(mContext, 20));
+        List list_6 = new ArrayList();
+        for (int i = 0; i < 9; i++)
+            list_6.add(new Object());
+        mAdapters.add(new LocationAdapter_2(mContext, list_6, helper_6));
+
+        //3
+        List list_7 = new ArrayList();
+        list_7.add(new Object());
+        mAdapters.add(new LocationAdapter_3(mContext, list_7, new SingleLayoutHelper()));
+
+        //4
+        List list_8 = new ArrayList();
+        list_8.add(new Object());
+        mAdapters.add(new LocationAdapter_4(mContext, list_8, new SingleLayoutHelper()));
+
+        //5
+        List list_9 = new ArrayList();
+        list_9.add(new Object());
+        list_9.add(new Object());
+        list_9.add(new Object());
+        list_9.add(new Object());
+        list_9.add(new Object());
+        mAdapters.add(new LocationAdapter_5(mContext, list_9, new LinearLayoutHelper()));
 
         mDelegateAdapter.setAdapters(mAdapters);
         mDelegateAdapter.notifyDataSetChanged();

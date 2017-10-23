@@ -247,6 +247,7 @@
                             android:paddingLeft="@dimen/dimen_px30"
                             android:paddingRight="@dimen/dimen_px30">
                             <TextView
+                                android:id="@+id/freight"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -349,6 +350,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/btn_select_address"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dimen_px90"
                             android:gravity="center_vertical">
@@ -364,6 +366,7 @@
                                 android:layout_marginLeft="@dimen/dimen_px20"
                                 android:text="配送至"/>
                             <TextView
+                                android:id="@+id/shippingAddress"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

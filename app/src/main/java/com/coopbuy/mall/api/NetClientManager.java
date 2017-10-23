@@ -3,8 +3,10 @@ package com.coopbuy.mall.api;
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.api.reponse.AddressTownResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
+import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
+import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
@@ -18,6 +20,7 @@ import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
+import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -294,6 +297,28 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getSkuDetailData(SkuDetailRequest request, IAsyncResultCallback<SkuDetailResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<SkuDetailResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SKU_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * 获取用户默认地址
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getDefaultAddressData(IAsyncResultCallback<DefaultAddressResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<DefaultAddressResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.DEFAULT_ADDRESS, callback, userState);
+    }
+
+    /**
+     * 计算运费
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState calculateFreight(CalculateFreightRequest request, IAsyncResultCallback<CalculateFreightResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CalculateFreightResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CALCULATE_FREIGHT, request, callback, userState);
     }
 
     /**

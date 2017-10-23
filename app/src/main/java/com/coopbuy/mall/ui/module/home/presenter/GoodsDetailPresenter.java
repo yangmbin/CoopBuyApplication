@@ -3,9 +3,12 @@ package com.coopbuy.mall.ui.module.home.presenter;
 
 import android.content.Context;
 
+import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
+import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
@@ -55,7 +58,8 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                     mView.showNoDataLayout();
                 else {
                     fragment_1.setSkuDetailData(skuDetailResponse);
-                    mView.stopAll();
+                    // 获取默认地址
+                    getDefaultAddressData(skuDetailResponse);
                 }
             }
 
@@ -68,6 +72,52 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
             }
         }, "SKU详情"));
     }
+
+    /**
+     * 获取用户默认地址
+     */
+    public void getDefaultAddressData(final SkuDetailResponse skuDetailResponse) {
+        mView.appendNetCall(mModel.getDefaultAddressData(new IAsyncResultCallback<DefaultAddressResponse>() {
+            @Override
+            public void onComplete(DefaultAddressResponse defaultAddressResponse, Object userState) {
+                fragment_1.setDefaultAddressData(defaultAddressResponse);
+                // 计算运费
+                calculateFreight(defaultAddressResponse.getRegionId(), skuDetailResponse.getSkuInfo().getSkuId(), 1);
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+            }
+        }, "获取用户默认地址"));
+    }
+
+
+    /**
+     * 计算运费
+     * @param regionId
+     * @param skuId
+     * @param quantity
+     */
+    public void calculateFreight(long regionId, int skuId, int quantity) {
+        CalculateFreightRequest request = new CalculateFreightRequest();
+        request.setRegionId(regionId);
+        request.setSkuId(skuId);
+        request.setQuantity(quantity);
+        mView.appendNetCall(mModel.calculateFreight(request, new IAsyncResultCallback<CalculateFreightResponse>() {
+            @Override
+            public void onComplete(CalculateFreightResponse calculateFreightResponse, Object userState) {
+                fragment_1.setFreightData(calculateFreightResponse);
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+            }
+        }, "计算运费"));
+    }
+
 
     /**
      * 获取商品描述
@@ -124,8 +174,12 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
         mView.appendNetCall(mModel.findSkuInfoData(request, new IAsyncResultCallback<SkuDetailResponse.SkuInfoBean>() {
             @Override
             public void onComplete(SkuDetailResponse.SkuInfoBean skuInfoBean, Object userState) {
-                mView.stopAll();
                 fragment_1.setFindSkuInfoData(skuInfoBean);
+                // 规格改变后，重新计算运费
+                if (fragment_1.getCurrentRegionId() != -1 && fragment_1.getCurrentSkuId() != -1)
+                    calculateFreight(fragment_1.getCurrentRegionId(), fragment_1.getCurrentSkuId(), fragment_1.getCurrentQuantity());
+                else
+                    mView.stopAll();
             }
 
             @Override
