@@ -27,15 +27,13 @@ public class Constant {
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
-   // public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
-   public static final String SERVER_URL_NEW = "http://192.168.1.56:8001/";
- //  public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+    public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
+    //public static final String SERVER_URL_NEW = "http://192.168.1.56:8001/";
+    // public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
     /**
      * 图片地址
      */
     public static final String IMAGE_SERVER_URL = "http://oss.coopbuy.com";
-
-
     /**
      * 登录
      */
@@ -75,7 +73,8 @@ public class Constant {
     /**
      * 添加地址
      */
-    public static final String ADDADDRESSS = "api/services/app/shippingAddress/Add"; /**
+    public static final String ADDADDRESSS = "api/services/app/shippingAddress/Add";
+    /**
      * 修改地址
      */
     public static final String UPDATE = "api/services/app/shippingAddress/Update";
