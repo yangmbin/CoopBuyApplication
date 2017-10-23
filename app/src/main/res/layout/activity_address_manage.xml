@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/box"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_back_white"
-    android:orientation="vertical">
+    android:background="@color/theme_back_white">
 
     <include
         android:id="@+id/title"
         layout="@layout/title_bar_layout" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_banner_detail"
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/title"
         android:layout_marginBottom="@dimen/dimen_px120"
-        android:layout_marginTop="@dimen/dimen_px2"
-        android:background="@color/edit_text_back_white"
-        android:overScrollMode="never" />
+        android:layout_marginTop="@dimen/dimen_px2">
+
+        <LinearLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_banner_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/edit_text_back_white"
+                android:overScrollMode="never" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_add_address"

@@ -14,9 +14,9 @@ import java.util.List;
  * @content
  */
 public interface AddUserAddress_IView extends BaseView {
-    void getProviencesReponse(List<AreaDataResponse> data);
+    void getProviencesReponse(List<AreaDataResponse> data,String type);
 
-    void getChileProiencesData(List<AddressTownResponse> data, String type);
+    void getChileProiencesData(List<AddressTownResponse> data, String type,String again);
 
     /**
      * 获取站长的数据信息
