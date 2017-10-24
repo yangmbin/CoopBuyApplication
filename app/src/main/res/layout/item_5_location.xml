@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/theme_text_lab_black"
+            android:textSize="@dimen/text_size_px28"
+            android:text="安龙县"/>
+        <ImageView
+            android:layout_width="@dimen/dimen_px40"
+            android:layout_height="@dimen/dimen_px40"
+            android:src="@mipmap/icon_category_more_arrow"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/btn_back_gray_unpress"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"/>
+
+</LinearLayout>

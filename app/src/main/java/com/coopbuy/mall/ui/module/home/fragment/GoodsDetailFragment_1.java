@@ -8,11 +8,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.AddressInfoResponse;
+import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
+import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
+import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
@@ -27,6 +33,9 @@ import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
 import com.coopbuy.mall.widget.goodsdetail.SlideDetailsLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.youth.banner.Banner;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -71,11 +80,23 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     TextView propertyDesc;
     @Bind(R.id.btn_goods_attrs_layout)
     LinearLayout btnGoodsAttrsLayout;
+    @Bind(R.id.shippingAddress)
+    TextView shippingAddress;
+    @Bind(R.id.freight)
+    TextView freight;
 
     // 首次页面进入保存的返回信息
     private SkuDetailResponse mSkuDetailResponse;
     // 属性弹框
     private GoodsAttrsDialog goodsAttrsDialog = null;
+    // 地址regionId
+    private long currentRegionId = -1;
+    // 地址addressId
+    private int currentAddressId = -1;
+    // 当前选择商品的skuId
+    private int currentSkuId = -1;
+    // 当前选择的商品数量
+    private int currentQuantity = 1;
 
     @Override
     protected int getLayoutId() {
@@ -106,10 +127,16 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
     @Override
     protected void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
+    }
 
-    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs, R.id.btn_go_shop})
+    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs, R.id.btn_go_shop, R.id.btn_select_address})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_goods_params:
@@ -122,6 +149,13 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
             // 进店逛逛
             case R.id.btn_go_shop:
                 IntentUtils.gotoActivity(mContext, ShopDetailActivity.class);
+                break;
+            // 选择地址
+            case R.id.btn_select_address:
+                if (sharedPreferencesUtils.getLoginStatus())
+                    IntentUtils.gotoActivity(mContext, AddressManageActivity.class);
+                else
+                    IntentUtils.gotoActivity(mContext, LoginActivity.class);
                 break;
         }
     }
@@ -198,6 +232,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
      * @param skuInfoBean
      */
     private void setSkuInfoData(SkuDetailResponse.SkuInfoBean skuInfoBean) {
+        // 保存当选择的skuId
+        currentSkuId = skuInfoBean.getSkuId();
+
         // 销售价
         sellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
         // 成本价
@@ -220,5 +257,73 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
             goodsAttrsDialog = new GoodsAttrsDialog(mContext, this, skuInfoResponses, mSkuDetailResponse.getSkuInfo(), mSkuDetailResponse.getProductId());
             goodsAttrsDialog.showAtBottom();
         }
+    }
+
+    /**
+     * 设置默认收货地址
+     *
+     * @param defaultAddressResponse
+     */
+    public void setDefaultAddressData(DefaultAddressResponse defaultAddressResponse) {
+        // 保存当前regionId
+        currentRegionId = defaultAddressResponse.getRegionId();
+        // 保存当前addressId
+        currentAddressId = defaultAddressResponse.getAddressId();
+
+        shippingAddress.setText(defaultAddressResponse.getRegionName() + defaultAddressResponse.getAddress());
+    }
+
+    /**
+     * 设置运费（动态计算）
+     *
+     * @param calculateFreightResponse
+     */
+    public void setFreightData(CalculateFreightResponse calculateFreightResponse) {
+        freight.setText("快递：" + StringUtils.keepTwoDecimalPoint(calculateFreightResponse.getTotalFreightAmount()) + "元");
+    }
+
+
+    /**
+     * 选择收货地址返回处理函数
+     * @param bean
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(AddressInfoResponse bean) {
+        // 设置选择的地址
+        shippingAddress.setText(bean.getRegionName() + bean.getAddress());
+        // 保存当前选择的regionId
+        currentRegionId = bean.getRegionId();
+        // 保存当前addressId
+        currentAddressId = bean.getAddressId();
+        // 重新计算运费
+        mPresenter.calculateFreight(currentRegionId, currentSkuId, currentQuantity);
+    }
+
+
+    /**
+     * get set 方法
+     */
+    public long getCurrentRegionId() {
+        return currentRegionId;
+    }
+
+    public void setCurrentRegionId(long currentRegionId) {
+        this.currentRegionId = currentRegionId;
+    }
+
+    public int getCurrentSkuId() {
+        return currentSkuId;
+    }
+
+    public void setCurrentSkuId(int currentSkuId) {
+        this.currentSkuId = currentSkuId;
+    }
+
+    public int getCurrentQuantity() {
+        return currentQuantity;
+    }
+
+    public void setCurrentQuantity(int currentQuantity) {
+        this.currentQuantity = currentQuantity;
     }
 }

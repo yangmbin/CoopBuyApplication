@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -19,7 +18,6 @@ import com.coopbuy.mall.ui.module.center.presenter.AddressManagePresenter;
 import com.coopbuy.mall.ui.module.center.view.AddressManage_IView;
 import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -30,7 +28,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -152,7 +149,8 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
      */
     @Override
     public void setReceivedAddress(AddressInfoResponse bean) {
-        ToastUtils.toastShort("设置收货地址");
-
+//        ToastUtils.toastShort("设置收货地址");
+        EventBusInstance.getInstance().post(bean);
+        finish();
     }
 }
