@@ -70,6 +70,11 @@
         <activity android:name=".ui.module.center.activity.ExpressInfoActivity" />
         <activity android:name=".ui.module.home.activity.LocationActivity" />
         <activity android:name=".ui.module.home.activity.CategorySecondActivity"></activity>
+        <activity android:name=".ui.module.home.activity.LocationActivity" />
+        <activity
+            android:name=".ui.module.center.activity.ShopCartActivity"
+            android:label="@string/title_activity_shop_cart"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

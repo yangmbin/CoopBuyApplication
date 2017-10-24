@@ -60,6 +60,7 @@
     <color name="auxiliary_text_red">#eb221f</color>
     <!-- 辅色 深红-->
     <color name="auxiliary_text_red_dark">#d90000</color>
+    <color name="auxiliary_red">#E4393C</color>
     <!-- 辅色 黄-->
     <color name="auxiliary_text_orange">#ffa200</color>
     <!--辅色 绿-->
