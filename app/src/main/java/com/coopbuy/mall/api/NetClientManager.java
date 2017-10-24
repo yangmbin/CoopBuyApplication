@@ -14,6 +14,7 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.reponse.ShopCartReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
@@ -198,7 +199,9 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState addAddress(AddAddressRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADDADDRESSS, request, callback, userState);
-    }    /**
+    }
+
+    /**
      * 修改地址
      *
      * @param request
@@ -268,6 +271,18 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getStationData(GetBindStationRequest request, IAsyncResultCallback<List<GetBindStationReponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<GetBindStationReponse>>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_LIST_BY_REGION, request, callback, userState);
+    }
+
+    /**
+     * 购物车数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getShopCartData(IAsyncResultCallback<ShopCartReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ShopCartReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SHOPCART_DATA, callback, userState);
     }
 
 

@@ -27,9 +27,8 @@ public class Constant {
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
-    public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
-    //public static final String SERVER_URL_NEW = "http://192.168.1.56:8001/";
-    // public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+    // public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
+     public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
     /**
      * 图片地址
      */
@@ -98,6 +97,10 @@ public class Constant {
      * 获取站点 站长 助理数据
      */
     public static final String FIND_LIST_BY_REGION = "api/services/app/station/FindListByRegion";
+    /**
+     * 购物车数据
+     */
+    public static final String SHOPCART_DATA= "api/services/app/shoppingCart/List";
 
 
     /**

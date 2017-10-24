@@ -19,6 +19,7 @@ import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
+import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
@@ -157,7 +158,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(PersonalActivity.class, userInfo);
                 break;
             case R.id.ll_shopcart:
-
+                enter(ShopCartActivity.class, null);
                 break;
             case R.id.ll_collect:
 
@@ -228,6 +229,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         orderBarView.setWaitpayDox((int) data.getWaitPayOrderCount());//代付款
         orderBarView.setWaitsendDox((int) data.getWaitShipmentOrderCount());//待发货
     }
+
     private void setUserInfo() {
         if (userInfo.isIsStationUser()) {
             llStationStatus.setVisibility(View.VISIBLE);

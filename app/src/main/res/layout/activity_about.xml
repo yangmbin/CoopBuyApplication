@@ -52,7 +52,6 @@
         style="@style/center_LinearLayout_help_90"
         android:layout_marginTop="@dimen/dimen_px16">
 
-
         <TextView
             style="@style/text_theme_black_size_28_41"
             android:layout_marginLeft="@dimen/dimen_px31"

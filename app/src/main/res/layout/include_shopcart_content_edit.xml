@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_shopcart_edit"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/dimen_px270"
+    android:gravity="center|left"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_px200"
+        android:layout_marginLeft="@dimen/dimen_px30"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_shopcart_add_sub" />
+
+        <include layout="@layout/include_shopcart_version" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="@dimen/dimen_px120"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_px60"
+        android:background="@color/auxiliary_text_red"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/edit_text_back_white" />
+
+</LinearLayout>

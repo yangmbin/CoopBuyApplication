@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_preferential"
+    style="@style/center_LinearLayout_help_90"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_feel"
+        style="@style/center_text_white_size_20"
+        android:layout_width="@dimen/dimen_px66"
+        android:layout_height="@dimen/dimen_px30"
+        android:layout_marginLeft="@dimen/dimen_px144"
+        android:background="@drawable/black_rectangle_btn_unpress_red"
+        android:gravity="center"
+        android:padding="@dimen/dimen_px2"
+        android:text="包邮" />
+
+    <TextView
+        android:id="@+id/tv_feel_price"
+        style="@style/text_black_size_24_878f94"
+        android:layout_marginLeft="@dimen/dimen_px10"
+        android:layout_toRightOf="@+id/tv_feel"
+        android:text="再买100.00元 享包邮"
+        android:textSize="@dimen/dimen_px26" />
+
+    <TextView
+        style="@style/text_orange_size_26_f"
+        android:layout_toLeftOf="@+id/iv_more"
+        android:text="去凑单" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        style="@style/image_center_40"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:src="@mipmap/icon_shopcart_orange_more" />
+</RelativeLayout>
