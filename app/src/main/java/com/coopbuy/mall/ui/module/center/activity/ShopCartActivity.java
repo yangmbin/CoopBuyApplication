@@ -98,7 +98,6 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
             public View getHeaderView(final int pos) {
                 final View headView = LayoutInflater.from(ShopCartActivity.this).inflate(R.layout.item_head_shopcart_view, null,true);
                 final TextView tiem = (TextView) headView.findViewById(R.id.tv_shop_name);
-                final TextView t = (TextView) headView.findViewById(R.id.t);
                 final TextView edit = (TextView) headView.findViewById(R.id.tv_edit);
                 final ImageView select = (ImageView) headView.findViewById(R.id.iv_shop_select);
 
