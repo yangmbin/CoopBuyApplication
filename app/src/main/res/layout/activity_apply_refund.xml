@@ -17,6 +17,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <LinearLayout
+            android:id="@+id/box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -305,14 +306,10 @@
                         android:textColor="@color/theme_text_lab_black"
                         android:layout_marginBottom="@dimen/dimen_px25"
                         android:text="上传凭证（选填，最多3张）"/>
-                    <LinearLayout
+                    <com.coopbuy.mall.widget.ApplyRefundUploadView
+                        android:id="@+id/uploadView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="@dimen/dimen_px180"
-                            android:layout_height="@dimen/dimen_px180"
-                            android:src="@mipmap/icon_camera"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
 

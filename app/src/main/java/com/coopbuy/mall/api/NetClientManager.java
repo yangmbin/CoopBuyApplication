@@ -18,6 +18,7 @@ import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
@@ -35,6 +36,7 @@ import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
+import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -385,5 +387,16 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getOrderDetail(OrderDetailRequest request, IAsyncResultCallback<OrderDetailResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderDetailResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.ORDER_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * 图片上传
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState uploadImage(UploadImageRequest request, IAsyncResultCallback<UploadImageResponse> callback, Object userState) {
+        return apiImagePostRequest(UploadImageResponse.class, Constant.SERVER_URL_NEW + Constant.UPLOAD_IMAGE, request.getType(), request.getImage(), callback, userState);
     }
 }
