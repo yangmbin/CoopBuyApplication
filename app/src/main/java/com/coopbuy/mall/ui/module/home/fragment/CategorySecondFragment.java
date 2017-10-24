@@ -1,12 +1,14 @@
 package com.coopbuy.mall.ui.module.home.fragment;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.module.home.activity.CategorySecondActivity;
 import com.coopbuy.mall.ui.module.home.adapter.CategorySecondAdapter;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class CategorySecondFragment extends ViewPagerBaseFragment {
 
@@ -59,4 +62,12 @@ public class CategorySecondFragment extends ViewPagerBaseFragment {
         mDelegateAdapter.notifyDataSetChanged();
     }
 
+    @OnClick({R.id.openDrawer})
+    public void onViewClicked(View v) {
+        switch (v.getId()) {
+            case R.id.openDrawer:
+                ((CategorySecondActivity) mContext).openDrawer();
+                break;
+        }
+    }
 }

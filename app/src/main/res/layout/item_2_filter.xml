@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px60"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_px28"
+        android:textColor="@color/theme_text_lab_black"
+        android:background="@drawable/shape_gray_2_no_solid_bg"
+        android:text="菜刀"/>
+
+</LinearLayout>
