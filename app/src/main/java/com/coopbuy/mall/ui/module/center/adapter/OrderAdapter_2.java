@@ -35,6 +35,7 @@ public class OrderAdapter_2 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.propertyDesc).setText(item.getProperties() + " " + item.getSpecifications());
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
+        holder.getTextView(R.id.refundStatus).setText(item.getRefundStatus());
         holder.itemView.setOnClickListener(mListener);
     }
 }

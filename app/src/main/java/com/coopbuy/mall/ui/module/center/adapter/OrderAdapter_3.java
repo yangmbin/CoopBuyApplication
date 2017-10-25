@@ -62,9 +62,25 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         // 删除订单
         if (item.isCanDelete())
             holder.getTextView(R.id.deleteBtn).setVisibility(View.VISIBLE);
+        // 再来一单
+        if (item.isCanRepeatSubmitOrder())
+            holder.getTextView(R.id.repeatSubmitOrderBtn).setVisibility(View.VISIBLE);
+        // 提醒商家发货
+        if (item.isCanRemindShipment())
+            holder.getTextView(R.id.remindShipmentBtn).setVisibility(View.VISIBLE);
+        // 申请退款/售后
+        if (item.isCanApplyRefund()) {
+            holder.getTextView(R.id.applyRefundBtn).setVisibility(View.VISIBLE);
+            holder.getTextView(R.id.applyRefundBtn).setText(item.getApplyRefundButtonText());
+        }
 
 
-        // 更多
+        // 更多（删除订单、申请退款/售后）
+        if (item.isCanDelete() && item.isCanApplyRefund()) {
+            holder.getTextView(R.id.deleteBtn).setVisibility(View.GONE);
+            holder.getTextView(R.id.applyRefundBtn).setVisibility(View.GONE);
+            holder.getTextView(R.id.moreBtn).setVisibility(View.VISIBLE);
+        }
         holder.getTextView(R.id.moreBtn).setOnClickListener(this);
     }
 

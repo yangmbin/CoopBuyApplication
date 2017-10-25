@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <LinearLayout
             android:id="@+id/exception_wrapper"
@@ -15,24 +16,22 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center_vertical|center_horizontal"
-            android:orientation="vertical"
-            android:padding="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" >
+            android:orientation="vertical" >
 
+            <ImageView
+                android:layout_width="@dimen/dimen_px430"
+                android:layout_height="@dimen/dimen_px284"
+                android:src="@mipmap/icon_loadingbox_network_error"/>
             <TextView
-                android:id="@+id/exception_title"
+                android:id="@+id/exception_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="网络错误" />
+                android:textSize="@dimen/text_size_px28"
+                android:textColor="@color/theme_text_lab_black"
+                android:layout_marginTop="@dimen/dimen_px100"
+                android:layout_marginBottom="@dimen/dimen_px270"
+                android:text="网络错误，请稍后再试"/>
 
-            <Button
-                android:id="@+id/exception_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="重试"
-                android:layout_below="@+id/exception_wrapper"
-                android:layout_centerHorizontal="true" />
         </LinearLayout>
 
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.utils.ScreenUtils;
@@ -16,9 +17,10 @@ import com.coopbuy.mall.utils.ScreenUtils;
  * @author ymb
  * Create at 2017/10/18 13:43
  */
-public class OrderMoreBtnPopwindow extends PopupWindow {
+public class OrderMoreBtnPopwindow extends PopupWindow implements View.OnClickListener {
 
     private Context mContext;
+    private TextView mDeleteBtn, mApplyRefundBtn;
 
     public OrderMoreBtnPopwindow(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -30,6 +32,11 @@ public class OrderMoreBtnPopwindow extends PopupWindow {
         setFocusable(true);
         setOutsideTouchable(true);
         setBackgroundDrawable(new BitmapDrawable());
+
+        mDeleteBtn = contentView.findViewById(R.id.deleteBtn);
+        mApplyRefundBtn = contentView.findViewById(R.id.applyRefundBtn);
+        mDeleteBtn.setOnClickListener(this);
+        mApplyRefundBtn.setOnClickListener(this);
     }
 
     public void showWindow(View anchor) {
@@ -37,5 +44,19 @@ public class OrderMoreBtnPopwindow extends PopupWindow {
             dismiss();
         else
             showAsDropDown(anchor, -ScreenUtils.dip2px(mContext, 30), 0);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            // 删除订单
+            case R.id.deleteBtn:
+
+                break;
+            // 申请退款/售后
+            case R.id.applyRefundBtn:
+
+                break;
+        }
     }
 }

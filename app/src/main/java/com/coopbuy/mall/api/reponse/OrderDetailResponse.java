@@ -11,68 +11,72 @@ import java.util.List;
 public class OrderDetailResponse implements Serializable {
 
     /**
-     * orderId : string
-     * shopId : 0
-     * shopName : string
-     * orderType : 0
-     * orderStatus : 0
-     * statusName : string
-     * totalAmount : 0
-     * payableAmount : 0
-     * tradeId : string
-     * payTime : 2017-08-09T01:41:09.471Z
-     * finishTime : 2017-08-09T01:41:09.471Z
-     * refundStatus : 0
-     * refundStatusName : string
-     * refundApplyId : string
-     * deliveryTime : 2017-08-09T01:41:09.471Z
-     * secondFreightAmount : 0
+     * orderId : 1710169717892215
+     * shopId : 54
+     * shopName : 奈儿斯服饰专营店
+     * shopTel :
+     * orderStatus : 1
+     * orderType : 1
+     * statusName : 待支付
+     * totalAmount : 79
      * freightAmount : 0
-     * isComment : true
-     * isSiteMasterPayApply : true
-     * createTime : 2017-08-09T01:41:09.471Z
-     * payExpires : 0
-     * recieveExpires : 0
-     * consignee : string
-     * recieverPhone : string
-     * regionId : 0
-     * regionName : string
-     * shippingAddress : string
-     * remark : string
-     * phone : string
-     * orderItem : [{"goodsId":0,"goodsName":"string","skuId":0,"imageUrl":"string","quantity":0,"unitPrice":0,"specifications":"string","properties":"string","refundState":0}]
+     * orderAmount : 79
+     * remark : 测试第一单啊
+     * createTime : 2017-10-16 13:01:20
+     * finishTime :
+     * paymentTime :
+     * consignerName : 王晶
+     * consignerTel : 18302626270
+     * consignerAddress : 测试的下单
+     * regionId : 520425102201
+     * regionName : 贵州省,安顺市,紫云苗族布依族自治县,猴场镇,猴场村民委员会
+     * orderItems : [{"canApplyRefund":false,"applyRefundButtonText":"","itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}]
+     * cargoInfo : {"text":"","time":""}
+     * canCancel : false
+     * canDelete : false
+     * canPayment : false
+     * canApplyLieuPay : false
+     * canDelayedReceipt : false
+     * canFindExpressInfo : false
+     * canReceipt : false
+     * canApplyRefund : false
+     * applyRefundButtonText :
+     * canRemindShipment : false
+     * canRepeatSubmitOrder : false
      */
 
     private String orderId;
     private int shopId;
     private String shopName;
-    private int orderType;
+    private String shopTel;
     private int orderStatus;
+    private int orderType;
     private String statusName;
     private int totalAmount;
-    private int payableAmount;
-    private String tradeId;
-    private String payTime;
-    private String finishTime;
-    private int refundStatus;
-    private String refundStatusName;
-    private String refundApplyId;
-    private String deliveryTime;
-    private int secondFreightAmount;
     private int freightAmount;
-    private boolean isComment;
-    private boolean isSiteMasterPayApply;
-    private String createTime;
-    private int payExpires;
-    private int recieveExpires;
-    private String consignee;
-    private String recieverPhone;
-    private int regionId;
-    private String regionName;
-    private String shippingAddress;
+    private int orderAmount;
     private String remark;
-    private String phone;
-    private List<OrderItemBean> orderItem;
+    private String createTime;
+    private String finishTime;
+    private String paymentTime;
+    private String consignerName;
+    private String consignerTel;
+    private String consignerAddress;
+    private long regionId;
+    private String regionName;
+    private CargoInfoBean cargoInfo;
+    private boolean canCancel;
+    private boolean canDelete;
+    private boolean canPayment;
+    private boolean canApplyLieuPay;
+    private boolean canDelayedReceipt;
+    private boolean canFindExpressInfo;
+    private boolean canReceipt;
+    private boolean canApplyRefund;
+    private String applyRefundButtonText;
+    private boolean canRemindShipment;
+    private boolean canRepeatSubmitOrder;
+    private List<OrderItemsBean> orderItems;
 
     public String getOrderId() {
         return orderId;
@@ -98,12 +102,12 @@ public class OrderDetailResponse implements Serializable {
         this.shopName = shopName;
     }
 
-    public int getOrderType() {
-        return orderType;
+    public String getShopTel() {
+        return shopTel;
     }
 
-    public void setOrderType(int orderType) {
-        this.orderType = orderType;
+    public void setShopTel(String shopTel) {
+        this.shopTel = shopTel;
     }
 
     public int getOrderStatus() {
@@ -112,6 +116,14 @@ public class OrderDetailResponse implements Serializable {
 
     public void setOrderStatus(int orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public int getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(int orderType) {
+        this.orderType = orderType;
     }
 
     public String getStatusName() {
@@ -130,78 +142,6 @@ public class OrderDetailResponse implements Serializable {
         this.totalAmount = totalAmount;
     }
 
-    public int getPayableAmount() {
-        return payableAmount;
-    }
-
-    public void setPayableAmount(int payableAmount) {
-        this.payableAmount = payableAmount;
-    }
-
-    public String getTradeId() {
-        return tradeId;
-    }
-
-    public void setTradeId(String tradeId) {
-        this.tradeId = tradeId;
-    }
-
-    public String getPayTime() {
-        return payTime;
-    }
-
-    public void setPayTime(String payTime) {
-        this.payTime = payTime;
-    }
-
-    public String getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(String finishTime) {
-        this.finishTime = finishTime;
-    }
-
-    public int getRefundStatus() {
-        return refundStatus;
-    }
-
-    public void setRefundStatus(int refundStatus) {
-        this.refundStatus = refundStatus;
-    }
-
-    public String getRefundStatusName() {
-        return refundStatusName;
-    }
-
-    public void setRefundStatusName(String refundStatusName) {
-        this.refundStatusName = refundStatusName;
-    }
-
-    public String getRefundApplyId() {
-        return refundApplyId;
-    }
-
-    public void setRefundApplyId(String refundApplyId) {
-        this.refundApplyId = refundApplyId;
-    }
-
-    public String getDeliveryTime() {
-        return deliveryTime;
-    }
-
-    public void setDeliveryTime(String deliveryTime) {
-        this.deliveryTime = deliveryTime;
-    }
-
-    public int getSecondFreightAmount() {
-        return secondFreightAmount;
-    }
-
-    public void setSecondFreightAmount(int secondFreightAmount) {
-        this.secondFreightAmount = secondFreightAmount;
-    }
-
     public int getFreightAmount() {
         return freightAmount;
     }
@@ -210,20 +150,20 @@ public class OrderDetailResponse implements Serializable {
         this.freightAmount = freightAmount;
     }
 
-    public boolean isIsComment() {
-        return isComment;
+    public int getOrderAmount() {
+        return orderAmount;
     }
 
-    public void setIsComment(boolean isComment) {
-        this.isComment = isComment;
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
     }
 
-    public boolean isIsSiteMasterPayApply() {
-        return isSiteMasterPayApply;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setIsSiteMasterPayApply(boolean isSiteMasterPayApply) {
-        this.isSiteMasterPayApply = isSiteMasterPayApply;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getCreateTime() {
@@ -234,43 +174,51 @@ public class OrderDetailResponse implements Serializable {
         this.createTime = createTime;
     }
 
-    public int getPayExpires() {
-        return payExpires;
+    public String getFinishTime() {
+        return finishTime;
     }
 
-    public void setPayExpires(int payExpires) {
-        this.payExpires = payExpires;
+    public void setFinishTime(String finishTime) {
+        this.finishTime = finishTime;
     }
 
-    public int getRecieveExpires() {
-        return recieveExpires;
+    public String getPaymentTime() {
+        return paymentTime;
     }
 
-    public void setRecieveExpires(int recieveExpires) {
-        this.recieveExpires = recieveExpires;
+    public void setPaymentTime(String paymentTime) {
+        this.paymentTime = paymentTime;
     }
 
-    public String getConsignee() {
-        return consignee;
+    public String getConsignerName() {
+        return consignerName;
     }
 
-    public void setConsignee(String consignee) {
-        this.consignee = consignee;
+    public void setConsignerName(String consignerName) {
+        this.consignerName = consignerName;
     }
 
-    public String getRecieverPhone() {
-        return recieverPhone;
+    public String getConsignerTel() {
+        return consignerTel;
     }
 
-    public void setRecieverPhone(String recieverPhone) {
-        this.recieverPhone = recieverPhone;
+    public void setConsignerTel(String consignerTel) {
+        this.consignerTel = consignerTel;
     }
 
-    public int getRegionId() {
+    public String getConsignerAddress() {
+        return consignerAddress;
+    }
+
+    public void setConsignerAddress(String consignerAddress) {
+        this.consignerAddress = consignerAddress;
+    }
+
+    public long getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(int regionId) {
+    public void setRegionId(long regionId) {
         this.regionId = regionId;
     }
 
@@ -282,75 +230,187 @@ public class OrderDetailResponse implements Serializable {
         this.regionName = regionName;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public CargoInfoBean getCargoInfo() {
+        return cargoInfo;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setCargoInfo(CargoInfoBean cargoInfo) {
+        this.cargoInfo = cargoInfo;
     }
 
-    public String getRemark() {
-        return remark;
+    public boolean isCanCancel() {
+        return canCancel;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setCanCancel(boolean canCancel) {
+        this.canCancel = canCancel;
     }
 
-    public String getPhone() {
-        return phone;
+    public boolean isCanDelete() {
+        return canDelete;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
     }
 
-    public List<OrderItemBean> getOrderItem() {
-        return orderItem;
+    public boolean isCanPayment() {
+        return canPayment;
     }
 
-    public void setOrderItem(List<OrderItemBean> orderItem) {
-        this.orderItem = orderItem;
+    public void setCanPayment(boolean canPayment) {
+        this.canPayment = canPayment;
     }
 
-    public static class OrderItemBean {
+    public boolean isCanApplyLieuPay() {
+        return canApplyLieuPay;
+    }
+
+    public void setCanApplyLieuPay(boolean canApplyLieuPay) {
+        this.canApplyLieuPay = canApplyLieuPay;
+    }
+
+    public boolean isCanDelayedReceipt() {
+        return canDelayedReceipt;
+    }
+
+    public void setCanDelayedReceipt(boolean canDelayedReceipt) {
+        this.canDelayedReceipt = canDelayedReceipt;
+    }
+
+    public boolean isCanFindExpressInfo() {
+        return canFindExpressInfo;
+    }
+
+    public void setCanFindExpressInfo(boolean canFindExpressInfo) {
+        this.canFindExpressInfo = canFindExpressInfo;
+    }
+
+    public boolean isCanReceipt() {
+        return canReceipt;
+    }
+
+    public void setCanReceipt(boolean canReceipt) {
+        this.canReceipt = canReceipt;
+    }
+
+    public boolean isCanApplyRefund() {
+        return canApplyRefund;
+    }
+
+    public void setCanApplyRefund(boolean canApplyRefund) {
+        this.canApplyRefund = canApplyRefund;
+    }
+
+    public String getApplyRefundButtonText() {
+        return applyRefundButtonText;
+    }
+
+    public void setApplyRefundButtonText(String applyRefundButtonText) {
+        this.applyRefundButtonText = applyRefundButtonText;
+    }
+
+    public boolean isCanRemindShipment() {
+        return canRemindShipment;
+    }
+
+    public void setCanRemindShipment(boolean canRemindShipment) {
+        this.canRemindShipment = canRemindShipment;
+    }
+
+    public boolean isCanRepeatSubmitOrder() {
+        return canRepeatSubmitOrder;
+    }
+
+    public void setCanRepeatSubmitOrder(boolean canRepeatSubmitOrder) {
+        this.canRepeatSubmitOrder = canRepeatSubmitOrder;
+    }
+
+    public List<OrderItemsBean> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemsBean> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public static class CargoInfoBean {
         /**
-         * goodsId : 0
-         * goodsName : string
-         * skuId : 0
-         * imageUrl : string
-         * quantity : 0
-         * unitPrice : 0
-         * specifications : string
-         * properties : string
-         * refundState : 0
+         * text :
+         * time :
          */
 
-        private int goodsId;
-        private String goodsName;
+        private String text;
+        private String time;
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
+    }
+
+    public static class OrderItemsBean {
+        /**
+         * canApplyRefund : false
+         * applyRefundButtonText :
+         * itemId : 1
+         * skuId : 6305
+         * productName : 维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL
+         * productImageUrl : https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg
+         * quantity : 1
+         * unitPrice : 79
+         * commissionRate : 6
+         * specifications : 规格:XXL
+         * properties : 属性:蓝色
+         * refundStatus :
+         */
+
+        private boolean canApplyRefund;
+        private String applyRefundButtonText;
+        private int itemId;
         private int skuId;
-        private String imageUrl;
+        private String productName;
+        private String productImageUrl;
         private int quantity;
         private int unitPrice;
+        private int commissionRate;
         private String specifications;
         private String properties;
-        private int refundState;
+        private String refundStatus;
 
-        public int getGoodsId() {
-            return goodsId;
+        public boolean isCanApplyRefund() {
+            return canApplyRefund;
         }
 
-        public void setGoodsId(int goodsId) {
-            this.goodsId = goodsId;
+        public void setCanApplyRefund(boolean canApplyRefund) {
+            this.canApplyRefund = canApplyRefund;
         }
 
-        public String getGoodsName() {
-            return goodsName;
+        public String getApplyRefundButtonText() {
+            return applyRefundButtonText;
         }
 
-        public void setGoodsName(String goodsName) {
-            this.goodsName = goodsName;
+        public void setApplyRefundButtonText(String applyRefundButtonText) {
+            this.applyRefundButtonText = applyRefundButtonText;
+        }
+
+        public int getItemId() {
+            return itemId;
+        }
+
+        public void setItemId(int itemId) {
+            this.itemId = itemId;
         }
 
         public int getSkuId() {
@@ -361,12 +421,20 @@ public class OrderDetailResponse implements Serializable {
             this.skuId = skuId;
         }
 
-        public String getImageUrl() {
-            return imageUrl;
+        public String getProductName() {
+            return productName;
         }
 
-        public void setImageUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
+        public void setProductName(String productName) {
+            this.productName = productName;
+        }
+
+        public String getProductImageUrl() {
+            return productImageUrl;
+        }
+
+        public void setProductImageUrl(String productImageUrl) {
+            this.productImageUrl = productImageUrl;
         }
 
         public int getQuantity() {
@@ -385,6 +453,14 @@ public class OrderDetailResponse implements Serializable {
             this.unitPrice = unitPrice;
         }
 
+        public int getCommissionRate() {
+            return commissionRate;
+        }
+
+        public void setCommissionRate(int commissionRate) {
+            this.commissionRate = commissionRate;
+        }
+
         public String getSpecifications() {
             return specifications;
         }
@@ -401,12 +477,12 @@ public class OrderDetailResponse implements Serializable {
             this.properties = properties;
         }
 
-        public int getRefundState() {
-            return refundState;
+        public String getRefundStatus() {
+            return refundStatus;
         }
 
-        public void setRefundState(int refundState) {
-            this.refundState = refundState;
+        public void setRefundStatus(String refundStatus) {
+            this.refundStatus = refundStatus;
         }
     }
 }

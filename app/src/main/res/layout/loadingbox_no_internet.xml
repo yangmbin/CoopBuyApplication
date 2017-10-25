@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
 
         <LinearLayout
@@ -17,27 +18,40 @@
             android:layout_width ="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:gravity="center_vertical|center_horizontal"
-            android:orientation="vertical"
-            android:padding="15dp" >
+            android:orientation="vertical" >
 
+            <ImageView
+                android:layout_width="@dimen/dimen_px430"
+                android:layout_height="@dimen/dimen_px284"
+                android:src="@mipmap/icon_loadingbox_no_internet"/>
             <TextView
-                android:id="@+id/exception_title"
+                android:id="@+id/exception_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="无网络" />
+                android:textSize="@dimen/text_size_px28"
+                android:textColor="@color/theme_text_lab_black"
+                android:layout_marginTop="@dimen/dimen_px100"
+                android:text="糟糕！没有网络了！"/>
+
+            <TextView
+                android:id="@+id/exception_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_px60"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_px30"
+                android:paddingLeft="@dimen/dimen_px90"
+                android:paddingRight="@dimen/dimen_px90"
+                android:gravity="center"
+                android:text="点击刷新"
+                android:layout_below="@+id/exception_wrapper"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_px210"
+                android:background="@drawable/black_rectangle_btn_press_black"/>
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/exception_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="重试"
-            android:layout_below="@+id/exception_wrapper"
-            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -36,7 +36,8 @@
             android:layout_height="@dimen/dimen_px44"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_px40">
+            android:layout_marginRight="@dimen/dimen_px40"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_msg"
