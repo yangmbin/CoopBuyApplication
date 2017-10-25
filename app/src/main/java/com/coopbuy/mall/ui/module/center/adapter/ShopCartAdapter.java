@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.ShopCartReponse;
+import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.ui.module.center.port.ShopCartPort;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -18,15 +18,15 @@ import java.util.List;
  */
 
 public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.Holder> {
-    private List<ShopCartReponse.ShopsBean.ProductsBean> data;
+    private List<ShopCartResponse.ShopsBean.ProductsBean> data;
     private ShopCartPort port;
 
-    public ShopCartAdapter(List<ShopCartReponse.ShopsBean.ProductsBean> data, ShopCartPort port) {
+    public ShopCartAdapter(List<ShopCartResponse.ShopsBean.ProductsBean> data, ShopCartPort port) {
         this.data = data;
         this.port = port;
     }
 
-    public void update(List<ShopCartReponse.ShopsBean.ProductsBean> data) {
+    public void update(List<ShopCartResponse.ShopsBean.ProductsBean> data) {
         if (!this.data.isEmpty()) {
             this.data.clear();
         }
@@ -42,7 +42,7 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.Holder
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        ShopCartReponse.ShopsBean.ProductsBean bean = data.get(position);
+        ShopCartResponse.ShopsBean.ProductsBean bean = data.get(position);
         holder.tv_name.setText(bean.getProductName());
         holder.tvVersion.setText(null != bean.getSpecifications() ? bean.getSpecifications() : "" + null != bean.getProperties() ? bean.getProperties() : "");
         holder.counts.setText(bean.getQuantity() + "");
@@ -73,7 +73,7 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.Holder
             super(itemView);
             tv_name = (TextView) itemView.findViewById(R.id.tv_goods_name);
             tvVersion = (TextView) itemView.findViewById(R.id.tv_goods_version);
-            counts = (TextView) itemView.findViewById(R.id.tv_goods_count);
+            //counts = (TextView) itemView.findViewById(R.id.tv_goods_count);
             salePrice = (TextView) itemView.findViewById(R.id.tv_sale_price);
             oldPrice = (TextView) itemView.findViewById(R.id.tv_old_price);
             iv_images = (SimpleDraweeView) itemView.findViewById(R.id.adFaceImage);

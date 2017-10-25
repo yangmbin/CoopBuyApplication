@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="title"
-            android:textSize="@dimen/dimen_px36"
-            android:textColor="@color/theme_text_title_orange" />
+            android:textColor="@color/theme_text_title_orange"
+            android:textSize="@dimen/dimen_px36" />
 
         <FrameLayout
             android:id="@+id/titlebar_right"
@@ -59,10 +59,9 @@
         </FrameLayout>
     </RelativeLayout>
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px1"
-        android:background="@color/auxiliary_text_orange_gray"/>
+        android:background="@color/auxiliary_text_orange_gray" />
 
 </LinearLayout>

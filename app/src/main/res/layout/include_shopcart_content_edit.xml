@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_px200"
         android:layout_marginLeft="@dimen/dimen_px30"
-
         android:gravity="center"
         android:orientation="vertical">
 
@@ -23,7 +22,7 @@
         android:id="@+id/tv_delete"
         android:layout_width="@dimen/dimen_px120"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/dimen_px60"
+        android:layout_marginLeft="@dimen/dimen_px30"
         android:background="@color/auxiliary_text_red"
         android:gravity="center"
         android:text="删除"

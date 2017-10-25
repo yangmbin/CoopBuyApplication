@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:id="@+id/ll_shopcart_content"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_px200"
     android:layout_marginLeft="@dimen/dimen_px29"
     android:layout_marginRight="@dimen/dimen_px36"
@@ -21,6 +21,8 @@
         android:id="@+id/tv_goods_version"
         style="@style/text_black_size_28_888888"
         android:layout_marginTop="@dimen/dimen_px20"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="35*90cm小号" />
 
     <RelativeLayout
@@ -38,12 +40,12 @@
             style="@style/text_black_size_28_878f94"
             android:layout_width="wrap_content"
             android:layout_marginLeft="@dimen/dimen_px12"
-            android:visibility="gone"
             android:layout_toRightOf="@id/tv_sale_price"
-            android:text="$78" />
+            android:text="$78"
+            android:visibility="gone" />
 
         <TextView
-            android:id="@+id/tv_goods_count"
+            android:id="@+id/tv_goods_counts"
             style="@style/text_black_size_28_878f94"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/dimen_px12"

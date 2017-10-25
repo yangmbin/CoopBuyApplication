@@ -9,6 +9,7 @@ import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
+import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
@@ -16,7 +17,7 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
-import com.coopbuy.mall.api.reponse.ShopCartReponse;
+import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
@@ -27,6 +28,8 @@ import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
 import com.coopbuy.mall.api.request.GetChildProvincesRequest;
+import com.coopbuy.mall.api.request.GoodsDeleteRequest;
+import com.coopbuy.mall.api.request.GoodsUpdateRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
@@ -285,9 +288,33 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getShopCartData(IAsyncResultCallback<ShopCartReponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<ShopCartReponse>() {
+    public IAsyncRequestState getShopCartData(IAsyncResultCallback<ShopCartResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ShopCartResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SHOPCART_DATA, callback, userState);
+    }
+
+    /**
+     * 更新商品的数量 skuinfo
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState updateAddOrSubSkuinfo(GoodsUpdateRequest request, IAsyncResultCallback<GoodsUpdateResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GoodsUpdateResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.UPDATEPRODUCT,request, callback, userState);
+    }
+
+    /**
+     * 删除商品
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState deleteGoods(GoodsDeleteRequest request, IAsyncResultCallback<GoodsUpdateResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GoodsUpdateResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.REMOVEPRODUCT,request, callback, userState);
     }
 
 
@@ -318,6 +345,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取用户默认地址
+     *
      * @param callback
      * @param userState
      * @return
@@ -329,6 +357,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 计算运费
+     *
      * @param callback
      * @param userState
      * @return

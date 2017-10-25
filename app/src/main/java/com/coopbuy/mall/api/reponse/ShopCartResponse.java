@@ -7,7 +7,7 @@ import java.util.List;
  * Created by niu on 2017/10/24- 14:34
  */
 
-public class ShopCartReponse implements Serializable {
+public class ShopCartResponse implements Serializable {
     private List<ShopsBean> shops;
     private List<InvalidProductsBean> invalidProducts;
 
@@ -39,6 +39,48 @@ public class ShopCartReponse implements Serializable {
         private String shopName;
         private String shopLogoUrl;
         private List<ProductsBean> products;
+        private boolean isLoseGoods;
+        /**
+         * 第一个失效商品 用于显示失效商品标题的
+         */
+        private boolean isFristLoseGoods;
+        /**
+         * 店铺是否选中
+         */
+        private boolean isShopSelect;
+        private boolean isEdit;
+
+        public boolean isLoseGoods() {
+            return isLoseGoods;
+        }
+
+        public void setLoseGoods(boolean loseGoods) {
+            isLoseGoods = loseGoods;
+        }
+
+        public boolean isFristLoseGoods() {
+            return isFristLoseGoods;
+        }
+
+        public void setFristLoseGoods(boolean fristLoseGoods) {
+            isFristLoseGoods = fristLoseGoods;
+        }
+
+        public boolean isShopSelect() {
+            return isShopSelect;
+        }
+
+        public void setShopSelect(boolean shopSelect) {
+            isShopSelect = shopSelect;
+        }
+
+        public boolean isEdit() {
+            return isEdit;
+        }
+
+        public void setEdit(boolean edit) {
+            isEdit = edit;
+        }
 
         public int getShopId() {
             return shopId;
@@ -72,6 +114,8 @@ public class ShopCartReponse implements Serializable {
             this.products = products;
         }
 
+
+
         public static class ProductsBean implements Serializable {
             public static final int TYPE_TITLE=1;
             public static final int TYPE_NROMAL=2;
@@ -91,6 +135,84 @@ public class ShopCartReponse implements Serializable {
             private int shopId;
             private String shopName;
             private int type;
+            private boolean isShopSelect;
+            /**
+             * 是否是编辑状态 默认是编辑 flase 同时也是对应商品状态的显示
+             */
+            private boolean isEdit;
+            /**
+             * 商品是否选中
+             */
+            private boolean isGoodsSelect;
+            /**
+             * 判断是否是标题
+             */
+            private int isFirst = 2;
+            /**
+             * 删除控件是否显示 默认flase
+             */
+            private boolean isDeleteImageShow;
+            /**
+             * 是不是失效商品
+             */
+            private boolean isLoseGoods;
+            private boolean isEnd;
+
+            public boolean isEnd() {
+                return isEnd;
+            }
+
+            public void setEnd(boolean end) {
+                isEnd = end;
+            }
+
+            public boolean isShopSelect() {
+                return isShopSelect;
+            }
+
+            public void setShopSelect(boolean shopSelect) {
+                isShopSelect = shopSelect;
+            }
+
+            public boolean isEdit() {
+                return isEdit;
+            }
+
+            public void setEdit(boolean edit) {
+                isEdit = edit;
+            }
+
+            public boolean isGoodsSelect() {
+                return isGoodsSelect;
+            }
+
+            public void setGoodsSelect(boolean goodsSelect) {
+                isGoodsSelect = goodsSelect;
+            }
+
+            public int getIsFirst() {
+                return isFirst;
+            }
+
+            public void setIsFirst(int isFirst) {
+                this.isFirst = isFirst;
+            }
+
+            public boolean isDeleteImageShow() {
+                return isDeleteImageShow;
+            }
+
+            public void setDeleteImageShow(boolean deleteImageShow) {
+                isDeleteImageShow = deleteImageShow;
+            }
+
+            public boolean isLoseGoods() {
+                return isLoseGoods;
+            }
+
+            public void setLoseGoods(boolean loseGoods) {
+                isLoseGoods = loseGoods;
+            }
 
             public int getType() {
                 return type;
@@ -211,7 +333,7 @@ public class ShopCartReponse implements Serializable {
         private int shopId;
         private String shopName;
         private String shopLogoUrl;
-        private List<ProductsBeanX> products;
+        private List<ProductsBean> products;
 
         public int getShopId() {
             return shopId;
@@ -237,15 +359,15 @@ public class ShopCartReponse implements Serializable {
             this.shopLogoUrl = shopLogoUrl;
         }
 
-        public List<ProductsBeanX> getProducts() {
+        public List<ProductsBean> getProducts() {
             return products;
         }
 
-        public void setProducts(List<ProductsBeanX> products) {
+        public void setProducts(List<ProductsBean> products) {
             this.products = products;
         }
 
-        public static class ProductsBeanX implements Serializable {
+        public static class ProductsBean implements Serializable {
             /**
              * productId : 111
              * productName : 贵人鸟正品男鞋2016秋冬季新款男子复古鞋气垫减震时尚休闲鞋运动鞋
