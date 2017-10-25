@@ -27,7 +27,8 @@ public class Constant {
      */
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
-    // public static final String SERVER_URL_NEW = "http://192.168.1.248:8860/";
+
+    //  public static final String SERVER_URL_NEW = "http://192.168.1.56:8003/";
      public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
     /**
      * 图片地址
@@ -101,6 +102,14 @@ public class Constant {
      * 购物车数据
      */
     public static final String SHOPCART_DATA= "api/services/app/shoppingCart/List";
+    /**
+     * 更新商品的数量 sku
+     */
+ public static final String UPDATEPRODUCT= "api/services/app/shoppingCart/UpdateProduct";
+    /**
+     * 删除商品
+     */
+    public static final String REMOVEPRODUCT= "api/services/app/shoppingCart/RemoveProduct";
 
 
     /**

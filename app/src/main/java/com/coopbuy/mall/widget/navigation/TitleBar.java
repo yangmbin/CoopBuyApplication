@@ -14,8 +14,9 @@ import com.coopbuy.mall.R;
 
 /**
  * TitleBar
+ *
  * @author ymb
- * Create at 2017/7/21 15:53
+ *         Create at 2017/7/21 15:53
  */
 public class TitleBar extends RelativeLayout implements View.OnClickListener {
 
@@ -64,6 +65,10 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
         mRightText.setText(textResId);
     }
 
+    public String getRightText() {
+        return mRightText.getText().toString().trim();
+    }
+
     public void setRightImage(int imageResId) {
         fl_right.setVisibility(VISIBLE);
         mRightImage.setVisibility(VISIBLE);
@@ -89,6 +94,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
 
     public interface TitleBarClickListener {
         void clickTitleBarBack();
+
         void clickTitleBarRight();
     }
 }

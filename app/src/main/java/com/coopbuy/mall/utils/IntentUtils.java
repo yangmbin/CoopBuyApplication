@@ -79,4 +79,8 @@ public class IntentUtils {
     public static void gotoActivity(Context context, Class<?> activity, Serializable data, String type) {
         context.startActivity((new Intent(context, activity).putExtra(DATA, data).putExtra(PARAM1, type)));
     }
+
+    public static void gotoActivity(Context context, Class<?> activity, int type, int param2) {
+        context.startActivity((new Intent(context, activity).putExtra(PARAM1, type).putExtra(PARAM2, param2)));
+    }
 }
