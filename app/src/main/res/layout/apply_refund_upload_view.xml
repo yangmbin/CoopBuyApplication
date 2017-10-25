@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/image0_layout"
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px200">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image0"
+                android:layout_width="@dimen/dimen_px180"
+                android:layout_height="@dimen/dimen_px180"
+                app:placeholderImage="@mipmap/icon_camera"
+                android:layout_alignParentBottom="true"/>
+            <ImageView
+                android:id="@+id/image0_delete"
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_delete_login_delete"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/image1_layout"
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px200"
+            android:layout_marginLeft="@dimen/dimen_px20">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image1"
+                android:layout_width="@dimen/dimen_px180"
+                android:layout_height="@dimen/dimen_px180"
+                app:placeholderImage="@mipmap/icon_camera"
+                android:layout_alignParentBottom="true"/>
+            <ImageView
+                android:id="@+id/image1_delete"
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_delete_login_delete"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/image2_layout"
+            android:layout_width="@dimen/dimen_px200"
+            android:layout_height="@dimen/dimen_px200"
+            android:layout_marginLeft="@dimen/dimen_px20">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image2"
+                android:layout_width="@dimen/dimen_px180"
+                android:layout_height="@dimen/dimen_px180"
+                app:placeholderImage="@mipmap/icon_camera"
+                android:layout_alignParentBottom="true"/>
+            <ImageView
+                android:id="@+id/image2_delete"
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_delete_login_delete"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

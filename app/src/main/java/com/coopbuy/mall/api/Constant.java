@@ -129,5 +129,6 @@ public class Constant {
     public static final String ORDER_DETAIL = "api/services/app/userOrder/Detail";
     public static final String DEFAULT_ADDRESS = "api/services/app/shippingAddress/FindDefault";
     public static final String CALCULATE_FREIGHT = "api/services/app/freight/Calculation";
+    public static final String UPLOAD_IMAGE = "api/services/app/upload/Image";
 
 }

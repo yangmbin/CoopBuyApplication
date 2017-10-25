@@ -17,12 +17,13 @@ import com.guinong.net.request.IAsyncRequestState;
 import com.guinong.net.utils.NetWorkUtil;
 import com.guinong.net.verify.VerifyManager;
 
-import java.io.IOException;
+import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -39,6 +40,8 @@ public abstract class RequestClient {
      *
      */
     public static final MediaType APPLICATION_JSON = MediaType.parse("application/json; charset=utf-8");
+    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+
     public SharedPreferencesUtils utils;
 
     /**
@@ -205,6 +208,25 @@ public abstract class RequestClient {
                         .build();
             }
         }
+    }
+
+    /**
+     * 创建上传图片请求
+     * @param type
+     * @param image
+     * @param url
+     * @return
+     */
+    private Request createImagePostRequest(int type, String image, String url) {
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        File f = new File(image);
+        if (f != null) {
+            builder.addFormDataPart("img", f.getName(), RequestBody.create(MEDIA_TYPE_PNG, f));
+        }
+        builder.addFormDataPart("type", type + "");
+        MultipartBody requestBody = builder.build();
+        Request request = new Request.Builder().url(url).post(requestBody).build();
+        return request;
     }
 
     /**
@@ -433,5 +455,31 @@ public abstract class RequestClient {
         Gson gson = createGson();
         AsyncEmptyCallbackHandle msgCallBack = new AsyncEmptyCallbackHandle(callback);
         return apiRequest(createGetRequest(null, url, gson), msgCallBack, userState);
+    }
+
+    /**
+     * 图片上传
+     * @param resultType
+     * @param url
+     * @param type
+     * @param image
+     * @param callback
+     * @param userState
+     * @param <TResult>
+     * @return
+     */
+    protected <TResult> IAsyncRequestState apiImagePostRequest(final Type resultType, String url,
+                                                                int type, String image, final IAsyncResultCallback<TResult> callback, Object userState) {
+        ExceptionUtils.checkNotNull(resultType, "resultType");
+        ExceptionUtils.checkNotNull(url, "url");
+        ExceptionUtils.checkNotNull(type, "type");
+        ExceptionUtils.checkNotNull(image, "image");
+        ExceptionUtils.checkNotNull(callback, "callback");
+        Gson gson = createGson();
+        AsyncTypeResultCallbackHandle<TResult> msgCallBack = new AsyncTypeResultCallbackHandle(resultType, callback, gson);
+        if (!checkModel(type, msgCallBack, userState) || !checkModel(image, msgCallBack, userState)) {
+            return defaultAsyncRequestState(userState);
+        }
+        return apiRequest(createImagePostRequest(type, image, url), msgCallBack, userState);
     }
 }
