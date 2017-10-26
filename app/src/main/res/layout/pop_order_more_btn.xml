@@ -20,6 +20,7 @@
             android:gravity="center_horizontal"
             android:background="@drawable/bg_round_corner_lab_black">
             <TextView
+                android:id="@+id/deleteBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px60"
                 android:gravity="center"
@@ -34,6 +35,7 @@
                 android:background="@color/white"
                 android:alpha="0.3"/>
             <TextView
+                android:id="@+id/applyRefundBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px60"
                 android:gravity="center"

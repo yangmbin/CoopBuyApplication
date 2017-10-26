@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="@dimen/dimen_px430"
                 android:layout_height="@dimen/dimen_px284"
-                android:src="@mipmap/icon_loadingbox_no_internet"/>
+                android:src="@mipmap/icon_loadingbox_no_data"/>
             <TextView
                 android:id="@+id/exception_message"
                 android:layout_width="wrap_content"
@@ -32,10 +32,10 @@
                 android:textSize="@dimen/text_size_px28"
                 android:textColor="@color/theme_text_lab_black"
                 android:layout_marginTop="@dimen/dimen_px100"
-                android:text="糟糕！没有网络了！"/>
+                android:text="还没有订单！快去下单吧！"/>
 
             <TextView
-                android:id="@+id/exception_button"
+                android:id="@+id/custom_exception_button"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_px60"
                 android:textColor="@color/white"
@@ -43,7 +43,7 @@
                 android:paddingLeft="@dimen/dimen_px90"
                 android:paddingRight="@dimen/dimen_px90"
                 android:gravity="center"
-                android:text="点击刷新"
+                android:text="去首页逛逛"
                 android:layout_below="@+id/exception_wrapper"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dimen_px210"

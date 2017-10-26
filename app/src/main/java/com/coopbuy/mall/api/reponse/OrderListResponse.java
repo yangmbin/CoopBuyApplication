@@ -12,7 +12,7 @@ public class OrderListResponse implements Serializable {
 
     /**
      * totalCount : 1
-     * items : [{"orderId":"1710169717892215","shopId":54,"shopName":"奈儿斯服饰专营店","orderStatus":1,"orderType":1,"statusName":"待支付","totalAmount":79,"freightAmount":0,"canCancel":true,"canDelete":false,"canPayment":true,"canApplyLieuPay":true,"canDelayedReceipt":false,"canFindExpressInfo":false,"canReceipt":false,"items":[{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","isShipment":false,"shippingCompany":"","waybillNo":""}]}]
+     * items : [{"orderId":"1710169717892215","shopId":54,"shopName":"奈儿斯服饰专营店","orderStatus":1,"orderType":1,"statusName":"待支付","totalAmount":79,"freightAmount":0,"items":[{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}],"canCancel":true,"canDelete":false,"canPayment":true,"canApplyLieuPay":true,"canDelayedReceipt":false,"canFindExpressInfo":false,"canReceipt":false,"canApplyRefund":false,"applyRefundButtonText":"","canRemindShipment":false,"canRepeatSubmitOrder":false}]
      */
 
     private int totalCount;
@@ -44,6 +44,7 @@ public class OrderListResponse implements Serializable {
          * statusName : 待支付
          * totalAmount : 79
          * freightAmount : 0
+         * items : [{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}]
          * canCancel : true
          * canDelete : false
          * canPayment : true
@@ -51,7 +52,10 @@ public class OrderListResponse implements Serializable {
          * canDelayedReceipt : false
          * canFindExpressInfo : false
          * canReceipt : false
-         * items : [{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","isShipment":false,"shippingCompany":"","waybillNo":""}]
+         * canApplyRefund : false
+         * applyRefundButtonText :
+         * canRemindShipment : false
+         * canRepeatSubmitOrder : false
          */
 
         private String orderId;
@@ -69,6 +73,10 @@ public class OrderListResponse implements Serializable {
         private boolean canDelayedReceipt;
         private boolean canFindExpressInfo;
         private boolean canReceipt;
+        private boolean canApplyRefund;
+        private String applyRefundButtonText;
+        private boolean canRemindShipment;
+        private boolean canRepeatSubmitOrder;
         private List<ItemsBean> items;
 
         public String getOrderId() {
@@ -191,6 +199,38 @@ public class OrderListResponse implements Serializable {
             this.canReceipt = canReceipt;
         }
 
+        public boolean isCanApplyRefund() {
+            return canApplyRefund;
+        }
+
+        public void setCanApplyRefund(boolean canApplyRefund) {
+            this.canApplyRefund = canApplyRefund;
+        }
+
+        public String getApplyRefundButtonText() {
+            return applyRefundButtonText;
+        }
+
+        public void setApplyRefundButtonText(String applyRefundButtonText) {
+            this.applyRefundButtonText = applyRefundButtonText;
+        }
+
+        public boolean isCanRemindShipment() {
+            return canRemindShipment;
+        }
+
+        public void setCanRemindShipment(boolean canRemindShipment) {
+            this.canRemindShipment = canRemindShipment;
+        }
+
+        public boolean isCanRepeatSubmitOrder() {
+            return canRepeatSubmitOrder;
+        }
+
+        public void setCanRepeatSubmitOrder(boolean canRepeatSubmitOrder) {
+            this.canRepeatSubmitOrder = canRepeatSubmitOrder;
+        }
+
         public List<ItemsBean> getItems() {
             return items;
         }
@@ -210,9 +250,7 @@ public class OrderListResponse implements Serializable {
              * commissionRate : 6
              * specifications : 规格:XXL
              * properties : 属性:蓝色
-             * isShipment : false
-             * shippingCompany :
-             * waybillNo :
+             * refundStatus :
              */
 
             private int itemId;
@@ -224,9 +262,7 @@ public class OrderListResponse implements Serializable {
             private int commissionRate;
             private String specifications;
             private String properties;
-            private boolean isShipment;
-            private String shippingCompany;
-            private String waybillNo;
+            private String refundStatus;
 
             public int getItemId() {
                 return itemId;
@@ -300,28 +336,12 @@ public class OrderListResponse implements Serializable {
                 this.properties = properties;
             }
 
-            public boolean isIsShipment() {
-                return isShipment;
+            public String getRefundStatus() {
+                return refundStatus;
             }
 
-            public void setIsShipment(boolean isShipment) {
-                this.isShipment = isShipment;
-            }
-
-            public String getShippingCompany() {
-                return shippingCompany;
-            }
-
-            public void setShippingCompany(String shippingCompany) {
-                this.shippingCompany = shippingCompany;
-            }
-
-            public String getWaybillNo() {
-                return waybillNo;
-            }
-
-            public void setWaybillNo(String waybillNo) {
-                this.waybillNo = waybillNo;
+            public void setRefundStatus(String refundStatus) {
+                this.refundStatus = refundStatus;
             }
         }
     }

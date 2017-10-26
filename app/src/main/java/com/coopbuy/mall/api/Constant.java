@@ -130,7 +130,7 @@ public class Constant {
     public static final String GET_SKU_INFO_LIST = "api/services/app/product/SkuInfoList";
     public static final String FIND_SKU_INFO = "api/services/app/product/FindSkuInfo";
     public static final String ORDER_LIST = "api/services/app/order/List";
-    public static final String ORDER_DETAIL = "api/services/app/userOrder/Detail";
+    public static final String ORDER_DETAIL = "api/services/app/order/DetailInfo";
     public static final String DEFAULT_ADDRESS = "api/services/app/shippingAddress/FindDefault";
     public static final String CALCULATE_FREIGHT = "api/services/app/freight/Calculation";
     public static final String UPLOAD_IMAGE = "api/services/app/upload/Image";

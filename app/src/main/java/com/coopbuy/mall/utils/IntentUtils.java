@@ -3,6 +3,7 @@ package com.coopbuy.mall.utils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.activity.AfterSalesActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
 
@@ -82,5 +83,19 @@ public class IntentUtils {
 
     public static void gotoActivity(Context context, Class<?> activity, int type, int param2) {
         context.startActivity((new Intent(context, activity).putExtra(PARAM1, type).putExtra(PARAM2, param2)));
+    }
+
+    /**
+     * 跳转至主页
+     * @param context
+     * @param activity
+     * @param fragmentIndex
+     */
+    public static void gotoMainActivity(Context context, Class<?> activity, int fragmentIndex) {
+        Intent intent = new Intent(context, activity);
+        intent.putExtra(MainActivity.FRAGMENT_INDEX, fragmentIndex);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        context.startActivity(intent);
     }
 }

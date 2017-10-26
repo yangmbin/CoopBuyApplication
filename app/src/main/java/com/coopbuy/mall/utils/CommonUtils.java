@@ -1,5 +1,6 @@
 package com.coopbuy.mall.utils;
 
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -343,5 +344,15 @@ public class CommonUtils {
             return "?x-oss-process=style/1x1_1080";
         }
         return "";
+    }
+
+    /**
+     * 复制到剪贴板
+     * @param text
+     */
+    public static void copyToClipboard(Context context, String text) {
+        ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        cm.setText(text);
+        ToastUtils.toastShort("已复制到剪贴板");
     }
 }
