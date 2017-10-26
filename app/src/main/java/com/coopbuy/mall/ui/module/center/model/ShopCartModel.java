@@ -2,7 +2,9 @@ package com.coopbuy.mall.ui.module.center.model;
 
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GoodsDeleteRequest;
 import com.coopbuy.mall.api.request.GoodsUpdateRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
@@ -29,5 +31,8 @@ public class ShopCartModel implements BaseModel {
     }
     public IAsyncRequestState getSkuInfoListData(ProductIdRequest request, IAsyncResultCallback<List<SkuInfoResponse>> callback, Object userState) {
         return client.getSkuInfoListData(request, callback, userState);
+    }
+    public IAsyncRequestState findSkuInfoData(FindSkuInfoRequest request, IAsyncResultCallback<SkuDetailResponse.SkuInfoBean> callback, Object userState) {
+        return client.findSkuInfoData(request, callback, userState);
     }
 }

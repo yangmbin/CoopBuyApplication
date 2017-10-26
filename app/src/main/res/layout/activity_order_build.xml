@@ -1,10 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.coopbuy.mall.ui.module.center.activity.OrderBuildActivity">
+    android:background="@color/theme_back_white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <include layout="@layout/title_bar_layout" />
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/title_bar_layout" />
+
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/edit_text_back_white">
+
+            <LinearLayout
+                android:id="@+id/ll_re"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/l_pay"
+                android:background="@color/edit_text_back_white"
+                android:orientation="vertical">
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srlEnablePureScrollMode="true">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/swipe_target"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never" />
+
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/l_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <include layout="@layout/include_divider_1px_w_m_line_white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px96"
+                    android:gravity="right">
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_gravity="center"
+                        android:text="共2件" />
+
+                    <TextView
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dimen_px22"
+                        android:text="合计：" />
+
+                    <TextView
+                        style="@style/text_orange_size_26_f"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dimen_px22"
+                        android:text="$ 56.8"
+                        android:textSize="@dimen/dimen_px36" />
+
+                    <TextView
+                        style="@style/text_orange_size_26_f"
+                        android:layout_width="@dimen/dimen_px220"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dimen_px22"
+                        android:background="@color/theme_text_title_orange"
+                        android:gravity="center"
+                        android:text="提交订单"
+                        android:textColor="@color/edit_text_back_white"
+                        android:textSize="@dimen/dimen_px36" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

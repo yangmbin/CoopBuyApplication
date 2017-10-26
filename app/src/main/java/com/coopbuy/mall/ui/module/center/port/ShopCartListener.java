@@ -1,5 +1,8 @@
 package com.coopbuy.mall.ui.module.center.port;
 
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.GoodsUpdateRequest;
+
 /**
  * @author csn
  * @date 2017/8/30 0030 16:38
@@ -29,6 +32,7 @@ public interface ShopCartListener {
 
     /**
      * 商品删除
+     *
      * @param postion
      * @param child
      */
@@ -36,6 +40,7 @@ public interface ShopCartListener {
 
     /**
      * 商品详情
+     *
      * @param parent
      * @param child
      */
@@ -43,6 +48,7 @@ public interface ShopCartListener {
 
     /**
      * 商品选择skuidinfo
+     *
      * @param prarent
      * @param child
      */
@@ -50,7 +56,23 @@ public interface ShopCartListener {
 
     /**
      * 打开店铺
+     *
      * @param prarent
      */
     void openShop(int prarent);
+
+    /**
+     * 规格选择
+     *
+     * @param parant
+     * @param child
+     */
+    void openVersionSelect(int parant, int child);
+
+    void findSkuinfo(FindSkuInfoRequest request);
+
+    /**
+     * 得到新选择的skuinfo和数量
+     */
+    void getNewSkuinfo(GoodsUpdateRequest request);
 }

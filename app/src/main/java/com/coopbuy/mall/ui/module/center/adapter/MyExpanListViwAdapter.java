@@ -134,6 +134,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
             viewHolder.edtGoodsNum = convertView.findViewById(R.id.et_item_shopcart_cloth_num);
             viewHolder.llNoEditContent = convertView.findViewById(R.id.ll_shopcart_content);
             viewHolder.rlEditContent = convertView.findViewById(R.id.ll_shopcart_edit);
+            viewHolder.llEditVersion = convertView.findViewById(R.id.ll_edit_version);
          /*   viewHolder.tvEditViersion = convertView.findViewById(R.id.tv_goods_version_edit);
             viewHolder.llImageEditDeletShow = convertView.findViewById(R.id.ll_goods_eidt_show);
             viewHolder.llEditShow = convertView.findViewById(R.id.ll_content);
@@ -164,6 +165,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
         viewHolder.imags.setImageURI(bean.getImageUrl());
         viewHolder.tvGoodsAdd.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         viewHolder.tvGoodsSub.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
+        viewHolder.llEditVersion.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         // viewHolder.llEditShow.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
 //        viewHolder.llEditDelet.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         //String url = sectionEntity.getImagePath() + CommonUtils.getImageNetSize(154);
@@ -195,7 +197,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
             viewHolder.mEdit.setText("清空失效商品");
             viewHolder.mEdit.setTextColor(mContext.getResources().getColor(R.color.theme_text_title_orange));
             viewHolder.mEdit.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             viewHolder.mEdit.setTextColor(mContext.getResources().getColor(R.color.auxiliary_text_blue_gray));
         }
         if (ShopCartActivity.isAllEdit) {
@@ -397,6 +399,9 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
                 case R.id.tv_delete:
                     mPort.delete(parent, chlid);
                     break;
+                case R.id.ll_edit_version:
+                    mPort.openVersionSelect(parent, chlid);
+                    break;
                 case R.id.main:
                     mPort.openGoodsDetial(parent, chlid);
                     break;
@@ -480,6 +485,10 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
          */
         public LinearLayout llImageEditDeletShow;
         public LinearLayout llEditShow;
+        /**
+         * 规格选择
+         */
+        public LinearLayout llEditVersion;
         /**
          * 编辑状态下的商品名称
          */

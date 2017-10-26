@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.view;
 
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.base.BaseView;
 
@@ -41,8 +42,12 @@ public interface ShopCart_IView extends BaseView {
     /**
      * 规格选择
      * @param skuInfoResponses
-     * @param prant
-     * @param child
      */
-    void setSkuInfoListData(List<SkuInfoResponse> skuInfoResponses,int prant,int child);
+    void setSkuInfoListData(List<SkuInfoResponse> skuInfoResponses,SkuDetailResponse.SkuInfoBean bean,int productId,String type);
+
+    /**
+     * 获取
+     * @param
+     */
+    void getSkuInfoFindStock(SkuDetailResponse.SkuInfoBean  skuinfobean, int productId ,String type);
 }

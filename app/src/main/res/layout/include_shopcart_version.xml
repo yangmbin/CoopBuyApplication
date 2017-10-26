@@ -3,6 +3,7 @@
     android:layout_width="@dimen/dimen_px250"
     android:layout_height="@dimen/dimen_px60"
     android:layout_marginTop="@dimen/dimen_px40"
+    android:id="@+id/ll_edit_version"
     android:background="@drawable/black_rectangle_btn_unpress_gray_f5"
     android:orientation="horizontal">
 

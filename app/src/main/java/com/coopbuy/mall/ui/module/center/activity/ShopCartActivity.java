@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -8,9 +9,12 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GoodsDeleteRequest;
 import com.coopbuy.mall.api.request.GoodsUpdateRequest;
+import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.MyExpanListViwAdapter;
 import com.coopbuy.mall.ui.module.center.model.ShopCartModel;
@@ -20,7 +24,6 @@ import com.coopbuy.mall.ui.module.center.view.ShopCart_IView;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
-import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
 import com.coopbuy.mall.widget.dialog.ShopCartGoodsAttrsDialog;
 import com.coopbuy.mall.widget.swipeitem.SwipeExpandableListView;
 
@@ -99,8 +102,10 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
      */
     private int mCount, mPosition;
     private Double mTotalPrice1;
+    public static int skuinfoStockCount = 0;
     // 属性弹框
     private ShopCartGoodsAttrsDialog goodsAttrsDialog = null;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_shop_cart;
@@ -367,7 +372,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 if (!mGoPayList.isEmpty()) {
                     mPresenter.deleteGoods(deleteGoodsSkuinfos());
                 } else {
-                    ToastUtils.toastShort("请选择输出的商品");
+                    ToastUtils.toastShort("请选择删除的商品");
                 }
                 break;
             case R.id.ll_all_select:
@@ -375,7 +380,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 break;
             case R.id.ll_shopcart_submit: //这里用mGoPayList 判断有问题  因为
                 if (!mGoPayList.isEmpty()) {
-                    IntentUtils.gotoActivity(this, OrderBuildActivity.class);
+                    IntentUtils.gotoActivity(this, OrderBuildActivity.class, getOrderBuildData());
                 } else {
                     if (isLoseData) {
                         ToastUtils.toastShort("失效商品不能结算");
@@ -400,6 +405,19 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 }
                 break; //全部编辑
         }
+    }
+
+    private OrderBuildRequest getOrderBuildData() {
+        OrderBuildRequest request = new OrderBuildRequest();
+        List<OrderBuildRequest.SkusBean> data = new ArrayList<>();
+        for (int i = 0; i < mGoPayList.size(); i++) {
+            OrderBuildRequest.SkusBean bean = new OrderBuildRequest.SkusBean();
+            bean.setSkuId(mGoPayList.get(i).getSkuId());
+            bean.setQuantity(mGoPayList.get(i).getQuantity());
+            data.add(bean);
+        }
+        request.setSkus(data);
+        return request;
     }
 
     /**
@@ -561,12 +579,56 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     }
 
     @Override
-    public void setSkuInfoListData(List<SkuInfoResponse> skuInfoResponses,int prant,int child) {
-     /*   if (skuInfoResponses != null && skuInfoResponses.size() > 0) {
-            goodsAttrsDialog = new ShopCartGoodsAttrsDialog(mContext,  skuInfoResponses, mData.get(prant).getProducts().get(child));
-            goodsAttrsDialog.showAtBottom();
-        }*/
+    public void openVersionSelect(int parant, int child) {
+        //目前只有两种规格 以后有的时候在添加
+        FindSkuInfoRequest request = new FindSkuInfoRequest();
+        ShopCartResponse.ShopsBean.ProductsBean bean = mData.get(parant).getProducts().get(child);
+        request.setProductId(bean.getProductId());
+        if (TextUtils.isEmpty(bean.getProperties()) && TextUtils.isEmpty(bean.getSpecifications())) {
+            ToastUtils.toastShort("该商品不支持规更多格选择");
+            return;
+        }
+        if (!TextUtils.isEmpty(bean.getSpecifications())) {
+            request.setSpecificationValue(bean.getSpecifications().split(":")[1]);
+        }
+        if (!TextUtils.isEmpty(bean.getProperties())) {
+            request.setPropertyValue(bean.getProperties().split(":")[1]);
+        }
+        skuinfoStockCount = bean.getQuantity();
+        //获取对应规格的图片 库存等
+        mPresenter.findSkuInfoData(request, bean.getProductId(), "init");
     }
+
+    @Override
+    public void findSkuinfo(FindSkuInfoRequest request) {
+        mPresenter.findSkuInfoData(request, request.getProductId(), "revice");
+    }
+
+    @Override
+    public void getNewSkuinfo(GoodsUpdateRequest request) {
+        //想通过更改本地数据  哎还是打开商品的对应位置吧 更新数据  来做个保存本地数据状态的东西吧
+        mPresenter.goodsUpdateSkuinfo(request);
+    }
+
+    @Override
+    public void getSkuInfoFindStock(SkuDetailResponse.SkuInfoBean bean, int productId, String type) {
+        mPresenter.getSkuInfoListData(productId, bean, type);
+    }
+
+    @Override
+    public void setSkuInfoListData(List<SkuInfoResponse> skuInfoResponses, SkuDetailResponse.SkuInfoBean bean, int productId, String type) {
+        if (skuInfoResponses != null && skuInfoResponses.size() > 0) {
+            if (type.equals("init")) {
+                goodsAttrsDialog = new ShopCartGoodsAttrsDialog(mContext, skuInfoResponses, bean, productId, this);
+                goodsAttrsDialog.showAtBottom();
+            } else {
+                //修改界面
+                if (goodsAttrsDialog != null)
+                    goodsAttrsDialog.setSkuInfoData(bean, "new");
+            }
+        }
+    }
+
 
     @Override
     public void openGoodsDetial(int parent, int child) {
@@ -583,9 +645,10 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
 
     }
 
+
     @Override
     public void updateGoodsSkuinfoSuccess() {
-
+        mPresenter.getShopCartDate("again");
     }
 
     @Override

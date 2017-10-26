@@ -13,6 +13,7 @@ import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
+import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
@@ -34,6 +35,7 @@ import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
+import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
@@ -295,6 +297,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 更新商品的数量 skuinfo
+     *
      * @param request
      * @param callback
      * @param userState
@@ -302,11 +305,12 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState updateAddOrSubSkuinfo(GoodsUpdateRequest request, IAsyncResultCallback<GoodsUpdateResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GoodsUpdateResponse>() {
-        }.getType(), Constant.SERVER_URL_NEW + Constant.UPDATEPRODUCT,request, callback, userState);
+        }.getType(), Constant.SERVER_URL_NEW + Constant.UPDATEPRODUCT, request, callback, userState);
     }
 
     /**
      * 删除商品
+     *
      * @param request
      * @param callback
      * @param userState
@@ -314,7 +318,7 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState deleteGoods(GoodsDeleteRequest request, IAsyncResultCallback<GoodsUpdateResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GoodsUpdateResponse>() {
-        }.getType(), Constant.SERVER_URL_NEW + Constant.REMOVEPRODUCT,request, callback, userState);
+        }.getType(), Constant.SERVER_URL_NEW + Constant.REMOVEPRODUCT, request, callback, userState);
     }
 
 
@@ -408,6 +412,20 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
+     * 订单创建
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+
+    public IAsyncRequestState getOrderBuildData(OrderBuildRequest request, IAsyncResultCallback<OrderBuildResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderBuildResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SETTLEMENT, request, callback, userState);
+    }
+
+    /**
      * 订单列表
      *
      * @param request
@@ -435,6 +453,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 图片上传
+     *
      * @param request
      * @param callback
      * @param userState

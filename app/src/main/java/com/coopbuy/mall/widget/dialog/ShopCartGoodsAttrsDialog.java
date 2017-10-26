@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,13 +21,18 @@ import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.GoodsUpdateRequest;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
+import com.coopbuy.mall.ui.module.center.port.ShopCartListener;
 import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_1;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.tag.TagGroup;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,6 +46,7 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
     private TextView mSellingPrice, mStock, mHaveSelected;
     private ImageView mDeleteCountBtn, mAddCountBtn;
     private TextView mCountTxt;
+    private TextView mComplete;
     // 默认的购买数量
     private int mCount = 1;
     // 保存Sku信息
@@ -47,12 +54,18 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
 
     // 商品Id
     private int mProductId;
+    private ShopCartListener port;
+    private int mStockCount;
+    //老skuid
+    private int oldSkukid;
+    private int oldCounts;
+    private int newCounts;
+    private int newSkuid;
 
-    public ShopCartGoodsAttrsDialog(final Context context, List<SkuInfoResponse> list, ShopCartResponse.ShopsBean.ProductsBean skuInfoBean) {
-
-        //mSkuInfoBean = skuInfoBean;
-        mProductId = skuInfoBean.getProductId();
-
+    public ShopCartGoodsAttrsDialog(final Context context, List<SkuInfoResponse> list, SkuDetailResponse.SkuInfoBean bean, int productId, ShopCartListener port) {
+        this.port = port;
+        mSkuInfoBean = bean;
+        mProductId = productId;
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.dialog_goods_attrs_shopcart, null);
@@ -74,16 +87,18 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
         mDeleteCountBtn = (ImageView) mView.findViewById(R.id.delete_count);
         mAddCountBtn = (ImageView) mView.findViewById(R.id.add_count);
         mCountTxt = (TextView) mView.findViewById(R.id.count);
-
+        mComplete = (TextView) mView.findViewById(R.id.tv_complete);
         mClose.setOnClickListener(this);
         mDeleteCountBtn.setOnClickListener(this);
         mAddCountBtn.setOnClickListener(this);
-
+        mComplete.setOnClickListener(this);
+        mCountTxt.setText(ShopCartActivity.skuinfoStockCount + "");
+        mCount = ShopCartActivity.skuinfoStockCount;
+        oldCounts = mCount;
         // 设置风格
         setPopWindowStyle();
-
         // 设置Sku信息显示
-        setSkuInfoData(skuInfoBean);
+        setSkuInfoData(mSkuInfoBean, "old");
         // 设置购买数量
         setCount();
     }
@@ -153,6 +168,9 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
                         mSkuInfoBean.setPriceSpecificationsValue(tag);
                     }
                     //  mFragment.findSkuInfoData(request);
+                    if (port != null) {
+                        port.findSkuinfo(request);
+                    }
                 }
             });
 
@@ -174,13 +192,39 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
                 if (mCount > 1) {
                     --mCount;
                     setCount();
+                } else {
+                    ToastUtils.toastShort("数量不能再少了！");
                 }
+                newCounts = mCount;
                 break;
             case R.id.add_count:
                 ++mCount;
+                if (mStockCount < mCount) {
+                    ToastUtils.toastShort("库存不足");
+                    --mCount;
+                    return;
+                }
                 setCount();
+                newCounts = mCount;
+                break;
+            case R.id.tv_complete:
+                if (oldSkukid != newSkuid || newCounts != oldCounts) {
+                    GoodsUpdateRequest request = new GoodsUpdateRequest();
+                    GoodsUpdateRequest.SkuIdsBean bean = new GoodsUpdateRequest.SkuIdsBean();
+                    List<GoodsUpdateRequest.SkuIdsBean> data = new ArrayList<>();
+                    bean.setQuantity(mCount);
+                    bean.setSkuId(oldSkukid);
+                    bean.setNewSkuId(newSkuid);
+                    data.add(bean);
+                    request.setSkuIds(data);
+                    if (port != null) {
+                        port.getNewSkuinfo(request);
+                    }
+                }
+                dialog.dismiss();
                 break;
         }
+
     }
 
     /**
@@ -188,14 +232,20 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
      *
      * @param skuInfoBean
      */
-    public void setSkuInfoData(ShopCartResponse.ShopsBean.ProductsBean skuInfoBean) {
-        mGoodsImage.setImageURI(Uri.parse(skuInfoBean.getImageUrl()));
-        mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getUnitPrice()));
-       /* mStock.setText("库存" + skuInfoBean.getStock() + "件");
-        mHaveSelected.setText("已选：");
-        mHaveSelected.append("“" + skuInfoBean.getPricePropertyValue() + "” ");
-        mHaveSelected.append("“" + skuInfoBean.getPriceSpecificationsValue() + "” ");*/
+    public void setSkuInfoData(SkuDetailResponse.SkuInfoBean skuInfoBean, String type) {
+        if (type.equals("old")) {
+            oldSkukid = skuInfoBean.getSkuId();
+        } else {
+            newSkuid = skuInfoBean.getSkuId();
 
+        }
+        mGoodsImage.setImageURI(Uri.parse(skuInfoBean.getImageUrl()));
+        mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
+        mStockCount = skuInfoBean.getStock();
+        mStock.setText("库存" + mStockCount + "件");
+        mHaveSelected.setText("已选：");
+        mHaveSelected.append(!TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()) ? "“" + skuInfoBean.getPricePropertyValue() + "” " : "");
+        mHaveSelected.append(!TextUtils.isEmpty(skuInfoBean.getPriceSpecificationsValue()) ? "“" + skuInfoBean.getPriceSpecificationsValue() + "” " : "");
         mAdapter.notifyDataSetChanged();
     }
 
@@ -203,10 +253,6 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
      * 设置购买数量
      */
     private void setCount() {
-  /*      mCountTxt.setText("" + mCount);
-        mFragment.setCurrentQuantity(mCount);
-        // 数量改变后，重新计算运费
-        if (mFragment.getCurrentRegionId() != -1 && mFragment.getCurrentSkuId() != -1)
-            mFragment.mPresenter.calculateFreight(mFragment.getCurrentRegionId(), mFragment.getCurrentSkuId(), mFragment.getCurrentQuantity());*/
+        mCountTxt.setText("" + mCount);
     }
 }

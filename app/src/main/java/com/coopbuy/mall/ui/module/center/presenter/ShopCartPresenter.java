@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GoodsDeleteRequest;
 import com.coopbuy.mall.api.request.GoodsUpdateRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
@@ -142,7 +144,6 @@ public class ShopCartPresenter extends BasePresenter<ShopCart_IView, ShopCartMod
                 if (null != smsCodeReponse) {
                     mView.deleteMoreSuccess();
                 }
-                mView.stopAll();
             }
 
             @Override
@@ -160,14 +161,14 @@ public class ShopCartPresenter extends BasePresenter<ShopCart_IView, ShopCartMod
      *
      * @param productId
      */
-    public void getSkuInfoListData(int productId, final int prant, final int child) {
+    public void getSkuInfoListData(final int productId, final SkuDetailResponse.SkuInfoBean bean, final String type) {
         mView.showTransLoading();
         ProductIdRequest request = new ProductIdRequest();
         request.setProductId(productId);
         mView.appendNetCall(mModel.getSkuInfoListData(request, new IAsyncResultCallback<List<SkuInfoResponse>>() {
             @Override
             public void onComplete(List<SkuInfoResponse> skuInfoResponses, Object userState) {
-                mView.setSkuInfoListData(skuInfoResponses,prant,child);
+                mView.setSkuInfoListData(skuInfoResponses, bean, productId,type);
                 mView.stopAll();
             }
 
@@ -177,5 +178,31 @@ public class ShopCartPresenter extends BasePresenter<ShopCart_IView, ShopCartMod
                 ToastUtils.toastShort(error.getMessage());
             }
         }, "商品Sku列表"));
+    }
+
+    /**
+     * 获取指定规格值或属性值的sku信息
+     *
+     * @param request
+     */
+    public void findSkuInfoData(FindSkuInfoRequest request, final int productId, final String type) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.findSkuInfoData(request, new IAsyncResultCallback<SkuDetailResponse.SkuInfoBean>() {
+            @Override
+            public void onComplete(SkuDetailResponse.SkuInfoBean skuInfoBean, Object userState) {
+                if (null != skuInfoBean) {
+                    mView.getSkuInfoFindStock(skuInfoBean, productId,type);
+                }else {
+                    ToastUtils.toastShort("服务器数据异常，请稍后再试");
+                }
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "获取指定规格值或属性值的sku信息"));
     }
 }

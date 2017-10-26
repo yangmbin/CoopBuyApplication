@@ -8,6 +8,24 @@ import java.util.List;
  */
 
 public class GoodsUpdateRequest implements Serializable {
+    private String specifications;
+    private String properties;
+
+    public String getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
+    }
+
+    public String getProperties() {
+        return properties;
+    }
+
+    public void setProperties(String properties) {
+        this.properties = properties;
+    }
 
     private List<SkuIdsBean> skuIds;
 

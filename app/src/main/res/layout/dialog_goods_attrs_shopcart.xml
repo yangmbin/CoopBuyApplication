@@ -166,25 +166,15 @@
             android:layout_height="@dimen/dimen_px96">
 
             <TextView
+                android:id="@+id/tv_complete"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/theme_text_lab_black"
                 android:gravity="center"
-                android:text="立即购买"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_px30" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/theme_text_title_orange"
-                android:gravity="center"
-                android:text="加入购物车"
+                android:text="完成"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_px30" />
         </LinearLayout>
-
     </LinearLayout>
 </RelativeLayout>
