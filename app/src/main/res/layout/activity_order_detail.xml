@@ -391,7 +391,8 @@
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/dimen_px30"
-                    android:paddingRight="@dimen/dimen_px30">
+                    android:paddingRight="@dimen/dimen_px30"
+                    android:paddingBottom="@dimen/dimen_px50">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -427,7 +428,8 @@
                         android:layout_height="wrap_content"
                         android:text="创建时间：2017-08-25 19:54:17"
                         android:textColor="@color/auxiliary_text_blue_gray"
-                        android:textSize="@dimen/text_size_px26" />
+                        android:textSize="@dimen/text_size_px26"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/payTime"
@@ -436,17 +438,18 @@
                         android:layout_marginTop="@dimen/dimen_px10"
                         android:text="付款时间：2017-08-25 19:54:24"
                         android:textColor="@color/auxiliary_text_blue_gray"
-                        android:textSize="@dimen/text_size_px26" />
+                        android:textSize="@dimen/text_size_px26"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/finishTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dimen_px50"
                         android:layout_marginTop="@dimen/dimen_px10"
                         android:text="完成时间：2017-08-26 09:41:50"
                         android:textColor="@color/auxiliary_text_blue_gray"
-                        android:textSize="@dimen/text_size_px26" />
+                        android:textSize="@dimen/text_size_px26"
+                        android:visibility="gone" />
                 </LinearLayout>
 
             </LinearLayout>

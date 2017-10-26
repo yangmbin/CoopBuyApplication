@@ -14,6 +14,7 @@ import com.coopbuy.mall.ui.module.center.adapter.OrderDetailAdapter;
 import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;
 import com.coopbuy.mall.ui.module.center.presenter.OrderDetailPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderDetail_IView;
+import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
 
@@ -56,8 +57,29 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     TextView payTime;
     @Bind(R.id.finishTime)
     TextView finishTime;
+    @Bind(R.id.lieuPayBtn)
+    TextView lieuPayBtn;
+    @Bind(R.id.cancelOrderBtn)
+    TextView cancelOrderBtn;
+    @Bind(R.id.payBtn)
+    TextView payBtn;
+    @Bind(R.id.applyRefundBtn)
+    TextView applyRefundBtn;
+    @Bind(R.id.remindShipmentBtn)
+    TextView remindShipmentBtn;
+    @Bind(R.id.delayedReceiptBtn)
+    TextView delayedReceiptBtn;
+    @Bind(R.id.deleteBtn)
+    TextView deleteBtn;
+    @Bind(R.id.findExpressInfoBtn)
+    TextView findExpressInfoBtn;
+    @Bind(R.id.receiptBtn)
+    TextView receiptBtn;
+    @Bind(R.id.repeatSubmitOrderBtn)
+    TextView repeatSubmitOrderBtn;
     private OrderDetailAdapter mOrderDetailAdapter;
     private List<OrderDetailResponse.OrderItemsBean> mDatas = new ArrayList<>();
+    private OrderDetailResponse mOrderDetailResponse;
 
     @Override
     public int getLayoutId() {
@@ -106,6 +128,10 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     public void setOrderDetailData(OrderDetailResponse orderDetailResponse) {
         if (orderDetailResponse == null)
             return;
+
+        // 保存返回信息
+        mOrderDetailResponse = orderDetailResponse;
+
         // 设置商品列表
         mDatas.clear();
         mDatas.addAll(orderDetailResponse.getOrderItems());
@@ -137,11 +163,23 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         // 订单编号
         orderId.setText("订单编号：" + orderDetailResponse.getOrderId());
         // 创建时间
-        createTime.setText("创建时间：" + orderDetailResponse.getCreateTime());
+        if (!TextUtils.isEmpty(orderDetailResponse.getCreateTime())) {
+            createTime.setText("创建时间：" + orderDetailResponse.getCreateTime());
+            createTime.setVisibility(View.VISIBLE);
+        }
         // 付款时间
-        payTime.setText("付款时间：" + orderDetailResponse.getPaymentTime());
+        if (!TextUtils.isEmpty(orderDetailResponse.getPaymentTime())) {
+            payTime.setText("付款时间：" + orderDetailResponse.getPaymentTime());
+            payTime.setVisibility(View.VISIBLE);
+        }
         // 完成时间
-        finishTime.setText("完成时间：" + orderDetailResponse.getFinishTime());
+        if (!TextUtils.isEmpty(orderDetailResponse.getFinishTime())) {
+            finishTime.setText("完成时间：" + orderDetailResponse.getFinishTime());
+            finishTime.setVisibility(View.VISIBLE);
+        }
+
+        // 设置按钮显示
+        setBtnDisplay(orderDetailResponse);
     }
 
     /**
@@ -149,7 +187,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      *
      * @param view
      */
-    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy})
+    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy, R.id.lieuPayBtn, R.id.cancelOrderBtn, R.id.payBtn, R.id.applyRefundBtn, R.id.remindShipmentBtn, R.id.delayedReceiptBtn, R.id.deleteBtn, R.id.findExpressInfoBtn, R.id.receiptBtn, R.id.repeatSubmitOrderBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             // 联系客服
@@ -160,8 +198,58 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
                 break;
             // 复制订单号
             case R.id.copy:
-
+                CommonUtils.copyToClipboard(mContext, mOrderDetailResponse.getOrderId());
+                break;
+            case R.id.lieuPayBtn:
+                break;
+            case R.id.cancelOrderBtn:
+                break;
+            case R.id.payBtn:
+                break;
+            case R.id.applyRefundBtn:
+                break;
+            case R.id.remindShipmentBtn:
+                break;
+            case R.id.delayedReceiptBtn:
+                break;
+            case R.id.deleteBtn:
+                break;
+            case R.id.findExpressInfoBtn:
+                break;
+            case R.id.receiptBtn:
+                break;
+            case R.id.repeatSubmitOrderBtn:
                 break;
         }
+    }
+
+    /**
+     * 设置操作按钮显示
+     *
+     * @param orderDetailResponse
+     */
+    private void setBtnDisplay(OrderDetailResponse orderDetailResponse) {
+        if (orderDetailResponse.isCanCancel())
+            cancelOrderBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanDelete())
+            deleteBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanPayment())
+            payBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanApplyLieuPay())
+            lieuPayBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanDelayedReceipt())
+            delayedReceiptBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanFindExpressInfo())
+            findExpressInfoBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanReceipt())
+            receiptBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanApplyRefund()) {
+            applyRefundBtn.setVisibility(View.VISIBLE);
+            applyRefundBtn.setText(orderDetailResponse.getApplyRefundButtonText());
+        }
+        if (orderDetailResponse.isCanRemindShipment())
+            remindShipmentBtn.setVisibility(View.VISIBLE);
+        if (orderDetailResponse.isCanRepeatSubmitOrder())
+            repeatSubmitOrderBtn.setVisibility(View.VISIBLE);
     }
 }

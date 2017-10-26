@@ -46,7 +46,7 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
             public void onComplete(OrderListResponse orderListResponse, Object userState) {
                 // 无数据显示
                 if (loadType == OrderPresenter.LOAD_TYPE_1 && orderListResponse.getTotalCount() == 0) {
-                    mView.showNoDataLayout();
+                    mView.showCustomLayout(R.layout.loadingbox_custom_no_order);
                     return;
                 }
                 mView.setOrderListData(orderListResponse, loadType);

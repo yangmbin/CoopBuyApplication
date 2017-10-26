@@ -10,6 +10,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
+import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderDetailActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_1;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_2;
@@ -90,6 +91,12 @@ public class WaitReceiveOrderFragment extends ViewPagerBaseFragment<OrderPresent
     @Override
     protected void networkRetry() {
         mPresenter.getOrderList(OrderPresenter.ORDER_STATUS_WAIT_RECEIVE, firstPage, OrderPresenter.LOAD_TYPE_1);
+    }
+
+    @Override
+    protected void customClick() {
+        // 跳转首页
+        IntentUtils.gotoMainActivity(mContext, MainActivity.class, MainActivity.HOME_FRAGMENT_INDEX);
     }
 
     @Override
