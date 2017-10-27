@@ -24,4 +24,6 @@ public interface BaseView {
     void showCustomLayout(int layoutId);
 
     void appendNetCall(IAsyncRequestState state);
+
+    void stopRefresh();
 }

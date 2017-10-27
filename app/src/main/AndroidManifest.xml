@@ -75,7 +75,8 @@
             android:name=".ui.module.center.activity.ShopCartActivity"
             android:label="@string/title_activity_shop_cart"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.module.center.activity.OrderBuildActivity"></activity>
+        <activity android:name=".ui.module.center.activity.OrderBuildActivity" />
+        <activity android:name=".ui.module.center.activity.ShopStoreActivity"></activity>
     </application>
 
 </manifest>

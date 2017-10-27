@@ -38,6 +38,7 @@ public class OrderBuildPresenter extends BasePresenter<OrderBuild_IView, OrderBu
             @Override
             public void onError(NetworkException error, Object userState) {
                 mView.stopAll();
+                mView.fail();
                 ToastUtils.toastShort(error.getMessage());
             }
         }, ""));

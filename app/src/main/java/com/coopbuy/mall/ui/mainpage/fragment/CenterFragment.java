@@ -20,6 +20,7 @@ import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
+import com.coopbuy.mall.ui.module.center.activity.ShopStoreActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
@@ -161,7 +162,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(ShopCartActivity.class, null);
                 break;
             case R.id.ll_collect:
-
+                enter(ShopStoreActivity.class, null);
                 break;
             case R.id.ll_footmark:
 
@@ -262,4 +263,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         super.onDestroy();
         EventBusInstance.getInstance().unRegisterEvent(this);
     }
+
+
 }

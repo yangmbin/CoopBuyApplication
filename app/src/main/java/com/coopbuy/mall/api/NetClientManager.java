@@ -19,6 +19,7 @@ import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
@@ -41,6 +42,8 @@ import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
+import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
+import com.coopbuy.mall.api.request.ShopStoreRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.google.gson.reflect.TypeToken;
@@ -423,6 +426,31 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getOrderBuildData(OrderBuildRequest request, IAsyncResultCallback<OrderBuildResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderBuildResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SETTLEMENT, request, callback, userState);
+    }
+
+    /**
+     * 店铺收藏
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getShopStoreList(ShopStoreRequest request, IAsyncResultCallback<ShopStoreReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ShopStoreReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.PAGESHOPLIST, request, callback, userState);
+    }
+
+    /**
+     * 取消收藏
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState shopStoreCancel(ShopSotreCancelRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.CANCELSHOP, request, callback, userState);
     }
 
     /**

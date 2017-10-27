@@ -10,4 +10,6 @@ import com.coopbuy.mall.base.BaseView;
 public interface OrderBuild_IView extends BaseView {
 
     void getOrderBuildData(OrderBuildResponse data);
+
+    void fail();
 }

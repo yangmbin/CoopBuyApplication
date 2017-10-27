@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/m_ll_message"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_px90"
+    android:gravity="left|center"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/text_theme_black_size_28_41"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="商家优惠" />
+
+
+    <TextView
+        style="@style/text_theme_black_size_28_41"
+        android:text="省10元：80-10" />
+
+    <ImageView style="@style/image_more" />
+</LinearLayout>

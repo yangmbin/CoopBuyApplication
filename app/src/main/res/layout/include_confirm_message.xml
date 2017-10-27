@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/m_ll_message"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_px90"
+    android:gravity="left|center"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/text_theme_black_size_28_41"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:text="卖家留言" />
+
+
+    <EditText
+        android:id="@+id/m_edt_leave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:hint="选填：对本次交易的说明"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/auxiliary_text_blue_gray"
+        android:textColorHint="@color/auxiliary_text_blue_gray"
+        android:textSize="@dimen/dimen_px28" />
+</LinearLayout>

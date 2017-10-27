@@ -287,4 +287,8 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             view.setVisibility(View.GONE);
         }
     }
+
+    public void stopRefresh() {
+
+    }
 }

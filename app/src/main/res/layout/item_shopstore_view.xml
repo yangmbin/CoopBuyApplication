@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_px150"
+    android:layout_gravity="center">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/shopstore_image"
+        android:layout_width="@dimen/dimen_px120"
+        android:layout_height="@dimen/dimen_px120"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:background="@drawable/bg_round_corner_imageholder"
+        android:scaleType="centerCrop"
+        app:placeholderImage="@mipmap/default_img" />
+
+    <TextView
+        android:id="@+id/tv_shop_name"
+        style="@style/text_theme_black_size_28_41"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="ddldkdk"
+        android:textSize="@dimen/dimen_px32" />
+
+    <ImageView
+        style="@style/image_more"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dimen_px40" />
+</LinearLayout>

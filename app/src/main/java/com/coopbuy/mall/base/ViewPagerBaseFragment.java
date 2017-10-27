@@ -237,6 +237,9 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
         mNetCalls.add(state);
     }
 
+    public void stopRefresh() {
+
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

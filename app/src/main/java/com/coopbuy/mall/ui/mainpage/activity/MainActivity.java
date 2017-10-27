@@ -73,4 +73,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         super.onNewIntent(intent);
         bottomBar.setCurrentView(intent.getIntExtra(FRAGMENT_INDEX, HOME_FRAGMENT_INDEX));
     }
+    @Override
+    public void stopRefresh() {
+    }
 }
