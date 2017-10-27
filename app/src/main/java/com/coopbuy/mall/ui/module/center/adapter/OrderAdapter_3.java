@@ -9,7 +9,12 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.ui.module.center.activity.ExpressInfoActivity;
+import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
+import com.coopbuy.mall.utils.DialogUtils;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.coopbuy.mall.widget.popwindow.OrderMoreBtnPopwindow;
 
 import java.util.List;
@@ -17,10 +22,13 @@ import java.util.List;
 public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> implements View.OnClickListener {
 
     private View.OnClickListener mListener;
+    private OrderPresenter mOrderPresenter;
+    private OrderListResponse.ItemsBeanX mItemOrder;
 
-    public OrderAdapter_3(Context ctx, List<OrderListResponse.ItemsBeanX> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
+    public OrderAdapter_3(Context ctx, OrderPresenter presenter, List<OrderListResponse.ItemsBeanX> list, LayoutHelper mLayoutHelper, View.OnClickListener mListener) {
         super(ctx, list, mLayoutHelper);
         this.mListener = mListener;
+        this.mOrderPresenter = presenter;
     }
 
     @Override
@@ -30,6 +38,7 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final OrderListResponse.ItemsBeanX item) {
+        mItemOrder = item;
         int totalQuantity = 0;
         for (int i = 0; i < item.getItems().size(); i++)
             totalQuantity += item.getItems().get(i).getQuantity();
@@ -81,17 +90,149 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
             holder.getTextView(R.id.applyRefundBtn).setVisibility(View.GONE);
             holder.getTextView(R.id.moreBtn).setVisibility(View.VISIBLE);
         }
+
+        // 设置监听
+        holder.getTextView(R.id.lieuPayBtn).setOnClickListener(this);
+        holder.getTextView(R.id.cancelOrderBtn).setOnClickListener(this);
+        holder.getTextView(R.id.payBtn).setOnClickListener(this);
+        holder.getTextView(R.id.delayedReceiptBtn).setOnClickListener(this);
+        holder.getTextView(R.id.findExpressInfoBtn).setOnClickListener(this);
+        holder.getTextView(R.id.receiptBtn).setOnClickListener(this);
+        holder.getTextView(R.id.deleteBtn).setOnClickListener(this);
+        holder.getTextView(R.id.repeatSubmitOrderBtn).setOnClickListener(this);
+        holder.getTextView(R.id.remindShipmentBtn).setOnClickListener(this);
+        holder.getTextView(R.id.applyRefundBtn).setOnClickListener(this);
         holder.getTextView(R.id.moreBtn).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // 站长代付
+            case R.id.lieuPayBtn:
+                lieuPayBtn();
+                break;
+            // 取消订单
+            case R.id.cancelOrderBtn:
+                cancelOrderBtn();
+                break;
+            // 付款
+            case R.id.payBtn:
+                payBtn();
+                break;
+            // 延长收货
+            case R.id.delayedReceiptBtn:
+                delayedReceiptBtn();
+                break;
+            // 查看物流
+            case R.id.findExpressInfoBtn:
+                findExpressInfoBtn();
+                break;
+            // 确认收货
+            case R.id.receiptBtn:
+                receiptBtn();
+                break;
+            // 删除订单
+            case R.id.deleteBtn:
+                deleteBtn();
+                break;
+            // 再来一单
+            case R.id.repeatSubmitOrderBtn:
+                repeatSubmitOrderBtn();
+                break;
+            // 提醒商家发货
+            case R.id.remindShipmentBtn:
+                remindShipmentBtn();
+                break;
+            // 申请退款/售后
+            case R.id.applyRefundBtn:
+                applyRefundBtn();
+                break;
             // 更多
             case R.id.moreBtn:
-                OrderMoreBtnPopwindow window = new OrderMoreBtnPopwindow(mContext, null);
+                OrderMoreBtnPopwindow window = new OrderMoreBtnPopwindow(mContext, null, this);
                 window.showWindow(v);
                 break;
         }
+    }
+
+    /**
+     * 站长代付
+     */
+    private void lieuPayBtn() {
+
+    }
+
+    /**
+     * 取消订单
+     */
+    private void cancelOrderBtn() {
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mOrderPresenter.cancelOrder(mItemOrder.getOrderId());
+            }
+        }, "是否确定取消订单？", "取消", "确定");
+    }
+
+    /**
+     * 付款
+     */
+    private void payBtn() {
+
+    }
+
+    /**
+     * 申请退款/售后
+     */
+    public void applyRefundBtn() {
+
+    }
+
+    /**
+     * 提醒商家发货
+     */
+    private void remindShipmentBtn() {
+
+    }
+
+    /**
+     * 延长收货
+     */
+    private void delayedReceiptBtn() {
+
+    }
+
+    /**
+     * 删除订单
+     */
+    public void deleteBtn() {
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mOrderPresenter.deleteOrder(mItemOrder.getOrderId());
+            }
+        }, "是否确定删除订单？", "取消", "确定");
+    }
+
+    /**
+     * 查看物流
+     */
+    private void findExpressInfoBtn() {
+        IntentUtils.gotoActivity(mContext, ExpressInfoActivity.class, mItemOrder.getOrderId());
+    }
+
+    /**
+     * 确认收货
+     */
+    private void receiptBtn() {
+
+    }
+
+    /**
+     * 再来一单
+     */
+    private void repeatSubmitOrderBtn() {
+
     }
 }

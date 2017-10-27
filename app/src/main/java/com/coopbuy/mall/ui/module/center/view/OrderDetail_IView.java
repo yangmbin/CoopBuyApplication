@@ -5,4 +5,6 @@ import com.coopbuy.mall.base.BaseView;
 
 public interface OrderDetail_IView extends BaseView {
     void setOrderDetailData(OrderDetailResponse orderDetailResponse);
+    void deleteOrderSuccess();
+    void cancelOrderSuccess();
 }

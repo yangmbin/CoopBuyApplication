@@ -15,8 +15,12 @@ import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;
 import com.coopbuy.mall.ui.module.center.presenter.OrderDetailPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderDetail_IView;
 import com.coopbuy.mall.utils.CommonUtils;
+import com.coopbuy.mall.utils.Constants;
+import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.widget.dialog.CommonDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -200,25 +204,45 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
             case R.id.copy:
                 CommonUtils.copyToClipboard(mContext, mOrderDetailResponse.getOrderId());
                 break;
+            // 站长代付
             case R.id.lieuPayBtn:
+                lieuPayBtn();
                 break;
+            // 取消订单
             case R.id.cancelOrderBtn:
+                cancelOrderBtn();
                 break;
+            // 付款
             case R.id.payBtn:
+                payBtn();
                 break;
-            case R.id.applyRefundBtn:
-                break;
-            case R.id.remindShipmentBtn:
-                break;
+            // 延长收货
             case R.id.delayedReceiptBtn:
+                delayedReceiptBtn();
                 break;
-            case R.id.deleteBtn:
-                break;
+            // 查看物流
             case R.id.findExpressInfoBtn:
+                findExpressInfoBtn();
                 break;
+            // 确认收货
             case R.id.receiptBtn:
+                receiptBtn();
                 break;
+            // 删除订单
+            case R.id.deleteBtn:
+                deleteBtn();
+                break;
+            // 再来一单
             case R.id.repeatSubmitOrderBtn:
+                repeatSubmitOrderBtn();
+                break;
+            // 提醒商家发货
+            case R.id.remindShipmentBtn:
+                remindShipmentBtn();
+                break;
+            // 申请退款/售后
+            case R.id.applyRefundBtn:
+                applyRefundBtn();
                 break;
         }
     }
@@ -251,5 +275,102 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
             remindShipmentBtn.setVisibility(View.VISIBLE);
         if (orderDetailResponse.isCanRepeatSubmitOrder())
             repeatSubmitOrderBtn.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 站长代付
+     */
+    private void lieuPayBtn() {
+
+    }
+
+    /**
+     * 取消订单
+     */
+    private void cancelOrderBtn() {
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mPresenter.cancelOrder(mOrderDetailResponse.getOrderId());
+            }
+        }, "是否确定取消订单？", "取消", "确定");
+    }
+
+    /**
+     * 付款
+     */
+    private void payBtn() {
+
+    }
+
+    /**
+     * 申请退款/售后
+     */
+    private void applyRefundBtn() {
+
+    }
+
+    /**
+     * 提醒商家发货
+     */
+    private void remindShipmentBtn() {
+
+    }
+
+    /**
+     * 延长收货
+     */
+    private void delayedReceiptBtn() {
+
+    }
+
+    /**
+     * 删除订单
+     */
+    private void deleteBtn() {
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mPresenter.deleteOrder(mOrderDetailResponse.getOrderId());
+            }
+        }, "是否确定删除订单？", "取消", "确定");
+    }
+
+    /**
+     * 查看物流
+     */
+    private void findExpressInfoBtn() {
+        IntentUtils.gotoActivity(mContext, ExpressInfoActivity.class, mOrderDetailResponse.getOrderId());
+    }
+
+    /**
+     * 确认收货
+     */
+    private void receiptBtn() {
+
+    }
+
+    /**
+     * 再来一单
+     */
+    private void repeatSubmitOrderBtn() {
+
+    }
+
+
+    /**
+     * 删除订单成功回调
+     */
+    public void deleteOrderSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+        ToastUtils.toastShort("已删除");
+    }
+
+    /**
+     * 取消订单成功回调
+     */
+    public void cancelOrderSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+        ToastUtils.toastShort("已取消");
     }
 }
