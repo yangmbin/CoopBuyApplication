@@ -8,6 +8,7 @@ import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
+import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
@@ -37,6 +38,7 @@ import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
+import com.coopbuy.mall.api.request.OrderIdRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
@@ -461,5 +463,39 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState uploadImage(UploadImageRequest request, IAsyncResultCallback<UploadImageResponse> callback, Object userState) {
         return apiImagePostRequest(UploadImageResponse.class, Constant.SERVER_URL_NEW + Constant.UPLOAD_IMAGE, request.getType(), request.getImage(), callback, userState);
+    }
+
+    /**
+     * 删除订单
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState deleteOrder(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.DELETE_ORDER, request, callback, userState);
+    }
+
+    /**
+     * 取消订单
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState cancelOrder(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.CANCEL_ORDER, request, callback, userState);
+    }
+
+    /**
+     * 物流查询
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getExpressInfo(OrderIdRequest request, IAsyncResultCallback<ExpressInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ExpressInfoResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_EXPRESS_INFO, request, callback, userState);
     }
 }

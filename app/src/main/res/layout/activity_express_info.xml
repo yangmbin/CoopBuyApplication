@@ -8,75 +8,83 @@
 
     <include layout="@layout/title_bar_layout"/>
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingLeft="@dimen/dimen_px30"
-                android:paddingRight="@dimen/dimen_px30"
-                android:paddingTop="@dimen/dimen_px20"
-                android:paddingBottom="@dimen/dimen_px20"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="@dimen/dimen_px20">
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/goods_image"
-                    android:layout_width="@dimen/dimen_px120"
-                    android:layout_height="@dimen/dimen_px120"
-                    android:background="@drawable/bg_round_corner_imageholder"
-                    android:scaleType="centerCrop"
-                    app:placeholderImage="@mipmap/default_img" />
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/dimen_px30"
+                    android:paddingRight="@dimen/dimen_px30"
+                    android:paddingTop="@dimen/dimen_px20"
+                    android:paddingBottom="@dimen/dimen_px20"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_px20">
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/productImage"
+                        android:layout_width="@dimen/dimen_px120"
+                        android:layout_height="@dimen/dimen_px120"
+                        android:background="@drawable/bg_round_corner_imageholder"
+                        android:scaleType="centerCrop"
+                        app:placeholderImage="@mipmap/default_img" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dimen_px20">
+                        <TextView
+                            android:id="@+id/statusName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/theme_text_lab_black"
+                            android:textSize="@dimen/text_size_px30"
+                            android:text="物流状态：运输中"/>
+
+                        <TextView
+                            android:id="@+id/shippingCompany"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/auxiliary_text_blue_gray"
+                            android:textSize="@dimen/text_size_px26"
+                            android:layout_marginTop="@dimen/dimen_px22"
+                            android:layout_marginBottom="@dimen/dimen_px17"
+                            android:text="承运来源：顺丰速运"/>
+
+                        <TextView
+                            android:id="@+id/waybillNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/auxiliary_text_blue_gray"
+                            android:textSize="@dimen/text_size_px26"
+                            android:text="运单编号：16126497891"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!--物流信息列表-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="@dimen/dimen_px20">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/theme_text_lab_black"
-                        android:textSize="@dimen/text_size_px30"
-                        android:text="物流状态：运输中"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/auxiliary_text_blue_gray"
-                        android:textSize="@dimen/text_size_px26"
-                        android:layout_marginTop="@dimen/dimen_px22"
-                        android:layout_marginBottom="@dimen/dimen_px17"
-                        android:text="承运来源：顺丰速运"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/auxiliary_text_blue_gray"
-                        android:textSize="@dimen/text_size_px26"
-                        android:text="运单编号：16126497891"/>
+                    android:background="@color/white"
+                    android:padding="@dimen/dimen_px30">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/expressList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
-
-
-            <!--物流信息列表-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="@dimen/dimen_px30">
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/expressList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -144,7 +144,7 @@ public class WaitReceiveOrderFragment extends ViewPagerBaseFragment<OrderPresent
             tmp_3.add(orderListResponse.getItems().get(i));
             SingleLayoutHelper helper_3 = new SingleLayoutHelper();
             helper_3.setMarginBottom(ScreenUtils.dip2px(mContext, 10));
-            mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
+            mAdapters.add(new OrderAdapter_3(mContext, mPresenter, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
         }
         mDelegateAdapter.setAdapters(mAdapters);
         mDelegateAdapter.notifyDataSetChanged();

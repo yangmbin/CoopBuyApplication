@@ -134,5 +134,8 @@ public class Constant {
     public static final String DEFAULT_ADDRESS = "api/services/app/shippingAddress/FindDefault";
     public static final String CALCULATE_FREIGHT = "api/services/app/freight/Calculation";
     public static final String UPLOAD_IMAGE = "api/services/app/upload/Image";
+    public static final String DELETE_ORDER = "api/services/app/order/Remove";
+    public static final String CANCEL_ORDER = "api/services/app/order/Cancel";
+    public static final String FIND_EXPRESS_INFO = "api/services/app/order/FindExpressInfo";
 
 }

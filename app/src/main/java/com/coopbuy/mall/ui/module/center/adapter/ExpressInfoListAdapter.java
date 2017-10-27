@@ -7,16 +7,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class ExpressInfoListAdapter extends BaseRecyclerAdapter<Object> {
+public class ExpressInfoListAdapter extends BaseRecyclerAdapter<ExpressInfoResponse.NodesBean> {
 
-    private List<Object> list ;
+    private List<ExpressInfoResponse.NodesBean> list ;
 
-    public ExpressInfoListAdapter(Context ctx, List<Object> list) {
+    public ExpressInfoListAdapter(Context ctx, List<ExpressInfoResponse.NodesBean> list) {
         super(ctx, list);
         this.list = list;
     }
@@ -27,7 +28,7 @@ public class ExpressInfoListAdapter extends BaseRecyclerAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
+    protected void bindData(BaseRecyclerHolder holder, int position, final ExpressInfoResponse.NodesBean item) {
         View lineTop = holder.getView(R.id.lineTop);
         View lineBottom = holder.getView(R.id.lineBottom);
         View lineDivider = holder.getView(R.id.lineDivider);
@@ -44,11 +45,10 @@ public class ExpressInfoListAdapter extends BaseRecyclerAdapter<Object> {
         } else if (position == list.size() - 1) {
             lineBottom.setVisibility(View.INVISIBLE);
             lineDivider.setVisibility(View.GONE);
-        } else {
-
         }
 
         // 设置数据
-
+        holder.getTextView(R.id.detailInfo).setText("[" + item.getAcceptStation() + "]" + item.getRemark());
+        holder.getTextView(R.id.time).setText(item.getAcceptTime());
     }
 }

@@ -18,7 +18,9 @@ import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_3;
 import com.coopbuy.mall.ui.module.center.model.OrderModel;
 import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -142,9 +144,25 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
             List<OrderListResponse.ItemsBeanX> tmp_3 = new LinkedList<>();
             tmp_3.add(orderListResponse.getItems().get(i));
             SingleLayoutHelper helper_3 = new SingleLayoutHelper();
-            mAdapters.add(new OrderAdapter_3(mContext, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
+            mAdapters.add(new OrderAdapter_3(mContext, mPresenter, tmp_3, helper_3, getOrderItemClickListener(orderListResponse.getItems().get(i).getOrderId())));
         }
         mDelegateAdapter.setAdapters(mAdapters);
         mDelegateAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 删除订单成功回调
+     */
+    public void deleteOrderSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+        ToastUtils.toastShort("已删除");
+    }
+
+    /**
+     * 取消订单成功回调
+     */
+    public void cancelOrderSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+        ToastUtils.toastShort("已取消");
     }
 }

@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_3;
 import com.coopbuy.mall.utils.ScreenUtils;
 
 /**
@@ -21,10 +22,12 @@ public class OrderMoreBtnPopwindow extends PopupWindow implements View.OnClickLi
 
     private Context mContext;
     private TextView mDeleteBtn, mApplyRefundBtn;
+    private OrderAdapter_3 mOrderAdapter_3;
 
-    public OrderMoreBtnPopwindow(Context context, AttributeSet attrs) {
+    public OrderMoreBtnPopwindow(Context context, AttributeSet attrs, OrderAdapter_3 orderAdapter_3) {
         super(context, attrs);
         mContext = context;
+        mOrderAdapter_3 = orderAdapter_3;
         View contentView = LayoutInflater.from(context).inflate(R.layout.pop_order_more_btn, null);
         setContentView(contentView);
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -51,11 +54,11 @@ public class OrderMoreBtnPopwindow extends PopupWindow implements View.OnClickLi
         switch (v.getId()) {
             // 删除订单
             case R.id.deleteBtn:
-
+                mOrderAdapter_3.deleteBtn();
                 break;
             // 申请退款/售后
             case R.id.applyRefundBtn:
-
+                mOrderAdapter_3.applyRefundBtn();
                 break;
         }
     }

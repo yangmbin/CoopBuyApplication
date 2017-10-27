@@ -65,9 +65,28 @@ public class IntentUtils {
      */
     public static void gotoOrderActivity(Context context, int type) {
         if (type == Constants.ORDER_TYPE_AFTERSALES)
-            context.startActivity((new Intent(context, AfterSalesActivity.class)));
+            context.startActivity(new Intent(context, AfterSalesActivity.class));
         else
             context.startActivity((new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type)));
+    }
+
+    /**
+     * 我的订单，带ClearTop启动模式
+     *
+     * @param context
+     * @param type
+     */
+    public static void gotoOrderActivityWithClearTop(Context context, int type) {
+        if (type == Constants.ORDER_TYPE_AFTERSALES) {
+            Intent intent = new Intent(context, AfterSalesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            context.startActivity(intent);
+        } else {
+            Intent intent = new Intent(context, OrderActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra(ORDER_TYPE, type);
+            context.startActivity(intent);
+        }
     }
 
     /**
@@ -87,6 +106,7 @@ public class IntentUtils {
 
     /**
      * 跳转至主页
+     *
      * @param context
      * @param activity
      * @param fragmentIndex
