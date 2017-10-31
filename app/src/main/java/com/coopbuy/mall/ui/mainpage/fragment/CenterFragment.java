@@ -29,6 +29,7 @@ import com.coopbuy.mall.ui.module.center.view.Center_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.gyf.barlibrary.ImmersionBar;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -85,6 +86,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     private CenterAdapter adapter;
     private List<CenterData> mData;
 
+    // 个人中心Fragment状态栏是蓝色的，做特殊处理
+    private ImmersionBar mImmersionBar = null;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_three;
@@ -138,7 +142,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
+            initStatusBar();
         } else {
+            destroyStatusBar();
         }
     }
 
@@ -258,6 +264,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         }
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -265,4 +272,21 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     }
 
 
+    /**
+     * 初始化沉浸式状态栏
+     */
+    protected void initStatusBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.center_back).init();
+    }
+
+    /**
+     * 销毁沉浸式状态栏
+     */
+    private void destroyStatusBar() {
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+            mImmersionBar = null;
+        }
+    }
 }

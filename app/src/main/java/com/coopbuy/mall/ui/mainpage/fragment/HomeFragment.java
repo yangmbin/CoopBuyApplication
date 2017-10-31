@@ -28,6 +28,7 @@ import com.coopbuy.mall.ui.mainpage.model.HomeModel;
 import com.coopbuy.mall.ui.mainpage.presenter.HomePresenter;
 import com.coopbuy.mall.ui.mainpage.view.Home_IView;
 import com.coopbuy.mall.utils.ScreenUtils;
+import com.gyf.barlibrary.ImmersionBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -62,6 +63,8 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
     SmartRefreshLayout mRefreshLayout;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
+    // 首页Fragment状态栏是白色的，做特殊处理
+    private ImmersionBar mImmersionBar = null;
 
     @Override
     protected int getLayoutId() {
@@ -228,6 +231,33 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
                 mRvHome.smoothScrollToPosition(0);
             }
         }));
+    }
+
+    @Override
+    protected void onFragmentVisible(boolean isVisible) {
+        if (isVisible) {
+            initStatusBar();
+        } else {
+            destroyStatusBar();
+        }
+    }
+
+    /**
+     * 初始化沉浸式状态栏
+     */
+    protected void initStatusBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 销毁沉浸式状态栏
+     */
+    private void destroyStatusBar() {
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+            mImmersionBar = null;
+        }
     }
 
 

@@ -15,6 +15,7 @@ import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.LoadingBox;
 import com.coopbuy.mall.widget.navigation.TitleBar;
 import com.guinong.net.request.IAsyncRequestState;
+import com.gyf.barlibrary.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,14 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         }
     };
     public SharedPreferencesUtils sharedPreferencesUtils;
+    protected ImmersionBar mImmersionBar = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         doBeforeSetContentView();
         setContentView(getLayoutId());
+        initStatusBar();
 
         mContext = this;
         sharedPreferencesUtils = SharedPreferencesUtils.getInstance(this);
@@ -273,6 +276,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             }
             Log.e("network", "cancel network");
         }
+        destroyStatusBar();
     }
 
     /**
@@ -291,4 +295,24 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public void stopRefresh() {
 
     }
+
+    /**
+     * 初始化沉浸式状态栏
+     */
+    protected void initStatusBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 销毁沉浸式状态栏
+     */
+    private void destroyStatusBar() {
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+            mImmersionBar = null;
+        }
+    }
+
+
 }

@@ -55,4 +55,8 @@ public class SplashActivity extends BaseActivity {
             }, FINAL_TIME - finalTime); //延迟2秒跳转
         }
     }
+
+    @Override
+    protected void initStatusBar() {
+    }
 }

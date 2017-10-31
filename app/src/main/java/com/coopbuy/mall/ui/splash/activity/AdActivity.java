@@ -110,4 +110,8 @@ public class AdActivity extends BaseActivity {
             return;
         }
     }
+
+    @Override
+    protected void initStatusBar() {
+    }
 }

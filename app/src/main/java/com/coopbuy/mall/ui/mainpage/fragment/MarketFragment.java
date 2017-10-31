@@ -9,6 +9,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.MarketViewPagerAdapter;
 import com.coopbuy.mall.widget.navigation.MarketWeekBar;
+import com.gyf.barlibrary.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,8 @@ public class MarketFragment extends ViewPagerBaseFragment implements ViewPager.O
     @Bind(R.id.week_bar)
     MarketWeekBar weekBar;
     private List<Fragment> fragmentList = new ArrayList<>();
+    // 赶场Fragment状态栏是白色的，做特殊处理
+    private ImmersionBar mImmersionBar = null;
 
     @Override
     protected int getLayoutId() {
@@ -80,5 +83,32 @@ public class MarketFragment extends ViewPagerBaseFragment implements ViewPager.O
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    protected void onFragmentVisible(boolean isVisible) {
+        if (isVisible) {
+            initStatusBar();
+        } else {
+            destroyStatusBar();
+        }
+    }
+
+    /**
+     * 初始化沉浸式状态栏
+     */
+    protected void initStatusBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 销毁沉浸式状态栏
+     */
+    private void destroyStatusBar() {
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+            mImmersionBar = null;
+        }
     }
 }

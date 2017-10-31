@@ -23,7 +23,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.splash.activity.SplashActivity">
+        <activity
+            android:name=".ui.splash.activity.SplashActivity"
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,8 +60,8 @@
         <activity android:name=".ui.module.home.activity.CategoryActivity" />
         <activity android:name=".ui.module.home.activity.GoodsDetailActivity" />
         <activity android:name=".ui.mainpage.activity.MainActivity" />
-        <activity android:name=".ui.splash.activity.AdActivity" />
-        <activity android:name=".ui.splash.activity.GuideActivity" />
+        <activity android:name=".ui.splash.activity.AdActivity" android:theme="@style/FullScreenTheme"/>
+        <activity android:name=".ui.splash.activity.GuideActivity" android:theme="@style/FullScreenTheme"/>
         <activity android:name=".ui.module.center.activity.StationRecommendActivity" />
         <activity android:name=".ui.module.home.activity.ShopDetailActivity" />
         <activity android:name=".ui.module.center.activity.ForgetPwdActivity" />
@@ -70,7 +72,6 @@
         <activity android:name=".ui.module.center.activity.ExpressInfoActivity" />
         <activity android:name=".ui.module.home.activity.LocationActivity" />
         <activity android:name=".ui.module.home.activity.CategorySecondActivity" />
-        <activity android:name=".ui.module.home.activity.LocationActivity" />
         <activity
             android:name=".ui.module.center.activity.ShopCartActivity"
             android:label="@string/title_activity_shop_cart"
