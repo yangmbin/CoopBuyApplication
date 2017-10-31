@@ -13,12 +13,15 @@ import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
+import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
+import com.coopbuy.mall.ui.module.center.activity.OrderBuildActivity;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
@@ -27,6 +30,7 @@ import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.DeleteLineTextView;
 import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
 import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
@@ -37,6 +41,7 @@ import com.youth.banner.Banner;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -146,7 +151,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
                 goodsParamsDialog.showAtBottom();
                 break;
             case R.id.btn_goods_attrs:
-                mPresenter.getSkuInfoListData(mSkuDetailResponse.getProductId());
+                beforeOpenAttrDialog();
                 break;
             // 进店逛逛
             case R.id.btn_go_shop:
@@ -163,12 +168,44 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     }
 
     /**
+     * 打开属性弹窗之前，先获取sku相关信息
+     */
+    public void beforeOpenAttrDialog() {
+        mPresenter.getSkuInfoListData(mSkuDetailResponse.getProductId());
+    }
+
+    /**
      * 获取指定规格值或属性值的sku信息（属性弹框中选择）
      *
      * @param request
      */
     public void findSkuInfoData(FindSkuInfoRequest request) {
         mPresenter.findSkuInfoData(request);
+    }
+
+    /**
+     * 立即购买，提供给Dialog调用
+     */
+    public void buyRightNow() {
+        OrderBuildRequest request = new OrderBuildRequest();
+        List<OrderBuildRequest.SkusBean> list = new ArrayList<>();
+        OrderBuildRequest.SkusBean bean = new OrderBuildRequest.SkusBean();
+        bean.setQuantity(currentQuantity);
+        bean.setSkuId(currentSkuId);
+        list.add(bean);
+        request.setSkus(list);
+
+        IntentUtils.gotoActivity(mContext, OrderBuildActivity.class, request);
+    }
+
+    /**
+     * 加入购物车，提供给Dialog调用
+     */
+    public void addToCart() {
+        AddToCartRequest request = new AddToCartRequest();
+        request.setQuantity(currentQuantity);
+        request.setSkuId(currentSkuId);
+        mPresenter.addToCart(request);
     }
 
     /**
@@ -301,6 +338,12 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         mPresenter.calculateFreight(currentRegionId, currentSkuId, currentQuantity);
     }
 
+    /**
+     * 加入购物车成功回调
+     */
+    public void addToCartSuccess() {
+        ToastUtils.toastShort("success");
+    }
 
     /**
      * get set 方法

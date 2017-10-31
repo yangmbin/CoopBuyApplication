@@ -5,11 +5,13 @@ import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.base.BaseModel;
+import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;
 
@@ -39,5 +41,9 @@ public class GoodsDetailModel implements BaseModel {
 
     public IAsyncRequestState calculateFreight(CalculateFreightRequest request, IAsyncResultCallback<CalculateFreightResponse> callback, Object userState) {
         return client.calculateFreight(request, callback, userState);
+    }
+
+    public IAsyncRequestState addToCart(AddToCartRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.addToCart(request, callback, userState);
     }
 }

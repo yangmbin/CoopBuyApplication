@@ -158,5 +158,6 @@ public class Constant {
     public static final String DELETE_ORDER = "api/services/app/order/Remove";
     public static final String CANCEL_ORDER = "api/services/app/order/Cancel";
     public static final String FIND_EXPRESS_INFO = "api/services/app/order/FindExpressInfo";
+    public static final String ADD_TO_CART = "api/services/app/shoppingCart/AddProduct";
 
 }
