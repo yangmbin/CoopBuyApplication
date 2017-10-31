@@ -26,6 +26,7 @@ import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
@@ -414,6 +415,17 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState findSkuInfoData(FindSkuInfoRequest request, IAsyncResultCallback<SkuDetailResponse.SkuInfoBean> callback, Object userState) {
         return apiPostRequest(new TypeToken<SkuDetailResponse.SkuInfoBean>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_SKU_INFO, request, callback, userState);
+    }
+
+    /**
+     * 加入商品到购物车
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addToCart(AddToCartRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADD_TO_CART, request, callback, userState);
     }
 
     /**

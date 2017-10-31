@@ -39,6 +39,7 @@ public class GoodsAttrsDialog implements View.OnClickListener {
     private TextView mSellingPrice, mStock, mHaveSelected;
     private ImageView mDeleteCountBtn, mAddCountBtn;
     private TextView mCountTxt;
+    private TextView mBuyRightNow, mAddToCart;
     // 默认的购买数量
     private int mCount = 1;
     // 保存Sku信息
@@ -75,10 +76,14 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         mDeleteCountBtn = (ImageView) mView.findViewById(R.id.delete_count);
         mAddCountBtn = (ImageView) mView.findViewById(R.id.add_count);
         mCountTxt = (TextView) mView.findViewById(R.id.count);
+        mBuyRightNow = mView.findViewById(R.id.buyRightNow);
+        mAddToCart = mView.findViewById(R.id.addToCart);
 
         mClose.setOnClickListener(this);
         mDeleteCountBtn.setOnClickListener(this);
         mAddCountBtn.setOnClickListener(this);
+        mBuyRightNow.setOnClickListener(this);
+        mAddToCart.setOnClickListener(this);
 
         // 设置风格
         setPopWindowStyle();
@@ -180,6 +185,12 @@ public class GoodsAttrsDialog implements View.OnClickListener {
             case R.id.add_count:
                 ++mCount;
                 setCount();
+                break;
+            case R.id.buyRightNow:
+                mFragment.buyRightNow();
+                break;
+            case R.id.addToCart:
+                mFragment.addToCart();
                 break;
         }
     }

@@ -8,6 +8,7 @@ import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
@@ -20,6 +21,7 @@ import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
+import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
 
 import java.util.List;
@@ -188,5 +190,25 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                 ToastUtils.toastShort(error.getMessage());
             }
         }, "获取指定规格值或属性值的sku信息"));
+    }
+
+    /**
+     * 添加商品到购物车
+     * @param request
+     */
+    public void addToCart(AddToCartRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.addToCart(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                fragment_1.addToCartSuccess();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "加入商品到购物车"));
     }
 }

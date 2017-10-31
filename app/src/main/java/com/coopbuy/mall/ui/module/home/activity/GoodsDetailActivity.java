@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.module.home.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
@@ -17,6 +18,7 @@ import com.coopbuy.mall.widget.navigation.NavGoodsDetailBar;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * 商品详情
@@ -85,5 +87,17 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
 
     public void setSkuId(int skuId) {
         this.skuId = skuId;
+    }
+
+    @OnClick({R.id.buyRightNow, R.id.addToCart})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.buyRightNow:
+                ((GoodsDetailFragment_1) mFragments.get(0)).beforeOpenAttrDialog();
+                break;
+            case R.id.addToCart:
+                ((GoodsDetailFragment_1) mFragments.get(0)).beforeOpenAttrDialog();
+                break;
+        }
     }
 }

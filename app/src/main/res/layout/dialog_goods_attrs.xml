@@ -147,6 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px96">
             <TextView
+                android:id="@+id/buyRightNow"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -156,6 +157,7 @@
                 android:background="@color/theme_text_lab_black"
                 android:text="立即购买"/>
             <TextView
+                android:id="@+id/addToCart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
