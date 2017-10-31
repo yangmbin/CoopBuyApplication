@@ -14,6 +14,7 @@ import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.MainEvent;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
+import com.coopbuy.mall.ui.module.center.activity.FootMarkActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
@@ -171,7 +172,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(ShopStoreActivity.class, null);
                 break;
             case R.id.ll_footmark:
-
+                enter(FootMarkActivity.class, null);
                 break;
             case R.id.ll_phone_fare:
                 enter(PhoneChargeActivity.class, null);

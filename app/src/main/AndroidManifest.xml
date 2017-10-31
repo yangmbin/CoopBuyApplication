@@ -60,8 +60,12 @@
         <activity android:name=".ui.module.home.activity.CategoryActivity" />
         <activity android:name=".ui.module.home.activity.GoodsDetailActivity" />
         <activity android:name=".ui.mainpage.activity.MainActivity" />
-        <activity android:name=".ui.splash.activity.AdActivity" android:theme="@style/FullScreenTheme"/>
-        <activity android:name=".ui.splash.activity.GuideActivity" android:theme="@style/FullScreenTheme"/>
+        <activity
+            android:name=".ui.splash.activity.AdActivity"
+            android:theme="@style/FullScreenTheme" />
+        <activity
+            android:name=".ui.splash.activity.GuideActivity"
+            android:theme="@style/FullScreenTheme" />
         <activity android:name=".ui.module.center.activity.StationRecommendActivity" />
         <activity android:name=".ui.module.home.activity.ShopDetailActivity" />
         <activity android:name=".ui.module.center.activity.ForgetPwdActivity" />
@@ -77,7 +81,8 @@
             android:label="@string/title_activity_shop_cart"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.module.center.activity.OrderBuildActivity" />
-        <activity android:name=".ui.module.center.activity.ShopStoreActivity"></activity>
+        <activity android:name=".ui.module.center.activity.ShopStoreActivity" />
+        <activity android:name=".ui.module.center.activity.FootMarkActivity"></activity>
     </application>
 
 </manifest>
