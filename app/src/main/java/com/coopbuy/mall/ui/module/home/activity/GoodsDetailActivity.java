@@ -57,7 +57,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
     public void initView() {
         initFragment();
         initAdapter();
-        productId = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
+        skuId = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
     }
 
     private void initFragment() {
