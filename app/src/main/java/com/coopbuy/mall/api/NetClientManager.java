@@ -9,6 +9,7 @@ import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
+import com.coopbuy.mall.api.reponse.FootMarkResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
@@ -45,7 +46,7 @@ import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
-import com.coopbuy.mall.api.request.ShopStoreRequest;
+import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.google.gson.reflect.TypeToken;
@@ -438,7 +439,7 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getShopStoreList(ShopStoreRequest request, IAsyncResultCallback<ShopStoreReponse> callback, Object userState) {
+    public IAsyncRequestState getShopStoreList(ShopCurrentPageRequest request, IAsyncResultCallback<ShopStoreReponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<ShopStoreReponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.PAGESHOPLIST, request, callback, userState);
     }
@@ -454,6 +455,20 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState shopStoreCancel(ShopSotreCancelRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.CANCELSHOP, request, callback, userState);
     }
+
+    /**
+     * 足迹
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState footMarkData(ShopCurrentPageRequest request, IAsyncResultCallback<FootMarkResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<FootMarkResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.FOOTMARKPAGELIST, request, callback, userState);
+    }
+
 
     /**
      * 订单列表
@@ -495,6 +510,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 删除订单
+     *
      * @param request
      * @param callback
      * @param userState
@@ -506,6 +522,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 取消订单
+     *
      * @param request
      * @param callback
      * @param userState
@@ -517,6 +534,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 物流查询
+     *
      * @param request
      * @param callback
      * @param userState

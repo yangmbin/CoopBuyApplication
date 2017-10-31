@@ -74,6 +74,24 @@ public class FootMarkResponse implements Serializable {
             private String imageUrl;
             private String specification;
             private String property;
+            private String time;
+            private Boolean isSelect;
+
+            public Boolean getSelect() {
+                return isSelect;
+            }
+
+            public void setSelect(Boolean select) {
+                isSelect = select;
+            }
+
+            public String getTime() {
+                return time;
+            }
+
+            public void setTime(String time) {
+                this.time = time;
+            }
 
             public int getSkuId() {
                 return skuId;

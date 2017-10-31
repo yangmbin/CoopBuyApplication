@@ -632,7 +632,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
 
     @Override
     public void openGoodsDetial(int parent, int child) {
-        IntentUtils.gotoActivity(this, GoodsDetailActivity.class, mData.get(parent).getProducts().get(child).getProductId(), mData.get(parent).getProducts().get(child).getSkuId());
+        IntentUtils.gotoActivity(this, GoodsDetailActivity.class,  mData.get(parent).getProducts().get(child).getSkuId());
     }
 
     @Override

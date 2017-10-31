@@ -114,14 +114,19 @@ public class Constant {
      * 订单结算
      */
     public static final String SETTLEMENT = "api/services/app/shoppingCart/Settlement";
- /**
+    /**
      * 店铺收藏
      */
     public static final String PAGESHOPLIST = "api/services/app/favorite/PageShopList";
- /**
+    /**
      * 店铺取消收藏
      */
     public static final String CANCELSHOP = "api/services/app/favorite/CancelShop";
+
+    /**
+     * 足迹
+     */
+    public static final String FOOTMARKPAGELIST = "api/services/app/browseHistory/PageList";
 
 
     /**

@@ -2,14 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_footmark"
         style="@style/center_LinearLayout_help_96"
         android:layout_height="@dimen/dimen_px260"
         android:layout_marginTop="@dimen/dimen_px1"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_iamge_check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_goods_select"
+                style="@style/image_center_40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimen_px32"
+                android:src="@mipmap/icon_address_unchecked" />
+        </LinearLayout>
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/adFaceImage"

@@ -2,13 +2,10 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
-import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
-import com.coopbuy.mall.api.request.ShopStoreRequest;
+import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.module.center.model.ShopCartModel;
 import com.coopbuy.mall.ui.module.center.model.ShopStoreModel;
 import com.coopbuy.mall.ui.module.center.view.ShopStore_IView;
 import com.coopbuy.mall.utils.ToastUtils;
@@ -30,11 +27,9 @@ public class ShopStorePresenter extends BasePresenter<ShopStore_IView, ShopStore
      *
      * @param request
      */
-    public void getOrderBuildData(ShopStoreRequest request, final String type) {
+    public void getOrderBuildData(ShopCurrentPageRequest request, final String type) {
         if (type.equals("init")) {
             mView.showFillLoading();
-        } else {
-            mView.showTransLoading();
         }
 
         mView.appendNetCall(mModel.getShopStoreList(request, new IAsyncResultCallback<ShopStoreReponse>() {

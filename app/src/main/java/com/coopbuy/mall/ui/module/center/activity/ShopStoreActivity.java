@@ -3,24 +3,20 @@ package com.coopbuy.mall.ui.module.center.activity;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
-import com.coopbuy.mall.api.request.ShopStoreRequest;
+import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.ShopStoreAdapter;
-import com.coopbuy.mall.ui.module.center.model.ShopCartModel;
 import com.coopbuy.mall.ui.module.center.model.ShopStoreModel;
 import com.coopbuy.mall.ui.module.center.presenter.ShopStorePresenter;
 import com.coopbuy.mall.ui.module.center.view.ShopStore_IView;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -47,7 +43,7 @@ public class ShopStoreActivity extends BaseActivity<ShopStorePresenter, ShopStor
     SmartRefreshLayout mRefreshLayout;
     private ShopStoreAdapter mAdapter;
     private int mPagerIndex = 1;
-    private ShopStoreRequest request;
+    private ShopCurrentPageRequest request;
 
     @Override
     public int getLayoutId() {
@@ -62,7 +58,7 @@ public class ShopStoreActivity extends BaseActivity<ShopStorePresenter, ShopStor
     @Override
     public void initPresenter() {
         mPresenter = new ShopStorePresenter(this, mModel, this);
-        request = new ShopStoreRequest();
+        request = new ShopCurrentPageRequest();
         request.setCurrentPage(mPagerIndex);
         mPresenter.getOrderBuildData(request, "init");
     }
@@ -75,6 +71,11 @@ public class ShopStoreActivity extends BaseActivity<ShopStorePresenter, ShopStor
 
     private void init() {
         mData = new ArrayList<>();
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(true);
+        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnLoadmoreListener(this);
+        mRefreshLayout.setEnableLoadmore(true);
+        mRefreshLayout.setEnableRefresh(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new DefaultItemDecoration(ContextCompat.getColor(this, R.color.divider_color)));
         mAdapter = new ShopStoreAdapter(mData);
@@ -82,6 +83,7 @@ public class ShopStoreActivity extends BaseActivity<ShopStorePresenter, ShopStor
         mRecyclerView.setSwipeMenuItemClickListener(mMenuItemClickListener);
         // RecyclerView的Item的点击事件。
         mRecyclerView.setSwipeItemClickListener(this);
+
         mRecyclerView.setAdapter(mAdapter);
     }
 

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by niu on 2017/10/27- 16:53
  */
 
-public class ShopStoreRequest implements Serializable {
+public class ShopCurrentPageRequest implements Serializable {
 
     /**
      * currentPage : 1

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,12 +7,81 @@
     android:orientation="vertical"
     tools:context="com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity">
 
-    <include layout="@layout/title_bar_layout" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar_layout" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recView"
+    <LinearLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_rec_station_recommend" />
+        android:layout_above="@+id/rl_select_delete"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="@dimen/dimen_px88"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.coopbuy.mall.widget.refresh.GNRefreshHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never" />
+
+            <com.coopbuy.mall.widget.refresh.GNRefreshFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_select_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px96"
+        android:layout_alignParentBottom="true"
+        android:background="@color/edit_text_back_white"
+        android:clickable="false">
+
+        <include layout="@layout/include_divider_1px_line_theme_white" />
+
+        <LinearLayout
+            android:id="@+id/ll_select_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dimen_px30">
+
+            <TextView
+                android:id="@+id/tv_select_all"
+                style="@style/image_center_40"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/icon_address_unchecked" />
+
+            <TextView
+                style="@style/text_theme_black_size_30_h_match_41495c"
+                android:layout_marginLeft="@dimen/dimen_px10"
+                android:text="全选" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="@dimen/dimen_px260"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/auxiliary_text_red"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/edit_text_back_white"
+            android:textSize="@dimen/dimen_px30" />
+    </RelativeLayout>
+</RelativeLayout>

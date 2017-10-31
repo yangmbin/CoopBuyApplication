@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.center.view;
 
+import com.coopbuy.mall.api.reponse.FootMarkResponse;
 import com.coopbuy.mall.base.BaseView;
 
 /**
@@ -7,5 +8,5 @@ import com.coopbuy.mall.base.BaseView;
  */
 
 public interface FootMark_IView extends BaseView {
-
+        void getFootMarkData(FootMarkResponse response,String type);
 }
