@@ -116,13 +116,15 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     @Override
     protected void networkRetry() {
 //        mPresenter.getSkuDetailData(375);
-        mPresenter.getSkuDetailData(6305);
+//        mPresenter.getSkuDetailData(6305);
+        mPresenter.getSkuDetailData(((GoodsDetailActivity) mContext).getSkuId());
     }
 
     @Override
     protected void onFragmentFirstVisible() {
 //        mPresenter.getSkuDetailData(375);
-        mPresenter.getSkuDetailData(6305);
+//        mPresenter.getSkuDetailData(6305);
+        mPresenter.getSkuDetailData(((GoodsDetailActivity) mContext).getSkuId());
     }
 
     @Override
