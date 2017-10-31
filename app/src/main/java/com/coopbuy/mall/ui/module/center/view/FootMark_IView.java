@@ -8,5 +8,7 @@ import com.coopbuy.mall.base.BaseView;
  */
 
 public interface FootMark_IView extends BaseView {
-        void getFootMarkData(FootMarkResponse response,String type);
+    void getFootMarkData(FootMarkResponse response, String type);
+
+    void deleteOneSuccess();
 }

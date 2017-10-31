@@ -1,17 +1,16 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.FootMarkResponse;
+import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.FootMarkAdapter;
@@ -21,6 +20,7 @@ import com.coopbuy.mall.ui.module.center.presenter.FootMarkPresenter;
 import com.coopbuy.mall.ui.module.center.view.FootMark_IView;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.NormalDecoration;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkModel> implements FootMark_IView, OnRefreshListener, OnLoadmoreListener, FootMarkPort {
@@ -55,7 +54,7 @@ public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkMo
     /**
      * 是否全选
      */
-    private boolean mSelect = false;
+    private boolean mAllSelect = false;
     /**
      * 是否处于编辑状态
      */
@@ -142,7 +141,7 @@ public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkMo
             for (int j = 0; j < response.getItems().get(i).getProducts().size(); j++) {
                 FootMarkResponse.ItemsBean.ProductsBean bean = response.getItems().get(i).getProducts().get(j);
                 bean.setTime(response.getItems().get(i).getDate());
-                if (mSelect) {
+                if (mAllSelect) {
                     bean.setSelect(true);
                 } else {
                     bean.setSelect(false);
@@ -156,6 +155,13 @@ public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkMo
         } else {
             adapter.addData(netData);
         }
+    }
+
+    @Override
+    public void deleteOneSuccess() {
+        mPagerIndex = 1;
+        request.setCurrentPage(mPagerIndex);
+        mPresenter.getOrderBuildData(request, "flesh");
     }
 
     @Override
@@ -190,8 +196,28 @@ public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkMo
                 setAllSelect();
                 break;
             case R.id.tv_delete:
-
+                getDeleteData();
                 break;
+        }
+    }
+
+    private void getDeleteData() {
+        DeleteFootRequest re = new DeleteFootRequest();
+        List<Integer> skus = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getSelect()) {
+                skus.add(data.get(i).getSkuId());
+            }
+        }
+        re.setSkuIds(skus);
+        if (skus.isEmpty()) {
+            ToastUtils.toastLong("请选择需要删除的浏览商品！");
+        } else {
+            if (mAllSelect) {
+                ToastUtils.toastLong("全选这事找兴华解决！");
+            } else {
+                mPresenter.deleteOne(re);
+            }
         }
     }
 
@@ -199,8 +225,8 @@ public class FootMarkActivity extends BaseActivity<FootMarkPresenter, FootMarkMo
      * 全选监听处理
      */
     private void setAllSelect() {
-        mSelect = !mSelect;
-        if (mSelect) {
+        mAllSelect = !mAllSelect;
+        if (mAllSelect) {
             ivSelectAll.setBackgroundResource(R.mipmap.icon_address_checked);
             for (int i = 0; i < data.size(); i++) {
                 data.get(i).setSelect(true);

@@ -2,9 +2,11 @@ package com.coopbuy.mall.ui.mainpage.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -17,6 +19,7 @@ import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.FootMarkActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
+import com.coopbuy.mall.ui.module.center.activity.MessageCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
@@ -28,7 +31,9 @@ import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Center_IView;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.OrderBarView;
+import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -49,7 +54,7 @@ import butterknife.OnClick;
  * @author ymb
  *         Create at 2017/7/25 10:23
  */
-public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, CenterModel> implements Center_IView {
+public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, CenterModel> implements Center_IView, View.OnClickListener {
     @Bind(R.id.swipe_target)
     RecyclerView mRvTest;
     @Bind(R.id.circleImageView)
@@ -86,7 +91,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     private UserCenterInfoResponse.UserInfoBean userInfo;
     private CenterAdapter adapter;
     private List<CenterData> mData;
-
+    private CustomPopWindow popWindow;
     // 个人中心Fragment状态栏是蓝色的，做特殊处理
     private ImmersionBar mImmersionBar = null;
 
@@ -193,10 +198,24 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
                 break;
             case R.id.iv_msg:
-
+                showPopBottom(view);
                 break;
         }
     }
+
+    private void showPopBottom(View v) {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.popuwindow_dialog_top, null);
+        view.findViewById(R.id.ll_message).setOnClickListener(this);
+        view.findViewById(R.id.ll_scan).setOnClickListener(this);
+        view.findViewById(R.id.ll_code).setOnClickListener(this);
+        popWindow = new CustomPopWindow.PopupWindowBuilder(getContext())
+                .setView(view)
+                .setFocusable(true)
+                .setOutsideTouchable(true)
+                .create();
+        popWindow.showAsDropDown(v, 0, -2);
+    }
+
 
     private void enter(Class activity, Serializable data) {
         if (sharedPreferencesUtils.getLoginStatus()) {
@@ -272,7 +291,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         EventBusInstance.getInstance().unRegisterEvent(this);
     }
 
-
     /**
      * 初始化沉浸式状态栏
      */
@@ -289,5 +307,22 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             mImmersionBar.destroy();
             mImmersionBar = null;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_message:
+                ToastUtils.toastLong("message");
+                enter(MessageCenterActivity.class, null);
+                break;
+            case R.id.ll_scan:
+                ToastUtils.toastLong("scan");
+                break;
+            case R.id.ll_code:
+                ToastUtils.toastLong("code");
+                break;
+        }
+        popWindow.dissmiss();
     }
 }

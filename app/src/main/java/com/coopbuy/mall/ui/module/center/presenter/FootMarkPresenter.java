@@ -3,12 +3,14 @@ package com.coopbuy.mall.ui.module.center.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.api.reponse.FootMarkResponse;
+import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.FootMarkModel;
 import com.coopbuy.mall.ui.module.center.view.FootMark_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.NetworkException;
+import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
 
 /**
@@ -44,6 +46,29 @@ public class FootMarkPresenter extends BasePresenter<FootMark_IView, FootMarkMod
                         mView.showNoDataLayout();
                     }
                 }
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                mView.stopRefresh();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, ""));
+    }
+
+    /**
+     * 足迹
+     *
+     * @param request
+     */
+    public void deleteOne(DeleteFootRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.footMarkData(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                mView.deleteOneSuccess();
+                mView.stopAll();
             }
 
             @Override

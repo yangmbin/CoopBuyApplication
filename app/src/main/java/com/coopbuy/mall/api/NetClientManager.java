@@ -29,6 +29,7 @@ import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
+import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
 import com.coopbuy.mall.api.request.GetChildProvincesRequest;
@@ -48,6 +49,7 @@ import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
+import com.coopbuy.mall.api.request.SuggestRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.google.gson.reflect.TypeToken;
 import com.guinong.net.callback.IAsyncEmptyCallback;
@@ -467,6 +469,29 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState footMarkData(ShopCurrentPageRequest request, IAsyncResultCallback<FootMarkResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<FootMarkResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.FOOTMARKPAGELIST, request, callback, userState);
+    }
+
+    /**
+     * 删除足迹 单个
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState deletefootMarkone(DeleteFootRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVE_FOOTMARK, request, callback, userState);
+    }
+
+    /**
+     * 建议
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState suggestion(SuggestRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.NEWSUGGEST, request, callback, userState);
     }
 
 

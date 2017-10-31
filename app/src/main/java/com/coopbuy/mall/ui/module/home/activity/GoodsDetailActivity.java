@@ -25,6 +25,7 @@ import butterknife.Bind;
  *         Create at 2017/8/10 13:59
  */
 public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, GoodsDetailModel> implements GoodsDetail_IView {
+
     @Bind(R.id.topBar)
     NavGoodsDetailBar topBar;
     @Bind(R.id.tab_content)
@@ -56,8 +57,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
     public void initView() {
         initFragment();
         initAdapter();
-        productId = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
-        skuId = getIntent().getIntExtra(IntentUtils.PARAM2, -1);
+        skuId = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
     }
 
     private void initFragment() {

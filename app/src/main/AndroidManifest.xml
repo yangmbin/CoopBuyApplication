@@ -82,7 +82,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.module.center.activity.OrderBuildActivity" />
         <activity android:name=".ui.module.center.activity.ShopStoreActivity" />
-        <activity android:name=".ui.module.center.activity.FootMarkActivity"></activity>
+        <activity android:name=".ui.module.center.activity.FootMarkActivity" />
+        <activity android:name=".ui.module.center.activity.MessageCenterActivity"></activity>
     </application>
 
 </manifest>

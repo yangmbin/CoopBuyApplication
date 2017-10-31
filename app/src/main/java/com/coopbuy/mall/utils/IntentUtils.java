@@ -57,6 +57,12 @@ public class IntentUtils {
         context.startActivity(intent);
     }
 
+    public static void gotoActivity(Context context, Class<?> activity, int param1) {
+        Intent intent = new Intent(context, activity);
+        intent.putExtra(PARAM1, param1);
+        context.startActivity(intent);
+    }
+
     /**
      * 我的订单
      *

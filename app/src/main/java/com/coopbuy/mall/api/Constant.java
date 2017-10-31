@@ -127,6 +127,14 @@ public class Constant {
      * 足迹
      */
     public static final String FOOTMARKPAGELIST = "api/services/app/browseHistory/PageList";
+  /**
+     * 删除足迹
+     */
+    public static final String REMOVE_FOOTMARK = "api/services/app/browseHistory/Remove";
+    /**
+     * 建议
+     */
+    public static final String NEWSUGGEST = "api/services/app/suggest/NewSuggest";
 
 
     /**
