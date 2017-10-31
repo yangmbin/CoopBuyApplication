@@ -11,6 +11,7 @@ import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_2;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
 import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
 import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.navigation.NavGoodsDetailBar;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
     private final String[] mTitles = {"商品", "详情"};
     // 保存商品id
     private int productId = -1;
+    // 保存SkuId
+    private int skuId = -1;
 
     @Override
     public int getLayoutId() {
@@ -54,6 +57,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
     public void initView() {
         initFragment();
         initAdapter();
+        productId = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
     }
 
     private void initFragment() {
@@ -73,5 +77,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(int skuId) {
+        this.skuId = skuId;
     }
 }
