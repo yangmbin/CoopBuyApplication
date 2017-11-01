@@ -45,6 +45,7 @@
     <color name="orange_1">#ffe8cb</color>
     <color name="orange_2">#ffcbab</color>
     <color name="test_line_white">#ffffff</color>
+    <color name="test_line_white_20">#33ffffff</color>
     <color name="transparent">#00000000</color>
 
 

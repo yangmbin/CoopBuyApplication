@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingRight="@dimen/dimen_px20">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="@dimen/dimen_px250"
+        android:layout_width="@dimen/dimen_px330"
         android:layout_height="wrap_content"
         android:background="@mipmap/bg_sessionbox"
         android:orientation="vertical">
@@ -15,16 +14,31 @@
         <LinearLayout
             android:id="@+id/ll_message"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px84"
-            android:layout_marginTop="@dimen/dimen_px12">
+            android:layout_height="@dimen/dimen_px90"
+            android:layout_marginTop="@dimen/dimen_px12"
+            android:background="@drawable/center_popmsg_selector">
 
-            <ImageView
-                android:id="@+id/iv_message"
-                android:layout_width="@dimen/dimen_px46"
-                android:layout_height="@dimen/dimen_px46"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dimen_px24"
-                android:src="@mipmap/icon_message" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_px20">
+
+                <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="@dimen/dimen_px46"
+                    android:layout_height="@dimen/dimen_px46"
+                    android:layout_gravity="center"
+
+                    android:src="@mipmap/icon_message" />
+
+                <TextView
+                    android:id="@+id/tv_red"
+                    android:layout_width="@dimen/dimen_px12"
+                    android:layout_height="@dimen/dimen_px12"
+                    android:background="@drawable/bg_circle_red" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tv_message"
@@ -40,13 +54,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_marginLeft="@dimen/dimen_px20"
             android:layout_marginRight="@dimen/dimen_px30">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px2"
-                android:background="#7a7a7a" />
+                android:background="@color/test_line_white_20" />
 
         </LinearLayout>
 
@@ -54,15 +68,16 @@
         <LinearLayout
             android:id="@+id/ll_scan"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px84">
+            android:layout_height="@dimen/dimen_px90"
+            android:background="@drawable/center_popmsg_selector">
 
             <ImageView
                 android:id="@+id/iv_share"
                 android:layout_width="@dimen/dimen_px46"
                 android:layout_height="@dimen/dimen_px46"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dimen_px24"
-                android:src="@mipmap/icon_message" />
+                android:layout_marginLeft="@dimen/dimen_px20"
+                android:src="@mipmap/icon_scan" />
 
             <TextView
                 android:id="@+id/tv_share"
@@ -74,33 +89,31 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_px28" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_marginLeft="@dimen/dimen_px20"
             android:layout_marginRight="@dimen/dimen_px30">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px2"
-                android:background="#7a7a7a" />
+                android:background="@color/test_line_white_20" />
 
         </LinearLayout>
-
-
         <LinearLayout
             android:id="@+id/ll_code"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px84">
+            android:layout_height="@dimen/dimen_px90"
+            android:background="@drawable/center_popmsg_selector">
 
             <ImageView
                 android:id="@+id/iv_code"
                 android:layout_width="@dimen/dimen_px46"
                 android:layout_height="@dimen/dimen_px46"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dimen_px24"
-                android:src="@mipmap/icon_message" />
+                android:layout_marginLeft="@dimen/dimen_px20"
+                android:src="@mipmap/icon_code" />
 
             <TextView
                 android:id="@+id/tv_code"
@@ -112,5 +125,9 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_px28" />
         </LinearLayout>
+
+
+
+
     </LinearLayout>
 </LinearLayout>

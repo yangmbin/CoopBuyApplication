@@ -11,7 +11,6 @@ public class MessageCenterResponse implements Serializable {
     private String time;
     private String detail;
     private int type;
-
     public String getName() {
         return name;
     }

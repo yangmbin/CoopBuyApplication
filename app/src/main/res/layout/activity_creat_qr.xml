@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_text_lab_black"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_px75"
+        android:layout_marginRight="@dimen/dimen_px75"
+        android:layout_marginTop="@dimen/dimen_px86"
+        android:background="@drawable/black_rectangle_white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/dimen_px110"
+            android:layout_height="@dimen/dimen_px110"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_px33"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@mipmap/icon_default_head"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundAsCircle="true" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text_theme_black_size_28_41"
+            android:layout_below="@+id/circleImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_px9"
+            android:text="银河系"
+            android:textSize="@dimen/dimen_px36" />
+
+        <ImageView
+            android:id="@+id/iv_creatQR"
+            android:layout_width="@dimen/dimen_px460"
+            android:layout_height="@dimen/dimen_px460"
+            android:layout_below="@id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_px30" />
+
+        <TextView
+            android:id="@+id/tv_station"
+            style="@style/text_theme_black_size_28_41"
+            android:layout_below="@+id/iv_creatQR"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_px30"
+            android:text="扫站长二维码，绑定站长" />
+
+        <TextView
+            style="@style/text_black_size_24_878f94"
+            android:layout_below="@+id/tv_station"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dimen_px30"
+            android:layout_marginTop="@dimen/dimen_px13"
+            android:text="可以看到站长推荐好物哦" />
+    </RelativeLayout>
+</LinearLayout>

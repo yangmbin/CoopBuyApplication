@@ -2,25 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
     android:orientation="vertical"
-    android:id="@+id/box"
     tools:context="com.coopbuy.mall.ui.module.center.activity.MessageCenterActivity">
 
     <include layout="@layout/title_bar_layout" />
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        fresco:srlEnablePureScrollMode="true">
+        android:layout_height="match_parent">
+
+        <com.coopbuy.mall.widget.refresh.GNRefreshHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never" />
+
+        <com.coopbuy.mall.widget.refresh.GNRefreshFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>
