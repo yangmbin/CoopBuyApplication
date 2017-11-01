@@ -7,6 +7,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/ll_enter"
         android:layout_marginBottom="@dimen/dimen_px20"
         android:layout_width="match_parent"
         android:background="@color/edit_text_back_white"

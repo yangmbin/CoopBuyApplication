@@ -110,6 +110,10 @@ public class IntentUtils {
         context.startActivity((new Intent(context, activity).putExtra(PARAM1, type).putExtra(PARAM2, param2)));
     }
 
+    public static void gotoActivity(Context context, Class<?> activity, String type, String param2) {
+        context.startActivity((new Intent(context, activity).putExtra(PARAM1, type).putExtra(PARAM2, param2)));
+    }
+
     /**
      * 跳转至主页
      *

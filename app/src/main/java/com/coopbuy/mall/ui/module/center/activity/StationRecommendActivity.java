@@ -47,6 +47,7 @@ public class StationRecommendActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        setTitle("站长推荐");
         data = new ArrayList<>();
         initData();
         adapter = new StationRecAdapter();

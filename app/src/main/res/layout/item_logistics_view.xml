@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_px30"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_corner_gray_back_5"
+            android:paddingBottom="@dimen/dimen_px10"
+            android:paddingLeft="@dimen/dimen_px19"
+            android:paddingRight="@dimen/dimen_px19"
+            android:paddingTop="@dimen/dimen_px10"
+            android:text="昨天"
+            android:textColor="@color/edit_text_back_white"
+            android:textSize="@dimen/dimen_px24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_enter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px216"
+        android:layout_marginLeft="@dimen/dimen_px45"
+        android:layout_marginRight="@dimen/dimen_px45"
+        android:layout_marginTop="@dimen/dimen_px20"
+        android:background="@drawable/black_rectangle_white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_px19"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:paddingTop="@dimen/dimen_px26">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_theme_black_size_28_41"
+                android:text="订单信息"
+                android:textSize="@dimen/dimen_px32" />
+
+            <TextView
+                android:id="@+id/tv_logistics_name"
+                style="@style/text_black_size_28_888888"
+                android:layout_alignParentRight="true"
+                android:text="（银河物流）"
+                android:textSize="@dimen/dimen_px28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_px20">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/adFaceImage"
+                android:layout_width="@dimen/dimen_px120"
+                android:layout_height="@dimen/dimen_px120"
+                android:src="@mipmap/icon_splash_welcome"
+                fresco:actualImageScaleType="centerCrop"
+                fresco:roundedCornerRadius="@dimen/dimen_px8" />
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_marginLeft="@dimen/dimen_px18"
+                android:layout_toRightOf="@+id/adFaceImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="TCL D55A810 55吋 观影王安卓八 核平WIFI 平板 观影观影观影观影..."
+                android:textSize="@dimen/dimen_px28" />
+
+            <TextView
+                android:id="@+id/tv_order_number"
+                style="@style/text_black_size_28_888888"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dimen_px18"
+                android:layout_toRightOf="@+id/adFaceImage"
+                android:text="运单编号：1992545825421582"
+                android:textSize="@dimen/dimen_px28" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -16,12 +16,14 @@ import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.MainEvent;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
+import com.coopbuy.mall.ui.module.center.activity.CreatQRActivity;
 import com.coopbuy.mall.ui.module.center.activity.FootMarkActivity;
 import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.MessageCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
 import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
+import com.coopbuy.mall.ui.module.center.activity.ScanQRActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopStoreActivity;
@@ -30,6 +32,7 @@ import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Center_IView;
+import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.OrderBarView;
@@ -259,7 +262,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
     private void setUserInfo() {
         if (userInfo.isIsStationUser()) {
-            llStationStatus.setVisibility(View.VISIBLE);
+            //  llStationStatus.setVisibility(View.VISIBLE);
             if (userInfo.getStationUserRoleName().equals("站长")) {
                 ivLab.setImageResource(R.mipmap.icon_station);
             } else {
@@ -267,7 +270,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             }
         } else {
             ivLab.setImageResource(R.mipmap.icon_vip);
-            llStationStatus.setVisibility(View.GONE);
+            //  llStationStatus.setVisibility(View.GONE);
         }
         tvName.setText(userInfo.getUserName());
     }
@@ -313,14 +316,13 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_message:
-                ToastUtils.toastLong("message");
                 enter(MessageCenterActivity.class, null);
                 break;
             case R.id.ll_scan:
-                ToastUtils.toastLong("scan");
+                enter(ScanQRActivity.class, "bindStation");
                 break;
             case R.id.ll_code:
-                ToastUtils.toastLong("code");
+                enter(CreatQRActivity.class, null);
                 break;
         }
         popWindow.dissmiss();

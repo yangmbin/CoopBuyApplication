@@ -22,6 +22,7 @@
             android:textSize="@dimen/dimen_px32" />
 
         <TextView
+            android:id="@+id/tv_station_name"
             style="@style/text_theme_black_size_28_41"
             android:layout_marginLeft="@dimen/dimen_px10"
             android:text="服务站"
@@ -41,12 +42,14 @@
             android:textSize="@dimen/dimen_px32" />
 
         <TextView
+            android:id="@+id/tv_stationer_name"
             style="@style/text_theme_black_size_28_41"
             android:layout_marginLeft="@dimen/dimen_px10"
             android:text="李信息"
             android:textSize="@dimen/dimen_px32" />
 
         <TextView
+            android:id="@+id/tv_setationer_phone"
             style="@style/text_theme_black_size_28_41"
             android:layout_marginLeft="@dimen/dimen_px30"
             android:text="19998255284"

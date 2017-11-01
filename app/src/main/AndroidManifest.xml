@@ -83,7 +83,11 @@
         <activity android:name=".ui.module.center.activity.OrderBuildActivity" />
         <activity android:name=".ui.module.center.activity.ShopStoreActivity" />
         <activity android:name=".ui.module.center.activity.FootMarkActivity" />
-        <activity android:name=".ui.module.center.activity.MessageCenterActivity"></activity>
+        <activity android:name=".ui.module.center.activity.MessageCenterActivity" />
+        <activity android:name=".ui.module.center.activity.SystemMsgActivity" />
+        <activity android:name=".ui.module.center.activity.LogisticsActivity" />
+        <activity android:name=".ui.module.center.activity.CreatQRActivity" />
+        <activity android:name=".ui.module.center.activity.ScanQRActivity"></activity>
     </application>
 
 </manifest>

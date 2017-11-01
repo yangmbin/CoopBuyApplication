@@ -4,6 +4,7 @@ import android.os.Vibrator;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.module.center.activity.BindStationAddressActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
@@ -15,6 +16,7 @@ public class ScanQrCodeActivity extends BaseActivity implements QRCodeView.Deleg
 
     @Bind(R.id.zxingview)
     ZXingView mZxingView;
+    private String type;
 
     @Override
     public int getLayoutId() {
@@ -35,12 +37,20 @@ public class ScanQrCodeActivity extends BaseActivity implements QRCodeView.Deleg
     public void initView() {
         setTitle("扫一扫");
         mZxingView.setDelegate(this);
+        if (null != getIntent()) {
+            type = (String) getIntent().getSerializableExtra(IntentUtils.DATA);
+        }
     }
 
     @Override
     public void onScanQRCodeSuccess(String result) {
         vibrate();
-        IntentUtils.gotoActivity(mContext, QrqWbActivity.class, result);
+        ToastUtils.toastLong(result);
+        if (type.equals("bindStation")) {
+            IntentUtils.gotoActivity(mContext, BindStationAddressActivity.class, result,"scan");
+        } else {
+            IntentUtils.gotoActivity(mContext, QrqWbActivity.class, result);
+        }
         finish();
     }
 
