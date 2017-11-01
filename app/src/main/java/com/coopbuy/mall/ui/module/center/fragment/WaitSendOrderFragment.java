@@ -20,6 +20,7 @@ import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
 import com.coopbuy.mall.ui.module.center.view.Order_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -148,5 +149,12 @@ public class WaitSendOrderFragment extends ViewPagerBaseFragment<OrderPresenter,
         }
         mDelegateAdapter.setAdapters(mAdapters);
         mDelegateAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 提醒商家发货成功回调
+     */
+    public void remindShipmentSuccess() {
+        ToastUtils.toastShort("已提醒");
     }
 }

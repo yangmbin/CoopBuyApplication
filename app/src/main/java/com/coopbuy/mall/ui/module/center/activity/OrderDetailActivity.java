@@ -314,14 +314,24 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      * 提醒商家发货
      */
     private void remindShipmentBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mPresenter.remindShipment(mOrderDetailResponse.getOrderId());
+            }
+        }, "是否提醒商家发货？", "取消", "确定");
     }
 
     /**
      * 延长收货
      */
     private void delayedReceiptBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mPresenter.delayedReceipt(mOrderDetailResponse.getOrderId());
+            }
+        }, "是否延迟签收订单？", "取消", "确定");
     }
 
     /**
@@ -347,7 +357,12 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      * 确认收货
      */
     private void receiptBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mPresenter.receipt(mOrderDetailResponse.getOrderId());
+            }
+        }, "是否确认收货？", "取消", "确定");
     }
 
     /**
@@ -361,6 +376,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     /**
      * 删除订单成功回调
      */
+    @Override
     public void deleteOrderSuccess() {
         IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
         ToastUtils.toastShort("已删除");
@@ -369,8 +385,35 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     /**
      * 取消订单成功回调
      */
+    @Override
     public void cancelOrderSuccess() {
         IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
         ToastUtils.toastShort("已取消");
     }
+
+    /**
+     * 延长收货成功回调
+     */
+    @Override
+    public void delayedReceiptSuccess() {
+        ToastUtils.toastShort("延迟成功");
+    }
+
+    /**
+     * 确认收货成功回调
+     */
+    @Override
+    public void receiptSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+    }
+
+    /**
+     * 提醒商家发货成功回调
+     */
+    @Override
+    public void remindShipmentSuccess() {
+        ToastUtils.toastShort("已提醒");
+    }
+
+
 }

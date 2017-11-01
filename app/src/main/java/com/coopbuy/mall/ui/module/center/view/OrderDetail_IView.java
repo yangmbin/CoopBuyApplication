@@ -7,4 +7,7 @@ public interface OrderDetail_IView extends BaseView {
     void setOrderDetailData(OrderDetailResponse orderDetailResponse);
     void deleteOrderSuccess();
     void cancelOrderSuccess();
+    void delayedReceiptSuccess();
+    void receiptSuccess();
+    void remindShipmentSuccess();
 }

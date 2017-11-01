@@ -152,4 +152,81 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
         }, "取消订单"));
     }
 
+    /**
+     * 延长收货
+     * @param orderId
+     */
+    public void delayedReceipt(String orderId) {
+        mView.showTransLoading();
+        OrderIdRequest request = new OrderIdRequest();
+        request.setOrderId(orderId);
+        mView.appendNetCall(mModel.delayedReceipt(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                if (mAllOrderFragment != null)
+                    mAllOrderFragment.delayedReceiptSuccess();
+                else
+                    mWaitReceiveOrderFragment.delayedReceiptSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "延长收货"));
+    }
+
+    /**
+     * 确认收货
+     * @param orderId
+     */
+    public void receipt(String orderId) {
+        mView.showTransLoading();
+        OrderIdRequest request = new OrderIdRequest();
+        request.setOrderId(orderId);
+        mView.appendNetCall(mModel.receipt(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                if (mAllOrderFragment != null)
+                    mAllOrderFragment.receiptSuccess();
+                else
+                    mWaitReceiveOrderFragment.receiptSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "确认收货"));
+    }
+
+    /**
+     * 提醒商家发货
+     * @param orderId
+     */
+    public void remindShipment(String orderId) {
+        mView.showTransLoading();
+        OrderIdRequest request = new OrderIdRequest();
+        request.setOrderId(orderId);
+        mView.appendNetCall(mModel.remindShipment(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                if (mAllOrderFragment != null)
+                    mAllOrderFragment.remindShipmentSuccess();
+                else
+                    mWaitSendOrderFragment.remindShipmentSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "提醒商家发货"));
+    }
 }

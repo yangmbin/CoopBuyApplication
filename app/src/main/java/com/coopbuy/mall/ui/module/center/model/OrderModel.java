@@ -45,4 +45,37 @@ public class OrderModel implements BaseModel {
     public IAsyncRequestState cancelOrder(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
         return client.cancelOrder(request, callback, userState);
     }
+
+    /**
+     * 延长收货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState delayedReceipt(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.delayedReceipt(request, callback, userState);
+    }
+
+    /**
+     * 确认收货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState receipt(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.receipt(request, callback, userState);
+    }
+
+    /**
+     * 提醒商家发货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState remindShipment(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.remindShipment(request, callback, userState);
+    }
 }

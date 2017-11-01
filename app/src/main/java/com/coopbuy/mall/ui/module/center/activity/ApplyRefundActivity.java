@@ -235,6 +235,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
 
     @Override
     public void takeSuccess(TResult result) {
+        Log.e(TAG, "takeSuccess：" + result.getImage().getOriginalPath());
         Log.e(TAG, "takeSuccess：" + result.getImage().getCompressPath());
         //String imgPath = result.getImage().getOriginalPath(); // 原图路径
         String imgPath = result.getImage().getCompressPath(); // 压缩后路径

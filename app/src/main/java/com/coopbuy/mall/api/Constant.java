@@ -159,5 +159,8 @@ public class Constant {
     public static final String CANCEL_ORDER = "api/services/app/order/Cancel";
     public static final String FIND_EXPRESS_INFO = "api/services/app/order/FindExpressInfo";
     public static final String ADD_TO_CART = "api/services/app/shoppingCart/AddProduct";
+    public static final String DELAY_RECEIPT = "api/services/app/order/DelayedReceipt";
+    public static final String RECEIPT = "api/services/app/order/Receipt";
+    public static final String REMIND_SHIPMENT = "api/services/app/order/RemindShop";
 
 }

@@ -581,4 +581,37 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(new TypeToken<ExpressInfoResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.FIND_EXPRESS_INFO, request, callback, userState);
     }
+
+    /**
+     * 延长收货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState delayedReceipt(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.DELAY_RECEIPT, request, callback, userState);
+    }
+
+    /**
+     * 确认收货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState receipt(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.RECEIPT, request, callback, userState);
+    }
+
+    /**
+     * 提醒商家发货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState remindShipment(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMIND_SHIPMENT, request, callback, userState);
+    }
 }

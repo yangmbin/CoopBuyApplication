@@ -193,14 +193,24 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
      * 提醒商家发货
      */
     private void remindShipmentBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mOrderPresenter.remindShipment(mItemOrder.getOrderId());
+            }
+        }, "是否提醒商家发货？", "取消", "确定");
     }
 
     /**
      * 延长收货
      */
     private void delayedReceiptBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mOrderPresenter.delayedReceipt(mItemOrder.getOrderId());
+            }
+        }, "是否延迟签收订单？", "取消", "确定");
     }
 
     /**
@@ -226,7 +236,12 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
      * 确认收货
      */
     private void receiptBtn() {
-
+        DialogUtils.showTwoKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                mOrderPresenter.receipt(mItemOrder.getOrderId());
+            }
+        }, "是否确认收货？", "取消", "确定");
     }
 
     /**
