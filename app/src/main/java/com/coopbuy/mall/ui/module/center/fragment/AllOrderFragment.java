@@ -165,4 +165,25 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
         IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
         ToastUtils.toastShort("已取消");
     }
+
+    /**
+     * 延长收货成功回调
+     */
+    public void delayedReceiptSuccess() {
+        ToastUtils.toastShort("延迟成功");
+    }
+
+    /**
+     * 确认收货成功回调
+     */
+    public void receiptSuccess() {
+        IntentUtils.gotoOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_ALL);
+    }
+
+    /**
+     * 提醒商家发货成功回调
+     */
+    public void remindShipmentSuccess() {
+        ToastUtils.toastShort("已提醒");
+    }
 }

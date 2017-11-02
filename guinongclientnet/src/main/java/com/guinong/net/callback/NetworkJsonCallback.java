@@ -1,7 +1,5 @@
 package com.guinong.net.callback;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -15,8 +13,6 @@ import com.guinong.net.NetworkErrorInfo;
 import com.guinong.net.NetworkException;
 import com.guinong.net.NetworkMessage;
 import com.guinong.net.NetworkResultMessage;
-import com.guinong.net.RequestClient;
-import com.guinong.net.cookie.SharedPreferencesUtils;
 import com.guinong.net.utils.LogUtil;
 
 import java.io.IOException;
@@ -73,7 +69,7 @@ public class NetworkJsonCallback implements Callback {
     public void onFailure(Call call, IOException e) {
         if (call.isCanceled()) {
             //用户主动取消
-            postException(new NetworkException(CodeContant.CODE_USER_CANCEL, e.getMessage(), null, e));
+            //postException(new NetworkException(CodeContant.CODE_USER_CANCEL, e.getMessage(), null, e));
         } else {
             //服务器异常  1.主机地址出错  2.没有网络连接
             postException(new NetworkException(CodeContant.CODE_SERVER_EXCEPTION, e.getMessage(), null, e));
