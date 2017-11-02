@@ -4,7 +4,8 @@ package com.coopbuy.mall.utils;
  * Created by wangyu on 2017/4/12.
  */
 public class Constants {
-
+    //这是微信的参数配置
+    public static final String APP_ID = "wxc2123433ae714376";
     /**
      * 是否是调试版本
      */

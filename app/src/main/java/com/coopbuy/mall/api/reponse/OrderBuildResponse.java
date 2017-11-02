@@ -17,7 +17,7 @@ public class OrderBuildResponse implements Serializable {
      */
 
     private int allTotalAmount;
-    private int totalFreightAmount;
+    private double totalFreightAmount;
     private AddressBean address;
     private List<ShopsBean> shops;
 
@@ -29,11 +29,11 @@ public class OrderBuildResponse implements Serializable {
         this.allTotalAmount = allTotalAmount;
     }
 
-    public int getTotalFreightAmount() {
+    public double getTotalFreightAmount() {
         return totalFreightAmount;
     }
 
-    public void setTotalFreightAmount(int totalFreightAmount) {
+    public void setTotalFreightAmount(double totalFreightAmount) {
         this.totalFreightAmount = totalFreightAmount;
     }
 
@@ -189,7 +189,7 @@ public class OrderBuildResponse implements Serializable {
         }
     }
 
-    public static class ShopsBean implements Serializable{
+    public static class ShopsBean implements Serializable {
         /**
          * shopId : 54
          * shopName : 奈儿斯服饰专营店
@@ -203,9 +203,9 @@ public class OrderBuildResponse implements Serializable {
         private int shopId;
         private String shopName;
         private String shopLogoUrl;
-        private int totoalAmount;
+        private double totoalAmount;
         private boolean hasInvoice;
-        private int freightAmount;
+        private double freightAmount;
         private List<ProductsBean> products;
 
         public int getShopId() {
@@ -232,11 +232,11 @@ public class OrderBuildResponse implements Serializable {
             this.shopLogoUrl = shopLogoUrl;
         }
 
-        public int getTotoalAmount() {
+        public double getTotoalAmount() {
             return totoalAmount;
         }
 
-        public void setTotoalAmount(int totoalAmount) {
+        public void setTotoalAmount(double totoalAmount) {
             this.totoalAmount = totoalAmount;
         }
 
@@ -248,11 +248,11 @@ public class OrderBuildResponse implements Serializable {
             this.hasInvoice = hasInvoice;
         }
 
-        public int getFreightAmount() {
+        public double getFreightAmount() {
             return freightAmount;
         }
 
-        public void setFreightAmount(int freightAmount) {
+        public void setFreightAmount(double freightAmount) {
             this.freightAmount = freightAmount;
         }
 
@@ -281,7 +281,7 @@ public class OrderBuildResponse implements Serializable {
             private int skuId;
             private String imageUrl;
             private int quantity;
-            private int unitPrice;
+            private double unitPrice;
             private String specifications;
             private String properties;
             /**
@@ -300,6 +300,8 @@ public class OrderBuildResponse implements Serializable {
              * 是否支持开发票
              */
             private boolean isSupportInvoice;
+
+
             private int isFirst = 2;
             //判断最后一个个 显示留言框 只有一个也是最后一个
             private String messgae;
@@ -308,7 +310,7 @@ public class OrderBuildResponse implements Serializable {
              */
             private int isend;
             /**
-             * 发票是否显示 选中状态
+             * 发票内容
              */
             private String receipt;
             private boolean isReceipt;//是否可开发票
@@ -435,11 +437,11 @@ public class OrderBuildResponse implements Serializable {
                 this.quantity = quantity;
             }
 
-            public int getUnitPrice() {
+            public double getUnitPrice() {
                 return unitPrice;
             }
 
-            public void setUnitPrice(int unitPrice) {
+            public void setUnitPrice(double unitPrice) {
                 this.unitPrice = unitPrice;
             }
 

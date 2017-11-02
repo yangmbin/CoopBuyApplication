@@ -95,15 +95,39 @@
             <include layout="@layout/include_confirm_message" />
 
             <include layout="@layout/include_divider_1px_line_theme_white" />
-            <!-- <include layout="@layout/line_shop_cart" />
 
-             <include layout="@layout/include_confirm_feight" />
+            <LinearLayout
+                android:id="@+id/ll_isReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-             <include layout="@layout/line_shop_cart" />
+                <include layout="@layout/include_confirm_receipt" />
 
-             <include layout="@layout/include_confirm_new_receipt" />
+                <include layout="@layout/include_divider_1px_line_theme_white" />
 
-             <include layout="@layout/line_shop_cart" />-->
+                <LinearLayout
+                    android:id="@+id/ll_isopenReceipt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_confirm_receipttype" />
+
+                    <include layout="@layout/include_divider_1px_line_theme_white" />
+
+                    <include layout="@layout/include_confirm_receipthead" />
+
+                    <include layout="@layout/include_divider_1px_line_theme_white" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--<include layout="@layout/include_confirm_feight" />
+
+           <include layout="@layout/line_shop_cart" />
+
+           <include layout="@layout/include_confirm_new_receipt" />
+
+           <include layout="@layout/line_shop_cart" />-->
 
             <include layout="@layout/include_confirm_total_price" />
         </LinearLayout>

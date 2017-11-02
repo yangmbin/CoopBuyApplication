@@ -1,8 +1,10 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,9 +13,11 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
+import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderBuildAdapter;
 import com.coopbuy.mall.ui.module.center.model.OrderBuildModel;
+import com.coopbuy.mall.ui.module.center.pay.NewPayWindowActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderBuildPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderBuild_IView;
 import com.coopbuy.mall.utils.IntentUtils;
@@ -23,8 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderBuildModel> implements OrderBuild_IView, View.OnClickListener {
+    @Bind(R.id.l_pay)
+    LinearLayout lPay;
     private OrderBuildRequest request;
     @Bind(R.id.swipe_target)
     RecyclerView mMainRecycleView;
@@ -86,6 +93,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
      */
     private List<OrderBuildResponse.ShopsBean.ProductsBean> mOrderData;
     private int mAddressId;
+    private OrderSubmitRequest submitRequest;
 
     @Override
     public int getLayoutId() {
@@ -110,10 +118,10 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
             request = (OrderBuildRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
         }
         initData();
-
     }
 
     private void initData() {
+        lPay.setVisibility(View.GONE);
         mOrderData = new ArrayList<>();
         LinearLayoutManager manager = new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false);
         mMainRecycleView.setLayoutManager(manager);
@@ -144,6 +152,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
             if (!mOrderData.isEmpty()) {
                 mOrderData.clear();
             }
+            lPay.setVisibility(View.VISIBLE);
             setAddress(response);
             for (int i = 0; i < response.getShops().size(); i++) {
                 //得到店铺 和对应的商品列表
@@ -161,6 +170,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
                     itemsBean.setShopName(ordersBean.getShopName());
                     itemsBean.setSupportInvoice(ordersBean.isHasInvoice());
                     itemsBean.setOrderTotalPayAmount(ordersBean.getTotoalAmount());
+                    itemsBean.setReceipt(false);
                     if (ordersBean.getProducts().size() == 1) { //这里是设置商品的最后一个显示留言框
                         itemsBean.setIsend(1);
                     } else if (j == ordersBean.getProducts().size() - 1) {
@@ -180,6 +190,12 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
     public void fail() {
         headRecy.setVisibility(View.GONE);
         finish();
+    }
+
+    @Override
+    public void orderSubmitSuccess(String orderid) {
+
+
     }
 
     /**
@@ -220,5 +236,52 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
     @Override
     public void onClick(View v) {
         IntentUtils.gotoActivity(this, AddressManageActivity.class);
+    }
+
+    @OnClick(R.id.tv_submit)
+    public void onViewClicked() {
+        creatOrder();
+        if (submitRequest != null) {
+            Intent intent = new Intent(this, NewPayWindowActivity.class);
+            intent.putExtra("data", submitRequest);
+            intent.putExtra("type", "order");
+            startActivity(intent);
+            overridePendingTransition(R.anim.push_bottom_in, R.anim.push_bottom_out);
+        }
+    }
+
+    /**
+     * 订单提交
+     */
+    private void creatOrder() {
+        submitRequest = new OrderSubmitRequest();
+        List<OrderSubmitRequest.ShopsBean> shops = new ArrayList<>();
+        for (int i = 0; i < response.getShops().size(); i++) {
+            OrderBuildResponse.ShopsBean oredersb = response.getShops().get(i);
+            OrderSubmitRequest.ShopsBean sb = new OrderSubmitRequest.ShopsBean();
+            List<OrderSubmitRequest.ShopsBean.SkusBean> skus = new ArrayList<>();
+            for (int j = 0; j < oredersb.getProducts().size(); j++) {
+                OrderBuildResponse.ShopsBean.ProductsBean pb = oredersb.getProducts().get(j);
+                if (j == oredersb.getProducts().size() - 1) {
+                    if (TextUtils.isEmpty(pb.getMessgae())) {
+                        sb.setInvoiceTitle("个人");
+                    } else {
+                        sb.setInvoiceTitle(pb.getReceipt());
+                    }
+                    sb.setRemark(pb.getMessgae());
+                    sb.setHasInvoice(pb.isReceipt());
+                }
+                OrderSubmitRequest.ShopsBean.SkusBean skub = new OrderSubmitRequest.ShopsBean.SkusBean();
+                skub.setSkuId(pb.getSkuId());
+                skub.setQuantity(pb.getQuantity());
+                skus.add(skub);
+            }
+            sb.setSkus(skus);
+            shops.add(sb);
+        }
+        submitRequest.setAddressId(mAddressId);
+        submitRequest.setShops(shops);
+        submitRequest.setGoodsCounts(mTotalNum);
+        submitRequest.setTotalPrice(df.format(mTotalPrice));
     }
 }

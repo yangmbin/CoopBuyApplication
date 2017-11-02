@@ -108,4 +108,9 @@
     <color name="black3">#000000</color>
     <color name="side_color">#e5e5e5</color>
     <color name="divider_color">#FFB7B2B2</color>
+
+    <color name="pay_text_60">#993F3F3F</color>
+    <color name="pay_text">#3F3F3F</color>
+    <color name="pay_black">#66000000 </color>
+    <color name="deteal_text">#000000</color>
 </resources>

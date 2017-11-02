@@ -1,8 +1,11 @@
 package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
+
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
+import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
+import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.OrderBuildModel;
 import com.coopbuy.mall.ui.module.center.view.OrderBuild_IView;
@@ -20,8 +23,6 @@ public class OrderBuildPresenter extends BasePresenter<OrderBuild_IView, OrderBu
     }
 
     /**
-     * 获取指定规格值或属性值的sku信息
-     *
      * @param request
      */
     public void getOrderBuildData(OrderBuildRequest request) {
@@ -31,6 +32,31 @@ public class OrderBuildPresenter extends BasePresenter<OrderBuild_IView, OrderBu
             public void onComplete(OrderBuildResponse skuInfoBean, Object userState) {
                 if (null != skuInfoBean) {
                     mView.getOrderBuildData(skuInfoBean);
+                }
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                mView.fail();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, ""));
+    }
+
+    /**
+     * 订单创建
+     *
+     * @param request
+     */
+    public void orderSubmit(OrderSubmitRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.orderSubmit(request, new IAsyncResultCallback<OrderSubmitResponse>() {
+            @Override
+            public void onComplete(OrderSubmitResponse skuInfoBean, Object userState) {
+                if (null != skuInfoBean) {
+                    mView.orderSubmitSuccess(skuInfoBean.getOrderId());
                 }
                 mView.stopAll();
             }

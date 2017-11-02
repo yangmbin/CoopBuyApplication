@@ -149,6 +149,7 @@
         <item name="android:textColor">@color/auxiliary_text_blue_gray</item>
         <item name="android:textSize">@dimen/dimen_px28</item>
     </style>
+
     <style name="text_black_h_match_size_30_878f94">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">wrap_content</item>
@@ -176,7 +177,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/center_text_black</item>
         <item name="android:textSize">@dimen/dimen_px32</item>
-    </style><style name="center_text_white_size_20">
+    </style>
+
+    <style name="center_text_white_size_20">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/edit_text_back_white</item>
@@ -228,7 +231,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_gray_6</item>
         <item name="android:textSize">@dimen/dimen_px26</item>
-    </style>   <style name="text_black_red_size_26_666666">
+    </style>
+
+    <style name="text_black_red_size_26_666666">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_gray_6</item>
@@ -284,7 +289,9 @@
         <item name="android:layout_height">@dimen/dimen_px40</item>
         <item name="android:layout_width">@dimen/dimen_px40</item>
         <item name="android:scaleType">centerCrop</item>
-    </style> <style name="image_center_44">
+    </style>
+
+    <style name="image_center_44">
         <item name="android:layout_height">@dimen/dimen_px44</item>
         <item name="android:layout_width">@dimen/dimen_px44</item>
         <item name="android:scaleType">centerCrop</item>
@@ -388,5 +395,14 @@
     <style name="FullScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="wind">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:activityCloseExitAnimation">@anim/bottom_pop_dialog_out</item>
+        <item name="android:activityOpenExitAnimation">@anim/bottom_pop_dialog_out</item>
     </style>
 </resources>

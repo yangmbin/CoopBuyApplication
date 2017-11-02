@@ -18,12 +18,15 @@ import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
+import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
+import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.reponse.TradeChannelResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
@@ -44,6 +47,8 @@ import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
+import com.coopbuy.mall.api.request.OrderPayApplyRequest;
+import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
@@ -422,6 +427,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 加入商品到购物车
+     *
      * @param request
      * @param callback
      * @param userState
@@ -443,6 +449,44 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getOrderBuildData(OrderBuildRequest request, IAsyncResultCallback<OrderBuildResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderBuildResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SETTLEMENT, request, callback, userState);
+    }
+
+    /**
+     * 订单提交
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState orderSubmit(OrderSubmitRequest request, IAsyncResultCallback<OrderSubmitResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderSubmitResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SUBMIT, request, callback, userState);
+    }
+
+    /**
+     * 获取可支付渠道
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getPayTradeChannel(IAsyncResultCallback<List<TradeChannelResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<TradeChannelResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ENABLEDLIST, callback, userState);
+    }
+
+    /**
+     * 支付参数的调用
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getPayParms(OrderPayApplyRequest request, IAsyncResultCallback<OrderPayApplyResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderPayApplyResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.APPAPPLY, request, callback, userState);
     }
 
     /**
@@ -497,6 +541,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 建议
+     *
      * @param request
      * @param callback
      * @param userState

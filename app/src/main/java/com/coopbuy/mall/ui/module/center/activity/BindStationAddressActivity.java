@@ -1,15 +1,12 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.widget.TextView;
-
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.bean.ScanMesg;
 import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * @author csn

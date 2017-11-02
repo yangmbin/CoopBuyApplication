@@ -16,6 +16,7 @@
 
 
     <TextView
+        android:id="@+id/tv_feight"
         style="@style/text_theme_black_size_28_41"
         android:text="包邮" />
 

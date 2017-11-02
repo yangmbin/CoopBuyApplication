@@ -19,15 +19,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/edit_text_back_white">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/ll_re"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/l_pay"
-                android:background="@color/edit_text_back_white"
                 android:orientation="vertical">
 
                 <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -82,6 +80,7 @@
                         android:textSize="@dimen/dimen_px36" />
 
                     <TextView
+                        android:id="@+id/tv_submit"
                         style="@style/text_orange_size_26_f"
                         android:layout_width="@dimen/dimen_px220"
                         android:layout_height="match_parent"

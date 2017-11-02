@@ -9,7 +9,21 @@ import java.util.List;
 
 public class OrderBuildRequest implements Serializable {
 
+    /**
+     * skus : [{"skuId":6305,"quantity":1}]
+     * addressId : 0
+     */
+
+    private int addressId;
     private List<SkusBean> skus;
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
 
     public List<SkusBean> getSkus() {
         return skus;
@@ -21,8 +35,8 @@ public class OrderBuildRequest implements Serializable {
 
     public static class SkusBean implements Serializable {
         /**
-         * skuId : 0
-         * quantity : 0
+         * skuId : 6305
+         * quantity : 1
          */
 
         private int skuId;

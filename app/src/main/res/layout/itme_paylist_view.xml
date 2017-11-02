@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/m_ll_paly"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_pay_logo"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_round_corner_imageholder"
+            android:scaleType="centerCrop"
+            app:placeholderImage="@mipmap/default_img" />
+        <TextView
+            android:id="@+id/pay_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:text="支付宝支付"
+            android:textColor="@color/deteal_text"
+            android:textSize="19dp" />
+
+        <ImageView
+            android:id="@+id/iv_paly"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="9.5dp"
+            android:src="@mipmap/icon_address_checked" />
+    </LinearLayout>
+</LinearLayout>

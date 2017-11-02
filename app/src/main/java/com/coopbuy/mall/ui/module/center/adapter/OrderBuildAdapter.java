@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -92,11 +93,21 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
             holder.mPrice.setText("¥" + df.format(data.get(position).getUnitPrice()));
             holder.mCount.setText("x" + data.get(position).getQuantity());
 
-         /*   if (data.get(position).get() == 0) {
+            if (data.get(position).getFreight() == 0) {
                 holder.tvTransportPrice.setText("包邮");
             } else {
                 holder.tvTransportPrice.setText("¥" + df.format(data.get(position).getFreight()));
-            }*/
+            }
+            if (data.get(position).isSupportInvoice()) {
+                holder.llIsReceipt.setVisibility(View.VISIBLE);
+            } else {
+                holder.llIsReceipt.setVisibility(View.GONE);
+            }
+            if (data.get(position).isReceipt()) {
+                holder.llOpenReceipt.setVisibility(View.VISIBLE);
+            } else {
+                holder.llOpenReceipt.setVisibility(View.GONE);
+            }
             holder.imags.setImageURI(data.get(position).getImageUrl());
             final int finalPosition = position;
             holder.mMessage.addTextChangedListener(new TextWatcher() {
@@ -113,7 +124,7 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
                     data.get(finalPosition).setMessgae(s.toString());
                 }
             });
-           /* holder.receipt.addTextChangedListener(new TextWatcher() {
+            holder.receipt.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 }
@@ -126,7 +137,9 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
                 public void afterTextChanged(Editable s) {
                     data.get(finalPosition).setReceipt(s.toString());
                 }
-            });*/
+            });
+            holder.ivClear.setOnClickListener(new MyPort(position, holder));
+            holder.isReceiptCB.setOnClickListener(new MyPort(position, holder));
         }
     }
 
@@ -158,15 +171,18 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-            /*    case R.id.cb_receipt:
-                 *//*   if (holder.cbReceipt.isChecked()) {
-                        holder.llReceiptHead.setVisibility(View.VISIBLE);
+                case R.id.iv_check_receipt:
+                    if (holder.isReceiptCB.isChecked()) {
+                        holder.llOpenReceipt.setVisibility(View.VISIBLE);
                         data.get(position).setReceipt(true);
                     } else {
-                        holder.llReceiptHead.setVisibility(View.GONE);
+                        holder.llOpenReceipt.setVisibility(View.GONE);
                         data.get(position).setReceipt(false);
-                    }*//*
-                    break;*/
+                    }
+                    break;
+                case R.id.iv_receipt_clear:
+                    holder.receipt.setText("");
+                    break;
             }
             notifyDataSetChanged(); //刷新适配器
         }
@@ -323,10 +339,7 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
          * 商品规格 颜色 尺寸
          */
         public TextView mViersion;
-        /**
-         * 加载图片动画
-         */
-        // public SpinKitView mSpinKitView;
+
         /**
          * 增加点击选中图片的区域
          */
@@ -341,15 +354,30 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
          * 如果是多个同一店铺的商品 底部的信息不显示
          */
         private LinearLayout llConfrimFoot;
-
         /**
-         * 店铺头部的线
+         * 是否有发票
          */
-        //  private View vLine;
+        private LinearLayout llIsReceipt;
+        /**
+         * 是否打开发票
+         */
+        private LinearLayout llOpenReceipt;
+        /**
+         * 发票开关
+         */
+        private CheckBox isReceiptCB;
+        /**
+         * 发票清理
+         */
+        private ImageView ivClear;
+
         public MyHolder(View view) {
             super(view);
-            //   mSpinKitView = view.findViewById(R.id.spin_kit);
-            // vLine = view.findViewById(R.id.v_line);
+            llIsReceipt = view.findViewById(R.id.ll_isReceipt);
+            llOpenReceipt = view.findViewById(R.id.ll_isopenReceipt);
+            isReceiptCB = view.findViewById(R.id.iv_check_receipt);
+            receipt = view.findViewById(R.id.m_edt_receipt);
+            ivClear = view.findViewById(R.id.iv_receipt_clear);
             shopImageSellect = view.findViewById(R.id.ll_shop_select);
             llConfrimFoot = view.findViewById(R.id.ll_confrim_foot);
             llShopCartHeader = view.findViewById(R.id.ll_shopcart_header);

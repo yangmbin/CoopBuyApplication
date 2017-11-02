@@ -115,11 +115,10 @@ public class ShopCartResponse implements Serializable {
         }
 
 
-
         public static class ProductsBean implements Serializable {
-            public static final int TYPE_TITLE=1;
-            public static final int TYPE_NROMAL=2;
-            public static final int TYPE_HEADER=3;
+            public static final int TYPE_TITLE = 1;
+            public static final int TYPE_NROMAL = 2;
+            public static final int TYPE_HEADER = 3;
             /**
              * productId : 97
              * productName : 【十八子作】流光潜舰五铬钢套刀多功能厨房刀具套装 S1021七件套
@@ -243,7 +242,7 @@ public class ShopCartResponse implements Serializable {
             private int skuId;
             private String imageUrl;
             private int quantity;
-            private int unitPrice;
+            private double unitPrice;
             private String createTime;
             private String specifications;
             private String properties;
@@ -288,11 +287,11 @@ public class ShopCartResponse implements Serializable {
                 this.quantity = quantity;
             }
 
-            public int getUnitPrice() {
+            public double getUnitPrice() {
                 return unitPrice;
             }
 
-            public void setUnitPrice(int unitPrice) {
+            public void setUnitPrice(double unitPrice) {
                 this.unitPrice = unitPrice;
             }
 

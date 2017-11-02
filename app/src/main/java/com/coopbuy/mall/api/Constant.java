@@ -111,9 +111,21 @@ public class Constant {
      */
     public static final String REMOVEPRODUCT = "api/services/app/shoppingCart/RemoveProduct";
     /**
+     * 可支付列表
+     */
+    public static final String ENABLEDLIST = "api/services/app/payment/EnabledList";
+    /**
+     * 支付参数的
+     */
+    public static final String APPAPPLY = "api/services/app/payment/AppApply";
+    /**
      * 订单结算
      */
     public static final String SETTLEMENT = "api/services/app/shoppingCart/Settlement";
+    /**
+     * 订单提交
+     */
+    public static final String SUBMIT = "api/services/app/order/Submit";
     /**
      * 店铺收藏
      */
@@ -127,7 +139,7 @@ public class Constant {
      * 足迹
      */
     public static final String FOOTMARKPAGELIST = "api/services/app/browseHistory/PageList";
-  /**
+    /**
      * 删除足迹
      */
     public static final String REMOVE_FOOTMARK = "api/services/app/browseHistory/Remove";

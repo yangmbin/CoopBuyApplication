@@ -12,4 +12,6 @@ public interface OrderBuild_IView extends BaseView {
     void getOrderBuildData(OrderBuildResponse data);
 
     void fail();
+
+    void orderSubmitSuccess(String orderid);
 }
