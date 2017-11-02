@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!--第三部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px60"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/refund_type_image"
+            android:layout_width="@dimen/dimen_px28"
+            android:layout_height="@dimen/dimen_px28"
+            android:src="@mipmap/icon_refund_huo"/>
+        <TextView
+            android:id="@+id/status_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px24"
+            android:textColor="@color/theme_text_lab_black"
+            android:layout_marginLeft="@dimen/dimen_px11"
+            android:text="退货退款 待买家发货 还剩6天16时24分"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px90"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:gravity="center_vertical|right">
+
+        <TextView
+            android:id="@+id/detailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/theme_text_title_orange"
+            android:textSize="@dimen/text_size_px28"
+            android:paddingTop="@dimen/dimen_px16"
+            android:paddingBottom="@dimen/dimen_px16"
+            android:paddingLeft="@dimen/dimen_px34"
+            android:paddingRight="@dimen/dimen_px34"
+            android:layout_marginRight="@dimen/dimen_px24"
+            android:background="@drawable/shape_orange_no_solid_bg"
+            android:text="查看详情"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -162,5 +162,6 @@ public class Constant {
     public static final String DELAY_RECEIPT = "api/services/app/order/DelayedReceipt";
     public static final String RECEIPT = "api/services/app/order/Receipt";
     public static final String REMIND_SHIPMENT = "api/services/app/order/RemindShop";
+    public static final String GET_AFTER_SALES_LIST = "api/services/app/refund/List";
 
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <!--第一部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px96"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_shop_order_list"/>
+            <TextView
+                android:id="@+id/tv_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_px30"
+                android:layout_marginLeft="@dimen/dimen_px29"
+                android:textColor="@color/theme_text_lab_black"
+                android:text="放到"/>
+            
+            <ImageView
+                android:layout_width="@dimen/dimen_px45"
+                android:layout_height="@dimen/dimen_px45"
+                android:src="@mipmap/icon_category_more_arrow"
+                android:layout_marginLeft="@dimen/dimen_px10"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/gray_4"/>
+
+
+</LinearLayout>

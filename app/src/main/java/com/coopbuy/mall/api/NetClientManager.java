@@ -2,6 +2,7 @@ package com.coopbuy.mall.api;
 
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.api.reponse.AddressTownResponse;
+import com.coopbuy.mall.api.reponse.AfterSalesResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
@@ -44,11 +45,12 @@ import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
+import com.coopbuy.mall.api.request.PageRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
-import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
+import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.SuggestRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
@@ -422,6 +424,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 加入商品到购物车
+     *
      * @param request
      * @param callback
      * @param userState
@@ -497,6 +500,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 建议
+     *
      * @param request
      * @param callback
      * @param userState
@@ -584,6 +588,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 延长收货
+     *
      * @param request
      * @param callback
      * @param userState
@@ -595,6 +600,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 确认收货
+     *
      * @param request
      * @param callback
      * @param userState
@@ -606,6 +612,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 提醒商家发货
+     *
      * @param request
      * @param callback
      * @param userState
@@ -613,5 +620,17 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState remindShipment(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMIND_SHIPMENT, request, callback, userState);
+    }
+
+    /**
+     * 获取售后列表
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getAfterSalesList(PageRequest request, IAsyncResultCallback<AfterSalesResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<AfterSalesResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_AFTER_SALES_LIST, request, callback, userState);
     }
 }
