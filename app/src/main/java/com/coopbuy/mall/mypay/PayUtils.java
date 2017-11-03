@@ -32,18 +32,31 @@ public class PayUtils {
     private IWXAPI api;
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
+    private String appid;
 
     public PayUtils(PayListener mListener, Activity mContext) {
         this.mListener = mListener;
         this.mContext = mContext;
-        api = WXAPIFactory.createWXAPI(mContext, Constants.APP_ID);
-        api.registerApp(Constants.APP_ID);
+    }
+
+    public PayUtils() {
+    }
+
+    public String getAppid() {
+        return appid;
+    }
+
+    public void setAppid(String appid) {
+        this.appid = appid;
     }
 
     /**
      * 微信支付
      */
     public void payWeChat(WeixinEntity bean) {
+        appid = bean.getAppid();
+        api = WXAPIFactory.createWXAPI(mContext, appid);
+        api.registerApp(appid);
         if (api.isWXAppInstalled()) {
             if (bean == null) {
                 return;
@@ -96,28 +109,28 @@ public class PayUtils {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+                      /*  DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
                             @Override
-                            public void onConfirm() {
-                                if (mListener != null) {
-                                    mListener.aliPaySuccess();
-                                }
-                            }
-                        }, "支付成功", "确认", false);
+                            public void onConfirm() {*/
+                        if (mListener != null) {
+                            mListener.aliPaySuccess();
+                        }
+                       /*     }
+                        }, "支付成功", "确认", false);*/
                         //返回购物车
                         //   MobclickAgent.onEvent(mContext, Constant.ALIPAY_OK);    //购买
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+                    /*    DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
                             @Override
-                            public void onConfirm() {
-                                if (mListener != null) {
-                                    //      MobclickAgent.onEvent(mContext, Constant.ALIPAY_CANCLE);    //购买
-                                    ToastUtils.toastLong(message);
-                                    mListener.aliPayFail();
-                                }
-                            }
-                        }, "支付失败", "确认", false);
+                            public void onConfirm() {*/
+                        if (mListener != null) {
+                            //      MobclickAgent.onEvent(mContext, Constant.ALIPAY_CANCLE);    //购买
+                           // ToastUtils.toastLong(message);
+                            mListener.aliPayFail();
+                        }
+                      /*      }
+                        }, "支付失败", "确认", false);*/
                     }
                     break;
                 }

@@ -51,13 +51,19 @@ public class IntentUtils {
         context.startActivity(intent);
     }
 
-    public static void gotoActivity(Context context, Class<?> activity, Serializable param1) {
+    public static void gotoActivity(Context context, Class<?> activity, Serializable data) {
         Intent intent = new Intent(context, activity);
-        intent.putExtra(DATA, param1);
+        intent.putExtra(DATA, data);
         context.startActivity(intent);
     }
 
     public static void gotoActivity(Context context, Class<?> activity, int param1) {
+        Intent intent = new Intent(context, activity);
+        intent.putExtra(PARAM1, param1);
+        context.startActivity(intent);
+    }
+
+    public static void gotoActivity(Context context, Class<?> activity, double param1) {
         Intent intent = new Intent(context, activity);
         intent.putExtra(PARAM1, param1);
         context.startActivity(intent);
@@ -126,6 +132,29 @@ public class IntentUtils {
         intent.putExtra(MainActivity.FRAGMENT_INDEX, fragmentIndex);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 返回该Activity 指定Fragment视图
+     * 该Activity一般为SingleTask  模式
+     *
+     * @param context
+     * @param index
+     */
+    public static void gotoMainActivity(Context context, int index) {
+        context.startActivity((new Intent(context, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP).putExtra(TAB_INDEX, index)));
+    }
+
+    /**
+     * 跳转到我的订单，带启动模式
+     *
+     * @param context
+     * @param type
+     */
+    public static void gotoMeOrderActivityWithClearTop(Context context, int type) {
+        Intent intent = new Intent(context, OrderActivity.class).putExtra(ORDER_TYPE, type);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 }

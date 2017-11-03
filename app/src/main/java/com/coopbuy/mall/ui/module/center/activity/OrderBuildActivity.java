@@ -243,7 +243,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
         creatOrder();
         if (submitRequest != null) {
             Intent intent = new Intent(this, NewPayWindowActivity.class);
-            intent.putExtra("data", submitRequest);
+            intent.putExtra(IntentUtils.DATA, submitRequest);
             intent.putExtra("type", "order");
             startActivity(intent);
             overridePendingTransition(R.anim.push_bottom_in, R.anim.push_bottom_out);

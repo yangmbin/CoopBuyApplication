@@ -87,19 +87,13 @@
         <activity android:name=".ui.module.center.activity.SystemMsgActivity" />
         <activity android:name=".ui.module.center.activity.LogisticsActivity" />
         <activity android:name=".ui.module.center.activity.CreatQRActivity" />
-        <activity android:name=".ui.module.center.activity.ScanQRActivity"/>
+        <activity android:name=".ui.module.center.activity.ScanQRActivity" />
         <!-- 微信 -->
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <!-- 支付宝 -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -116,6 +110,8 @@
         <activity
             android:name=".ui.module.center.pay.NewPayWindowActivity"
             android:theme="@style/wind" />
+        <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
+        <activity android:name=".ui.module.center.pay.PayFailActivity"></activity>
     </application>
 
 </manifest>

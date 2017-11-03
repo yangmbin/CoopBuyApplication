@@ -6,6 +6,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseFragmentActivity;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.WeiXinEvent;
+import com.coopbuy.mall.mypay.PayUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
@@ -18,9 +19,6 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 
 public class WXPayEntryActivity extends BaseFragmentActivity implements IWXAPIEventHandler {
-
-    private static final String TAG = "MicroMsg.SDKSample.WXPayEntryActivity";
-
     private IWXAPI api;
 
     @Override
@@ -35,17 +33,16 @@ public class WXPayEntryActivity extends BaseFragmentActivity implements IWXAPIEv
 
     @Override
     public void initModel() {
-
     }
 
     @Override
     public void initPresenter() {
-        //mPresenter.sendWinxinMsg();
     }
 
     @Override
     public void initView() {
-        api = WXAPIFactory.createWXAPI(this, Constants.APP_ID, false);
+        PayUtils pay = new PayUtils();
+        api = WXAPIFactory.createWXAPI(this, pay.getAppid(), false);
         api.handleIntent(getIntent(), this);
     }
 
@@ -65,49 +62,31 @@ public class WXPayEntryActivity extends BaseFragmentActivity implements IWXAPIEv
     @Override
     public void onResp(BaseResp resp) {
         final int code = resp.errCode;
-
         if (code == 0) {
-            // Toast.makeText(this, "支付成功", Toast.LENGTH_SHORT).show();
             //显示充值成功的页面和需要的操作
             LogUtil.error("微信支付结果", "支付成功");
-            DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
-                @Override
-                public void onConfirm() {
-                    //进行跳转
-                    wex(code);
-                    finish();
-                }
-            }, "支付成功", "确认", false);
+            //进行跳转
+            wex(code);
+            finish();
         }
-
         if (code == -1) {
-            //错误
-            // Toast.makeText(this, "支付错误", Toast.LENGTH_SHORT).show();
             LogUtil.error("微信支付结果", "支付错误");
-            DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
-                @Override
-                public void onConfirm() {
-                    //进行跳转
-                    wex(code);
-                    finish();
-                }
-            }, "支付失败", "确认", false);
+            wex(code);
+            finish();
         }
 
         if (code == -2) {
-            //  Toast.makeText(this, "支付取消", Toast.LENGTH_SHORT).show();
             LogUtil.error("微信支付结果", "支付取消");
             //用户取消
-            DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
+            /*DialogUtils.showOneKeyDialog(mContext, new CommonDialog.ClickCallBack() {
                 @Override
-                public void onConfirm() {
-                    //进行跳转
-                    wex(code);
-                    finish();
-                }
-            }, "支付失败", "确认", false);
+                public void onConfirm() {*/
+            //进行跳转
+            wex(code);
+            finish();
+           /*     }
+            }, "支付失败", "确认", false);*/
         }
-
     }
 
     private void wex(int code) {
@@ -118,6 +97,5 @@ public class WXPayEntryActivity extends BaseFragmentActivity implements IWXAPIEv
 
     @Override
     public void onBackPressed() {
-
     }
 }
