@@ -15,7 +15,7 @@ import com.coopbuy.mall.api.reponse.WeixinEntity;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BaseFragmentActivity;
-import com.coopbuy.mall.bean.PayAgainParms;
+import com.coopbuy.mall.bean.PayAgainParams;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.WeiXinEvent;
 import com.coopbuy.mall.mypay.PayListener;
@@ -57,7 +57,7 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     private String enterType;
     private String mWaitOrderId = "";
     private String mChannelId;
-    private PayAgainParms mPayAgainParms;
+    private PayAgainParams mPayAgainParms;
     private String mTotal = "";
     private String mAllPrice = "";
 
@@ -86,11 +86,11 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     public void initView() {
         getWindow().setLayout(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.FILL_PARENT);
         EventBusInstance.getInstance().registerEvent(this);
-        mPayAgainParms = new PayAgainParms();
+        mPayAgainParms = new PayAgainParams();
         if (null != getIntent()) {
             enterType = getIntent().getStringExtra("type");
             if (enterType.equals("wait")) {
-                mPayAgainParms = (PayAgainParms) getIntent().getSerializableExtra(IntentUtils.DATA);
+                mPayAgainParms = (PayAgainParams) getIntent().getSerializableExtra(IntentUtils.DATA);
                 mWaitOrderId = mPayAgainParms.getmWaitOrderId();
                 mTotal = mPayAgainParms.getmCountsTotal();
                 mAllPrice = mPayAgainParms.getmCountsTotalPrice();

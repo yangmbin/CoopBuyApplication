@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
@@ -9,7 +10,9 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.bean.PayAgainParams;
 import com.coopbuy.mall.ui.module.center.activity.ExpressInfoActivity;
+import com.coopbuy.mall.ui.module.center.pay.PayFailActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
 import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
@@ -179,7 +182,14 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
      * 付款
      */
     private void payBtn() {
-
+        PayAgainParams params = new PayAgainParams();
+        int count = 0;
+        for (int i = 0; i < mItemOrder.getItems().size(); i++)
+            count += mItemOrder.getItems().get(i).getQuantity();
+        params.setmCountsTotal(count + "");
+        params.setmCountsTotalPrice((mItemOrder.getTotalAmount() + mItemOrder.getFreightAmount()) + "");
+        params.setmWaitOrderId(mItemOrder.getOrderId());
+        PayFailActivity.gotoActivity((Activity) mContext, params);
     }
 
     /**
