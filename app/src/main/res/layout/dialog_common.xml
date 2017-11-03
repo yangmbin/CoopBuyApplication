@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/common_dialog_bg">
+    android:background="@drawable/common_dialog_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/dialog_common_title"
@@ -14,35 +14,39 @@
         android:layout_marginTop="1dp"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/textColor_alert_title"
-        android:textStyle="bold"
-        android:visibility="gone"/>
+        android:text=""
+        android:textColor="@color/theme_text_lab_black"
+        android:textSize="@dimen/dimen_px36"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/dialog_common_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:textColor="@color/textColor_alert_title"
-        android:layout_marginTop="24dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="@color/theme_text_lab_black"
+        android:textSize="@dimen/dimen_px36" />
+
     <TextView
         android:id="@+id/dialog_common_msg_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/text_gray_3"
-        android:textSize="14sp"
-        android:layout_marginTop="15dp"
         android:paddingLeft="35dp"
         android:paddingRight="35dp"
-        android:visibility="gone"/>
+        android:text=""
+        android:textColor="@color/text_gray_3"
+        android:textSize="@dimen/dimen_px30"
+        android:visibility="gone" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/tb_munion_item_force"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:background="@color/tb_munion_item_force" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,14 +57,15 @@
             android:id="@+id/tv_cancel"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:textColor="@color/shopcart_goods_price" />
+            android:text=""
+            android:textColor="@color/theme_text_title_orange"
+            android:textSize="@dimen/dimen_px30" />
 
         <View
             android:id="@+id/dialog_common_btn_divider"
@@ -72,13 +77,14 @@
             android:id="@+id/tv_ok"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:textColor="@color/shopcart_goods_price" />
+            android:text=""
+            android:textColor="@color/auxiliary_text_blue_gray"
+            android:textSize="@dimen/dimen_px30" />
     </LinearLayout>
 </LinearLayout>

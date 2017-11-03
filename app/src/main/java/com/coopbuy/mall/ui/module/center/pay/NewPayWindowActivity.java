@@ -5,8 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -17,17 +15,18 @@ import com.coopbuy.mall.api.reponse.WeixinEntity;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BaseFragmentActivity;
+import com.coopbuy.mall.bean.PayAgainParms;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.WeiXinEvent;
 import com.coopbuy.mall.mypay.PayListener;
 import com.coopbuy.mall.mypay.PayUtils;
-import com.coopbuy.mall.ui.module.center.adapter.LogisticsAdapter;
 import com.coopbuy.mall.ui.module.center.adapter.PayListAdapter;
 import com.coopbuy.mall.ui.module.center.model.NewPayWindow_Model;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.coopbuy.mall.ui.module.center.presenter.NewPayWindow_Presenter;
 import com.coopbuy.mall.ui.module.center.view.NewPayWindow_View;
 import com.coopbuy.mall.utils.DialogUtils;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.google.gson.Gson;
@@ -56,8 +55,11 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
      */
     private OrderSubmitRequest request;
     private String enterType;
-    private long mWaitOrderId;
+    private String mWaitOrderId = "";
     private String mChannelId;
+    private PayAgainParms mPayAgainParms;
+    private String mTotal = "";
+    private String mAllPrice = "";
 
     @Override
     public int getLayoutId() {
@@ -84,18 +86,26 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     public void initView() {
         getWindow().setLayout(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.FILL_PARENT);
         EventBusInstance.getInstance().registerEvent(this);
+        mPayAgainParms = new PayAgainParms();
         if (null != getIntent()) {
             enterType = getIntent().getStringExtra("type");
             if (enterType.equals("wait")) {
-                mWaitOrderId = getIntent().getLongExtra("data", 0);
-                mCountsTotal.setText("共:" + getIntent().getIntExtra("count", 0) + "件商品");
-                mCountsTotalPrice.setText("¥" + getIntent().getDoubleExtra("price", 0));
+                mPayAgainParms = (PayAgainParms) getIntent().getSerializableExtra(IntentUtils.DATA);
+                mWaitOrderId = mPayAgainParms.getmWaitOrderId();
+                mTotal = mPayAgainParms.getmCountsTotal();
+                mAllPrice = mPayAgainParms.getmCountsTotalPrice();
             } else {
-                request = (OrderSubmitRequest) getIntent().getSerializableExtra("data");
-                mCountsTotal.setText("共:" + request.getGoodsCounts() + "件商品");
-                mCountsTotalPrice.setText("¥" + request.getTotalPrice());
+                request = (OrderSubmitRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
+                mTotal = "" + request.getGoodsCounts();
+                mAllPrice = "" + request.getTotalPrice();
             }
         }
+        mCountsTotal.setText(mTotal);
+        mCountsTotalPrice.setText("¥" + mAllPrice);
+        mPayAgainParms.setmCountsTotalPrice(mAllPrice);
+        mPayAgainParms.setmCountsTotal(mTotal);
+        mPayAgainParms.setmWaitOrderId(mWaitOrderId);
+        mPayAgainParms.setmChannelId(mChannelId);
         initRec();
     }
 
@@ -109,15 +119,14 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     @Override
     public void onBackPressed() {
 
-        DialogUtils.showTwoKeyDialog(this, new CommonDialog.ClickCallBack() {
+        DialogUtils.showTwoKeyDialogMoreMeg(this, new CommonDialog.ClickCallBack() {
             @Override
             public void onConfirm() {
                 windFinish();
             }
-        }, "放弃支付吗?", "继续付款", "确认放弃");
+        }, "放弃支付吗?", "订单需要在xx内完成支付", "超时将自动取消", "继续付款", "确认放弃");
         //  MobclickAgent.onEvent(mContext, Constant.PAY_CLOSE);    //购买
     }
-
 
     @OnClick({R.id.back, R.id.tv_shopcart_submit})
     public void onViewClicked(View view) {
@@ -126,12 +135,16 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
                 onBackPressed();
                 break;
             case R.id.tv_shopcart_submit:
+                if (mChannelId.equals("Master")) {
+                    ToastUtils.toastLong("是不是很想支付呀，那找华仔去吧");
+                    return;
+                }
                 if (!TextUtils.isEmpty(mChannelId)) {
-                    if (enterType.equals("wait")) {//代付款的
-                 /*       OrderPayApplyRequest request = new OrderPayApplyRequest();
-                        request.setOrderIds(mWaitOrderId + "");
-                        request.setChannelId(mPalyType);
-                        mPresenter.orderPayApply(request, mChannelId);*/
+                    if (enterType.equals("wait")) {//待付款的
+                        OrderPayApplyRequest request = new OrderPayApplyRequest();
+                        request.setOrderId(mWaitOrderId + "");
+                        request.setChannelId(mChannelId);
+                        mPresenter.orderPayApply(request, mChannelId);
                     } else {
                         mPresenter.orderSubmit(request, mChannelId);
                     }
@@ -157,21 +170,23 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     }
 
     private void thisFinish(String type) {
-       /* if (type.equals("1")) {
-            IntentUtils.gotoMainActivity(mContext, 4);
-            IntentUtils.gotoMeOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_WAITSEND);
+        if (type.equals("1")) {
+            IntentUtils.gotoActivity(mContext, PaySuccessActivity.class, request.getTotalPrice());
+            /*IntentUtils.gotoMainActivity(mContext, 2);
+            IntentUtils.gotoMeOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_WAITSEND);*/
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
             finish();
         } else {
             if (enterType.equals("wait")) {
                 windFinish();
             } else {
-                IntentUtils.gotoMainActivity(mContext, 4);
-                IntentUtils.gotoMeOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_WAITPAY);
+                IntentUtils.gotoActivity(mContext, PayFailActivity.class, mPayAgainParms);
+             /*   IntentUtils.gotoMainActivity(mContext, 2);
+                IntentUtils.gotoMeOrderActivityWithClearTop(mContext, Constants.ORDER_TYPE_WAITPAY);*/
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 finish();
             }
-        }*/
+        }
     }
 
     private void windFinish() {
@@ -243,7 +258,9 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     @Override
     public void submitOrder(OrderSubmitResponse orderSubmit, String payType) {
         OrderPayApplyRequest request = new OrderPayApplyRequest();
-        request.setOrderId(orderSubmit.getOrderId());
+        mWaitOrderId = orderSubmit.getOrderId();
+        mPayAgainParms.setmWaitOrderId(mWaitOrderId);
+        request.setOrderId(mWaitOrderId);
         request.setChannelId(payType);
         mPresenter.orderPayApply(request, payType);
     }
@@ -276,6 +293,7 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
         if (!payList.isEmpty()) {
             payList.get(0).setSelect(true);
             mChannelId = payList.get(0).getChannelId();
+            mPayAgainParms.setmChannelId(mChannelId);
         }
         adapter.addData(payList);
     }
@@ -289,5 +307,6 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     @Override
     public void openDetial(int postion) {
         mChannelId = data.get(postion).getChannelId();
+        mPayAgainParms.setmChannelId(mChannelId);
     }
 }

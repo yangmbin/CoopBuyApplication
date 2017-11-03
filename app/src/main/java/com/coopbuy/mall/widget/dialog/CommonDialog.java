@@ -26,12 +26,14 @@ public class CommonDialog extends Dialog {
     private ClickCallBack mCallBack;
     private ClickCallBackTow mClickCallBackTow;
     private int mType = 2;
-    private String mMsg, mMsgSub, mLeftText, mRightText;
+    private String mMsg, mMsgSub, mLeftText, mRightText, mTitle;
     public static final int TYPE_ONE_KEY = 1;
     public static final int TYPE_TWO_KEY = 2;
     private TextView tv_ok;
     private TextView tv_cancel;
     private TextView tv_content;
+    private TextView tv_title;
+    private TextView tv_hint;
 
     public CommonDialog(Context context, ClickCallBack callBack, int type, String msg, String leftText, String rightText) {
         super(context, R.style.CommonDialogStyle);
@@ -41,6 +43,18 @@ public class CommonDialog extends Dialog {
         mMsg = msg;
         mLeftText = leftText;
         mRightText = rightText;
+    }
+
+    public CommonDialog(Context context, ClickCallBack callBack, int type, String title, String msg, String hint, String leftText, String rightText) {
+        super(context, R.style.CommonDialogStyle);
+        mContext = context;
+        mCallBack = callBack;
+        mType = type;
+        mMsg = msg;
+        mLeftText = leftText;
+        mRightText = rightText;
+        mTitle = title;
+        mMsgSub = hint;
     }
 
     public CommonDialog(Context context, ClickCallBackTow callBack, int type, String msg, String leftText, String rightText) {
@@ -89,14 +103,18 @@ public class CommonDialog extends Dialog {
         // 设置子内容是否隐藏
         if (!TextUtils.isEmpty(mMsgSub))
             view.findViewById(R.id.dialog_common_msg_sub).setVisibility(View.VISIBLE);
-
+        if (!TextUtils.isEmpty(mTitle)) {
+            view.findViewById(R.id.dialog_common_title).setVisibility(View.VISIBLE);
+        }
         //设置显示内容
         ((TextView) view.findViewById(R.id.dialog_common_msg)).setText(mMsg);
         ((TextView) view.findViewById(R.id.dialog_common_msg_sub)).setText(mMsgSub);
+        ((TextView) view.findViewById(R.id.dialog_common_title)).setText(mTitle);
         ((TextView) view.findViewById(R.id.tv_ok)).setText(mRightText);
         ((TextView) view.findViewById(R.id.tv_cancel)).setText(mLeftText);
         //设置显示内容
         tv_content = (TextView) view.findViewById(R.id.dialog_common_msg);
+
 
         // 设置按钮监听
         tv_ok = (TextView) view.findViewById(R.id.tv_ok);

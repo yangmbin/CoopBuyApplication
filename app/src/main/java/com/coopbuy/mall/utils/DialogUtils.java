@@ -47,7 +47,18 @@ public class DialogUtils {
     }
 
     /**
+     * 两个按钮  多个信息
+     *
+     * @param callBack
+     */
+    public static void showTwoKeyDialogMoreMeg(Context context, CommonDialog.ClickCallBack callBack, String title, String msg, String hint, String leftText, String rightText) {
+        CommonDialog dialog = new CommonDialog(context, callBack, CommonDialog.TYPE_TWO_KEY, title, msg, hint, leftText, rightText);
+        dialog.show();
+    }
+
+    /**
      * 取消按钮可以点击处理
+     *
      * @param context
      * @param callBack
      * @param msg
@@ -100,8 +111,10 @@ public class DialogUtils {
         ChooseSexDialog dialog = new ChooseSexDialog(context, callBack);
         dialog.show();
     }
+
     /**
      * 完整对话框
+     *
      * @param context
      * @param callBack
      * @param msg
