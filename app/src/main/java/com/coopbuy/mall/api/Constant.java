@@ -147,6 +147,14 @@ public class Constant {
      * 建议
      */
     public static final String NEWSUGGEST = "api/services/app/suggest/NewSuggest";
+    /**
+     * 电话充值列表
+     */
+    public static final String MOBILECARDLIST = "api/services/app/prepaid/MobileCardList";
+    /**
+     * 电话归属地查询
+     */
+    public static final String CHECKPHONE = "api/services/app/prepaid/CheckPhone";
 
 
     /**

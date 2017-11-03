@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -22,7 +21,7 @@ import com.coopbuy.mall.ui.module.center.activity.HeplCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.MessageCenterActivity;
 import com.coopbuy.mall.ui.module.center.activity.PersonalActivity;
-import com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity;
+import com.coopbuy.mall.ui.module.center.activity.PhoneRechargeActivity;
 import com.coopbuy.mall.ui.module.center.activity.ScanQRActivity;
 import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
@@ -32,9 +31,7 @@ import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Center_IView;
-import com.coopbuy.mall.ui.module.home.activity.ScanQrCodeActivity;
 import com.coopbuy.mall.utils.IntentUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -183,7 +180,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(FootMarkActivity.class, null);
                 break;
             case R.id.ll_phone_fare:
-                enter(PhoneChargeActivity.class, null);
+                enter(PhoneRechargeActivity.class, null);
                 break;
             case R.id.ll_broadband:
 

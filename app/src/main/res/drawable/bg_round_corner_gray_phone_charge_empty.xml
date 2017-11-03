@@ -4,6 +4,6 @@
     <corners android:radius="@dimen/dimen_px4" />
     <stroke
         android:width="@dimen/dimen_px1"
-        android:color="@color/auxiliary_text_blue_gray" />
+        android:color="@color/phone_charge_grey" />
     <solid android:color="@color/edit_text_back_white" />
 </shape>

@@ -7,6 +7,7 @@ import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
+import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
@@ -21,6 +22,7 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
+import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
@@ -34,6 +36,7 @@ import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
+import com.coopbuy.mall.api.request.CheckPhoneRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -553,6 +556,31 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.NEWSUGGEST, request, callback, userState);
     }
 
+    /**
+     * 电话充值列表
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMobileCardList(IAsyncResultCallback<List<PhoneRechargeListReponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<PhoneRechargeListReponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.MOBILECARDLIST, callback, userState);
+    }
+
+    /**
+     * 电话充值归属地查询
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState checkPhone(CheckPhoneRequest request, IAsyncResultCallback<CheckPhoneReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CheckPhoneReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CHECKPHONE, request, callback, userState);
+    }
+
 
     /**
      * 订单列表
@@ -667,6 +695,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取售后列表
+     *
      * @param request
      * @param callback
      * @param userState

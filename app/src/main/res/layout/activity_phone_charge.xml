@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
     android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.module.center.activity.PhoneChargeActivity">
+    tools:context="com.coopbuy.mall.ui.module.center.activity.PhoneRechargeActivity">
 
     <include layout="@layout/title_bar_layout" />
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/dimen_px1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px200"
+        android:layout_marginTop="@dimen/dimen_px1"
         android:background="@color/edit_text_back_white"
         android:paddingLeft="@dimen/dimen_px30">
 
@@ -30,10 +31,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:hint="@string/lab_login_enter_phone"
+                android:maxLength="11"
                 android:textSize="@dimen/dimen_px48" />
 
             <LinearLayout
-                android:id="@+id/ll_charge_"
+                android:id="@+id/ll_charge_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -58,15 +60,16 @@
 
 
         <TextView
+            android:id="@+id/tv_area"
             style="@style/text_black_size_28_878f94"
             android:layout_below="@+id/ll_phone_number"
-            android:text="贵州移动" />
+            android:text="" />
     </RelativeLayout>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px478"
+        android:layout_height="@dimen/dimen_px550"
         android:layout_marginTop="@dimen/dimen_px16"
         android:background="@color/edit_text_back_white"
         android:orientation="vertical"

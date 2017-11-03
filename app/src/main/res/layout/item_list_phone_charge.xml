@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_phone_charge"
-    android:layout_width="210px"
-    android:layout_height="120px"
-    android:background="@drawable/bg_round_corner_gray_phone_charge"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/tv_mark_price"
-        style="@style/text_black_size_30_878f94"
-        android:text="10元" />
+    <LinearLayout
+        android:id="@+id/ll_phone_charge"
+        android:layout_width="@dimen/dimen_px210"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_px28"
+        android:background="@drawable/bg_round_corner_gray_phone_charge"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_px25">
 
-    <TextView
-        android:id="@+id/tv_sale_price"
-        style="@style/text_black_size_24_878f94"
-        android:text="售价：9.9" />
+        <TextView
+            android:id="@+id/tv_mark_price"
+            style="@style/text_theme_black_size_28_41"
+            android:text="10元"
+            android:textSize="@dimen/dimen_px30"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_sale_price"
+            style="@style/text_theme_black_size_28_41"
+            android:layout_marginTop="@dimen/dimen_px13"
+            android:text="售价：9.90元"
+            android:textSize="@dimen/dimen_px24" />
+    </LinearLayout>
+
 </LinearLayout>
