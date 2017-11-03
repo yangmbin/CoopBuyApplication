@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
-import com.coopbuy.mall.bean.PayAgainParms;
+import com.coopbuy.mall.bean.PayAgainParams;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * @content 支付失败
  */
 public class PayFailActivity extends BaseActivity {
-    private PayAgainParms payAgainParms;
+    private PayAgainParams payAgainParms;
 
     @Override
     public int getLayoutId() {
@@ -39,7 +39,7 @@ public class PayFailActivity extends BaseActivity {
     public void initView() {
         setTitle("订单支付失败");
         if (null != getIntent()) {
-            payAgainParms = (PayAgainParms) getIntent().getSerializableExtra(IntentUtils.DATA);
+            payAgainParms = (PayAgainParams) getIntent().getSerializableExtra(IntentUtils.DATA);
         }
     }
 
@@ -62,11 +62,11 @@ public class PayFailActivity extends BaseActivity {
     /**
      * 跳转支付页面
      * @param activity
-     * @param payAgainParms
+     * @param payAgainParams
      */
-    public static void gotoActivity(Activity activity, PayAgainParms payAgainParms) {
+    public static void gotoActivity(Activity activity, PayAgainParams payAgainParams) {
         Intent intent = new Intent(activity, NewPayWindowActivity.class);
-        intent.putExtra("data", payAgainParms);
+        intent.putExtra("data", payAgainParams);
         intent.putExtra("type", "wait");
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.push_bottom_in, R.anim.push_bottom_out);

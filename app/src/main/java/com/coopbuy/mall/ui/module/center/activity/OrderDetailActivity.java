@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
+import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -10,8 +11,10 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.bean.PayAgainParams;
 import com.coopbuy.mall.ui.module.center.adapter.OrderDetailAdapter;
 import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;
+import com.coopbuy.mall.ui.module.center.pay.PayFailActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderDetailPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderDetail_IView;
 import com.coopbuy.mall.utils.CommonUtils;
@@ -300,7 +303,14 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      * 付款
      */
     private void payBtn() {
-
+        PayAgainParams params = new PayAgainParams();
+        int count = 0;
+        for (int i = 0; i < mOrderDetailResponse.getOrderItems().size(); i++)
+            count += mOrderDetailResponse.getOrderItems().get(i).getQuantity();
+        params.setmCountsTotal(count + "");
+        params.setmCountsTotalPrice(mOrderDetailResponse.getOrderAmount() + "");
+        params.setmWaitOrderId(mOrderDetailResponse.getOrderId());
+        PayFailActivity.gotoActivity((Activity) mContext, params);
     }
 
     /**

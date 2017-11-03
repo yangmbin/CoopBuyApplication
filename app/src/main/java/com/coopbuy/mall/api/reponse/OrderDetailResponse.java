@@ -11,31 +11,31 @@ import java.util.List;
 public class OrderDetailResponse implements Serializable {
 
     /**
-     * orderId : 1710169717892215
-     * shopId : 54
-     * shopName : 奈儿斯服饰专营店
+     * orderId : 1711021054839611
+     * shopId : 90
+     * shopName : 供销严选
      * shopTel :
      * orderStatus : 1
-     * orderType : 1
+     * orderType : 2
      * statusName : 待支付
-     * totalAmount : 79
-     * freightAmount : 0
-     * orderAmount : 79
-     * remark : 测试第一单啊
-     * createTime : 2017-10-16 13:01:20
+     * totalAmount : 10.0
+     * freightAmount : 0.0
+     * orderAmount : 10.0
+     * remark :
+     * createTime : 2017-11-02 16:14:00
      * finishTime :
      * paymentTime :
-     * consignerName : 王晶
-     * consignerTel : 18302626270
-     * consignerAddress : 测试的下单
-     * regionId : 520425102201
-     * regionName : 贵州省,安顺市,紫云苗族布依族自治县,猴场镇,猴场村民委员会
-     * orderItems : [{"canApplyRefund":false,"applyRefundButtonText":"","itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}]
+     * consignerName : 18786712371
+     * consignerTel : 18786712371
+     * consignerAddress : 18786712371
+     * regionId : 520000000000
+     * regionName : 贵州省
+     * orderItems : [{"canApplyRefund":false,"applyRefundButtonText":"","itemId":19630,"skuId":-100,"productName":"贵州移动话费10元","productImageUrl":"","quantity":1,"unitPrice":10,"commissionRate":0,"specifications":"贵州贵阳移动","properties":"","refundStatus":""}]
      * cargoInfo : {"text":"","time":""}
-     * canCancel : false
+     * canCancel : true
      * canDelete : false
-     * canPayment : false
-     * canApplyLieuPay : false
+     * canPayment : true
+     * canApplyLieuPay : true
      * canDelayedReceipt : false
      * canFindExpressInfo : false
      * canReceipt : false
@@ -52,9 +52,9 @@ public class OrderDetailResponse implements Serializable {
     private int orderStatus;
     private int orderType;
     private String statusName;
-    private int totalAmount;
-    private int freightAmount;
-    private int orderAmount;
+    private double totalAmount;
+    private double freightAmount;
+    private double orderAmount;
     private String remark;
     private String createTime;
     private String finishTime;
@@ -134,27 +134,27 @@ public class OrderDetailResponse implements Serializable {
         this.statusName = statusName;
     }
 
-    public int getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(int totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public int getFreightAmount() {
+    public double getFreightAmount() {
         return freightAmount;
     }
 
-    public void setFreightAmount(int freightAmount) {
+    public void setFreightAmount(double freightAmount) {
         this.freightAmount = freightAmount;
     }
 
-    public int getOrderAmount() {
+    public double getOrderAmount() {
         return orderAmount;
     }
 
-    public void setOrderAmount(int orderAmount) {
+    public void setOrderAmount(double orderAmount) {
         this.orderAmount = orderAmount;
     }
 
@@ -364,15 +364,15 @@ public class OrderDetailResponse implements Serializable {
         /**
          * canApplyRefund : false
          * applyRefundButtonText :
-         * itemId : 1
-         * skuId : 6305
-         * productName : 维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL
-         * productImageUrl : https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg
+         * itemId : 19630
+         * skuId : -100
+         * productName : 贵州移动话费10元
+         * productImageUrl :
          * quantity : 1
-         * unitPrice : 79
-         * commissionRate : 6
-         * specifications : 规格:XXL
-         * properties : 属性:蓝色
+         * unitPrice : 10.0
+         * commissionRate : 0.0
+         * specifications : 贵州贵阳移动
+         * properties :
          * refundStatus :
          */
 
@@ -383,8 +383,8 @@ public class OrderDetailResponse implements Serializable {
         private String productName;
         private String productImageUrl;
         private int quantity;
-        private int unitPrice;
-        private int commissionRate;
+        private double unitPrice;
+        private double commissionRate;
         private String specifications;
         private String properties;
         private String refundStatus;
@@ -445,19 +445,19 @@ public class OrderDetailResponse implements Serializable {
             this.quantity = quantity;
         }
 
-        public int getUnitPrice() {
+        public double getUnitPrice() {
             return unitPrice;
         }
 
-        public void setUnitPrice(int unitPrice) {
+        public void setUnitPrice(double unitPrice) {
             this.unitPrice = unitPrice;
         }
 
-        public int getCommissionRate() {
+        public double getCommissionRate() {
             return commissionRate;
         }
 
-        public void setCommissionRate(int commissionRate) {
+        public void setCommissionRate(double commissionRate) {
             this.commissionRate = commissionRate;
         }
 

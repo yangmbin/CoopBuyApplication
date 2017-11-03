@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @time 2017/11/3 11:34
  * @content 重新支付参数
  */
-public class PayAgainParms implements Serializable {
+public class PayAgainParams implements Serializable {
     private String mWaitOrderId;
     private String mChannelId;
     private String mCountsTotal;
