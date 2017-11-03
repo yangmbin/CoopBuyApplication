@@ -11,7 +11,7 @@ public class AfterSalesResponse implements Serializable {
 
     /**
      * totalCount : 3
-     * items : [{"shopId":46,"shopName":"运营部测试号","statusName":"仅退款 待商家审核","status":1,"totalRefundAmount":0.1,"totalProductCount":1,"products":[{"skuId":16,"productName":"测试商品1","productImageUrl":"https://oss.coopbuy.com/Content/images/photo_icon.png","quantity":1,"unitPrice":0.1,"specifications":"","properties":""}]},{"shopId":46,"shopName":"运营部测试号","statusName":"仅退款 待商家审核","status":1,"totalRefundAmount":0.1,"totalProductCount":1,"products":[{"skuId":16,"productName":"测试商品1","productImageUrl":"https://oss.coopbuy.com/Content/images/photo_icon.png","quantity":1,"unitPrice":0.1,"specifications":"","properties":""}]},{"shopId":90,"shopName":"贵农严选","statusName":"仅退款 待商家审核","status":1,"totalRefundAmount":7.8,"totalProductCount":1,"products":[{"skuId":32600,"productName":"（爆品池）正宗宇仔大刀肉辣条8090后儿时怀旧麻辣味零食品重庆风味休闲小吃","productImageUrl":"https://oss.coopbuy.com/shop/images/3ad62055-57f1-4ef0-b6db-48d323b2b239.jpg","quantity":1,"unitPrice":7.8,"specifications":"","properties":""}]}]
+     * items : [{"applyNo":"201709148209206","shopId":90,"shopName":"贵农严选","statusName":"仅退款 待商家审核","status":1,"totalRefundAmount":7.8,"totalProductCount":1,"isNeedReturnGoods":false,"products":[{"skuId":32600,"productName":"（爆品池）正宗宇仔大刀肉辣条8090后儿时怀旧麻辣味零食品重庆风味休闲小吃","productImageUrl":"https://oss.coopbuy.com/shop/images/3ad62055-57f1-4ef0-b6db-48d323b2b239.jpg","quantity":1,"unitPrice":7.8,"specifications":"","properties":""}]}]
      */
 
     private int totalCount;
@@ -35,15 +35,18 @@ public class AfterSalesResponse implements Serializable {
 
     public static class ItemsBean {
         /**
-         * shopId : 46
-         * shopName : 运营部测试号
+         * applyNo : 201709148209206
+         * shopId : 90
+         * shopName : 贵农严选
          * statusName : 仅退款 待商家审核
          * status : 1
-         * totalRefundAmount : 0.1
+         * totalRefundAmount : 7.8
          * totalProductCount : 1
-         * products : [{"skuId":16,"productName":"测试商品1","productImageUrl":"https://oss.coopbuy.com/Content/images/photo_icon.png","quantity":1,"unitPrice":0.1,"specifications":"","properties":""}]
+         * isNeedReturnGoods : false
+         * products : [{"skuId":32600,"productName":"（爆品池）正宗宇仔大刀肉辣条8090后儿时怀旧麻辣味零食品重庆风味休闲小吃","productImageUrl":"https://oss.coopbuy.com/shop/images/3ad62055-57f1-4ef0-b6db-48d323b2b239.jpg","quantity":1,"unitPrice":7.8,"specifications":"","properties":""}]
          */
 
+        private String applyNo;
         private int shopId;
         private String shopName;
         private String statusName;
@@ -52,6 +55,14 @@ public class AfterSalesResponse implements Serializable {
         private int totalProductCount;
         private boolean isNeedReturnGoods;
         private List<ProductsBean> products;
+
+        public String getApplyNo() {
+            return applyNo;
+        }
+
+        public void setApplyNo(String applyNo) {
+            this.applyNo = applyNo;
+        }
 
         public int getShopId() {
             return shopId;
@@ -101,12 +112,12 @@ public class AfterSalesResponse implements Serializable {
             this.totalProductCount = totalProductCount;
         }
 
-        public boolean isNeedReturnGoods() {
+        public boolean isIsNeedReturnGoods() {
             return isNeedReturnGoods;
         }
 
-        public void setNeedReturnGoods(boolean needReturnGoods) {
-            isNeedReturnGoods = needReturnGoods;
+        public void setIsNeedReturnGoods(boolean isNeedReturnGoods) {
+            this.isNeedReturnGoods = isNeedReturnGoods;
         }
 
         public List<ProductsBean> getProducts() {
@@ -119,11 +130,11 @@ public class AfterSalesResponse implements Serializable {
 
         public static class ProductsBean {
             /**
-             * skuId : 16
-             * productName : 测试商品1
-             * productImageUrl : https://oss.coopbuy.com/Content/images/photo_icon.png
+             * skuId : 32600
+             * productName : （爆品池）正宗宇仔大刀肉辣条8090后儿时怀旧麻辣味零食品重庆风味休闲小吃
+             * productImageUrl : https://oss.coopbuy.com/shop/images/3ad62055-57f1-4ef0-b6db-48d323b2b239.jpg
              * quantity : 1
-             * unitPrice : 0.1
+             * unitPrice : 7.8
              * specifications :
              * properties :
              */

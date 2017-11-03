@@ -2,6 +2,7 @@ package com.coopbuy.mall.api;
 
 import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.api.reponse.AddressTownResponse;
+import com.coopbuy.mall.api.reponse.AfterSalesDetailResponse;
 import com.coopbuy.mall.api.reponse.AfterSalesResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
@@ -32,6 +33,7 @@ import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.AddToCartRequest;
+import com.coopbuy.mall.api.request.AfterSalesDetailRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
@@ -675,5 +677,17 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getAfterSalesList(PageRequest request, IAsyncResultCallback<AfterSalesResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<AfterSalesResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_AFTER_SALES_LIST, request, callback, userState);
+    }
+
+    /**
+     * 获取售后详情
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getAfterSalesDetail(AfterSalesDetailRequest request, IAsyncResultCallback<AfterSalesDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<AfterSalesDetailResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_AFTER_SALES_DETAIL, request, callback, userState);
     }
 }

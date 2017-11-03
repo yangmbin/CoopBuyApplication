@@ -11,8 +11,8 @@ import java.util.List;
 public class OrderListResponse implements Serializable {
 
     /**
-     * totalCount : 1
-     * items : [{"orderId":"1710169717892215","shopId":54,"shopName":"奈儿斯服饰专营店","orderStatus":1,"orderType":1,"statusName":"待支付","totalAmount":79,"freightAmount":0,"items":[{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}],"canCancel":true,"canDelete":false,"canPayment":true,"canApplyLieuPay":true,"canDelayedReceipt":false,"canFindExpressInfo":false,"canReceipt":false,"canApplyRefund":false,"applyRefundButtonText":"","canRemindShipment":false,"canRepeatSubmitOrder":false}]
+     * totalCount : 2
+     * items : [{"orderId":"1711021054839611","shopId":90,"shopName":"供销严选","orderStatus":1,"orderType":2,"statusName":"待支付","totalAmount":10,"freightAmount":0,"items":[{"itemId":19630,"skuId":-100,"productName":"贵州移动话费10元","productImageUrl":"","quantity":1,"unitPrice":10,"commissionRate":0,"specifications":"贵州贵阳移动","properties":"","refundStatus":""}],"canCancel":true,"canDelete":false,"canPayment":true,"canApplyLieuPay":true,"canDelayedReceipt":false,"canFindExpressInfo":false,"canReceipt":false,"canApplyRefund":false,"applyRefundButtonText":"","canRemindShipment":false,"canRepeatSubmitOrder":false}]
      */
 
     private int totalCount;
@@ -36,15 +36,15 @@ public class OrderListResponse implements Serializable {
 
     public static class ItemsBeanX {
         /**
-         * orderId : 1710169717892215
-         * shopId : 54
-         * shopName : 奈儿斯服饰专营店
+         * orderId : 1711021054839611
+         * shopId : 90
+         * shopName : 供销严选
          * orderStatus : 1
-         * orderType : 1
+         * orderType : 2
          * statusName : 待支付
-         * totalAmount : 79
-         * freightAmount : 0
-         * items : [{"itemId":1,"skuId":6305,"productName":"维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL","productImageUrl":"https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg","quantity":1,"unitPrice":79,"commissionRate":6,"specifications":"规格:XXL","properties":"属性:蓝色","refundStatus":""}]
+         * totalAmount : 10.0
+         * freightAmount : 0.0
+         * items : [{"itemId":19630,"skuId":-100,"productName":"贵州移动话费10元","productImageUrl":"","quantity":1,"unitPrice":10,"commissionRate":0,"specifications":"贵州贵阳移动","properties":"","refundStatus":""}]
          * canCancel : true
          * canDelete : false
          * canPayment : true
@@ -64,8 +64,8 @@ public class OrderListResponse implements Serializable {
         private int orderStatus;
         private int orderType;
         private String statusName;
-        private int totalAmount;
-        private int freightAmount;
+        private double totalAmount;
+        private double freightAmount;
         private boolean canCancel;
         private boolean canDelete;
         private boolean canPayment;
@@ -127,19 +127,19 @@ public class OrderListResponse implements Serializable {
             this.statusName = statusName;
         }
 
-        public int getTotalAmount() {
+        public double getTotalAmount() {
             return totalAmount;
         }
 
-        public void setTotalAmount(int totalAmount) {
+        public void setTotalAmount(double totalAmount) {
             this.totalAmount = totalAmount;
         }
 
-        public int getFreightAmount() {
+        public double getFreightAmount() {
             return freightAmount;
         }
 
-        public void setFreightAmount(int freightAmount) {
+        public void setFreightAmount(double freightAmount) {
             this.freightAmount = freightAmount;
         }
 
@@ -241,15 +241,15 @@ public class OrderListResponse implements Serializable {
 
         public static class ItemsBean {
             /**
-             * itemId : 1
-             * skuId : 6305
-             * productName : 维可蔓2017春季新品长袖T恤女韩版V领蕾丝衫修身打底衫 酒红色 XXXL
-             * productImageUrl : https://oss.coopbuy.com/shop/images/7e5a9d1c-bfd3-4662-998f-602c9868f56a.jpg
+             * itemId : 19630
+             * skuId : -100
+             * productName : 贵州移动话费10元
+             * productImageUrl :
              * quantity : 1
-             * unitPrice : 79
-             * commissionRate : 6
-             * specifications : 规格:XXL
-             * properties : 属性:蓝色
+             * unitPrice : 10.0
+             * commissionRate : 0.0
+             * specifications : 贵州贵阳移动
+             * properties :
              * refundStatus :
              */
 
@@ -258,8 +258,8 @@ public class OrderListResponse implements Serializable {
             private String productName;
             private String productImageUrl;
             private int quantity;
-            private int unitPrice;
-            private int commissionRate;
+            private double unitPrice;
+            private double commissionRate;
             private String specifications;
             private String properties;
             private String refundStatus;
@@ -304,19 +304,19 @@ public class OrderListResponse implements Serializable {
                 this.quantity = quantity;
             }
 
-            public int getUnitPrice() {
+            public double getUnitPrice() {
                 return unitPrice;
             }
 
-            public void setUnitPrice(int unitPrice) {
+            public void setUnitPrice(double unitPrice) {
                 this.unitPrice = unitPrice;
             }
 
-            public int getCommissionRate() {
+            public double getCommissionRate() {
                 return commissionRate;
             }
 
-            public void setCommissionRate(int commissionRate) {
+            public void setCommissionRate(double commissionRate) {
                 this.commissionRate = commissionRate;
             }
 

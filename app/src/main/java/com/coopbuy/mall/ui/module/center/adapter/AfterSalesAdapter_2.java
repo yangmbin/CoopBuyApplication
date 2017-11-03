@@ -3,6 +3,7 @@ package com.coopbuy.mall.ui.module.center.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
@@ -16,8 +17,11 @@ import java.util.List;
 
 public class AfterSalesAdapter_2 extends BaseDelegateAdapter<AfterSalesResponse.ItemsBean.ProductsBean> {
 
-    public AfterSalesAdapter_2(Context ctx, List<AfterSalesResponse.ItemsBean.ProductsBean> list, LayoutHelper mLayoutHelper) {
+    private View.OnClickListener mListener;
+
+    public AfterSalesAdapter_2(Context ctx, List<AfterSalesResponse.ItemsBean.ProductsBean> list, LayoutHelper mLayoutHelper, View.OnClickListener listener) {
         super(ctx, list, mLayoutHelper);
+        mListener = listener;
     }
 
     @Override
@@ -33,5 +37,8 @@ public class AfterSalesAdapter_2 extends BaseDelegateAdapter<AfterSalesResponse.
                 (item.getSpecifications() == null ? "" : item.getSpecifications()));
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
         holder.getTextView(R.id.refund_amount).setText("退款金额：¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+
+        // 点击监听
+        holder.itemView.setOnClickListener(mListener);
     }
 }

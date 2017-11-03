@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.module.center.adapter;
 
 
 import android.content.Context;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
@@ -13,8 +14,11 @@ import java.util.List;
 
 public class AfterSalesAdapter_1 extends BaseDelegateAdapter<AfterSalesResponse.ItemsBean> {
 
-    public AfterSalesAdapter_1(Context ctx, List<AfterSalesResponse.ItemsBean> list, LayoutHelper mLayoutHelper) {
+    private View.OnClickListener mListener;
+
+    public AfterSalesAdapter_1(Context ctx, List<AfterSalesResponse.ItemsBean> list, LayoutHelper mLayoutHelper, View.OnClickListener listener) {
         super(ctx, list, mLayoutHelper);
+        mListener = listener;
     }
 
     @Override
@@ -25,5 +29,8 @@ public class AfterSalesAdapter_1 extends BaseDelegateAdapter<AfterSalesResponse.
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final AfterSalesResponse.ItemsBean item) {
         holder.getTextView(R.id.tv_shop_name).setText(item.getShopName());
+
+        // 点击监听
+        holder.itemView.setOnClickListener(mListener);
     }
 }

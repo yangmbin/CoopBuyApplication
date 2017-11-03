@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
@@ -15,6 +16,7 @@ import com.coopbuy.mall.ui.module.center.adapter.AfterSalesAdapter_3;
 import com.coopbuy.mall.ui.module.center.model.AfterSalesModel;
 import com.coopbuy.mall.ui.module.center.presenter.AfterSalesPresenter;
 import com.coopbuy.mall.ui.module.center.view.AfterSales_IView;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -56,37 +58,38 @@ public class AfterSalesActivity extends BaseActivity<AfterSalesPresenter, AfterS
     @Override
     public void initPresenter() {
         mPresenter = new AfterSalesPresenter(mContext, mModel, this);
-        refreshData();
+        getAfterSalesList(AfterSalesPresenter.LOAD_TYPE_1);
     }
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        loadMoreData();
+        getAfterSalesList(AfterSalesPresenter.LOAD_TYPE_3);
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        refreshData();
+        getAfterSalesList(AfterSalesPresenter.LOAD_TYPE_2);
     }
 
     @Override
     protected void networkRetry() {
-        refreshData();
+        getAfterSalesList(AfterSalesPresenter.LOAD_TYPE_1);
     }
 
     /**
-     * 刷新数据
+     * 获取数据
+     *
+     * @param loadType
      */
-    private void refreshData() {
-        currentPage = 1;
-        mPresenter.getAfterSalesList(currentPage, AfterSalesPresenter.LOAD_TYPE_1);
-    }
-
-    /**
-     * 加载更多
-     */
-    private void loadMoreData() {
-        mPresenter.getAfterSalesList(currentPage + 1, AfterSalesPresenter.LOAD_TYPE_2);
+    private void getAfterSalesList(int loadType) {
+        int tempPage;
+        if (loadType == AfterSalesPresenter.LOAD_TYPE_1 || loadType == AfterSalesPresenter.LOAD_TYPE_2) {
+            currentPage = 1;
+            tempPage = currentPage;
+        } else {
+            tempPage = currentPage + 1;
+        }
+        mPresenter.getAfterSalesList(tempPage, loadType);
     }
 
     @Override
@@ -112,7 +115,20 @@ public class AfterSalesActivity extends BaseActivity<AfterSalesPresenter, AfterS
     }
 
     /**
+     * 列表条目点击监听
+     */
+    private View.OnClickListener getItemClickListener(final String applyNo) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IntentUtils.gotoActivity(mContext, AfterSalesDetailActivity.class, applyNo);
+            }
+        };
+    }
+
+    /**
      * 网络数据返回回显
+     *
      * @param afterSalesResponse
      */
     @Override
@@ -128,19 +144,19 @@ public class AfterSalesActivity extends BaseActivity<AfterSalesPresenter, AfterS
             //1
             List list1 = new ArrayList();
             list1.add(afterSalesResponse.getItems().get(i));
-            mAdapters.add(new AfterSalesAdapter_1(mContext, list1, new SingleLayoutHelper()));
+            mAdapters.add(new AfterSalesAdapter_1(mContext, list1, new SingleLayoutHelper(), getItemClickListener(afterSalesResponse.getItems().get(i).getApplyNo())));
 
             //2
             LinearLayoutHelper helper2 = new LinearLayoutHelper();
             helper2.setDividerHeight(ScreenUtils.dip2px(mContext, 2));
-            mAdapters.add(new AfterSalesAdapter_2(mContext, afterSalesResponse.getItems().get(i).getProducts(), new LinearLayoutHelper()));
+            mAdapters.add(new AfterSalesAdapter_2(mContext, afterSalesResponse.getItems().get(i).getProducts(), new LinearLayoutHelper(), getItemClickListener(afterSalesResponse.getItems().get(i).getApplyNo())));
 
             //3
             SingleLayoutHelper helper3 = new SingleLayoutHelper();
             helper3.setMarginBottom(ScreenUtils.dip2px(mContext, 8));
             List list3 = new ArrayList();
             list3.add(afterSalesResponse.getItems().get(i));
-            mAdapters.add(new AfterSalesAdapter_3(mContext, list3, helper3));
+            mAdapters.add(new AfterSalesAdapter_3(mContext, list3, helper3, getItemClickListener(afterSalesResponse.getItems().get(i).getApplyNo())));
         }
 
         mDelegateAdapter.setAdapters(mAdapters);

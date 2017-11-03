@@ -19,8 +19,9 @@ import com.guinong.net.callback.IAsyncResultCallback;
  */
 public class AfterSalesPresenter extends BasePresenter<AfterSales_IView, AfterSalesModel> {
 
-    public static final int LOAD_TYPE_1 = 1; // 刷新数据
-    public static final int LOAD_TYPE_2 = 2; // 加载更多
+    public static final int LOAD_TYPE_1 = 1; // 普通加载
+    public static final int LOAD_TYPE_2 = 2; // 下拉刷新
+    public static final int LOAD_TYPE_3 = 3; // 上拉加载
 
     public AfterSalesPresenter(Context mContext, AfterSalesModel mModel, AfterSales_IView mView) {
         super(mContext, mModel, mView);
@@ -31,7 +32,8 @@ public class AfterSalesPresenter extends BasePresenter<AfterSales_IView, AfterSa
      * @param currentPage
      */
     public void getAfterSalesList(int currentPage, final int loadType) {
-        mView.showFillLoading();
+        if (loadType == LOAD_TYPE_1)
+            mView.showFillLoading();
         PageRequest request = new PageRequest();
         request.setCurrentPage(currentPage);
         mView.appendNetCall(mModel.getAfterSalesList(request, new IAsyncResultCallback<AfterSalesResponse>() {
