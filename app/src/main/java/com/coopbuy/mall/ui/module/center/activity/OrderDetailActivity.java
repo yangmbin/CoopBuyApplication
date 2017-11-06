@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.bean.PayAgainParams;
 import com.coopbuy.mall.ui.module.center.adapter.OrderDetailAdapter;
@@ -115,7 +116,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         };
         manager.setAutoMeasureEnabled(true);
         mRvGoodsList.setLayoutManager(manager);
-        mOrderDetailAdapter = new OrderDetailAdapter(mContext, mDatas);
+        mOrderDetailAdapter = new OrderDetailAdapter(mContext, mDatas, getIntent().getStringExtra(IntentUtils.PARAM1));
         mRvGoodsList.setAdapter(mOrderDetailAdapter);
     }
 
@@ -314,10 +315,13 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     }
 
     /**
-     * 申请退款/售后
+     * 申请退款/售后（整单退）
      */
     private void applyRefundBtn() {
-
+        BeforeApplyRefundRequest request = new BeforeApplyRefundRequest();
+        request.setSkuId(-1);
+        request.setOrderId(mOrderDetailResponse.getOrderId());
+        IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class, request);
     }
 
     /**

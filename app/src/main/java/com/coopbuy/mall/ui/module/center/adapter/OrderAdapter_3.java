@@ -8,9 +8,11 @@ import android.view.View;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.PayAgainParams;
+import com.coopbuy.mall.ui.module.center.activity.ApplyRefundActivity;
 import com.coopbuy.mall.ui.module.center.activity.ExpressInfoActivity;
 import com.coopbuy.mall.ui.module.center.pay.PayFailActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderPresenter;
@@ -193,10 +195,13 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
     }
 
     /**
-     * 申请退款/售后
+     * 申请退款/售后（整单退）
      */
     public void applyRefundBtn() {
-
+        BeforeApplyRefundRequest request = new BeforeApplyRefundRequest();
+        request.setSkuId(-1);
+        request.setOrderId(mItemOrder.getOrderId());
+        IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class, request);
     }
 
     /**

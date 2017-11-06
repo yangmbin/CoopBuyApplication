@@ -5,6 +5,7 @@ import com.coopbuy.mall.api.reponse.AddressTownResponse;
 import com.coopbuy.mall.api.reponse.AfterSalesDetailResponse;
 import com.coopbuy.mall.api.reponse.AfterSalesResponse;
 import com.coopbuy.mall.api.reponse.AreaDataResponse;
+import com.coopbuy.mall.api.reponse.BeforeApplyRefundResponse;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
@@ -36,6 +37,9 @@ import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.AfterSalesDetailRequest;
+import com.coopbuy.mall.api.request.ApplyRefundAllRequest;
+import com.coopbuy.mall.api.request.ApplyRefundRequest;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.MobilePayRequest;
@@ -733,4 +737,51 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(new TypeToken<AfterSalesDetailResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_AFTER_SALES_DETAIL, request, callback, userState);
     }
+
+    /**
+     * 进入退款页面获取数据（整单退）
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState beforeApplyRefund(BeforeApplyRefundRequest request, IAsyncResultCallback<BeforeApplyRefundResponse> callback, Object userState) {
+        // 整单退
+        if (request.getSkuId() == -1) {
+            OrderIdRequest orderIdRequest = new OrderIdRequest();
+            orderIdRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(new TypeToken<BeforeApplyRefundResponse>() {
+            }.getType(), Constant.SERVER_URL_NEW + Constant.BEFORE_APPLY_REFUND, orderIdRequest, callback, userState);
+        }
+        // 单品退
+        else {
+            return apiPostRequest(new TypeToken<BeforeApplyRefundResponse>() {
+            }.getType(), Constant.SERVER_URL_NEW + Constant.BEFORE_APPLY_REFUND, request, callback, userState);
+        }
+    }
+
+    /**
+     * 提交退款申请
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState submitApplyRefund(ApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
+        // 整单退
+        if (request.getSkuId() == -1) {
+            ApplyRefundAllRequest refundAllRequest = new ApplyRefundAllRequest();
+            refundAllRequest.setIsNeedReturnGoods(refundAllRequest.isIsNeedReturnGoods());
+            refundAllRequest.setReason(request.getReason());
+            refundAllRequest.setExplain(request.getExplain());
+            refundAllRequest.setVoucherImageUrls(request.getVoucherImageUrls());
+            refundAllRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, refundAllRequest, callback, userState);
+        }
+        // 单品退
+        else {
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, request, callback, userState);
+        }
+    }
+
 }

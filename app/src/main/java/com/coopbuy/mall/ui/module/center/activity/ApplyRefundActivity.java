@@ -6,20 +6,30 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.BeforeApplyRefundResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
+import com.coopbuy.mall.api.request.ApplyRefundRequest;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.adapter.ApplyRefundGoodsListAdapter;
 import com.coopbuy.mall.ui.module.center.model.ApplyRefundModel;
 import com.coopbuy.mall.ui.module.center.presenter.ApplyRefundPresenter;
 import com.coopbuy.mall.ui.module.center.view.ApplyRefund_IView;
+import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.ApplyRefundUploadView;
 import com.coopbuy.mall.widget.dialog.BottomListDialog;
 import com.coopbuy.mall.widget.dialog.SelectImageDialog;
@@ -56,6 +66,26 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
     ImageView radioReturnGoodsSelected;
     @Bind(R.id.uploadView)
     ApplyRefundUploadView uploadView;
+    @Bind(R.id.refund_amount)
+    TextView refundAmount;
+    @Bind(R.id.max_refund_amount)
+    TextView maxRefundAmount;
+    @Bind(R.id.refund_amount_bottom)
+    TextView refundAmountBottom;
+    @Bind(R.id.explain)
+    EditText explain;
+    @Bind(R.id.current_words)
+    TextView currentWords;
+    @Bind(R.id.apply_reason)
+    TextView applyReason;
+
+    private ApplyRefundGoodsListAdapter mAdapter;
+    private List<BeforeApplyRefundResponse.ProductsBean> mProductList = new ArrayList<>();
+    private List<String> mReasonList = new ArrayList<>();
+    private List<String> mImageList = new ArrayList<>();
+    private boolean isNeedReturnGoods; // 是否需要退货
+    private String mOrderId;
+    private int mSkuId = -1;
 
     @Override
     public int getLayoutId() {
@@ -70,16 +100,16 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
     @Override
     public void initPresenter() {
         mPresenter = new ApplyRefundPresenter(mContext, mModel, this);
+        BeforeApplyRefundRequest request = (BeforeApplyRefundRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
+        mOrderId = request.getOrderId();
+        mSkuId = request.getSkuId();
+        mPresenter.beforeApplyRefund(request);
     }
 
     @Override
     public void initView() {
         setTitle("申请退款");
-        List list = new ArrayList();
-        list.add(new Object());
-        list.add(new Object());
-        list.add(new Object());
-        ApplyRefundGoodsListAdapter mAdapter = new ApplyRefundGoodsListAdapter(this, list);
+        mAdapter = new ApplyRefundGoodsListAdapter(this, mProductList);
         goodsList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
@@ -91,6 +121,8 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
 
         // 初始化上传图片视图监听
         initUploadView();
+        // 问题说明编辑框监听
+        addTextChangedListener();
     }
 
     /**
@@ -98,7 +130,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
      *
      * @param view
      */
-    @OnClick({R.id.radioBtnRefund, R.id.radioBtnReturnGoods, R.id.selectRefundReasonBtn})
+    @OnClick({R.id.radioBtnRefund, R.id.radioBtnReturnGoods, R.id.selectRefundReasonBtn, R.id.submit_apply_refund})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.radioBtnRefund:
@@ -109,6 +141,10 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
                 break;
             case R.id.selectRefundReasonBtn:
                 showReasonDialog();
+                break;
+            // 提交申请
+            case R.id.submit_apply_refund:
+                submitApplyRefund();
                 break;
         }
     }
@@ -121,6 +157,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         radioBtnReturnGoods.setBackgroundResource(R.drawable.shape_gray_3_no_solid_bg);
         radioRefundSelected.setVisibility(View.VISIBLE);
         radioReturnGoodsSelected.setVisibility(View.INVISIBLE);
+        isNeedReturnGoods = false;
     }
 
     /**
@@ -131,19 +168,14 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         radioBtnReturnGoods.setBackgroundResource(R.drawable.shape_orange_1_no_solid_bg);
         radioRefundSelected.setVisibility(View.INVISIBLE);
         radioReturnGoodsSelected.setVisibility(View.VISIBLE);
+        isNeedReturnGoods = true;
     }
 
     /**
      * 显示原因对话框
      */
     private void showReasonDialog() {
-        List<String> list = new ArrayList();
-        list.add("原因");
-        list.add("原因");
-        list.add("原因");
-        list.add("原因");
-        list.add("原因");
-        BottomListDialog dialog = new BottomListDialog(mContext, list, new TextView(mContext));
+        BottomListDialog dialog = new BottomListDialog(mContext, mReasonList, applyReason);
         dialog.showAtBottom();
     }
 
@@ -175,14 +207,96 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         });
     }
 
+    /**
+     * 设置问题说明监听
+     */
+    private void addTextChangedListener() {
+        explain.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 0)
+                    currentWords.setText("0字");
+                else
+                    currentWords.setText("-" + editable.length() + "字");
+            }
+        });
+    }
+
+
+    /**
+     * 提交申请
+     */
+    private void submitApplyRefund() {
+        if ("请选择".equals(applyReason.getText().toString().trim())) {
+            ToastUtils.toastShort("请选择退款原因");
+            return;
+        }
+        ApplyRefundRequest request = new ApplyRefundRequest();
+        request.setIsNeedReturnGoods(isNeedReturnGoods);
+        request.setReason(applyReason.getText().toString().trim());
+        request.setExplain(explain.getText().toString().trim());
+        request.setVoucherImageUrls(mImageList);
+        request.setSkuId(mSkuId);
+        request.setOrderId(mOrderId);
+        mPresenter.submitApplyRefund(request);
+    }
+
+
+    /**
+     * 初次进入页面，设置数据
+     *
+     * @param beforeApplyRefundResponse
+     */
+    @Override
+    public void setBeforeApplyRefundData(BeforeApplyRefundResponse beforeApplyRefundResponse) {
+        // 申请售后商品列表
+        mProductList.clear();
+        mProductList.addAll(beforeApplyRefundResponse.getProducts());
+        mAdapter.notifyDataSetChanged();
+
+        // 是否可退货
+        clickRefundBtn();
+        if (!beforeApplyRefundResponse.isCanReturnProduct()) {
+            radioBtnReturnGoods.setVisibility(View.GONE);
+        }
+
+        // 退款原因
+        mReasonList.add("haha");
+        mReasonList.add("heihei");
+
+        // 退款金额
+        refundAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+        maxRefundAmount.setText("最多¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+        refundAmountBottom.setText("¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+    }
 
     /**
      * 上传图片成功
+     *
      * @param uploadImageResponse
      */
     @Override
     public void uploadImageSuccess(UploadImageResponse uploadImageResponse) {
         Log.e("yangmbin", "upload server path:" + uploadImageResponse.getFilePath());
+    }
+
+    /**
+     * 提交申请成功
+     */
+    @Override
+    public void submitApplyRefundSuccess() {
+        IntentUtils.gotoMainActivity(mContext, MainActivity.class, MainActivity.CENTER_FRAGMENT_INDEX);
+        IntentUtils.gotoActivity(mContext, AfterSalesActivity.class);
     }
 
     /**

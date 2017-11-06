@@ -188,4 +188,6 @@ public class Constant {
     public static final String REMIND_SHIPMENT = "api/services/app/order/RemindShop";
     public static final String GET_AFTER_SALES_LIST = "api/services/app/refund/List";
     public static final String GET_AFTER_SALES_DETAIL = "api/services/app/refund/DetailInfo";
+    public static final String BEFORE_APPLY_REFUND = "api/services/app/refund/FindApplyInfo";
+    public static final String APPLY_REFUND = "api/services/app/refund/Apply";
 }
