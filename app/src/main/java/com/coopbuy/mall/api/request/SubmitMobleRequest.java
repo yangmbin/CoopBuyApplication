@@ -3,14 +3,10 @@ package com.coopbuy.mall.api.request;
 import java.io.Serializable;
 
 /**
- * Created by niu on 2017/11/3- 14:53
+ * Created by niu on 2017/11/6- 11:42
  */
-/**
-*@time 2017/11/3 14:53
-*@author  niu
-*@content  手机号归属地查询
-*/
-public class CheckPhoneRequest implements Serializable {
+
+public class SubmitMobleRequest implements Serializable {
 
     /**
      * cardId : string

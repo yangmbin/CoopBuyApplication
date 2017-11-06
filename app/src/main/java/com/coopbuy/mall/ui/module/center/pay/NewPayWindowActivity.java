@@ -12,6 +12,7 @@ import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.TradeChannelResponse;
 import com.coopbuy.mall.api.reponse.WeixinEntity;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BaseFragmentActivity;
@@ -60,6 +61,11 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
     private PayAgainParams mPayAgainParms;
     private String mTotal = "";
     private String mAllPrice = "";
+    private MobilePayRequest mobileRequest;
+    /**
+     * type (integer): 支付类型(1=商品订单，2=话费订单)
+     */
+    private int payListType = 1;
 
     @Override
     public int getLayoutId() {
@@ -76,10 +82,11 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
         thisActivityName = "NewPayWindowActivity";
     }
 
+    //这里需要注意 话费不可以站长代付
     @Override
     public void initPresenter() {
         mPresenter = new NewPayWindow_Presenter(this, mModel, this);
-        mPresenter.getPayTradeChannel();
+        mPresenter.getPayTradeChannel(payListType);
     }
 
     @Override
@@ -91,13 +98,20 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
             enterType = getIntent().getStringExtra("type");
             if (enterType.equals("wait")) {
                 mPayAgainParms = (PayAgainParams) getIntent().getSerializableExtra(IntentUtils.DATA);
+                payListType = mPayAgainParms.getPalyListType();
                 mWaitOrderId = mPayAgainParms.getmWaitOrderId();
                 mTotal = mPayAgainParms.getmCountsTotal();
                 mAllPrice = mPayAgainParms.getmCountsTotalPrice();
-            } else {
+            } else if (enterType.equals("order")) {
+                payListType = 1;
                 request = (OrderSubmitRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
                 mTotal = "" + request.getGoodsCounts();
                 mAllPrice = "" + request.getTotalPrice();
+            } else if (enterType.equals("mobile")) {
+                payListType = 2;
+                mobileRequest = (MobilePayRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
+                mTotal = mobileRequest.getCount();
+                mAllPrice = mobileRequest.getAllPrice();
             }
         }
         mCountsTotal.setText(mTotal);
@@ -106,6 +120,8 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
         mPayAgainParms.setmCountsTotal(mTotal);
         mPayAgainParms.setmWaitOrderId(mWaitOrderId);
         mPayAgainParms.setmChannelId(mChannelId);
+        mPayAgainParms.setPalyListType(payListType
+        );
         initRec();
     }
 
@@ -141,12 +157,11 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
                 }
                 if (!TextUtils.isEmpty(mChannelId)) {
                     if (enterType.equals("wait")) {//待付款的
-                        OrderPayApplyRequest request = new OrderPayApplyRequest();
-                        request.setOrderId(mWaitOrderId + "");
-                        request.setChannelId(mChannelId);
-                        mPresenter.orderPayApply(request, mChannelId);
-                    } else {
+                        mPresenter.orderPayApply(setPayRequest(), mChannelId);
+                    } else if (enterType.equals("order")) {
                         mPresenter.orderSubmit(request, mChannelId);
+                    } else if (enterType.equals("mobile")) {
+                        mPresenter.submitMobleOrder(mobileRequest);
                     }
                 } else {
                     ToastUtils.toastLong("请选择支付方式！");
@@ -158,6 +173,12 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
         }
     }
 
+    private OrderPayApplyRequest setPayRequest() {
+        OrderPayApplyRequest request = new OrderPayApplyRequest();
+        request.setOrderId(mWaitOrderId + "");
+        request.setChannelId(mChannelId);
+        return request;
+    }
 
     @Override
     public void aliPaySuccess() {
@@ -296,6 +317,13 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
             mPayAgainParms.setmChannelId(mChannelId);
         }
         adapter.addData(payList);
+    }
+
+    @Override
+    public void submitMobileSuccess(OrderSubmitResponse bean) {
+        mWaitOrderId = bean.getOrderId();
+        mPayAgainParms.setmWaitOrderId(bean.getOrderId());
+        mPresenter.orderPayApply(setPayRequest(), mChannelId);
     }
 
     @Override

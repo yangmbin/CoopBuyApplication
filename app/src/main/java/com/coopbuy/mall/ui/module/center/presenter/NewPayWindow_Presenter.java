@@ -5,12 +5,15 @@ import android.content.Context;
 import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.TradeChannelResponse;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
+import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.NewPayWindow_Model;
 import com.coopbuy.mall.ui.module.center.view.NewPayWindow_View;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
 
@@ -52,10 +55,11 @@ public class NewPayWindow_Presenter extends BasePresenter<NewPayWindow_View, New
     /**
      * 获得可以支付通道
      */
-    public void getPayTradeChannel() {
-        //15 表示所有的渠道
+    public void getPayTradeChannel(int type) {
+        PayListRequest request = new PayListRequest();
+        request.setType(type);
         mView.showTransLoading();
-        mView.appendNetCall(mModel.getPayTradeChannel(new IAsyncResultCallback<List<TradeChannelResponse>>() {
+        mView.appendNetCall(mModel.getPayTradeChannel(request,new IAsyncResultCallback<List<TradeChannelResponse>>() {
             @Override
             public void onComplete(List<TradeChannelResponse> response, Object userState) {
                 mView.stopAll();
@@ -88,5 +92,32 @@ public class NewPayWindow_Presenter extends BasePresenter<NewPayWindow_View, New
                 ToastUtils.toastLong(null != error.getDetail() ? error.getDetail() : "" + null != error.getMessage() ? error.getMessage() : "");
             }
         }, 3));
+    }
+
+    /**
+     * 电话订单提交
+     *
+     * @param request
+     */
+    public void submitMobleOrder(MobilePayRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.submitMoble(request, new IAsyncResultCallback<OrderSubmitResponse>() {
+            @Override
+            public void onComplete(OrderSubmitResponse orderDetailResponse, Object userState) {
+                if (orderDetailResponse != null) {
+                    mView.submitMobileSuccess(orderDetailResponse);
+                    mView.stopAll();
+                }
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                if (error.getCode() == CodeContant.CODE_NET_UNAVAILABLE) {
+                    mView.showNetOffLayout();
+                } else {
+                    mView.showNetErrorLayout();
+                }
+            }
+        }, "电话订单提交"));
     }
 }

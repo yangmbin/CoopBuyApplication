@@ -42,7 +42,7 @@ import com.coopbuy.mall.api.request.ApplyRefundRequest;
 import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
-import com.coopbuy.mall.api.request.CheckPhoneRequest;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -60,6 +60,7 @@ import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.api.request.PageRequest;
+import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
@@ -482,9 +483,9 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getPayTradeChannel(IAsyncResultCallback<List<TradeChannelResponse>> callback, Object userState) {
+    public IAsyncRequestState getPayTradeChannel(PayListRequest request, IAsyncResultCallback<List<TradeChannelResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<TradeChannelResponse>>() {
-        }.getType(), Constant.SERVER_URL_NEW + Constant.ENABLEDLIST, callback, userState);
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ENABLEDLIST, request, callback, userState);
     }
 
     /**
@@ -582,9 +583,21 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState checkPhone(CheckPhoneRequest request, IAsyncResultCallback<CheckPhoneReponse> callback, Object userState) {
+    public IAsyncRequestState checkPhone(MobilePayRequest request, IAsyncResultCallback<CheckPhoneReponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<CheckPhoneReponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.CHECKPHONE, request, callback, userState);
+    }
+
+    /**
+     * 话费订单提交
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState submitMobile(MobilePayRequest request, IAsyncResultCallback<OrderSubmitResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<OrderSubmitResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SUBMITORDER, request, callback, userState);
     }
 
 
@@ -714,6 +727,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取售后详情
+     *
      * @param request
      * @param callback
      * @param userState

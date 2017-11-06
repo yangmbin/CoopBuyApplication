@@ -155,6 +155,10 @@ public class Constant {
      * 电话归属地查询
      */
     public static final String CHECKPHONE = "api/services/app/prepaid/CheckPhone";
+    /**
+     * 话费订单提交
+     */
+    public static final String SUBMITORDER = "api/services/app/prepaid/SubmitOrder";
 
 
     /**
