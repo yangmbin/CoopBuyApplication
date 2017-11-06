@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
-import com.coopbuy.mall.api.request.CheckPhoneRequest;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.base.BasePresenter;
 import com.coopbuy.mall.ui.module.center.model.PhoneRechargeModel;
 import com.coopbuy.mall.ui.module.center.view.PhoneRecharge_IView;
@@ -13,6 +13,7 @@ import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
 
 import java.util.List;
+
 /**
  * Created by niu on 2017/11/3- 14:50
  */
@@ -54,7 +55,7 @@ public class PhoneRechargePresenter extends BasePresenter<PhoneRecharge_IView, P
      *
      * @param request
      */
-    public void getCheckPhoneData(CheckPhoneRequest request) {
+    public void getCheckPhoneData(MobilePayRequest request) {
         mView.appendNetCall(mModel.checkPhone(request, new IAsyncResultCallback<CheckPhoneReponse>() {
             @Override
             public void onComplete(CheckPhoneReponse orderDetailResponse, Object userState) {
@@ -74,4 +75,6 @@ public class PhoneRechargePresenter extends BasePresenter<PhoneRecharge_IView, P
             }
         }, "订单详情"));
     }
+
+
 }

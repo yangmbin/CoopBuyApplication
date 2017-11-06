@@ -17,6 +17,7 @@
         android:background="@color/edit_text_back_white"
         android:paddingLeft="@dimen/dimen_px30">
 
+
         <LinearLayout
             android:id="@+id/ll_phone_number"
             android:layout_width="match_parent"
@@ -31,30 +32,17 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:hint="@string/lab_login_enter_phone"
+                android:inputType="phone"
                 android:maxLength="11"
                 android:textSize="@dimen/dimen_px48" />
 
-            <LinearLayout
-                android:id="@+id/ll_charge_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <ImageView style="@style/image_clear" />
+            <ImageView
+                android:id="@+id/iv_clear"
+                style="@style/image_clear"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:visibility="gone" />
 
-                <View
-                    android:layout_width="@dimen/dimen_px1"
-                    android:layout_height="@dimen/dimen_px80"
-                    android:layout_marginLeft="@dimen/dimen_px21"
-                    android:layout_marginRight="@dimen/dimen_px21"
-                    android:background="@color/phone_charge_divider" />
-
-                <TextView
-                    style="@style/text_black_gary_size_26_666666"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/dimen_px77"
-                    android:text="@string/lab_charge_cancel" />
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -98,7 +86,7 @@
             android:layout_height="@dimen/dimen_px90"
             android:layout_alignParentBottom="true"
             android:gravity="center|right"
-            android:text="支付：9.8元"
+            android:text="支付：0元"
             android:textColor="@color/theme_text_title_orange" />
     </RelativeLayout>
 

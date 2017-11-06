@@ -16,6 +16,18 @@ public class PayAgainParams implements Serializable {
     private String mChannelId;
     private String mCountsTotal;
     private String mCountsTotalPrice;
+    /**
+     * type (integer): 支付类型(1=商品订单，2=话费订单)
+     */
+    private int palyListType;
+
+    public int getPalyListType() {
+        return palyListType;
+    }
+
+    public void setPalyListType(int palyListType) {
+        this.palyListType = palyListType;
+    }
 
     public String getmWaitOrderId() {
         return mWaitOrderId;

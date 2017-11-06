@@ -33,4 +33,10 @@ public interface NewPayWindow_View extends BaseView {
      * @param payList
      */
     void getPayTradeChannel(List<TradeChannelResponse> payList);
+
+    /**
+     * 话费订单提交
+     * @param bean
+     */
+    void submitMobileSuccess(OrderSubmitResponse bean);
 }

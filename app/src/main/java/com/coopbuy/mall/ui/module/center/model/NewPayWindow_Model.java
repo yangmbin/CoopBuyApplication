@@ -3,8 +3,10 @@ package com.coopbuy.mall.ui.module.center.model;
 import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.TradeChannelResponse;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.OrderPayApplyRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
+import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;
@@ -35,8 +37,8 @@ public class NewPayWindow_Model implements BaseModel {
      * @param callback
      * @param userState
      */
-    public IAsyncRequestState getPayTradeChannel(IAsyncResultCallback<List<TradeChannelResponse>> callback, Object userState) {
-        return client.getPayTradeChannel(callback, userState);
+    public IAsyncRequestState getPayTradeChannel(PayListRequest request, IAsyncResultCallback<List<TradeChannelResponse>> callback, Object userState) {
+        return client.getPayTradeChannel(request,callback, userState);
     }
 
 
@@ -54,6 +56,8 @@ public class NewPayWindow_Model implements BaseModel {
         return client.getPayParms(request,callback, userState);
     }
 
-
+    public IAsyncRequestState submitMoble(MobilePayRequest request, IAsyncResultCallback<OrderSubmitResponse> callback, Object userState) {
+        return client.submitMobile(request, callback, userState);
+    }
 
 }
