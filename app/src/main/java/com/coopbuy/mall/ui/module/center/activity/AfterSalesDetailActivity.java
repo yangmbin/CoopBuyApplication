@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.AfterSalesDetailResponse;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.AfterSalesDetailGoodsListAdapter;
 import com.coopbuy.mall.ui.module.center.adapter.AfterSalesDetailMoreListAdapter;
@@ -98,6 +99,8 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
     // 更多列表数据
     private List<AfterSalesDetailResponse.ApplyNodesBean> mMoreListDatas = new ArrayList<>();
 
+    private AfterSalesDetailResponse mAfterSalesDetailResponse;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_after_sales_detail;
@@ -166,17 +169,33 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
                 break;
             // 重新申请
             case R.id.reapply_btn:
+                reApplyRefund();
                 break;
             // 复制信息
             case R.id.copy_info:
                 break;
             // 撤销申请
             case R.id.cancel_apply:
+                mPresenter.cancelApplyRefund(mAfterSalesDetailResponse.getApplyNo());
                 break;
             // 查看物流
             case R.id.view_express_info:
                 break;
         }
+    }
+
+    /**
+     * 重新申请退款
+     */
+    private void reApplyRefund() {
+        BeforeApplyRefundRequest request = new BeforeApplyRefundRequest();
+        if (mGoodsListDatas.size() == 1)
+            request.setSkuId(mGoodsListDatas.get(0).getSkuId());
+        else
+            request.setSkuId(-1);
+        request.setOrderId(mAfterSalesDetailResponse.getOrderId());
+        request.setApplyNo(mAfterSalesDetailResponse.getApplyNo());
+        IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class, request);
     }
 
     /**
@@ -186,6 +205,9 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
      */
     @Override
     public void setAfterSalesDetail(AfterSalesDetailResponse afterSalesDetailResponse) {
+
+        mAfterSalesDetailResponse = afterSalesDetailResponse;
+
         // 设置商品列表
         mGoodsListDatas.clear();
         mGoodsListDatas.addAll(afterSalesDetailResponse.getProducts());
@@ -256,4 +278,11 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
         }
     }
 
+    /**
+     * 撤销申请成功回调
+     */
+    @Override
+    public void cancelApplySuccess() {
+        IntentUtils.gotoActivityWithClearTop(mContext, AfterSalesActivity.class);
+    }
 }

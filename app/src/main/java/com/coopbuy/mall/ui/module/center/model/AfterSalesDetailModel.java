@@ -2,7 +2,9 @@ package com.coopbuy.mall.ui.module.center.model;
 
 import com.coopbuy.mall.api.reponse.AfterSalesDetailResponse;
 import com.coopbuy.mall.api.request.AfterSalesDetailRequest;
+import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.base.BaseModel;
+import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
 import com.guinong.net.request.IAsyncRequestState;
 
@@ -13,5 +15,9 @@ import com.guinong.net.request.IAsyncRequestState;
 public class AfterSalesDetailModel implements BaseModel {
     public IAsyncRequestState getAfterSalesDetail(AfterSalesDetailRequest request, IAsyncResultCallback<AfterSalesDetailResponse> callback, Object userState) {
         return client.getAfterSalesDetail(request, callback, userState);
+    }
+
+    public IAsyncRequestState cancelApplyRefund(CancelApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.cancelApplyRefund(request, callback, userState);
     }
 }

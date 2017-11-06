@@ -190,4 +190,6 @@ public class Constant {
     public static final String GET_AFTER_SALES_DETAIL = "api/services/app/refund/DetailInfo";
     public static final String BEFORE_APPLY_REFUND = "api/services/app/refund/FindApplyInfo";
     public static final String APPLY_REFUND = "api/services/app/refund/Apply";
+    public static final String REAPPLY_REFUND = "api/services/app/refund/ReApply";
+    public static final String CANCEL_APPLY_REFUND = "api/services/app/refund/Cancel";
 }

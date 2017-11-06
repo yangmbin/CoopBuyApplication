@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -86,6 +87,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
     private boolean isNeedReturnGoods; // 是否需要退货
     private String mOrderId;
     private int mSkuId = -1;
+    private String mApplyNo; // 重新申请时使用
 
     @Override
     public int getLayoutId() {
@@ -103,6 +105,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         BeforeApplyRefundRequest request = (BeforeApplyRefundRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
         mOrderId = request.getOrderId();
         mSkuId = request.getSkuId();
+        mApplyNo = request.getApplyNo();
         mPresenter.beforeApplyRefund(request);
     }
 
@@ -241,14 +244,22 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
             ToastUtils.toastShort("请选择退款原因");
             return;
         }
+
         ApplyRefundRequest request = new ApplyRefundRequest();
+        request.setApplyNo(mApplyNo);
         request.setIsNeedReturnGoods(isNeedReturnGoods);
         request.setReason(applyReason.getText().toString().trim());
         request.setExplain(explain.getText().toString().trim());
         request.setVoucherImageUrls(mImageList);
         request.setSkuId(mSkuId);
         request.setOrderId(mOrderId);
-        mPresenter.submitApplyRefund(request);
+
+        // 首次申请
+        if (TextUtils.isEmpty(mApplyNo))
+            mPresenter.submitApplyRefund(request);
+        // 重新申请
+        else
+            mPresenter.submitReApplyRefund(request);
     }
 
 
@@ -271,8 +282,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         }
 
         // 退款原因
-        mReasonList.add("haha");
-        mReasonList.add("heihei");
+        mReasonList.addAll(beforeApplyRefundResponse.getRefundReasons());
 
         // 退款金额
         refundAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));

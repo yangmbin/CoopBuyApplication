@@ -191,6 +191,7 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         params.setmCountsTotal(count + "");
         params.setmCountsTotalPrice((mItemOrder.getTotalAmount() + mItemOrder.getFreightAmount()) + "");
         params.setmWaitOrderId(mItemOrder.getOrderId());
+        params.setPalyListType(mItemOrder.getOrderType());
         PayFailActivity.gotoActivity((Activity) mContext, params);
     }
 
