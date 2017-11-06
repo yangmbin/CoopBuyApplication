@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.StationReleasesActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px88"
+        android:background="@color/edit_text_back_white">
+
+        <RadioGroup
+            android:id="@+id/main_top_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/top_rg_a"
+                android:layout_width="76dp"
+                android:layout_height="29dp"
+                android:background="@drawable/top_r_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="收藏"
+                android:textColor="@drawable/top_r_text"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/top_rg_b"
+                android:layout_width="76dp"
+                android:layout_height="29dp"
+                android:layout_marginLeft="-1dp"
+                android:background="@drawable/top_r_bg2"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="发布"
+                android:textColor="@drawable/top_r_text"
+                android:textSize="15sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/edit_text_back_white" />
+</LinearLayout>

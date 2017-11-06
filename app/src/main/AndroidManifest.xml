@@ -111,7 +111,8 @@
             android:name=".ui.module.center.pay.NewPayWindowActivity"
             android:theme="@style/wind" />
         <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
-        <activity android:name=".ui.module.center.pay.PayFailActivity"></activity>
+        <activity android:name=".ui.module.center.pay.PayFailActivity" />
+        <activity android:name=".ui.module.center.activity.StationReleasesActivity"></activity>
     </application>
 
 </manifest>
