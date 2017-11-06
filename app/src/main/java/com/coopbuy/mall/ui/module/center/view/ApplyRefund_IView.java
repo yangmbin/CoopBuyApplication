@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.center.view;
 
+import com.coopbuy.mall.api.reponse.BeforeApplyRefundResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.base.BaseView;
 
@@ -9,4 +10,6 @@ import com.coopbuy.mall.base.BaseView;
  */
 public interface ApplyRefund_IView extends BaseView {
     void uploadImageSuccess(UploadImageResponse uploadImageResponse);
+    void setBeforeApplyRefundData(BeforeApplyRefundResponse beforeApplyRefundResponse);
+    void submitApplyRefundSuccess();
 }

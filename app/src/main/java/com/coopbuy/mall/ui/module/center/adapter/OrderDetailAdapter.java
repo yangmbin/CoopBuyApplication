@@ -6,8 +6,11 @@ import android.view.View;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.ui.module.center.activity.ApplyRefundActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -15,8 +18,11 @@ import java.util.List;
 
 public class OrderDetailAdapter extends BaseRecyclerAdapter<OrderDetailResponse.OrderItemsBean> {
 
-    public OrderDetailAdapter(Context ctx, List<OrderDetailResponse.OrderItemsBean> list) {
+    private String orderId;
+
+    public OrderDetailAdapter(Context ctx, List<OrderDetailResponse.OrderItemsBean> list, String orderId) {
         super(ctx, list);
+        this.orderId = orderId;
     }
 
     @Override
@@ -40,6 +46,15 @@ public class OrderDetailAdapter extends BaseRecyclerAdapter<OrderDetailResponse.
             holder.getTextView(R.id.applyRefundBtn).setText(item.getApplyRefundButtonText());
         }
 
-
+        // 申请退款（单品退）
+        holder.getTextView(R.id.applyRefundBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BeforeApplyRefundRequest request = new BeforeApplyRefundRequest();
+                request.setSkuId(item.getSkuId());
+                request.setOrderId(orderId);
+                IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class, request);
+            }
+        });
     }
 }
