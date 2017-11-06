@@ -27,6 +27,7 @@ import com.coopbuy.mall.ui.module.center.activity.SettingActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopStoreActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity;
+import com.coopbuy.mall.ui.module.center.activity.StationReleasesActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
@@ -187,6 +188,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 break;
             case R.id.ll_station:
                 enter(StationRecommendActivity.class, null);
+
+                enter(StationReleasesActivity.class,null);
                 break;
             case R.id.ll_help:
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);

@@ -245,6 +245,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/theme_text_title_orange</item>
         <item name="android:textSize">@dimen/dimen_px26</item>
+    </style>  <style name="text_orange_size_26_ff">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/edit_text_back_white</item>
+        <item name="android:textSize">@dimen/dimen_px26</item>
     </style>
     <!--  黑色文字30px-->
     <style name="text_theme_black_size_30_h_match_41495c">
