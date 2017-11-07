@@ -1,6 +1,7 @@
 package com.coopbuy.mall.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.widget.dialog.ChooseSexDialog;
@@ -126,5 +127,23 @@ public class DialogUtils {
         dialog.show();
         dialog.setCancelTextColor(context.getResources().getColor(R.color.title_black_color));
         dialog.setOkTextColor(context.getResources().getColor(R.color.theme_text_lab_black));
+    }
+
+    /**
+     * 拨打电话对话框
+     * @param context
+     * @param phoneNum
+     */
+    public static void showDialDialog(final Context context, final String phoneNum) {
+        if (TextUtils.isEmpty(phoneNum)) {
+            ToastUtils.toastShort("号码不存在");
+            return;
+        }
+        showTwoKeyDialog(context, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                PhoneUtil.dialerInterfaced(context, phoneNum);
+            }
+        }, phoneNum, "取消", "拨号");
     }
 }

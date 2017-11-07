@@ -65,8 +65,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     TextView payTime;
     @Bind(R.id.finishTime)
     TextView finishTime;
-    @Bind(R.id.lieuPayBtn)
-    TextView lieuPayBtn;
     @Bind(R.id.cancelOrderBtn)
     TextView cancelOrderBtn;
     @Bind(R.id.payBtn)
@@ -143,6 +141,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         // 设置商品列表
         mDatas.clear();
         mDatas.addAll(orderDetailResponse.getOrderItems());
+        mOrderDetailAdapter.setOrderType(orderDetailResponse.getOrderType());
         mOrderDetailAdapter.notifyDataSetChanged();
 
         // 物流信息
@@ -195,22 +194,20 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      *
      * @param view
      */
-    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy, R.id.lieuPayBtn, R.id.cancelOrderBtn, R.id.payBtn, R.id.applyRefundBtn, R.id.remindShipmentBtn, R.id.delayedReceiptBtn, R.id.deleteBtn, R.id.findExpressInfoBtn, R.id.receiptBtn, R.id.repeatSubmitOrderBtn})
+    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy, R.id.cancelOrderBtn, R.id.payBtn, R.id.applyRefundBtn, R.id.remindShipmentBtn, R.id.delayedReceiptBtn, R.id.deleteBtn, R.id.findExpressInfoBtn, R.id.receiptBtn, R.id.repeatSubmitOrderBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             // 联系客服
             case R.id.contact_service:
+                ToastUtils.toastShort("联系客服");
                 break;
             // 拨打商家电话
             case R.id.dial_phone:
+                DialogUtils.showDialDialog(mContext, mOrderDetailResponse.getShopTel());
                 break;
             // 复制订单号
             case R.id.copy:
                 CommonUtils.copyToClipboard(mContext, mOrderDetailResponse.getOrderId());
-                break;
-            // 站长代付
-            case R.id.lieuPayBtn:
-                lieuPayBtn();
                 break;
             // 取消订单
             case R.id.cancelOrderBtn:
@@ -263,8 +260,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
             deleteBtn.setVisibility(View.VISIBLE);
         if (orderDetailResponse.isCanPayment())
             payBtn.setVisibility(View.VISIBLE);
-        if (orderDetailResponse.isCanApplyLieuPay())
-            lieuPayBtn.setVisibility(View.VISIBLE);
         if (orderDetailResponse.isCanDelayedReceipt())
             delayedReceiptBtn.setVisibility(View.VISIBLE);
         if (orderDetailResponse.isCanFindExpressInfo())
@@ -279,13 +274,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
             remindShipmentBtn.setVisibility(View.VISIBLE);
         if (orderDetailResponse.isCanRepeatSubmitOrder())
             repeatSubmitOrderBtn.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * 站长代付
-     */
-    private void lieuPayBtn() {
-
     }
 
     /**

@@ -27,6 +27,7 @@ import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.reponse.ShippingCompanyResponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
@@ -41,6 +42,7 @@ import com.coopbuy.mall.api.request.ApplyRefundAllRequest;
 import com.coopbuy.mall.api.request.ApplyRefundOneRequest;
 import com.coopbuy.mall.api.request.ApplyRefundRequest;
 import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
+import com.coopbuy.mall.api.request.BuyerSendGoodsRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
@@ -66,6 +68,7 @@ import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.ReApplyRefundAllRequest;
 import com.coopbuy.mall.api.request.ReApplyRefundOneRequest;
+import com.coopbuy.mall.api.request.RefundExpressInfoRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
@@ -849,4 +852,38 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.CANCEL_APPLY_REFUND, request, callback, userState);
     }
 
+    /**
+     * 获取物流公司列表
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getShippingCampanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<ShippingCompanyResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SHIPPING_COMPANY_LIST, null, callback, userState);
+    }
+
+    /**
+     * 买家寄货
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState sendGoods(BuyerSendGoodsRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.SEND_GOODS, request, callback, userState);
+    }
+
+
+    /**
+     * 退款物流信息查询
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getRefundExpressInfo(RefundExpressInfoRequest request, IAsyncResultCallback<ExpressInfoResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ExpressInfoResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.REFUND_EXPRESS_INFO, request, callback, userState);
+    }
 }

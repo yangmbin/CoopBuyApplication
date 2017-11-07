@@ -701,8 +701,9 @@
                     android:layout_marginTop="@dimen/dimen_px16"
                     android:layout_marginBottom="@dimen/dimen_px32">
                     <LinearLayout
+                        android:id="@+id/contact_service"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center">
                         <ImageView
@@ -726,8 +727,9 @@
                         android:paddingBottom="@dimen/dimen_px20"/>
 
                     <LinearLayout
+                        android:id="@+id/contact_merchant"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center">
                         <ImageView

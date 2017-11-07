@@ -10,6 +10,7 @@ import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.module.center.activity.ApplyRefundActivity;
+import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OrderDetailAdapter extends BaseRecyclerAdapter<OrderDetailResponse.OrderItemsBean> {
 
     private String orderId;
+    private int orderType;
 
     public OrderDetailAdapter(Context ctx, List<OrderDetailResponse.OrderItemsBean> list, String orderId) {
         super(ctx, list);
@@ -56,5 +58,23 @@ public class OrderDetailAdapter extends BaseRecyclerAdapter<OrderDetailResponse.
                 IntentUtils.gotoActivity(mContext, ApplyRefundActivity.class, request);
             }
         });
+
+        // 点击监听
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 普通商品能查看详情，话费商品不可以
+                if (orderType == 1)
+                    IntentUtils.gotoActivity(mContext, GoodsDetailActivity.class, item.getSkuId());
+            }
+        });
+    }
+
+    /**
+     * 设置订单类型
+     * @param orderType
+     */
+    public void setOrderType(int orderType) {
+        this.orderType = orderType;
     }
 }

@@ -56,7 +56,9 @@ public class AfterSalesDetailResponse implements Serializable {
     private String companyCode;
     private CargoInfoBean cargoInfo;
     private String shopName;
+    private String shopTel;
     private String orderId;
+    private boolean isNeedReturnGoods;
     private List<TradeNodeBean> tradeNode;
     private List<ProductsBean> products;
     private List<ApplyNodesBean> applyNodes;
@@ -221,12 +223,28 @@ public class AfterSalesDetailResponse implements Serializable {
         this.shopName = shopName;
     }
 
+    public String getShopTel() {
+        return shopTel;
+    }
+
+    public void setShopTel(String shopTel) {
+        this.shopTel = shopTel;
+    }
+
     public String getOrderId() {
         return orderId;
     }
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public boolean isNeedReturnGoods() {
+        return isNeedReturnGoods;
+    }
+
+    public void setNeedReturnGoods(boolean needReturnGoods) {
+        isNeedReturnGoods = needReturnGoods;
     }
 
     public CargoInfoBean getCargoInfo() {

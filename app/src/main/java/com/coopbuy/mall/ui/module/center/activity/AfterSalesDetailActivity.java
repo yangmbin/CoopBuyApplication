@@ -15,8 +15,11 @@ import com.coopbuy.mall.ui.module.center.adapter.AfterSalesDetailMoreListAdapter
 import com.coopbuy.mall.ui.module.center.model.AfterSalesDetailModel;
 import com.coopbuy.mall.ui.module.center.presenter.AfterSalesDetailPresenter;
 import com.coopbuy.mall.ui.module.center.view.AfterSalesDetail_IView;
+import com.coopbuy.mall.utils.CommonUtils;
+import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,12 +158,12 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
     /**
      * 点击事件
      */
-    @OnClick({R.id.update_return_goods, R.id.moreBtn, R.id.reapply_btn, R.id.copy_info, R.id.cancel_apply, R.id.view_express_info})
+    @OnClick({R.id.update_return_goods, R.id.moreBtn, R.id.reapply_btn, R.id.copy_info, R.id.cancel_apply, R.id.view_express_info, R.id.contact_service, R.id.contact_merchant})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             // 买家寄货
             case R.id.update_return_goods:
-                IntentUtils.gotoActivity(mContext, BuyerSendGoodsActivity.class);
+                IntentUtils.gotoActivity(mContext, BuyerSendGoodsActivity.class, mAfterSalesDetailResponse.getApplyNo());
                 break;
             // 更多按钮
             case R.id.moreBtn:
@@ -173,6 +176,9 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
                 break;
             // 复制信息
             case R.id.copy_info:
+                CommonUtils.copyToClipboard(mContext, mAfterSalesDetailResponse.getShopName() + "（" + mAfterSalesDetailResponse.getConsignerName() + "）" +
+                        mAfterSalesDetailResponse.getConsignerTel() +
+                        mAfterSalesDetailResponse.getAddress());
                 break;
             // 撤销申请
             case R.id.cancel_apply:
@@ -180,6 +186,15 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
                 break;
             // 查看物流
             case R.id.view_express_info:
+                IntentUtils.gotoActivity(mContext, ExpressInfoActivity.class, mAfterSalesDetailResponse.getApplyNo(), "RefundExpressInfoFlag");
+                break;
+            // 联系客服
+            case R.id.contact_service:
+                ToastUtils.toastShort("联系客服");
+                break;
+            // 联系商家
+            case R.id.contact_merchant:
+                DialogUtils.showDialDialog(mContext, mAfterSalesDetailResponse.getShopTel());
                 break;
         }
     }
@@ -255,8 +270,8 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
             else
                 updateReturnGoods.setVisibility(View.GONE);
         }
-        // 显示寄货物流的布局
-        if (afterSalesDetailResponse.getStatus() == 3 || afterSalesDetailResponse.getStatus() == 4 || afterSalesDetailResponse.getStatus() == 5) {
+        // 显示寄货物流的布局（退货）
+        if (afterSalesDetailResponse.isNeedReturnGoods() && (afterSalesDetailResponse.getStatus() == 3 || afterSalesDetailResponse.getStatus() == 4 || afterSalesDetailResponse.getStatus() == 5)) {
             expressLayout.setVisibility(View.VISIBLE);
             shippingCompany.setText("退货物流：" + afterSalesDetailResponse.getShippingCompany() + "（单号" + afterSalesDetailResponse.getCompanyCode() + "）");
             latestExpressInfo.setText(afterSalesDetailResponse.getCargoInfo().getText());

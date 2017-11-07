@@ -192,4 +192,7 @@ public class Constant {
     public static final String APPLY_REFUND = "api/services/app/refund/Apply";
     public static final String REAPPLY_REFUND = "api/services/app/refund/ReApply";
     public static final String CANCEL_APPLY_REFUND = "api/services/app/refund/Cancel";
+    public static final String SHIPPING_COMPANY_LIST = "api/services/app/shipper/List";
+    public static final String SEND_GOODS = "api/services/app/refund/UpdateAddress";
+    public static final String REFUND_EXPRESS_INFO = "api/services/app/refund/FindExpressInfo";
 }

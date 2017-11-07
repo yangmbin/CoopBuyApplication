@@ -55,9 +55,6 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
     }
 
     private void setBtnDisplay(BaseRecyclerHolder holder, OrderListResponse.ItemsBeanX item) {
-        // 站长代付
-        if (item.isCanApplyLieuPay())
-            holder.getTextView(R.id.lieuPayBtn).setVisibility(View.VISIBLE);
         // 取消订单
         if (item.isCanCancel())
             holder.getTextView(R.id.cancelOrderBtn).setVisibility(View.VISIBLE);
@@ -97,7 +94,6 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         }
 
         // 设置监听
-        holder.getTextView(R.id.lieuPayBtn).setOnClickListener(this);
         holder.getTextView(R.id.cancelOrderBtn).setOnClickListener(this);
         holder.getTextView(R.id.payBtn).setOnClickListener(this);
         holder.getTextView(R.id.delayedReceiptBtn).setOnClickListener(this);
@@ -113,10 +109,6 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            // 站长代付
-            case R.id.lieuPayBtn:
-                lieuPayBtn();
-                break;
             // 取消订单
             case R.id.cancelOrderBtn:
                 cancelOrderBtn();
@@ -159,13 +151,6 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
                 window.showWindow(v);
                 break;
         }
-    }
-
-    /**
-     * 站长代付
-     */
-    private void lieuPayBtn() {
-
     }
 
     /**
