@@ -27,4 +27,8 @@ public class ApplyRefundModel implements BaseModel {
     public IAsyncRequestState submitApplyRefund(ApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
         return client.submitApplyRefund(request, callback, userState);
     }
+
+    public IAsyncRequestState submitReApplyRefund(ApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.submitReApplyRefund(request, callback, userState);
+    }
 }

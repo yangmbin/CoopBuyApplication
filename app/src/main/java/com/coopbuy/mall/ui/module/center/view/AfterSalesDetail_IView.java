@@ -9,4 +9,5 @@ import com.coopbuy.mall.base.BaseView;
  */
 public interface AfterSalesDetail_IView extends BaseView {
     void setAfterSalesDetail(AfterSalesDetailResponse afterSalesDetailResponse);
+    void cancelApplySuccess();
 }

@@ -73,11 +73,11 @@ public class ApplyRefundPresenter extends BasePresenter<ApplyRefund_IView, Apply
     }
 
     /**
-     * 提交退款申请
+     * 首次提交退款申请
      * @param request
      */
     public void submitApplyRefund(ApplyRefundRequest request) {
-        mView.showFillLoading();
+        mView.showTransLoading();
         mView.appendNetCall(mModel.submitApplyRefund(request, new IAsyncEmptyCallback() {
             @Override
             public void onComplete(Object userState) {
@@ -90,6 +90,27 @@ public class ApplyRefundPresenter extends BasePresenter<ApplyRefund_IView, Apply
                 ToastUtils.toastShort(error.getMessage());
                 mView.stopAll();
             }
-        }, "提交退款申请"));
+        }, "首次提交退款申请"));
+    }
+
+    /**
+     * 重新提交退款申请
+     * @param request
+     */
+    public void submitReApplyRefund(ApplyRefundRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.submitReApplyRefund(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                mView.submitApplyRefundSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "重新提交退款申请"));
     }
 }

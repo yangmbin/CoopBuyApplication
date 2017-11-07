@@ -157,4 +157,15 @@ public class IntentUtils {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
+
+    /**
+     * 带启动模式跳转
+     * @param context
+     * @param activity
+     */
+    public static void gotoActivityWithClearTop(Context context, Class<?> activity) {
+        Intent intent = new Intent(context, activity);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
 }

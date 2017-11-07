@@ -7,7 +7,7 @@ import java.util.List;
  * @author ymb
  * Create at 2017/10/16 15:39
  */
-public class ApplyRefundRequest implements Serializable {
+public class ReApplyRefundAllRequest implements Serializable {
 
     /**
      * applyNo : string
@@ -15,7 +15,6 @@ public class ApplyRefundRequest implements Serializable {
      * reason : string
      * explain : string
      * voucherImageUrls : ["string"]
-     * skuId : 0
      * orderId : string
      */
 
@@ -23,7 +22,6 @@ public class ApplyRefundRequest implements Serializable {
     private boolean isNeedReturnGoods;
     private String reason;
     private String explain;
-    private int skuId;
     private String orderId;
     private List<String> voucherImageUrls;
 
@@ -57,14 +55,6 @@ public class ApplyRefundRequest implements Serializable {
 
     public void setExplain(String explain) {
         this.explain = explain;
-    }
-
-    public int getSkuId() {
-        return skuId;
-    }
-
-    public void setSkuId(int skuId) {
-        this.skuId = skuId;
     }
 
     public String getOrderId() {

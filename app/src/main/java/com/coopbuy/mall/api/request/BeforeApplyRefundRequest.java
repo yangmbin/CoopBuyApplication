@@ -15,6 +15,7 @@ public class BeforeApplyRefundRequest implements Serializable {
 
     private int skuId;
     private String orderId;
+    private String applyNo;
 
     public int getSkuId() {
         return skuId;
@@ -30,5 +31,13 @@ public class BeforeApplyRefundRequest implements Serializable {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public String getApplyNo() {
+        return applyNo;
+    }
+
+    public void setApplyNo(String applyNo) {
+        this.applyNo = applyNo;
     }
 }

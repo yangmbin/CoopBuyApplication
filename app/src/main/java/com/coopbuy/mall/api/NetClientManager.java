@@ -38,11 +38,12 @@ import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.AfterSalesDetailRequest;
 import com.coopbuy.mall.api.request.ApplyRefundAllRequest;
+import com.coopbuy.mall.api.request.ApplyRefundOneRequest;
 import com.coopbuy.mall.api.request.ApplyRefundRequest;
 import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
+import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
-import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -53,6 +54,7 @@ import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
+import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
@@ -62,6 +64,8 @@ import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.api.request.PageRequest;
 import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
+import com.coopbuy.mall.api.request.ReApplyRefundAllRequest;
+import com.coopbuy.mall.api.request.ReApplyRefundOneRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
@@ -590,6 +594,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 话费订单提交
+     *
      * @param request
      * @param callback
      * @param userState
@@ -740,6 +745,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 进入退款页面获取数据（整单退）
+     *
      * @param request
      * @param callback
      * @param userState
@@ -761,7 +767,8 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
-     * 提交退款申请
+     * 首次提交退款申请
+     *
      * @param request
      * @param callback
      * @param userState
@@ -770,18 +777,76 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState submitApplyRefund(ApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
         // 整单退
         if (request.getSkuId() == -1) {
-            ApplyRefundAllRequest refundAllRequest = new ApplyRefundAllRequest();
-            refundAllRequest.setIsNeedReturnGoods(refundAllRequest.isIsNeedReturnGoods());
-            refundAllRequest.setReason(request.getReason());
-            refundAllRequest.setExplain(request.getExplain());
-            refundAllRequest.setVoucherImageUrls(request.getVoucherImageUrls());
-            refundAllRequest.setOrderId(request.getOrderId());
-            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, refundAllRequest, callback, userState);
+            ApplyRefundAllRequest applyRefundAllRequest = new ApplyRefundAllRequest();
+            applyRefundAllRequest.setIsNeedReturnGoods(request.isIsNeedReturnGoods());
+            applyRefundAllRequest.setReason(request.getReason());
+            applyRefundAllRequest.setExplain(request.getExplain());
+            applyRefundAllRequest.setVoucherImageUrls(request.getVoucherImageUrls());
+            applyRefundAllRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, applyRefundAllRequest, callback, userState);
+
         }
         // 单品退
         else {
-            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, request, callback, userState);
+            ApplyRefundOneRequest applyRefundOneRequest = new ApplyRefundOneRequest();
+            applyRefundOneRequest.setIsNeedReturnGoods(request.isIsNeedReturnGoods());
+            applyRefundOneRequest.setReason(request.getReason());
+            applyRefundOneRequest.setExplain(request.getExplain());
+            applyRefundOneRequest.setVoucherImageUrls(request.getVoucherImageUrls());
+            applyRefundOneRequest.setSkuId(request.getSkuId());
+            applyRefundOneRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.APPLY_REFUND, applyRefundOneRequest, callback, userState);
+
         }
+    }
+
+
+    /**
+     * 重新提交退款申请
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState submitReApplyRefund(ApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
+        // 整单退
+        if (request.getSkuId() == -1) {
+            ReApplyRefundAllRequest reApplyRefundAllRequest = new ReApplyRefundAllRequest();
+            reApplyRefundAllRequest.setApplyNo(request.getApplyNo());
+            reApplyRefundAllRequest.setIsNeedReturnGoods(request.isIsNeedReturnGoods());
+            reApplyRefundAllRequest.setReason(request.getReason());
+            reApplyRefundAllRequest.setExplain(request.getExplain());
+            reApplyRefundAllRequest.setVoucherImageUrls(request.getVoucherImageUrls());
+            reApplyRefundAllRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REAPPLY_REFUND, reApplyRefundAllRequest, callback, userState);
+
+        }
+        // 单品退
+        else {
+            ReApplyRefundOneRequest reApplyRefundOneRequest = new ReApplyRefundOneRequest();
+            reApplyRefundOneRequest.setApplyNo(request.getApplyNo());
+            reApplyRefundOneRequest.setIsNeedReturnGoods(request.isIsNeedReturnGoods());
+            reApplyRefundOneRequest.setReason(request.getReason());
+            reApplyRefundOneRequest.setExplain(request.getExplain());
+            reApplyRefundOneRequest.setVoucherImageUrls(request.getVoucherImageUrls());
+            reApplyRefundOneRequest.setSkuId(request.getSkuId());
+            reApplyRefundOneRequest.setOrderId(request.getOrderId());
+            return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REAPPLY_REFUND, reApplyRefundOneRequest, callback, userState);
+
+        }
+    }
+
+
+    /**
+     * 撤销退款申请
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState cancelApplyRefund(CancelApplyRefundRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.CANCEL_APPLY_REFUND, request, callback, userState);
     }
 
 }

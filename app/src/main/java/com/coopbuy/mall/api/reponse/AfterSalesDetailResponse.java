@@ -56,6 +56,7 @@ public class AfterSalesDetailResponse implements Serializable {
     private String companyCode;
     private CargoInfoBean cargoInfo;
     private String shopName;
+    private String orderId;
     private List<TradeNodeBean> tradeNode;
     private List<ProductsBean> products;
     private List<ApplyNodesBean> applyNodes;
@@ -218,6 +219,14 @@ public class AfterSalesDetailResponse implements Serializable {
 
     public void setShopName(String shopName) {
         this.shopName = shopName;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public CargoInfoBean getCargoInfo() {

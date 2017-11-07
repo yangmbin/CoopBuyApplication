@@ -7,7 +7,7 @@ import java.util.List;
  * @author ymb
  * Create at 2017/10/16 15:39
  */
-public class ApplyRefundRequest implements Serializable {
+public class ReApplyRefundOneRequest implements Serializable {
 
     /**
      * applyNo : string

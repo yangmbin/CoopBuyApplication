@@ -13,11 +13,13 @@ public class BeforeApplyRefundResponse implements Serializable {
      * products : [{"skuId":0,"productName":"string","productImageUrl":"string","quantity":0,"unitPrice":0,"specifications":"string","properties":"string"}]
      * canReturnProduct : true
      * refundAmount : 0.0
+     * refundReasons : ["string"]
      */
 
     private boolean canReturnProduct;
     private double refundAmount;
     private List<ProductsBean> products;
+    private List<String> refundReasons;
 
     public boolean isCanReturnProduct() {
         return canReturnProduct;
@@ -41,6 +43,14 @@ public class BeforeApplyRefundResponse implements Serializable {
 
     public void setProducts(List<ProductsBean> products) {
         this.products = products;
+    }
+
+    public List<String> getRefundReasons() {
+        return refundReasons;
+    }
+
+    public void setRefundReasons(List<String> refundReasons) {
+        this.refundReasons = refundReasons;
     }
 
     public static class ProductsBean {

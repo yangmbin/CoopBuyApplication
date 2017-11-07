@@ -311,6 +311,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         params.setmCountsTotal(count + "");
         params.setmCountsTotalPrice(mOrderDetailResponse.getOrderAmount() + "");
         params.setmWaitOrderId(mOrderDetailResponse.getOrderId());
+        params.setPalyListType(mOrderDetailResponse.getOrderType());
         PayFailActivity.gotoActivity((Activity) mContext, params);
     }
 

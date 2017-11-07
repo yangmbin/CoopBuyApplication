@@ -7,10 +7,9 @@ import java.util.List;
  * @author ymb
  * Create at 2017/10/16 15:39
  */
-public class ApplyRefundRequest implements Serializable {
+public class ApplyRefundOneRequest implements Serializable {
 
     /**
-     * applyNo : string
      * isNeedReturnGoods : true
      * reason : string
      * explain : string
@@ -19,21 +18,12 @@ public class ApplyRefundRequest implements Serializable {
      * orderId : string
      */
 
-    private String applyNo;
     private boolean isNeedReturnGoods;
     private String reason;
     private String explain;
     private int skuId;
     private String orderId;
     private List<String> voucherImageUrls;
-
-    public String getApplyNo() {
-        return applyNo;
-    }
-
-    public void setApplyNo(String applyNo) {
-        this.applyNo = applyNo;
-    }
 
     public boolean isIsNeedReturnGoods() {
         return isNeedReturnGoods;
