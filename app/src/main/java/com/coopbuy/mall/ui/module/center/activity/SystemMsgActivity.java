@@ -58,7 +58,7 @@ public class SystemMsgActivity extends BaseActivity<SystemMsgPresenter, SystemMs
     }
 
     private void setData() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i++) {
             MessageCenterResponse d = new MessageCenterResponse();
             d.setDetail("ssssdf" + i);
             d.setName("孙悟空" + i);

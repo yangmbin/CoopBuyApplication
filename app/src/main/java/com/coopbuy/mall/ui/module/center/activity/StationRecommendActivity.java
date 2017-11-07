@@ -82,7 +82,7 @@ public class StationRecommendActivity extends BaseActivity {
     }
 
     private void initData() {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 10; i++) {
             if (i == 3 || i == 4) {
                 StationRecommendResponse res = new StationRecommendResponse("2017.5.", "青青爱吃榴莲" + i, "177", "177" + i, "34*56*9", "2" + i * 2, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507873988409&di=2891b9a2a0070d71b70b5e86983d2c46&imgtype=0&src=http%3A%2F%2Fwww.fcfdcw.com%2FUploadFile%2Fimage%2F20141014%2F20141014151728_7968.jpg");
                 data.add(res);

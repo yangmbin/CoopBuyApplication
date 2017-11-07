@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.StationRecommendResponse;
+import com.coopbuy.mall.utils.Constants;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class StationRecAdapter extends RecyclerView.Adapter<StationRecAdapter.Ho
     @Override
     public void onBindViewHolder(StationRecAdapter.Holder holder, int position) {
         StationRecommendResponse srr = data.get(position);
-        holder.iv_logo.setImageURI(srr.getImages());
+        holder.iv_logo.setImageURI(Constants.images[position]);
         holder.tv_name.setText(srr.getName());
         holder.oldPrice.setText("￥" + srr.getOldPirce());
         holder.salePrice.setText("￥" + srr.getSalePrice());

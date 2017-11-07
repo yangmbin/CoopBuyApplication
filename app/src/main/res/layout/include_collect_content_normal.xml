@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_shopcart_content"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_px200"
+    android:layout_marginLeft="@dimen/dimen_px31"
+    android:layout_marginRight="@dimen/dimen_px31"
+    android:background="@color/edit_text_back_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_goods_name"
+        style="@style/text_theme_black_size_28_41"
+        android:layout_marginRight="@dimen/dimen_px40"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="在一定程度上，作为人类，我们要关心他人，并对他人有所贡献。这会给我们的生命带来意义，却不一定会使我们感到幸福"
+        android:textSize="@dimen/dimen_px32" />
+
+    <TextView
+        android:id="@+id/tv_goods_version"
+        style="@style/text_black_size_28_888888"
+        android:layout_marginTop="@dimen/dimen_px20"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="35*90cm小号" />
+
+    <RelativeLayout
+        style="@style/center_LinearLayout_help_90"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/tv_sale_price"
+            style="@style/text_orange_size_26_f"
+            android:text="$25.6" />
+
+        <TextView
+            android:id="@+id/tv_old_price"
+            style="@style/text_black_size_28_878f94"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_px12"
+            android:layout_toRightOf="@id/tv_sale_price"
+            android:text="$78"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_goods_counts"
+            style="@style/text_black_size_28_878f94"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dimen_px12"
+            android:text="x12" />
+
+    </RelativeLayout>
+</LinearLayout>

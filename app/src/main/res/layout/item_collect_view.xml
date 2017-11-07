@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include layout="@layout/include_divider_4px_line_theme_white" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px260">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <include layout="@layout/include_divider_1px_line_theme_white" />
+
+                <LinearLayout
+                    style="@style/center_LinearLayout_help_96"
+                    android:layout_height="@dimen/dimen_px260"
+                    android:layout_marginTop="@dimen/dimen_px1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_iamge_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/iv_goods_select"
+                            style="@style/image_center_40"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dimen_px32"
+                            android:src="@mipmap/icon_address_checked" />
+                    </LinearLayout>
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/adFaceImage"
+                        android:layout_width="@dimen/dimen_px200"
+                        android:layout_height="@dimen/dimen_px200"
+                        android:layout_marginLeft="@dimen/dimen_px32"
+                        android:src="@mipmap/icon_splash_welcome"
+                        fresco:actualImageScaleType="centerCrop"
+                        fresco:placeholderImage="@mipmap/default_img"
+                        fresco:roundedCornerRadius="@dimen/dimen_px8" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <include layout="@layout/include_collect_content_normal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_full"
+            android:layout_width="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_height="@dimen/dimen_px260"
+            android:layout_above="@+id/rl_release"
+            android:background="@color/black_10">
+
+            <TextView
+                style="@style/white_size_32_ffffff"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_white_1_no_solid_bg"
+                android:paddingBottom="@dimen/dimen_px45"
+                android:paddingLeft="@dimen/dimen_px176"
+                android:paddingRight="@dimen/dimen_px176"
+                android:paddingTop="@dimen/dimen_px45"
+                android:text="选满了哟~" />
+        </RelativeLayout>
+    </FrameLayout>
+    <include layout="@layout/include_divider_16px_line_theme_white" />
+</LinearLayout>

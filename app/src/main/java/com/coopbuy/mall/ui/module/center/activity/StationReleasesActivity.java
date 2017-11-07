@@ -5,10 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.eventbus.CollectEvent;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.MainEvent;
+import com.coopbuy.mall.eventbus.ReleaseEvent;
 import com.coopbuy.mall.ui.module.center.adapter.StationsPagerAdapter;
 import com.coopbuy.mall.ui.module.center.fragment.CollectFragment;
 import com.coopbuy.mall.ui.module.center.fragment.ReleasesFragment;
@@ -18,6 +21,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StationReleasesActivity extends BaseActivity {
 
@@ -54,7 +58,6 @@ public class StationReleasesActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new CollectFragment());
         fragments.add(new ReleasesFragment());
-
         StationsPagerAdapter pagerAdapter = new StationsPagerAdapter(getSupportFragmentManager(), fragments);
         mainViewpager.setAdapter(pagerAdapter);
         mainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -65,8 +68,13 @@ public class StationReleasesActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 0) mRbCollect.setChecked(true);
-                else mRbRelease.setChecked(true);
+                if (position == 0) {
+                    mRbCollect.setChecked(true);
+                    EventBusInstance.getInstance().post(new CollectEvent());
+                } else {
+                    mRbRelease.setChecked(true);
+                    EventBusInstance.getInstance().post(new ReleaseEvent());
+                }
             }
 
             @Override
@@ -85,5 +93,10 @@ public class StationReleasesActivity extends BaseActivity {
 
         //设置默认页
         mainViewpager.setCurrentItem(0);
+    }
+
+    @OnClick(R.id.titlebar_back)
+    public void onViewClicked() {
+        this.finish();
     }
 }
