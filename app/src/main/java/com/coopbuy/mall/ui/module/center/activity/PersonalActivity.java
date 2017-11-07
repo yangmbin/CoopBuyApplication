@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.Bind;
@@ -44,7 +46,7 @@ public class PersonalActivity extends BaseActivity {
     public void initView() {
         if (null != getIntent()) {
             userInfoBean = (UserCenterInfoResponse.UserInfoBean) getIntent().getSerializableExtra(IntentUtils.DATA);
-            if (null == userInfoBean.getHeadPortraitPath()) {
+            if (null == userInfoBean.getHeadPortraitPath() || !TextUtils.isEmpty(userInfoBean.getHeadPortraitPath())) {
                 circleImageView.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1508241681&di=515b29d6539ab215958b593931ba68c7&src=http://www.aluminiumstock.com/images/article2/5588609-1.jpg");
             } else {
                 circleImageView.setImageURI(userInfoBean.getHeadPortraitPath());

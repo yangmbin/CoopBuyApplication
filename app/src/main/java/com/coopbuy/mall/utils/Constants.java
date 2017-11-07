@@ -1,5 +1,8 @@
 package com.coopbuy.mall.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by wangyu on 2017/4/12.
  */
@@ -115,4 +118,20 @@ public class Constants {
     public static final String REGISTER_TYPE = "register_type";
     public static final String FORGET_TYPE = "forget_type";
     public static final String CHANGE_TYPE = "change_type";
+
+
+    public static String[] images = new String[]{
+            "http://himg2.huanqiu.com/attachment2010/2017/1102/20171102070437102.jpg"
+            , "https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=f4eda2c00a3b5bb5aada28ac57babe5c/a2cc7cd98d1001e9e5d8b764b10e7bec55e797f1.jpg"
+            , "https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c6b4fc9adeca7bcb6976cf7ddf600006/6d81800a19d8bc3e058fc3938b8ba61ea9d345e0.jpg",
+            "http://img.mp.itc.cn/upload/20170523/c9f0ced28fe840e59c0453324a588e24_th.jpg",
+            "https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=99fd5adf6e061d95694b3f6a1a9d61b4/0b46f21fbe096b63c6d87db70c338744eaf8ac17.jpg",
+            "http://images.china.cn/attachement/jpg/site1000/20161208/d02788e9b28a19b2e80924.jpg",
+            "http://upload.cankaoxiaoxi.com/2017/0601/1496319083789.jpg"
+            , "http://upload.cankaoxiaoxi.com/2017/0712/1499848728394.jpg"
+            , "http://img5.pcpop.com/ArticleImages/730x547/3/3651/003651969.jpg",
+            "https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=f0334a2c43540923be646b2cf331ba6c/f703738da9773912ce99316ef2198618367ae206.jpg",
+        "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4c5ed0afe7dde711f3df4ba4c686a57e/d01373f082025aaf3d331e61f9edab64034f1a12.jpg"
+    };
+
 }

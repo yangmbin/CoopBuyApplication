@@ -81,7 +81,10 @@
                 android:layout_marginLeft="@dimen/dimen_px31"
                 android:layout_weight="1"
                 android:text="@string/lab_set_clear_images" />
-
+            <TextView
+                android:id="@+id/tv_size"
+                android:text=""
+                style="@style/text_black_size_28_878f94" />
             <ImageView
                 style="@style/image_more"
                 android:layout_marginRight="@dimen/dimen_px20" />

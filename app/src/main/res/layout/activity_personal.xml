@@ -37,8 +37,10 @@
                 android:layout_width="@dimen/dimen_px110"
                 android:layout_height="@dimen/dimen_px110"
                 fresco:actualImageScaleType="centerCrop"
-                fresco:placeholderImage="@mipmap/icon_default_head"
                 fresco:placeholderImageScaleType="centerCrop"
+                fresco:placeholderImage="@mipmap/default_img"
+                android:scaleType="centerCrop"
+                android:background="@drawable/bg_round_corner_imageholder"
                 fresco:roundAsCircle="true" />
 
             <ImageView

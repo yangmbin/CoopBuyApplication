@@ -23,7 +23,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_px33"
             fresco:actualImageScaleType="centerCrop"
-            fresco:placeholderImage="@mipmap/icon_default_head"
+            fresco:placeholderImage="@mipmap/default_img"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_round_corner_imageholder"
             fresco:placeholderImageScaleType="centerCrop"
             fresco:roundAsCircle="true" />
 

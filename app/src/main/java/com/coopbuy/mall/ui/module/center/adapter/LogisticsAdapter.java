@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
+import com.coopbuy.mall.utils.Constants;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -39,15 +40,7 @@ public class LogisticsAdapter extends RecyclerView.Adapter<LogisticsAdapter.Hold
     @Override
     public void onBindViewHolder(LogisticsAdapter.Holder holder, int position) {
         MessageCenterResponse srr = data.get(position);
-        if (srr.getType() == 0) {
-            holder.logo.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509518176983&di=dc453196584a03ad8da581ac925750ad&imgtype=0&src=http%3A%2F%2Fwww.tusuku.com%2Fimg%2Fzhujiao-img%2F20150420214459_124.jpg");
-        } else if (srr.getType() == 1) {
-            holder.logo.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509518218513&di=7cdb51a7602b47fa88abe3f3ecac2a18&imgtype=0&src=http%3A%2F%2Fimg.tvmao.com%2Fthumb%2Fcharacter%2F149%2F630%2F260x346.jpg");
-        } else if (srr.getType() == 2) {
-            holder.logo.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509518249390&di=5a0fdcefafac0496a7c9ff85b8a02569&imgtype=0&src=http%3A%2F%2Fnews.cnhubei.com%2Fxw%2Fyl%2F201405%2FW020140525547566409638.jpg");
-        } else {
-            holder.logo.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510113013&di=5c1d5afeb8e78cf20825e9ae497daa5d&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D08163430b6315c60579863ace5d8a166%2F35a85edf8db1cb13a1bca436d754564e92584b3a.jpg");
-        }
+        holder.logo.setImageURI(Constants.images[position]);
         holder.enter.setOnClickListener(new MyClick(position));
         holder.mName.setText(srr.getName());
         holder.mGoodsName.setText(srr.getDetail());

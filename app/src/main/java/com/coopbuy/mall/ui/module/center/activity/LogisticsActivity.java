@@ -58,7 +58,7 @@ public class LogisticsActivity extends BaseActivity<LogisticsPresenter, Logistic
     }
 
     private void setData() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             MessageCenterResponse d = new MessageCenterResponse();
             d.setDetail("ssssdf" + i);
             if (i == 0)

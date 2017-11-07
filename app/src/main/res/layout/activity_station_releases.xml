@@ -10,7 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px88"
         android:background="@color/edit_text_back_white">
+        <RelativeLayout
+            android:id="@+id/titlebar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px30">
 
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_titlebar_back" />
+        </RelativeLayout>
         <RadioGroup
             android:id="@+id/main_top_rg"
             android:layout_width="wrap_content"

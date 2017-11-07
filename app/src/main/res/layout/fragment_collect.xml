@@ -18,6 +18,7 @@
             android:textSize="@dimen/dimen_px36" />
 
         <TextView
+            android:id="@+id/tv_freshen_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -30,33 +31,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/theme_back_white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/rl_release">
+            android:layout_above="@+id/rl_release"
+            android:orientation="vertical">
 
             <include layout="@layout/include_recy_refresh_nohead" />
+
         </LinearLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px260"
-            android:layout_above="@+id/rl_release"
-            android:background="@color/black_10">
-
-            <TextView
-                style="@style/white_size_32_ffffff"
-                android:layout_centerInParent="true"
-                android:background="@drawable/shape_white_1_no_solid_bg"
-                android:paddingBottom="@dimen/dimen_px45"
-                android:paddingLeft="@dimen/dimen_px176"
-                android:paddingRight="@dimen/dimen_px176"
-                android:paddingTop="@dimen/dimen_px45"
-                android:text="选满了哟~" />
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_release"
@@ -65,7 +51,10 @@
             android:layout_alignParentBottom="true"
             android:background="@color/edit_text_back_white">
 
+            <include layout="@layout/include_divider_1px_line_theme_white" />
+
             <TextView
+                android:id="@+id/tv_release"
                 style="@style/text_orange_size_26_ff"
                 android:layout_centerInParent="true"
                 android:background="@drawable/black_rectangle_btn_press_black"
@@ -73,8 +62,8 @@
                 android:paddingLeft="@dimen/dimen_px166"
                 android:paddingRight="@dimen/dimen_px166"
                 android:paddingTop="@dimen/dimen_px29"
-                android:textSize="@dimen/dimen_px30"
-                android:text="添加到发布" />
+                android:text="添加到发布"
+                android:textSize="@dimen/dimen_px30" />
         </RelativeLayout>
     </RelativeLayout>
 

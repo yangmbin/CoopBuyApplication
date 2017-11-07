@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.mainpage.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -169,7 +170,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.circleImageView:
-                enter(PersonalActivity.class, userInfo);
+                if (null != userInfo)
+                    enter(PersonalActivity.class, userInfo);
                 break;
             case R.id.ll_shopcart:
                 enter(ShopCartActivity.class, null);
@@ -189,7 +191,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             case R.id.ll_station:
                 enter(StationRecommendActivity.class, null);
 
-                enter(StationReleasesActivity.class,null);
+                enter(StationReleasesActivity.class, null);
                 break;
             case R.id.ll_help:
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
@@ -249,7 +251,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         } else {
             backImage.setImageURI(data.getFestivalImageUrl());
         }
-        if (null == data.getUserInfo().getHeadPortraitPath()) {
+        if (null != data.getUserInfo().getHeadPortraitPath() || !TextUtils.isEmpty(data.getUserInfo().getHeadPortraitPath())) {
             head.setImageURI("http://upload.cankaoxiaoxi.com/2017/0601/1496319083789.jpg");
         } else {
             head.setImageURI(data.getUserInfo().getHeadPortraitPath());
