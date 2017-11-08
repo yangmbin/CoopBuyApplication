@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author csn
@@ -41,7 +42,7 @@ public class StationRecAdapter extends RecyclerView.Adapter<StationRecAdapter.Ho
     @Override
     public void onBindViewHolder(StationRecAdapter.Holder holder, int position) {
         StationRecommendResponse srr = data.get(position);
-        holder.iv_logo.setImageURI(Constants.images[position]);
+        holder.iv_logo.setImageURI(Constants.images[(new Random().nextInt(13) +1)]);
         holder.tv_name.setText(srr.getName());
         holder.oldPrice.setText("￥" + srr.getOldPirce());
         holder.salePrice.setText("￥" + srr.getSalePrice());

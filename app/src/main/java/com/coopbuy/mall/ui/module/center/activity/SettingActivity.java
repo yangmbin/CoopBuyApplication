@@ -94,7 +94,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter, SettingModel
                             }
                         }).start();
                     }
-                }, "确定清除本地缓存？", "取消", "确定");
+                }, "确定清除本地缓存?", "取消", "确定");
                 break;
             case R.id.iv_check_movement:
                 break;

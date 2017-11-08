@@ -159,6 +159,22 @@ public class Constant {
      * 话费订单提交
      */
     public static final String SUBMITORDER = "api/services/app/prepaid/SubmitOrder";
+    /**
+     * 站长推荐列表
+     */
+  public static final String RECOMMENDPRODUCTS = "api/services/app/station/RecommendProducts";
+    /**
+     * 更新站长推荐的商品是否选中
+     */
+ public static final String UPDATESELECTSTATUS = "api/services/app/station/UpdateSelectStatus";
+    /**
+     * 发布商品
+     */
+ public static final String PUBLISHPRODUCT = "api/services/app/station/PublishProduct";
+    /**
+     * 移除发布的商品
+     */
+    public static final String REMOVEFAVORITESKU = "api/services/app/station/RemoveFavoriteSku";
 
 
     /**

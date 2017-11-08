@@ -8,4 +8,6 @@ public interface CollectPort {
     void openDetial(int postion);
 
     void quantityClick(int postion);
+
+    void remove(int postion);
 }

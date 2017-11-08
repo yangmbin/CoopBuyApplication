@@ -16,6 +16,7 @@ import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.ui.module.center.port.CollectPort;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.coopbuy.mall.utils.Constants;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -26,14 +27,26 @@ import java.util.List;
  * @content 物流
  */
 public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> {
-    private List<CollectResponse> data;
+    private List<CollectResponse.ItemsBean> data;
     private CollectPort port;
 
-    public CollectAdapter(List<CollectResponse> data, CollectPort port) {
+    public CollectAdapter(List<CollectResponse.ItemsBean> data, CollectPort port) {
         this.data = data;
         this.port = port;
     }
 
+    public void addMore(List<CollectResponse.ItemsBean> data) {
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void refresh(List<CollectResponse.ItemsBean> data) {
+        if (!this.data.isEmpty()) {
+            this.data.clear();
+        }
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
 
     @Override
     public CollectAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,26 +56,30 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
 
     @Override
     public void onBindViewHolder(CollectAdapter.Holder holder, int position) {
-        CollectResponse srr = data.get(position);
-        holder.logo.setImageURI(Constants.images[position]);
-        holder.enter.setOnClickListener(new MyClick(position));
-        holder.mLlGoodsSelect.setOnClickListener(new MyClick(position));
-        holder.mGoodsName.setText(srr.getName());
-        holder.mCount.setText("已售：" + srr.getSaleCounts());
-        holder.mPrice.setText("$" + srr.getPrice());
-        holder.mViersion.setText(srr.getVersion());
-        if (srr.isSelect()) {
+        CollectResponse.ItemsBean srr = data.get(position);
+        holder.logo.setImageURI(srr.getProductImageUrl());
+        holder.enter.setOnClickListener(new MyClick(position, srr));
+        holder.mLlGoodsSelect.setOnClickListener(new MyClick(position, srr));
+        holder.mGoodsName.setText(srr.getProductName());
+        holder.mCount.setText("已售：" + srr.getSales());
+        holder.mPrice.setText("￥" + srr.getUnitPrice());
+        holder.mViersion.setText(srr.getProperties());
+        if (srr.isSelected()) {
             holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_checked);
         } else {
             holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_unchecked);
         }
-        if (srr.getCount() != 5) {
+        if (srr.getCurrentSelectedProductCount() != srr.getCurrentMaxPublishCount()) {
             holder.mRlFull.setVisibility(View.GONE);
         } else {
-            if (srr.isSelect()) {
+            if (srr.isSelected()) {
                 holder.mRlFull.setVisibility(View.GONE);
             } else {
-                holder.mRlFull.setVisibility(View.VISIBLE);
+                if (srr.isCanPublish()) {
+                    holder.mRlFull.setVisibility(View.GONE);
+                } else {
+                    holder.mRlFull.setVisibility(View.VISIBLE);
+                }
             }
         }
         if (data.size() - 1 == position) {
@@ -74,9 +91,11 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
 
     class MyClick implements View.OnClickListener {
         private int postion;
+        private CollectResponse.ItemsBean srr;
 
-        public MyClick(int postion) {
+        public MyClick(int postion, CollectResponse.ItemsBean srr) {
             this.postion = postion;
+            this.srr = srr;
         }
 
         @Override
@@ -86,37 +105,13 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
                     port.openDetial(postion);
                     break;
                 case R.id.ll_iamge_check:
-                    setSelect(postion);
+                    if (srr.getCurrentSelectedProductCount() == srr.getCurrentMaxPublishCount() && !srr.isSelected()) {
+                        return;
+                    }
+                    port.quantityClick(postion);
                     break;
-
             }
         }
-    }
-
-    private void setSelect(int postion) {
-        boolean sele = !data.get(postion).isSelect();
-        int count = data.get(postion).getCount();
-        int countAvailable = data.get(postion).getCountAvailable();
-        if (count == countAvailable && sele) {
-            return;
-        }
-        if (sele) {
-            ++count;
-            if (count > countAvailable) {
-                count = countAvailable;
-            }
-        } else {
-            --count;
-            if (count < 0) {
-                count = 0;
-            }
-        }
-        data.get(postion).setSelect(sele);
-        for (int i = 0; i < data.size(); i++) {
-            data.get(i).setCount(count);
-        }
-        port.quantityClick(countAvailable - count);
-        notifyDataSetChanged();
     }
 
     @Override

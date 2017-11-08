@@ -11,10 +11,13 @@ import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.MyCustomActivity;
+import com.coopbuy.mall.ui.module.center.activity.StationReleasesActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -57,7 +60,7 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
 
                         break;
                     case "我的推荐":
-
+                        IntentUtils.gotoActivity(mContext, StationReleasesActivity.class);
                         break;
                 }
                 ToastUtils.toastShort(item.getName());

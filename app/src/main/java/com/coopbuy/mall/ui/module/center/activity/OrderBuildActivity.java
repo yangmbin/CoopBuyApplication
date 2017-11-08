@@ -11,16 +11,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.AddressInfoResponse;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.eventbus.EventBusInstance;
+import com.coopbuy.mall.eventbus.MainEvent;
 import com.coopbuy.mall.ui.module.center.adapter.OrderBuildAdapter;
 import com.coopbuy.mall.ui.module.center.model.OrderBuildModel;
 import com.coopbuy.mall.ui.module.center.pay.NewPayWindowActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderBuildPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderBuild_IView;
 import com.coopbuy.mall.utils.IntentUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -113,6 +119,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
 
     @Override
     public void initView() {
+        EventBusInstance.getInstance().registerEvent(this);
         setTitle("订单确认");
         if (null != getIntent()) {
             request = (OrderBuildRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
@@ -283,5 +290,19 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
         submitRequest.setShops(shops);
         submitRequest.setGoodsCounts(mTotalNum);
         submitRequest.setTotalPrice(df.format(mTotalPrice));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBusInstance.getInstance().unRegisterEvent(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThreadrep(AddressInfoResponse event) {
+        if (event != null) {
+            request.setAddressId(event.getAddressId());
+            mPresenter.getOrderBuildData(request);
+        }
     }
 }

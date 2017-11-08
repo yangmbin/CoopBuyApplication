@@ -19,6 +19,7 @@ import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author csn
@@ -26,11 +27,11 @@ import java.util.List;
  * @content 物流
  */
 public class ReleaseAdapter extends RecyclerView.Adapter<ReleaseAdapter.Holder> {
-    private List<CollectResponse> data;
+    private List<CollectResponse.ItemsBean> data;
     private CollectPort port;
     private Context context;
 
-    public ReleaseAdapter(Context context, List<CollectResponse> data, CollectPort port) {
+    public ReleaseAdapter(Context context, List<CollectResponse.ItemsBean> data, CollectPort port) {
         this.data = data;
         this.context = context;
         this.port = port;
@@ -44,29 +45,28 @@ public class ReleaseAdapter extends RecyclerView.Adapter<ReleaseAdapter.Holder> 
     }
 
     @Override
-    public void onBindViewHolder(ReleaseAdapter.Holder holder, int position) {
-        CollectResponse srr = data.get(position);
-        holder.logo.setImageURI(Constants.images[position]);
-        holder.enter.setOnClickListener(new MyClick(position));
-        holder.mLlGoodsSelect.setOnClickListener(new MyClick(position));
-        holder.mGoodsName.setText(srr.getName());
-        holder.mCount.setText("已售：" + srr.getSaleCounts());
-        holder.mPrice.setText("$" + srr.getPrice());
-        holder.mViersion.setText(srr.getVersion());
-        if (srr.isSelect()) {
-            holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_checked);
-        } else {
-            holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_unchecked);
-        }
-        if (srr.getCount() != 5) {
-            holder.mRlFull.setVisibility(View.GONE);
-        } else {
-            if (srr.isSelect()) {
-                holder.mRlFull.setVisibility(View.GONE);
-            } else {
-                holder.mRlFull.setVisibility(View.VISIBLE);
+    public void onBindViewHolder(ReleaseAdapter.Holder holder, final int position) {
+        CollectResponse.ItemsBean srr = data.get(position);
+        holder.logo.setImageURI(srr.getProductImageUrl());
+        holder.enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                port.openDetial(position);
             }
-        }
+        });
+        holder.enter.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                port.remove(position);
+                return true;
+            }
+        });
+        holder.mGoodsName.setText(srr.getProductName());
+        holder.mCount.setText("已售：" + srr.getSales());
+        holder.mPrice.setText("￥" + srr.getUnitPrice());
+        holder.mViersion.setText(srr.getProperties());
+        holder.mRlFull.setVisibility(View.GONE);
+        holder.mLlGoodsSelect.setVisibility(View.GONE);
         if (data.size() - 1 == position) {
             holder.mLine.setVisibility(View.VISIBLE);
         } else {
@@ -74,26 +74,6 @@ public class ReleaseAdapter extends RecyclerView.Adapter<ReleaseAdapter.Holder> 
         }
     }
 
-    class MyClick implements View.OnClickListener {
-        private int postion;
-
-        public MyClick(int postion) {
-            this.postion = postion;
-        }
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.main:
-                    port.openDetial(postion);
-                    break;
-                case R.id.ll_iamge_check:
-                    moveRelase(postion);
-                    break;
-
-            }
-        }
-    }
 
     /**
      * 取消订单

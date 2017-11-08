@@ -6,16 +6,41 @@
     tools:context="com.coopbuy.mall.ui.module.center.fragment.CollectFragment">
 
     <RelativeLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px240"
         android:background="@color/theme_text_lab_black">
 
-        <TextView
-            android:id="@+id/tv_release_counts"
-            style="@style/text_orange_size_26_ff"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="可选择5件商品加入发布"
-            android:textSize="@dimen/dimen_px36" />
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_release_time"
+                style="@style/text_orange_size_26_ff"
+                android:text=""
+                android:textSize="@dimen/dimen_px36" />
+
+            <TextView
+                style="@style/text_orange_size_26_ff"
+                android:layout_toRightOf="@+id/tv_release_time"
+                android:text=" 可发布"
+                android:textSize="@dimen/dimen_px36" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_relase_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_px29"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_marginRight="@dimen/dimen_px31"
+            android:layout_marginTop="@dimen/dimen_px30"
+            android:text="您当前的可推荐商品数量为：5"
+            android:textColor="@color/white_3" />
 
         <TextView
             android:id="@+id/tv_freshen_time"
@@ -30,6 +55,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/theme_back_white">
@@ -37,21 +63,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/rl_release"
+            android:layout_marginBottom="@dimen/dimen_px120"
             android:orientation="vertical">
 
-            <include layout="@layout/include_recy_refresh_nohead" />
+            <include layout="@layout/include_recy_refresh_have_head_foot" />
 
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_release"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px120"
             android:layout_alignParentBottom="true"
             android:background="@color/edit_text_back_white">
 
             <include layout="@layout/include_divider_1px_line_theme_white" />
+
 
             <TextView
                 android:id="@+id/tv_release"
@@ -62,8 +88,10 @@
                 android:paddingLeft="@dimen/dimen_px166"
                 android:paddingRight="@dimen/dimen_px166"
                 android:paddingTop="@dimen/dimen_px29"
-                android:text="添加到发布"
+                android:text="发布"
                 android:textSize="@dimen/dimen_px30" />
+
+
         </RelativeLayout>
     </RelativeLayout>
 

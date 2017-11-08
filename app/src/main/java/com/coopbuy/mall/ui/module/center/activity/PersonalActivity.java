@@ -7,9 +7,12 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -46,8 +49,8 @@ public class PersonalActivity extends BaseActivity {
     public void initView() {
         if (null != getIntent()) {
             userInfoBean = (UserCenterInfoResponse.UserInfoBean) getIntent().getSerializableExtra(IntentUtils.DATA);
-            if (null == userInfoBean.getHeadPortraitPath() || !TextUtils.isEmpty(userInfoBean.getHeadPortraitPath())) {
-                circleImageView.setImageURI("https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1508241681&di=515b29d6539ab215958b593931ba68c7&src=http://www.aluminiumstock.com/images/article2/5588609-1.jpg");
+            if (null == userInfoBean.getHeadPortraitPath() || TextUtils.isEmpty(userInfoBean.getHeadPortraitPath())) {
+                circleImageView.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
             } else {
                 circleImageView.setImageURI(userInfoBean.getHeadPortraitPath());
             }

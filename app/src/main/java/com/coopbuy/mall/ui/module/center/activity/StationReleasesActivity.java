@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioButton;
@@ -10,8 +9,9 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.eventbus.CollectEvent;
 import com.coopbuy.mall.eventbus.EventBusInstance;
-import com.coopbuy.mall.eventbus.MainEvent;
 import com.coopbuy.mall.eventbus.ReleaseEvent;
+import com.coopbuy.mall.ui.mainpage.fragment.CenterFragment;
+import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.module.center.adapter.StationsPagerAdapter;
 import com.coopbuy.mall.ui.module.center.fragment.CollectFragment;
 import com.coopbuy.mall.ui.module.center.fragment.ReleasesFragment;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class StationReleasesActivity extends BaseActivity {
@@ -31,7 +30,7 @@ public class StationReleasesActivity extends BaseActivity {
     RadioButton mRbRelease;
     @Bind(R.id.main_top_rg)
     RadioGroup mainTopRg;
-    @Bind(R.id.main_viewpager)
+    @Bind(R.id.main)
     ViewPager mainViewpager;
 
     @Override
@@ -56,8 +55,10 @@ public class StationReleasesActivity extends BaseActivity {
 
     private void initEvent() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new CollectFragment());
-        fragments.add(new ReleasesFragment());
+        CollectFragment collectFragment = new CollectFragment();
+        ReleasesFragment re = new ReleasesFragment();
+        fragments.add(collectFragment);
+        fragments.add(re);
         StationsPagerAdapter pagerAdapter = new StationsPagerAdapter(getSupportFragmentManager(), fragments);
         mainViewpager.setAdapter(pagerAdapter);
         mainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

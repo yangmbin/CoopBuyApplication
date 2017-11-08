@@ -10,6 +10,7 @@ import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
+import com.coopbuy.mall.api.reponse.CollectResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
@@ -44,6 +45,7 @@ import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
+import com.coopbuy.mall.api.request.CollectRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -64,6 +66,7 @@ import com.coopbuy.mall.api.request.OrderSubmitRequest;
 import com.coopbuy.mall.api.request.PageRequest;
 import com.coopbuy.mall.api.request.PayListRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
+import com.coopbuy.mall.api.request.PublishProductRequest;
 import com.coopbuy.mall.api.request.ReApplyRefundAllRequest;
 import com.coopbuy.mall.api.request.ReApplyRefundOneRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
@@ -579,6 +582,7 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.MOBILECARDLIST, callback, userState);
     }
 
+
     /**
      * 电话充值归属地查询
      *
@@ -603,6 +607,55 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState submitMobile(MobilePayRequest request, IAsyncResultCallback<OrderSubmitResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<OrderSubmitResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SUBMITORDER, request, callback, userState);
+    }
+
+    /**
+     * 站长推荐列表
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getCollectData(CollectRequest request, IAsyncResultCallback<CollectResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CollectResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.RECOMMENDPRODUCTS, request, callback, userState);
+
+    }
+
+    /**
+     * 更新推荐的商品是否选中
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState updateStatus(SkuDetailRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.UPDATESELECTSTATUS, request, callback, userState);
+    }
+
+    /**
+     * 站长发布商品
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState publishProduct(PublishProductRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.PUBLISHPRODUCT, request, callback, userState);
+    }
+
+    /**
+     * 移除发布的商品
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState removeFovorite(SkuDetailRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVEFAVORITESKU, request, callback, userState);
     }
 
 
@@ -840,6 +893,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 撤销退款申请
+     *
      * @param request
      * @param callback
      * @param userState

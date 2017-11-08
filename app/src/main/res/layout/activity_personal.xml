@@ -40,8 +40,7 @@
                 fresco:placeholderImageScaleType="centerCrop"
                 fresco:placeholderImage="@mipmap/default_img"
                 android:scaleType="centerCrop"
-                android:background="@drawable/bg_round_corner_imageholder"
-                fresco:roundAsCircle="true" />
+                fresco:roundAsCircle="true"  />
 
             <ImageView
                 style="@style/image_more"

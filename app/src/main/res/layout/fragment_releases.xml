@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,53 +6,7 @@
     tools:context="com.coopbuy.mall.ui.module.center.fragment.CollectFragment">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px240"
-        android:background="@color/theme_text_lab_black">
-
-        <TextView
-            android:id="@+id/tv_release_counts"
-            style="@style/text_orange_size_26_ff"
-            android:layout_centerInParent="true"
-            android:text="13:60:00"
-            android:textSize="@dimen/dimen_px36" />
-
-        <TextView
-            android:id="@+id/tv_relase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/dimen_px29"
-            android:layout_marginLeft="@dimen/dimen_px10"
-            android:layout_marginRight="@dimen/dimen_px31"
-            android:layout_toRightOf="@id/tv_release_counts"
-            android:text="后可发布推荐"
-            android:textColor="@color/white_3" />
-
-        <TextView
-            android:id="@+id/tv_relase_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_px29"
-            android:layout_marginLeft="@dimen/dimen_px30"
-            android:layout_marginRight="@dimen/dimen_px31"
-            android:layout_marginTop="@dimen/dimen_px30"
-            android:text="您当前的可推荐商品数量为：5"
-            android:textColor="@color/white_3" />
-
-        <TextView
-            android:id="@+id/tv_freshen_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/dimen_px29"
-            android:layout_marginRight="@dimen/dimen_px31"
-            android:text="（每日00:00分刷新限额）"
-            android:textColor="@color/white_3" />
-    </RelativeLayout>
-
-    <RelativeLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/theme_back_white">
@@ -68,42 +21,5 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_release"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px120"
-            android:layout_alignParentBottom="true"
-            android:background="@color/edit_text_back_white">
-
-            <include layout="@layout/include_divider_1px_line_theme_white" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dimen_px20"
-                android:layout_centerInParent="true"
-                android:background="@drawable/black_rectangle_btn_unpress_gray"
-              >
-
-                <TextView
-                    android:id="@+id/tv_release"
-                    style="@style/text_orange_size_26_ff"
-                    android:text="发布"
-                    android:visibility="gone"
-                    android:textSize="@dimen/dimen_px30" />
-
-                <com.coopbuy.mall.widget.time.TimeViewComm
-                    android:id="@+id/timeout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:tvc_textSize="@dimen/dimen_px30"
-                    app:tvc_textColor="@color/theme_back_white"
-                    app:tvc_spaceColor="@color/theme_back_white"
-                    app:tvc_backgroundColor="@color/btn_back_gray_unpress"
-                    app:tvc_radius="0dp" />
-            </RelativeLayout>
-
-        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

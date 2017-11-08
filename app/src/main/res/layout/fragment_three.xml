@@ -43,7 +43,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="@dimen/dimen_px400"
+                        android:layout_width="@dimen/dimen_px420"
                         android:layout_height="@dimen/dimen_px150"
                         android:background="@drawable/black_rectangle_center_gray"
                         android:orientation="horizontal">
@@ -60,8 +60,7 @@
                                 android:layout_width="@dimen/dimen_px110"
                                 android:layout_height="@dimen/dimen_px110"
                                 fresco:actualImageScaleType="centerCrop"
-                                fresco:placeholderImage="@mipmap/icon_default_head"
-                                fresco:placeholderImageScaleType="centerCrop"
+                                fresco:placeholderImage="@mipmap/default_img"
                                 fresco:roundAsCircle="true" />
 
                             <ImageView

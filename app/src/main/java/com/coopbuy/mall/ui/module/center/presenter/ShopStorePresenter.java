@@ -35,10 +35,21 @@ public class ShopStorePresenter extends BasePresenter<ShopStore_IView, ShopStore
         mView.appendNetCall(mModel.getShopStoreList(request, new IAsyncResultCallback<ShopStoreReponse>() {
             @Override
             public void onComplete(ShopStoreReponse skuInfoBean, Object userState) {
+                mView.stopRefresh();
                 if (null != skuInfoBean) {
-                    mView.getShopStoreList(skuInfoBean, type);
+                    if (skuInfoBean.getItems().isEmpty()) {
+                        if (type.equals("more")) {
+                            ToastUtils.toastShort("没有数据了");
+                            mView.stopAll();
+                        } else {
+                            mView.showNoDataLayout();
+                        }
+                    } else {
+                        mView.getShopStoreList(skuInfoBean, type);
+                        mView.stopAll();
+                    }
                 }
-                mView.stopAll();
+
             }
 
             @Override

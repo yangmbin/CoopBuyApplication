@@ -33,6 +33,7 @@ import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Center_IView;
+import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
@@ -45,6 +46,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -79,6 +81,11 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     LinearLayout llLocation;
     @Bind(R.id.ll_search)
     LinearLayout llSearch;
+    /**
+     * 普通用户可以展示  站长不展示
+     */
+    @Bind(R.id.ll_station)
+    LinearLayout llStation;
     //站长类型
     @Bind(R.id.ll_station_status)
     LinearLayout llStationStatus;
@@ -190,8 +197,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 break;
             case R.id.ll_station:
                 enter(StationRecommendActivity.class, null);
-
-                enter(StationReleasesActivity.class, null);
                 break;
             case R.id.ll_help:
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
@@ -247,12 +252,12 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         tvCollectNumber.setText(data.getFavoriteShopCount() + "");
         tvFootmarkNumber.setText(data.getBrowseProductCount() + "");
         if (null == data.getFestivalImageUrl()) {
-            backImage.setImageURI("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=34770936,2075106657&fm=173&s=249016D94C42534510A4F46B03007057&w=639&h=387&img.JPG");
+            backImage.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
         } else {
             backImage.setImageURI(data.getFestivalImageUrl());
         }
         if (null != data.getUserInfo().getHeadPortraitPath() || !TextUtils.isEmpty(data.getUserInfo().getHeadPortraitPath())) {
-            head.setImageURI("http://upload.cankaoxiaoxi.com/2017/0601/1496319083789.jpg");
+            head.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
         } else {
             head.setImageURI(data.getUserInfo().getHeadPortraitPath());
         }
@@ -264,7 +269,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
     private void setUserInfo() {
         if (userInfo.isIsStationUser()) {
-            //  llStationStatus.setVisibility(View.VISIBLE);
+            llStationStatus.setVisibility(View.VISIBLE);
+            llStation.setVisibility(View.GONE);
             if (userInfo.getStationUserRoleName().equals("站长")) {
                 ivLab.setImageResource(R.mipmap.icon_station);
             } else {
@@ -272,7 +278,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             }
         } else {
             ivLab.setImageResource(R.mipmap.icon_vip);
-            //  llStationStatus.setVisibility(View.GONE);
+            llStationStatus.setVisibility(View.GONE);
+            llStation.setVisibility(View.VISIBLE);
         }
         tvName.setText(userInfo.getUserName());
     }

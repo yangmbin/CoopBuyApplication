@@ -148,15 +148,18 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     /**
      * 网络重载按钮
      */
-    protected void networkRetry() {}
+    protected void networkRetry() {
+    }
 
     /**
      * 自定义页面按钮
      */
-    protected void customClick() {}
+    protected void customClick() {
+    }
 
     /**
      * 添加网络请求到请求列表
+     *
      * @param state
      */
     public void appendNetCall(IAsyncRequestState state) {
@@ -183,4 +186,9 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     public void onDestroy() {
         super.onDestroy();
     }
+
+    public void stopRefresh() {
+
+    }
+
 }

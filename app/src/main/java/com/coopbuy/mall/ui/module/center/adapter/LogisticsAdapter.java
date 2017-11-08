@@ -15,6 +15,7 @@ import com.coopbuy.mall.utils.Constants;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author csn
@@ -40,7 +41,7 @@ public class LogisticsAdapter extends RecyclerView.Adapter<LogisticsAdapter.Hold
     @Override
     public void onBindViewHolder(LogisticsAdapter.Holder holder, int position) {
         MessageCenterResponse srr = data.get(position);
-        holder.logo.setImageURI(Constants.images[position]);
+        holder.logo.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
         holder.enter.setOnClickListener(new MyClick(position));
         holder.mName.setText(srr.getName());
         holder.mGoodsName.setText(srr.getDetail());
