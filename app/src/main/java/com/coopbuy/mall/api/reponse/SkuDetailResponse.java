@@ -28,6 +28,7 @@ public class SkuDetailResponse implements Serializable {
     private boolean isSelfSupport;
     private String pricePropertyName;
     private String priceSpecificationsName;
+    private int stationRecommendStatus;
     private SkuInfoBean skuInfo;
     private ShopInfoBean shopInfo;
     private List<String> images;
@@ -79,6 +80,22 @@ public class SkuDetailResponse implements Serializable {
 
     public void setPriceSpecificationsName(String priceSpecificationsName) {
         this.priceSpecificationsName = priceSpecificationsName;
+    }
+
+    public boolean isSelfSupport() {
+        return isSelfSupport;
+    }
+
+    public void setSelfSupport(boolean selfSupport) {
+        isSelfSupport = selfSupport;
+    }
+
+    public int getStationRecommendStatus() {
+        return stationRecommendStatus;
+    }
+
+    public void setStationRecommendStatus(int stationRecommendStatus) {
+        this.stationRecommendStatus = stationRecommendStatus;
     }
 
     public SkuInfoBean getSkuInfo() {

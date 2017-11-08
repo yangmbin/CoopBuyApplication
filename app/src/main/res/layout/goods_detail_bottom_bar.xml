@@ -16,6 +16,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/bottom_shop_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -35,6 +36,7 @@
             </LinearLayout>
 
             <FrameLayout
+                android:id="@+id/bottom_cart_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -68,6 +70,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1">
                         <TextView
+                            android:id="@+id/cart_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1"
@@ -78,7 +81,8 @@
                             android:paddingRight="@dimen/dimen_px10"
                             android:textSize="@dimen/text_size_px20"
                             android:background="@drawable/bg_round_corner_red_1"
-                            android:layout_marginTop="@dimen/dimen_px6"/>
+                            android:layout_marginTop="@dimen/dimen_px6"
+                            android:visibility="gone"/>
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>

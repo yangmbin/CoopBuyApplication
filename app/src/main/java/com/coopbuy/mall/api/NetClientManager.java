@@ -15,6 +15,7 @@ import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
 import com.coopbuy.mall.api.reponse.FootMarkResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
+import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
@@ -74,6 +75,7 @@ import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
+import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.api.request.SuggestRequest;
 import com.coopbuy.mall.api.request.UploadImageRequest;
 import com.google.gson.reflect.TypeToken;
@@ -454,6 +456,39 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState addToCart(AddToCartRequest request, IAsyncEmptyCallback callback, Object userState) {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADD_TO_CART, request, callback, userState);
+    }
+
+    /**
+     * 推荐商品收藏
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addFavorite(SkuIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADD_FAVORITE, request, callback, userState);
+    }
+
+    /**
+     * 取消推荐商品收藏
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState removeFavorite(SkuIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVE_FAVORITE, request, callback, userState);
+    }
+
+    /**
+     * 获取购物车数量
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getCartQuantity(IAsyncResultCallback<GetCartQuantityResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<GetCartQuantityResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_CART_QUANTITY, callback, userState);
     }
 
     /**
@@ -860,7 +895,7 @@ public class NetClientManager extends BaseApiClient {
      */
     public IAsyncRequestState getShippingCampanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<ShippingCompanyResponse>>() {
-        }.getType(), Constant.SERVER_URL_NEW + Constant.SHIPPING_COMPANY_LIST, null, callback, userState);
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SHIPPING_COMPANY_LIST, callback, userState);
     }
 
     /**

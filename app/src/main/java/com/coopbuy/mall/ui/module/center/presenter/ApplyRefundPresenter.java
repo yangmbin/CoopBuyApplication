@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.coopbuy.mall.api.reponse.BeforeApplyRefundResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
@@ -29,20 +30,22 @@ public class ApplyRefundPresenter extends BasePresenter<ApplyRefund_IView, Apply
     /**
      * 上传图片
      * @param request
+     * @param localPath
      */
-    public void uploadImage(UploadImageRequest request) {
+    public void uploadImage(UploadImageRequest request, final String localPath) {
         mView.showTransLoading();
         mView.appendNetCall(mModel.uploadImage(request, new IAsyncResultCallback<UploadImageResponse>() {
             @Override
             public void onComplete(UploadImageResponse uploadImageResponse, Object userState) {
                 ToastUtils.toastShort("上传成功");
-                mView.uploadImageSuccess(uploadImageResponse);
+                mView.uploadImageSuccess(uploadImageResponse, localPath);
                 mView.stopAll();
             }
 
             @Override
             public void onError(NetworkException error, Object userState) {
                 ToastUtils.toastShort("上传失败");
+                Log.e("yangmbin", error.getMessage());
                 mView.stopAll();
             }
         }, "上传图片"));

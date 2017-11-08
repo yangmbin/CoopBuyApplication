@@ -9,7 +9,7 @@ import com.coopbuy.mall.base.BaseView;
  * Create at 2017/10/24 20:29
  */
 public interface ApplyRefund_IView extends BaseView {
-    void uploadImageSuccess(UploadImageResponse uploadImageResponse);
+    void uploadImageSuccess(UploadImageResponse uploadImageResponse, String localPath);
     void setBeforeApplyRefundData(BeforeApplyRefundResponse beforeApplyRefundResponse);
     void submitApplyRefundSuccess();
 }

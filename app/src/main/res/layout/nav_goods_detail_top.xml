@@ -41,12 +41,15 @@
             android:layout_centerInParent="true"/>
 
         <FrameLayout
+            android:id="@+id/fl_favorite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/dimen_px30"
             android:paddingRight="@dimen/dimen_px30"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:visibility="gone">
             <ImageView
+                android:id="@+id/iv_favorite"
                 android:layout_width="@dimen/dimen_px44"
                 android:layout_height="@dimen/dimen_px44"
                 android:src="@mipmap/icon_recommend_unselect"
