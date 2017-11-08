@@ -6,6 +6,7 @@ import android.content.Context;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
+import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.AddToCartRequest;
@@ -13,7 +14,9 @@ import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
+import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.base.BasePresenter;
+import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_1;
 import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_2;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
@@ -28,11 +31,17 @@ import java.util.List;
 
 public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, GoodsDetailModel> {
 
+    private GoodsDetailActivity goodsDetailActivity;
     private GoodsDetailFragment_1 fragment_1;
     private GoodsDetailFragment_2 fragment_2;
 
     public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetail_IView view) {
         super(context, model, view);
+    }
+
+    public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetailActivity view) {
+        super(context, model, view);
+        goodsDetailActivity = view;
     }
 
     public GoodsDetailPresenter(Context context, GoodsDetailModel model, GoodsDetailFragment_1 view) {
@@ -202,6 +211,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
             @Override
             public void onComplete(Object userState) {
                 fragment_1.addToCartSuccess();
+                mView.stopAll();
             }
 
             @Override
@@ -210,5 +220,68 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                 ToastUtils.toastShort(error.getMessage());
             }
         }, "加入商品到购物车"));
+    }
+
+
+    /**
+     * 推荐商品收藏
+     * @param request
+     */
+    public void addFavorite(SkuIdRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.addFavorite(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                goodsDetailActivity.addFavoriteSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "推荐商品收藏"));
+    }
+
+    /**
+     * 取消推荐商品收藏
+     * @param request
+     */
+    public void removeFavorite(SkuIdRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.removeFavorite(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                goodsDetailActivity.removeFavoriteSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "取消推荐商品收藏"));
+    }
+
+
+    /**
+     * 获取购物车数量
+     */
+    public void getCartQuantity() {
+        mView.appendNetCall(mModel.getCartQuantity(new IAsyncResultCallback<GetCartQuantityResponse>() {
+            @Override
+            public void onComplete(GetCartQuantityResponse getCartQuantityResponse, Object userState) {
+                goodsDetailActivity.getCartQuantitySuccess(getCartQuantityResponse);
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                ToastUtils.toastShort(error.getMessage());
+                mView.stopAll();
+            }
+        }, "获取购物车数量"));
     }
 }

@@ -48,6 +48,7 @@ import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -83,7 +84,6 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
     private ApplyRefundGoodsListAdapter mAdapter;
     private List<BeforeApplyRefundResponse.ProductsBean> mProductList = new ArrayList<>();
     private List<String> mReasonList = new ArrayList<>();
-    private List<String> mImageList = new ArrayList<>();
     private boolean isNeedReturnGoods; // 是否需要退货
     private String mOrderId;
     private int mSkuId = -1;
@@ -193,7 +193,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
                 SelectImageDialog dialog = new SelectImageDialog(mContext, new SelectImageDialog.ClickCallBack() {
                     @Override
                     public void onTake() {
-                        File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + "upload_pic" + ".jpg");
+                        File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + UUID.randomUUID() + ".jpg");
                         if (!file.getParentFile().exists())
                             file.getParentFile().mkdirs();
                         Uri imageUri = Uri.fromFile(file);
@@ -250,7 +250,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         request.setIsNeedReturnGoods(isNeedReturnGoods);
         request.setReason(applyReason.getText().toString().trim());
         request.setExplain(explain.getText().toString().trim());
-        request.setVoucherImageUrls(mImageList);
+        request.setVoucherImageUrls(uploadView.getCurrentImages());
         request.setSkuId(mSkuId);
         request.setOrderId(mOrderId);
 
@@ -296,8 +296,9 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
      * @param uploadImageResponse
      */
     @Override
-    public void uploadImageSuccess(UploadImageResponse uploadImageResponse) {
-        Log.e("yangmbin", "upload server path:" + uploadImageResponse.getFilePath());
+    public void uploadImageSuccess(UploadImageResponse uploadImageResponse, String localPath) {
+        Log.e("yangmbin", "upload server path:" + uploadImageResponse.getImageUrl());
+        uploadView.addImage(uploadImageResponse.getImageUrl(), localPath);
     }
 
     /**
@@ -367,7 +368,7 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         UploadImageRequest request = new UploadImageRequest();
         request.setType(2);
         request.setImage(imgPath);
-        mPresenter.uploadImage(request);
+        mPresenter.uploadImage(request, result.getImage().getOriginalPath());
     }
 
     @Override

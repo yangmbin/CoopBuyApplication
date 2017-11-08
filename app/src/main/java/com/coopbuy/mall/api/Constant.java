@@ -30,6 +30,7 @@ public class Constant {
 
     //  public static final String SERVER_URL_NEW = "http://192.168.1.56:8003/";
     public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+//    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
     /**
      * 图片地址
      */
@@ -194,11 +195,13 @@ public class Constant {
     public static final String ORDER_DETAIL = "api/services/app/order/DetailInfo";
     public static final String DEFAULT_ADDRESS = "api/services/app/shippingAddress/FindDefault";
     public static final String CALCULATE_FREIGHT = "api/services/app/freight/Calculation";
-    public static final String UPLOAD_IMAGE = "api/services/app/upload/Image";
+    public static final String UPLOAD_IMAGE = "api/UploadImage";
     public static final String DELETE_ORDER = "api/services/app/order/Remove";
     public static final String CANCEL_ORDER = "api/services/app/order/Cancel";
     public static final String FIND_EXPRESS_INFO = "api/services/app/order/FindExpressInfo";
     public static final String ADD_TO_CART = "api/services/app/shoppingCart/AddProduct";
+    public static final String ADD_FAVORITE = "api/services/app/station/FavoriteSkuInfo";
+    public static final String REMOVE_FAVORITE = "api/services/app/station/RemoveFavoriteSku";
     public static final String DELAY_RECEIPT = "api/services/app/order/DelayedReceipt";
     public static final String RECEIPT = "api/services/app/order/Receipt";
     public static final String REMIND_SHIPMENT = "api/services/app/order/RemindShop";
@@ -208,4 +211,8 @@ public class Constant {
     public static final String APPLY_REFUND = "api/services/app/refund/Apply";
     public static final String REAPPLY_REFUND = "api/services/app/refund/ReApply";
     public static final String CANCEL_APPLY_REFUND = "api/services/app/refund/Cancel";
+    public static final String SHIPPING_COMPANY_LIST = "api/services/app/shipper/List";
+    public static final String SEND_GOODS = "api/services/app/refund/UpdateAddress";
+    public static final String REFUND_EXPRESS_INFO = "api/services/app/refund/FindExpressInfo";
+    public static final String GET_CART_QUANTITY = "api/services/app/shoppingCart/FindCartQuantity";
 }

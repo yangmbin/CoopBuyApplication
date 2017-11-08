@@ -1,7 +1,6 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 
 public class ExpressInfoActivity extends BaseActivity<ExpressInfoPresenter, ExpressInfoModel> implements ExpressInfo_IView {
@@ -51,7 +49,12 @@ public class ExpressInfoActivity extends BaseActivity<ExpressInfoPresenter, Expr
     @Override
     public void initPresenter() {
         mPresenter = new ExpressInfoPresenter(mContext, mModel, this);
-        mPresenter.getExpressInfo(getIntent().getStringExtra(IntentUtils.PARAM1));
+        // 订单物流
+        if (getIntent().getStringExtra(IntentUtils.PARAM2) == null)
+            mPresenter.getExpressInfo(getIntent().getStringExtra(IntentUtils.PARAM1));
+        // 退款物流
+        else
+            mPresenter.getRefundExpressInfo(getIntent().getStringExtra(IntentUtils.PARAM1));
     }
 
     @Override

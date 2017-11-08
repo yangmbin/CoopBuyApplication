@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.coopbuy.mall.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,9 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
     private SimpleDraweeView image0, image1, image2;
     private ImageView image0Delete, image1Delete, image2Delete;
     private SelectListener mListener;
-    private List<String> mCurrentImages = new ArrayList<>();
+    private List<String> mCurrentImages = new ArrayList<>(); // 网络图片
+    private List<String> mLocalImages = new ArrayList<>(); // 本地图片
+    private int mCurrentClickPos = 0; // 当前点击的位置，需要用于判断是新增图片还是替换图片
 
     public ApplyRefundUploadView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,12 +59,15 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image0:
+                mCurrentClickPos = 0;
                 mListener.onSelect();
                 break;
             case R.id.image1:
+                mCurrentClickPos = 1;
                 mListener.onSelect();
                 break;
             case R.id.image2:
+                mCurrentClickPos = 2;
                 mListener.onSelect();
                 break;
             case R.id.image0_delete:
@@ -98,10 +104,17 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
 
     /**
      * 添加图片
-     * @param imagePath
+     * @param serverPath
      */
-    private void addImage(String imagePath) {
-        mCurrentImages.add(imagePath);
+    public void addImage(String serverPath, String localPath) {
+        // 新增图片
+        if (mCurrentClickPos + 1 > mCurrentImages.size()) {
+            mCurrentImages.add(serverPath);
+            mLocalImages.add(localPath);
+        } else {
+            mCurrentImages.set(mCurrentClickPos, serverPath);
+            mLocalImages.set(mCurrentClickPos, localPath);
+        }
         updateUI();
     }
 
@@ -111,6 +124,7 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
      */
     private void deleteImage(int index) {
         mCurrentImages.remove(index);
+        mLocalImages.remove(index);
         updateUI();
     }
 
@@ -118,7 +132,7 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
      * 更新UI
      */
     private void updateUI() {
-        switch (mCurrentImages.size()) {
+        switch (mLocalImages.size()) {
             case 0:
                 image0.setVisibility(VISIBLE);
                 image1.setVisibility(GONE);
@@ -139,7 +153,7 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
                 image1Delete.setVisibility(GONE);
                 image2Delete.setVisibility(GONE);
 
-                image0.setImageURI(Uri.parse(mCurrentImages.get(0)));
+                image0.setImageURI(Uri.fromFile(new File(mLocalImages.get(0))));
                 image1.setImageURI(Uri.parse(""));
                 image2.setImageURI(Uri.parse(""));
                 break;
@@ -151,8 +165,8 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
                 image1Delete.setVisibility(VISIBLE);
                 image2Delete.setVisibility(GONE);
 
-                image0.setImageURI(Uri.parse(mCurrentImages.get(0)));
-                image1.setImageURI(Uri.parse(mCurrentImages.get(1)));
+                image0.setImageURI(Uri.fromFile(new File(mLocalImages.get(0))));
+                image1.setImageURI(Uri.fromFile(new File(mLocalImages.get(1))));
                 image2.setImageURI(Uri.parse(""));
                 break;
             case 3:
@@ -163,9 +177,9 @@ public class ApplyRefundUploadView extends RelativeLayout implements View.OnClic
                 image1Delete.setVisibility(VISIBLE);
                 image2Delete.setVisibility(VISIBLE);
 
-                image0.setImageURI(Uri.parse(mCurrentImages.get(0)));
-                image1.setImageURI(Uri.parse(mCurrentImages.get(1)));
-                image2.setImageURI(Uri.parse(mCurrentImages.get(2)));
+                image0.setImageURI(Uri.fromFile(new File(mLocalImages.get(0))));
+                image1.setImageURI(Uri.fromFile(new File(mLocalImages.get(1))));
+                image2.setImageURI(Uri.fromFile(new File(mLocalImages.get(2))));
                 break;
         }
     }

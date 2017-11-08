@@ -25,6 +25,7 @@ public class BottomListDialog {
     private View mView;
     private Dialog dialog;
     private TextView text;
+    private int mCurrentIndex = -1; // 当前选择项下标
 
     public BottomListDialog(final Context context, final List<String> list, TextView text) {
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
@@ -84,7 +85,7 @@ public class BottomListDialog {
         }
 
         @Override
-        protected void bindData(final BaseRecyclerHolder holder, int position, String item) {
+        protected void bindData(final BaseRecyclerHolder holder, final int position, String item) {
             holder.getTextView(R.id.text_content).setText(item);
             holder.getTextView(R.id.text_content).setTag(item);
             holder.getTextView(R.id.text_content).setOnClickListener(new View.OnClickListener() {
@@ -92,8 +93,17 @@ public class BottomListDialog {
                 public void onClick(View v) {
                     dialog.dismiss();
                     text.setText((String) v.getTag());
+                    mCurrentIndex = position;
                 }
             });
         }
+    }
+
+    /**
+     * 获取当前选择项下标
+     * @return
+     */
+    public int getCurrentIndex() {
+        return mCurrentIndex;
     }
 }

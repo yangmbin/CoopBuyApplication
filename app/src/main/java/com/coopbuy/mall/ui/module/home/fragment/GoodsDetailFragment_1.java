@@ -22,6 +22,7 @@ import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
 import com.coopbuy.mall.ui.module.center.activity.AddressManageActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderBuildActivity;
+import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
 import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
@@ -30,7 +31,6 @@ import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.utils.StringUtils;
-import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.DeleteLineTextView;
 import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
 import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
@@ -91,7 +91,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     TextView freight;
 
     // 首次页面进入保存的返回信息
-    private SkuDetailResponse mSkuDetailResponse;
+    private SkuDetailResponse mSkuDetailResponse = null;
     // 属性弹框
     private GoodsAttrsDialog goodsAttrsDialog = null;
     // 地址regionId
@@ -171,7 +171,8 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
      * 打开属性弹窗之前，先获取sku相关信息
      */
     public void beforeOpenAttrDialog() {
-        mPresenter.getSkuInfoListData(mSkuDetailResponse.getProductId());
+        if (mSkuDetailResponse != null)
+            mPresenter.getSkuInfoListData(mSkuDetailResponse.getProductId());
     }
 
     /**
@@ -203,8 +204,14 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
      */
     public void addToCart() {
         AddToCartRequest request = new AddToCartRequest();
-        request.setQuantity(currentQuantity);
-        request.setSkuId(currentSkuId);
+
+        AddToCartRequest.SkusBean skusBean = new AddToCartRequest.SkusBean();
+        skusBean.setSkuId(currentSkuId);
+        skusBean.setQuantity(currentQuantity);
+
+        List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
+        skusBeanList.add(skusBean);
+
         mPresenter.addToCart(request);
     }
 
@@ -218,6 +225,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         setSkuInfoData(skuInfoBean);
         // 设置属性弹框sku的信息
         goodsAttrsDialog.setSkuInfoData(skuInfoBean);
+
+        // 规格修改后，重新获取商品详情页面Fragment的页面数据
+        mPresenter.getSkuDetailData(((GoodsDetailActivity) mContext).getSkuId());
     }
 
 
@@ -233,6 +243,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         // 保存productId
         ((GoodsDetailActivity) mContext).setProductId(skuDetailResponse.getProductId());
         getChildFragmentManager().beginTransaction().add(R.id.webViewContainer, new GoodsDetailFragment_2()).commit();
+
+        // 保存shopId
+        ((GoodsDetailActivity) mContext).setShopId(skuDetailResponse.getShopInfo().getShopId());
 
         // banner图
         if (skuDetailResponse.getImages() != null && skuDetailResponse.getImages().size() > 0)
@@ -263,6 +276,10 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         goodsNum.setText("全部宝贝（" + skuDetailResponse.getShopInfo().getProductCount() + "）");
         // 店铺收藏数
         likeNum.setText(skuDetailResponse.getShopInfo().getNumberOfCollectors() + "人关注此店铺");
+
+
+        // 设置收藏按钮的显示
+        ((GoodsDetailActivity) mContext).setFavoriteBtnDisplay(skuDetailResponse.getStationRecommendStatus());
     }
 
     /**
@@ -273,6 +290,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     private void setSkuInfoData(SkuDetailResponse.SkuInfoBean skuInfoBean) {
         // 保存当选择的skuId
         currentSkuId = skuInfoBean.getSkuId();
+        ((GoodsDetailActivity) mContext).setSkuId(skuInfoBean.getSkuId());
 
         // 销售价
         sellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
@@ -342,7 +360,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
      * 加入购物车成功回调
      */
     public void addToCartSuccess() {
-        ToastUtils.toastShort("success");
+        IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
     }
 
     /**

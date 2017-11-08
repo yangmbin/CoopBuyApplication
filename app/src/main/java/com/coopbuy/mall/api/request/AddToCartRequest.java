@@ -1,6 +1,7 @@
 package com.coopbuy.mall.api.request;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author yangmbin
@@ -8,27 +9,39 @@ import java.io.Serializable;
  */
 public class AddToCartRequest implements Serializable {
 
-    /**
-     * skuId : 0
-     * quantity : 0
-     */
+    private List<SkusBean> skus;
 
-    private int skuId;
-    private int quantity;
-
-    public int getSkuId() {
-        return skuId;
+    public List<SkusBean> getSkus() {
+        return skus;
     }
 
-    public void setSkuId(int skuId) {
-        this.skuId = skuId;
+    public void setSkus(List<SkusBean> skus) {
+        this.skus = skus;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
+    public static class SkusBean {
+        /**
+         * skuId : 0
+         * quantity : 0
+         */
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        private int skuId;
+        private int quantity;
+
+        public int getSkuId() {
+            return skuId;
+        }
+
+        public void setSkuId(int skuId) {
+            this.skuId = skuId;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
     }
 }

@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
+                    android:id="@+id/company_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_px28"
@@ -50,6 +51,7 @@
 
 
         <EditText
+            android:id="@+id/waybill_no"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px100"
             android:background="@color/white"
@@ -61,6 +63,7 @@
             android:paddingRight="@dimen/dimen_px30"/>
 
         <EditText
+            android:id="@+id/return_remark"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px180"
             android:background="@color/white"
@@ -72,6 +75,7 @@
             android:padding="@dimen/dimen_px30"/>
 
         <TextView
+            android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_px100"

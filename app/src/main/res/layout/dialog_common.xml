@@ -64,7 +64,7 @@
             android:focusable="true"
             android:gravity="center"
             android:text=""
-            android:textColor="@color/theme_text_title_orange"
+            android:textColor="@color/auxiliary_text_blue_gray"
             android:textSize="@dimen/dimen_px30" />
 
         <View
@@ -84,7 +84,7 @@
             android:focusable="true"
             android:gravity="center"
             android:text=""
-            android:textColor="@color/auxiliary_text_blue_gray"
+            android:textColor="@color/theme_text_title_orange"
             android:textSize="@dimen/dimen_px30" />
     </LinearLayout>
 </LinearLayout>

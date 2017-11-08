@@ -35,7 +35,6 @@ public class OrderDetailResponse implements Serializable {
      * canCancel : true
      * canDelete : false
      * canPayment : true
-     * canApplyLieuPay : true
      * canDelayedReceipt : false
      * canFindExpressInfo : false
      * canReceipt : false
@@ -68,7 +67,6 @@ public class OrderDetailResponse implements Serializable {
     private boolean canCancel;
     private boolean canDelete;
     private boolean canPayment;
-    private boolean canApplyLieuPay;
     private boolean canDelayedReceipt;
     private boolean canFindExpressInfo;
     private boolean canReceipt;
@@ -260,14 +258,6 @@ public class OrderDetailResponse implements Serializable {
 
     public void setCanPayment(boolean canPayment) {
         this.canPayment = canPayment;
-    }
-
-    public boolean isCanApplyLieuPay() {
-        return canApplyLieuPay;
-    }
-
-    public void setCanApplyLieuPay(boolean canApplyLieuPay) {
-        this.canApplyLieuPay = canApplyLieuPay;
     }
 
     public boolean isCanDelayedReceipt() {

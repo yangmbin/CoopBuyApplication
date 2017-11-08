@@ -3,6 +3,7 @@ package com.coopbuy.mall.ui.module.home.model;
 import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
+import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
 import com.coopbuy.mall.api.request.AddToCartRequest;
@@ -10,6 +11,7 @@ import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
+import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.base.BaseModel;
 import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -45,5 +47,17 @@ public class GoodsDetailModel implements BaseModel {
 
     public IAsyncRequestState addToCart(AddToCartRequest request, IAsyncEmptyCallback callback, Object userState) {
         return client.addToCart(request, callback, userState);
+    }
+
+    public IAsyncRequestState addFavorite(SkuIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.addFavorite(request, callback, userState);
+    }
+
+    public IAsyncRequestState removeFavorite(SkuIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.removeFavorite(request, callback, userState);
+    }
+
+    public IAsyncRequestState getCartQuantity(IAsyncResultCallback<GetCartQuantityResponse> callback, Object userState) {
+        return client.getCartQuantity(callback, userState);
     }
 }
