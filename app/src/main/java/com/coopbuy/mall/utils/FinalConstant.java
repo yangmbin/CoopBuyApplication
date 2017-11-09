@@ -17,7 +17,6 @@ public class FinalConstant {
     public static final int login_type_to_orderActivity = 10004;//跳转至订单activity
     public static final int login_type_to_meCenter = 10005;//跳转至个人中心
 
-
     //引导页是否打开过
     public static final String FRISTGUIDE = "fristguide";
     public static final String user_phone = "phone";

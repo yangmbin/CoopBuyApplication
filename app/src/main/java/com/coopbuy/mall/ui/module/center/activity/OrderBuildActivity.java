@@ -61,6 +61,10 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
      */
     private TextView mConsigneePhone;
     /**
+     * 站长地址
+     */
+    private TextView mStationName;
+    /**
      * 地址
      */
     private TextView mConsigneeAddress;
@@ -145,6 +149,7 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
         mHaveAddress = layout.findViewById(R.id.m_ll_have_address);
         mNoAddress = layout.findViewById(R.id.m_rl_address_empty);
         mConsignee = layout.findViewById(R.id.m_tv_consignee);
+        mStationName = layout.findViewById(R.id.tv_stattion_name);
         mConsigneePhone = layout.findViewById(R.id.m_tv_phone);
         mConsigneeAddress = layout.findViewById(R.id.m_tv_address_datail);
         headRecy.setVisibility(View.GONE);
@@ -221,6 +226,12 @@ public class OrderBuildActivity extends BaseActivity<OrderBuildPresenter, OrderB
             mConsigneeAddress.append("," + adress.getAddress() != null ? adress.getAddress() : "");
             mConsigneePhone.setText(adress.getPhone() != null ? adress.getPhone() : "");
             mConsignee.setText(adress.getCustomerName() != null ? adress.getCustomerName() : "");
+            if (!TextUtils.isEmpty(adress.getSiteName())) {
+                mStationName.setText(adress.getSiteName() + "    还差站长名");
+                mStationName.setVisibility(View.VISIBLE);
+            } else {
+                mStationName.setVisibility(View.GONE);
+            }
         } else {
             mHaveAddress.setVisibility(View.GONE);
             mNoAddress.setVisibility(View.VISIBLE);

@@ -21,6 +21,9 @@ import com.coopbuy.mall.ui.mainpage.adapter.MainTabContentAdapter;
 import com.coopbuy.mall.ui.mainpage.fragment.CenterFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.MarketFragment;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
+import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.viewpager.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -150,6 +153,10 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     }
 
     private void setTab3() {
+        if (!SharedPreferencesUtils.getInstance(mContext).getLoginStatus()) {
+            IntentUtils.gotoActivity(mContext, LoginActivity.class);
+        }
+
         mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
         mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
         mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));

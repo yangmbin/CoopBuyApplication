@@ -55,7 +55,7 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
     }
 
     @Override
-    public void onBindViewHolder(CollectAdapter.Holder holder, int position) {
+    public void onBindViewHolder(CollectAdapter.Holder holder, final int position) {
         CollectResponse.ItemsBean srr = data.get(position);
         holder.logo.setImageURI(srr.getProductImageUrl());
         holder.enter.setOnClickListener(new MyClick(position, srr));
@@ -64,23 +64,26 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
         holder.mCount.setText("已售：" + srr.getSales());
         holder.mPrice.setText("￥" + srr.getUnitPrice());
         holder.mViersion.setText(srr.getProperties());
+        holder.enter.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                port.remove(position);
+                return true;
+            }
+        });
         if (srr.isSelected()) {
             holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_checked);
         } else {
             holder.mGoodsSelect.setImageResource(R.mipmap.icon_address_unchecked);
         }
-        if (srr.getCurrentSelectedProductCount() != srr.getCurrentMaxPublishCount()) {
-            holder.mRlFull.setVisibility(View.GONE);
-        } else {
+        if (srr.getCurrentSelectedProductCount() == srr.getCurrentMaxPublishCount()) {
             if (srr.isSelected()) {
                 holder.mRlFull.setVisibility(View.GONE);
             } else {
-                if (srr.isCanPublish()) {
-                    holder.mRlFull.setVisibility(View.GONE);
-                } else {
-                    holder.mRlFull.setVisibility(View.VISIBLE);
-                }
+                holder.mRlFull.setVisibility(View.VISIBLE);
             }
+        } else {
+            holder.mRlFull.setVisibility(View.GONE);
         }
         if (data.size() - 1 == position) {
             holder.mLine.setVisibility(View.VISIBLE);

@@ -28,6 +28,7 @@
                     android:id="@+id/ll_iamge_check"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:paddingRight="@dimen/dimen_px27"
                     android:gravity="center">
 
                     <ImageView
@@ -42,7 +43,6 @@
                     android:id="@+id/adFaceImage"
                     android:layout_width="@dimen/dimen_px200"
                     android:layout_height="@dimen/dimen_px200"
-                    android:layout_marginLeft="@dimen/dimen_px27"
                     android:src="@mipmap/icon_splash_welcome"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:roundedCornerRadius="@dimen/dimen_px8" />

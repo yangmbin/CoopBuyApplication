@@ -54,13 +54,7 @@ public class ReleaseAdapter extends RecyclerView.Adapter<ReleaseAdapter.Holder> 
                 port.openDetial(position);
             }
         });
-        holder.enter.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                port.remove(position);
-                return true;
-            }
-        });
+
         holder.mGoodsName.setText(srr.getProductName());
         holder.mCount.setText("已售：" + srr.getSales());
         holder.mPrice.setText("￥" + srr.getUnitPrice());

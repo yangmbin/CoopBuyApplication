@@ -84,7 +84,9 @@ public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterM
                 rlForgetPwd.setVisibility(View.VISIBLE);
             } else {
                 setTitle("在线更改密码");
-                tvPhone.setText(sharedPreferencesUtils.getUserPhone());
+                mPhone = sharedPreferencesUtils.getUserPhone();
+                tvPhone.setText(mPhone);
+                edtForgetPhone.setText(mPhone);
                 rlChangePwd.setVisibility(View.VISIBLE);
                 rlForgetPwd.setVisibility(View.GONE);
             }

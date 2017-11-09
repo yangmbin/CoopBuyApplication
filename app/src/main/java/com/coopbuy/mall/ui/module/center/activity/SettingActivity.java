@@ -137,6 +137,4 @@ public class SettingActivity extends BaseActivity<SettingPresenter, SettingModel
     public void quitFail(String mesg) {
         ToastUtils.toastShort(mesg);
     }
-
-
 }

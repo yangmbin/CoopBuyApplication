@@ -71,7 +71,6 @@ public class SharedPreferencesUtils {
         editor.putBoolean(FinalConstant.user_status_type, false);
         editor.putString(FinalConstant.user_phone, "");
         editor.apply();
-
     }
 
     /**

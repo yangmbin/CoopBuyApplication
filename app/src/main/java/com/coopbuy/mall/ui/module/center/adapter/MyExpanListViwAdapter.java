@@ -130,6 +130,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
             viewHolder.tvEditViersion = convertView.findViewById(R.id.tv_edit_version);
             viewHolder.mLlGoodsSelect = convertView.findViewById(R.id.ll_iamge_check);
             viewHolder.tvGoodsSub = convertView.findViewById(R.id.iv_goods_sub);
+            viewHolder.ll_noClick = convertView.findViewById(R.id.ll_noClick);
             viewHolder.tvGoodsAdd = convertView.findViewById(R.id.iv_goods_add);
             viewHolder.edtGoodsNum = convertView.findViewById(R.id.et_item_shopcart_cloth_num);
             viewHolder.llNoEditContent = convertView.findViewById(R.id.ll_shopcart_content);
@@ -165,6 +166,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
         viewHolder.imags.setImageURI(bean.getImageUrl());
         viewHolder.tvGoodsAdd.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         viewHolder.tvGoodsSub.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
+        viewHolder.ll_noClick.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         viewHolder.llEditVersion.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
         // viewHolder.llEditShow.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
 //        viewHolder.llEditDelet.setOnClickListener(new GoodsMyPort(groupPosition, childPosition));
@@ -389,6 +391,9 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
                 case R.id.iv_goods_add:
                     mPort.addSubGoods(parent, chlid, 0);
                     break;
+                case R.id.ll_noClick:
+
+                    break;
                 case R.id.iv_goods_sub:
                     if (mdata.get(parent).getProducts().get(chlid).getQuantity() == 1) {
                         ToastUtils.toastShort("数量不能再少了");
@@ -489,6 +494,7 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
          * 规格选择
          */
         public LinearLayout llEditVersion;
+        public LinearLayout ll_noClick;
         /**
          * 编辑状态下的商品名称
          */
@@ -496,8 +502,8 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
         /**
          * 商品数量的加减  和商品的数量
          */
-        public ImageView tvGoodsAdd;
-        public ImageView tvGoodsSub;
+        public LinearLayout tvGoodsAdd;
+        public LinearLayout tvGoodsSub;
         public EditText edtGoodsNum;
         /**
          * 商品内容
@@ -518,6 +524,4 @@ public class MyExpanListViwAdapter extends BaseExpandableListAdapter {
          */
         public TextView delete;
     }
-
-
 }

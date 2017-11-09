@@ -19,12 +19,12 @@
 
             <TextView
                 android:id="@+id/tv_release_time"
-                style="@style/text_orange_size_26_ff"
+                style="@style/text_white_size_26_ff"
                 android:text=""
                 android:textSize="@dimen/dimen_px36" />
 
             <TextView
-                style="@style/text_orange_size_26_ff"
+                style="@style/text_white_size_26_ff"
                 android:layout_toRightOf="@+id/tv_release_time"
                 android:text=" 可发布"
                 android:textSize="@dimen/dimen_px36" />
@@ -81,7 +81,7 @@
 
             <TextView
                 android:id="@+id/tv_release"
-                style="@style/text_orange_size_26_ff"
+                style="@style/text_white_size_26_ff"
                 android:layout_centerInParent="true"
                 android:background="@drawable/black_rectangle_btn_press_black"
                 android:paddingBottom="@dimen/dimen_px30"

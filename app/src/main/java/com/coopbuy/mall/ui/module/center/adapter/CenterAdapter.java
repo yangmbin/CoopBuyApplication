@@ -63,7 +63,6 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
                         IntentUtils.gotoActivity(mContext, StationReleasesActivity.class);
                         break;
                 }
-                ToastUtils.toastShort(item.getName());
             }
         });
     }

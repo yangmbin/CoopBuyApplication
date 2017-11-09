@@ -53,7 +53,7 @@
                 android:button="@null"
                 android:checked="false"
                 android:gravity="center"
-                android:text="发布"
+                android:text="已发布"
                 android:textColor="@drawable/top_r_text"
                 android:textSize="15sp" />
         </RadioGroup>

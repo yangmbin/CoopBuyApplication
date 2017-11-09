@@ -101,22 +101,14 @@ public class ReleasesFragment extends BaseFragment<CollectPresenter, CollectMode
 
     @Override
     public void remove(final int postion) {
-        DialogUtils.showTwoKeyDialog(getContext(), new CommonDialog.ClickCallBack() {
 
-            @Override
-            public void onConfirm() {
-                SkuDetailRequest request = new SkuDetailRequest();
-                request.setSkuId(data.get(postion).getSkuId());
-                mPresenter.removeFovorite(request);
-            }
-        }, "确认移除该发布的商品?", "取消", "确定");
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThreadrep(ReleaseEvent event) {
         if (event != null) {
-
+            initPresenter();
         }
     }
 
@@ -148,7 +140,7 @@ public class ReleasesFragment extends BaseFragment<CollectPresenter, CollectMode
 
     @Override
     public void removeSuccess() {
-        initPresenter();
+
     }
 
 

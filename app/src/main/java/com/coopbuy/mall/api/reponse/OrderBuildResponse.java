@@ -81,7 +81,7 @@ public class OrderBuildResponse implements Serializable {
         private String regionFullId;
         private Object stationUserId;
         private Object siteId;
-        private Object siteName;
+        private String siteName;
         private boolean hasBindSite;
 
         public int getAddressId() {
@@ -172,11 +172,11 @@ public class OrderBuildResponse implements Serializable {
             this.siteId = siteId;
         }
 
-        public Object getSiteName() {
+        public String getSiteName() {
             return siteName;
         }
 
-        public void setSiteName(Object siteName) {
+        public void setSiteName(String siteName) {
             this.siteName = siteName;
         }
 

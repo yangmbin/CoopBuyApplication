@@ -22,8 +22,10 @@ import com.coopbuy.mall.ui.module.center.port.CollectPort;
 import com.coopbuy.mall.ui.module.center.presenter.CollectPresenter;
 import com.coopbuy.mall.ui.module.center.view.Collect_IView;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
+import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.coopbuy.mall.widget.time.CountDown;
 import com.coopbuy.mall.widget.time.TimeTools;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -149,8 +151,16 @@ public class CollectFragment extends BaseFragment<CollectPresenter, CollectModel
     }
 
     @Override
-    public void remove(int postion) {
+    public void remove(final int postion) {
+        DialogUtils.showTwoKeyDialog(getContext(), new CommonDialog.ClickCallBack() {
 
+            @Override
+            public void onConfirm() {
+                SkuDetailRequest request = new SkuDetailRequest();
+                request.setSkuId(data.get(postion).getSkuId());
+                mPresenter.removeFovorite(request);
+            }
+        }, "确认移除该发布的商品?", "取消", "确定");
     }
 
     @Override
@@ -178,7 +188,7 @@ public class CollectFragment extends BaseFragment<CollectPresenter, CollectModel
 
     @Override
     public void removeSuccess() {
-
+         fresh();
     }
 
     private void setReleaseClickable(boolean click) {
