@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px240"
+        android:layout_height="@dimen/dimen_px140"
         android:background="@color/theme_text_lab_black">
 
         <LinearLayout
@@ -20,38 +20,11 @@
             <TextView
                 android:id="@+id/tv_release_time"
                 style="@style/text_white_size_26_ff"
-                android:text=""
+                android:text="可发布"
                 android:textSize="@dimen/dimen_px36" />
 
-            <TextView
-                style="@style/text_white_size_26_ff"
-                android:layout_toRightOf="@+id/tv_release_time"
-                android:text=" 可发布"
-                android:textSize="@dimen/dimen_px36" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/tv_relase_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_px29"
-            android:layout_marginLeft="@dimen/dimen_px30"
-            android:layout_marginRight="@dimen/dimen_px31"
-            android:layout_marginTop="@dimen/dimen_px30"
-            android:text="您当前的可推荐商品数量为：5"
-            android:textColor="@color/white_3" />
-
-        <TextView
-            android:id="@+id/tv_freshen_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/dimen_px29"
-            android:layout_marginRight="@dimen/dimen_px31"
-            android:text="（每日00:00分刷新限额）"
-            android:textColor="@color/white_3" />
     </RelativeLayout>
 
     <RelativeLayout

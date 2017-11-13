@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.module.center.activity.MyBillActivity">
+    tools:context="com.coopbuy.mall.ui.module.center.activity.IncomeActivity">
 
     <include layout="@layout/title_bar_layout" />
 
-    <include layout="@layout/include_recy_refresh_have_head_foot" />
+    <include layout="@layout/include_recy_refresh_nohead" />
 
 </LinearLayout>

@@ -55,7 +55,8 @@
                 android:layout_height="@dimen/dimen_px120"
                 android:layout_gravity="center_vertical"
                 android:background="@color/edit_text_back_white"
-                android:padding="@dimen/dimen_px30">
+                android:padding="@dimen/dimen_px30"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_money"
@@ -84,7 +85,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px240"
-                android:layout_marginTop="@dimen/dimen_px16"
                 android:orientation="horizontal">
 
                 <RelativeLayout
@@ -223,5 +223,6 @@
         android:background="@color/theme_text_lab_black"
         android:gravity="center"
         android:text="@string/lab_data_cash"
-        android:textColor="@color/edit_text_back_white" />
+        android:textColor="@color/edit_text_back_white"
+        android:visibility="gone" />
 </RelativeLayout>

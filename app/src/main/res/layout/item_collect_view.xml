@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <include layout="@layout/include_divider_4px_line_theme_white" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
@@ -31,8 +34,8 @@
                         android:id="@+id/ll_iamge_check"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:paddingRight="@dimen/dimen_px32"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:paddingRight="@dimen/dimen_px32">
 
                         <ImageView
                             android:id="@+id/iv_goods_select"
@@ -46,10 +49,11 @@
                         android:id="@+id/adFaceImage"
                         android:layout_width="@dimen/dimen_px200"
                         android:layout_height="@dimen/dimen_px200"
+                        android:background="@drawable/bg_round_corner_imageholder"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/icon_splash_welcome"
-                        fresco:actualImageScaleType="centerCrop"
-                        fresco:placeholderImage="@mipmap/default_img"
-                        fresco:roundedCornerRadius="@dimen/dimen_px8" />
+                        app:placeholderImage="@mipmap/default_img"
+                        app:roundedCornerRadius="@dimen/dimen_px8" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -57,6 +61,7 @@
                         android:gravity="center">
 
                         <include layout="@layout/include_collect_content_normal" />
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -65,11 +70,11 @@
         <RelativeLayout
             android:id="@+id/rl_full"
             android:layout_width="match_parent"
-            android:clickable="false"
-            android:focusable="false"
             android:layout_height="@dimen/dimen_px260"
             android:layout_above="@+id/rl_release"
-            android:background="@color/black_10">
+            android:background="@color/black_10"
+            android:clickable="false"
+            android:focusable="false">
 
             <TextView
                 style="@style/white_size_32_ffffff"
@@ -82,5 +87,6 @@
                 android:text="选满了哟~" />
         </RelativeLayout>
     </FrameLayout>
+
     <include layout="@layout/include_divider_16px_line_theme_white" />
 </LinearLayout>

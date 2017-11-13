@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,7 +8,6 @@ import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DataAnalyseActivity extends BaseActivity {
@@ -41,8 +39,6 @@ public class DataAnalyseActivity extends BaseActivity {
     @Override
     public void initView() {
         setTitle(R.string.lab_center_data);
-        setRightText(R.string.lab_data_income_detail);
-
     }
 
 
@@ -52,11 +48,13 @@ public class DataAnalyseActivity extends BaseActivity {
             case R.id.tv_data_confirm:
                 break;
             case R.id.rl_bill:
-                IntentUtils.gotoActivity(this, MyBillActivity.class);
+
                 break;
             case R.id.tv_detail_income:
+                IntentUtils.gotoActivity(this, IncomeActivity.class);
                 break;
             case R.id.tv_detail_bill:
+                IntentUtils.gotoActivity(this, MyBillActivity.class);
                 break;
         }
     }

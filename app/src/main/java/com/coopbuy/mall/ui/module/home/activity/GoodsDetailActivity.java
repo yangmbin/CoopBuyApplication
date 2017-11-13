@@ -9,6 +9,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_1;
@@ -16,6 +17,7 @@ import com.coopbuy.mall.ui.module.home.fragment.GoodsDetailFragment_2;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
 import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
 import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
+import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.navigation.NavGoodsDetailBar;
 
@@ -141,7 +143,10 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
                 break;
             // 跳转购物车
             case R.id.bottom_cart_btn:
-                IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
+                if (sharedPreferencesUtils.getLoginStatus())
+                    IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
+                else
+                    LoginActivity.normalActivity(mContext, FinalConstant.login_type_normal);
                 break;
         }
     }
@@ -171,6 +176,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter, Good
 
     /**
      * 获取购物车数量成功回调
+     *
      * @param getCartQuantityResponse
      */
     public void getCartQuantitySuccess(GetCartQuantityResponse getCartQuantityResponse) {

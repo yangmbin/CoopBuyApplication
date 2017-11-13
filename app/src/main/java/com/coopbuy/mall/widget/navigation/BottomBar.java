@@ -22,6 +22,7 @@ import com.coopbuy.mall.ui.mainpage.fragment.CenterFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.HomeFragment;
 import com.coopbuy.mall.ui.mainpage.fragment.MarketFragment;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
+import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.viewpager.NoScrollViewPager;
@@ -155,15 +156,16 @@ public class BottomBar extends RelativeLayout implements View.OnClickListener {
     private void setTab3() {
         if (!SharedPreferencesUtils.getInstance(mContext).getLoginStatus()) {
             IntentUtils.gotoActivity(mContext, LoginActivity.class);
+            LoginActivity.gotoMainMeActivity(mContext, FinalConstant.login_type_to_meCenter);
+        } else {
+            mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+            mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
+            mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+            mIvTab1.setImageResource(R.mipmap.icon_home_unselected);
+            mIvTab2.setImageResource(R.mipmap.icon_market_unselected);
+            mIvTab3.setImageResource(R.mipmap.icon_center_selected);
+            mViewPager.setCurrentItem(2);
+            EventBusInstance.getInstance().post(new MainEvent());
         }
-
-        mTvTab1.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
-        mTvTab2.setTextColor(ContextCompat.getColor(mContext, R.color.auxiliary_text_blue_gray));
-        mTvTab3.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
-        mIvTab1.setImageResource(R.mipmap.icon_home_unselected);
-        mIvTab2.setImageResource(R.mipmap.icon_market_unselected);
-        mIvTab3.setImageResource(R.mipmap.icon_center_selected);
-        mViewPager.setCurrentItem(2);
-        EventBusInstance.getInstance().post(new MainEvent());
     }
 }

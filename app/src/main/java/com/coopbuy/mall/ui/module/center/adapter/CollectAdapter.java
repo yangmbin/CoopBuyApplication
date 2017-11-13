@@ -61,7 +61,7 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.Holder> 
         holder.enter.setOnClickListener(new MyClick(position, srr));
         holder.mLlGoodsSelect.setOnClickListener(new MyClick(position, srr));
         holder.mGoodsName.setText(srr.getProductName());
-        holder.mCount.setText("已售：" + srr.getSales());
+        holder.mCount.setText("发布：" + srr.getSales());
         holder.mPrice.setText("￥" + srr.getUnitPrice());
         holder.mViersion.setText(srr.getProperties());
         holder.enter.setOnLongClickListener(new View.OnLongClickListener() {

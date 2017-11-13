@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/theme_back_white">
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_px158"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/dimen_px100"
+            android:layout_height="@dimen/dimen_px100"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@mipmap/default_img"
+            fresco:roundAsCircle="true" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/edit_text_back_white"
+        android:paddingTop="@dimen/dimen_px21">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/black_size_32_41495_line_2"
+            android:text="青青" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/black_size_32_41495_line_2"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="@dimen/dimen_px10"
+            android:text="1717854254828" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/text_black_size_28_878f94"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_below="@+id/tv_phone"
+            android:layout_marginBottom="@dimen/dimen_px26"
+            android:layout_marginTop="@dimen/dimen_px10"
+            android:layout_toLeftOf="@+id/iv_edit"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="2"
+            android:text="贵州银河系贵州银河系贵州银河系" />
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            style="@style/image_center_40"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dimen_px34"
+            android:src="@mipmap/icon_custom_edit" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_px2"
+            android:layout_below="@+id/tv_address"
+            android:background="@color/theme_back_white" />
+    </RelativeLayout>
+</LinearLayout>

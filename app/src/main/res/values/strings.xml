@@ -85,15 +85,15 @@
     <string name="lab_charge_cancel">取消</string>
     <string name="lab_charge_phone">充话费</string>
     <string name="lab_charge_once">立即充值</string>
-    <string name="lab_data_remaining_sum">个人账户余额（元）</string>
+    <string name="lab_data_remaining_sum">累计收益(元)</string>
     <string name="lab_data_sum_income">累计收益(元)</string>
     <string name="lab_data_my_bill">我的对账单</string>
     <string name="lab_data_all_income">所有收益一目了然</string>
     <string name="lab_data_detail">详情</string>
-    <string name="_209909">最新对账单(209909期)</string>
+    <string name="_209909">下一期对账单(209909期)</string>
     <string name="lab_data_confirm">待确定</string>
     <string name="lab_data_cash">提现</string>
-    <string name="lab_data_income_detail">收益明细</string>
+    <string name="lab_data_income_detail">余额明细</string>
 
     <string name="title_bill">我的对账单</string>
     <string name="lab_bill_filter">筛选</string>

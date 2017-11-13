@@ -13,8 +13,10 @@ import com.coopbuy.mall.bean.CenterData;
 import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.MyCustomActivity;
+import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.activity.StationReleasesActivity;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 
 import java.io.Serializable;
@@ -48,22 +50,30 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
             public void onClick(View view) {
                 switch (item.getName()) {
                     case "数据军师":
-                        IntentUtils.gotoActivity(mContext, DataAnalyseActivity.class);
+                        enter(DataAnalyseActivity.class, null);
                         break;
                     case "我的客户":
-                        IntentUtils.gotoActivity(mContext, MyCustomActivity.class);
+                        enter(MyCustomActivity.class, null);
                         break;
                     case "客户订单":
 
                         break;
                     case "站长业务":
-
+                        IntentUtils.gotoActivity(mContext, ShopCartActivity.class,6526);
                         break;
                     case "我的推荐":
-                        IntentUtils.gotoActivity(mContext, StationReleasesActivity.class);
+                        enter(StationReleasesActivity.class, null);
                         break;
                 }
             }
         });
+    }
+
+    private void enter(Class activity, Serializable data) {
+        if (SharedPreferencesUtils.getInstance(mContext).getLoginStatus()) {
+            IntentUtils.gotoActivity(mContext, activity, data);
+        } else {
+            IntentUtils.gotoActivity(mContext, LoginActivity.class);
+        }
     }
 }

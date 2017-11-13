@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/edit_text_back_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px30">
+
+        <RelativeLayout style="@style/center_LinearLayout_help_90">
+
+            <TextView
+                android:id="@+id/tv_month_bill"
+                style="@style/text_theme_black_size_28_41"
+                android:text="8月份收益"
+                android:textSize="@dimen/dimen_px32" />
+
+            <TextView
+                android:id="@+id/tv_bill_type"
+                style="@style/text_orange_size_26_f"
+                android:layout_alignParentRight="true"
+                android:text="待审核"
+                android:textSize="@dimen/dimen_px32" />
+        </RelativeLayout>
+
+        <include layout="@layout/include_divider_1px_line_theme_white" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_px37">
+
+            <TextView
+                android:id="@+id/tv_momey"
+                style="@style/text_black_size_30_878f94"
+                android:layout_marginLeft="@dimen/dimen_px47"
+                android:text="结算金额"
+                android:textSize="@dimen/dimen_px26" />
+
+            <TextView
+                android:id="@+id/tv_order"
+                style="@style/text_black_size_30_878f94"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimen_px57"
+                android:text="供销好买成功订单"
+                android:textSize="@dimen/dimen_px26" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_alignLeft="@id/tv_momey"
+                android:layout_below="@id/tv_momey"
+                android:text="85.5元"
+                android:textSize="@dimen/dimen_px48" />
+
+            <TextView
+                android:id="@+id/tv_conts"
+                style="@style/text_theme_black_size_28_41"
+                android:layout_alignLeft="@id/tv_order"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_order"
+                android:text="15 笔"
+                android:textSize="@dimen/dimen_px48" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            style="@style/text_black_size_28_878f94"
+            android:layout_marginTop="@dimen/dimen_px77"
+            android:text="对账单号：20170830123105"
+            android:textSize="@dimen/dimen_px26" />
+
+        <TextView
+            android:id="@+id/tv_order_times"
+            style="@style/text_black_size_28_878f94"
+            android:layout_marginBottom="@dimen/dimen_px38"
+            android:layout_marginTop="@dimen/dimen_px10"
+            android:text="出账日期：2017-8-30 12:31:05"
+            android:textSize="@dimen/dimen_px26" />
+
+    </LinearLayout>
+
+    <include layout="@layout/include_divider_20dp_line_grey" />
+
+</LinearLayout>

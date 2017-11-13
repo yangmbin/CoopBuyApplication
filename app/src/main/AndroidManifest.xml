@@ -112,7 +112,8 @@
             android:theme="@style/wind" />
         <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
         <activity android:name=".ui.module.center.pay.PayFailActivity" />
-        <activity android:name=".ui.module.center.activity.StationReleasesActivity"></activity>
+        <activity android:name=".ui.module.center.activity.StationReleasesActivity" />
+        <activity android:name=".ui.module.center.activity.IncomeActivity"></activity>
     </application>
 
 </manifest>

@@ -101,6 +101,7 @@
                                 android:layout_marginLeft="@dimen/dimen_px10"
                                 android:text="¥ 0.00"
                                 android:textSize="@dimen/dimen_px36" />
+
                         </LinearLayout>
 
                         <LinearLayout

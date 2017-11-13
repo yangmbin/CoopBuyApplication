@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
@@ -45,6 +46,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
     private List<AddressInfoResponse> mData;
     private LinearLayoutHelper bannerSlider1Helper;
     private AddressMangeAdapter adapter;
+    private String type = "";
 
     @Override
     public int getLayoutId() {
@@ -64,6 +66,9 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @Override
     public void initView() {
+        if (null != getIntent()) {
+            type = (String) getIntent().getSerializableExtra(IntentUtils.DATA);
+        }
         EventBusInstance.getInstance().registerEvent(this);
         setTitle("地址管理");
         initRecycleView();
@@ -83,7 +88,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @OnClick(R.id.tv_add_address)
     public void onViewClicked() {
-        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class,"add");
+        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class, "add");
     }
 
     @Override
@@ -127,7 +132,7 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
 
     @Override
     public void editAddress(AddressInfoResponse bean) {
-            IntentUtils.gotoActivity(this,AddresssAddUserActivity.class,bean,"edit");
+        IntentUtils.gotoActivity(this, AddresssAddUserActivity.class, bean, "edit");
     }
 
     @Override
@@ -151,6 +156,8 @@ public class AddressManageActivity extends BaseActivity<AddressManagePresenter, 
     public void setReceivedAddress(AddressInfoResponse bean) {
 //        ToastUtils.toastShort("设置收货地址");
         EventBusInstance.getInstance().post(bean);
-        finish();
+        //如果从个人中心进来的不需要点击结束
+        if (TextUtils.isEmpty(type))
+            finish();
     }
 }
