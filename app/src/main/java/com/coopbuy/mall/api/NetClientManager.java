@@ -76,6 +76,7 @@ import com.coopbuy.mall.api.request.RefundExpressInfoRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
+import com.coopbuy.mall.api.request.ShopIdRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.SkuIdRequest;
@@ -492,6 +493,28 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getCartQuantity(IAsyncResultCallback<GetCartQuantityResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GetCartQuantityResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_CART_QUANTITY, callback, userState);
+    }
+
+    /**
+     * 收藏店铺
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADD_SHOP_FAVORITE, request, callback, userState);
+    }
+
+    /**
+     * 取消商品收藏
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState removeShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVE_SHOP_FAVORITE, request, callback, userState);
     }
 
     /**
@@ -947,7 +970,7 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getShippingCampanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
+    public IAsyncRequestState getShippingCompanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<ShippingCompanyResponse>>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SHIPPING_COMPANY_LIST, callback, userState);
     }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.bean.PayAgainParams;
@@ -372,7 +373,17 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      * 再来一单
      */
     private void repeatSubmitOrderBtn() {
+        AddToCartRequest request = new AddToCartRequest();
+        List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
+        for (int i = 0; i < mOrderDetailResponse.getOrderItems().size(); i++) {
+            AddToCartRequest.SkusBean skusBean = new AddToCartRequest.SkusBean();
+            skusBean.setSkuId(mOrderDetailResponse.getOrderItems().get(i).getSkuId());
+            skusBean.setQuantity(mOrderDetailResponse.getOrderItems().get(i).getQuantity());
+            skusBeanList.add(skusBean);
+        }
+        request.setSkus(skusBeanList);
 
+        mPresenter.repeatSubmitOrder(request);
     }
 
 
@@ -418,5 +429,12 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         ToastUtils.toastShort("已提醒");
     }
 
+    /**
+     * 再来一单成功回调
+     * @param request
+     */
+    @Override
+    public void repeatSubmitOrderSuccess(AddToCartRequest request) {
 
+    }
 }

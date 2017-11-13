@@ -9,6 +9,7 @@ import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderDetailActivity;
@@ -185,5 +186,12 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
      */
     public void remindShipmentSuccess() {
         ToastUtils.toastShort("已提醒");
+    }
+
+    /**
+     * 再来一单成功回调
+     */
+    public void repeatSubmitOrderSuccess(AddToCartRequest request) {
+
     }
 }

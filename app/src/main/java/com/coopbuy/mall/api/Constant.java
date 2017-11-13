@@ -215,4 +215,6 @@ public class Constant {
     public static final String SEND_GOODS = "api/services/app/refund/UpdateAddress";
     public static final String REFUND_EXPRESS_INFO = "api/services/app/refund/FindExpressInfo";
     public static final String GET_CART_QUANTITY = "api/services/app/shoppingCart/FindCartQuantity";
+    public static final String ADD_SHOP_FAVORITE = "api/services/app/favorite/ShopInfo";
+    public static final String REMOVE_SHOP_FAVORITE = "api/services/app/favorite/CancelShop";
 }

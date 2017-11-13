@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class BuyerSendGoodsModel implements BaseModel {
     public IAsyncRequestState getShippingCompanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
-        return client.getShippingCampanyList(callback, userState);
+        return client.getShippingCompanyList(callback, userState);
     }
 
     public IAsyncRequestState sendGoods(BuyerSendGoodsRequest request, IAsyncEmptyCallback callback, Object userState) {
