@@ -50,8 +50,6 @@ import butterknife.OnClick;
 public class CollectFragment extends BaseFragment<CollectPresenter, CollectModel> implements CollectPort, OnRefreshListener, OnLoadmoreListener, Collect_IView {
     @Bind(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
-    @Bind(R.id.tv_relase_count)
-    TextView tvReleaseCounts;
     @Bind(R.id.tv_release_time)
     TextView tvFreshenTime;
     @Bind(R.id.recView)
@@ -140,7 +138,8 @@ public class CollectFragment extends BaseFragment<CollectPresenter, CollectModel
     }
 
     private void setPublishCount() {
-        tvReleaseCounts.setText("您当前的可推荐商品数量为：" + count);
+    //    tvReleaseCounts.setText("您当前的可推荐商品数量为：" + count);
+
     }
 
     @Override
@@ -188,7 +187,7 @@ public class CollectFragment extends BaseFragment<CollectPresenter, CollectModel
 
     @Override
     public void removeSuccess() {
-         fresh();
+        fresh();
     }
 
     private void setReleaseClickable(boolean click) {

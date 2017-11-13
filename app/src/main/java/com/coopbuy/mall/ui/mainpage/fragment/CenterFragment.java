@@ -202,7 +202,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 IntentUtils.gotoActivity(getActivity(), HeplCenterActivity.class);
                 break;
             case R.id.ll_address:
-                enter(AddressManageActivity.class, null);
+                enter(AddressManageActivity.class, "center");
                 break;
             case R.id.iv_setting:
                 IntentUtils.gotoActivity(getActivity(), SettingActivity.class);
@@ -252,12 +252,12 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         tvCollectNumber.setText(data.getFavoriteShopCount() + "");
         tvFootmarkNumber.setText(data.getBrowseProductCount() + "");
         if (null == data.getFestivalImageUrl()) {
-            backImage.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
+            backImage.setImageURI(Constants.images[(new Random().nextInt(12) + 1)]);
         } else {
             backImage.setImageURI(data.getFestivalImageUrl());
         }
         if (null != data.getUserInfo().getHeadPortraitPath() || !TextUtils.isEmpty(data.getUserInfo().getHeadPortraitPath())) {
-            head.setImageURI(Constants.images[(new Random().nextInt(12) +1)]);
+            head.setImageURI(Constants.images[(new Random().nextInt(12) + 1)]);
         } else {
             head.setImageURI(data.getUserInfo().getHeadPortraitPath());
         }

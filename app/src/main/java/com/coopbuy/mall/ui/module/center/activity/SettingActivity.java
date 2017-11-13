@@ -10,12 +10,14 @@ import android.widget.TextView;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.app.CoopBuyApplication;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.model.SettingModel;
 import com.coopbuy.mall.ui.module.center.presenter.SettingPresenter;
 import com.coopbuy.mall.ui.module.center.view.Setting_IView;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.DataCleanManager;
 import com.coopbuy.mall.utils.DialogUtils;
+import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
@@ -97,6 +99,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter, SettingModel
                 }, "确定清除本地缓存?", "取消", "确定");
                 break;
             case R.id.iv_check_movement:
+
                 break;
             case R.id.tv_set_quit:
                 mPresenter.quit();
@@ -130,6 +133,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter, SettingModel
     public void quitSucces() {
         ToastUtils.toastShort("退出成功");
         sharedPreferencesUtils.clearUserData();
+        IntentUtils.gotoMainActivity(this, MainActivity.class, FinalConstant.MAIN_HOME_TYPE);
         this.finish();
     }
 

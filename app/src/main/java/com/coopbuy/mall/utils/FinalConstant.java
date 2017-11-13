@@ -6,8 +6,18 @@ package com.coopbuy.mall.utils;
  * @desc
  */
 public class FinalConstant {
-
-
+    /**
+     * 主页
+     */
+    public static final int MAIN_HOME_TYPE = 0;
+    /**
+     * 赶场天
+     */
+    public static final int MAIN_MARKETDAY_TYPE = 1;
+    /**
+     * 个人中心
+     */
+    public static final int MAIN_CENTER_TYPE = 2;
     public static final String isFristOpen = "isFristOpen";//是否第一次打开app
 
     //登录类型

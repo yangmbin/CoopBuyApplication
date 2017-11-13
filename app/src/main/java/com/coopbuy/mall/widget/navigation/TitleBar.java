@@ -84,6 +84,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
                 break;
             case R.id.titlebar_right:
                 mListener.clickTitleBarRight();
+                mListener.clickTitleBarRight(view);
                 break;
         }
     }
@@ -96,5 +97,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
         void clickTitleBarBack();
 
         void clickTitleBarRight();
+
+        void clickTitleBarRight(View v);
     }
 }

@@ -7,24 +7,23 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.IncomeAdapter;
-import com.coopbuy.mall.ui.module.center.adapter.MyCustomAdapter;
+import com.coopbuy.mall.ui.module.center.adapter.MyBillAdapter;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
-import com.coopbuy.mall.utils.IntentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 
-public class MyCustomActivity extends BaseActivity implements FootMarkPort {
+public class IncomeActivity extends BaseActivity implements FootMarkPort {
     @Bind(R.id.recView)
     RecyclerView recView;
-    private MyCustomAdapter adapter;
+    private IncomeAdapter adapter;
     private List<MessageCenterResponse> data;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_my_custom;
+        return R.layout.activity_income;
     }
 
     @Override
@@ -39,15 +38,14 @@ public class MyCustomActivity extends BaseActivity implements FootMarkPort {
 
     @Override
     public void initView() {
-        setTitle(getString(R.string.title_custom));
-        setRightText(getString(R.string.lab_custom_add));
+        setTitle("预计收益");
         initRey();
     }
 
     private void initRey() {
         data = new ArrayList<>();
         setData();
-        adapter = new MyCustomAdapter(data, this);
+        adapter = new IncomeAdapter(data, this);
         recView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recView.setAdapter(adapter);
     }
@@ -68,12 +66,6 @@ public class MyCustomActivity extends BaseActivity implements FootMarkPort {
             d.setType(i);
             data.add(d);
         }
-    }
-
-    @Override
-    public void clickTitleBarRight() {
-        super.clickTitleBarRight();
-        IntentUtils.gotoActivity(this, AddCustomActivity.class);
     }
 
     @Override

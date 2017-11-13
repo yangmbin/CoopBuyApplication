@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -88,7 +90,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     private String mPhone;
     private String mPwd;
     private String mImageCode;
-
+    /**
+     * 需要跳转的
+     */
+    private static Class<?> toActivity;
     private boolean isPhoneEmpty = false;
     private boolean isPasswordEmpty = false;
     private boolean isImageEmpty = false;
@@ -314,7 +319,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     public void loginSuccess() {
         sharedPreferencesUtils.saveLoginStatus();
         //这里需要处理跳转问题
-        this.finish();
+        onBackPressed();
+
     }
 
     @Override
@@ -340,6 +346,79 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         if (event != null) {
             if (event.getPhone() != null && mEditPhone != null)
                 mEditPhone.setText(event.getPhone());
+        }
+    }
+
+    /**
+     * 正常跳转
+     *
+     * @param context
+     * @param typeToNormal
+     */
+    public static void normalActivity(Context context, int typeToNormal) {
+        Intent newIntent = new Intent(context, LoginActivity.class);
+        mSkip_type = typeToNormal;
+        context.startActivity(newIntent);
+    }
+
+    /**
+     * 跳转其他页activity
+     *
+     * @param context
+     * @param toA
+     * @param activity
+     */
+    public static void gotoActivity(Context context, int toA, Class<?> activity) {
+        Intent newIntent = new Intent(context, LoginActivity.class);
+        mSkip_type = toA;
+        toActivity = activity;
+        context.startActivity(newIntent);
+    }
+
+    /**
+     * 跳转主页
+     *
+     * @param context
+     * @param toA
+     */
+    public static void gotoMainMeActivity(Context context, int toA) {
+        Intent newIntent = new Intent(context, LoginActivity.class);
+        mSkip_type = toA;
+        context.startActivity(newIntent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        switch (mSkip_type) {
+            case FinalConstant.login_type_normal:
+                break;
+            case FinalConstant.login_type_to_activity:
+                if (sharedPreferencesUtils.getLoginStatus() && toActivity != null) {
+                    IntentUtils.gotoActivity(mContext, toActivity);
+                }
+                break;
+            case FinalConstant.login_type_to_meCenter:
+                if (sharedPreferencesUtils.getLoginStatus()) {
+                    IntentUtils.gotoMainActivity(mContext, FinalConstant.MAIN_CENTER_TYPE);
+                } else {
+                    IntentUtils.gotoMainActivity(mContext, FinalConstant.MAIN_HOME_TYPE);
+                }
+                break;
+        }
+        hideSoftKeyboard();
+        finish();
+    }
+
+    /**
+     * 隐藏软键盘
+     *
+     * @param
+     */
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
     }
 

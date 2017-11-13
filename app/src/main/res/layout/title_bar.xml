@@ -40,8 +40,9 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/dimen_px30"
+            android:visibility="gone"
             android:paddingRight="@dimen/dimen_px30"
-            android:visibility="gone">
+         >
 
             <TextView
                 android:id="@+id/txt_titlebar_right"

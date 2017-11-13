@@ -33,6 +33,7 @@
             android:layout_marginLeft="@dimen/dimen_px27"
             android:src="@mipmap/icon_splash_welcome"
             fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@mipmap/default_img"
             fresco:roundedCornerRadius="@dimen/dimen_px8" />
 
         <LinearLayout

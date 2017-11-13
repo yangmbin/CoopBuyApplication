@@ -26,6 +26,7 @@ public class AddressMangeAdapter extends BaseDelegateAdapter<AddressInfoResponse
     private TextView mEdit;
     private TextView mDelete;
     private LinearLayout mIshasbind;
+    private LinearLayout llSetdefault;
     private LinearLayout mSetShopAddress;
     private List<AddressInfoResponse> list;
 
@@ -58,10 +59,11 @@ public class AddressMangeAdapter extends BaseDelegateAdapter<AddressInfoResponse
         setDefault = holder.getTextView(R.id.tv_setdefault);
         mIshasbind = (LinearLayout) holder.getView(R.id.ll_ishasbind);
         mSetShopAddress = (LinearLayout) holder.getView(R.id.ll_address);
+        llSetdefault = (LinearLayout) holder.getView(R.id.ll_setdefault);
         mEdit = holder.getTextView(R.id.tv_edit);
         mDelete = holder.getTextView(R.id.tv_delete);
         mEdit.setOnClickListener(new MyListenter(item));
-        setDefault.setOnClickListener(new MyListenter(item));
+        llSetdefault.setOnClickListener(new MyListenter(item));
         mDelete.setOnClickListener(new MyListenter(item));
         mSetShopAddress.setOnClickListener(new MyListenter(item));
         if (item.isIsDefault()) {
@@ -96,7 +98,7 @@ public class AddressMangeAdapter extends BaseDelegateAdapter<AddressInfoResponse
                 case R.id.ll_address:
                     port.setReceivedAddress(bean);
                     break;
-                case R.id.tv_setdefault:
+                case R.id.ll_setdefault:
                     port.setDefault(bean);
                     break;
             }

@@ -245,7 +245,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/theme_text_title_orange</item>
         <item name="android:textSize">@dimen/dimen_px26</item>
-    </style>  <style name="text_white_size_26_ff">
+    </style>
+
+    <style name="text_white_size_26_ff">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/edit_text_back_white</item>
@@ -257,6 +259,16 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/theme_text_lab_black</item>
         <item name="android:textSize">@dimen/dimen_px30</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="bill_text">
+        <item name="android:layout_height">@dimen/dimen_px60</item>
+        <item name="android:layout_width">@dimen/dimen_px200</item>
+        <item name="android:textColor">@color/edit_text_back_white</item>
+        <item name="android:textSize">@dimen/dimen_px32</item>
+        <item name="android:background">@drawable/check_bill_selector</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -401,6 +413,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
 
     <style name="wind">
         <item name="android:windowIsFloating">true</item>

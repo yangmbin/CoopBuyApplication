@@ -34,10 +34,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_banner_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/edit_text_back_white"
-        android:overScrollMode="never" />
+    <include layout="@layout/include_recy_refresh_nohead" />
 </LinearLayout>

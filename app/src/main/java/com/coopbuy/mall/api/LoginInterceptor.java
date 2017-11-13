@@ -85,7 +85,7 @@ public class LoginInterceptor implements Interceptor {
                             mHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (request.url().url().toString().contains("FindDefault")) {
+                                    if (request.url().url().toString().contains("FindDefault") || request.url().url().toString().contains("FindCartQuantity")) {
                                         return;
                                     }
                                     //七鱼聊天  后面再添加

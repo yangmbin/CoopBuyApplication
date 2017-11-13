@@ -101,10 +101,14 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
      * 数量 和 位置  加减数量时
      */
     private int mCount, mPosition;
-    private Double mTotalPrice1;
+    private double mTotalPrice1;
     public static int skuinfoStockCount = 0;
     // 属性弹框
     private ShopCartGoodsAttrsDialog goodsAttrsDialog = null;
+    /**
+     * 再次购买的skuid
+     */
+    private int mAgainSkuid;
 
     @Override
     public int getLayoutId() {
@@ -126,6 +130,9 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     public void initView() {
         setTitle("购物车");
         setRightText("编辑全部");
+        if (null != getIntent()) {
+            mAgainSkuid = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
+        }
         init();
     }
 
@@ -231,8 +238,23 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 ShopCartResponse.ShopsBean shopBean = datas.getShops().get(i);
                 for (int j = 0; j < shopBean.getProducts().size(); j++) {
                     ShopCartResponse.ShopsBean.ProductsBean itemsBean = shopBean.getProducts().get(j);
-                    itemsBean.setGoodsSelect(false);
-                    itemsBean.setShopSelect(false);
+                    if (mAgainSkuid == shopBean.getProducts().get(j).getSkuId()) {
+                        itemsBean.setGoodsSelect(true);
+                        if (datas.getShops().get(j).getProducts().size() == 1) {
+                            shopBean.setShopSelect(true);
+                            itemsBean.setShopSelect(true);
+                            if (datas.getShops().size() == 1) {
+                                selectFresh(true);
+                            } else {
+                                selectFresh(false);
+                            }
+                        } else {
+                            itemsBean.setShopSelect(false);
+                        }
+                    } else {
+                        itemsBean.setGoodsSelect(false);
+                        itemsBean.setShopSelect(false);
+                    }
                     itemsBean.setDeleteImageShow(false);
                     itemsBean.setLoseGoods(false);
                     itemsBean.setShopId(shopBean.getShopId());
@@ -489,7 +511,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
         } else {
             mAllSelect.setBackgroundResource(R.mipmap.icon_address_unchecked);
         }
-        Double mTotalPrice = 0.00;
+        double mTotalPrice = 0.00;
         int mTotalNum = 0;
         mTotalPrice1 = 0.00;
         mGoPayList.clear();
@@ -504,10 +526,12 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 }
         DecimalFormat df = new DecimalFormat("0.00");
         mTotalPrice1 = mTotalPrice;
+        mTvShopCartTotalPrice.setText("￥" + "0.00");
+        String s = df.format(mTotalPrice);
         if (mTotalPrice == 0) {
             mTvShopCartTotalPrice.setText("￥" + "0.00");
         } else {
-            mTvShopCartTotalPrice.setText("￥" + df.format(mTotalPrice));
+            mTvShopCartTotalPrice.setText("￥" + s);
         }
         mGoodsSubmitCount.setText("结算(" + mTotalNum + ")");
     }
@@ -632,7 +656,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
 
     @Override
     public void openGoodsDetial(int parent, int child) {
-        IntentUtils.gotoActivity(this, GoodsDetailActivity.class,  mData.get(parent).getProducts().get(child).getSkuId());
+        IntentUtils.gotoActivity(this, GoodsDetailActivity.class, mData.get(parent).getProducts().get(child).getSkuId());
     }
 
     @Override

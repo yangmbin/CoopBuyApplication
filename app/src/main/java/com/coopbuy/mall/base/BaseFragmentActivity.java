@@ -177,6 +177,9 @@ public abstract class BaseFragmentActivity<P extends BasePresenter, M extends Ba
     @Override
     public void clickTitleBarRight() {
 
+    }   @Override
+    public void clickTitleBarRight(View v) {
+
     }
 
     /**

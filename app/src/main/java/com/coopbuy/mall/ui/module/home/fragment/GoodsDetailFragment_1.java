@@ -28,6 +28,7 @@ import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.ui.module.home.model.GoodsDetailModel;
 import com.coopbuy.mall.ui.module.home.presenter.GoodsDetailPresenter;
 import com.coopbuy.mall.ui.module.home.view.GoodsDetail_IView;
+import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.utils.StringUtils;
@@ -41,6 +42,7 @@ import com.youth.banner.Banner;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,16 +163,29 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
                 break;
             // 选择地址
             case R.id.btn_select_address:
-                if (sharedPreferencesUtils.getLoginStatus())
-                    IntentUtils.gotoActivity(mContext, AddressManageActivity.class);
-                else
-                    IntentUtils.gotoActivity(mContext, LoginActivity.class);
+                enter(AddressManageActivity.class, null);
                 break;
             // 收藏/撤销 收藏店铺
             case R.id.shop_favorite_btn:
 
                 break;
         }
+    }
+
+    /**
+     * 进入对一个activity
+     *
+     * @param activity
+     */
+    private void enter(Class<?> activity, Serializable data) {
+        if (sharedPreferencesUtils.getLoginStatus())
+            if (data != null) {
+                IntentUtils.gotoActivity(mContext, activity, data);
+            } else {
+                IntentUtils.gotoActivity(mContext, activity);
+            }
+        else
+            LoginActivity.normalActivity(mContext, FinalConstant.login_type_normal);
     }
 
     /**
@@ -201,8 +216,8 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         bean.setSkuId(currentSkuId);
         list.add(bean);
         request.setSkus(list);
+        enter(OrderBuildActivity.class, request);
 
-        IntentUtils.gotoActivity(mContext, OrderBuildActivity.class, request);
     }
 
     /**
@@ -217,8 +232,11 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
         List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
         skusBeanList.add(skusBean);
-
-        mPresenter.addToCart(request);
+        if (sharedPreferencesUtils.getLoginStatus()){
+            mPresenter.addToCart(request);
+        }else {
+            LoginActivity.normalActivity(mContext, FinalConstant.login_type_normal);
+        }
     }
 
     /**
@@ -348,6 +366,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
     /**
      * 选择收货地址返回处理函数
+     *
      * @param bean
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -366,7 +385,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
      * 加入购物车成功回调
      */
     public void addToCartSuccess() {
-        IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
+        enter(ShopCartActivity.class, null);
     }
 
     /**

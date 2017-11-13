@@ -78,19 +78,21 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         this.initPresenter();
 
     }
+
     /**
      * 设置对应控件的隐藏显示
      *
      * @param isViesible
      * @param v
      */
-    public void setViewViesible( View v,boolean isViesible) {
+    public void setViewViesible(View v, boolean isViesible) {
         if (isViesible) {
             v.setVisibility(View.VISIBLE);
         } else {
             v.setVisibility(View.GONE);
         }
     }
+
     /**
      * 设置layout前配置（设置无标题、竖屏或着色状态栏等）
      */
@@ -198,6 +200,11 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      */
     @Override
     public void clickTitleBarRight() {
+
+    }
+
+    @Override
+    public void clickTitleBarRight(View v) {
 
     }
 

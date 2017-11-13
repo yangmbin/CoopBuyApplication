@@ -6,5 +6,4 @@ package com.coopbuy.mall.ui.module.center.port;
 
 public interface FootMarkPort {
     void openDetial(int postion);
-
 }
