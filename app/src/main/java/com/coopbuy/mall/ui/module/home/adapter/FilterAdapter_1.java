@@ -5,14 +5,15 @@ import android.content.Context;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SearchResultResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class FilterAdapter_1 extends BaseDelegateAdapter<Object> {
+public class FilterAdapter_1 extends BaseDelegateAdapter<SearchResultResponse.FacetResultsBean> {
 
-    public FilterAdapter_1(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public FilterAdapter_1(Context ctx, List<SearchResultResponse.FacetResultsBean> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
     }
 
@@ -22,7 +23,7 @@ public class FilterAdapter_1 extends BaseDelegateAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
-
+    protected void bindData(BaseRecyclerHolder holder, int position, final SearchResultResponse.FacetResultsBean item) {
+        holder.getTextView(R.id.name).setText(item.getFriendlyName());
     }
 }

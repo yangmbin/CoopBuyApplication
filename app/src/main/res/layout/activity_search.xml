@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.coopbuy.mall.widget.navigation.SearchTopBar
+        android:id="@+id/search_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px80"
+        android:paddingLeft="@dimen/dimen_px30">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_px30"
+            android:textColor="@color/theme_text_lab_black"
+            android:gravity="center_vertical"
+            android:text="历史搜索记录"/>
+        <LinearLayout
+            android:id="@+id/clear_search_history"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="@dimen/dimen_px30">
+            <ImageView
+                android:layout_width="@dimen/dimen_px40"
+                android:layout_height="@dimen/dimen_px40"
+                android:src="@mipmap/icon_eraser"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_px10"
+                android:textSize="@dimen/text_size_px26"
+                android:textColor="@color/auxiliary_text_blue_gray"
+                android:text="清空"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px1"
+        android:background="@color/gray_4"/>
+
+    <com.coopbuy.mall.widget.tag.TagGroup
+        android:id="@+id/tag_group"
+        style="@style/TagGroup"
+        app:atg_horizontalSpacing="@dimen/dimen_px30"
+        app:atg_verticalSpacing="@dimen/dimen_px24"
+        app:atg_horizontalPadding="@dimen/dimen_px39"
+        app:atg_verticalPadding="@dimen/dimen_px17"
+        android:layout_margin="@dimen/dimen_px30"
+        app:atg_borderColor="@color/black_7"
+        app:atg_checkedBorderColor="@color/theme_text_title_orange"
+        app:atg_textColor="@color/theme_text_lab_black"
+        app:atg_checkedTextColor="@color/theme_text_title_orange"
+        app:atg_textSize="@dimen/text_size_px28"
+        app:atg_pressedBackgroundColor="@color/white"
+        app:atg_isAppendMode="false"/>
+
+    <!-- 无搜索历史提示 -->
+    <LinearLayout
+        android:id="@+id/exception_wrapper"
+        android:layout_width ="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_px430"
+            android:layout_height="@dimen/dimen_px284"
+            android:src="@mipmap/icon_loadingbox_no_data"/>
+        <TextView
+            android:id="@+id/exception_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_px28"
+            android:textColor="@color/theme_text_lab_black"
+            android:layout_marginTop="@dimen/dimen_px100"
+            android:text="无搜索历史记录哦"/>
+
+    </LinearLayout>
+
+</LinearLayout>

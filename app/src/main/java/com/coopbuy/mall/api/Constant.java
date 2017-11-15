@@ -217,4 +217,5 @@ public class Constant {
     public static final String GET_CART_QUANTITY = "api/services/app/shoppingCart/FindCartQuantity";
     public static final String ADD_SHOP_FAVORITE = "api/services/app/favorite/ShopInfo";
     public static final String REMOVE_SHOP_FAVORITE = "api/services/app/favorite/CancelShop";
+    public static final String GET_SEARCH_RESULT = "api/services/app/product/Search";
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/ll_title_bar"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px88"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:id="@+id/go_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dimen_px30"
+            android:paddingRight="@dimen/dimen_px46">
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/ic_titlebar_back"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_px60"
+            android:layout_weight="1"
+            android:background="@drawable/bg_nav_home_top_search"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dimen_px12"
+            android:paddingRight="@dimen/dimen_px26">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:src="@mipmap/icon_nav_home_top_search" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_px15"
+                android:text="请输入搜索内容"
+                android:textColor="@color/auxiliary_text_gray"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:textSize="@dimen/text_size_px28" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dimen_px6"
+            android:paddingRight="@dimen/dimen_px32"
+            android:textSize="@dimen/text_size_px30"
+            android:textColor="@color/theme_text_lab_black"
+            android:text="取消"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/menu_div_line" />
+
+</LinearLayout>

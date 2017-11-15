@@ -13,6 +13,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SearchResultResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
 import com.coopbuy.mall.ui.module.home.adapter.FilterAdapter_1;
@@ -97,7 +98,7 @@ public class CategorySecondActivity extends BaseActivity {
         list_2.add(new Object());
         list_2.add(new Object());
         list_2.add(new Object());
-        mAdapters.add(new FilterAdapter_2(mContext, list_2, helper_2));
+        mAdapters.add(new FilterAdapter_2(mContext, new SearchResultResponse.FacetResultsBean(), list_2, helper_2));
 
         //3
         List list_3 = new ArrayList();

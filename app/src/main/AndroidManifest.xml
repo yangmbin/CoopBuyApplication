@@ -113,7 +113,9 @@
         <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
         <activity android:name=".ui.module.center.pay.PayFailActivity" />
         <activity android:name=".ui.module.center.activity.StationReleasesActivity" />
-        <activity android:name=".ui.module.center.activity.IncomeActivity"></activity>
+        <activity android:name=".ui.module.center.activity.IncomeActivity" />
+        <activity android:name=".ui.module.home.activity.SearchActivity" />
+        <activity android:name=".ui.module.home.activity.SearchResultActivity"></activity>
     </application>
 
 </manifest>

@@ -297,8 +297,8 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
      */
     @Override
     public void uploadImageSuccess(UploadImageResponse uploadImageResponse, String localPath) {
-        Log.e("yangmbin", "upload server path:" + uploadImageResponse.getImageUrl());
-        uploadView.addImage(uploadImageResponse.getImageUrl(), localPath);
+        Log.e("yangmbin", "upload server path:" + uploadImageResponse.getImageUrls());
+        uploadView.addImage(uploadImageResponse.getImageUrls().get(0), localPath);
     }
 
     /**

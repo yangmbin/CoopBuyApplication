@@ -5,7 +5,9 @@
     android:background="@color/theme_back_white"
     android:orientation="vertical">
 
-    <include layout="@layout/nav_home_top"/>
+    <com.coopbuy.mall.widget.navigation.NavHomeBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <com.coopbuy.mall.widget.navigation.MarketWeekBar
         android:id="@+id/week_bar"
