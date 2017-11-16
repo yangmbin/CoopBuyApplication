@@ -9,11 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.FootMarkResponse;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
-import com.coopbuy.mall.ui.module.center.activity.FootMarkActivity;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class MessageCenterAdapter extends RecyclerView.Adapter<MessageCenterAdap
 
     @Override
     public MessageCenterAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme_mesg_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mesg_view, parent, false);
         return new Holder(view);
     }
 

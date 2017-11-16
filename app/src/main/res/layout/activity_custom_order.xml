@@ -8,8 +8,83 @@
 
     <include layout="@layout/title_bar_layout" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll_apply"
+            android:layout_width="@dimen/dimen_px300"
+            android:layout_height="90px"
+            android:layout_marginBottom="@dimen/dimen_px30"
+            android:layout_marginTop="@dimen/dimen_px30"
+            android:background="@mipmap/icon_custom_apply"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_px60"
+                android:layout_height="@dimen/dimen_px60"
+                android:src="@mipmap/icon_apply" />
+
+            <TextView
+                style="@style/text_white_size_26_ff"
+                android:text="代付申请(3)"
+                android:textSize="@dimen/dimen_px30" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_history"
+            android:layout_width="@dimen/dimen_px300"
+            android:layout_height="90px"
+            android:layout_marginBottom="@dimen/dimen_px30"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:layout_marginTop="@dimen/dimen_px30"
+            android:background="@mipmap/icon_custom_history"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_px60"
+                android:layout_height="@dimen/dimen_px60"
+                android:src="@mipmap/icon_history" />
+
+            <TextView
+                style="@style/text_white_size_26_ff"
+                android:text="代付历史(3)"
+                android:textSize="@dimen/dimen_px30" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_px300"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_px30"
+            android:background="@mipmap/icon_custom_history"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_px60"
+                android:layout_height="@dimen/dimen_px60"
+                android:src="@mipmap/icon_history" />
+
+            <TextView
+                style="@style/text_white_size_26_ff"
+                android:text="代付历史(3)"
+                android:textSize="@dimen/dimen_px30" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px16"
+        android:background="@color/theme_back_white" />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/swipe_target"
+        android:id="@+id/recView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never" />

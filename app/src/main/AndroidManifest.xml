@@ -82,6 +82,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.module.center.activity.OrderBuildActivity" />
         <activity android:name=".ui.module.center.activity.ShopStoreActivity" />
+        <activity android:name=".ui.module.center.activity.PayHistoryActivity" />
         <activity android:name=".ui.module.center.activity.FootMarkActivity" />
         <activity android:name=".ui.module.center.activity.MessageCenterActivity" />
         <activity android:name=".ui.module.center.activity.SystemMsgActivity" />
@@ -113,6 +114,9 @@
         <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
         <activity android:name=".ui.module.center.pay.PayFailActivity" />
         <activity android:name=".ui.module.center.activity.StationReleasesActivity" />
+        <activity android:name=".ui.module.center.activity.IncomeActivity" />
+        <activity android:name=".ui.module.center.activity.PayAnotherActivity" />
+        <activity android:name=".ui.module.center.activity.StationCustomOrderDetailActivity"></activity>
         <activity android:name=".ui.module.center.activity.IncomeActivity" />
         <activity android:name=".ui.module.home.activity.SearchActivity" />
         <activity android:name=".ui.module.home.activity.SearchResultActivity"></activity>

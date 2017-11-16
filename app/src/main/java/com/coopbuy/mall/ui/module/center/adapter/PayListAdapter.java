@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.api.reponse.TradeChannelResponse;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -40,7 +39,7 @@ public class PayListAdapter extends RecyclerView.Adapter<PayListAdapter.Holder> 
 
     @Override
     public PayListAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme_paylist_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_paylist_view, parent, false);
         return new Holder(view);
     }
 

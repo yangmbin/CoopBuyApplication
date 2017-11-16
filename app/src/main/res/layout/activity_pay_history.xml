@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.ShopStoreActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+
+    <LinearLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.coopbuy.mall.widget.refresh.GNRefreshHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:id="@+id/swip_recy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/edit_text_back_white"
+                android:overScrollMode="never" />
+
+            <com.coopbuy.mall.widget.refresh.GNRefreshFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</LinearLayout>
