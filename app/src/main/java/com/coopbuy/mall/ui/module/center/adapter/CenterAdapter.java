@@ -10,6 +10,7 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.bean.CenterData;
+import com.coopbuy.mall.ui.module.center.activity.CustomOrderActivity;
 import com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity;
 import com.coopbuy.mall.ui.module.center.activity.LoginActivity;
 import com.coopbuy.mall.ui.module.center.activity.MyCustomActivity;
@@ -56,10 +57,10 @@ public class CenterAdapter extends BaseRecyclerAdapter<CenterData> {
                         enter(MyCustomActivity.class, null);
                         break;
                     case "客户订单":
-
+                        enter(CustomOrderActivity.class, null);
                         break;
                     case "站长业务":
-                        IntentUtils.gotoActivity(mContext, ShopCartActivity.class,6526);
+
                         break;
                     case "我的推荐":
                         enter(StationReleasesActivity.class, null);

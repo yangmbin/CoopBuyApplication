@@ -96,8 +96,10 @@
                                 android:text="合计:" />
 
                             <TextView
-                                android:id="@+id/tv_shopcart_totalprice"
-                                style="@style/text_orange_size_26_f"
+                                android:id="@+id/tv_totalprice"
+                                android:textColor="@color/theme_text_title_orange"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/dimen_px10"
                                 android:text="¥ 0.00"
                                 android:textSize="@dimen/dimen_px36" />

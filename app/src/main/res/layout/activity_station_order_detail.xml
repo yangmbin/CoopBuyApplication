@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px320"
+                    android:background="@color/theme_text_lab_black" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px340"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px30"
+                    android:background="@mipmap/icon_wait_send"
+                    android:paddingLeft="@dimen/dimen_px40">
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        style="@style/white_size_32_ffffff"
+
+                        android:layout_marginTop="@dimen/dimen_px180"
+                        android:text="商家已发货" />
+
+                    <TextView
+
+                        android:id="@+id/tv_time_end"
+                        style="@style/white_size_32_ffffff"
+                        android:layout_below="@id/tv_status"
+                        android:layout_marginTop="@dimen/dimen_px24"
+                        android:text="还剩15天0小时0分自动确认收货" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px120"
+                android:layout_marginTop="@dimen/dimen_px17"
+                android:background="@color/edit_text_back_white"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <ImageView
+                    android:id="@+id/iv"
+                    style="@style/image_center_40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_express_car" />
+
+                <TextView
+                    android:id="@+id/tv_logistics"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_marginLeft="@dimen/dimen_px22"
+                    android:layout_marginTop="@dimen/dimen_px30"
+                    android:layout_toRightOf="@id/iv"
+                    android:text="[嘉兴市]嘉兴南湖集散中心 已发出"
+                    android:textSize="@dimen/dimen_px30" />
+
+                <TextView
+                    android:id="@+id/tv_time_send"
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_below="@id/tv_logistics"
+                    android:layout_marginLeft="@dimen/dimen_px22"
+                    android:layout_marginTop="@dimen/dimen_px8"
+                    android:layout_toRightOf="@id/iv"
+                    android:text="2017-06-18 23:31:00" />
+
+                <ImageView
+                    style="@style/image_more"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px1"
+                android:background="@color/edit_text_back_white"
+                android:padding="@dimen/dimen_px30">
+
+                <ImageView
+                    android:id="@+id/iv_ad"
+                    style="@style/image_center_40"
+                    android:src="@mipmap/icon_address_goods_detail" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_marginLeft="@dimen/dimen_px19"
+                    android:layout_toRightOf="@id/iv_ad"
+                    android:text="青青"
+                    android:textSize="@dimen/dimen_px32" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_marginLeft="@dimen/dimen_px29"
+                    android:layout_toRightOf="@id/tv_name"
+                    android:text="181125421525"
+                    android:textSize="@dimen/dimen_px32" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/text_black_size_30_878f94"
+                    android:layout_alignLeft="@id/tv_name"
+                    android:layout_below="@id/tv_name"
+                    android:layout_marginRight="@dimen/dimen_px26"
+                    android:layout_marginTop="@dimen/dimen_px24"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="贵州省XX市（州）XX县（区）XX镇XX乡XX村 20组两家坡203号"
+                    android:textSize="@dimen/dimen_px32" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="店铺优惠" />
+
+                <TextView
+                    android:id="@+id/tv_preferential"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_alignParentRight="true"
+                    android:text="-$45" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="运费（快递）" />
+
+                <TextView
+                    android:id="@+id/tv_feight"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_alignParentRight="true"
+                    android:text="$45" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="买家留言" />
+
+                <TextView
+                    android:id="@+id/tv_meg"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_alignBaseline="@+id/textView2"
+                    android:layout_alignBottom="@+id/textView2"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dimen_px10"
+                    android:layout_toRightOf="@id/textView2"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="水电费肯德基法拉盛大家发链接发到" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="订单总价" />
+
+                <TextView
+                    android:id="@+id/tv_all_price"
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_alignParentRight="true"
+                    android:text="-$45" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px90"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:text="实付款"
+                    android:textSize="@dimen/dimen_px32" />
+
+                <TextView
+                    android:id="@+id/tv_pay_price"
+                    style="@style/text_orange_size_26_f"
+                    android:layout_alignParentRight="true"
+                    android:text="-$45"
+                    android:textSize="@dimen/dimen_px32" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_px30">
+
+                    <TextView
+                        style="@style/text_black_size_30_878f94"
+                        android:layout_centerVertical="true"
+                        android:text="订单编号：152485284285"
+                        android:textSize="@dimen/dimen_px26" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/bg_round_corner_gray_7"
+                        android:paddingBottom="@dimen/dimen_px16"
+                        android:paddingLeft="@dimen/dimen_px48"
+                        android:paddingRight="@dimen/dimen_px48"
+                        android:paddingTop="@dimen/dimen_px16"
+                        android:text="复制" />
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:text="创建时间：2017-8-96  2：45:4"
+                    android:textSize="@dimen/dimen_px26" />
+
+                <TextView
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="付款时间：2017-8-96  2：45:4"
+                    android:textSize="@dimen/dimen_px26" />
+
+                <TextView
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_marginBottom="@dimen/dimen_px46"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="发货时间：2017-8-96  2：45:4"
+                    android:textSize="@dimen/dimen_px26" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

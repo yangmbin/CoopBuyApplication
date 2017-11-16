@@ -149,7 +149,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_data), R.mipmap.icon_center_data));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_client), R.mipmap.icon_center_client));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_order), R.mipmap.icon_center_order));
-        mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_work), R.mipmap.icon_cneter_work));
+     //   mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_work), R.mipmap.icon_cneter_work));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_recommend), R.mipmap.icon_center_recommend));
     }
 

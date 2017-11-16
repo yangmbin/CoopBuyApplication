@@ -22,8 +22,11 @@ import com.coopbuy.mall.ui.module.center.port.ShopCartListener;
 import com.coopbuy.mall.ui.module.center.presenter.ShopCartPresenter;
 import com.coopbuy.mall.ui.module.center.view.ShopCart_IView;
 import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
+import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.StringUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.coopbuy.mall.widget.dialog.ShopCartGoodsAttrsDialog;
 import com.coopbuy.mall.widget.swipeitem.SwipeExpandableListView;
 
@@ -49,7 +52,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     LinearLayout llShopcartSubmit;
     @Bind(R.id.tv_shopcart_addselect)
     ImageView mAllSelect;
-    @Bind(R.id.tv_shopcart_totalprice)
+    @Bind(R.id.tv_totalprice)
     TextView mTvShopCartTotalPrice;
     /**
      * 结算数量
@@ -101,7 +104,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
      * 数量 和 位置  加减数量时
      */
     private int mCount, mPosition;
-    private double mTotalPrice1;
+    private double mTotalPrice1 = 0.00;
     public static int skuinfoStockCount = 0;
     // 属性弹框
     private ShopCartGoodsAttrsDialog goodsAttrsDialog = null;
@@ -129,6 +132,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     @Override
     public void initView() {
         setTitle("购物车");
+        mEditAll.setVisibility(View.GONE);
         setRightText("编辑全部");
         if (null != getIntent()) {
             mAgainSkuid = getIntent().getIntExtra(IntentUtils.PARAM1, -1);
@@ -524,14 +528,10 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                         mGoPayList.add(mData.get(i).getProducts().get(j));
                     }
                 }
-        DecimalFormat df = new DecimalFormat("0.00");
         mTotalPrice1 = mTotalPrice;
-        mTvShopCartTotalPrice.setText("￥" + "0.00");
-        String s = df.format(mTotalPrice);
-        if (mTotalPrice == 0) {
+        mTvShopCartTotalPrice.setText("￥" + StringUtils.keepTwoDecimalPoint(mTotalPrice));
+        if (mTotalPrice1 < 0) {
             mTvShopCartTotalPrice.setText("￥" + "0.00");
-        } else {
-            mTvShopCartTotalPrice.setText("￥" + s);
         }
         mGoodsSubmitCount.setText("结算(" + mTotalNum + ")");
     }
@@ -588,17 +588,26 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     }
 
     @Override
-    public void delete(int postion, int child) {
-        GoodsDeleteRequest request = new GoodsDeleteRequest();
-        List<Integer> skuinfns = new ArrayList<>();
-        skuinfns.add(mData.get(postion).getProducts().get(child).getSkuId());
-        request.setSkuIds(skuinfns);
-        mPresenter.deleteGoods(request, postion, child);
+    public void delete(final int postion, final int child) {
+        DialogUtils.showTwoKeyDialog(this, new CommonDialog.ClickCallBack() {
+            @Override
+            public void onConfirm() {
+                GoodsDeleteRequest request = new GoodsDeleteRequest();
+                List<Integer> skuinfns = new ArrayList<>();
+                skuinfns.add(mData.get(postion).getProducts().get(child).getSkuId());
+                request.setSkuIds(skuinfns);
+                mPresenter.deleteGoods(request, postion, child);
+            }
+        }, "确认要删除此商品吗?", "取消", "确认");
     }
 
     @Override
-    public void deleteItemSuccess(int parent, int child) {
-        mData.get(parent).getProducts().remove(child);
+    public void deleteItemSuccess(final int parent, final int child) {
+        if (mData.get(parent).getProducts().size() == 1) { //如果店铺的商品只有一个 移除这个商品和店铺
+            mData.remove(parent);
+        } else {
+            mData.get(parent).getProducts().remove(child);
+        }
         mAdapter.notifyDataSetChanged();
     }
 
