@@ -1,5 +1,6 @@
 package com.coopbuy.mall.ui.module.home.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -7,20 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
-import com.alibaba.android.vlayout.layout.GridLayoutHelper;
-import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.SearchResultResponse;
+import com.coopbuy.mall.api.request.SearchRequest;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.bean.CategoryIntentData;
 import com.coopbuy.mall.ui.module.center.adapter.MyViewPagerAdapter;
-import com.coopbuy.mall.ui.module.home.adapter.FilterAdapter_1;
 import com.coopbuy.mall.ui.module.home.adapter.FilterAdapter_2;
-import com.coopbuy.mall.ui.module.home.adapter.FilterAdapter_3;
 import com.coopbuy.mall.ui.module.home.fragment.CategorySecondFragment;
-import com.coopbuy.mall.utils.ScreenUtils;
+import com.coopbuy.mall.ui.module.home.presenter.SearchResultPresenter;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -41,12 +42,18 @@ public class CategorySecondActivity extends BaseActivity {
     RecyclerView filterList;
     @Bind(R.id.drawerLayout)
     DrawerLayout drawerLayout;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private MyViewPagerAdapter mAdapter;
-    private final String[] mTitles = {"全部", "厨房配件", "烹饪锅具"};
+    @Bind(R.id.total_count)
+    public TextView totalCount;
+    @Bind(R.id.min_price)
+    EditText minPrice;
+    @Bind(R.id.max_price)
+    EditText maxPrice;
+    public ArrayList<Fragment> mFragments = new ArrayList<>();
+    public MyViewPagerAdapter mAdapter;
+    public DelegateAdapter mDelegateAdapter;
+    public List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
+    public CategoryIntentData mCategoryIntentData; // 保存前一个页面传递的数据
 
-    private DelegateAdapter mDelegateAdapter;
-    private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
 
     @Override
     public int getLayoutId() {
@@ -55,7 +62,6 @@ public class CategorySecondActivity extends BaseActivity {
 
     @Override
     public void initModel() {
-
     }
 
     @Override
@@ -63,9 +69,19 @@ public class CategorySecondActivity extends BaseActivity {
 
     }
 
+    /**
+     * 标题栏右边搜索按钮
+     */
+    @Override
+    public void clickTitleBarRight() {
+        IntentUtils.gotoActivity(mContext, SearchActivity.class);
+    }
+
     @Override
     public void initView() {
-        setTitle("厨具");
+        mCategoryIntentData = (CategoryIntentData) getIntent().getSerializableExtra(IntentUtils.DATA);
+
+        setTitle(mCategoryIntentData.getItemList().get(0).getFriendlyName());
         setRightImage(R.mipmap.icon_right_search);
         initFragment();
         initAdapter();
@@ -80,55 +96,29 @@ public class CategorySecondActivity extends BaseActivity {
         filterList.setLayoutManager(manager);
         mDelegateAdapter = new DelegateAdapter(manager, false);
         filterList.setAdapter(mDelegateAdapter);
-
-        //test
-        //1
-        List list_1 = new ArrayList();
-        list_1.add(new Object());
-        mAdapters.add(new FilterAdapter_1(mContext, list_1, new SingleLayoutHelper()));
-
-        //2
-        GridLayoutHelper helper_2 = new GridLayoutHelper(3);
-        helper_2.setAutoExpand(false);
-        helper_2.setMargin(ScreenUtils.dip2px(mContext, 15), 0, ScreenUtils.dip2px(mContext, 15), ScreenUtils.dip2px(mContext, 25));
-        helper_2.setHGap(ScreenUtils.dip2px(mContext, 17));
-        helper_2.setVGap(ScreenUtils.dip2px(mContext, 15));
-        List list_2 = new ArrayList();
-        list_2.add(new Object());
-        list_2.add(new Object());
-        list_2.add(new Object());
-        list_2.add(new Object());
-        mAdapters.add(new FilterAdapter_2(mContext, new SearchResultResponse.FacetResultsBean(), list_2, helper_2));
-
-        //3
-        List list_3 = new ArrayList();
-        list_3.add(new Object());
-        mAdapters.add(new FilterAdapter_3(mContext, list_3, new SingleLayoutHelper()));
-
-
-        mDelegateAdapter.setAdapters(mAdapters);
-        mDelegateAdapter.notifyDataSetChanged();
-
-        // 动态计算设置RecyclerView高度
-        setListHeight();
     }
 
     private void initFragment() {
-        mFragments.add(new CategorySecondFragment());
-        mFragments.add(new CategorySecondFragment());
-        mFragments.add(new CategorySecondFragment());
+        for (int i = 0; i < mCategoryIntentData.getItemList().size(); i++) {
+            CategorySecondFragment categorySecondFragment = new CategorySecondFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(IntentUtils.DATA, mCategoryIntentData.getItemList().get(i));
+            categorySecondFragment.setArguments(bundle);
+            mFragments.add(categorySecondFragment);
+        }
     }
 
     private void initAdapter() {
         mAdapter = new MyViewPagerAdapter(getSupportFragmentManager(), mFragments);
         mViewPager.setAdapter(mAdapter);
-        mTabLayout.setViewPager(mViewPager, mTitles, this, mFragments);
+        mTabLayout.setViewPager(mViewPager, mCategoryIntentData.getFriendlyNameList(), this, mFragments);
+        mViewPager.setCurrentItem(mCategoryIntentData.getCurrentIndex());
     }
 
     /**
      * 动态计算设置RecyclerView高度
      */
-    private void setListHeight() {
+    public void setListHeight() {
         int measureWidth = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
         int measureHeight = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
         filterList.measure(measureWidth, measureHeight);
@@ -141,11 +131,19 @@ public class CategorySecondActivity extends BaseActivity {
     /**
      * 点击事件监听
      */
-    @OnClick({R.id.closeDrawer})
+    @OnClick({R.id.closeDrawer, R.id.reset, R.id.confirm})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.closeDrawer:
                 closeDrawer();
+                break;
+            // 抽屉重置
+            case R.id.reset:
+                drawerReset();
+                break;
+            // 抽屉确认
+            case R.id.confirm:
+                drawerConfirm();
                 break;
         }
     }
@@ -163,4 +161,43 @@ public class CategorySecondActivity extends BaseActivity {
     public void openDrawer() {
         drawerLayout.openDrawer(Gravity.RIGHT);
     }
+
+
+    /**
+     * 抽屉重置
+     */
+    private void drawerReset() {
+        minPrice.setText("");
+        maxPrice.setText("");
+        for (int i = 0; i < mAdapters.size(); i++) {
+            if (mAdapters.get(i) instanceof FilterAdapter_2) {
+                ((FilterAdapter_2) mAdapters.get(i)).setmCurrentSelected(-1);
+            }
+        }
+        mDelegateAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 抽屉确认
+     */
+    private void drawerConfirm() {
+        // 当前可见的Fragment
+        CategorySecondFragment currentFragment = (CategorySecondFragment) mFragments.get(mTabLayout.getCurrentTab());
+
+        currentFragment.mFilterList.clear();
+        for (int i = 0; i < mAdapters.size(); i++) {
+            if (mAdapters.get(i) instanceof FilterAdapter_2) {
+                int index = ((FilterAdapter_2) mAdapters.get(i)).getmCurrentSelected();
+                if (index != -1) {
+                    SearchRequest.FiltersBean filtersBean = new SearchRequest.FiltersBean();
+                    filtersBean.setFieldName(((FilterAdapter_2) mAdapters.get(i)).getmFacetResultsBean().getName());
+                    filtersBean.setValue(((FilterAdapter_2) mAdapters.get(i)).getCurrentItem().getName());
+                    currentFragment.mFilterList.add(filtersBean);
+                }
+            }
+        }
+        currentFragment.getSearchResult(SearchResultPresenter.LOAD_TYPE_4);
+        closeDrawer();
+    }
+
 }

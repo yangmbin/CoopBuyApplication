@@ -2,71 +2,93 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/theme_back_white">
 
-    <LinearLayout
-        android:id="@+id/topLayout"
+    <RelativeLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/topLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px70"
-            android:layout_marginTop="@dimen/dimen_px2"
-            android:background="@color/white">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dimen_px70">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_px28"
-                    android:textColor="@color/theme_text_lab_black"
-                    android:text="销量"/>
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px70"
+                android:layout_marginTop="@dimen/dimen_px2"
+                android:background="@color/white">
+                <LinearLayout
+                    android:id="@+id/order_by_sale_count_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/sale_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_px28"
+                        android:textColor="@color/theme_text_lab_black"
+                        android:text="销量"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/order_by_price_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/sale_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_px28"
+                        android:textColor="@color/theme_text_title_orange"
+                        android:text="价格"/>
+                    <ImageView
+                        android:id="@+id/sale_price_icon"
+                        android:layout_width="@dimen/dimen_px40"
+                        android:layout_height="@dimen/dimen_px40"
+                        android:src="@mipmap/icon_upward_price"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/dimen_px30"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_px28"
+                        android:textColor="@color/theme_text_lab_black"
+                        android:text="筛选"/>
+                    <ImageView
+                        android:layout_width="@dimen/dimen_px40"
+                        android:layout_height="@dimen/dimen_px40"
+                        android:src="@mipmap/icon_filter_shop_detail"/>
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_px28"
-                    android:textColor="@color/theme_text_title_orange"
-                    android:text="价格"/>
-                <ImageView
-                    android:layout_width="@dimen/dimen_px40"
-                    android:layout_height="@dimen/dimen_px40"
-                    android:src="@mipmap/icon_upward_price"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/dimen_px30">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_px28"
-                    android:textColor="@color/theme_text_lab_black"
-                    android:text="筛选"/>
-                <ImageView
-                    android:layout_width="@dimen/dimen_px40"
-                    android:layout_height="@dimen/dimen_px40"
-                    android:src="@mipmap/icon_filter_shop_detail"/>
-            </LinearLayout>
+
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.coopbuy.mall.widget.MaterialHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mRecycleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <com.coopbuy.mall.widget.BallPulseFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
         </LinearLayout>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mRecycleView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

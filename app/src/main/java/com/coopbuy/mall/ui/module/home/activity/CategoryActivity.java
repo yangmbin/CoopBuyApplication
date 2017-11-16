@@ -164,7 +164,7 @@ public class CategoryActivity extends BaseActivity<CategoryPresenter, CategoryMo
                     helper_4.setMarginBottom(ScreenUtils.dip2px(mContext, 12));
                     List list_4 = new ArrayList();
                     list_4.addAll(categoryResponses.get(i).getChildren().get(j).getChildren());
-                    mAdapters.add(new CategoryRightAdapter_4(mContext, list_4, helper_4));
+                    mAdapters.add(new CategoryRightAdapter_4(mContext, categoryResponses.get(i).getChildren().get(j), list_4, helper_4));
                 }
             }
         }

@@ -159,7 +159,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
                 break;
             // 进店逛逛
             case R.id.btn_go_shop:
-                IntentUtils.gotoActivity(mContext, ShopDetailActivity.class);
+                IntentUtils.gotoActivity(mContext, ShopDetailActivity.class, mSkuDetailResponse.getShopInfo().getShopId());
                 break;
             // 选择地址
             case R.id.btn_select_address:
