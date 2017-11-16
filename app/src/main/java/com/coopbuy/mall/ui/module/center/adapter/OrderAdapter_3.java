@@ -8,6 +8,7 @@ import android.view.View;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.BeforeApplyRefundRequest;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
@@ -22,6 +23,7 @@ import com.coopbuy.mall.utils.StringUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
 import com.coopbuy.mall.widget.popwindow.OrderMoreBtnPopwindow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsBeanX> implements View.OnClickListener {
@@ -249,6 +251,16 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
      * 再来一单
      */
     private void repeatSubmitOrderBtn() {
+        AddToCartRequest request = new AddToCartRequest();
+        List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
+        for (int i = 0; i < mItemOrder.getItems().size(); i++) {
+            AddToCartRequest.SkusBean skusBean = new AddToCartRequest.SkusBean();
+            skusBean.setSkuId(mItemOrder.getItems().get(i).getSkuId());
+            skusBean.setQuantity(mItemOrder.getItems().get(i).getQuantity());
+            skusBeanList.add(skusBean);
+        }
+        request.setSkus(skusBeanList);
 
+        mOrderPresenter.repeatSubmitOrder(request);
     }
 }

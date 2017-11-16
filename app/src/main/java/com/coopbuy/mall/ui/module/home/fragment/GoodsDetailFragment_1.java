@@ -145,13 +145,15 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         EventBusInstance.getInstance().unRegisterEvent(this);
     }
 
-    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs, R.id.btn_go_shop, R.id.btn_select_address})
+    @OnClick({R.id.btn_goods_params, R.id.btn_goods_attrs, R.id.btn_go_shop, R.id.btn_select_address, R.id.shop_favorite_btn})
     public void onViewClicked(View v) {
         switch (v.getId()) {
+            // 参数弹框
             case R.id.btn_goods_params:
                 GoodsParamsDialog goodsParamsDialog = new GoodsParamsDialog(mContext, mSkuDetailResponse.getPropertie());
                 goodsParamsDialog.showAtBottom();
                 break;
+            // 属性弹框
             case R.id.btn_goods_attrs:
                 beforeOpenAttrDialog();
                 break;
@@ -162,6 +164,10 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
             // 选择地址
             case R.id.btn_select_address:
                 enter(AddressManageActivity.class, null);
+                break;
+            // 收藏/撤销 收藏店铺
+            case R.id.shop_favorite_btn:
+
                 break;
         }
     }
@@ -381,6 +387,19 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     public void addToCartSuccess() {
         enter(ShopCartActivity.class, null);
     }
+
+    /**
+     * 收藏店铺成功回调
+     */
+    public void addShopFavoriteSuccess() {}
+
+    /**
+     * 取消收藏店铺成功回调
+     */
+    public void removeShopFavoriteSuccess() {
+
+    }
+
 
     /**
      * get set 方法

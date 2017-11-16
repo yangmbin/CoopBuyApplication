@@ -117,6 +117,9 @@
         <activity android:name=".ui.module.center.activity.IncomeActivity" />
         <activity android:name=".ui.module.center.activity.PayAnotherActivity" />
         <activity android:name=".ui.module.center.activity.StationCustomOrderDetailActivity"></activity>
+        <activity android:name=".ui.module.center.activity.IncomeActivity" />
+        <activity android:name=".ui.module.home.activity.SearchActivity" />
+        <activity android:name=".ui.module.home.activity.SearchResultActivity"></activity>
     </application>
 
 </manifest>

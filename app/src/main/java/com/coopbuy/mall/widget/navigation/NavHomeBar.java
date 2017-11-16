@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.ui.module.home.activity.LocationActivity;
+import com.coopbuy.mall.ui.module.home.activity.SearchActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 
 /**
@@ -20,7 +21,7 @@ import com.coopbuy.mall.utils.IntentUtils;
 public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
 
     private View mView;
-    private LinearLayout ll_location;
+    private LinearLayout ll_location, ll_search;
     private Context mContext;
 
     public NavHomeBar(Context context, AttributeSet attrs) {
@@ -32,7 +33,9 @@ public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
         addView(mView);
 
         ll_location = mView.findViewById(R.id.ll_location);
+        ll_search = mView.findViewById(R.id.ll_search);
         ll_location.setOnClickListener(this);
+        ll_search.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +43,9 @@ public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.ll_location:
                 IntentUtils.gotoActivity(mContext, LocationActivity.class);
+                break;
+            case R.id.ll_search:
+                IntentUtils.gotoActivity(mContext, SearchActivity.class);
                 break;
         }
     }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/theme_back_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.coopbuy.mall.widget.navigation.SearchResultTopBar
+            android:id="@+id/search_result_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/fragment_category_second"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/search_drawer_layout"/>
+
+</android.support.v4.widget.DrawerLayout>

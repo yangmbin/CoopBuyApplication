@@ -10,6 +10,7 @@ import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
+import com.coopbuy.mall.api.request.ShopIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.base.BaseModel;
@@ -59,5 +60,13 @@ public class GoodsDetailModel implements BaseModel {
 
     public IAsyncRequestState getCartQuantity(IAsyncResultCallback<GetCartQuantityResponse> callback, Object userState) {
         return client.getCartQuantity(callback, userState);
+    }
+
+    public IAsyncRequestState addShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.addShopFavorite(request, callback, userState);
+    }
+
+    public IAsyncRequestState removeShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.removeShopFavorite(request, callback, userState);
     }
 }

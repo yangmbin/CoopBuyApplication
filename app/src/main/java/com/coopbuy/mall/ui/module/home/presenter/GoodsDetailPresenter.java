@@ -13,6 +13,7 @@ import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.ProductIdRequest;
+import com.coopbuy.mall.api.request.ShopIdRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.SkuIdRequest;
 import com.coopbuy.mall.base.BasePresenter;
@@ -283,5 +284,52 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                 mView.stopAll();
             }
         }, "获取购物车数量"));
+    }
+
+
+    /**
+     * 收藏店铺
+     * @param shopId
+     */
+    public void addShopFavorite(int shopId) {
+        mView.showTransLoading();
+        ShopIdRequest request = new ShopIdRequest();
+        request.setShopId(shopId);
+        mView.appendNetCall(mModel.addShopFavorite(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                fragment_1.addShopFavoriteSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "收藏店铺"));
+    }
+
+    /**
+     * 取消商品收藏
+     * @param shopId
+     */
+    public void removeShopFavorite(int shopId) {
+        mView.showTransLoading();
+        ShopIdRequest request = new ShopIdRequest();
+        request.setShopId(shopId);
+        mView.appendNetCall(mModel.addShopFavorite(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                fragment_1.removeShopFavoriteSuccess();
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "取消商品收藏"));
     }
 }

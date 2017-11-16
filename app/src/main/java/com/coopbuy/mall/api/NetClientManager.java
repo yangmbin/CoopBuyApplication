@@ -29,6 +29,7 @@ import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.reponse.SearchResultResponse;
 import com.coopbuy.mall.api.reponse.ShippingCompanyResponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
@@ -74,8 +75,11 @@ import com.coopbuy.mall.api.request.ReApplyRefundAllRequest;
 import com.coopbuy.mall.api.request.ReApplyRefundOneRequest;
 import com.coopbuy.mall.api.request.RefundExpressInfoRequest;
 import com.coopbuy.mall.api.request.RegisterRequest;
+import com.coopbuy.mall.api.request.SearchNoFilterRequest;
+import com.coopbuy.mall.api.request.SearchRequest;
 import com.coopbuy.mall.api.request.SetDefaultOrDeleteOrFindAddressRequest;
 import com.coopbuy.mall.api.request.ShopCurrentPageRequest;
+import com.coopbuy.mall.api.request.ShopIdRequest;
 import com.coopbuy.mall.api.request.ShopSotreCancelRequest;
 import com.coopbuy.mall.api.request.SkuDetailRequest;
 import com.coopbuy.mall.api.request.SkuIdRequest;
@@ -492,6 +496,28 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getCartQuantity(IAsyncResultCallback<GetCartQuantityResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<GetCartQuantityResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_CART_QUANTITY, callback, userState);
+    }
+
+    /**
+     * 收藏店铺
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADD_SHOP_FAVORITE, request, callback, userState);
+    }
+
+    /**
+     * 取消商品收藏
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState removeShopFavorite(ShopIdRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVE_SHOP_FAVORITE, request, callback, userState);
     }
 
     /**
@@ -947,7 +973,7 @@ public class NetClientManager extends BaseApiClient {
      * @param userState
      * @return
      */
-    public IAsyncRequestState getShippingCampanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
+    public IAsyncRequestState getShippingCompanyList(IAsyncResultCallback<List<ShippingCompanyResponse>> callback, Object userState) {
         return apiPostRequest(new TypeToken<List<ShippingCompanyResponse>>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.SHIPPING_COMPANY_LIST, callback, userState);
     }
@@ -974,5 +1000,27 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getRefundExpressInfo(RefundExpressInfoRequest request, IAsyncResultCallback<ExpressInfoResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<ExpressInfoResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.REFUND_EXPRESS_INFO, request, callback, userState);
+    }
+
+    /**
+     * 获取搜索结果
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getSearchResult(SearchRequest request, IAsyncResultCallback<SearchResultResponse> callback, Object userState) {
+        if (request.getFilters().size() != 0) {
+            return apiPostRequest(new TypeToken<SearchResultResponse>() {
+            }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SEARCH_RESULT, request, callback, userState);
+        } else {
+            SearchNoFilterRequest searchNoFilterRequest = new SearchNoFilterRequest();
+            searchNoFilterRequest.setSearchKeyword(request.getSearchKeyword());
+            searchNoFilterRequest.setCurrentPage(request.getCurrentPage());
+            searchNoFilterRequest.setOrderMode(request.getOrderMode());
+
+            return apiPostRequest(new TypeToken<SearchResultResponse>() {
+            }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SEARCH_RESULT, searchNoFilterRequest, callback, userState);
+        }
     }
 }

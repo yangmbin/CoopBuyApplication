@@ -2,9 +2,15 @@ package com.coopbuy.mall.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import com.coopbuy.mall.api.Constant;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -128,5 +134,59 @@ public class SharedPreferencesUtils {
     public Boolean getUserState() {
         SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
         return sp.getBoolean(FinalConstant.user_status, false);
+    }
+
+    /**
+     * 保存搜索历史关键词
+     *
+     * @param searchWord
+     */
+    public void putSearchWord(String searchWord) {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor et = sp.edit();
+        Gson gson = new Gson();
+        List<String> keywordList = getSearchWordList();
+        for (int i = 0; i < keywordList.size(); i++) {
+            if(searchWord.equals(keywordList.get(i))){
+                return;
+            }
+        }
+        keywordList.add(0, searchWord);
+        if (keywordList.size() > 15) {
+            List<String> tempList = new ArrayList<>();
+            for (int i = 0; i < 15; i++)
+                tempList.add(keywordList.get(i));
+            et.putString(Constants.SEARCH_GOODS_NAME, gson.toJson(tempList));
+        } else
+            et.putString(Constants.SEARCH_GOODS_NAME, gson.toJson(keywordList));
+        et.commit();
+    }
+
+    /**
+     * 获取搜索历史关键词列表
+     *
+     * @return
+     */
+    public List<String> getSearchWordList() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String keywordListJson = sp.getString(Constants.SEARCH_GOODS_NAME, "");
+        List<String> keywordList;
+        if (!TextUtils.isEmpty(keywordListJson))
+            keywordList = gson.fromJson(keywordListJson, new TypeToken<List<String>>() {
+            }.getType());
+        else
+            keywordList = new ArrayList<>();
+        return keywordList;
+    }
+
+    /**
+     * 清空搜索历史关键词列表
+     */
+    public void clearSearchWordList() {
+        SharedPreferences sp = mContext.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor et = sp.edit();
+        et.putString(Constants.SEARCH_GOODS_NAME, "");
+        et.commit();
     }
 }

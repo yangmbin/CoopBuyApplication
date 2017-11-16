@@ -8,18 +8,24 @@ import android.widget.TextView;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.SearchResultResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class FilterAdapter_2 extends BaseDelegateAdapter<Object> {
+public class FilterAdapter_2 extends BaseDelegateAdapter<SearchResultResponse.FacetResultsBean.StatisticsBean> {
 
     // 当前选择的项
     private int mCurrentSelected = -1;
 
-    public FilterAdapter_2(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    private List<SearchResultResponse.FacetResultsBean.StatisticsBean> mList;
+    private SearchResultResponse.FacetResultsBean mFacetResultsBean;
+
+    public FilterAdapter_2(Context ctx, SearchResultResponse.FacetResultsBean facetResultsBean, List<SearchResultResponse.FacetResultsBean.StatisticsBean> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
+        mFacetResultsBean = facetResultsBean;
+        mList = list;
     }
 
     @Override
@@ -28,8 +34,9 @@ public class FilterAdapter_2 extends BaseDelegateAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, final int position, final Object item) {
+    protected void bindData(BaseRecyclerHolder holder, final int position, final SearchResultResponse.FacetResultsBean.StatisticsBean item) {
         TextView category = holder.getTextView(R.id.category);
+        category.setText(item.getFriendlyName());
         if (position == mCurrentSelected) {
             category.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_title_orange));
             category.setBackgroundResource(R.drawable.shape_orange_1_no_solid_bg);
@@ -46,4 +53,21 @@ public class FilterAdapter_2 extends BaseDelegateAdapter<Object> {
             }
         });
     }
+
+    public int getmCurrentSelected() {
+        return mCurrentSelected;
+    }
+
+    public void setmCurrentSelected(int mCurrentSelected) {
+        this.mCurrentSelected = mCurrentSelected;
+    }
+
+    public SearchResultResponse.FacetResultsBean.StatisticsBean getCurrentItem() {
+        return mList.get(mCurrentSelected);
+    }
+
+    public SearchResultResponse.FacetResultsBean getmFacetResultsBean() {
+        return mFacetResultsBean;
+    }
+
 }

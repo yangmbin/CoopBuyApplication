@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.view;
 
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.base.BaseView;
 
 public interface OrderDetail_IView extends BaseView {
@@ -10,4 +11,5 @@ public interface OrderDetail_IView extends BaseView {
     void delayedReceiptSuccess();
     void receiptSuccess();
     void remindShipmentSuccess();
+    void repeatSubmitOrderSuccess(AddToCartRequest request);
 }

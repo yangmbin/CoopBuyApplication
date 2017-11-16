@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
 import com.coopbuy.mall.api.request.OrderListRequest;
 import com.coopbuy.mall.base.BasePresenter;
@@ -228,5 +229,28 @@ public class OrderPresenter extends BasePresenter<Order_IView, OrderModel> {
                 mView.stopAll();
             }
         }, "提醒商家发货"));
+    }
+
+
+    /**
+     * 再来一单
+     * @param request
+     */
+    public void repeatSubmitOrder(final AddToCartRequest request) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.addToCart(request, new IAsyncEmptyCallback() {
+            @Override
+            public void onComplete(Object userState) {
+                if (mAllOrderFragment != null)
+                    mAllOrderFragment.repeatSubmitOrderSuccess(request);
+                mView.stopAll();
+            }
+
+            @Override
+            public void onError(NetworkException error, Object userState) {
+                mView.stopAll();
+                ToastUtils.toastShort(error.getMessage());
+            }
+        }, "再来一单"));
     }
 }

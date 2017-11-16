@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.module.center.model;
 
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
+import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
 import com.coopbuy.mall.base.BaseModel;
@@ -74,5 +75,16 @@ public class OrderDetailModel implements BaseModel {
      */
     public IAsyncRequestState remindShipment(OrderIdRequest request, IAsyncEmptyCallback callback, Object userState) {
         return client.remindShipment(request, callback, userState);
+    }
+
+    /**
+     * 再来一单
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addToCart(AddToCartRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return client.addToCart(request, callback, userState);
     }
 }
