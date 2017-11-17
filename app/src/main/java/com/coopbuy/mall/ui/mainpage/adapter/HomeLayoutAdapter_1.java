@@ -9,8 +9,6 @@ import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
-import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
-import com.coopbuy.mall.utils.IntentUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -42,7 +40,6 @@ public class HomeLayoutAdapter_1 extends BaseDelegateAdapter<HomePageDataRespons
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                IntentUtils.gotoActivity(mContext, GoodsDetailActivity.class);
             }
         });
     }

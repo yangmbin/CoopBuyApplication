@@ -311,7 +311,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
     }
 
     /**
-     * 取消商品收藏
+     * 取消店铺收藏
      * @param shopId
      */
     public void removeShopFavorite(int shopId) {
@@ -330,6 +330,6 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
                 mView.stopAll();
                 ToastUtils.toastShort(error.getMessage());
             }
-        }, "取消商品收藏"));
+        }, "取消店铺收藏"));
     }
 }

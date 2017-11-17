@@ -35,6 +35,7 @@ import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SearchResultResponse;
 import com.coopbuy.mall.api.reponse.ShippingCompanyResponse;
 import com.coopbuy.mall.api.reponse.ShopCartResponse;
+import com.coopbuy.mall.api.reponse.ShopDetailResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
@@ -1074,5 +1075,17 @@ public class NetClientManager extends BaseApiClient {
             return apiPostRequest(new TypeToken<SearchResultResponse>() {
             }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SEARCH_RESULT, searchNoFilterRequest, callback, userState);
         }
+    }
+
+    /**
+     * 获取店铺详情
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getShopDetail(ShopIdRequest request, IAsyncResultCallback<ShopDetailResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<ShopDetailResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SHOP_DETAIL, request, callback, userState);
     }
 }

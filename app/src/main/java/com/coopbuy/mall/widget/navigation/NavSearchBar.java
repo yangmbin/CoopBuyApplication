@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.ui.module.home.activity.SearchActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 
 /**
  * 顶部搜索栏
@@ -48,6 +50,7 @@ public class NavSearchBar extends RelativeLayout implements View.OnClickListener
                 ((Activity) mContext).finish();
                 break;
             case R.id.ll_search:
+                IntentUtils.gotoActivity(mContext, SearchActivity.class);
                 break;
         }
     }

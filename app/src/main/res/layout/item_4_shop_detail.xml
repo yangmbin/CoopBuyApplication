@@ -36,6 +36,7 @@
         android:layout_marginRight="@dimen/dimen_px18"
         android:layout_marginBottom="@dimen/dimen_px20">
         <TextView
+            android:id="@+id/sale_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/dimen_px30"
@@ -43,6 +44,7 @@
             android:text="¥200.33"
             android:layout_centerVertical="true"/>
         <TextView
+            android:id="@+id/sale_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
