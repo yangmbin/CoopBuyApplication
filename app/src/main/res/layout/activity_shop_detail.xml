@@ -35,7 +35,7 @@
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            app:placeholderImage="@mipmap/default_img"
+                            app:placeholderImage="@mipmap/shop_default_bg"
                             android:scaleType="centerCrop"
                             android:background="@color/bitmap_base_color"/>
                         <LinearLayout

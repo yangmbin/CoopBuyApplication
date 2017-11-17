@@ -19,6 +19,7 @@ import com.coopbuy.mall.ui.module.center.model.OrderDetailModel;
 import com.coopbuy.mall.ui.module.center.pay.PayFailActivity;
 import com.coopbuy.mall.ui.module.center.presenter.OrderDetailPresenter;
 import com.coopbuy.mall.ui.module.center.view.OrderDetail_IView;
+import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
 import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.DialogUtils;
@@ -195,9 +196,13 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      *
      * @param view
      */
-    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy, R.id.cancelOrderBtn, R.id.payBtn, R.id.applyRefundBtn, R.id.remindShipmentBtn, R.id.delayedReceiptBtn, R.id.deleteBtn, R.id.findExpressInfoBtn, R.id.receiptBtn, R.id.repeatSubmitOrderBtn})
+    @OnClick({R.id.contact_service, R.id.dial_phone, R.id.copy, R.id.cancelOrderBtn, R.id.payBtn, R.id.applyRefundBtn, R.id.remindShipmentBtn, R.id.delayedReceiptBtn, R.id.deleteBtn, R.id.findExpressInfoBtn, R.id.receiptBtn, R.id.repeatSubmitOrderBtn, R.id.shop_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            // 跳转店铺
+            case R.id.shop_btn:
+                IntentUtils.gotoActivity(mContext, ShopDetailActivity.class, mOrderDetailResponse.getShopId());
+                break;
             // 联系客服
             case R.id.contact_service:
                 ToastUtils.toastShort("联系客服");
@@ -435,6 +440,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
      */
     @Override
     public void repeatSubmitOrderSuccess(AddToCartRequest request) {
-
+        IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
     }
 }

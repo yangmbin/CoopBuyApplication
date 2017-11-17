@@ -71,7 +71,7 @@ public class WaitPayOrderFragment extends ViewPagerBaseFragment<OrderPresenter, 
         mRvOrder.setAdapter(mDelegateAdapter);
 
         // 刷新监听
-        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnRefreshLoadmoreListener(this);
     }
 
     @Override
