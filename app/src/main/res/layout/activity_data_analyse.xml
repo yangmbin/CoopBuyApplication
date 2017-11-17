@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
     android:orientation="vertical"
+    android:id="@+id/box"
     tools:context="com.coopbuy.mall.ui.module.center.activity.DataAnalyseActivity">
 
     <include
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
 
             <RelativeLayout
                 android:id="@+id/rl_one"
@@ -49,38 +49,7 @@
                     android:textSize="@dimen/dimen_px36" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_two"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_px120"
-                android:layout_gravity="center_vertical"
-                android:background="@color/edit_text_back_white"
-                android:padding="@dimen/dimen_px30"
-                android:visibility="gone">
 
-                <ImageView
-                    android:id="@+id/iv_money"
-                    android:layout_width="@dimen/dimen_px40"
-                    android:layout_height="@dimen/dimen_px40"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_data_money" />
-
-                <TextView
-                    style="@style/text_theme_black_size_30_h_match_41495c"
-                    android:layout_marginLeft="@dimen/dimen_px11"
-                    android:layout_toRightOf="@+id/iv_money"
-                    android:text="@string/lab_data_sum_income" />
-
-                <TextView
-                    android:id="@+id/tv_data_income"
-                    style="@style/text_theme_black_size_30_h_match_41495c"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/dimen_px11"
-                    android:layout_toRightOf="@+id/iv_money"
-                    android:gravity="right"
-                    android:text="888"
-                    android:textSize="@dimen/dimen_px36" />
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -198,13 +167,14 @@
                     android:src="@mipmap/icon_data_bill" />
 
                 <TextView
+                    android:id="@+id/tv_bill_outtime"
                     style="@style/text_theme_black_size_30_h_match_41495c"
                     android:layout_marginLeft="@dimen/dimen_px11"
                     android:layout_toRightOf="@+id/iv_bill"
                     android:text="@string/_209909" />
 
                 <TextView
-                    android:id="@+id/tv_data_confirm"
+                    android:id="@+id/tv_bill_status"
                     style="@style/text_theme_black_size_30_h_match_41495c"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/dimen_px11"
@@ -212,6 +182,38 @@
                     android:gravity="right|center"
                     android:text="@string/lab_data_confirm"
                     android:textColor="@color/theme_text_title_orange" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px300"
+                android:layout_marginTop="@dimen/dimen_px1"
+                android:background="@color/edit_text_back_white">
+
+                <TextView
+                    android:id="@+id/tv_month_income"
+                    style="@style/text_orange_size_26_f"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_px82"
+                    android:text="暂无"
+                    android:textSize="@dimen/dimen_px48" />
+
+                <TextView
+                    android:id="@+id/tv_month_bill"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_below="@id/tv_month_income"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_px37"
+                    android:text="本期无账单" />
+
+                <TextView
+                    android:id="@+id/tv_bill_hint"
+                    style="@style/text_black_size_24_878f94"
+                    android:layout_below="@id/tv_month_bill"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_px10"
+                    android:text="赶紧去确认账单吧"
+                    android:textSize="@dimen/dimen_px26" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
