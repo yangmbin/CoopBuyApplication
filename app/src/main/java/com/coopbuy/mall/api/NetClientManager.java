@@ -11,6 +11,7 @@ import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
 import com.coopbuy.mall.api.reponse.CollectResponse;
+import com.coopbuy.mall.api.reponse.DataAnalyseResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
 import com.coopbuy.mall.api.reponse.ExpressInfoResponse;
@@ -20,7 +21,9 @@ import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
+import com.coopbuy.mall.api.reponse.InComeReponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
+import com.coopbuy.mall.api.reponse.MyBillReponse;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
@@ -51,6 +54,7 @@ import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.CollectRequest;
+import com.coopbuy.mall.api.request.CurrentPageRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -468,6 +472,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 推荐商品收藏
+     *
      * @param request
      * @param callback
      * @param userState
@@ -479,6 +484,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 取消推荐商品收藏
+     *
      * @param request
      * @param callback
      * @param userState
@@ -490,6 +496,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取购物车数量
+     *
      * @param callback
      * @param userState
      * @return
@@ -501,6 +508,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 收藏店铺
+     *
      * @param request
      * @param callback
      * @param userState
@@ -512,6 +520,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 取消商品收藏
+     *
      * @param request
      * @param callback
      * @param userState
@@ -714,6 +723,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 移除发布的商品
+     *
      * @param request
      * @param callback
      * @param userState
@@ -723,6 +733,43 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.REMOVEFAVORITESKU, request, callback, userState);
     }
 
+    /**
+     * 站长的数据军师数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getDataAnalyse(IAsyncResultCallback<DataAnalyseResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<DataAnalyseResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SETTLEMENTCENTER, callback, userState);
+    }
+
+    /**
+     * 预计收益
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getInComeData(CurrentPageRequest request, IAsyncResultCallback<InComeReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<InComeReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.ESTIMATECOMMISSIONLIST, request, callback, userState);
+    }
+
+    /**
+     * 我的对账单
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMyBillData(CurrentPageRequest request, IAsyncResultCallback<MyBillReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<MyBillReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.SETTLEMENTBOOKLIST, request, callback, userState);
+    }
 
     /**
      * 订单列表
@@ -749,6 +796,7 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(new TypeToken<OrderDetailResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.ORDER_DETAIL, request, callback, userState);
     }
+
 
     /**
      * 图片上传
@@ -970,6 +1018,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取物流公司列表
+     *
      * @param callback
      * @param userState
      * @return
@@ -981,6 +1030,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 买家寄货
+     *
      * @param request
      * @param callback
      * @param userState
@@ -993,6 +1043,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 退款物流信息查询
+     *
      * @param request
      * @param callback
      * @param userState
@@ -1005,6 +1056,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取搜索结果
+     *
      * @param request
      * @param callback
      * @param userState

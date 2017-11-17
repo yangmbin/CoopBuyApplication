@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="right"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="@dimen/dimen_px330"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:background="@mipmap/bg_sessionbox"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:id="@+id/ll_message"
@@ -89,6 +90,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_px28" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,6 +103,7 @@
                 android:background="@color/test_line_white_20" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_code"
             android:layout_width="match_parent"
@@ -125,9 +128,5 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_px28" />
         </LinearLayout>
-
-
-
-
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

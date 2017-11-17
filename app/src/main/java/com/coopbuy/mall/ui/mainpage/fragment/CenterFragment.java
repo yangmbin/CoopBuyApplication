@@ -132,7 +132,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             }
         });
         mRvTest.setAdapter(adapter);
-
     }
 
     private void setInitTitle() {
@@ -334,6 +333,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(CreatQRActivity.class, null);
                 break;
         }
+        if (popWindow!=null)
         popWindow.dissmiss();
     }
 }

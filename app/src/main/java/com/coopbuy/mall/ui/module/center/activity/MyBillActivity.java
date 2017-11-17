@@ -4,32 +4,45 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
+import com.coopbuy.mall.api.reponse.MyBillReponse;
+import com.coopbuy.mall.api.request.CurrentPageRequest;
 import com.coopbuy.mall.base.BaseActivity;
-import com.coopbuy.mall.ui.module.center.adapter.LogisticsAdapter;
 import com.coopbuy.mall.ui.module.center.adapter.MyBillAdapter;
+import com.coopbuy.mall.ui.module.center.model.MyBillModel;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
-import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.ui.module.center.presenter.MyBillPresenter;
+import com.coopbuy.mall.ui.module.center.view.MyBill_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 
-public class MyBillActivity extends BaseActivity implements FootMarkPort, View.OnClickListener {
+public class MyBillActivity extends BaseActivity<MyBillPresenter, MyBillModel> implements FootMarkPort, View.OnClickListener, MyBill_IView, OnRefreshListener, OnLoadmoreListener {
     @Bind(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
     @Bind(R.id.recView)
     RecyclerView recView;
     private CustomPopWindow popWindow;
     private MyBillAdapter adapter;
-    private List<MessageCenterResponse> data;
+    private List<MyBillReponse.ItemsBean> data;
+    private CurrentPageRequest request;
+    private int mPagerIndex = 1;
+    /**
+     * 0=全部，1=待审核，2=已审核，3=已发放，4=已作废
+     */
+    private int mStatus = 0;
 
     @Override
     public int getLayoutId() {
@@ -38,12 +51,16 @@ public class MyBillActivity extends BaseActivity implements FootMarkPort, View.O
 
     @Override
     public void initModel() {
-
+        mModel = new MyBillModel();
     }
 
     @Override
     public void initPresenter() {
-
+        mPresenter = new MyBillPresenter(this, mModel, this);
+        request = new CurrentPageRequest();
+        request.setCurrentPage(1);
+        request.setSettlementStatus(0);
+        mPresenter.getIncome(request, "init");
     }
 
     @Override
@@ -61,15 +78,19 @@ public class MyBillActivity extends BaseActivity implements FootMarkPort, View.O
 
     private void initRey() {
         data = new ArrayList<>();
-        setData();
-        adapter = new MyBillAdapter(data, this);
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(true);
+        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnLoadmoreListener(this);
+        mRefreshLayout.setEnableLoadmore(true);
+        mRefreshLayout.setEnableRefresh(true);
+        adapter = new MyBillAdapter(this, data, this);
         recView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recView.setAdapter(adapter);
     }
 
-
     private void showPopBottom(View v) {
         View view = LayoutInflater.from(this).inflate(R.layout.popuwindow_dialog_bill, null);
+        view.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         view.findViewById(R.id.tv_all).setOnClickListener(this);
         view.findViewById(R.id.tv_pended).setOnClickListener(this);
         view.findViewById(R.id.tv_pending).setOnClickListener(this);
@@ -78,26 +99,8 @@ public class MyBillActivity extends BaseActivity implements FootMarkPort, View.O
         popWindow = new CustomPopWindow.PopupWindowBuilder(this)
                 .setView(view)
                 .setFocusable(true)
-                 .create();
+                .create();
         popWindow.showAsDropDown(v, 0, -25);
-    }
-
-    private void setData() {
-        for (int i = 0; i < 10; i++) {
-            MessageCenterResponse d = new MessageCenterResponse();
-            d.setDetail("ssssdf" + i);
-            if (i == 0)
-                d.setName("悟空物流");
-            if (i == 1)
-                d.setName("八戒物流");
-            if (i == 2)
-                d.setName("沙僧物流");
-            if (i > 2)
-                d.setName("other物流" + i);
-            d.setTime("2012." + i);
-            d.setType(i);
-            data.add(d);
-        }
     }
 
     @Override
@@ -110,20 +113,65 @@ public class MyBillActivity extends BaseActivity implements FootMarkPort, View.O
         switch (v.getId()) {
             case R.id.tv_all:
                 ToastUtils.toastShort("全部");
+                mStatus = 0;
                 break;
             case R.id.tv_pending:
+                mStatus = 1;
                 ToastUtils.toastShort("待审核");
                 break;
             case R.id.tv_pended:
+                mStatus = 2;
                 ToastUtils.toastShort("已审核");
                 break;
             case R.id.tv_sended:
-                ToastUtils.toastShort("已发送");
+                mStatus = 3;
+                ToastUtils.toastShort("已发放");
                 break;
             case R.id.tv_sending:
-                ToastUtils.toastShort("待发送");
+                mStatus = 4;
+                ToastUtils.toastShort("已作废");
                 break;
         }
-        popWindow.dissmiss();
+        request.setCurrentPage(1);
+        request.setSettlementStatus(mStatus);
+        mPresenter.getIncome(request, "fresh");
+        if (popWindow != null)
+            popWindow.dissmiss();
+    }
+
+    @Override
+    public void getData(MyBillReponse bean, String type) {
+        if (type.equals("more")) {
+            adapter.addMore(bean.getItems());
+        } else {
+            adapter.refresh(bean.getItems());
+        }
+    }
+
+    /**
+     * 停止刷新
+     */
+    @Override
+    public void stopRefresh() {
+        if (mRefreshLayout != null) {
+            mRefreshLayout.finishRefresh();
+            mRefreshLayout.finishLoadmore();
+        }
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        ++mPagerIndex;
+        request.setCurrentPage(mPagerIndex);
+        request.setSettlementStatus(mStatus);
+        mPresenter.getIncome(request, "more");
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        mPagerIndex = 1;
+        request.setCurrentPage(mPagerIndex);
+        request.setSettlementStatus(mStatus);
+        mPresenter.getIncome(request, "fresh");
     }
 }
