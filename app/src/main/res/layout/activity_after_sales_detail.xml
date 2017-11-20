@@ -563,7 +563,6 @@
                         android:paddingLeft="@dimen/dimen_px30"
                         android:paddingRight="@dimen/dimen_px30">
                         <TextView
-                            android:id="@+id/back_total_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_px28"
@@ -572,6 +571,7 @@
                             android:text="返回(支付/微信/银行)"/>
 
                         <TextView
+                            android:id="@+id/back_total_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_px28"

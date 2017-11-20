@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.module.home.adapter;
 
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
@@ -29,5 +30,12 @@ public class CategoryRightAdapter_2 extends BaseDelegateAdapter<CategoryResponse
     protected void bindData(BaseRecyclerHolder holder, int position, final CategoryResponse item) {
         holder.getTextView(R.id.category_name).setText(item.getName());
         holder.itemView.setTag(pos);
+
+        // 设置背景色
+        if (pos % 2 == 0) {
+            holder.getView(R.id.layout_bg).setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_1));
+        } else {
+            holder.getView(R.id.layout_bg).setBackgroundColor(ContextCompat.getColor(mContext, R.color.red_7));
+        }
     }
 }

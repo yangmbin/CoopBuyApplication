@@ -72,7 +72,7 @@ public class WaitReceiveOrderFragment extends ViewPagerBaseFragment<OrderPresent
         mRvOrder.setAdapter(mDelegateAdapter);
 
         // 刷新监听
-        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnRefreshLoadmoreListener(this);
     }
 
     @Override

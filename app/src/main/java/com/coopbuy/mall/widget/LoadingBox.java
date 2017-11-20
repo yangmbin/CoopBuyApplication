@@ -125,6 +125,7 @@ public class LoadingBox {
     private void setDefaultViews(){
         mLayoutTransLoadingContent = initView(R.layout.loadingbox_trans_loading,TAG_TRANS_LOADING_CONTENT);
         mLayoutTransLoadingContent.setVisibility(View.GONE);
+        mLayoutTransLoadingContent.setOnClickListener(null);
 
         View mLayoutInternetOff = initView(R.layout.loadingbox_no_internet,TAG_INTERNET_OFF);
         View mLayoutLoadingContent = initView(R.layout.loadingbox_loading,TAG_LOADING_CONTENT);

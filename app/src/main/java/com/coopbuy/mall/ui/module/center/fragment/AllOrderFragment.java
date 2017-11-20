@@ -13,6 +13,7 @@ import com.coopbuy.mall.api.request.AddToCartRequest;
 import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderDetailActivity;
+import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_1;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_2;
 import com.coopbuy.mall.ui.module.center.adapter.OrderAdapter_3;
@@ -73,7 +74,7 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
         mRvOrder.setAdapter(mDelegateAdapter);
 
         // 刷新监听
-        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnRefreshLoadmoreListener(this);
     }
 
     @Override
@@ -192,6 +193,6 @@ public class AllOrderFragment extends ViewPagerBaseFragment<OrderPresenter, Orde
      * 再来一单成功回调
      */
     public void repeatSubmitOrderSuccess(AddToCartRequest request) {
-
+        IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
     }
 }

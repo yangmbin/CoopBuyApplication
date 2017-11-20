@@ -9,6 +9,18 @@ public class Constant {
    /* public static final String HOST = "http://dev.guinong.com:8810/";
     public static final String login = "api/Login/GetUser";
     public static final String cart = "api/Cart/GetCartList";*/
+
+    /**
+     * 主机地址
+     */
+//    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
+    public static final String SERVER_URL = "https://shop.coopbuy.com/";
+
+    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
+//    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+//    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
+
+
     /**
      * 首页banner图点击进入 首页点击（圆形图标）数据
      */
@@ -22,15 +34,6 @@ public class Constant {
      */
     public static final String COTEGORYS = "api/services/app/goodsCategoryCustomer/GetAllCategorys";
 
-    /**
-     * 主机地址
-     */
-//    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
-    public static final String SERVER_URL = "https://shop.coopbuy.com/";
-
-    //  public static final String SERVER_URL_NEW = "http://192.168.1.56:8003/";
-    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
-//    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
     /**
      * 图片地址
      */
