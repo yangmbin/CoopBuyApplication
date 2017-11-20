@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90px"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl"
     android:background="@color/edit_text_back_white"
     android:orientation="horizontal">
 
     <EditText
         android:id="@+id/edt_myname"
         android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:layout_toLeftOf="@+id/iv_name_clear"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/dimen_px20"
         android:background="@null"
         android:hint="收货人姓名"
-        android:maxLength="20" />
+        android:layout_marginRight="@dimen/dimen_px40"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
-        android:visibility="gone"
+
         android:id="@+id/iv_my_clear"
         style="@style/image_clear"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true" />
 
 </RelativeLayout>

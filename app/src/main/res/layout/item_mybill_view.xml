@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/tv_bill_type"
-                style="@style/text_orange_size_26_f"
+                style="@style/text_black_size_30_878f94"
                 android:layout_alignParentRight="true"
                 android:text="待审核"
                 android:textSize="@dimen/dimen_px32" />

@@ -61,6 +61,7 @@
     <color name="theme_text_title_orange">#ff6600</color>
     <!-- 辅色 红-->
     <color name="auxiliary_text_red">#eb221f</color>
+    <color name="auxiliary_text_red_30">#4ceb221f</color>
     <!-- 辅色 深红-->
     <color name="auxiliary_text_red_dark">#d90000</color>
     <color name="auxiliary_red">#E4393C</color>

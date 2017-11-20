@@ -46,18 +46,26 @@
             android:layout_below="@+id/tv_phone"
             android:layout_marginBottom="@dimen/dimen_px26"
             android:layout_marginTop="@dimen/dimen_px10"
-            android:layout_toLeftOf="@+id/iv_edit"
+            android:layout_toLeftOf="@+id/ll_edit"
             android:ellipsize="end"
             android:gravity="left"
             android:maxLines="2"
             android:text="贵州银河系贵州银河系贵州银河系" />
 
-        <ImageView
-            android:id="@+id/iv_edit"
-            style="@style/image_center_40"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/dimen_px34"
-            android:src="@mipmap/icon_custom_edit" />
+        <LinearLayout
+            android:id="@+id/ll_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_px20"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/iv_edit"
+                style="@style/image_center_40"
+                android:layout_marginRight="@dimen/dimen_px34"
+                android:src="@mipmap/icon_custom_edit" />
+        </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"

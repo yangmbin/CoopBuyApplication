@@ -2,39 +2,41 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.api.reponse.InComeReponse;
-import com.coopbuy.mall.api.reponse.MyBillReponse;
+import com.coopbuy.mall.api.reponse.PayOtherResponse;
+import com.coopbuy.mall.api.reponse.SMSCodeReponse;
+import com.coopbuy.mall.api.request.AddUpdateCustomRequest;
 import com.coopbuy.mall.api.request.CurrentPageRequest;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.module.center.model.IncomeModel;
-import com.coopbuy.mall.ui.module.center.model.MyBillModel;
-import com.coopbuy.mall.ui.module.center.view.Income_IView;
-import com.coopbuy.mall.ui.module.center.view.MyBill_IView;
+import com.coopbuy.mall.ui.module.center.model.AddCustomModel;
+import com.coopbuy.mall.ui.module.center.model.PayOtherModel;
+import com.coopbuy.mall.ui.module.center.view.AddCustom_IView;
+import com.coopbuy.mall.ui.module.center.view.PayOther_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.NetworkException;
+import com.guinong.net.callback.IAsyncEmptyCallback;
 import com.guinong.net.callback.IAsyncResultCallback;
 
 /**
  * Created by niu on 2017/11/17- 14:31
  */
 
-public class MyBillPresenter extends BasePresenter<MyBill_IView, MyBillModel> {
+public class PayOtherPresenter extends BasePresenter<PayOther_IView, PayOtherModel> {
 
 
-    public MyBillPresenter(Context mContext, MyBillModel mModel, MyBill_IView mView) {
+    public PayOtherPresenter(Context mContext, PayOtherModel mModel, PayOther_IView mView) {
         super(mContext, mModel, mView);
     }
 
-    public void getIncome(CurrentPageRequest request, final String type) {
-        if (type.equals("init")) {
-            mView.showFillLoading();
-        } else {
-            mView.showTransLoading();
-        }
-
-        mView.appendNetCall(mModel.getMyBillData(request, new IAsyncResultCallback<MyBillReponse>() {
+    /**
+     * 添加客户
+     *
+     * @param request
+     */
+    public void getData(CurrentPageRequest request, final String type) {
+        mView.showTransLoading();
+        mView.appendNetCall(mModel.getData(request, new IAsyncResultCallback<PayOtherResponse>() {
             @Override
-            public void onComplete(MyBillReponse response, Object userState) {
+            public void onComplete(PayOtherResponse response, Object userState) {
                 mView.stopRefresh();
                 if (response.getItems().isEmpty()) {
                     if (type.equals("more")) {
@@ -60,4 +62,5 @@ public class MyBillPresenter extends BasePresenter<MyBill_IView, MyBillModel> {
             }
         }, "userinfo"));
     }
+
 }

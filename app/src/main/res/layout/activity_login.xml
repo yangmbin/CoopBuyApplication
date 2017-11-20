@@ -16,7 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+        <com.coopbuy.mall.widget.tab.MyView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </com.coopbuy.mall.widget.tab.MyView>
             <RelativeLayout
                 style="@style/LinearLayout_contain_edit"
                 android:layout_marginTop="@dimen/dimen_px61">
