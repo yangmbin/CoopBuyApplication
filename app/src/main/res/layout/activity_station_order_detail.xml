@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
@@ -12,10 +13,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -27,6 +28,7 @@
                     android:background="@color/theme_text_lab_black" />
 
                 <RelativeLayout
+                    android:id="@+id/rl_order_status"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_px340"
                     android:layout_marginLeft="@dimen/dimen_px30"
@@ -38,7 +40,6 @@
                     <TextView
                         android:id="@+id/tv_status"
                         style="@style/white_size_32_ffffff"
-
                         android:layout_marginTop="@dimen/dimen_px180"
                         android:text="商家已发货" />
 
@@ -76,7 +77,7 @@
                     android:textSize="@dimen/dimen_px30" />
 
                 <TextView
-                    android:id="@+id/tv_time_send"
+                    android:id="@+id/tv_time_send_new"
                     style="@style/text_black_size_24_878f94"
                     android:layout_below="@id/tv_logistics"
                     android:layout_marginLeft="@dimen/dimen_px22"
@@ -138,7 +139,8 @@
                 android:background="@color/edit_text_back_white"
                 android:gravity="center"
                 android:paddingLeft="@dimen/dimen_px30"
-                android:paddingRight="@dimen/dimen_px30">
+                android:paddingRight="@dimen/dimen_px30"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/text_theme_black_size_28_41"
@@ -193,6 +195,7 @@
                     android:layout_marginLeft="@dimen/dimen_px10"
                     android:layout_toRightOf="@id/textView2"
                     android:ellipsize="end"
+                    android:gravity="right"
                     android:maxLines="1"
                     android:text="水电费肯德基法拉盛大家发链接发到" />
             </RelativeLayout>
@@ -241,6 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_px16"
+                android:paddingBottom="@dimen/dimen_px46"
                 android:background="@color/edit_text_back_white"
                 android:orientation="vertical">
 
@@ -250,12 +254,14 @@
                     android:padding="@dimen/dimen_px30">
 
                     <TextView
+                        android:id="@+id/tv_order_number"
                         style="@style/text_black_size_30_878f94"
                         android:layout_centerVertical="true"
                         android:text="订单编号：152485284285"
                         android:textSize="@dimen/dimen_px26" />
 
                     <TextView
+                        android:id="@+id/tv_copy"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/bg_round_corner_gray_7"
@@ -268,12 +274,14 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tv_create_time"
                     style="@style/text_black_size_24_878f94"
                     android:layout_marginLeft="@dimen/dimen_px30"
                     android:text="创建时间：2017-8-96  2：45:4"
                     android:textSize="@dimen/dimen_px26" />
 
                 <TextView
+                    android:id="@+id/tv_pay_time"
                     style="@style/text_black_size_24_878f94"
                     android:layout_marginLeft="@dimen/dimen_px30"
                     android:layout_marginTop="@dimen/dimen_px10"
@@ -281,8 +289,8 @@
                     android:textSize="@dimen/dimen_px26" />
 
                 <TextView
+                    android:id="@+id/tv_send_time"
                     style="@style/text_black_size_24_878f94"
-                    android:layout_marginBottom="@dimen/dimen_px46"
                     android:layout_marginLeft="@dimen/dimen_px30"
                     android:layout_marginTop="@dimen/dimen_px10"
                     android:text="发货时间：2017-8-96  2：45:4"

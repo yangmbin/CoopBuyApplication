@@ -11,6 +11,8 @@ import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
 import com.coopbuy.mall.api.reponse.CollectResponse;
+import com.coopbuy.mall.api.reponse.CustomOrderDetailReponse;
+import com.coopbuy.mall.api.reponse.CustomOrderReponse;
 import com.coopbuy.mall.api.reponse.DataAnalyseResponse;
 import com.coopbuy.mall.api.reponse.DefaultAddressResponse;
 import com.coopbuy.mall.api.reponse.DescriptionResponse;
@@ -30,6 +32,7 @@ import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
+import com.coopbuy.mall.api.reponse.PayOntherDetailReponse;
 import com.coopbuy.mall.api.reponse.PayOtherResponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
@@ -58,6 +61,7 @@ import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.api.request.CollectRequest;
 import com.coopbuy.mall.api.request.CurrentPageRequest;
+import com.coopbuy.mall.api.request.CustomOrderRequest;
 import com.coopbuy.mall.api.request.DeleteFootRequest;
 import com.coopbuy.mall.api.request.FindSkuInfoRequest;
 import com.coopbuy.mall.api.request.GetBindStationRequest;
@@ -825,7 +829,43 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.LIEUPAYAPPLYLIST, request, callback, userState);
     }
 
+    /**
+     * 代付订单详情
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getPayOtherDetail(OrderIdRequest request, IAsyncResultCallback<PayOntherDetailReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayOntherDetailReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.LIEUPAYDETAILINFO, request, callback, userState);
+    }
 
+    /**
+     * 客户订单列表数据
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getCustomOrder(CustomOrderRequest request, IAsyncResultCallback<CustomOrderReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CustomOrderReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CUSTOMERORDERS, request, callback, userState);
+    }
+
+    /**
+     * 客户订单详情
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getCustomOrderDetail(OrderIdRequest request, IAsyncResultCallback<CustomOrderDetailReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CustomOrderDetailReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CUSTOMERORDERDETAIL, request, callback, userState);
+    }
 
 
 

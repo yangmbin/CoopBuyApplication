@@ -4,19 +4,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.InComeReponse;
-import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.api.reponse.PayOtherResponse;
 import com.coopbuy.mall.api.request.CurrentPageRequest;
 import com.coopbuy.mall.base.BaseActivity;
-import com.coopbuy.mall.ui.module.center.adapter.IncomeAdapter;
-import com.coopbuy.mall.ui.module.center.adapter.PayAntherAdapter;
+import com.coopbuy.mall.ui.module.center.adapter.PayOtherAdapter;
 import com.coopbuy.mall.ui.module.center.model.PayOtherModel;
-import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.coopbuy.mall.ui.module.center.port.PayOtherPort;
 import com.coopbuy.mall.ui.module.center.presenter.PayOtherPresenter;
 import com.coopbuy.mall.ui.module.center.view.PayOther_IView;
-import com.coopbuy.mall.utils.DataCleanManager;
 import com.coopbuy.mall.utils.DialogUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.dialog.CommonDialog;
@@ -40,7 +35,7 @@ public class PayOtherActivity extends BaseActivity<PayOtherPresenter, PayOtherMo
     RecyclerView recView;
     @Bind(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
-    private PayAntherAdapter adapter;
+    private PayOtherAdapter adapter;
     private List<PayOtherResponse.ItemsBean> data;
     private CurrentPageRequest request;
     private int mPagerIndex = 1;
@@ -77,7 +72,7 @@ public class PayOtherActivity extends BaseActivity<PayOtherPresenter, PayOtherMo
         mRefreshLayout.setOnLoadmoreListener(this);
         mRefreshLayout.setEnableLoadmore(true);
         mRefreshLayout.setEnableRefresh(true);
-        adapter = new PayAntherAdapter(data, this);
+        adapter = new PayOtherAdapter(data, this);
         recView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recView.setAdapter(adapter);
     }
@@ -140,7 +135,7 @@ public class PayOtherActivity extends BaseActivity<PayOtherPresenter, PayOtherMo
 
     @Override
     public void detail(int postion) {
-        IntentUtils.gotoActivity(this, PayOtherDetailActivity.class);
+        IntentUtils.gotoActivity(this, PayOtherDetailActivity.class, data.get(postion).getOrderId());
     }
 
     @Override

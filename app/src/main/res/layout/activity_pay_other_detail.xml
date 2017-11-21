@@ -21,6 +21,7 @@
 
 
             <TextView
+                android:id="@+id/tv_hint"
                 style="@style/text_theme_black_size_28_41"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px60"
@@ -71,9 +72,11 @@
                     android:id="@+id/ll_call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:background="@drawable/black_rectangle_btn_unpress_white"
                     android:paddingBottom="@dimen/dimen_px16"
                     android:paddingLeft="@dimen/dimen_px35"
@@ -99,6 +102,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_apply_price"
                     style="@style/text_theme_black_size_28_41"
                     android:layout_width="match_parent"
                     android:gravity="center"
@@ -106,6 +110,7 @@
                     android:textSize="@dimen/dimen_px48" />
 
                 <TextView
+                    android:id="@+id/tv_apply_status"
                     style="@style/text_orange_size_26_f"
                     android:layout_width="match_parent"
                     android:gravity="center"
@@ -130,6 +135,7 @@
                         android:textSize="@dimen/dimen_px28" />
 
                     <TextView
+                        android:id="@+id/tv_apply_name"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_alignParentRight="true"
                         android:text="青青"
@@ -145,6 +151,7 @@
                         android:textSize="@dimen/dimen_px28" />
 
                     <TextView
+                        android:id="@+id/tv_create_time"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_alignParentRight="true"
                         android:text="2017-12-5 12:45"
@@ -162,6 +169,26 @@
 
 
                     <TextView
+                        android:id="@+id/tv_apply_time"
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="2017-12-5 12:45"
+                        android:textSize="@dimen/dimen_px28" />
+
+                </RelativeLayout>
+
+                <RelativeLayout android:id="@+id/rl_apply_hint" style="@style/center_LinearLayout_help_90">
+
+                    <TextView
+                        android:id="@+id/tv_apply_hint"
+                        style="@style/text_black_size_28_878f94"
+                        android:layout_centerVertical="true"
+                        android:text="代付成功时间"
+                        android:textSize="@dimen/dimen_px28" />
+
+                    <TextView
+                        android:id="@+id/tv_apply_time_hint"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -179,12 +206,14 @@
                         android:textSize="@dimen/dimen_px28" />
 
                     <TextView
+                        android:id="@+id/tv_order_number"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_centerInParent="true"
                         android:text="5425154254154"
                         android:textSize="@dimen/dimen_px28" />
 
                     <TextView
+                        android:id="@+id/tv_copy"
                         style="@style/text_theme_black_size_28_41"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -209,6 +238,7 @@
                         android:src="@mipmap/icon_order_address" />
 
                     <TextView
+                        android:id="@+id/tv_address_detail"
                         style="@style/text_theme_black_size_30_h_match_41495c"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -219,34 +249,88 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_order_close"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_px60"
-                android:layout_marginBottom="@dimen/dimen_px30"
-                android:layout_marginLeft="@dimen/dimen_px30"
-                android:layout_marginRight="@dimen/dimen_px30"
-                android:layout_marginTop="@dimen/dimen_px30"
-                android:background="@drawable/black_rectangle_btn_unpress_gray_f5_8"
-                android:gravity="center"
-                android:text="此订单将于23时20分关闭"
-                android:textColor="@color/edit_text_back_white" />
-
             <RelativeLayout
+                android:id="@+id/rl_alreadypay_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_px77">
+                android:layout_marginTop="@dimen/dimen_px60"
+               >
+
+                <TextView
+                    android:id="@+id/tv_see_order_fail"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_marginLeft="@dimen/dimen_px50"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px62"
+                    android:paddingRight="@dimen/dimen_px62"
+                    android:paddingTop="@dimen/dimen_px17"
+                    android:text="查看订单"
+                    android:textSize="@dimen/dimen_px28" />
+
+                <TextView
+                    android:id="@+id/tv_see_order_success"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px62"
+                    android:paddingRight="@dimen/dimen_px62"
+                    android:paddingTop="@dimen/dimen_px17"
+                    android:text="查看订单"
+                    android:textSize="@dimen/dimen_px28"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_pay_again"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dimen_px50"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px62"
+                    android:paddingRight="@dimen/dimen_px62"
+                    android:paddingTop="@dimen/dimen_px17"
+                    android:text="重新付款"
+                    android:textSize="@dimen/dimen_px28" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_wait_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_order_close_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px60"
+                    android:layout_marginBottom="@dimen/dimen_px30"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px30"
+                    android:background="@drawable/black_rectangle_btn_unpress_gray_f5_8"
+                    android:gravity="center"
+                    android:text="此订单将于23时20分关闭"
+                    android:textColor="@color/edit_text_back_white" />
 
                 <TextView
                     android:id="@+id/tv_refuse"
                     style="@style/text_theme_black_size_26_41495c"
                     android:layout_width="@dimen/dimen_px300"
                     android:layout_height="@dimen/dimen_px88"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_below="@+id/tv_order_close_hint"
                     android:layout_marginLeft="14dp"
                     android:layout_marginStart="14dp"
+                    android:layout_marginTop="@dimen/dimen_px77"
                     android:background="@drawable/black_rectangle_btn_unpress_white"
                     android:gravity="center"
                     android:paddingBottom="@dimen/dimen_px16"
@@ -257,13 +341,14 @@
                     android:textSize="@dimen/dimen_px28" />
 
                 <TextView
-                    android:id="@+id/tv_pya"
+                    android:id="@+id/tv_pay"
                     style="@style/text_white_size_26_ff"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_px88"
-                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_order_close_hint"
                     android:layout_marginLeft="@dimen/dimen_px30"
                     android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_marginTop="@dimen/dimen_px77"
                     android:layout_toRightOf="@+id/tv_refuse"
                     android:background="@drawable/black_rectangle_btn_press_black"
                     android:gravity="center"

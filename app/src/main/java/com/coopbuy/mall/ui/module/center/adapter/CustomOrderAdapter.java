@@ -9,9 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.MessageCenterResponse;
+import com.coopbuy.mall.api.reponse.CustomOrderReponse;
 import com.coopbuy.mall.ui.module.center.port.CustomOrderPort;
-import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 
 import java.util.List;
 
@@ -21,14 +20,26 @@ import java.util.List;
  * @content 物流
  */
 public class CustomOrderAdapter extends RecyclerView.Adapter<CustomOrderAdapter.Holder> {
-    private List<MessageCenterResponse> data;
+    private List<CustomOrderReponse.ItemsBean> data;
     private CustomOrderPort port;
 
-    public CustomOrderAdapter(List<MessageCenterResponse> data, CustomOrderPort port) {
+    public CustomOrderAdapter(List<CustomOrderReponse.ItemsBean> data, CustomOrderPort port) {
         this.data = data;
         this.port = port;
     }
 
+    public void addMore(List<CustomOrderReponse.ItemsBean> data) {
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void refresh(List<CustomOrderReponse.ItemsBean> data) {
+        if (!this.data.isEmpty()) {
+            this.data.clear();
+        }
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
 
     @Override
     public CustomOrderAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,15 +49,25 @@ public class CustomOrderAdapter extends RecyclerView.Adapter<CustomOrderAdapter.
 
     @Override
     public void onBindViewHolder(CustomOrderAdapter.Holder holder, int position) {
-        MessageCenterResponse srr = data.get(position);
-        holder.mName.setText(srr.getName());
-        holder.mOrderTime.setText("出账时间：" + srr.getTime());
-        if (srr.getType() == 2) {
+        CustomOrderReponse.ItemsBean srr = data.get(position);
+        holder.mName.setText(srr.getConsignerName());
+        holder.mOrderTime.setText("创建时间：" + srr.getCreateTime());
+        holder.mCounts.setText("商品数量：" + srr.getTotalProductCount());
+        holder.mAllPrice.setText("合计价格：￥" + srr.getOrderAmount() + "含运费￥" + srr.getFreightAmount());
+        holder.mOrderStatus.setText(srr.getOrderSataus());
+        if (srr.getOrderSataus().equals("待支付")) {
             holder.mWaitPay.setVisibility(View.VISIBLE);
         } else {
             holder.mWaitPay.setVisibility(View.GONE);
         }
+        if (srr.isCanFindExpressInfo()) {
+            holder.mLogistics.setVisibility(View.VISIBLE);
+        } else {
+            holder.mLogistics.setVisibility(View.GONE);
+        }
         holder.mDetail.setOnClickListener(new MyPort(position));
+        holder.mCall.setOnClickListener(new MyPort(position));
+        holder.mLogistics.setOnClickListener(new MyPort(position));
     }
 
     class MyPort implements View.OnClickListener {

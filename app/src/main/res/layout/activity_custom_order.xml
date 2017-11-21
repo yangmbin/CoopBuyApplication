@@ -78,14 +78,11 @@
         </LinearLayout>
     </LinearLayout>
 
+    <include layout="@layout/include_recy_refresh_have_head_foot" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px16"
         android:background="@color/theme_back_white" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never" />
 </LinearLayout>

@@ -148,7 +148,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_data), R.mipmap.icon_center_data));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_client), R.mipmap.icon_center_client));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_order), R.mipmap.icon_center_order));
-     //   mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_work), R.mipmap.icon_cneter_work));
+        //   mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_work), R.mipmap.icon_cneter_work));
         mData.add(new CenterData(getActivity().getResources().getString(R.string.lab_center_recommend), R.mipmap.icon_center_recommend));
     }
 
@@ -255,7 +255,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
         } else {
             backImage.setImageURI(data.getFestivalImageUrl());
         }
-        if (null != data.getUserInfo().getHeadPortraitPath() || !TextUtils.isEmpty(data.getUserInfo().getHeadPortraitPath())) {
+        if (TextUtils.isEmpty(data.getUserInfo().getHeadPortraitPath())) {
             head.setImageURI(Constants.images[(new Random().nextInt(12) + 1)]);
         } else {
             head.setImageURI(data.getUserInfo().getHeadPortraitPath());
@@ -333,7 +333,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
                 enter(CreatQRActivity.class, null);
                 break;
         }
-        if (popWindow!=null)
-        popWindow.dissmiss();
+        if (popWindow != null)
+            popWindow.dissmiss();
     }
 }
