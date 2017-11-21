@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_back_white"
+    android:orientation="vertical"
+    tools:context="com.coopbuy.mall.ui.module.center.activity.PayOtherDetailActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/text_theme_black_size_28_41"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:background="@color/auxiliary_text_red_30"
+                android:gravity="center"
+                android:text="在付款前请先与申请人联系，确认代付订单是否准确！" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px160"
+                android:background="@color/edit_text_back_white"
+                android:paddingTop="@dimen/dimen_px28">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="@dimen/dimen_px100"
+                    android:layout_height="@dimen/dimen_px100"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px20"
+                    android:layout_marginTop="@dimen/dimen_px20"
+                    fresco:actualImageScaleType="centerCrop"
+                    fresco:placeholderImage="@mipmap/default_img"
+                    fresco:roundAsCircle="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/circleImageView"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/text_theme_black_size_28_41"
+                        android:text="青青(昵称)"
+                        android:textSize="@dimen/dimen_px32" />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        style="@style/text_black_size_24_878f94"
+                        android:layout_marginTop="@dimen/dimen_px15"
+                        android:layout_toRightOf="@+id/circleImageView"
+                        android:text="135****7987" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px35"
+                    android:paddingRight="@dimen/dimen_px35"
+                    android:paddingTop="@dimen/dimen_px17">
+
+                    <ImageView
+                        style="@style/image_center_40"
+                        android:src="@mipmap/icon_call_black" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:text="拨号"
+                        android:textSize="@dimen/dimen_px28" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px160"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_theme_black_size_28_41"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="-28"
+                    android:textSize="@dimen/dimen_px48" />
+
+                <TextView
+                    style="@style/text_orange_size_26_f"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="代付申请"
+                    android:textSize="@dimen/dimen_px28" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/edit_text_back_white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dimen_px30"
+                android:paddingRight="@dimen/dimen_px30">
+
+
+                <RelativeLayout style="@style/center_LinearLayout_help_90">
+
+                    <TextView
+                        style="@style/text_black_size_28_878f94"
+                        android:text="申请人"
+                        android:textSize="@dimen/dimen_px28" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:text="青青"
+                        android:textSize="@dimen/dimen_px28" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/center_LinearLayout_help_90">
+
+                    <TextView
+                        style="@style/text_black_size_28_878f94"
+                        android:text="创建时间"
+                        android:textSize="@dimen/dimen_px28" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:text="2017-12-5 12:45"
+                        android:textSize="@dimen/dimen_px28" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/center_LinearLayout_help_90">
+
+                    <TextView
+                        style="@style/text_black_size_28_878f94"
+                        android:layout_centerVertical="true"
+                        android:text="申请时间"
+                        android:textSize="@dimen/dimen_px28" />
+
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="2017-12-5 12:45"
+                        android:textSize="@dimen/dimen_px28" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/center_LinearLayout_help_90">
+
+                    <TextView
+                        style="@style/text_black_size_28_878f94"
+                        android:layout_centerVertical="true"
+                        android:text="订单号"
+                        android:textSize="@dimen/dimen_px28" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_centerInParent="true"
+                        android:text="5425154254154"
+                        android:textSize="@dimen/dimen_px28" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_28_41"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_round_corner_gray_7"
+                        android:paddingBottom="@dimen/dimen_px17"
+                        android:paddingLeft="@dimen/dimen_px48"
+                        android:paddingRight="@dimen/dimen_px48"
+                        android:paddingTop="@dimen/dimen_px17"
+                        android:text="复制"
+                        android:textSize="@dimen/dimen_px28" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px168">
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        style="@style/image_center_40"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/icon_order_address" />
+
+                    <TextView
+                        style="@style/text_theme_black_size_30_h_match_41495c"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dimen_px30"
+                        android:layout_toRightOf="@+id/iv"
+                        android:gravity="left"
+                        android:text="贵州省贵阳市观山湖金岭社区服务中心贵州贵 阳国家高薪技术产业开发区大数据广场4栋24 层" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_order_close"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px60"
+                android:layout_marginBottom="@dimen/dimen_px30"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px30"
+                android:background="@drawable/black_rectangle_btn_unpress_gray_f5_8"
+                android:gravity="center"
+                android:text="此订单将于23时20分关闭"
+                android:textColor="@color/edit_text_back_white" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_px77">
+
+                <TextView
+                    android:id="@+id/tv_refuse"
+                    style="@style/text_theme_black_size_26_41495c"
+                    android:layout_width="@dimen/dimen_px300"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
+                    android:background="@drawable/black_rectangle_btn_unpress_white"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px62"
+                    android:paddingRight="@dimen/dimen_px62"
+                    android:paddingTop="@dimen/dimen_px17"
+                    android:text="拒绝支付"
+                    android:textSize="@dimen/dimen_px28" />
+
+                <TextView
+                    android:id="@+id/tv_pya"
+                    style="@style/text_white_size_26_ff"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px88"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dimen_px30"
+                    android:layout_marginRight="@dimen/dimen_px30"
+                    android:layout_toRightOf="@+id/tv_refuse"
+                    android:background="@drawable/black_rectangle_btn_press_black"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_px16"
+                    android:paddingLeft="@dimen/dimen_px62"
+                    android:paddingRight="@dimen/dimen_px62"
+                    android:paddingTop="@dimen/dimen_px17"
+                    android:text="确定支付"
+                    android:textSize="@dimen/dimen_px28" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

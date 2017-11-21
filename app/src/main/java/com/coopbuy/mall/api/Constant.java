@@ -187,10 +187,26 @@ public class Constant {
      * 预计收益
      */
     public static final String ESTIMATECOMMISSIONLIST = "api/services/app/station/EstimateCommissionList";
- /**
+    /**
      * 预计收益
      */
     public static final String SETTLEMENTBOOKLIST = "api/services/app/station/SettlementBookList";
+    /**
+     * 我的客户
+     */
+    public static final String CUSTOMERS = "api/services/app/station/Customers";
+    /**
+     * 添加站长客户
+     */
+    public static final String ADDCUSTOMER = "api/services/app/station/AddCustomer";
+    /**
+     * 更新站长客户
+     */
+    public static final String UPDATECUSTOMER = "api/services/app/station/UpdateCustomer";
+    /**
+     * 代付申请列表
+     */
+    public static final String LIEUPAYAPPLYLIST = "api/services/app/station/LieuPayApplyList";
 
 
     /**

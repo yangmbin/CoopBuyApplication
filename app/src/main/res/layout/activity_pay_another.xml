@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.coopbuy.mall.ui.module.center.activity.PayAnotherActivity">
+    tools:context="com.coopbuy.mall.ui.module.center.activity.PayOtherActivity">
 
     <include layout="@layout/title_bar_layout" />
 
-    <include layout="@layout/include_recy_refresh_nohead" />
+    <include layout="@layout/include_recy_refresh_have_head_foot" />
 </LinearLayout>

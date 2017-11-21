@@ -5,11 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
+import com.coopbuy.mall.api.reponse.MyCustomReponse;
+import com.coopbuy.mall.api.reponse.PayOtherResponse;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
+import com.coopbuy.mall.ui.module.center.port.PayOtherPort;
 
 import java.util.List;
 
@@ -19,14 +23,26 @@ import java.util.List;
  * @content 物流
  */
 public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Holder> {
-    private List<MessageCenterResponse> data;
-    private FootMarkPort port;
+    private List<PayOtherResponse.ItemsBean> data;
+    private PayOtherPort port;
 
-    public PayAntherAdapter(List<MessageCenterResponse> data, FootMarkPort port) {
+    public PayAntherAdapter(List<PayOtherResponse.ItemsBean> data, PayOtherPort port) {
         this.data = data;
         this.port = port;
     }
 
+    public void addMore(List<PayOtherResponse.ItemsBean> data) {
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void refresh(List<PayOtherResponse.ItemsBean> data) {
+        if (!this.data.isEmpty()) {
+            this.data.clear();
+        }
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
 
     @Override
     public PayAntherAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,10 +52,43 @@ public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Hold
 
     @Override
     public void onBindViewHolder(PayAntherAdapter.Holder holder, int position) {
-        MessageCenterResponse srr = data.get(position);
-        holder.mName.setText(srr.getName());
-        holder.mPrice.setText(srr.getType());
+        PayOtherResponse.ItemsBean srr = data.get(position);
+        holder.mName.setText(srr.getConsignerName());
+        holder.mPrice.setText(srr.getApplyAmount() + "元");
+        holder.mPhone.setText(srr.getConsignerTel());
+        holder.mTime.setText(srr.getApplyTime());
+        holder.mCall.setOnClickListener(new MyPort(position));
+        holder.mRefuse.setOnClickListener(new MyPort(position));
+        holder.mDetail.setOnClickListener(new MyPort(position));
+        holder.mPayment.setOnClickListener(new MyPort(position));
 
+
+    }
+
+    class MyPort implements View.OnClickListener {
+        private int postion;
+
+        public MyPort(int postion) {
+            this.postion = postion;
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ll_call:
+                    port.call(data.get(postion).getConsignerTel());
+                    break;
+                case R.id.tv_detail:
+                    port.detail(postion);
+                    break;
+                case R.id.tv_refuse:
+                    port.refuse();
+                    break;
+                case R.id.tv_payment:
+                    port.payMent(postion);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -52,8 +101,10 @@ public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Hold
         TextView mPhone;
         TextView mRefuse;
         TextView mPayment;
-        TextView mDetail;
+        RelativeLayout mDetail;
         TextView mPrice;
+        TextView mTime;
+        TextView mColseTime;
         LinearLayout mCall;
 
         Holder(View itemView) {
@@ -65,6 +116,8 @@ public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Hold
             mDetail = itemView.findViewById(R.id.tv_detail);
             mPrice = itemView.findViewById(R.id.tv_price_counts);
             mCall = itemView.findViewById(R.id.ll_call);
+            mTime = itemView.findViewById(R.id.tv_time);
+            mColseTime = itemView.findViewById(R.id.tv_order_close);
         }
     }
 }

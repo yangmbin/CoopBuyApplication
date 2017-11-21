@@ -2,14 +2,15 @@ package com.coopbuy.mall.ui.module.center.presenter;
 
 import android.content.Context;
 
-import com.coopbuy.mall.api.reponse.InComeReponse;
 import com.coopbuy.mall.api.reponse.MyBillReponse;
+import com.coopbuy.mall.api.reponse.MyCustomReponse;
 import com.coopbuy.mall.api.request.CurrentPageRequest;
+import com.coopbuy.mall.api.request.MyCustomRequest;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.module.center.model.IncomeModel;
 import com.coopbuy.mall.ui.module.center.model.MyBillModel;
-import com.coopbuy.mall.ui.module.center.view.Income_IView;
+import com.coopbuy.mall.ui.module.center.model.MyCustomModel;
 import com.coopbuy.mall.ui.module.center.view.MyBill_IView;
+import com.coopbuy.mall.ui.module.center.view.MyCustom_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
@@ -18,23 +19,22 @@ import com.guinong.net.callback.IAsyncResultCallback;
  * Created by niu on 2017/11/17- 14:31
  */
 
-public class MyBillPresenter extends BasePresenter<MyBill_IView, MyBillModel> {
+public class MyCustomPresenter extends BasePresenter<MyCustom_IView, MyCustomModel> {
 
 
-    public MyBillPresenter(Context mContext, MyBillModel mModel, MyBill_IView mView) {
+    public MyCustomPresenter(Context mContext, MyCustomModel mModel, MyCustom_IView mView) {
         super(mContext, mModel, mView);
     }
 
-    public void getIncome(CurrentPageRequest request, final String type) {
+    public void getData(MyCustomRequest request, final String type) {
         if (type.equals("init")) {
             mView.showFillLoading();
-        } else {
+        } else if (type.equals("search")) {
             mView.showTransLoading();
         }
-
-        mView.appendNetCall(mModel.getMyBillData(request, new IAsyncResultCallback<MyBillReponse>() {
+        mView.appendNetCall(mModel.getData(request, new IAsyncResultCallback<MyCustomReponse>() {
             @Override
-            public void onComplete(MyBillReponse response, Object userState) {
+            public void onComplete(MyCustomReponse response, Object userState) {
                 mView.stopRefresh();
                 if (response.getItems().isEmpty()) {
                     if (type.equals("more")) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_close_keyboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
@@ -20,19 +21,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px60"
+            android:layout_gravity="center"
             android:background="@drawable/bg_round_corner_gray_search"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/v_focus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/iv_search"
                 android:layout_width="@dimen/dimen_px32"
                 android:layout_height="@dimen/dimen_px32"
+                android:layout_marginLeft="@dimen/dimen_px30"
                 android:src="@mipmap/icon_nav_home_top_search" />
 
-            <TextView
-                style="@style/text_black_size_28_878f94"
-                android:text="用户名称/手机号" />
+            <EditText
+                android:id="@+id/edt_search"
+                style="@style/login_edit"
+                android:layout_width="wrap_content"
+                android:background="@null"
+                android:hint="用户名称/手机号"
+                android:maxLines="1" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <!--    <SearchView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="用户名称/手机号" />-->
         </LinearLayout>
     </LinearLayout>
 
-    <include layout="@layout/include_recy_refresh_nohead" />
+    <include layout="@layout/include_recy_refresh_have_head_foot" />
 </LinearLayout>

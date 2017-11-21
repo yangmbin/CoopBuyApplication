@@ -13,7 +13,6 @@ import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.CustomOrderAdapter;
 import com.coopbuy.mall.ui.module.center.port.CustomOrderPort;
-import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
@@ -201,7 +200,7 @@ public class CustomOrderActivity extends BaseActivity implements CustomOrderPort
                 ToastUtils.toastShort("待收货");
                 break;
             case R.id.ll_apply:
-                IntentUtils.gotoActivity(this, PayAnotherActivity.class);
+                IntentUtils.gotoActivity(this, PayOtherActivity.class);
                 break;
             case R.id.ll_history:
                 IntentUtils.gotoActivity(this, PayHistoryActivity.class);

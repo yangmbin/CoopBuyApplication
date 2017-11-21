@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.coopbuy.mall.R;
@@ -43,9 +44,18 @@ public class MyEditText extends RelativeLayout implements View.OnFocusChangeList
     private void initView(Context context) {
         this.mContext = context;
         View v = LayoutInflater.from(context).inflate(R.layout.my_editext_view, this);
-        v.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 90));
+        v.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         mClear = (ImageView) findViewById(R.id.iv_my_clear);
         mEdit = (EditText) findViewById(R.id.edt_myname);
+        RelativeLayout rl = v.findViewById(R.id.rl);
+        RelativeLayout.LayoutParams layoutParams1 = (RelativeLayout.LayoutParams) rl.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) mEdit.getLayoutParams();
+        layoutParams1.height = 90;
+        layoutParams2.height = 90;
+        rl.setLayoutParams(layoutParams1);
+        mEdit.setLayoutParams(layoutParams2);
+
+
         mClear.setOnClickListener(this);
         mEdit.setOnFocusChangeListener(this);
         mEdit.addTextChangedListener(this);

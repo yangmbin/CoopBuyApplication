@@ -383,8 +383,11 @@
     <!--首页下标导航-->
     <declare-styleable name="TabView">
         <attr name="textSize" format="integer|reference" />
+        <attr name="textGravity" format="integer|reference" />
         <attr name="textColor" format="color|reference" />
+        <attr name="hintColor" format="color|reference" />
         <attr name="text" format="string|reference" />
+        <attr name="hint" format="string|reference" />
         <attr name="iconDrawable" format="reference" />
         <attr name="dotVisible" format="boolean" />
         <attr name="dotText" format="string|reference" />

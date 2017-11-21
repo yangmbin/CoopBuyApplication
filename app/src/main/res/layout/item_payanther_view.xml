@@ -81,7 +81,7 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <RelativeLayout
+        <RelativeLayout  android:id="@+id/tv_detail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_px360"
             android:paddingLeft="@dimen/dimen_px46">
@@ -102,7 +102,7 @@
                 android:textSize="@dimen/dimen_px32" />
 
             <TextView
-                android:id="@+id/tv_detail"
+
                 style="@style/text_theme_black_size_26_41495c"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/dimen_px21"
@@ -126,9 +126,10 @@
                 android:id="@+id/tv_payment"
                 style="@style/text_orange_size_26_f"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="@dimen/dimen_px30"
                 android:layout_marginLeft="@dimen/dimen_px24"
-                android:layout_toRightOf="@id/tv_refuse"
+                android:layout_marginRight="@dimen/dimen_px21"
                 android:background="@drawable/black_rectangle_btn_unpress_orange"
                 android:paddingBottom="@dimen/dimen_px16"
                 android:paddingLeft="@dimen/dimen_px62"

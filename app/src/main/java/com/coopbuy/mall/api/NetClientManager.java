@@ -24,11 +24,13 @@ import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.InComeReponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.api.reponse.MyBillReponse;
+import com.coopbuy.mall.api.reponse.MyCustomReponse;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
 import com.coopbuy.mall.api.reponse.OrderDetailResponse;
 import com.coopbuy.mall.api.reponse.OrderListResponse;
 import com.coopbuy.mall.api.reponse.OrderPayApplyResponse;
 import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
+import com.coopbuy.mall.api.reponse.PayOtherResponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
@@ -44,6 +46,7 @@ import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
 import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.api.request.AddToCartRequest;
+import com.coopbuy.mall.api.request.AddUpdateCustomRequest;
 import com.coopbuy.mall.api.request.AfterSalesDetailRequest;
 import com.coopbuy.mall.api.request.ApplyRefundAllRequest;
 import com.coopbuy.mall.api.request.ApplyRefundOneRequest;
@@ -66,6 +69,7 @@ import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.api.request.MobilePayRequest;
+import com.coopbuy.mall.api.request.MyCustomRequest;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
 import com.coopbuy.mall.api.request.OrderDetailRequest;
 import com.coopbuy.mall.api.request.OrderIdRequest;
@@ -772,6 +776,63 @@ public class NetClientManager extends BaseApiClient {
     }
 
     /**
+     * 站长客户数据
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMyCustomData(MyCustomRequest request, IAsyncResultCallback<MyCustomReponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<MyCustomReponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CUSTOMERS, request, callback, userState);
+    }
+
+    /**
+     * 添加站长客户
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState addCustom(AddUpdateCustomRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.ADDCUSTOMER, request, callback, userState);
+    }
+
+    /**
+     * 更改站长客户信息
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState updateCustom(AddUpdateCustomRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.UPDATECUSTOMER, request, callback, userState);
+    }
+
+    /**
+     * 代付支付列表
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getPayOnther(CurrentPageRequest request, IAsyncResultCallback<PayOtherResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<PayOtherResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.LIEUPAYAPPLYLIST, request, callback, userState);
+    }
+
+
+
+
+
+
+
+
+    /**
      * 订单列表
      *
      * @param request
@@ -1079,6 +1140,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取店铺详情
+     *
      * @param request
      * @param callback
      * @param userState

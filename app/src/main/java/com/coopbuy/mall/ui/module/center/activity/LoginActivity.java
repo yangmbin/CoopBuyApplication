@@ -410,17 +410,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         finish();
     }
 
-    /**
-     * 隐藏软键盘
-     *
-     * @param
-     */
-    public void hideSoftKeyboard() {
-        if (getCurrentFocus() != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
-    }
+
 
     @Override
     protected void onDestroy() {

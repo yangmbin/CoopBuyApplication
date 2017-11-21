@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.coopbuy.mall.R;
@@ -284,6 +285,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
             Log.e("network", "cancel network");
         }
         destroyStatusBar();
+        hideSoftKeyboard();
     }
 
     /**
@@ -321,5 +323,16 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         }
     }
 
+    /**
+     * 隐藏软键盘
+     *
+     * @param
+     */
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 
 }
