@@ -5,18 +5,16 @@ import android.content.Context;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-public class HomeLayoutAdapter_4 extends BaseDelegateAdapter<HomePageDataResponse.FloorsBean> {
+public class HomeLayoutAdapter_4 extends BaseDelegateAdapter<Object> {
 
-    private List<HomePageDataResponse.FloorsBean> floors;
+    private List<Object> floors;
 
-    public HomeLayoutAdapter_4(Context ctx, List<HomePageDataResponse.FloorsBean> list, LayoutHelper mLayoutHelper) {
+    public HomeLayoutAdapter_4(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
         this.floors = list;
     }
@@ -27,7 +25,6 @@ public class HomeLayoutAdapter_4 extends BaseDelegateAdapter<HomePageDataRespons
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final HomePageDataResponse.FloorsBean item) {
-        ((SimpleDraweeView) holder.getView(R.id.image)).setImageURI("");
+    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
     }
 }

@@ -14,18 +14,18 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeLayoutAdapter_1 extends BaseDelegateAdapter<Object> {
+public class HomeLayoutAdapter_3_1 extends BaseDelegateAdapter<Object> {
 
     private List<Object> floors;
 
-    public HomeLayoutAdapter_1(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public HomeLayoutAdapter_3_1(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
         this.floors = list;
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.item_1_home;
+        return R.layout.item_3_1_home;
     }
 
     @Override

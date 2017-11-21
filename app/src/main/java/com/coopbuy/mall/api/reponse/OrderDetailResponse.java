@@ -74,6 +74,7 @@ public class OrderDetailResponse implements Serializable {
     private String applyRefundButtonText;
     private boolean canRemindShipment;
     private boolean canRepeatSubmitOrder;
+    private boolean isApplyLieuPay;
     private List<OrderItemsBean> orderItems;
 
     public String getOrderId() {
@@ -314,6 +315,14 @@ public class OrderDetailResponse implements Serializable {
 
     public void setCanRepeatSubmitOrder(boolean canRepeatSubmitOrder) {
         this.canRepeatSubmitOrder = canRepeatSubmitOrder;
+    }
+
+    public boolean isApplyLieuPay() {
+        return isApplyLieuPay;
+    }
+
+    public void setApplyLieuPay(boolean applyLieuPay) {
+        isApplyLieuPay = applyLieuPay;
     }
 
     public List<OrderItemsBean> getOrderItems() {

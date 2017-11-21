@@ -10,19 +10,20 @@ import com.coopbuy.mall.base.BaseRecyclerHolder;
 
 import java.util.List;
 
-public class HomeLayoutAdapter_5 extends BaseDelegateAdapter<Object> {
+public class HomeLayoutAdapter_7_1 extends BaseDelegateAdapter<Object> {
 
-    public HomeLayoutAdapter_5(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    private List<Object> floorItems;
+
+    public HomeLayoutAdapter_7_1(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.item_5_home;
+        return R.layout.item_7_1_home;
     }
 
     @Override
     protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
-
     }
 }

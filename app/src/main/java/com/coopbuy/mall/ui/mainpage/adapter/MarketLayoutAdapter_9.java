@@ -12,6 +12,11 @@ import com.coopbuy.mall.widget.navigation.MarketPanicBuyingBar;
 
 import java.util.List;
 
+/**
+ * 悬浮
+ * @author yangmbin
+ * Create at 2017/11/21 14:12
+ */
 public class MarketLayoutAdapter_9 extends BaseDelegateAdapter<Object> {
 
     private MarketPanicBuyingBar buyingBar;
@@ -38,7 +43,9 @@ public class MarketLayoutAdapter_9 extends BaseDelegateAdapter<Object> {
     }
 
     public void refreshTab() {
-        buyingBar.selectTab(marketDayFragment.getCurrentTabIndex(), false);
+        // 这有空指针异常，原因是第一次MarketLayoutAdapter_9没出现时，bindData方法未执行，buyingBar为null，二点击MarketLayoutAdapter_10的tab时候回调动此方法
+        if (buyingBar != null)
+            buyingBar.selectTab(marketDayFragment.getCurrentTabIndex(), false);
         Log.e("yangmbin", "refreshTab:" + marketDayFragment.getCurrentTabIndex());
     }
 }

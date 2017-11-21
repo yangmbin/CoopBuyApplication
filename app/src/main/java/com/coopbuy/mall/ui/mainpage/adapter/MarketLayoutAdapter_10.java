@@ -12,6 +12,11 @@ import com.coopbuy.mall.widget.navigation.MarketPanicBuyingBar;
 
 import java.util.List;
 
+/**
+ * 非悬浮
+ * @author yangmbin
+ * Create at 2017/11/21 14:11
+ */
 public class MarketLayoutAdapter_10 extends BaseDelegateAdapter<Object> {
 
     private MarketPanicBuyingBar buyingBar;
@@ -38,7 +43,8 @@ public class MarketLayoutAdapter_10 extends BaseDelegateAdapter<Object> {
     }
 
     public void refreshTab() {
-        buyingBar.selectTab(marketDayFragment.getCurrentTabIndex(), false);
+        if (buyingBar != null)
+            buyingBar.selectTab(marketDayFragment.getCurrentTabIndex(), false);
         Log.e("yangmbin", "refreshTab:" + marketDayFragment.getCurrentTabIndex());
     }
 }
