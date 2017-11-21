@@ -13,7 +13,7 @@
         android:paddingLeft="@dimen/dimen_px30"
         android:paddingTop="@dimen/dimen_px30"
         android:textStyle="bold"
-        android:text="热销TOP 5"/>
+        android:text="精选推荐"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRecycleView"

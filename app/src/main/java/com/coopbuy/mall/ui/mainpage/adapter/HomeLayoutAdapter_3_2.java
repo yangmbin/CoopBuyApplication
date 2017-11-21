@@ -14,17 +14,18 @@ import com.coopbuy.mall.base.BaseRecyclerHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeLayoutAdapter_6 extends BaseDelegateAdapter<Object> {
+public class HomeLayoutAdapter_3_2 extends BaseDelegateAdapter<Object> {
 
-    private List<Object> floorItems;
+    private List<Object> floors;
 
-    public HomeLayoutAdapter_6(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public HomeLayoutAdapter_3_2(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
+        this.floors = list;
     }
 
     @Override
     protected int getItemLayoutId(int viewType) {
-        return R.layout.item_6_home;
+        return R.layout.item_3_2_home;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class HomeLayoutAdapter_6 extends BaseDelegateAdapter<Object> {
 
         @Override
         protected int getItemLayoutId(int viewType) {
-            return R.layout.list_item_6_home;
+            return R.layout.list_item_3_2_home;
         }
 
         @Override

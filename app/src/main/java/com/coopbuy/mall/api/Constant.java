@@ -16,8 +16,8 @@ public class Constant {
 //    public static final String SERVER_URL = "http://dev.guinong.com:8858/";
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
 
-    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
-//    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+//    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
+    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
 //    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
 
 

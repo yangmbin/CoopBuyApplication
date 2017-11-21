@@ -85,6 +85,12 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     TextView receiptBtn;
     @Bind(R.id.repeatSubmitOrderBtn)
     TextView repeatSubmitOrderBtn;
+    @Bind(R.id.top_status)
+    TextView topStatus;
+    @Bind(R.id.top_desc)
+    TextView topDesc;
+    @Bind(R.id.status_bg)
+    LinearLayout statusBg;
     private OrderDetailAdapter mOrderDetailAdapter;
     private List<OrderDetailResponse.OrderItemsBean> mDatas = new ArrayList<>();
     private OrderDetailResponse mOrderDetailResponse;
@@ -139,6 +145,24 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
 
         // 保存返回信息
         mOrderDetailResponse = orderDetailResponse;
+
+        // 设置顶部状态信息（1-待支付，2-待发货，3-待收货，4-已完成，5-已取消，6-已关闭）
+        if (orderDetailResponse.isApplyLieuPay()) {
+            statusBg.setBackgroundResource(R.mipmap.bg_order_station_pay);
+        } else {
+            if (orderDetailResponse.getOrderStatus() == 1) {
+                statusBg.setBackgroundResource(R.mipmap.bg_order_wait_pay);
+            } else if (orderDetailResponse.getOrderStatus() == 2) {
+                statusBg.setBackgroundResource(R.mipmap.bg_order_wait_send);
+            } else if (orderDetailResponse.getOrderStatus() == 3) {
+                statusBg.setBackgroundResource(R.mipmap.bg_order_wait_receive);
+            } else if (orderDetailResponse.getOrderStatus() == 4) {
+                statusBg.setBackgroundResource(R.mipmap.bg_order_completed);
+            } else if (orderDetailResponse.getOrderStatus() == 5 || orderDetailResponse.getOrderStatus() == 6) {
+                statusBg.setBackgroundResource(R.mipmap.bg_order_closed);
+            }
+        }
+
 
         // 设置商品列表
         mDatas.clear();
@@ -436,10 +460,12 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
 
     /**
      * 再来一单成功回调
+     *
      * @param request
      */
     @Override
     public void repeatSubmitOrderSuccess(AddToCartRequest request) {
         IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
     }
+
 }

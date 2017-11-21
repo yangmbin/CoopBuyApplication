@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_px30">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px310"
+        android:layout_height="@dimen/dimen_px160"
         app:image_scale_type="center_crop"
-        android:background="@color/bitmap_base_color"/>
+        android:background="@drawable/bg_round_corner_imageholder"/>
 
 </LinearLayout>

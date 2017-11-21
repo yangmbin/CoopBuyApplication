@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,8 +8,7 @@
     android:paddingTop="@dimen/dimen_px30"
     android:paddingBottom="@dimen/dimen_px35"
     android:paddingLeft="@dimen/dimen_px15"
-    android:paddingRight="@dimen/dimen_px15"
-    tools:context=".ui.module.test.activity.TestActivity">
+    android:paddingRight="@dimen/dimen_px15">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:layout_width="@dimen/dimen_px250"

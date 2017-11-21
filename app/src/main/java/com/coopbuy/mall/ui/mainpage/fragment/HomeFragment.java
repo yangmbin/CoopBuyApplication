@@ -8,6 +8,7 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.FixLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.coopbuy.mall.R;
@@ -16,11 +17,13 @@ import com.coopbuy.mall.base.ViewPagerBaseFragment;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_1;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_10;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_2;
-import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_3;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_3_1;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_3_2;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_4;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_5;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_6;
-import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_7;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_7_1;
+import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_7_2;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_8_1;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_8_2;
 import com.coopbuy.mall.ui.mainpage.adapter.HomeLayoutAdapter_9;
@@ -94,11 +97,11 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         mRvHome.setRecycledViewPool(viewPool);
 //        viewPool.setMaxRecycledViews(i, 10);
-        List<HomePageDataResponse.FloorsBean> decoration;
+        List<Object> decoration;
 
         //1
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new Object());
         mAdapters.add(new HomeLayoutAdapter_1(mContext, decoration, new SingleLayoutHelper()));
 
         //2
@@ -108,48 +111,60 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
         helper_2.setVGap(ScreenUtils.dip2px(mContext, 20));
         helper_2.setBgColor(ContextCompat.getColor(mContext, R.color.white));
         helper_2.setAutoExpand(false);
-        List<HomePageDataResponse.FloorsBean.FloorItemsBean> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++)
-            list.add(new HomePageDataResponse.FloorsBean.FloorItemsBean());
+        List<Object> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+            list.add(new Object());
         mAdapters.add(new HomeLayoutAdapter_2(mContext, list, helper_2));
 
-        //3
+        //3_1
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
-        mAdapters.add(new HomeLayoutAdapter_3(mContext, decoration, new SingleLayoutHelper()));
+        decoration.add(new Object());
+        mAdapters.add(new HomeLayoutAdapter_3_1(mContext, decoration, new SingleLayoutHelper()));
+
+        //3_2
+        decoration = new ArrayList<>();
+        decoration.add(new Object());
+        mAdapters.add(new HomeLayoutAdapter_3_2(mContext, decoration, new SingleLayoutHelper()));
 
         //4
-        GridLayoutHelper helper_4 = new GridLayoutHelper(2);
-        helper_4.setAutoExpand(false);
+        LinearLayoutHelper helper_4 = new LinearLayoutHelper();
         helper_4.setMarginTop(ScreenUtils.dip2px(mContext, 8));
-        helper_4.setGap(ScreenUtils.dip2px(mContext, 1));
+        helper_4.setDividerHeight(ScreenUtils.dip2px(mContext, 2));
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
-        decoration.add(new HomePageDataResponse.FloorsBean());
-        decoration.add(new HomePageDataResponse.FloorsBean());
-        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new Object());
+        decoration.add(new Object());
+        decoration.add(new Object());
         mAdapters.add(new HomeLayoutAdapter_4(mContext, decoration, helper_4));
 
         //5
         SingleLayoutHelper helper_5 = new SingleLayoutHelper();
         helper_5.setMarginTop(ScreenUtils.dip2px(mContext, 6));
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new Object());
         mAdapters.add(new HomeLayoutAdapter_5(mContext, decoration, helper_5));
 
         //6
         SingleLayoutHelper helper_6 = new SingleLayoutHelper();
         helper_6.setMarginTop(ScreenUtils.dip2px(mContext, 8));
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
+        decoration.add(new Object());
         mAdapters.add(new HomeLayoutAdapter_6(mContext, decoration, helper_6));
 
-        //7
-        SingleLayoutHelper helper_7 = new SingleLayoutHelper();
-        helper_7.setMarginTop(ScreenUtils.dip2px(mContext, 8));
+        //7_1
+        SingleLayoutHelper helper_7_1 = new SingleLayoutHelper();
+        helper_7_1.setMarginTop(ScreenUtils.dip2px(mContext, 8));
         decoration = new ArrayList<>();
-        decoration.add(new HomePageDataResponse.FloorsBean());
-        mAdapters.add(new HomeLayoutAdapter_7(mContext, decoration, helper_7));
+        decoration.add(new Object());
+        mAdapters.add(new HomeLayoutAdapter_7_1(mContext, decoration, helper_7_1));
+
+        //7-2
+        LinearLayoutHelper helper_7_2 = new LinearLayoutHelper();
+        helper_7_2.setPaddingBottom(ScreenUtils.dip2px(mContext, 10));
+        helper_7_2.setBgColor(ContextCompat.getColor(mContext, R.color.white));
+        List list_7_2 = new ArrayList();
+        list_7_2.add(new Object());
+        list_7_2.add(new Object());
+        mAdapters.add(new HomeLayoutAdapter_7_2(mContext, list_7_2, helper_7_2));
 
         //8_1
         SingleLayoutHelper helper_8_1 = new SingleLayoutHelper();
