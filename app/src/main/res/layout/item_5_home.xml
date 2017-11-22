@@ -6,13 +6,6 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/banner_image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_px150"
-        app:placeholderImage="@mipmap/default_img"
-        android:scaleType="centerCrop"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,6 +29,7 @@
             android:orientation="vertical"
             android:layout_marginTop="@dimen/dimen_px21">
             <TextView
+                android:id="@+id/goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -65,8 +59,10 @@
                     android:text="¥1221.22"
                     android:layout_toRightOf="@id/new_price"
                     android:layout_marginLeft="@dimen/dimen_px23"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"/>
                 <TextView
+                    android:id="@+id/sale_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_px28"

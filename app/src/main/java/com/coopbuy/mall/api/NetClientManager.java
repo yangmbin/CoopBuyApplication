@@ -19,8 +19,9 @@ import com.coopbuy.mall.api.reponse.FootMarkResponse;
 import com.coopbuy.mall.api.reponse.GetBindStationReponse;
 import com.coopbuy.mall.api.reponse.GetCartQuantityResponse;
 import com.coopbuy.mall.api.reponse.GoodsUpdateResponse;
+import com.coopbuy.mall.api.reponse.HomeDetailFloorResponse;
+import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
-import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.InComeReponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
 import com.coopbuy.mall.api.reponse.MyBillReponse;
@@ -64,8 +65,8 @@ import com.coopbuy.mall.api.request.GetBindStationRequest;
 import com.coopbuy.mall.api.request.GetChildProvincesRequest;
 import com.coopbuy.mall.api.request.GoodsDeleteRequest;
 import com.coopbuy.mall.api.request.GoodsUpdateRequest;
+import com.coopbuy.mall.api.request.HomeDetailFloorRequest;
 import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
-import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
 import com.coopbuy.mall.api.request.MobilePayRequest;
@@ -124,17 +125,6 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL + Constant.GET_PAGE_DATA_BYID, request, callback, userState);
     }
 
-    /**
-     * 首页数据
-     *
-     * @param callback
-     * @param userState
-     * @return
-     */
-    public IAsyncRequestState homePageData(HomePageDataRequest request, IAsyncResultCallback<HomePageDataResponse> callback, Object userState) {
-        return apiPostRequest(new TypeToken<HomePageDataResponse>() {
-        }.getType(), Constant.SERVER_URL + Constant.HOMO_PAGE_DATA, request, callback, userState);
-    }
 //    新下行  以前写的没有用了  暂时不删除
 
     /**
@@ -1149,5 +1139,27 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getShopDetail(ShopIdRequest request, IAsyncResultCallback<ShopDetailResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<ShopDetailResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_SHOP_DETAIL, request, callback, userState);
+    }
+
+    /**
+     * 获取首页数据
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getHomeFloorList(IAsyncResultCallback<List<HomeFloorResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<HomeFloorResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_HOME_FLOOR_LIST, callback, userState);
+    }
+
+    /**
+     * 获取活动详情
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getHomeDetailFloorList(HomeDetailFloorRequest request, IAsyncResultCallback<HomeDetailFloorResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<HomeDetailFloorResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GET_HOME_DETAIL_FLOOR_LIST, request, callback, userState);
     }
 }

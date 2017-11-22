@@ -4,39 +4,40 @@ package com.coopbuy.mall.ui.mainpage.presenter;
 import android.content.Context;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.HomeFloorResponse;
+import com.coopbuy.mall.api.reponse.HomeDetailFloorResponse;
+import com.coopbuy.mall.api.request.HomeDetailFloorRequest;
 import com.coopbuy.mall.base.BasePresenter;
-import com.coopbuy.mall.ui.mainpage.model.HomeModel;
-import com.coopbuy.mall.ui.mainpage.view.Home_IView;
+import com.coopbuy.mall.ui.mainpage.model.HomeDetailModel;
+import com.coopbuy.mall.ui.mainpage.view.HomeDetail_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.guinong.net.CodeContant;
 import com.guinong.net.NetworkException;
 import com.guinong.net.callback.IAsyncResultCallback;
 
-import java.util.List;
+public class HomeDetailPresenter extends BasePresenter<HomeDetail_IView, HomeDetailModel> {
 
-public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
-
-    public HomePresenter(Context context, HomeModel model, Home_IView view) {
+    public HomeDetailPresenter(Context context, HomeDetailModel model, HomeDetail_IView view) {
         super(context, model, view);
     }
 
     /**
-     * 获取首页数据
+     * 获取活动详情
      */
-    public void getHomeData(final boolean isPullToRefresh) {
+    public void getHomeDetailData(int pageId, final boolean isPullToRefresh) {
         if (!isPullToRefresh)
             mView.showFillLoading();
-        mView.appendNetCall(mModel.getHomeFloorList(new IAsyncResultCallback<List<HomeFloorResponse>>() {
+        HomeDetailFloorRequest request = new HomeDetailFloorRequest();
+        request.setPageId(pageId);
+        mView.appendNetCall(mModel.getHomeDetailFloorList(request, new IAsyncResultCallback<HomeDetailFloorResponse>() {
             @Override
-            public void onComplete(List<HomeFloorResponse> homeFloorResponseList, Object userState) {
-                mView.setHomeData(homeFloorResponseList);
+            public void onComplete(HomeDetailFloorResponse homeDetailFloorResponse, Object userState) {
+                mView.setHomeDetailData(homeDetailFloorResponse);
                 if (isPullToRefresh)
                     mView.stopPullToRefreshLoading();
                 else
                     mView.stopAll();
 
-                if (homeFloorResponseList.size() == 0)
+                if (homeDetailFloorResponse.getFloorList().size() == 0)
                     mView.showNoDataLayout();
             }
 
@@ -57,6 +58,6 @@ public class HomePresenter extends BasePresenter<Home_IView, HomeModel> {
                     ToastUtils.toastShort(R.string.connect_server_error);
                 }
             }
-        }, "获取首页数据"));
+        }, "获取活动详情"));
     }
 }

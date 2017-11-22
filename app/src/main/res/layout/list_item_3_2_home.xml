@@ -11,6 +11,7 @@
     android:paddingRight="@dimen/dimen_px15">
 
     <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/image"
         android:layout_width="@dimen/dimen_px260"
         android:layout_height="@dimen/dimen_px160"
         app:placeholderImage="@mipmap/default_img"

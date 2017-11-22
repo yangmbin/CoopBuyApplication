@@ -2,10 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white">
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px16"
+        android:background="@color/theme_back_white"/>
+
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/theme_text_lab_black"
@@ -14,4 +22,11 @@
         android:paddingTop="@dimen/dimen_px30"
         android:textStyle="bold"
         android:text="当前区域专享"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px150"
+        app:placeholderImage="@mipmap/default_img"
+        android:scaleType="centerCrop"/>
 </LinearLayout>

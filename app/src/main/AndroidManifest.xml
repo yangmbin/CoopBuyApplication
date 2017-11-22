@@ -114,16 +114,13 @@
         <activity android:name=".ui.module.center.pay.PaySuccessActivity" />
         <activity android:name=".ui.module.center.pay.PayFailActivity" />
         <activity android:name=".ui.module.center.activity.StationReleasesActivity" />
-        <activity android:name=".ui.module.center.activity.IncomeActivity" />
         <activity android:name=".ui.module.home.activity.SearchActivity" />
         <activity android:name=".ui.module.home.activity.SearchResultActivity" />
-        <activity android:name=".ui.module.center.activity.IncomeActivity" />
         <activity android:name=".ui.module.center.activity.PayOtherActivity" />
         <activity android:name=".ui.module.center.activity.StationCustomOrderDetailActivity" />
         <activity android:name=".ui.module.center.activity.IncomeActivity" />
-        <activity android:name=".ui.module.home.activity.SearchActivity" />
-        <activity android:name=".ui.module.home.activity.SearchResultActivity" />
-        <activity android:name=".ui.module.center.activity.PayOtherDetailActivity"></activity>
+        <activity android:name=".ui.module.center.activity.PayOtherDetailActivity" />
+        <activity android:name=".ui.mainpage.activity.HomeDetailActivity"></activity>
     </application>
 
 </manifest>
