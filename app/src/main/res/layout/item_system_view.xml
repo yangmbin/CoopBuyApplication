@@ -27,11 +27,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/dimen_px20"
+        android:id="@+id/ll_txt_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_px45"
         android:layout_marginRight="@dimen/dimen_px45"
+        android:layout_marginTop="@dimen/dimen_px20"
         android:background="@drawable/black_rectangle_white"
         android:orientation="vertical"
         android:paddingLeft="@dimen/dimen_px30"
@@ -80,10 +81,88 @@
                 android:layout_centerVertical="true"
                 android:text="查看详情" />
 
+            <View
+                android:id="@+id/v_red_hint_detail"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="@dimen/dimen_px16"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv"
+                android:background="@drawable/dot_red" />
+
             <ImageView
+                android:id="@+id/iv"
                 style="@style/image_more"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_order_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_px16"
+        android:layout_marginLeft="@dimen/dimen_px45"
+        android:layout_marginRight="@dimen/dimen_px45"
+        android:layout_marginTop="@dimen/dimen_px20"
+        android:background="@color/edit_text_back_white"
+        android:paddingLeft="@dimen/dimen_px30"
+        android:paddingRight="@dimen/dimen_px44"
+        android:paddingTop="@dimen/dimen_px26">
+
+        <RelativeLayout
+            android:id="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title_two"
+                style="@style/text_theme_black_size_28_41"
+                android:ellipsize="end"
+                android:gravity="center|left"
+                android:maxLines="1"
+                android:text="售后申请成功"
+                android:textSize="@dimen/dimen_px32" />
+
+            <View
+                android:id="@+id/v_red_hint"
+                android:layout_width="@dimen/dimen_px16"
+                android:layout_height="@dimen/dimen_px16"
+                android:layout_toRightOf="@+id/tv_title_two"
+                android:background="@drawable/dot_red" />
+        </RelativeLayout>
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/goods_image"
+            android:layout_width="@dimen/dimen_px120"
+            android:layout_height="@dimen/dimen_px120"
+            android:layout_below="@id/ll"
+            android:layout_marginBottom="@dimen/dimen_px20"
+            android:layout_marginRight="@dimen/dimen_px40"
+            android:layout_marginTop="@dimen/dimen_px20"
+            android:src="@mipmap/icon_splash_welcome"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:roundedCornerRadius="@dimen/dimen_px8" />
+
+        <TextView
+            android:id="@+id/tv_name_two"
+            style="@style/text_theme_black_size_28_41"
+            android:layout_below="@id/ll"
+            android:layout_marginTop="@dimen/dimen_px20"
+            android:layout_toRightOf="@+id/goods_image"
+            android:ellipsize="end"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:text="TCL D55A810 55吋 观影王安卓八 核平WIFI 平板 观影观影观影观影..."
+            android:textSize="@dimen/dimen_px32" />
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            style="@style/text_black_size_28_878f94"
+            android:layout_alignBottom="@+id/goods_image"
+            android:layout_toRightOf="@+id/goods_image"
+
+            android:text="订单号：62124596789123496" />
+    </RelativeLayout>
 </LinearLayout>

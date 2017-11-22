@@ -9,10 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
-import com.coopbuy.mall.api.reponse.MessageCenterResponse;
-import com.coopbuy.mall.api.reponse.MyCustomReponse;
 import com.coopbuy.mall.api.reponse.PayOtherResponse;
-import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 import com.coopbuy.mall.ui.module.center.port.PayOtherPort;
 
 import java.util.List;
@@ -22,11 +19,11 @@ import java.util.List;
  * @date 2017/10/13 0013 10:51
  * @content 物流
  */
-public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Holder> {
+public class PayOtherAdapter extends RecyclerView.Adapter<PayOtherAdapter.Holder> {
     private List<PayOtherResponse.ItemsBean> data;
     private PayOtherPort port;
 
-    public PayAntherAdapter(List<PayOtherResponse.ItemsBean> data, PayOtherPort port) {
+    public PayOtherAdapter(List<PayOtherResponse.ItemsBean> data, PayOtherPort port) {
         this.data = data;
         this.port = port;
     }
@@ -45,13 +42,13 @@ public class PayAntherAdapter extends RecyclerView.Adapter<PayAntherAdapter.Hold
     }
 
     @Override
-    public PayAntherAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PayOtherAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payanther_view, parent, false);
         return new Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(PayAntherAdapter.Holder holder, int position) {
+    public void onBindViewHolder(PayOtherAdapter.Holder holder, int position) {
         PayOtherResponse.ItemsBean srr = data.get(position);
         holder.mName.setText(srr.getConsignerName());
         holder.mPrice.setText(srr.getApplyAmount() + "元");
