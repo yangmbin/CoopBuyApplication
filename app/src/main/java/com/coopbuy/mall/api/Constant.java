@@ -17,7 +17,7 @@ public class Constant {
     public static final String SERVER_URL = "https://shop.coopbuy.com/";
 
     //    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
-   public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
+    public static final String SERVER_URL_NEW = "http://dev.guinong.com:8860/";
 //    public static final String SERVER_URL_NEW = "http://192.168.1.56:9898/";
 
 
@@ -207,7 +207,7 @@ public class Constant {
      * 代付申请列表
      */
     public static final String LIEUPAYAPPLYLIST = "api/services/app/station/LieuPayApplyList";
-  /**
+    /**
      * 代付申请订单详情
      */
     public static final String LIEUPAYDETAILINFO = "api/services/app/station/LieuPayDetailInfo";
@@ -219,6 +219,22 @@ public class Constant {
      * 客户订单详情
      */
     public static final String CUSTOMERORDERDETAIL = "api/services/app/station/CustomerOrderDetail";
+    /**
+     * 消息中心
+     */
+    public static final String GROUPLIST = "api/services/app/message/GroupList";
+    /**
+     * 系统消息数据
+     */
+    public static final String LIST = "api/services/app/message/List";
+    /**
+     * 消息已读 单个
+     */
+    public static final String READ = "api/services/app/message/Read";
+    /**
+     * 消息已读 全部
+     */
+    public static final String READALL = "api/services/app/message/ReadAll";
 
 
     /**

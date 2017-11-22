@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.MesCenterResponse;
 import com.coopbuy.mall.api.reponse.MessageCenterResponse;
 import com.coopbuy.mall.ui.module.center.port.FootMarkPort;
 
@@ -20,10 +21,10 @@ import java.util.List;
  * @content 站长推荐适配器
  */
 public class MessageCenterAdapter extends RecyclerView.Adapter<MessageCenterAdapter.Holder> {
-    private List<MessageCenterResponse> data;
+    private List<MesCenterResponse> data;
     private FootMarkPort port;
 
-    public MessageCenterAdapter(List<MessageCenterResponse> data, FootMarkPort port) {
+    public MessageCenterAdapter(List<MesCenterResponse> data, FootMarkPort port) {
         this.data = data;
         this.port = port;
     }
@@ -37,17 +38,23 @@ public class MessageCenterAdapter extends RecyclerView.Adapter<MessageCenterAdap
 
     @Override
     public void onBindViewHolder(MessageCenterAdapter.Holder holder, int position) {
-        MessageCenterResponse srr = data.get(position);
-        if (srr.getType() == 0) {
+        MesCenterResponse srr = data.get(position);
+        if (srr.getId() == 3) {
             holder.logo.setImageResource(R.mipmap.icon_msg_logisics);
-        } else if (srr.getType() == 1) {
+        } else if (srr.getId() == 2) {
             holder.logo.setImageResource(R.mipmap.icon_msg_message);
         } else {
             holder.logo.setImageResource(R.mipmap.icon_msg_system);
         }
         holder.mName.setText(srr.getName());
-        holder.msgDetail.setText(srr.getDetail());
-        holder.mTime.setText(srr.getTime());
+        holder.msgDetail.setText(srr.getNewMessage());
+        holder.mTime.setText(srr.getLastMessageTime());
+        if (srr.getUnreadMessageCount() > 0) {
+            holder.mCounts.setText(srr.getUnreadMessageCount() + "");
+            holder.mCounts.setVisibility(View.VISIBLE);
+        } else {
+            holder.mCounts.setVisibility(View.GONE);
+        }
         holder.mEnter.setOnClickListener(new MyClick(position));
     }
 
@@ -80,12 +87,13 @@ public class MessageCenterAdapter extends RecyclerView.Adapter<MessageCenterAdap
         TextView mTime;
         TextView msgDetail;
         ImageView logo;
-
+        TextView mCounts;
 
         Holder(View itemView) {
             super(itemView);
             mEnter = (LinearLayout) itemView.findViewById(R.id.ll_enter);
             mName = (TextView) itemView.findViewById(R.id.tv_logistics);
+            mCounts = (TextView) itemView.findViewById(R.id.tv_counts);
             mTime = (TextView) itemView.findViewById(R.id.tv_time);
             msgDetail = (TextView) itemView.findViewById(R.id.tv_detial);
             logo = (ImageView) itemView.findViewById(R.id.iv_logo);

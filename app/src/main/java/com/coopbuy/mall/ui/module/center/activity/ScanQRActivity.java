@@ -194,10 +194,8 @@ public class ScanQRActivity extends BaseActivity implements QRCodeView.Delegate 
             for (int x = 0; x < width / 2 && dstUOffset < dst.length && srcUOffset < src.length && dstVOffset < dst.length && srcVOffset < src.length; x++) {
                 dst[dstUOffset] = src[srcUOffset];
                 dst[dstVOffset] = src[srcVOffset];
-
                 dstUOffset += 2;
                 dstVOffset += 2;
-
                 srcUOffset += 8;
                 srcVOffset += 8;
             }

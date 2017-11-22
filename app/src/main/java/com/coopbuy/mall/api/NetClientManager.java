@@ -25,6 +25,7 @@ import com.coopbuy.mall.api.reponse.HomePageDataByIdResponse;
 import com.coopbuy.mall.api.reponse.HomePageDataResponse;
 import com.coopbuy.mall.api.reponse.InComeReponse;
 import com.coopbuy.mall.api.reponse.LoginResponse;
+import com.coopbuy.mall.api.reponse.MesCenterResponse;
 import com.coopbuy.mall.api.reponse.MyBillReponse;
 import com.coopbuy.mall.api.reponse.MyCustomReponse;
 import com.coopbuy.mall.api.reponse.OrderBuildResponse;
@@ -44,6 +45,7 @@ import com.coopbuy.mall.api.reponse.ShopDetailResponse;
 import com.coopbuy.mall.api.reponse.ShopStoreReponse;
 import com.coopbuy.mall.api.reponse.SkuDetailResponse;
 import com.coopbuy.mall.api.reponse.SkuInfoResponse;
+import com.coopbuy.mall.api.reponse.SystemMegResponse;
 import com.coopbuy.mall.api.reponse.TradeChannelResponse;
 import com.coopbuy.mall.api.reponse.UploadImageResponse;
 import com.coopbuy.mall.api.reponse.UserCenterInfoResponse;
@@ -72,6 +74,8 @@ import com.coopbuy.mall.api.request.HomePageDataByIdRequest;
 import com.coopbuy.mall.api.request.HomePageDataRequest;
 import com.coopbuy.mall.api.request.ImageCodeRequest;
 import com.coopbuy.mall.api.request.LoginRequest;
+import com.coopbuy.mall.api.request.MegRequest;
+import com.coopbuy.mall.api.request.MessageReadRequest;
 import com.coopbuy.mall.api.request.MobilePayRequest;
 import com.coopbuy.mall.api.request.MyCustomRequest;
 import com.coopbuy.mall.api.request.OrderBuildRequest;
@@ -857,6 +861,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 客户订单详情
+     *
      * @param request
      * @param callback
      * @param userState
@@ -867,6 +872,54 @@ public class NetClientManager extends BaseApiClient {
         }.getType(), Constant.SERVER_URL_NEW + Constant.CUSTOMERORDERDETAIL, request, callback, userState);
     }
 
+    /**
+     * 获取消息中心数据
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getMesgCenterData(IAsyncResultCallback<List<MesCenterResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<MesCenterResponse>>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.GROUPLIST, callback, userState);
+    }
+
+    /**
+     * 系统消息数据
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getSystemData(MegRequest request, IAsyncResultCallback<SystemMegResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<SystemMegResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.LIST, request, callback, userState);
+    }
+
+    /**
+     * 消息已读 单个
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState sendOneRead(MessageReadRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.READ, request, callback, userState);
+    }
+
+    /**
+     * 消息已读 全部
+     *
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState sendAllRead(MegRequest request, IAsyncEmptyCallback callback, Object userState) {
+        return apiPostRequest(Constant.SERVER_URL_NEW + Constant.READALL, request, callback, userState);
+    }
 
 
 

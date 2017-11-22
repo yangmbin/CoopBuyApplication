@@ -5,6 +5,7 @@ import android.content.Context;
 import com.coopbuy.mall.okhttp.OkHttpUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,6 +29,8 @@ public class CoopBuyApplication extends BaseApplication {
         Fresco.initialize(this);
         // 初始化Bugly
         CrashReport.initCrashReport(getApplicationContext(), "4dced6560c", false);
+        //腾讯webview加载初始化
+        QbSdk.initX5Environment(context,null);
     }
 
     /**
