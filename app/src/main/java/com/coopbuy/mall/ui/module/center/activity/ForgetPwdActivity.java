@@ -167,8 +167,17 @@ public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterM
                 isCodeEmpty = isEmpty;
                 break;
         }
-        if (isForgetPwdEmpty && isCodeEmpty) {
-            ViewClickUtil.setViewClickable(btnNext, true);
+        if (isCodeEmpty) {
+            if (type.equals(Constants.FORGET_TYPE)){
+                if (isForgetPwdEmpty){
+                    ViewClickUtil.setViewClickable(btnNext, true);
+                }else {
+                    ViewClickUtil.setViewClickable(btnNext, false);
+                }
+            }else {
+                ViewClickUtil.setViewClickable(btnNext, true);
+            }
+
         } else {
             ViewClickUtil.setViewClickable(btnNext, false);
         }
