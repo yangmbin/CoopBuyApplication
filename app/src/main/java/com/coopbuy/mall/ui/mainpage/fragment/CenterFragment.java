@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -77,10 +79,10 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     TextView tvCollectNumber;
     @Bind(R.id.tv_footmark_number)
     TextView tvFootmarkNumber;
-    @Bind(R.id.ll_location)
+   /* @Bind(R.id.ll_location)
     LinearLayout llLocation;
     @Bind(R.id.ll_search)
-    LinearLayout llSearch;
+    LinearLayout llSearch;*/
     /**
      * 普通用户可以展示  站长不展示
      */
@@ -89,14 +91,12 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     //站长类型
     @Bind(R.id.ll_station_status)
     LinearLayout llStationStatus;
-    @Bind(R.id.ll_title_bar)
-    LinearLayout llTitleBar;
+
     @Bind(R.id.iv_setting)
     ImageView ivSetting;
     @Bind(R.id.iv_msg)
     ImageView ivMsg;
-    @Bind(R.id.ll_line)
-    LinearLayout llLine;
+
     private UserCenterInfoResponse.UserInfoBean userInfo;
     private CenterAdapter adapter;
     private List<CenterData> mData;
@@ -121,6 +121,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
     @Override
     protected void initView() {
+
+        tvName.callOnClick();
         EventBusInstance.getInstance().registerEvent(this);
         setInitTitle();
         setData();
@@ -135,12 +137,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     }
 
     private void setInitTitle() {
-        llLocation.setVisibility(View.INVISIBLE);
-        llSearch.setVisibility(View.INVISIBLE);
-        llLine.setVisibility(View.GONE);
         ivMsg.setImageResource(R.mipmap.icon_center_msg);
         ivSetting.setImageResource(R.mipmap.icon_center_setting);
-        llTitleBar.setBackgroundResource(R.color.center_back);
+        //  llTitleBar.setBackgroundResource(R.color.center_back);
     }
 
     private void setData() {
@@ -156,9 +155,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
-            initStatusBar();
+            //   initStatusBar();
         } else {
-            destroyStatusBar();
+            // destroyStatusBar();
         }
     }
 

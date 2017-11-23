@@ -3,12 +3,11 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_back_white"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
+    android:background="#ffffff"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/nav_home_top" />
+
     <!--布局形式不出来 为什么-->
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
@@ -28,59 +27,114 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_px220">
+                    android:layout_height="wrap_content"
+                    android:tag="header">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/backImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         fresco:placeholderImage="@mipmap/icon_default_head"
-                        fresco:placeholderImageScaleType="centerCrop" />
+                        fresco:placeholderImageScaleType="centerInside" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_px220"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="@dimen/dimen_px420"
-                            android:layout_height="@dimen/dimen_px150"
-                            android:background="@drawable/black_rectangle_center_gray"
-                            android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_px88"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/dimen_px30"
+                            android:paddingRight="@dimen/dimen_px30">
 
-                            <FrameLayout
+                            <ImageView
+                                android:id="@+id/iv_setting"
+                                android:layout_width="@dimen/dimen_px44"
+                                android:layout_height="@dimen/dimen_px44"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/dimen_px90"
+                                android:src="@mipmap/icon_nav_home_top_cart" />
+
+                            <RelativeLayout
+                                android:id="@+id/more_btn"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/dimen_px150"
-                                android:layout_marginLeft="@dimen/dimen_px30"
-                                android:layout_marginTop="@dimen/dimen_px10"
-                                android:gravity="center">
-
-                                <com.facebook.drawee.view.SimpleDraweeView
-                                    android:id="@+id/circleImageView"
-                                    android:layout_width="@dimen/dimen_px110"
-                                    android:layout_height="@dimen/dimen_px110"
-                                    fresco:actualImageScaleType="centerCrop"
-                                    fresco:placeholderImage="@mipmap/default_img"
-                                    fresco:roundAsCircle="true" />
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_px34">
 
                                 <ImageView
-                                    android:id="@+id/iv_lab"
-                                    android:layout_width="@dimen/dimen_px110"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen_px91"
-                                    android:src="@mipmap/icon_vip" />
-                            </FrameLayout>
+                                    android:id="@+id/iv_msg"
+                                    android:layout_width="@dimen/dimen_px44"
+                                    android:layout_height="@dimen/dimen_px44"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:src="@mipmap/icon_nav_home_top_add" />
 
-                            <TextView
-                                android:id="@+id/tv_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="@dimen/dimen_px31"
-                                android:text="贵农网"
-                                android:textColor="@color/theme_back_white"
-                                android:textSize="@dimen/dimen_px32" />
-                        </LinearLayout>
+                                <View
+                                    android:layout_width="@dimen/dimen_px12"
+                                    android:layout_height="@dimen/dimen_px12"
+                                    android:layout_alignTop="@+id/iv_msg"
+                                    android:layout_gravity="right"
+                                    android:layout_toRightOf="@id/iv_msg"
+                                    android:background="@drawable/dot_red" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dimen_px220"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="@dimen/dimen_px420"
+                                    android:layout_height="@dimen/dimen_px150"
+                                    android:background="@drawable/black_rectangle_center_gray"
+                                    android:orientation="horizontal">
+
+                                    <FrameLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="@dimen/dimen_px150"
+                                        android:layout_marginLeft="@dimen/dimen_px30"
+                                        android:layout_marginTop="@dimen/dimen_px10"
+                                        android:gravity="center">
+
+                                        <com.facebook.drawee.view.SimpleDraweeView
+                                            android:id="@+id/circleImageView"
+                                            android:layout_width="@dimen/dimen_px110"
+                                            android:layout_height="@dimen/dimen_px110"
+                                            fresco:actualImageScaleType="centerCrop"
+                                            fresco:placeholderImage="@mipmap/default_img"
+                                            fresco:roundAsCircle="true" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_lab"
+                                            android:layout_width="@dimen/dimen_px110"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/dimen_px91"
+                                            android:src="@mipmap/icon_vip" />
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:id="@+id/tv_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/dimen_px31"
+                                        android:text="贵农网"
+                                        android:textColor="@color/theme_back_white"
+                                        android:textSize="@dimen/dimen_px32" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
 

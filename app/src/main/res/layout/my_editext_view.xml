@@ -19,7 +19,7 @@
         android:layout_alignParentStart="true" />
 
     <ImageView
-
+        android:layout_marginRight="@dimen/dimen_px30"
         android:id="@+id/iv_my_clear"
         style="@style/image_clear"
         android:visibility="gone"

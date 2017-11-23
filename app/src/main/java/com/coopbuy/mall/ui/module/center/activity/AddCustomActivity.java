@@ -2,7 +2,6 @@ package com.coopbuy.mall.ui.module.center.activity;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.MyCustomReponse;
@@ -15,7 +14,8 @@ import com.coopbuy.mall.ui.module.center.view.AddCustom_IView;
 import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
-import com.coopbuy.mall.widget.tab.MyView;
+import com.coopbuy.mall.utils.ViewClickUtil;
+import com.coopbuy.mall.widget.tab.MyEditText;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -27,11 +27,11 @@ import butterknife.OnClick;
  */
 public class AddCustomActivity extends BaseActivity<AddCustomPresenter, AddCustomModel> implements AddCustom_IView, IsEmptyPort {
     @Bind(R.id.edt_name)
-    MyView edtName;
+    MyEditText edtName;
     @Bind(R.id.edit_phone)
-    MyView editPhone;
+    MyEditText editPhone;
     @Bind(R.id.edit_address)
-    MyView editAddress;
+    MyEditText editAddress;
     @Bind(R.id.edit_compelete)
     Button editCompelete;
     private String type;
@@ -144,11 +144,9 @@ public class AddCustomActivity extends BaseActivity<AddCustomPresenter, AddCusto
                 break;
         }
         if (isEmptyAddress && isEmptyPhone && isEmptyName) {
-            editCompelete.setClickable(true);
-            editCompelete.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+            ViewClickUtil.setViewClickable(editCompelete, true);
         } else {
-            editCompelete.setClickable(false);
-            editCompelete.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
+            ViewClickUtil.setViewClickable(editCompelete, false);
         }
     }
 }

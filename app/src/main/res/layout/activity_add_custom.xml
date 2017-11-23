@@ -11,7 +11,7 @@
 
     <include layout="@layout/title_bar_layout" />
 
-    <com.coopbuy.mall.widget.tab.MyView
+    <com.coopbuy.mall.widget.tab.MyEditText
         android:id="@+id/edt_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px90"
@@ -27,7 +27,7 @@
         diy:text=""
         diy:textColor="@color/black_4" />
 
-    <com.coopbuy.mall.widget.tab.MyView
+    <com.coopbuy.mall.widget.tab.MyEditText
         android:id="@+id/edit_phone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px90"
@@ -42,10 +42,11 @@
         diy:text=""
         diy:textColor="@color/black_4" />
 
-    <com.coopbuy.mall.widget.tab.MyView
+    <com.coopbuy.mall.widget.tab.MyEditText
         android:id="@+id/edit_address"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px180"
+        android:paddingTop="@dimen/dimen_px10"
         android:layout_marginLeft="@dimen/dimen_px30"
         android:layout_marginRight="@dimen/dimen_px30"
         android:layout_marginTop="@dimen/dimen_px24"

@@ -1,17 +1,17 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.base.BaseActivity;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.tencent.smtt.sdk.WebView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class MegHtmlActivity extends BaseActivity {
 
-
+    private String url = "http://bbs.mb.qq.com/forum-112-1.html";
     @Bind(R.id.forum_context)
     WebView forumContext;
 
@@ -32,7 +32,12 @@ public class MegHtmlActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        forumContext.loadUrl("https://x5.tencent.com/tbs/guide/sdkInit.html");
+        String url = getIntent().getStringExtra(IntentUtils.PARAM1);
+        if (!TextUtils.isEmpty(url)) {
+            this.url = url;
+        }
+        forumContext.loadUrl(this.url);
+        setHtmlLogo(true);
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:diy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,22 +62,20 @@
                     android:text="@string/lab_suggestion_name" />
             </LinearLayout>
 
-            <RelativeLayout
-                style="@style/LinearLayout_contain_edit"
-                android:layout_marginTop="@dimen/dimen_px16">
-
-                <EditText
-                    android:id="@+id/edt_name"
-                    style="@style/login_edit"
-                    android:hint="@string/lab_suggestion_name_hint" />
-
-                <ImageView
-                    android:id="@+id/edt_name_clear"
-                    style="@style/image_clear"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/dimen_px30"
-                    android:layout_toLeftOf="@+id/cb_again_visible" />
-            </RelativeLayout>
+            <com.coopbuy.mall.widget.tab.MyEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px100"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px60"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:maxLength="11"
+                diy:dotVisible="true"
+                diy:hint="@string/lab_suggestion_name_hint"
+                diy:text=""
+                diy:textColor="@color/black_4" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,25 +91,21 @@
                     android:text="@string/lab_suggestion_phone" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_agian_password"
-                style="@style/LinearLayout_contain_edit"
-                android:layout_marginTop="@dimen/dimen_px16">
-
-                <EditText
-                    android:id="@+id/edt_phone"
-                    style="@style/login_edit"
-                    android:hint="@string/lab_suggestion_phone_hint"
-                    android:inputType="phone"
-                    android:maxLength="11" />
-
-                <ImageView
-                    android:id="@+id/iv_password_again_clear"
-                    style="@style/image_clear"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/dimen_px30"
-                    android:layout_toLeftOf="@+id/cb_again_visible" />
-            </RelativeLayout>
+            <com.coopbuy.mall.widget.tab.MyEditText
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px100"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px60"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:maxLength="11"
+                diy:dotVisible="true"
+                diy:hint="@string/lab_suggestion_phone_hint"
+                diy:inputType="3"
+                diy:text=""
+                diy:textColor="@color/black_4" />
         </LinearLayout>
     </ScrollView>
 
@@ -121,6 +116,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dimen_px75"
         android:gravity="center">
+
         <Button
             android:id="@+id/btn_complete"
             style="@style/login_btn"

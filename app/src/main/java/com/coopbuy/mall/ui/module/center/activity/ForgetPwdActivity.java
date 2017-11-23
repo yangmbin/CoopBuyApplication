@@ -1,11 +1,7 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,12 +9,15 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.model.RegisterModel;
+import com.coopbuy.mall.ui.module.center.port.IsEmptyPort;
 import com.coopbuy.mall.ui.module.center.presenter.RegisterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Register_IView;
 import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.utils.ViewClickUtil;
+import com.coopbuy.mall.widget.tab.MyEditText;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -28,23 +27,15 @@ import butterknife.OnClick;
  * @time 2017/10/16 0016 20:20
  * @content 在线修改密码  那忘记密码呢
  */
-public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterModel> implements Register_IView {
-
-
+public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterModel> implements Register_IView, IsEmptyPort {
     @Bind(R.id.tv_phone)
     TextView tvPhone;
     @Bind(R.id.rl_change_pwd)
     RelativeLayout rlChangePwd;
     @Bind(R.id.edt_forget_phone)
-    EditText edtForgetPhone;
-    @Bind(R.id.iv_forgetcode_clear)
-    ImageView ivForgetcodeClear;
-    @Bind(R.id.rl_forget_pwd)
-    RelativeLayout rlForgetPwd;
+    MyEditText edtForgetPhone;
     @Bind(R.id.edt_code)
-    EditText edtCode;
-    @Bind(R.id.iv_code_clear)
-    ImageView ivCodeClear;
+    MyEditText edtCode;
     @Bind(R.id.tv_get_code)
     TextView tvGetCode;
     @Bind(R.id.btn_next)
@@ -76,98 +67,21 @@ public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterM
     public void initView() {
         if (null != getIntent()) {
             type = getIntent().getStringExtra(IntentUtils.PARAM1);
-            ivForgetcodeClear.setVisibility(View.GONE);
-            ivCodeClear.setVisibility(View.GONE);
             if (type.equals(Constants.FORGET_TYPE)) {
                 setTitle("找回密码");
                 rlChangePwd.setVisibility(View.GONE);
-                rlForgetPwd.setVisibility(View.VISIBLE);
+                edtForgetPhone.setVisibility(View.VISIBLE);
             } else {
                 setTitle("在线更改密码");
                 mPhone = sharedPreferencesUtils.getUserPhone();
                 tvPhone.setText(mPhone);
                 edtForgetPhone.setText(mPhone);
                 rlChangePwd.setVisibility(View.VISIBLE);
-                rlForgetPwd.setVisibility(View.GONE);
+                edtForgetPhone.setVisibility(View.GONE);
             }
         }
-        setInputListener();
-    }
-
-    private void setInputListener() {
-        edtCode.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 0) {
-                    ivCodeClear.setVisibility(View.VISIBLE);
-                } else {
-                    ivCodeClear.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isCodeEmpty = true;
-                } else {
-                    isCodeEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-        edtForgetPhone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 0) {
-                    ivForgetcodeClear.setVisibility(View.VISIBLE);
-                } else {
-                    ivForgetcodeClear.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isForgetPwdEmpty = true;
-                } else {
-                    isForgetPwdEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-    }
-
-    /**
-     * 设置btn的点击状态
-     */
-    private void setBtnClickState() {
-        if (isCodeEmpty) {
-            if (type.equals(Constants.FORGET_TYPE)) {//忘记密码需要判断
-                if (isForgetPwdEmpty) {
-                    btnNext.setClickable(true);
-                    btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
-                } else {
-                    btnNext.setClickable(false);
-                    btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
-                }
-            } else {
-                btnNext.setClickable(true);
-                btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
-            }
-        } else {
-            btnNext.setClickable(false);
-            btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
-        }
+        edtCode.setIsEmptyPort(this);
+        edtForgetPhone.setIsEmptyPort(this);
     }
 
     @Override
@@ -198,15 +112,9 @@ public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterM
     }
 
 
-    @OnClick({R.id.iv_forgetcode_clear, R.id.iv_code_clear, R.id.tv_get_code, R.id.btn_next})
+    @OnClick({R.id.tv_get_code, R.id.btn_next})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_forgetcode_clear:
-                edtForgetPhone.setText("");
-                break;
-            case R.id.iv_code_clear:
-                edtCode.setText("");
-                break;
             case R.id.tv_get_code:
                 if (checkPhoneAndPwd("getcode")) {
                     mPresenter.getSMSCodeUpdate(mPhone);
@@ -247,5 +155,22 @@ public class ForgetPwdActivity extends BaseActivity<RegisterPresenter, RegisterM
             }
         }
         return true;
+    }
+
+    @Override
+    public void setIsEmptyPort(View v, boolean isEmpty) {
+        switch (v.getId()) {
+            case R.id.edt_forget_phone:
+                isForgetPwdEmpty = isEmpty;
+                break;
+            case R.id.edt_code:
+                isCodeEmpty = isEmpty;
+                break;
+        }
+        if (isForgetPwdEmpty && isCodeEmpty) {
+            ViewClickUtil.setViewClickable(btnNext, true);
+        } else {
+            ViewClickUtil.setViewClickable(btnNext, false);
+        }
     }
 }

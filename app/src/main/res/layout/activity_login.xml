@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:diy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_back_white"
@@ -16,43 +17,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <com.coopbuy.mall.widget.tab.MyEditText
+                android:id="@+id/edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px100"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px24"
+                android:background="@color/edit_text_back_white"
+                android:gravity="center"
+                android:maxLength="11"
+                diy:dotVisible="true"
+                diy:hint="@string/lab_login_enter_phone"
+                diy:inputType="3"
+                diy:text=""
+                diy:textColor="@color/black_4" />
+
             <RelativeLayout
-                style="@style/LinearLayout_contain_edit"
-                android:layout_marginTop="@dimen/dimen_px61">
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_px100"
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:layout_marginRight="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px16"
+                android:background="@color/edit_text_back_white">
 
-                <EditText
-                    android:id="@+id/edit_phone"
-                    style="@style/login_edit"
-                    android:layout_toLeftOf="@+id/iv_phone_clear"
-                    android:hint="@string/lab_login_enter_phone"
-                    android:inputType="phone" />
-
-                <ImageView
-                    android:id="@+id/iv_phone_clear"
-                    style="@style/image_clear"
-                    android:layout_alignParentRight="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                style="@style/LinearLayout_contain_edit"
-                android:layout_marginTop="@dimen/dimen_px16">
-
-                <EditText
+                <com.coopbuy.mall.widget.tab.MyEditText
                     android:id="@+id/edit_password"
-                    style="@style/login_edit"
-                    android:layout_toLeftOf="@+id/iv_password_clear"
-                    android:hint="@string/lab_login_enter_password"
-                    android:inputType="textPassword" />
-
-                <ImageView
-                    android:id="@+id/iv_password_clear"
-                    style="@style/image_clear"
-                    android:layout_marginRight="@dimen/dimen_px34"
-                    android:layout_toLeftOf="@+id/iv_visible" />
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px100"
+                    android:layout_toLeftOf="@+id/iv_visible"
+                    android:background="@color/edit_text_back_white"
+                    android:gravity="center"
+                    android:maxLength="11"
+                    diy:dotVisible="true"
+                    diy:hint="@string/lab_login_enter_password"
+                    diy:inputType="128"
+                    diy:textColor="@color/black_4" />
 
                 <CheckBox
                     android:id="@+id/iv_visible"
-                    style="@style/image_visible"
+                    style="@style/image_center_40"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_px30"
                     android:background="@drawable/check_password_selector"
                     android:button="@null" />
             </RelativeLayout>
@@ -62,8 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_px56"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/text_black_size_28"
@@ -72,21 +79,21 @@
 
                 <RelativeLayout
                     style="@style/LinearLayout_contain_edit_no_padding"
-                    android:layout_marginTop="@dimen/dimen_px16"
-                    android:layout_toLeftOf="@+id/iv_imagecode_show">
+                    android:layout_marginTop="@dimen/dimen_px16">
 
-                    <EditText
+                    <com.coopbuy.mall.widget.tab.MyEditText
                         android:id="@+id/edit_imagecode"
-                        style="@style/login_edit"
-                        android:layout_marginLeft="@dimen/dimen_px30"
-                        android:layout_toLeftOf="@+id/iv_imagecode_clear"
-                        android:hint="@string/lab_login_imagecode" />
-
-                    <ImageView
-                        android:id="@+id/iv_imagecode_clear"
-                        style="@style/image_clear"
-                        android:layout_marginRight="@dimen/dimen_px30"
-                        android:layout_toLeftOf="@+id/iv_imagecode" />
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_px100"
+                        android:layout_toLeftOf="@+id/iv_imagecode"
+                        android:background="@color/edit_text_back_white"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        diy:dotVisible="true"
+                        diy:hint="@string/lab_login_imagecode"
+                        diy:inputType="1"
+                        diy:text=""
+                        diy:textColor="@color/black_4" />
 
                     <ImageView
                         android:id="@+id/iv_imagecode"

@@ -1,13 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/tran_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/tran_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/tran_pre_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/tran_pre_out</item>
+    </style>
     <!-- APP更新对话框样式 -->
     <style name="APPUpdateDialogStyle">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -386,6 +392,7 @@
         <attr name="textGravity" format="integer|reference" />
         <attr name="textColor" format="color|reference" />
         <attr name="hintColor" format="color|reference" />
+        <attr name="inputType" format="integer|reference" />
         <attr name="text" format="string|reference" />
         <attr name="hint" format="string|reference" />
         <attr name="iconDrawable" format="reference" />

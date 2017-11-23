@@ -22,12 +22,15 @@ import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.ui.module.center.port.ExpandableListPort;
 import com.coopbuy.mall.ui.module.center.adapter.MyBaseExpandableListAdapter;
 import com.coopbuy.mall.ui.module.center.model.AddUserAddressModel;
+import com.coopbuy.mall.ui.module.center.port.IsEmptyPort;
 import com.coopbuy.mall.ui.module.center.presenter.AddUserAddressPresenter;
 import com.coopbuy.mall.ui.module.center.view.AddUserAddress_IView;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.utils.ViewClickUtil;
 import com.coopbuy.mall.widget.CustomerExpandableListView;
 import com.coopbuy.mall.widget.cityview.AddressStreetSelectorDialog;
+import com.coopbuy.mall.widget.tab.MyEditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +40,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, ExpandableListPort {
+public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, ExpandableListPort, IsEmptyPort {
     @Bind(R.id.tv_name)
     TextView tvName;
     @Bind(R.id.tv_phone)
@@ -61,7 +64,7 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
     @Bind(R.id.rl_community)
     RelativeLayout rlCommunity;
     @Bind(R.id.edt_address_detail)
-    EditText edtAddressDetail;
+    MyEditText edtAddressDetail;
     @Bind(R.id.ll_street_community)
     LinearLayout llStreetCommunity;
     @Bind(R.id.ll_ishasbind)
@@ -148,13 +151,13 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
 
         }
         getProiencesData(request.getCityCode(), "street", "init");
-        setInputListener();
     }
 
     @Override
     public void initView() {
         mSreetDataBean = new ArrayList<>();
         mCommUnityBean = new ArrayList<>();
+        edtAddressDetail.setIsEmptyPort(this);
         setViewViesible(tvStreetSelect, true);
         setViewViesible(tvCommunitySelect, true);
         if (null != getIntent()) {
@@ -167,42 +170,6 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
         }
         setTitle("收货地址填写");
 
-    }
-
-    private void setInputListener() {
-        edtAddressDetail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isAddressEmpty = true;
-                } else {
-                    isAddressEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-    }
-
-    /**
-     * 设置btn的点击状态
-     */
-    private void setBtnClickState() {
-        if ((isAddressEmpty && !tvStreet.getText().toString().trim().equals("镇(街道)") && !tvCommunity.getText().toString().trim().equals("村(社区)")) || (isAddressEmpty && isAddressDataEmpty)) {
-            tvComplete.setClickable(true);
-            tvComplete.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
-        } else {
-
-            tvComplete.setClickable(false);
-            tvComplete.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
-        }
     }
 
     private void setExpandlist(List<GetBindStationReponse> data) {
@@ -408,5 +375,19 @@ public class AddresssAddDetailActivity extends BaseActivity<AddUserAddressPresen
     public void checkPostionIstrue(GetBindStationReponse.StationUsersBean bean) {
         request.setStationId(bean.getStationId());
         request.setStationUserId(bean.getStationUserId());
+    }
+
+    @Override
+    public void setIsEmptyPort(View v, boolean isEmpty) {
+        switch (v.getId()) {
+            case R.id.edt_address_detail:
+                isAddressEmpty = isEmpty;
+                break;
+        }
+        if ((isAddressEmpty && !tvStreet.getText().toString().trim().equals("镇(街道)") && !tvCommunity.getText().toString().trim().equals("村(社区)")) || (isAddressEmpty && isAddressDataEmpty)) {
+            ViewClickUtil.setViewClickable(tvComplete, true);
+        } else {
+            ViewClickUtil.setViewClickable(tvComplete, false);
+        }
     }
 }

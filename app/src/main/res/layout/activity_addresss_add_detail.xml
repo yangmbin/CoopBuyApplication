@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:diy="http://schemas.android.com/apk/res-auto"
     android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -151,18 +152,20 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <EditText
+            <com.coopbuy.mall.widget.tab.MyEditText
                 android:id="@+id/edt_address_detail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_px180"
                 android:layout_marginLeft="@dimen/dimen_px30"
                 android:layout_marginRight="@dimen/dimen_px30"
-                android:layout_marginTop="@dimen/dimen_px30"
+                android:layout_marginTop="@dimen/dimen_px24"
                 android:background="@color/edit_text_back_white"
                 android:gravity="top"
-                android:hint="请输入详细收货地址"
-                android:padding="@dimen/dimen_px20"
-                android:textSize="@dimen/dimen_px32" />
+                diy:dotVisible="true"
+                diy:hint="@string/lab_add_addressdetail"
+                diy:text=""
+                diy:textColor="@color/black_4"
+                diy:textGravity="48" />
 
 
             <LinearLayout
