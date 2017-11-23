@@ -146,7 +146,7 @@ public class HomeFloorResponse implements Serializable {
         private int type;
         private int objectId;
         private String imageUrl;
-        private Object extendData;
+        private String extendData;
         private int sort;
         private int skuId;
         private int salesNumber;
@@ -202,11 +202,11 @@ public class HomeFloorResponse implements Serializable {
             this.imageUrl = imageUrl;
         }
 
-        public Object getExtendData() {
+        public String getExtendData() {
             return extendData;
         }
 
-        public void setExtendData(Object extendData) {
+        public void setExtendData(String extendData) {
             this.extendData = extendData;
         }
 

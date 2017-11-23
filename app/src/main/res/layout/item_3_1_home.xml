@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white"
-    android:padding="@dimen/dimen_px30">
+    android:background="@color/white">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px160"
+        android:background="@drawable/bg_round_corner_imageholder"
         app:image_scale_type="center_crop"
-        android:background="@drawable/bg_round_corner_imageholder"/>
+        app:roundedCornerRadius="@dimen/dimen_px8" />
 
 </LinearLayout>

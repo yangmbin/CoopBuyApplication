@@ -21,7 +21,8 @@
             android:layout_height="@dimen/dimen_px400"
             android:background="@drawable/bg_round_corner_imageholder"
             android:scaleType="centerCrop"
-            app:placeholderImage="@mipmap/default_img" />
+            app:placeholderImage="@mipmap/default_img"
+            app:roundedCornerRadius="@dimen/dimen_px8" />
 
         <LinearLayout
             android:layout_width="match_parent"

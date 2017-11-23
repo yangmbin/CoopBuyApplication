@@ -50,7 +50,7 @@
                         android:id="@+id/sale_price_icon"
                         android:layout_width="@dimen/dimen_px40"
                         android:layout_height="@dimen/dimen_px40"
-                        android:src="@mipmap/icon_upward_price"/>
+                        android:src="@mipmap/icon_normal_price"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"

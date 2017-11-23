@@ -2,10 +2,20 @@ package com.coopbuy.mall.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
+import com.coopbuy.mall.api.reponse.HomeFloorResponse;
+import com.coopbuy.mall.bean.HomeExtendData;
+import com.coopbuy.mall.ui.mainpage.activity.HomeDetailActivity;
 import com.coopbuy.mall.ui.mainpage.activity.MainActivity;
 import com.coopbuy.mall.ui.module.center.activity.AfterSalesActivity;
 import com.coopbuy.mall.ui.module.center.activity.OrderActivity;
+import com.coopbuy.mall.ui.module.home.activity.CategoryActivity;
+import com.coopbuy.mall.ui.module.home.activity.GoodsDetailActivity;
+import com.coopbuy.mall.ui.module.home.activity.QrqWbActivity;
+import com.coopbuy.mall.ui.module.home.activity.SearchResultActivity;
+import com.coopbuy.mall.ui.module.home.activity.ShopDetailActivity;
+import com.google.gson.Gson;
 
 import java.io.Serializable;
 
@@ -167,5 +177,42 @@ public class IntentUtils {
         Intent intent = new Intent(context, activity);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
+    }
+
+    /**
+     * 从首页打开不同类型页面
+     * @param context
+     * @param type 0=商品页，1=搜索页，2=分类页，3=店铺页，4=链接，5=活动页
+     * @param floorItemsBean
+     */
+    public static void gotoActivityFromHome(Context context, int type, HomeFloorResponse.FloorItemsBean floorItemsBean) {
+        Gson gson = new Gson();
+        HomeExtendData homeExtendData = new HomeExtendData();
+        if (!TextUtils.isEmpty(floorItemsBean.getExtendData())) {
+            try {
+                homeExtendData = gson.fromJson(floorItemsBean.getExtendData(), HomeExtendData.class);
+            } catch (Exception e) {}
+        }
+        switch (type) {
+            case 0:
+                gotoActivity(context, GoodsDetailActivity.class, floorItemsBean.getObjectId());
+                break;
+            case 1:
+                gotoActivity(context, SearchResultActivity.class, homeExtendData.getKeyword(), homeExtendData.getCategoryId());
+                break;
+            case 2:
+                gotoActivity(context, CategoryActivity.class);
+                break;
+            case 3:
+                gotoActivity(context, ShopDetailActivity.class, floorItemsBean.getObjectId());
+                break;
+            case 4:
+                if (!TextUtils.isEmpty(homeExtendData.getLink()))
+                    gotoActivity(context, QrqWbActivity.class, homeExtendData.getLink());
+                break;
+            case 5:
+                gotoActivity(context, HomeDetailActivity.class, floorItemsBean.getObjectId());
+                break;
+        }
     }
 }

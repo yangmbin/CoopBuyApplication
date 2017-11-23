@@ -3,12 +3,14 @@ package com.coopbuy.mall.ui.mainpage.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -29,5 +31,13 @@ public class HomeLayoutAdapter_7_1 extends BaseDelegateAdapter<HomeFloorResponse
     protected void bindData(BaseRecyclerHolder holder, int position, final HomeFloorResponse item) {
         if (item.getFloorItems().size() > 0)
             ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Uri.parse(item.getFloorItems().get(0).getImageUrl()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeFloorResponse.FloorItemsBean floorItemsBean = item.getFloorItems().get(0);
+                IntentUtils.gotoActivityFromHome(mContext, floorItemsBean.getType(), floorItemsBean);
+            }
+        });
     }
 }

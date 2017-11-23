@@ -9,6 +9,7 @@ import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
 import com.coopbuy.mall.ui.mainpage.imageloader.BannerImageLoader;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -38,6 +39,8 @@ public class HomeLayoutAdapter_3_1 extends BaseDelegateAdapter<HomeFloorResponse
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
+                HomeFloorResponse.FloorItemsBean floorItemsBean = item.getFloorItems().get(position);
+                IntentUtils.gotoActivityFromHome(mContext, floorItemsBean.getType(), floorItemsBean);
             }
         });
     }

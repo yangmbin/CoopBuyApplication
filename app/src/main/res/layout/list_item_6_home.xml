@@ -16,7 +16,8 @@
         android:layout_height="@dimen/dimen_px250"
         app:placeholderImage="@mipmap/default_img"
         android:scaleType="centerCrop"
-        android:background="@drawable/bg_round_corner_imageholder"/>
+        android:background="@drawable/bg_round_corner_imageholder"
+        app:roundedCornerRadius="@dimen/dimen_px8"/>
 
     <TextView
         android:layout_width="wrap_content"

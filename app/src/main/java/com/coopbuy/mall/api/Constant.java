@@ -280,4 +280,5 @@ public class Constant {
     public static final String GET_SHOP_DETAIL = "api/services/app/shop/Home";
     public static final String GET_HOME_FLOOR_LIST = "api/services/app/home/HomeFloorList";
     public static final String GET_HOME_DETAIL_FLOOR_LIST = "api/services/app/home/PageFloor";
+    public static final String CHECK_APP_UPDATE = "api/services/app/update/Check";
 }

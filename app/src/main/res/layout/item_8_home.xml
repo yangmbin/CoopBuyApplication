@@ -12,13 +12,14 @@
         android:layout_height="@dimen/dimen_px466"
         app:placeholderImage="@mipmap/default_img"
         android:scaleType="centerCrop"
-        android:background="@drawable/bg_round_corner_imageholder"/>
+        android:background="@drawable/bg_round_corner_imageholder"
+        app:roundedCornerRadius="@dimen/dimen_px8"/>
 
     <TextView
         android:id="@+id/goods_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="2"
+        android:lines="2"
         android:ellipsize="end"
         android:layout_marginTop="@dimen/dimen_px33"
         android:layout_marginBottom="@dimen/dimen_px21"

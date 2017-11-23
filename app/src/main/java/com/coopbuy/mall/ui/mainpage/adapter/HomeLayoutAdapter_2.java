@@ -10,7 +10,6 @@ import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
-import com.coopbuy.mall.ui.module.home.activity.CategoryActivity;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -35,9 +34,7 @@ public class HomeLayoutAdapter_2 extends BaseDelegateAdapter<HomeFloorResponse.F
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 进入分类
-                if (item.getType() == 2)
-                    IntentUtils.gotoActivity(mContext, CategoryActivity.class);
+                IntentUtils.gotoActivityFromHome(mContext, item.getType(), item);
             }
         });
     }

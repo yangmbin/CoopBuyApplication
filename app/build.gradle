@@ -18,8 +18,8 @@ android {
         applicationId "com.coopbuy.mall"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "10.0"
         multiDexEnabled true
         ndk {
             // 设置支持的SO库架构
@@ -31,7 +31,7 @@ android {
             //Zip代码压缩优化
             zipAlignEnabled true
             //移除无用资源
-            shrinkResources true
+            shrinkResources false
             //加载默认混淆文件
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

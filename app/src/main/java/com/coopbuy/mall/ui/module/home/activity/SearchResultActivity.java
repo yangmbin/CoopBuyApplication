@@ -3,6 +3,7 @@ package com.coopbuy.mall.ui.module.home.activity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,6 +111,15 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter, Se
         // 保存关键词
         mSearchWord = getIntent().getStringExtra(IntentUtils.PARAM1);
         searchResultTopBar.setSearchText(mSearchWord);
+
+        // 可选（从主页跳转过来的，可能会有categoryId作为筛选条件
+        if (!TextUtils.isEmpty(getIntent().getStringExtra(IntentUtils.PARAM2))) {
+            String categoryId = getIntent().getStringExtra(IntentUtils.PARAM2);
+            SearchRequest.FiltersBean categoryIdBean = new SearchRequest.FiltersBean();
+            categoryIdBean.setFieldName("categoryId");
+            categoryIdBean.setValue(categoryId);
+            mFilterList.add(categoryIdBean);
+        }
 
         // 初始化列表
         VirtualLayoutManager manager = new VirtualLayoutManager(mContext);

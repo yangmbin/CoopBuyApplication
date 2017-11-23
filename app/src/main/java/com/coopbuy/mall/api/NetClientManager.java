@@ -10,6 +10,7 @@ import com.coopbuy.mall.api.reponse.CalculateFreightResponse;
 import com.coopbuy.mall.api.reponse.CategoryResponse;
 import com.coopbuy.mall.api.reponse.ChangeAndForgetPwdResponse;
 import com.coopbuy.mall.api.reponse.CheckPhoneReponse;
+import com.coopbuy.mall.api.reponse.CheckUpdateResponse;
 import com.coopbuy.mall.api.reponse.CollectResponse;
 import com.coopbuy.mall.api.reponse.CustomOrderDetailReponse;
 import com.coopbuy.mall.api.reponse.CustomOrderReponse;
@@ -62,6 +63,7 @@ import com.coopbuy.mall.api.request.BuyerSendGoodsRequest;
 import com.coopbuy.mall.api.request.CalculateFreightRequest;
 import com.coopbuy.mall.api.request.CancelApplyRefundRequest;
 import com.coopbuy.mall.api.request.ChangeAndForgetPwdRequest;
+import com.coopbuy.mall.api.request.CheckUpdateRequest;
 import com.coopbuy.mall.api.request.CollectRequest;
 import com.coopbuy.mall.api.request.CurrentPageRequest;
 import com.coopbuy.mall.api.request.CustomOrderRequest;
@@ -1254,5 +1256,17 @@ public class NetClientManager extends BaseApiClient {
     public IAsyncRequestState getHomeDetailFloorList(HomeDetailFloorRequest request, IAsyncResultCallback<HomeDetailFloorResponse> callback, Object userState) {
         return apiPostRequest(new TypeToken<HomeDetailFloorResponse>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.GET_HOME_DETAIL_FLOOR_LIST, request, callback, userState);
+    }
+
+    /**
+     * 检查更新
+     * @param request
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState checkUpdate(CheckUpdateRequest request, IAsyncResultCallback<CheckUpdateResponse> callback, Object userState) {
+        return apiPostRequest(new TypeToken<CheckUpdateResponse>() {
+        }.getType(), Constant.SERVER_URL_NEW + Constant.CHECK_APP_UPDATE, request, callback, userState);
     }
 }

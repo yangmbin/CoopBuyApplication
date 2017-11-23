@@ -23,6 +23,7 @@
             app:placeholderImage="@mipmap/default_img"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_round_corner_imageholder"
+            app:roundedCornerRadius="@dimen/dimen_px8"
             android:layout_marginRight="@dimen/dimen_px20"/>
         <RelativeLayout
             android:layout_width="match_parent"

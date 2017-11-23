@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.PowerManager;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.coopbuy.mall.widget.APPUpdateDialog;
@@ -130,6 +132,9 @@ public class APPUpdateUtils {
     private void installAPK() {
         Log.e("yangmbin", apk_location);
         File file = new File(apk_location);
+
+        Uri data;
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         // 授权
         try {
             String[] command = {"chmod", "777", file.toString()};
@@ -137,9 +142,16 @@ public class APPUpdateUtils {
             builder.start();
         } catch (IOException ignored) {
         }
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            data = FileProvider.getUriForFile(mContext, "com.coopbuy.mall.fileprovider", file);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            data = Uri.fromFile(file);
+        }
+
+        intent.setDataAndType(data, "application/vnd.android.package-archive");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 }

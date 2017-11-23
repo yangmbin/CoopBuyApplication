@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
@@ -12,6 +13,7 @@ import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.StringUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -53,6 +55,13 @@ public class HomeLayoutAdapter_6 extends BaseDelegateAdapter<HomeFloorResponse> 
             ((SimpleDraweeView) holder.getView(R.id.image)).setImageURI(Uri.parse(item.getImageUrl()));
             holder.getTextView(R.id.goods_name).setText(item.getName());
             holder.getTextView(R.id.price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    IntentUtils.gotoActivityFromHome(mContext, item.getType(), item);
+                }
+            });
         }
     }
 }

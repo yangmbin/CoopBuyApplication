@@ -5,6 +5,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.coopbuy.mall.app.CoopBuyApplication;
+
 /**
  * Created by Administrator on 2017/6/5.
  */
@@ -53,5 +55,20 @@ public class DeviceUtils {
         }
 
         return resultData;
+    }
+
+    /**
+     * 获取版本号
+     * @return
+     */
+    public static String getVersionName() {
+        String versionName = "";
+        try {
+            String pkName = CoopBuyApplication.getAppContext().getPackageName();
+            versionName = CoopBuyApplication.getAppContext().getPackageManager().getPackageInfo(pkName, 0).versionName;
+            int versionCode = CoopBuyApplication.getAppContext().getPackageManager().getPackageInfo(pkName, 0).versionCode;
+        } catch (Exception e) {
+        }
+        return versionName;
     }
 }
