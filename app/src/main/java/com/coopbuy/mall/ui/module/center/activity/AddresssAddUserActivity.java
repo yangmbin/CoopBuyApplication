@@ -3,13 +3,9 @@ package com.coopbuy.mall.ui.module.center.activity;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -21,8 +17,8 @@ import com.coopbuy.mall.api.request.AddAddressRequest;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.eventbus.AddSuccessEvent;
 import com.coopbuy.mall.eventbus.EventBusInstance;
-import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.model.AddUserAddressModel;
+import com.coopbuy.mall.ui.module.center.port.IsEmptyPort;
 import com.coopbuy.mall.ui.module.center.presenter.AddUserAddressPresenter;
 import com.coopbuy.mall.ui.module.center.view.AddUserAddress_IView;
 import com.coopbuy.mall.utils.AddressDataUtil;
@@ -30,13 +26,14 @@ import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.PermissionUtil;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.utils.ViewClickUtil;
 import com.coopbuy.mall.widget.cityview.AddressDialog;
 import com.coopbuy.mall.widget.cityview.AddressSelectorDialog;
+import com.coopbuy.mall.widget.tab.MyEditText;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -47,30 +44,24 @@ import butterknife.OnClick;
  * @time 2017/10/20 0020 13:59
  * @content 修改 添加是一个
  */
-public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, View.OnFocusChangeListener {
+public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresenter, AddUserAddressModel> implements AddUserAddress_IView, IsEmptyPort {
 
     @Bind(R.id.edt_name)
-    EditText edtName;
+    MyEditText edtName;
     @Bind(R.id.edt_phone)
-    EditText edtPhone;
+    MyEditText edtPhone;
     @Bind(R.id.tv_city)
     TextView mCity;
-    @Bind(R.id.iv_name_clear)
-    ImageView ivNameClear;
-    @Bind(R.id.iv_phone_clear)
-    ImageView ivPhoneClear;
     @Bind(R.id.tv_select)
     TextView tvSelect;
     @Bind(R.id.btn_next)
-    Button btn_next;
+    Button btnNext;
     private long mCode;
     private String mUserName;
     private String mUserPhone;
     private String mUserCity;
     private boolean isPhoneEmpty = false;
     private boolean isNameEmpty = false;
-    private boolean isPhoneFocus = false;
-    private boolean isNameFocus = false;
     /**
      * 城市联动
      */
@@ -132,6 +123,8 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
 
     @Override
     public void initView() {
+        edtName.setIsEmptyPort(this);
+        edtPhone.setIsEmptyPort(this);
         EventBusInstance.getInstance().registerEvent(this);
         tvSelect.setVisibility(View.VISIBLE);
         if (null != getIntent()) {
@@ -145,8 +138,8 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                     oldAddress = city[0] + city[1] + city[2];
                     mCity.setText(oldAddress);
                     tvSelect.setVisibility(View.GONE);
-                    btn_next.setClickable(true);
-                    btn_next.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+                    btnNext.setClickable(true);
+                    btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
                     isNameEmpty = true;
                     isPhoneEmpty = true;
                     mUserCity = oldAddress;
@@ -154,69 +147,17 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
             }
         }
         setTitle("收货地址填写");
-        ivNameClear.setVisibility(View.GONE);
-        ivPhoneClear.setVisibility(View.GONE);
-        edtName.setOnFocusChangeListener(this);
-        edtPhone.setOnFocusChangeListener(this);
-        setInputListener();
     }
-
-    private void setInputListener() {
-        edtName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setFocus(charSequence.length(), ivNameClear, isNameFocus);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setFocus(charSequence.length(), ivNameClear, isNameFocus);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isNameEmpty = true;
-                } else {
-                    isNameEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-        edtPhone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setFocus(charSequence.length(), ivPhoneClear, isPhoneFocus);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setFocus(charSequence.length(), ivPhoneClear, isPhoneFocus);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isPhoneEmpty = true;
-                } else {
-                    isPhoneEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-    }
-
-
     /**
      * 设置btn的点击状态
      */
     private void setBtnClickState() {
         if (isNameEmpty && isPhoneEmpty && !TextUtils.isEmpty(mUserCity)) {
-            btn_next.setClickable(true);
-            btn_next.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
+            btnNext.setClickable(true);
+            btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
         } else {
-            btn_next.setClickable(false);
-            btn_next.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
+            btnNext.setClickable(false);
+            btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
         }
     }
 
@@ -245,7 +186,7 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
         });
     }
 
-    @OnClick({R.id.btn_next, R.id.rl_select_address, R.id.iv_name_clear, R.id.iv_phone_clear})
+    @OnClick({R.id.btn_next, R.id.rl_select_address})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_next:
@@ -288,12 +229,6 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
                 } else {
                     mPresenter.getProvincesData("again");
                 }
-                break;
-            case R.id.iv_name_clear:
-                edtName.setText("");
-                break;
-            case R.id.iv_phone_clear:
-                edtPhone.setText("");
                 break;
         }
     }
@@ -360,31 +295,6 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
         return true;
     }
 
-    @Override
-    public void onFocusChange(View view, boolean b) {
-        switch (view.getId()) {
-            case R.id.edt_name:
-                isNameFocus = b;
-                if (!b) {
-                    ivNameClear.setVisibility(View.GONE);
-                } else {
-                    if (isNameEmpty) {
-                        ivNameClear.setVisibility(View.VISIBLE);
-                    }
-                }
-                break;
-            case R.id.edt_phone:
-                isPhoneFocus = b;
-                if (!b) {
-                    ivPhoneClear.setVisibility(View.GONE);
-                } else {
-                    if (isPhoneEmpty) {
-                        ivPhoneClear.setVisibility(View.VISIBLE);
-                    }
-                }
-                break;
-        }
-    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThreadrep(AddSuccessEvent event) {
@@ -397,5 +307,22 @@ public class AddresssAddUserActivity extends BaseActivity<AddUserAddressPresente
     protected void onDestroy() {
         super.onDestroy();
         EventBusInstance.getInstance().unRegisterEvent(this);
+    }
+
+    @Override
+    public void setIsEmptyPort(View v, boolean isEmpty) {
+        switch (v.getId()) {
+            case R.id.edt_name:
+                isNameEmpty = isEmpty;
+                break;
+            case R.id.edt_phone:
+                isPhoneEmpty = isEmpty;
+                break;
+        }
+        if (isNameEmpty && isPhoneEmpty) {
+            ViewClickUtil.setViewClickable(btnNext, true);
+        } else {
+            ViewClickUtil.setViewClickable(btnNext, false);
+        }
     }
 }

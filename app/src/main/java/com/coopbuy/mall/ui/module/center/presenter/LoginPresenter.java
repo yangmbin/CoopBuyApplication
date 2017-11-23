@@ -72,6 +72,7 @@ public class LoginPresenter extends BasePresenter<Login_IView, LoginModel> {
                 if (error != null) {
                     error.getDetail();
                     mView.stopAll();
+                    ToastUtils.toastShort(error.getMessage());
                 }
             }
         }, "imagecode"));

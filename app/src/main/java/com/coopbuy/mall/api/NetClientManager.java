@@ -167,7 +167,7 @@ public class NetClientManager extends BaseApiClient {
      * @return
      */
     public IAsyncRequestState imageCode(ImageCodeRequest request, IAsyncResultCallback<String> callback, Object userState) {
-        return apiGetRequest(new TypeToken<String>() {
+        return apiPostRequest(new TypeToken<String>() {
         }.getType(), Constant.SERVER_URL_NEW + Constant.IMAGE_CODE, request, callback, userState);
     }
 

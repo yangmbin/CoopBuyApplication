@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:diy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/box"
     android:layout_width="match_parent"
@@ -32,41 +33,36 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        style="@style/LinearLayout_contain_edit"
-        android:layout_marginTop="@dimen/dimen_px61">
+    <com.coopbuy.mall.widget.tab.MyEditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px60"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center"
+        android:maxLength="11"
+        diy:dotVisible="true"
+        diy:hint="@string/lab_deliverry_name"
+        diy:text=""
+        diy:textColor="@color/black_4" />
 
-        <EditText
-            android:id="@+id/edt_name"
-            style="@style/login_edit"
-            android:layout_toLeftOf="@+id/iv_name_clear"
-            android:hint="收货人姓名"
-            android:maxLength="20"
-          />
-
-        <ImageView
-            android:id="@+id/iv_name_clear"
-            style="@style/image_clear"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        style="@style/LinearLayout_contain_edit"
-        android:layout_marginTop="@dimen/dimen_px61">
-
-        <EditText
-            android:id="@+id/edt_phone"
-            style="@style/login_edit"
-            android:layout_toLeftOf="@+id/iv_phone_clear"
-            android:hint="手机号码"
-            android:inputType="phone"
-            android:maxLength="11" />
-
-        <ImageView
-            android:id="@+id/iv_phone_clear"
-            style="@style/image_clear"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
+    <com.coopbuy.mall.widget.tab.MyEditText
+        android:id="@+id/edt_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px60"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center"
+        android:maxLength="11"
+        diy:dotVisible="true"
+        diy:hint="@string/lab_address_phone"
+        diy:inputType="3"
+        diy:text=""
+        diy:textColor="@color/black_4" />
 
     <RelativeLayout
         android:id="@+id/rl_select_address"
@@ -81,10 +77,10 @@
         <TextView
             android:id="@+id/tv_city"
             style="@style/text_theme_black_size_28_41"
-            android:layout_centerVertical="true"
-            android:ellipsize="end"
             android:layout_width="match_parent"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_select"
+            android:ellipsize="end"
             android:maxLines="1"
             android:paddingLeft="@dimen/dimen_px30"
             android:text="省、市、区(县)"

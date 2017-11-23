@@ -26,6 +26,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     private TitleBarClickListener mListener;
     private TextView mTitle, mRightText;
     private ImageView mRightImage;
+    private ImageView mIvLogo;
 
     public TitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -39,6 +40,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
         mTitle = (TextView) mView.findViewById(R.id.title);
         mRightText = (TextView) mView.findViewById(R.id.txt_titlebar_right);
         mRightImage = (ImageView) mView.findViewById(R.id.iv_titlebar_right);
+        mIvLogo = (ImageView) mView.findViewById(R.id.iv_logo);
         rl_back.setOnClickListener(this);
         fl_right.setOnClickListener(this);
     }
@@ -56,6 +58,22 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
         mRightImage.setVisibility(GONE);
         mRightText.setVisibility(VISIBLE);
         mRightText.setText(text);
+    }
+
+    private void setTitleBack() {
+        mTitle.setBackgroundResource(R.mipmap.default_img);
+    }
+
+    /**
+     * 设置html 的标题图片显示
+     * @param isVisible
+     */
+    public void setHtmlLogo(boolean isVisible) {
+        if (isVisible) {
+            mIvLogo.setVisibility(VISIBLE);
+        } else {
+            mIvLogo.setVisibility(GONE);
+        }
     }
 
     public void setRightText(int textResId) {

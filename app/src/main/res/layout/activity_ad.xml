@@ -53,7 +53,7 @@
         android:id="@+id/iv_logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_px180"
+        android:scaleType="fitXY"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
         android:src="@mipmap/icon_splash_logo" />
 </RelativeLayout>

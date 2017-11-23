@@ -5,8 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,7 +28,7 @@ import butterknife.ButterKnife;
 /**
  * 导航组合控件
  */
-public class MyView extends LinearLayout implements View.OnFocusChangeListener, TextWatcher, View.OnClickListener {
+public class MyEditText extends LinearLayout implements View.OnFocusChangeListener, TextWatcher, View.OnClickListener {
     @Bind(R.id.iv_my_clear)
     ImageView mClear;
     @Bind(R.id.edt_myname)
@@ -48,7 +51,7 @@ public class MyView extends LinearLayout implements View.OnFocusChangeListener, 
         this.port = port;
     }
 
-    public MyView(Context context, AttributeSet attrs) {
+    public MyEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         v = LayoutInflater.from(context).inflate(R.layout.my_editext_view, this);
         ButterKnife.bind(this);
@@ -58,16 +61,25 @@ public class MyView extends LinearLayout implements View.OnFocusChangeListener, 
         Drawable iconDrawable = typedArray.getDrawable(R.styleable.TabView_iconDrawable);
         String text = typedArray.getString(R.styleable.TabView_text);
         String dotText = typedArray.getString(R.styleable.TabView_dotText);
+        int inputType = typedArray.getInt(R.styleable.TabView_inputType, InputType.TYPE_CLASS_TEXT);
         int textGravity = typedArray.getInt(R.styleable.TabView_textGravity, Gravity.CENTER | Gravity.LEFT);
         String hintText = typedArray.getString(R.styleable.TabView_hint);
     /*    int textColor = typedArray.getColor(R.styleable.TabView_textColor, R.drawable.edit_textcolor_selector);
         int textHintColor = typedArray.getColor(R.styleable.TabView_hintColor, R.drawable.edit_textcolor_selector);*/
         setTextSize(textSize);
         setText(text);
+        setinputType(inputType);
         // setTextColor(textColor);
         // setHintColor(textHintColor);
         setHintText(hintText);
         typedArray.recycle();
+  /*      mEdit.setInputType(InputType.TYPE_CLASS_PHONE);
+        mEdit.setInputType(InputType.TYPE_CLASS_TEXT);
+        mEdit.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        mEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        mEdit.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        mEdit.setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);*/
         setEditGravity(textGravity);
         mClear.setOnClickListener(this);
         mEdit.setOnFocusChangeListener(this);
@@ -102,12 +114,29 @@ public class MyView extends LinearLayout implements View.OnFocusChangeListener, 
         mEdit.setTextColor(textColor);
     }
 
+    public void setinputType(int textColor) {
+        mEdit.setInputType(textColor);
+    }
+
     public void setEditGravity(int textColor) {
         mEdit.setGravity(textColor);
     }
 
     public void setTextSize(float textSize) {
         mEdit.setTextSize(textSize);
+    }
+
+    /**
+     * 设置txt是否可见
+     *
+     * @param visible
+     */
+    public void setTextPasswordVisible(boolean visible) {
+        if (visible) {
+            mEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        } else {
+            mEdit.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
     }
 
     @Override

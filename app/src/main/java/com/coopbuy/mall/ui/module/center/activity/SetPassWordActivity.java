@@ -18,12 +18,15 @@ import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.eventbus.EventBusInstance;
 import com.coopbuy.mall.eventbus.RegisterEvent;
 import com.coopbuy.mall.ui.module.center.model.SetPasswordModel;
+import com.coopbuy.mall.ui.module.center.port.IsEmptyPort;
 import com.coopbuy.mall.ui.module.center.presenter.SetPasswordPresenter;
 import com.coopbuy.mall.ui.module.center.view.SetPassword_IView;
 import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ToastUtils;
+import com.coopbuy.mall.utils.ViewClickUtil;
+import com.coopbuy.mall.widget.tab.MyEditText;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -34,20 +37,15 @@ import butterknife.OnClick;
 /**
  * 初次设置密码 和修改密码一样的界面 到时设置逻辑就行了 2017年9月29日10:13:39
  */
-public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetPasswordModel> implements SetPassword_IView {
-
-    @Bind(R.id.iv_password_clear)
-    ImageView ivPasswordClear;
-    @Bind(R.id.iv_password_again_clear)
-    ImageView ivPasswordAgainClear;
+public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetPasswordModel> implements SetPassword_IView, IsEmptyPort {
     @Bind(R.id.rl_agian_password)
     RelativeLayout rlAgianPassword;
     @Bind(R.id.btn_next)
     Button btnNext;
     @Bind(R.id.edt_pwd)
-    EditText edtPwd;
+    MyEditText edtPwd;
     @Bind(R.id.edt_again_pwd)
-    EditText edtAgainPwd;
+    MyEditText edtAgainPwd;
     @Bind(R.id.cb_visible)
     CheckBox cbVisible;
     @Bind(R.id.cb_again_visible)
@@ -77,8 +75,10 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
 
     @Override
     public void initView() {
-        ivPasswordClear.setVisibility(View.GONE);
-        ivPasswordAgainClear.setVisibility(View.GONE);
+        edtPwd.setTextPasswordVisible(false);
+        edtAgainPwd.setTextPasswordVisible(false);
+        edtAgainPwd.setIsEmptyPort(this);
+        edtPwd.setIsEmptyPort(this);
         setTitle("设置密码");
         if (null != getIntent()) {
             type = getIntent().getStringExtra(IntentUtils.PARAM1);
@@ -87,112 +87,20 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
                 rlAgianPassword.setVisibility(View.GONE);
             } else {//有两次填写密码 包括了找回密码 和修改密码
                 rlAgianPassword.setVisibility(View.VISIBLE);
-                edtPwd.setHint("请输入新密码");
+                edtPwd.setHintText("请输入新密码");
                 cfpRequest = (ChangeAndForgetPwdRequest) getIntent().getSerializableExtra(IntentUtils.DATA);
             }
         }
-        setInputListener();
     }
 
-    private void setInputListener() {
-        edtPwd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 0) {
-                    ivPasswordClear.setVisibility(View.VISIBLE);
-                } else {
-                    ivPasswordClear.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isPwdEmpty = true;
-                } else {
-                    isPwdEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-        edtAgainPwd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 0) {
-                    ivPasswordAgainClear.setVisibility(View.VISIBLE);
-                } else {
-                    ivPasswordAgainClear.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    isAgainPwdEmpty = true;
-                } else {
-                    isAgainPwdEmpty = false;
-                }
-                setBtnClickState();
-            }
-        });
-    }
-
-    /**
-     * 设置btn的点击状态
-     */
-    private void setBtnClickState() {
-        if (isPwdEmpty) {
-            if (!type.equals(Constants.REGISTER_TYPE)) {//修改密码
-                if (isAgainPwdEmpty) {
-                    btnNext.setClickable(true);
-                    btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
-                } else {
-                    btnNext.setClickable(false);
-                    btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
-                }
-            } else {
-                btnNext.setClickable(true);
-                btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_press_black);
-            }
-
-        } else {
-            btnNext.setClickable(false);
-            btnNext.setBackgroundResource(R.drawable.black_rectangle_btn_unpress_gray);
-        }
-    }
-
-    @OnClick({R.id.iv_password_clear, R.id.iv_password_again_clear, R.id.btn_next, R.id.cb_again_visible, R.id.cb_visible})
+    @OnClick({  R.id.btn_next, R.id.cb_again_visible, R.id.cb_visible})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cb_visible:
-                if (cbVisible.isChecked()) {
-                    edtPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    edtPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+                edtPwd.setTextPasswordVisible(cbVisible.isChecked());
                 break;
             case R.id.cb_again_visible:
-                if (cbAgainVisible.isChecked()) {
-                    edtAgainPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    edtAgainPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-                break;
-            case R.id.iv_password_clear:
-                edtPwd.setText("");
-                break;
-            case R.id.iv_password_again_clear:
-                edtAgainPwd.setText("");
+                edtAgainPwd.setTextPasswordVisible(cbAgainVisible.isChecked());
                 break;
             case R.id.btn_next:
                 if (type.equals(Constants.REGISTER_TYPE)) {//注册使用
@@ -258,5 +166,22 @@ public class SetPassWordActivity extends BaseActivity<SetPasswordPresenter, SetP
     protected void onDestroy() {
         super.onDestroy();
         EventBusInstance.getInstance().unRegisterEvent(this);
+    }
+
+    @Override
+    public void setIsEmptyPort(View v, boolean isEmpty) {
+        switch (v.getId()) {
+            case R.id.edt_pwd:
+                isPwdEmpty = isEmpty;
+                break;
+            case R.id.edt_again_pwd:
+                isAgainPwdEmpty = isEmpty;
+                break;
+        }
+        if (isPwdEmpty && isAgainPwdEmpty) {
+            ViewClickUtil.setViewClickable(btnNext, true);
+        } else {
+            ViewClickUtil.setViewClickable(btnNext, false);
+        }
     }
 }
