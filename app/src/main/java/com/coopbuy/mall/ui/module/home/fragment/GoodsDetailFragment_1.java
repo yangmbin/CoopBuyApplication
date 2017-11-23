@@ -240,6 +240,7 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
         List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
         skusBeanList.add(skusBean);
+        request.setSkus(skusBeanList);
         if (sharedPreferencesUtils.getLoginStatus()) {
             mPresenter.addToCart(request);
         } else {
