@@ -18,8 +18,8 @@ android {
         applicationId "com.coopbuy.mall"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 10
-        versionName "10.0"
+        versionCode 1
+        versionName "1.0"
         multiDexEnabled true
         ndk {
             // 设置支持的SO库架构
