@@ -33,14 +33,14 @@
                         android:layout_marginBottom="@dimen/dimen_px66"
                         android:background="@color/theme_text_lab_black" />
                     <RelativeLayout
+                        android:id="@+id/status_bg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingTop="@dimen/dimen_px30"
-                        android:paddingLeft="@dimen/dimen_px30"
-                        android:paddingRight="@dimen/dimen_px30"
-                        android:paddingBottom="@dimen/dimen_px16">
+                        android:layout_marginTop="@dimen/dimen_px30"
+                        android:layout_marginLeft="@dimen/dimen_px30"
+                        android:layout_marginRight="@dimen/dimen_px30"
+                        android:layout_marginBottom="@dimen/dimen_px16">
                         <LinearLayout
-                            android:id="@+id/status_bg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"

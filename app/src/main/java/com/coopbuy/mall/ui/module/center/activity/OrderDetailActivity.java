@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -90,7 +91,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
     @Bind(R.id.top_desc)
     TextView topDesc;
     @Bind(R.id.status_bg)
-    LinearLayout statusBg;
+    RelativeLayout statusBg;
     private OrderDetailAdapter mOrderDetailAdapter;
     private List<OrderDetailResponse.OrderItemsBean> mDatas = new ArrayList<>();
     private OrderDetailResponse mOrderDetailResponse;

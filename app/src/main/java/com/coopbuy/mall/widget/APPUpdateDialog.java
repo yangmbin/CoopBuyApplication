@@ -22,12 +22,15 @@ public class APPUpdateDialog extends Dialog {
 
     private Context mContext;
     private ClickCallBack mCallBack;
-    private TextView tv_close, tv_update;
+    private TextView tv_close, tv_update, tv_title, tv_content;
     private NumberProgressBar mProgressBar;
+    private String title, content;
 
-    public APPUpdateDialog(Context context) {
+    public APPUpdateDialog(Context context, String title, String content) {
         super(context, R.style.APPUpdateDialogStyle);
         mContext = context;
+        this.title = title;
+        this.content = content;
     }
 
     @Override
@@ -48,9 +51,11 @@ public class APPUpdateDialog extends Dialog {
         dialogWindow.setAttributes(lp);
         setCancelable(false);
 
-        tv_close = (TextView) view.findViewById(R.id.tv_close);
-        tv_update = (TextView) view.findViewById(R.id.tv_update);
-        mProgressBar = (NumberProgressBar) view.findViewById(R.id.progress);
+        tv_close = view.findViewById(R.id.tv_close);
+        tv_update = view.findViewById(R.id.tv_update);
+        tv_title = view.findViewById(R.id.tv_title);
+        tv_content = view.findViewById(R.id.tv_content);
+        mProgressBar = view.findViewById(R.id.progress);
 
         tv_update.setVisibility(View.VISIBLE);
         mProgressBar.setVisibility(View.GONE);
@@ -70,6 +75,10 @@ public class APPUpdateDialog extends Dialog {
                 mCallBack.onUpdate();
             }
         });
+
+        // 设置标题和内容
+        setTitle(this.title);
+        setContent(this.content);
     }
 
     // 回调接口，执行具体的处理逻辑
@@ -84,5 +93,13 @@ public class APPUpdateDialog extends Dialog {
 
     public void setCallBack(ClickCallBack callBack) {
         this.mCallBack = callBack;
+    }
+
+    public void setTitle(String title) {
+        tv_title.setText("新版本" + title);
+    }
+
+    public void setContent(String content) {
+        tv_content.setText(content);
     }
 }

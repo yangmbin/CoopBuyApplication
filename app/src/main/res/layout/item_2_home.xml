@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".ui.module.test.activity.TestActivity"
     android:gravity="center">
 
     <com.facebook.drawee.view.SimpleDraweeView
@@ -17,6 +15,7 @@
         app:placeholderImage="@mipmap/default_img_small"
         android:background="@drawable/bg_circle"/>
     <TextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_px12"

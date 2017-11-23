@@ -2,25 +2,27 @@ package com.coopbuy.mall.ui.mainpage.adapter;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.HomeFloorResponse;
 import com.coopbuy.mall.base.BaseDelegateAdapter;
 import com.coopbuy.mall.base.BaseRecyclerAdapter;
 import com.coopbuy.mall.base.BaseRecyclerHolder;
+import com.coopbuy.mall.utils.IntentUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class HomeLayoutAdapter_3_2 extends BaseDelegateAdapter<Object> {
+public class HomeLayoutAdapter_3_2 extends BaseDelegateAdapter<HomeFloorResponse> {
 
-    private List<Object> floors;
 
-    public HomeLayoutAdapter_3_2(Context ctx, List<Object> list, LayoutHelper mLayoutHelper) {
+    public HomeLayoutAdapter_3_2(Context ctx, List<HomeFloorResponse> list, LayoutHelper mLayoutHelper) {
         super(ctx, list, mLayoutHelper);
-        this.floors = list;
     }
 
     @Override
@@ -29,22 +31,17 @@ public class HomeLayoutAdapter_3_2 extends BaseDelegateAdapter<Object> {
     }
 
     @Override
-    protected void bindData(BaseRecyclerHolder holder, int position, final Object item) {
+    protected void bindData(BaseRecyclerHolder holder, int position, final HomeFloorResponse item) {
         RecyclerView recyclerView = (RecyclerView) holder.getView(R.id.mRecycleView);
         LinearLayoutManager manager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        List list = new ArrayList();
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        HorizontalAdapter adapter = new HorizontalAdapter(mContext, list);
+        HorizontalAdapter adapter = new HorizontalAdapter(mContext, item.getFloorItems());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
     }
 
-    class HorizontalAdapter extends BaseRecyclerAdapter<Object> {
+    class HorizontalAdapter extends BaseRecyclerAdapter<HomeFloorResponse.FloorItemsBean> {
 
-        public HorizontalAdapter(Context ctx, List<Object> list) {
+        public HorizontalAdapter(Context ctx, List<HomeFloorResponse.FloorItemsBean> list) {
             super(ctx, list);
         }
 
@@ -54,8 +51,15 @@ public class HomeLayoutAdapter_3_2 extends BaseDelegateAdapter<Object> {
         }
 
         @Override
-        protected void bindData(BaseRecyclerHolder holder, final int position, final Object item) {
+        protected void bindData(BaseRecyclerHolder holder, final int position, final HomeFloorResponse.FloorItemsBean item) {
+            ((SimpleDraweeView) holder.getView(R.id.image)).setImageURI(Uri.parse(item.getImageUrl()));
 
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    IntentUtils.gotoActivityFromHome(mContext, item.getType(), item);
+                }
+            });
         }
     }
 }

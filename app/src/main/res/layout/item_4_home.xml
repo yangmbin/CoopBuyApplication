@@ -12,11 +12,13 @@
         android:padding="@dimen/dimen_px30">
 
         <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image"
             android:layout_width="@dimen/dimen_px200"
             android:layout_height="@dimen/dimen_px200"
             app:placeholderImage="@mipmap/default_img"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_round_corner_imageholder"
+            app:roundedCornerRadius="@dimen/dimen_px8"
             android:layout_marginRight="@dimen/dimen_px30"
             android:layout_gravity="center_vertical"/>
 
@@ -31,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/goods_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -47,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -61,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_px36"
@@ -68,6 +71,7 @@
                         android:textStyle="bold"
                         android:text="¥23.00"/>
                     <TextView
+                        android:id="@+id/sale_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_px28"

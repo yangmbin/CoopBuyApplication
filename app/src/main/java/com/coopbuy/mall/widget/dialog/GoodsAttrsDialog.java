@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -58,7 +59,7 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         dialog = new Dialog(context, R.style.BottomPopDialogStyle);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.dialog_goods_attrs, null);
-        mRecyclerView = (RecyclerView) mView.findViewById(R.id.attrs_list);
+        mRecyclerView = mView.findViewById(R.id.attrs_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
@@ -69,13 +70,13 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         mRecyclerView.setAdapter(mAdapter);
 
         mClose = mView.findViewById(R.id.close);
-        mGoodsImage = (SimpleDraweeView) mView.findViewById(R.id.goods_image);
-        mSellingPrice = (TextView) mView.findViewById(R.id.sellingPrice);
-        mStock = (TextView) mView.findViewById(R.id.stock);
-        mHaveSelected = (TextView) mView.findViewById(R.id.have_selected);
-        mDeleteCountBtn = (ImageView) mView.findViewById(R.id.delete_count);
-        mAddCountBtn = (ImageView) mView.findViewById(R.id.add_count);
-        mCountTxt = (TextView) mView.findViewById(R.id.count);
+        mGoodsImage = mView.findViewById(R.id.goods_image);
+        mSellingPrice = mView.findViewById(R.id.sellingPrice);
+        mStock = mView.findViewById(R.id.stock);
+        mHaveSelected = mView.findViewById(R.id.have_selected);
+        mDeleteCountBtn = mView.findViewById(R.id.delete_count);
+        mAddCountBtn = mView.findViewById(R.id.add_count);
+        mCountTxt = mView.findViewById(R.id.count);
         mBuyRightNow = mView.findViewById(R.id.buyRightNow);
         mAddToCart = mView.findViewById(R.id.addToCart);
 
@@ -204,8 +205,10 @@ public class GoodsAttrsDialog implements View.OnClickListener {
         mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
         mStock.setText("库存" + skuInfoBean.getStock() + "件");
         mHaveSelected.setText("已选：");
-        mHaveSelected.append("“" + skuInfoBean.getPricePropertyValue() + "” ");
-        mHaveSelected.append("“" + skuInfoBean.getPriceSpecificationsValue() + "” ");
+        if (!TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()))
+            mHaveSelected.append("“" + skuInfoBean.getPricePropertyValue() + "” ");
+        if (!TextUtils.isEmpty(skuInfoBean.getPriceSpecificationsValue()))
+            mHaveSelected.append("“" + skuInfoBean.getPriceSpecificationsValue() + "” ");
 
         mAdapter.notifyDataSetChanged();
     }

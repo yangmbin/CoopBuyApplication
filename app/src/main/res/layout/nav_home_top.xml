@@ -17,7 +17,9 @@
             android:id="@+id/ll_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dimen_px39"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="@dimen/dimen_px109"
@@ -38,7 +40,6 @@
             android:id="@+id/ll_search"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_px60"
-            android:layout_marginLeft="@dimen/dimen_px39"
             android:layout_marginRight="@dimen/dimen_px65"
             android:layout_weight="1"
             android:background="@drawable/bg_nav_home_top_search"

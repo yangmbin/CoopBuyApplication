@@ -29,8 +29,22 @@
                 android:textSize="@dimen/text_size_px28"
                 android:textColor="@color/theme_text_lab_black"
                 android:layout_marginTop="@dimen/dimen_px100"
-                android:layout_marginBottom="@dimen/dimen_px270"
                 android:text="网络错误，请稍后再试"/>
+
+            <TextView
+                android:id="@+id/exception_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_px60"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_px30"
+                android:paddingLeft="@dimen/dimen_px90"
+                android:paddingRight="@dimen/dimen_px90"
+                android:gravity="center"
+                android:text="点击刷新"
+                android:layout_below="@+id/exception_wrapper"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_px210"
+                android:background="@drawable/black_rectangle_btn_press_black"/>
 
         </LinearLayout>
 

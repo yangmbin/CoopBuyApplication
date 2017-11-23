@@ -230,6 +230,7 @@ public class SkuDetailResponse implements Serializable {
         private String imageUrl;
         private int productCount;
         private int numberOfCollectors;
+        private boolean isFavorite;
 
         public int getShopId() {
             return shopId;
@@ -269,6 +270,14 @@ public class SkuDetailResponse implements Serializable {
 
         public void setNumberOfCollectors(int numberOfCollectors) {
             this.numberOfCollectors = numberOfCollectors;
+        }
+
+        public boolean isFavorite() {
+            return isFavorite;
+        }
+
+        public void setFavorite(boolean favorite) {
+            isFavorite = favorite;
         }
     }
 

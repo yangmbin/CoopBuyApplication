@@ -32,6 +32,7 @@ import com.coopbuy.mall.utils.FinalConstant;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.utils.StringUtils;
+import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.DeleteLineTextView;
 import com.coopbuy.mall.widget.dialog.GoodsAttrsDialog;
 import com.coopbuy.mall.widget.dialog.GoodsParamsDialog;
@@ -91,6 +92,8 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     TextView shippingAddress;
     @Bind(R.id.freight)
     TextView freight;
+    @Bind(R.id.shop_favorite_btn)
+    TextView shopFavoriteBtn;
 
     // 首次页面进入保存的返回信息
     private SkuDetailResponse mSkuDetailResponse = null;
@@ -104,6 +107,8 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     private int currentSkuId = -1;
     // 当前选择的商品数量
     private int currentQuantity = 1;
+    // 是否收藏了该店铺
+    private boolean isShopFavorite = false;
 
     @Override
     protected int getLayoutId() {
@@ -167,7 +172,10 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
                 break;
             // 收藏/撤销 收藏店铺
             case R.id.shop_favorite_btn:
-
+                if (isShopFavorite)
+                    mPresenter.removeShopFavorite(mSkuDetailResponse.getShopInfo().getShopId());
+                else
+                    mPresenter.addShopFavorite(mSkuDetailResponse.getShopInfo().getShopId());
                 break;
         }
     }
@@ -232,9 +240,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
         List<AddToCartRequest.SkusBean> skusBeanList = new ArrayList<>();
         skusBeanList.add(skusBean);
-        if (sharedPreferencesUtils.getLoginStatus()){
+        if (sharedPreferencesUtils.getLoginStatus()) {
             mPresenter.addToCart(request);
-        }else {
+        } else {
             LoginActivity.normalActivity(mContext, FinalConstant.login_type_normal);
         }
     }
@@ -263,6 +271,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     public void setSkuDetailData(SkuDetailResponse skuDetailResponse) {
         // 保存skuDetailResponse
         mSkuDetailResponse = skuDetailResponse;
+
+        // 保存是否收藏了该店铺
+        isShopFavorite = skuDetailResponse.getShopInfo().isFavorite();
 
         // 保存productId
         ((GoodsDetailActivity) mContext).setProductId(skuDetailResponse.getProductId());
@@ -323,7 +334,8 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         // 库存
         stock.setText("库存：" + skuInfoBean.getStock());
         // 属性和规格
-        propertyDesc.setText(skuInfoBean.getPricePropertyValue() + " " + skuInfoBean.getPriceSpecificationsValue());
+        propertyDesc.setText((TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()) ? "" : skuInfoBean.getPricePropertyValue() + " ") +
+                (TextUtils.isEmpty(skuInfoBean.getPriceSpecificationsValue()) ? "" : skuInfoBean.getPriceSpecificationsValue()));
         if (TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()) && TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()))
             btnGoodsAttrsLayout.setVisibility(GONE);
     }
@@ -391,13 +403,19 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     /**
      * 收藏店铺成功回调
      */
-    public void addShopFavoriteSuccess() {}
+    public void addShopFavoriteSuccess() {
+        isShopFavorite = true;
+        shopFavoriteBtn.setText("已收藏");
+        ToastUtils.toastShort("已收藏");
+    }
 
     /**
      * 取消收藏店铺成功回调
      */
     public void removeShopFavoriteSuccess() {
-
+        isShopFavorite = false;
+        shopFavoriteBtn.setText("收藏店铺");
+        ToastUtils.toastShort("已取消收藏");
     }
 
 
@@ -427,4 +445,5 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     public void setCurrentQuantity(int currentQuantity) {
         this.currentQuantity = currentQuantity;
     }
+
 }
