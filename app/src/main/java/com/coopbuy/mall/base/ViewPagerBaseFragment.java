@@ -29,7 +29,7 @@ public abstract class ViewPagerBaseFragment<P extends BasePresenter, M extends B
     public P mPresenter;
     public M mModel;
     public Context mContext;
-    private View rootView;
+    protected View rootView;
     private LoadingBox box;
     public List<IAsyncRequestState> mNetCalls = new ArrayList<>();
     public SharedPreferencesUtils sharedPreferencesUtils;

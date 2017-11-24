@@ -390,6 +390,7 @@
     <declare-styleable name="TabView">
         <attr name="textSize" format="integer|reference" />
         <attr name="textGravity" format="integer|reference" />
+        <attr name="maxLength" format="integer|reference" />
         <attr name="textColor" format="color|reference" />
         <attr name="hintColor" format="color|reference" />
         <attr name="inputType" format="integer|reference" />
@@ -421,9 +422,17 @@
     <!-- AppCompatActivity设置全屏 -->
     <style name="FullScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/icon_splash_welcome</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-
+    <!--欢迎页面主题-->
+    <style name="AppTheme2" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowBackground">@mipmap/logo</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 
     <style name="wind">
         <item name="android:windowIsFloating">true</item>

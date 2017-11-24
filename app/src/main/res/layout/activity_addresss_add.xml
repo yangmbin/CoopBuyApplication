@@ -57,11 +57,11 @@
         android:layout_marginTop="@dimen/dimen_px60"
         android:background="@color/edit_text_back_white"
         android:gravity="center"
-        android:maxLength="11"
         diy:dotVisible="true"
         diy:hint="@string/lab_address_phone"
         diy:inputType="3"
         diy:text=""
+        diy:maxLength="11"
         diy:textColor="@color/black_4" />
 
     <RelativeLayout

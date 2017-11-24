@@ -20,14 +20,16 @@ import com.coopbuy.mall.ui.module.center.activity.ShopCartActivity;
 import com.coopbuy.mall.ui.module.home.activity.LocationActivity;
 import com.coopbuy.mall.ui.module.home.activity.SearchActivity;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.SharedPreferencesUtils;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
 
 import java.io.Serializable;
 
 /**
  * 主页顶部bar
+ *
  * @author ymb
- * Create at 2017/7/21 15:53
+ *         Create at 2017/7/21 15:53
  */
 public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
 
@@ -66,7 +68,11 @@ public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
                 IntentUtils.gotoActivity(mContext, SearchActivity.class);
                 break;
             case R.id.iv_setting:
-                IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
+                if (SharedPreferencesUtils.getInstance(mContext).getLoginStatus()) {
+                    IntentUtils.gotoActivity(mContext, ShopCartActivity.class);
+                } else {
+                    IntentUtils.gotoActivity(mContext, LoginActivity.class);
+                }
                 break;
             case R.id.more_btn:
                 showPopBottom(view);
@@ -85,6 +91,7 @@ public class NavHomeBar extends RelativeLayout implements View.OnClickListener {
 
     /**
      * 弹出popwindow（二维码、扫描等）
+     *
      * @param v
      */
     private void showPopBottom(View v) {

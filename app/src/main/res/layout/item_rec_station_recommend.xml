@@ -55,6 +55,7 @@
 
             <TextView
                 android:id="@+id/tv_old_price"
+                android:visibility="gone"
                 style="@style/text_black_size_28_888888"
                 android:layout_marginLeft="@dimen/dimen_px30"
                 android:text="$45.50" />

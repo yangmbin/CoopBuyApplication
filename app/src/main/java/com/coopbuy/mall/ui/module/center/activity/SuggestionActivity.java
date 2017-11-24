@@ -1,6 +1,5 @@
 package com.coopbuy.mall.ui.module.center.activity;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,7 +20,6 @@ import com.coopbuy.mall.utils.ViewClickUtil;
 import com.coopbuy.mall.widget.tab.MyEditText;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SuggestionActivity extends BaseActivity<SuggestPresenter, SuggestModel> implements Suggest_IView, IsEmptyPort {

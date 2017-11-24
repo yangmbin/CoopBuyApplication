@@ -43,6 +43,7 @@
             diy:hint="@string/lab_register_msg_code"
             diy:inputType="3"
             diy:text=""
+            diy:maxLength="6"
             diy:textColor="@color/black_4" />
 
         <View

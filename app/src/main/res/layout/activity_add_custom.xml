@@ -36,10 +36,10 @@
         android:layout_marginTop="@dimen/dimen_px24"
         android:background="@color/edit_text_back_white"
         android:gravity="center"
-        android:maxLength="20"
         diy:dotVisible="true"
         diy:hint="@string/lab_add_custom_phone"
         diy:text=""
+        diy:maxLength="11"
         diy:textColor="@color/black_4" />
 
     <com.coopbuy.mall.widget.tab.MyEditText

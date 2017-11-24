@@ -8,11 +8,6 @@
     tools:context="com.coopbuy.mall.ui.module.center.activity.StationRecommendActivity">
 
     <include layout="@layout/title_bar_layout" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_rec_station_recommend" />
+    <include layout="@layout/include_recy_refresh_nohead"/>
 
 </LinearLayout>

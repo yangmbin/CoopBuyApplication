@@ -51,8 +51,6 @@
     <color name="test_line_white">#ffffff</color>
     <color name="test_line_white_20">#33ffffff</color>
     <color name="transparent">#00000000</color>
-
-
     <!--    底层底色-->
     <color name="theme_back_white">#f5f5f5</color>
     <!--   主要字体-->

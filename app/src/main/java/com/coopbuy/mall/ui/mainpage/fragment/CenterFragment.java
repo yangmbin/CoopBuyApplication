@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
@@ -35,8 +38,10 @@ import com.coopbuy.mall.ui.module.center.adapter.CenterAdapter;
 import com.coopbuy.mall.ui.module.center.model.CenterModel;
 import com.coopbuy.mall.ui.module.center.presenter.CenterPresenter;
 import com.coopbuy.mall.ui.module.center.view.Center_IView;
+import com.coopbuy.mall.utils.CommonUtils;
 import com.coopbuy.mall.utils.Constants;
 import com.coopbuy.mall.utils.IntentUtils;
+import com.coopbuy.mall.utils.ScreenUtils;
 import com.coopbuy.mall.widget.OrderBarView;
 import com.coopbuy.mall.widget.popwindow.CustomPopWindow;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -77,6 +82,8 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     TextView tvShopcartNumber;
     @Bind(R.id.tv_collect_number)
     TextView tvCollectNumber;
+    @Bind(R.id.fl_back)
+    FrameLayout flBack;
     @Bind(R.id.tv_footmark_number)
     TextView tvFootmarkNumber;
    /* @Bind(R.id.ll_location)
@@ -121,7 +128,6 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
 
     @Override
     protected void initView() {
-
         tvName.callOnClick();
         EventBusInstance.getInstance().registerEvent(this);
         setInitTitle();
@@ -134,12 +140,27 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
             }
         });
         mRvTest.setAdapter(adapter);
+        setHeigth();
+    }
+
+    /**
+     * 动态设置高度  数组控件类型
+     */
+    private void setHeigth() {
+        int measureWidth = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
+        int measureHeight = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
+        flBack.measure(measureWidth, measureHeight);
+        int newHeight = flBack.getMeasuredHeight() + CommonUtils.getStatusBarHeight(getContext());
+        ViewGroup.MarginLayoutParams fl = (ViewGroup.MarginLayoutParams) flBack.getLayoutParams();
+        fl.height = newHeight;
+        flBack.setLayoutParams(fl);
     }
 
     private void setInitTitle() {
         ivMsg.setImageResource(R.mipmap.icon_center_msg);
         ivSetting.setImageResource(R.mipmap.icon_center_setting);
         //  llTitleBar.setBackgroundResource(R.color.center_back);
+        destroyStatusBar();
     }
 
     private void setData() {
@@ -155,9 +176,9 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
     protected void onFragmentVisible(boolean isVisible) {
         super.onFragmentVisible(isVisible);
         if (isVisible) {
-            //   initStatusBar();
+            initStatusBar();
         } else {
-            // destroyStatusBar();
+            destroyStatusBar();
         }
     }
 
@@ -306,7 +327,7 @@ public class CenterFragment extends ViewPagerBaseFragment<CenterPresenter, Cente
      */
     protected void initStatusBar() {
         mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.center_back).init();
+        mImmersionBar.fitsSystemWindows(false).statusBarColor(R.color.transparent).init();
     }
 
     /**

@@ -88,11 +88,11 @@
                         android:layout_toLeftOf="@+id/iv_imagecode"
                         android:background="@color/edit_text_back_white"
                         android:gravity="center"
-                        android:maxLength="6"
                         diy:dotVisible="true"
                         diy:hint="@string/lab_login_imagecode"
                         diy:inputType="1"
                         diy:text=""
+                        diy:maxLength="4"
                         diy:textColor="@color/black_4" />
 
                     <ImageView

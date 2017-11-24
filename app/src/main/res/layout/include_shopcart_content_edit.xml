@@ -3,7 +3,7 @@
     android:id="@+id/ll_shopcart_edit"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/dimen_px270"
-    android:gravity="center|left"
+    android:gravity="center|right"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -23,8 +23,9 @@
 
     <TextView
         android:id="@+id/tv_delete"
-        android:layout_width="@dimen/dimen_px120"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minWidth="@dimen/dimen_px120"
         android:background="@color/auxiliary_text_red"
         android:gravity="center"
         android:text="删除"

@@ -7,9 +7,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.RecommendResponse;
 import com.coopbuy.mall.api.reponse.StationRecommendResponse;
 import com.coopbuy.mall.base.BaseActivity;
 import com.coopbuy.mall.ui.module.center.adapter.StationRecAdapter;
+import com.coopbuy.mall.ui.module.center.model.RecommendModel;
+import com.coopbuy.mall.ui.module.center.presenter.RecommendPresenter;
+import com.coopbuy.mall.ui.module.center.view.Recommend_IView;
 import com.coopbuy.mall.utils.ToastUtils;
 import com.coopbuy.mall.widget.NormalDecoration;
 
@@ -23,11 +27,11 @@ import butterknife.Bind;
  * @time 2017/10/13 0013 9:25
  * @content 站长推荐
  */
-public class StationRecommendActivity extends BaseActivity {
+public class StationRecommendActivity extends BaseActivity<RecommendPresenter, RecommendModel> implements Recommend_IView {
     @Bind(R.id.recView)
     RecyclerView recView;
 
-    private List<StationRecommendResponse> data;
+    private List<RecommendResponse.ProductsBean> data;
     private StationRecAdapter adapter;
 
     @Override
@@ -37,20 +41,23 @@ public class StationRecommendActivity extends BaseActivity {
 
     @Override
     public void initModel() {
-
+        mModel = new RecommendModel();
     }
 
     @Override
     public void initPresenter() {
-
+        mPresenter = new RecommendPresenter(this, mModel, this);
+        mPresenter.getData();
     }
 
     @Override
     public void initView() {
         setTitle("站长推荐");
         data = new ArrayList<>();
-        initData();
         adapter = new StationRecAdapter();
+    }
+
+    private void initRecy() {
         adapter.addDatas(data);
         final NormalDecoration decoration = new NormalDecoration() {
             @Override
@@ -81,15 +88,14 @@ public class StationRecommendActivity extends BaseActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void initData() {
-        for (int i = 0; i < 10; i++) {
-            if (i == 3 || i == 4) {
-                StationRecommendResponse res = new StationRecommendResponse("2017.5.", "青青爱吃榴莲" + i, "177", "177" + i, "34*56*9", "2" + i * 2, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507873988409&di=2891b9a2a0070d71b70b5e86983d2c46&imgtype=0&src=http%3A%2F%2Fwww.fcfdcw.com%2FUploadFile%2Fimage%2F20141014%2F20141014151728_7968.jpg");
-                data.add(res);
-            } else {
-                StationRecommendResponse res = new StationRecommendResponse("2017.5." + i, "青青爱吃榴莲" + i, "177", "177" + i, "34*56*9", "2" + i * 2, "http://static.bbs.nubia.cn/forum/201706/15/075821fnxxuinc77w8c2ui.jpg");
-                data.add(res);
+    @Override
+    public void getRecommendData(List<RecommendResponse> data) {
+        for (int i = 0; i < data.size(); i++) {
+            for (int j = 0; j < data.get(i).getProducts().size(); j++) {
+                data.get(i).getProducts().get(j).setTime(data.get(i).getTime());
+                this.data.add(data.get(i).getProducts().get(j));
             }
         }
+        initRecy();
     }
 }

@@ -36,15 +36,16 @@
                 android:id="@+id/circleImageView"
                 android:layout_width="@dimen/dimen_px110"
                 android:layout_height="@dimen/dimen_px110"
-                fresco:actualImageScaleType="centerCrop"
-                fresco:placeholderImageScaleType="centerCrop"
-                fresco:placeholderImage="@mipmap/default_img"
                 android:scaleType="centerCrop"
-                fresco:roundAsCircle="true"  />
+                fresco:actualImageScaleType="centerCrop"
+                fresco:placeholderImage="@mipmap/default_img"
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:roundAsCircle="true" />
 
             <ImageView
                 style="@style/image_more"
-                android:layout_marginLeft="@dimen/dimen_px30" />
+                android:layout_marginLeft="@dimen/dimen_px30"
+                android:visibility="gone" />
         </LinearLayout>
 
         <include layout="@layout/include_divider_1px_w_m_line_white" />

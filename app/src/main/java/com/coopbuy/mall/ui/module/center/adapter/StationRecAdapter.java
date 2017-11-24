@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coopbuy.mall.R;
+import com.coopbuy.mall.api.reponse.RecommendResponse;
 import com.coopbuy.mall.api.reponse.StationRecommendResponse;
 import com.coopbuy.mall.utils.Constants;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -21,13 +22,13 @@ import java.util.Random;
  * @content 站长推荐适配器
  */
 public class StationRecAdapter extends RecyclerView.Adapter<StationRecAdapter.Holder> {
-    private List<StationRecommendResponse> data;
+    private List<RecommendResponse.ProductsBean> data;
 
     public StationRecAdapter() {
         data = new ArrayList<>();
     }
 
-    public void addDatas(List<StationRecommendResponse> data) {
+    public void addDatas(List<RecommendResponse.ProductsBean> data) {
         this.data.clear();
         this.data.addAll(data);
         notifyDataSetChanged();
@@ -41,13 +42,13 @@ public class StationRecAdapter extends RecyclerView.Adapter<StationRecAdapter.Ho
 
     @Override
     public void onBindViewHolder(StationRecAdapter.Holder holder, int position) {
-        StationRecommendResponse srr = data.get(position);
-        holder.iv_logo.setImageURI(Constants.images[(new Random().nextInt(13) +1)]);
-        holder.tv_name.setText(srr.getName());
-        holder.oldPrice.setText("￥" + srr.getOldPirce());
-        holder.salePrice.setText("￥" + srr.getSalePrice());
-        holder.saleCounts.setText("已售：" + srr.getSaleCount());
-        holder.tvVersion.setText(srr.getVersion());
+        RecommendResponse.ProductsBean srr = data.get(position);
+        holder.iv_logo.setImageURI(srr.getProductImageUrl());
+        holder.tv_name.setText(srr.getProductName());
+        holder.oldPrice.setText("￥" + srr.getUnitPrice());
+        holder.salePrice.setText("￥" + srr.getUnitPrice());
+        holder.saleCounts.setText("已售：" + srr.getSalesNumber());
+        holder.tvVersion.setText(srr.getSpecifications() + srr.getProperties());
     }
 
     @Override

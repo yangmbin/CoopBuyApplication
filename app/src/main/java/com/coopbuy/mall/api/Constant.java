@@ -235,6 +235,10 @@ public class Constant {
      * 消息已读 全部
      */
     public static final String READALL = "api/services/app/message/ReadAll";
+    /**
+     * 普通用户 站长推荐的商品
+     */
+    public static final String MASTERRECOMMENDLIST = "api/services/app/station/MasterRecommendList";
 
 
     /**

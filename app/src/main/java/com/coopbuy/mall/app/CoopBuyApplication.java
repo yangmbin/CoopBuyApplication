@@ -23,8 +23,6 @@ public class CoopBuyApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         this.context = getApplicationContext();
-        // 初始化OkHttp
-        initOkHttp();
         // 初始化Fresco
         Fresco.initialize(this);
         // 初始化Bugly
@@ -33,14 +31,4 @@ public class CoopBuyApplication extends BaseApplication {
         QbSdk.initX5Environment(context,null);
     }
 
-    /**
-     * 初始化OkHttp
-     */
-    private void initOkHttp() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(20000L, TimeUnit.MILLISECONDS)
-                .readTimeout(20000L, TimeUnit.MILLISECONDS)
-                .build();
-        OkHttpUtils.initClient(okHttpClient);
-    }
 }

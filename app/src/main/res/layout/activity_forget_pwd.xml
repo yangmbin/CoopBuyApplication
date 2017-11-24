@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:diy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/box"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,25 +31,28 @@
             android:textSize="@dimen/dimen_px30" />
 
     </RelativeLayout>
-        <com.coopbuy.mall.widget.tab.MyEditText
-            android:id="@+id/edt_forget_phone"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_px100"
-            android:layout_marginLeft="@dimen/dimen_px30"
-            android:layout_marginRight="@dimen/dimen_px30"
-            android:layout_marginTop="@dimen/dimen_px24"
-            android:background="@color/edit_text_back_white"
-            android:gravity="center"
-            android:maxLength="11"
-            diy:dotVisible="true"
-            diy:hint="@string/lab_login_enter_phone"
-            diy:inputType="3"
-            diy:text=""
-            diy:textColor="@color/black_4" />
+
+    <com.coopbuy.mall.widget.tab.MyEditText
+        android:id="@+id/edt_forget_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_px100"
+        android:layout_marginLeft="@dimen/dimen_px30"
+        android:layout_marginRight="@dimen/dimen_px30"
+        android:layout_marginTop="@dimen/dimen_px24"
+        android:background="@color/edit_text_back_white"
+        android:gravity="center"
+        android:maxLength="11"
+        diy:dotVisible="true"
+        diy:hint="@string/lab_login_enter_phone"
+        diy:inputType="3"
+        diy:maxLength="11"
+        diy:text=""
+        diy:textColor="@color/black_4" />
 
     <RelativeLayout
         style="@style/LinearLayout_contain_edit_no_padding"
         android:layout_marginTop="@dimen/dimen_px61">
+
         <com.coopbuy.mall.widget.tab.MyEditText
             android:id="@+id/edt_code"
             android:layout_width="match_parent"
@@ -57,10 +60,10 @@
             android:layout_toLeftOf="@+id/v_divid"
             android:background="@color/edit_text_back_white"
             android:gravity="center"
-            android:maxLength="6"
             diy:dotVisible="true"
             diy:hint="@string/lab_register_msg_code"
             diy:inputType="1"
+            diy:maxLength="6"
             diy:text=""
             diy:textColor="@color/black_4" />
 
@@ -84,7 +87,7 @@
     <Button
         android:id="@+id/btn_next"
         style="@style/login_btn"
-        android:clickable="false"
         android:layout_marginTop="@dimen/dimen_px151"
+        android:clickable="false"
         android:text="@string/lab_register_next" />
 </LinearLayout>

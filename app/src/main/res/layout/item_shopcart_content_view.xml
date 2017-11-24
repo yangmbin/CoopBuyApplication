@@ -28,8 +28,8 @@
                     android:id="@+id/ll_iamge_check"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingRight="@dimen/dimen_px27"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:paddingRight="@dimen/dimen_px27">
 
                     <ImageView
                         android:id="@+id/iv_goods_select"
@@ -46,14 +46,18 @@
                     android:src="@mipmap/icon_splash_welcome"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:roundedCornerRadius="@dimen/dimen_px8" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:gravity="center|right">
+
                     <include layout="@layout/include_shopcart_content_normal" />
+
                     <include layout="@layout/include_shopcart_content_edit" />
                 </LinearLayout>
             </LinearLayout>
+
             <include layout="@layout/include_divider_4px_line_theme_white" />
         </LinearLayout>
     </RelativeLayout>

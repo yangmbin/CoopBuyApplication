@@ -38,6 +38,7 @@ import com.coopbuy.mall.api.reponse.OrderSubmitResponse;
 import com.coopbuy.mall.api.reponse.PayOntherDetailReponse;
 import com.coopbuy.mall.api.reponse.PayOtherResponse;
 import com.coopbuy.mall.api.reponse.PhoneRechargeListReponse;
+import com.coopbuy.mall.api.reponse.RecommendResponse;
 import com.coopbuy.mall.api.reponse.RegisterResponse;
 import com.coopbuy.mall.api.reponse.SMSCodeReponse;
 import com.coopbuy.mall.api.reponse.SearchResultResponse;
@@ -913,6 +914,17 @@ public class NetClientManager extends BaseApiClient {
         return apiPostRequest(Constant.SERVER_URL_NEW + Constant.READALL, request, callback, userState);
     }
 
+    /**
+     * 站长推荐的数据 普通用户
+     *
+     * @param callback
+     * @param userState
+     * @return
+     */
+    public IAsyncRequestState getRecommendData( IAsyncResultCallback<List<RecommendResponse>> callback, Object userState) {
+        return apiPostRequest(new TypeToken<List<RecommendResponse>>() {
+        }.getType(),Constant.SERVER_URL_NEW + Constant.MASTERRECOMMENDLIST,  callback, userState);
+    }
 
 
 
@@ -1238,6 +1250,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取首页数据
+     *
      * @param callback
      * @param userState
      * @return
@@ -1249,6 +1262,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 获取活动详情
+     *
      * @param callback
      * @param userState
      * @return
@@ -1260,6 +1274,7 @@ public class NetClientManager extends BaseApiClient {
 
     /**
      * 检查更新
+     *
      * @param request
      * @param callback
      * @param userState

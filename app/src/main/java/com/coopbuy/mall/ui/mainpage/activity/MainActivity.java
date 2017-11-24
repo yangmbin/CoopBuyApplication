@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     @Override
     public void initPresenter() {
         mPresenter = new MainPresenter(mContext, mModel, this);
-        mPresenter.checkUpdate(DeviceUtils.getVersionName());
+      //  mPresenter.checkUpdate(DeviceUtils.getVersionName());
     }
 
     @Override

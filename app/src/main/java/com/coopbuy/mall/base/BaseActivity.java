@@ -245,8 +245,10 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     public void setRightText(String text) {
         mTitleBar.setRightText(text);
     }
+
     /**
      * 设置html 的标题图片显示
+     *
      * @param isVisible
      */
     public void setHtmlLogo(boolean isVisible) {
@@ -319,7 +321,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      */
     protected void initStatusBar() {
         mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true, 0.2f).init();
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.edit_text_back_white).statusBarDarkFont(true, 0.2f).init();
     }
 
     /**

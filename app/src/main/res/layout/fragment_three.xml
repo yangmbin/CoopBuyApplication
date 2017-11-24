@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     android:orientation="vertical">
 
 
@@ -17,6 +17,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusable="true"
             android:overScrollMode="never"
             android:scrollbars="none">
 
@@ -26,9 +27,9 @@
                 android:orientation="vertical">
 
                 <FrameLayout
+                    android:id="@+id/fl_back"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="header">
+                    android:layout_height="wrap_content">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/backImage"
@@ -45,7 +46,9 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dimen_px88"
+                            android:layout_marginTop="@dimen/dimen_px40"
                             android:gravity="center_vertical"
+                            android:paddingBottom="@dimen/dimen_px22"
                             android:paddingLeft="@dimen/dimen_px30"
                             android:paddingRight="@dimen/dimen_px30">
 
@@ -53,6 +56,7 @@
                                 android:id="@+id/iv_setting"
                                 android:layout_width="@dimen/dimen_px44"
                                 android:layout_height="@dimen/dimen_px44"
+                                android:layout_alignParentBottom="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="@dimen/dimen_px90"
@@ -62,6 +66,7 @@
                                 android:id="@+id/more_btn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_alignParentBottom="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_px34">
@@ -70,6 +75,7 @@
                                     android:id="@+id/iv_msg"
                                     android:layout_width="@dimen/dimen_px44"
                                     android:layout_height="@dimen/dimen_px44"
+                                    android:layout_alignParentBottom="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center"
                                     android:src="@mipmap/icon_nav_home_top_add" />

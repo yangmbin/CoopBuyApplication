@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -62,6 +63,7 @@ public class MyEditText extends LinearLayout implements View.OnFocusChangeListen
         String text = typedArray.getString(R.styleable.TabView_text);
         String dotText = typedArray.getString(R.styleable.TabView_dotText);
         int inputType = typedArray.getInt(R.styleable.TabView_inputType, InputType.TYPE_CLASS_TEXT);
+        int maxLength = typedArray.getInt(R.styleable.TabView_maxLength, 300);
         int textGravity = typedArray.getInt(R.styleable.TabView_textGravity, Gravity.CENTER | Gravity.LEFT);
         String hintText = typedArray.getString(R.styleable.TabView_hint);
     /*    int textColor = typedArray.getColor(R.styleable.TabView_textColor, R.drawable.edit_textcolor_selector);
@@ -69,11 +71,13 @@ public class MyEditText extends LinearLayout implements View.OnFocusChangeListen
         setTextSize(textSize);
         setText(text);
         setinputType(inputType);
+        setLength(maxLength);
         // setTextColor(textColor);
         // setHintColor(textHintColor);
         setHintText(hintText);
         typedArray.recycle();
-  /*      mEdit.setInputType(InputType.TYPE_CLASS_PHONE);
+
+       /* mEdit.setInputType(InputType.TYPE_CLASS_PHONE);
         mEdit.setInputType(InputType.TYPE_CLASS_TEXT);
         mEdit.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
         mEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -88,6 +92,10 @@ public class MyEditText extends LinearLayout implements View.OnFocusChangeListen
 
     public void setText(String text) {
         mEdit.setText(text);
+    }
+
+    public void setLength(int text) {
+        mEdit.setFilters(new InputFilter.LengthFilter[]{new InputFilter.LengthFilter(text)});
     }
 
     public void setText(int text) {

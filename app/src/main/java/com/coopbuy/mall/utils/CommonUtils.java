@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RatingBar;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -235,7 +236,9 @@ public class CommonUtils {
             loadmap.add(loadclick);
     }
 
-    *//**
+    */
+
+    /**
      * 设置可以点击
      *//*
     public static void setLoadCliced(Boolean cliced) {
@@ -256,7 +259,6 @@ public class CommonUtils {
         layout.setDefineBackgroundColor(R.color.white);
         return layoutParams;
     }*/
-
     public static String getSystemTiem() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日- HH:mm:ss:SSS");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
@@ -348,6 +350,7 @@ public class CommonUtils {
 
     /**
      * 复制到剪贴板
+     *
      * @param text
      */
     public static void copyToClipboard(Context context, String text) {
@@ -355,4 +358,20 @@ public class CommonUtils {
         cm.setText(text);
         ToastUtils.toastShort("已复制到剪贴板");
     }
+
+    /**
+     * 获取状态栏高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
 }

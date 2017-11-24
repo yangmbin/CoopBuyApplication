@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -36,11 +36,10 @@
         </provider>
 
         <activity
-            android:name=".ui.splash.activity.SplashActivity"
+            android:name=".ui.splash.activity.AdActivity"
             android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -72,9 +71,7 @@
         <activity android:name=".ui.module.home.activity.CategoryActivity" />
         <activity android:name=".ui.module.home.activity.GoodsDetailActivity" />
         <activity android:name=".ui.mainpage.activity.MainActivity"    />
-        <activity
-            android:name=".ui.splash.activity.AdActivity"
-            android:theme="@style/FullScreenTheme" />
+
         <activity
             android:name=".ui.splash.activity.GuideActivity"
             android:theme="@style/FullScreenTheme" />

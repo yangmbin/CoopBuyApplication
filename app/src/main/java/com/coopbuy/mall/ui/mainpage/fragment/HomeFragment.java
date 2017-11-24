@@ -170,6 +170,7 @@ public class HomeFragment extends ViewPagerBaseFragment<HomePresenter, HomeModel
 
     /**
      * 设置网络返回数据
+     *
      * @param homeFloorResponseList
      */
     @Override
