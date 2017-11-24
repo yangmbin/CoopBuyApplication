@@ -19,10 +19,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
+            <!--<ScrollView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:fillViewport="true">-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -90,7 +90,8 @@
                                     android:id="@+id/like_icon"
                                     android:layout_width="@dimen/dimen_px40"
                                     android:layout_height="@dimen/dimen_px40"
-                                    android:src="@mipmap/icon_like_shopdetail"/>
+                                    android:src="@mipmap/icon_like_shopdetail"
+                                    android:visibility="gone"/>
                                 <TextView
                                     android:id="@+id/like_text"
                                     android:layout_width="wrap_content"
@@ -99,7 +100,7 @@
                                     android:textColor="@color/black_8"
                                     android:layout_marginLeft="@dimen/dimen_px7"
                                     android:layout_marginRight="@dimen/dimen_px7"
-                                    android:text="已收藏"/>
+                                    android:text="收藏店铺"/>
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
@@ -162,7 +163,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 </LinearLayout>
-            </ScrollView>
+            <!--</ScrollView>-->
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

@@ -90,13 +90,13 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
             holder.mViersion.setText(null != data.get(position).getSpecifications() ? data.get(position).getSpecifications() : "" + null != data.get(position).getProperties() ? data.get(position).getProperties() : "");
             holder.mGoodsName.setText(data.get(position).getProductName());
             holder.mShopName.setText(data.get(position).getShopName() + "");
-            holder.mPrice.setText("¥" + df.format(data.get(position).getUnitPrice()));
+            holder.mPrice.setText("￥" + df.format(data.get(position).getUnitPrice()));
             holder.mCount.setText("x" + data.get(position).getQuantity());
 
             if (data.get(position).getFreight() == 0) {
                 holder.tvTransportPrice.setText("包邮");
             } else {
-                holder.tvTransportPrice.setText("¥" + df.format(data.get(position).getFreight()));
+                holder.tvTransportPrice.setText("￥" + df.format(data.get(position).getFreight()));
             }
             if (data.get(position).isSupportInvoice()) {
                 holder.llIsReceipt.setVisibility(View.VISIBLE);
@@ -156,7 +156,7 @@ public class OrderBuildAdapter extends RecyclerView.Adapter<OrderBuildAdapter.My
             }
         }
         holder.tvConfirmCount.setText("共" + counts + "件商品");
-        holder.tvTotalPrice.setText("¥" + df.format(price));
+        holder.tvTotalPrice.setText("￥" + df.format(price));
     }
 
     class MyPort implements View.OnClickListener {

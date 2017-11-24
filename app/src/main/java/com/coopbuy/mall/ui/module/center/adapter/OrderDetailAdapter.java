@@ -38,7 +38,7 @@ public class OrderDetailAdapter extends BaseRecyclerAdapter<OrderDetailResponse.
         ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(item.getProductImageUrl());
         holder.getTextView(R.id.tv_goods_name).setText(item.getProductName());
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
-        holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.tv_price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.propertyDesc).setText(item.getSpecifications() + " " + item.getProperties());
         // 退款状态
         holder.getTextView(R.id.refundStatus).setText(item.getRefundStatus());

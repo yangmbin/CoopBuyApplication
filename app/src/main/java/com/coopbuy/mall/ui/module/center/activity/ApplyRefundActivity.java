@@ -285,9 +285,9 @@ public class ApplyRefundActivity extends BaseActivity<ApplyRefundPresenter, Appl
         mReasonList.addAll(beforeApplyRefundResponse.getRefundReasons());
 
         // 退款金额
-        refundAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
-        maxRefundAmount.setText("最多¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
-        refundAmountBottom.setText("¥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+        refundAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+        maxRefundAmount.setText("最多￥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
+        refundAmountBottom.setText("￥" + StringUtils.keepTwoDecimalPoint(beforeApplyRefundResponse.getRefundAmount()));
     }
 
     /**

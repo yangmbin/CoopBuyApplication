@@ -50,6 +50,7 @@
                 android:textColor="@color/auxiliary_text_gray"
                 android:background="@color/transparent"
                 android:lines="1"
+                android:singleLine="true"
                 android:textSize="@dimen/text_size_px28" />
 
             <ImageView

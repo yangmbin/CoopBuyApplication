@@ -62,7 +62,7 @@
                                     android:id="@+id/sellingPrice"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="¥75"
+                                    android:text="￥75"
                                     android:textColor="@color/theme_text_title_orange"
                                     android:textSize="@dimen/text_size_px36" />
 

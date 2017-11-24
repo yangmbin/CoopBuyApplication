@@ -83,13 +83,13 @@
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_px36"
                             android:textColor="@color/green"
-                            android:text="¥55.00"/>
+                            android:text="￥55.00"/>
                         <com.coopbuy.mall.widget.DeleteLineTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_px28"
                             android:textColor="@color/auxiliary_text_blue_gray"
-                            android:text="¥85.00"
+                            android:text="￥85.00"
                             android:layout_marginLeft="@dimen/dimen_px4"/>
                     </LinearLayout>
 

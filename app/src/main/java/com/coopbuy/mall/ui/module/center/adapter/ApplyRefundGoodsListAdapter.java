@@ -31,7 +31,7 @@ public class ApplyRefundGoodsListAdapter extends BaseRecyclerAdapter<BeforeApply
         holder.getTextView(R.id.tv_goods_name).setText(item.getProductName());
         holder.getTextView(R.id.propertyDesc).setText((TextUtils.isEmpty(item.getProperties()) ? "" : item.getProperties() + " ") +
                 (TextUtils.isEmpty(item.getSpecifications()) ? "" : item.getSpecifications() + " "));
-        holder.getTextView(R.id.price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
     }
 }

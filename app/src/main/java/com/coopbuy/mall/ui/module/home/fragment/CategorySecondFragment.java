@@ -4,6 +4,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -49,6 +50,8 @@ public class CategorySecondFragment extends ViewPagerBaseFragment<SearchResultPr
     TextView salePrice;
     @Bind(R.id.sale_price_icon)
     ImageView salePriceIcon;
+    @Bind(R.id.filterBar)
+    LinearLayout filterBar;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
     private CategoryIntentData.Item mCategoryIntentDataItem; // 当前Fragment需要加载的CategoryId，父级页面传递过来
@@ -85,6 +88,7 @@ public class CategorySecondFragment extends ViewPagerBaseFragment<SearchResultPr
 
     @Override
     protected void onFragmentFirstVisible() {
+        filterBar.setVisibility(View.VISIBLE);
         mCategoryIntentDataItem = (CategoryIntentData.Item) getArguments().getSerializable(IntentUtils.DATA);
         getSearchResult(SearchResultPresenter.LOAD_TYPE_1);
     }

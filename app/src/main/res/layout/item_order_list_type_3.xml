@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_px28"
             android:textColor="@color/theme_text_title_orange"
-            android:text="¥xxxx"/>
+            android:text="￥xxxx"/>
 
         <TextView
             android:id="@+id/desc_right"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_px24"
             android:textColor="@color/theme_text_lab_black"
-            android:text=" (含运费¥x.xx)"/>
+            android:text=" (含运费￥x.xx)"/>
     </LinearLayout>
 
     <View

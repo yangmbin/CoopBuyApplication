@@ -57,7 +57,7 @@
                 android:id="@+id/new_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¥123654.00"
+                android:text="￥123654.00"
                 android:textColor="@color/red_5"
                 android:textSize="@dimen/dimen_px36"/>
             <com.coopbuy.mall.widget.DeleteLineTextView
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_px25"
                 android:layout_toRightOf="@+id/new_price"
-                android:text="¥987654.00"
+                android:text="￥987654.00"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/dimen_px28"
                 android:textColor="@color/auxiliary_text_blue_gray"/>

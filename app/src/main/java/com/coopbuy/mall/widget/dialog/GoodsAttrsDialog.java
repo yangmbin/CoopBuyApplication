@@ -202,7 +202,7 @@ public class GoodsAttrsDialog implements View.OnClickListener {
      */
     public void setSkuInfoData(SkuDetailResponse.SkuInfoBean skuInfoBean) {
         mGoodsImage.setImageURI(Uri.parse(skuInfoBean.getImageUrl()));
-        mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
+        mSellingPrice.setText("￥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
         mStock.setText("库存" + skuInfoBean.getStock() + "件");
         mHaveSelected.setText("已选：");
         if (!TextUtils.isEmpty(skuInfoBean.getPricePropertyValue()))

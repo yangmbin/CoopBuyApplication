@@ -1,5 +1,6 @@
 package com.coopbuy.mall.utils;
 
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.coopbuy.mall.app.CoopBuyApplication;
@@ -13,6 +14,9 @@ import com.coopbuy.mall.app.CoopBuyApplication;
 public class ToastUtils {
     private static Toast toast;
     public static void toastShort(String text) {
+        if (TextUtils.isEmpty(text))
+            return;
+
         if (toast == null) {
             toast = Toast.makeText(CoopBuyApplication.getAppContext(), text, Toast.LENGTH_SHORT);
         }
@@ -26,6 +30,9 @@ public class ToastUtils {
     }
 
     public static void toastLong(String text) {
+        if (TextUtils.isEmpty(text))
+            return;
+
         if (toast == null) {
             toast = Toast.makeText(CoopBuyApplication.getAppContext(), text, Toast.LENGTH_LONG);
         }

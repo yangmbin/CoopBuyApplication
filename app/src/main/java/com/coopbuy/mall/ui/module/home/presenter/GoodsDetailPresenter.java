@@ -280,7 +280,6 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetail_IView, Goods
 
             @Override
             public void onError(NetworkException error, Object userState) {
-                ToastUtils.toastShort(error.getMessage());
                 mView.stopAll();
             }
         }, "获取购物车数量"));

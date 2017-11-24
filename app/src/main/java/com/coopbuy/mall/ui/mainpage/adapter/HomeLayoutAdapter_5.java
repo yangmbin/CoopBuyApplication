@@ -31,7 +31,7 @@ public class HomeLayoutAdapter_5 extends BaseDelegateAdapter<HomeFloorResponse.F
     protected void bindData(BaseRecyclerHolder holder, int position, final HomeFloorResponse.FloorItemsBean item) {
         ((SimpleDraweeView) holder.getView(R.id.goods_image)).setImageURI(Uri.parse(item.getImageUrl()));
         holder.getTextView(R.id.goods_name).setText(item.getName());
-        holder.getTextView(R.id.new_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.new_price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.sale_count).setText("已售：" + item.getSalesNumber());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

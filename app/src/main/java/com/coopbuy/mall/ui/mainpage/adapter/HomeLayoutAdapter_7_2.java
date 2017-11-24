@@ -34,7 +34,7 @@ public class HomeLayoutAdapter_7_2 extends BaseDelegateAdapter<HomeFloorResponse
         holder.getTextView(R.id.goods_name).setText(item.getName());
         holder.getTextView(R.id.goods_desc).setText((TextUtils.isEmpty(item.getProperties()) ? "" : item.getProperties() + " ") +
                 item.getSpecifications());
-        holder.getTextView(R.id.price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.sale_count).setText("已售：" + item.getSalesNumber());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
