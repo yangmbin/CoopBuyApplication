@@ -115,7 +115,7 @@ public class NewPayWindowActivity extends BaseFragmentActivity<NewPayWindow_Pres
             }
         }
         mCountsTotal.setText(mTotal);
-        mCountsTotalPrice.setText("¥" + mAllPrice);
+        mCountsTotalPrice.setText("￥" + mAllPrice);
         mPayAgainParms.setmCountsTotalPrice(mAllPrice);
         mPayAgainParms.setmCountsTotal(mTotal);
         mPayAgainParms.setmWaitOrderId(mWaitOrderId);

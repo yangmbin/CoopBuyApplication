@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/dimen_px30"
             android:textColor="@color/theme_text_title_orange"
-            android:text="¥200.33"
+            android:text="￥200.33"
             android:layout_centerVertical="true"/>
         <TextView
             android:id="@+id/sale_count"

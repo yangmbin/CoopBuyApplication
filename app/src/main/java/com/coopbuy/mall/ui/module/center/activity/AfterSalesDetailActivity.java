@@ -244,7 +244,7 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
 
         // 设置公共普通信息
         applyReason.setText("退款原因：" + afterSalesDetailResponse.getReason());
-        applyAmount.setText("退款金额：¥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
+        applyAmount.setText("退款金额：￥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
         applyQuantity.setText("申请件数：" + afterSalesDetailResponse.getApplyQuantity());
         applyTime.setText("申请时间：" + afterSalesDetailResponse.getApplyTime());
         applyNo.setText("退款编号：" + afterSalesDetailResponse.getApplyNo());
@@ -279,8 +279,8 @@ public class AfterSalesDetailActivity extends BaseActivity<AfterSalesDetailPrese
         // 显示退款成功的布局
         if (afterSalesDetailResponse.getStatus() == 6) {
             refundSuccessLayout.setVisibility(View.VISIBLE);
-            refundTotalAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
-            backTotalAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
+            refundTotalAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
+            backTotalAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(afterSalesDetailResponse.getApplyAmount()));
         }
         // 显示拒绝退款的布局
         if (afterSalesDetailResponse.getStatus() == 7) {

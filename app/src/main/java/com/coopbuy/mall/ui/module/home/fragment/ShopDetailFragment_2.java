@@ -82,7 +82,7 @@ public class ShopDetailFragment_2 extends ViewPagerBaseFragment<SearchResultPres
         VirtualLayoutManager manager = new VirtualLayoutManager(mContext) {
             @Override
             public boolean canScrollVertically() {
-                return false;
+                return true;
             }
         };
         mGoodsList.setLayoutManager(manager);
@@ -202,7 +202,7 @@ public class ShopDetailFragment_2 extends ViewPagerBaseFragment<SearchResultPres
         mDelegateAdapter.notifyDataSetChanged();
 
         // 动态设置列表高度
-        setListHeight();
+//        setListHeight();
     }
 
     /**

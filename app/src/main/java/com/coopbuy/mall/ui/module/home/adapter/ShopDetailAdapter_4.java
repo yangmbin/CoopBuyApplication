@@ -32,7 +32,7 @@ public class ShopDetailAdapter_4 extends BaseDelegateAdapter<SearchResultRespons
     protected void bindData(BaseRecyclerHolder holder, int position, final SearchResultResponse.ResultBean.ItemsBean item) {
         ((SimpleDraweeView) holder.getView(R.id.image)).setImageURI(Uri.parse(item.getImageUrl()));
         holder.getTextView(R.id.goods_name).setText(item.getProductName());
-        holder.getTextView(R.id.sale_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getSellingPrice()));
+        holder.getTextView(R.id.sale_price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getSellingPrice()));
         holder.getTextView(R.id.sale_count).setText("已售：" + item.getSellingNumber());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

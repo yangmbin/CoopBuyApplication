@@ -54,7 +54,7 @@ public class ShopCartPresenter extends BasePresenter<ShopCart_IView, ShopCartMod
             @Override
             public void onError(NetworkException error, Object userState) {
                 if (error != null) {
-                    ToastUtils.toastShort(error.getDetail());
+                    ToastUtils.toastShort(error.getMessage());
                     mView.stopAll();
                 }
             }

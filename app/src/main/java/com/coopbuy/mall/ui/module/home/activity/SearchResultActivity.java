@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -65,6 +66,8 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter, Se
     EditText minPrice;
     @Bind(R.id.max_price)
     EditText maxPrice;
+    @Bind(R.id.filterBar)
+    LinearLayout filterBar;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
     private DelegateAdapter mFilterDelegateAdapter;
@@ -108,6 +111,8 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter, Se
 
     @Override
     public void initView() {
+        filterBar.setVisibility(View.VISIBLE);
+
         // 保存关键词
         mSearchWord = getIntent().getStringExtra(IntentUtils.PARAM1);
         searchResultTopBar.setSearchText(mSearchWord);

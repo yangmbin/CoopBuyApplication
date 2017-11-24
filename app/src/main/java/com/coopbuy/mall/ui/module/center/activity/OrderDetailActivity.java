@@ -186,13 +186,13 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter, Orde
         // 店铺名
         shopName.setText(orderDetailResponse.getShopName());
         // 运费
-        freightAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getFreightAmount()));
+        freightAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getFreightAmount()));
         // 买家留言
         remark.setText(TextUtils.isEmpty(orderDetailResponse.getRemark()) ? "无" : orderDetailResponse.getRemark());
         // 订单总价
-        totalAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getTotalAmount()));
+        totalAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getTotalAmount()));
         // 实付款
-        orderAmount.setText("¥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getOrderAmount()));
+        orderAmount.setText("￥" + StringUtils.keepTwoDecimalPoint(orderDetailResponse.getOrderAmount()));
 
         // 订单编号
         orderId.setText("订单编号：" + orderDetailResponse.getOrderId());

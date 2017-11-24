@@ -36,7 +36,7 @@ public class AfterSalesAdapter_2 extends BaseDelegateAdapter<AfterSalesResponse.
         holder.getTextView(R.id.propertyDesc).setText((item.getProperties() == null ? "" : item.getProperties()) +
                 (item.getSpecifications() == null ? "" : item.getSpecifications()));
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
-        holder.getTextView(R.id.refund_amount).setText("退款金额：¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.refund_amount).setText("退款金额：￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
 
         // 点击监听
         holder.itemView.setOnClickListener(mListener);

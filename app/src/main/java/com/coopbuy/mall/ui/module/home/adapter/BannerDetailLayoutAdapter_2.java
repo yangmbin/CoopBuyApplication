@@ -35,7 +35,7 @@ public class BannerDetailLayoutAdapter_2 extends BaseDelegateAdapter<HomePageDat
     protected void bindData(BaseRecyclerHolder holder, int position, final HomePageDataByIdResponse.FloorsBean.FloorItemsBean item) {
         ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(Uri.parse(Constant.IMAGE_SERVER_URL + item.getObjectData().getImageUrl()));
         holder.getTextView(R.id.tv_name).setText(item.getObjectData().getGoodsName());
-        holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getObjectData().getSellingPrice()));
+        holder.getTextView(R.id.tv_price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getObjectData().getSellingPrice()));
 
         holder.getView(R.id.ll_item_5_home).setOnClickListener(new View.OnClickListener() {
             @Override

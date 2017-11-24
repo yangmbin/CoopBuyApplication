@@ -240,7 +240,7 @@ public class ShopCartGoodsAttrsDialog implements View.OnClickListener {
 
         }
         mGoodsImage.setImageURI(Uri.parse(skuInfoBean.getImageUrl()));
-        mSellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
+        mSellingPrice.setText("￥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
         mStockCount = skuInfoBean.getStock();
         mStock.setText("库存" + mStockCount + "件");
         mHaveSelected.setText("已选：");

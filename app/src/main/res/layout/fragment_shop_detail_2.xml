@@ -44,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_px28"
-                        android:textColor="@color/theme_text_title_orange"
+                        android:textColor="@color/theme_text_lab_black"
                         android:text="价格"/>
                     <ImageView
                         android:id="@+id/sale_price_icon"

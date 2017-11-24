@@ -50,8 +50,8 @@ public class OrderAdapter_3 extends BaseDelegateAdapter<OrderListResponse.ItemsB
         for (int i = 0; i < item.getItems().size(); i++)
             totalQuantity += item.getItems().get(i).getQuantity();
         holder.getTextView(R.id.desc_left).setText("共" + totalQuantity + "件商品 合计：");
-        holder.getTextView(R.id.desc_mid).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getTotalAmount()));
-        holder.getTextView(R.id.desc_right).setText(" (含运费¥" + StringUtils.keepTwoDecimalPoint(item.getFreightAmount()) + ")");
+        holder.getTextView(R.id.desc_mid).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getTotalAmount()));
+        holder.getTextView(R.id.desc_right).setText(" (含运费￥" + StringUtils.keepTwoDecimalPoint(item.getFreightAmount()) + ")");
         setBtnDisplay(holder, item);
         holder.itemView.setOnClickListener(mListener);
     }

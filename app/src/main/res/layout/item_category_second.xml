@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_px30"
                     android:textColor="@color/theme_text_title_orange"
-                    android:text="¥23.00"/>
+                    android:text="￥23.00"/>
                 <TextView
                     android:id="@+id/sale_count"
                     android:layout_width="wrap_content"

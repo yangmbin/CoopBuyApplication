@@ -51,7 +51,7 @@
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥xxxx"
+                        android:text="￥xxxx"
                         android:textColor="@color/black_9"
                         android:textSize="@dimen/text_size_px32" />
                 </LinearLayout>

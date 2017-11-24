@@ -38,7 +38,8 @@
                         android:layout_height="@dimen/dimen_px120"
                         android:background="@mipmap/bg_gradient"
                         android:paddingLeft="@dimen/dimen_px30"
-                        android:paddingRight="@dimen/dimen_px30">
+                        android:paddingRight="@dimen/dimen_px30"
+                        android:visibility="gone">
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -51,7 +52,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/text_size_px36"
                                     android:textColor="@color/white"
-                                    android:text="¥"/>
+                                    android:text="￥"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:alpha="0.6"
-                                    android:text="¥xxx"
+                                    android:text="￥xxx"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/text_size_px32" />
 
@@ -191,7 +192,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/dimen_px60"
-                                android:gravity="center_vertical">
+                                android:gravity="center_vertical"
+                                android:visibility="gone">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -220,7 +222,7 @@
                                     android:textColor="@color/theme_text_title_orange"
                                     android:textStyle="bold"
                                     android:layout_marginRight="@dimen/dimen_px39"
-                                    android:text="¥284.8"/>
+                                    android:text="￥284.8"/>
                                 <com.coopbuy.mall.widget.DeleteLineTextView
                                     android:id="@+id/costPrice"
                                     android:layout_width="0dp"
@@ -228,7 +230,8 @@
                                     android:layout_weight="1"
                                     android:textSize="@dimen/text_size_px28"
                                     android:textColor="@color/auxiliary_text_blue_gray"
-                                    android:text="284.8"/>
+                                    android:text="284.8"
+                                    android:visibility="invisible"/>
                                 <TextView
                                     android:id="@+id/stock"
                                     android:layout_width="wrap_content"
@@ -271,7 +274,8 @@
                                 android:textSize="@dimen/text_size_px26"
                                 android:textColor="@color/auxiliary_text_blue_gray"
                                 android:gravity="right"
-                                android:text="xxx"/>
+                                android:text="xxx"
+                                android:visibility="invisible"/>
                         </LinearLayout>
                     </LinearLayout>
 

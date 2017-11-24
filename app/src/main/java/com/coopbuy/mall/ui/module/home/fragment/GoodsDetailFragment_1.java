@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -142,6 +143,11 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
     @Override
     protected void initView() {
         EventBusInstance.getInstance().registerEvent(this);
+
+        // 设置banner宽度为屏幕宽度，图片的宽度是正方形的
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) banner.getLayoutParams();
+        params.height = ScreenUtils.getScreenWidth(mContext);
+        banner.setLayoutParams(params);
     }
 
     @Override
@@ -329,9 +335,9 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
         ((GoodsDetailActivity) mContext).setSkuId(skuInfoBean.getSkuId());
 
         // 销售价
-        sellingPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
+        sellingPrice.setText("￥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getSellingPrice()));
         // 成本价
-        costPrice.setText("¥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getCostPrice()));
+        costPrice.setText("￥" + StringUtils.keepTwoDecimalPoint(skuInfoBean.getCostPrice()));
         // 库存
         stock.setText("库存：" + skuInfoBean.getStock());
         // 属性和规格

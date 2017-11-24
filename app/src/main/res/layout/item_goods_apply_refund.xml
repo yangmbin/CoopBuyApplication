@@ -50,7 +50,7 @@
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥xxxx"
+                        android:text="￥xxxx"
                         android:textColor="@color/black_9"
                         android:textSize="@dimen/text_size_px32"
                         android:visibility="invisible"/>
@@ -82,7 +82,7 @@
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¥23.5"
+                    android:text="￥23.5"
                     android:textColor="@color/theme_text_title_orange"
                     android:textSize="@dimen/text_size_px32"/>
 

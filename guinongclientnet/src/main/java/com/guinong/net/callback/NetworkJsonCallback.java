@@ -16,6 +16,7 @@ import com.guinong.net.NetworkResultMessage;
 import com.guinong.net.utils.LogUtil;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -70,6 +71,10 @@ public class NetworkJsonCallback implements Callback {
         if (call.isCanceled()) {
             //用户主动取消
             //postException(new NetworkException(CodeContant.CODE_USER_CANCEL, e.getMessage(), null, e));
+        }
+        else if (e instanceof SocketTimeoutException) {
+            // 网络超时
+
         } else {
             //服务器异常  1.主机地址出错  2.没有网络连接
             postException(new NetworkException(CodeContant.CODE_SERVER_EXCEPTION, e.getMessage(), null, e));

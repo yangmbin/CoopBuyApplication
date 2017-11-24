@@ -51,7 +51,7 @@
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥xxxx"
+                        android:text="￥xxxx"
                         android:textColor="@color/black_9"
                         android:textSize="@dimen/text_size_px32"
                         android:visibility="invisible"/>
@@ -89,7 +89,7 @@
                 android:id="@+id/refund_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="退款金额：¥23.5"
+                android:text="退款金额：￥23.5"
                 android:textColor="@color/theme_text_title_orange"
                 android:textSize="@dimen/text_size_px24"
                 android:layout_alignParentBottom="true"

@@ -12,70 +12,77 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
+                android:id="@+id/filterBar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_px70"
-                android:layout_marginTop="@dimen/dimen_px2"
-                android:background="@color/white">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible">
                 <LinearLayout
-                    android:id="@+id/order_by_sale_count_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/dimen_px70">
-                    <TextView
-                        android:id="@+id/sale_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_px28"
-                        android:textColor="@color/theme_text_lab_black"
-                        android:text="销量"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px70"
+                    android:layout_marginTop="@dimen/dimen_px2"
+                    android:background="@color/white">
+                    <LinearLayout
+                        android:id="@+id/order_by_sale_count_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dimen_px70">
+                        <TextView
+                            android:id="@+id/sale_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_px28"
+                            android:textColor="@color/theme_text_lab_black"
+                            android:text="销量"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/order_by_price_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/sale_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_px28"
+                            android:textColor="@color/theme_text_lab_black"
+                            android:text="价格"/>
+                        <ImageView
+                            android:id="@+id/sale_price_icon"
+                            android:layout_width="@dimen/dimen_px40"
+                            android:layout_height="@dimen/dimen_px40"
+                            android:src="@mipmap/icon_normal_price"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/openDrawer"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:paddingRight="@dimen/dimen_px30">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_px28"
+                            android:textColor="@color/theme_text_lab_black"
+                            android:text="筛选"/>
+                        <ImageView
+                            android:layout_width="@dimen/dimen_px40"
+                            android:layout_height="@dimen/dimen_px40"
+                            android:src="@mipmap/icon_filter_shop_detail"/>
+                    </LinearLayout>
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/order_by_price_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <TextView
-                        android:id="@+id/sale_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_px28"
-                        android:textColor="@color/theme_text_lab_black"
-                        android:text="价格"/>
-                    <ImageView
-                        android:id="@+id/sale_price_icon"
-                        android:layout_width="@dimen/dimen_px40"
-                        android:layout_height="@dimen/dimen_px40"
-                        android:src="@mipmap/icon_normal_price"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/openDrawer"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/dimen_px30">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_px28"
-                        android:textColor="@color/theme_text_lab_black"
-                        android:text="筛选"/>
-                    <ImageView
-                        android:layout_width="@dimen/dimen_px40"
-                        android:layout_height="@dimen/dimen_px40"
-                        android:src="@mipmap/icon_filter_shop_detail"/>
-                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_px1"
+                    android:background="@color/gray_4"/>
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_px1"
-                android:background="@color/gray_4"/>
-
 
 
             <com.scwang.smartrefresh.layout.SmartRefreshLayout

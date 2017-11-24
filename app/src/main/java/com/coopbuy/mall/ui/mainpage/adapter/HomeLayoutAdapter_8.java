@@ -40,7 +40,7 @@ public class HomeLayoutAdapter_8 extends BaseDelegateAdapter<HomeFloorResponse.F
 
         ((SimpleDraweeView) holder.getView(R.id.image)).setImageURI(Uri.parse(item.getImageUrl()));
         holder.getTextView(R.id.goods_name).setText(item.getName());
-        holder.getTextView(R.id.price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.sale_count).setText("已售 " + item.getSalesNumber());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

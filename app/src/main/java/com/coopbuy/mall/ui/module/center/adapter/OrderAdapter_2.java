@@ -32,7 +32,7 @@ public class OrderAdapter_2 extends BaseDelegateAdapter<OrderListResponse.ItemsB
     protected void bindData(BaseRecyclerHolder holder, int position, final OrderListResponse.ItemsBeanX.ItemsBean item) {
         ((SimpleDraweeView) holder.getView(R.id.sdv_image)).setImageURI(item.getProductImageUrl());
         holder.getTextView(R.id.tv_goods_name).setText(item.getProductName());
-        holder.getTextView(R.id.tv_price).setText("¥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
+        holder.getTextView(R.id.tv_price).setText("￥" + StringUtils.keepTwoDecimalPoint(item.getUnitPrice()));
         holder.getTextView(R.id.propertyDesc).setText(item.getProperties() + " " + item.getSpecifications());
         holder.getTextView(R.id.tv_quantity).setText("x" + item.getQuantity());
         holder.getTextView(R.id.refundStatus).setText(item.getRefundStatus());
