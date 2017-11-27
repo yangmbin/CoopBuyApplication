@@ -2,6 +2,7 @@ package com.coopbuy.mall.ui.module.home.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
@@ -167,6 +168,7 @@ public class CategorySecondActivity extends BaseActivity {
      * 抽屉重置
      */
     private void drawerReset() {
+        closeDrawer();
         minPrice.setText("");
         maxPrice.setText("");
         for (int i = 0; i < mAdapters.size(); i++) {
@@ -175,6 +177,14 @@ public class CategorySecondActivity extends BaseActivity {
             }
         }
         mDelegateAdapter.notifyDataSetChanged();
+
+        CategorySecondFragment currentFragment = (CategorySecondFragment) mFragments.get(mTabLayout.getCurrentTab());
+        currentFragment.mOrderMode = 0;
+        currentFragment.mFilterList.clear();
+        currentFragment.saleCount.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        currentFragment.salePrice.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        currentFragment.salePriceIcon.setImageResource(R.mipmap.icon_normal_price);
+        currentFragment.getSearchResult(SearchResultPresenter.LOAD_TYPE_4);
     }
 
     /**

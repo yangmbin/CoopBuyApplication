@@ -306,6 +306,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter, Se
      * 抽屉重置
      */
     private void drawerReset() {
+        closeDrawer();
         minPrice.setText("");
         maxPrice.setText("");
         for (int i = 0; i < mFilterAdapters.size(); i++) {
@@ -314,6 +315,13 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter, Se
             }
         }
         mFilterDelegateAdapter.notifyDataSetChanged();
+
+        mOrderMode = 0;
+        mFilterList.clear();
+        saleCount.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        salePrice.setTextColor(ContextCompat.getColor(mContext, R.color.theme_text_lab_black));
+        salePriceIcon.setImageResource(R.mipmap.icon_normal_price);
+        getSearchResult(SearchResultPresenter.LOAD_TYPE_4);
     }
 
     /**

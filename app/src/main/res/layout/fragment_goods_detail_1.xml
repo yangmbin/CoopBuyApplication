@@ -170,7 +170,8 @@
                                 android:orientation="vertical"
                                 android:gravity="center"
                                 android:layout_marginLeft="@dimen/dimen_px45"
-                                android:layout_marginRight="@dimen/dimen_px35">
+                                android:layout_marginRight="@dimen/dimen_px35"
+                                android:visibility="gone">
                                 <ImageView
                                     android:layout_width="@dimen/dimen_px40"
                                     android:layout_height="@dimen/dimen_px40"

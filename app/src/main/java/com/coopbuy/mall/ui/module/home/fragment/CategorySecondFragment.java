@@ -45,18 +45,18 @@ public class CategorySecondFragment extends ViewPagerBaseFragment<SearchResultPr
     @Bind(R.id.refresh_layout)
     SmartRefreshLayout mRefreshLayout;
     @Bind(R.id.sale_count)
-    TextView saleCount;
+    public TextView saleCount;
     @Bind(R.id.sale_price)
-    TextView salePrice;
+    public TextView salePrice;
     @Bind(R.id.sale_price_icon)
-    ImageView salePriceIcon;
+    public ImageView salePriceIcon;
     @Bind(R.id.filterBar)
     LinearLayout filterBar;
     private DelegateAdapter mDelegateAdapter;
     private List<DelegateAdapter.Adapter> mAdapters = new LinkedList<>();
     private CategoryIntentData.Item mCategoryIntentDataItem; // 当前Fragment需要加载的CategoryId，父级页面传递过来
     private int mCurrentPage = 1; // 当前页
-    private int mOrderMode = 0; // 排序方式（0=默认，1=销量升序，2=销量降序，3=单价升序，4=单价降序）
+    public int mOrderMode = 0; // 排序方式（0=默认，1=销量升序，2=销量降序，3=单价升序，4=单价降序）
     public List<SearchRequest.FiltersBean> mFilterList = new ArrayList<>(); // 筛选条件
     private SearchResultResponse mSearchResultResponse;
     private CategorySecondActivity mCategorySecondActivity; // 父Activity

@@ -281,6 +281,10 @@ public class GoodsDetailFragment_1 extends ViewPagerBaseFragment<GoodsDetailPres
 
         // 保存是否收藏了该店铺
         isShopFavorite = skuDetailResponse.getShopInfo().isFavorite();
+        if (isShopFavorite)
+            shopFavoriteBtn.setText("已收藏");
+        else
+            shopFavoriteBtn.setText("收藏店铺");
 
         // 保存productId
         ((GoodsDetailActivity) mContext).setProductId(skuDetailResponse.getProductId());

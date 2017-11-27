@@ -2,14 +2,10 @@ package com.coopbuy.mall.app;
 
 import android.content.Context;
 
-import com.coopbuy.mall.okhttp.OkHttpUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
-
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.OkHttpClient;
 
 /**
  * Application类
@@ -22,6 +18,12 @@ public class CoopBuyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
+
         this.context = getApplicationContext();
         // 初始化Fresco
         Fresco.initialize(this);

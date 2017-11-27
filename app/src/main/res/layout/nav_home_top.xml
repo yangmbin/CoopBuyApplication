@@ -56,35 +56,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_px15"
-                android:text=""
+                android:text="点击搜索"
                 android:textColor="@color/auxiliary_text_gray"
                 android:textSize="@dimen/text_size_px28" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_setting"
-            android:layout_width="@dimen/dimen_px44"
-            android:layout_height="@dimen/dimen_px44"
-            android:src="@mipmap/icon_nav_home_top_cart" />
-
-        <FrameLayout
-            android:id="@+id/more_btn"
-            android:layout_width="@dimen/dimen_px44"
-            android:layout_height="@dimen/dimen_px44"
-            android:layout_marginLeft="@dimen/dimen_px34">
-
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right">
             <ImageView
-                android:id="@+id/iv_msg"
+                android:id="@+id/iv_setting"
                 android:layout_width="@dimen/dimen_px44"
                 android:layout_height="@dimen/dimen_px44"
-                android:src="@mipmap/icon_nav_home_top_add" />
+                android:src="@mipmap/icon_nav_home_top_cart" />
 
-            <View
-                android:layout_width="@dimen/dimen_px12"
-                android:layout_height="@dimen/dimen_px12"
-                android:layout_gravity="right"
-                android:background="@drawable/dot_red" />
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/more_btn"
+                android:layout_width="@dimen/dimen_px44"
+                android:layout_height="@dimen/dimen_px44"
+                android:layout_marginLeft="@dimen/dimen_px34">
+
+                <ImageView
+                    android:id="@+id/iv_msg"
+                    android:layout_width="@dimen/dimen_px44"
+                    android:layout_height="@dimen/dimen_px44"
+                    android:src="@mipmap/icon_nav_home_top_add" />
+
+                <View
+                    android:layout_width="@dimen/dimen_px12"
+                    android:layout_height="@dimen/dimen_px12"
+                    android:layout_gravity="right"
+                    android:background="@drawable/dot_red" />
+            </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <include layout="@layout/menu_div_line" />
