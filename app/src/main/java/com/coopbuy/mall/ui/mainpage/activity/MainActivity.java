@@ -1,6 +1,7 @@
 package com.coopbuy.mall.ui.mainpage.activity;
 
 import android.content.Intent;
+import android.os.Process;
 
 import com.coopbuy.mall.R;
 import com.coopbuy.mall.api.reponse.CheckUpdateResponse;
@@ -9,7 +10,6 @@ import com.coopbuy.mall.ui.mainpage.model.MainModel;
 import com.coopbuy.mall.ui.mainpage.presenter.MainPresenter;
 import com.coopbuy.mall.ui.mainpage.view.Main_IView;
 import com.coopbuy.mall.utils.APPUpdateUtils;
-import com.coopbuy.mall.utils.DeviceUtils;
 import com.coopbuy.mall.utils.IntentUtils;
 import com.coopbuy.mall.widget.APPUpdateDialog;
 import com.coopbuy.mall.widget.navigation.BottomBar;
@@ -76,5 +76,12 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         if (checkUpdateResponse.isHasNewVersion()) {
             showUpdateDialog(checkUpdateResponse.getDownLoadUrl(), checkUpdateResponse.getVersion(), checkUpdateResponse.getDescription());
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 退出关闭进程
+        Process.killProcess(Process.myPid());
     }
 }

@@ -3,7 +3,6 @@ package com.coopbuy.mall.app;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 
@@ -18,11 +17,6 @@ public class CoopBuyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        LeakCanary.install(this);
 
         this.context = getApplicationContext();
         // 初始化Fresco
